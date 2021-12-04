@@ -189,17 +189,22 @@ u	worldometers
 </center>
 
 <script>
-var stkChartList = localStorage.getItem("stkListArr").split(' ');
+
+if (localStorage.getItem("stkListArr") === null) {
+  localStorage.stkListArr = "07500";
+} else{
+  stkChartList = localStorage.getItem("stkListArr").split(' ');
+}
+
+shortsellHeader = "http://www.aastocks.com/tc/stocks/analysis/stock-short-selling-ratio.aspx?symbol="
+bigVolHeader = "http://www.etnet.com.hk/www/tc/stocks/realtime/quote_transaction.php?code="
+
 // console.log(stkChartList);
 var remainChtNo = stkChartList.length;
 //var remainChtNo = 1;
 var thecode ="";
 var pointer;
 urladdr = "";
-
-
-shortsellHeader = "http://www.aastocks.com/tc/stocks/analysis/stock-short-selling-ratio.aspx?symbol="
-bigVolHeader = "http://www.etnet.com.hk/www/tc/stocks/realtime/quote_transaction.php?code="
 
 // load localStorage.randomcode
 if (localStorage.getItem("randomcode") === null) {
