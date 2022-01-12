@@ -1,0 +1,2314 @@
+<base target="_blank">
+<html>
+<head>
+<title>Kline Activity Table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@13.0.1/dist/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/showChartSeries.js"></script>
+<script src="https://williamkpchan.github.io/sorttable.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('h1, h2, h3, h4, h5, .goldword, strong,  .pages').click(function(){
+    parent.history.back();
+    return false;
+    });
+});
+</script>
+<style>
+col:nth-child(5) {border: 1px pink solid;}
+td:nth-child(5) {color:gold;}
+td:nth-child(6) {color:orange;}
+td:nth-child(7) {color:green;}
+td:nth-child(8) {color:#731;}
+tr:hover td { border: 1px solid orange;}
+
+thead{  position: sticky; top: 0; }
+
+k{color:#908050;}
+a{color:#808060;}
+a:hover{transition-property: none; background-color:black;border-radius: none;border: none;box-shadow: none; color:#008080;}
+a:visited{color:#454;}
+body{width:94%;margin-left: 3%; font-size:16px; color:#808060;}
+.pages, strong, h1, h2 {color: gold; margin-top: 10px;}
+img {margin-top: 2%;margin-bottom: 1%; border-radius:3px;}
+#toc a{color:gray; max-width:110%;}
+span{color: cyan;}
+pre{color:#f80;}
+table{font-size:16px;}
+</style>
+</head>
+<body onkeypress="chkKey()">
+<center>
+<div id="toc"></div></center>
+<pre id="startpt">
+update time:  16:17:24s  周三 12 1月 2022 
+Total codes:  84 
+ Total tUP2:  14 , Total kUP2:  48 , Total tUP4:  16 , Total kUP4:  53 
+ Total tDN2:  9 , Total kDN2:  13 , Total tDN4:  5 , Total kDN4:  10 
+x
+
+<table style="border-collapse:collapse;" class=sortable border=1>
+<col><col><col><col><col><col><col><col><col><col><col><col>
+<thead>
+
+<tr>
+  <th id="tableHTML_header_1">stkcode</th>
+  <th id="tableHTML_header_2">chiname</th>
+  <th id="tableHTML_header_3">Amt_wan</th>
+  <th id="tableHTML_header_4">AmtDif%</th>
+  <th id="tableHTML_header_5">C-LWAv%</th>
+  <th id="tableHTML_header_6">pLWAv%</th>
+  <th id="tableHTML_header_7">L-WAv%</th>
+  <th id="tableHTML_header_8">H-WAv%</th>
+  <th id="tableHTML_header_9">Msg2</th>
+  <th id="tableHTML_header_10">Msg4</th>
+  <th id="tableHTML_header_11">Msg6</th>
+  <th id="tableHTML_header_12">Msg8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09988")>09988</k></td>
+  <td id="tableHTML_column_2">阿里巴巴-SW</td>
+  <td id="tableHTML_column_3">396855</td>
+  <td id="tableHTML_column_4">25</td>
+  <td id="tableHTML_column_5">4.8</td>
+  <td id="tableHTML_column_6">2</td>
+  <td id="tableHTML_column_7">-2.4</td>
+  <td id="tableHTML_column_8">-0.3</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00881")>00881</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中升控股</span></td>
+  <td id="tableHTML_column_3">39210</td>
+  <td id="tableHTML_column_4">58</td>
+  <td id="tableHTML_column_5">3.8</td>
+  <td id="tableHTML_column_6">2</td>
+  <td id="tableHTML_column_7">1</td>
+  <td id="tableHTML_column_8">4.5</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03759")>03759</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 康龙化成</span></td>
+  <td id="tableHTML_column_3">29670</td>
+  <td id="tableHTML_column_4">55</td>
+  <td id="tableHTML_column_5">4.7</td>
+  <td id="tableHTML_column_6">5.9</td>
+  <td id="tableHTML_column_7">1.9</td>
+  <td id="tableHTML_column_8">8.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02328")>02328</k></td>
+  <td id="tableHTML_column_2">中国财险</td>
+  <td id="tableHTML_column_3">28546</td>
+  <td id="tableHTML_column_4">20</td>
+  <td id="tableHTML_column_5">0.9</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01833")>01833</k></td>
+  <td id="tableHTML_column_2">平安好医生</td>
+  <td id="tableHTML_column_3">25400</td>
+  <td id="tableHTML_column_4">6</td>
+  <td id="tableHTML_column_5">2</td>
+  <td id="tableHTML_column_6">2.4</td>
+  <td id="tableHTML_column_7">-0.5</td>
+  <td id="tableHTML_column_8">4.3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00011")>00011</k></td>
+  <td id="tableHTML_column_2">恒生银行</td>
+  <td id="tableHTML_column_3">21687</td>
+  <td id="tableHTML_column_4">-27</td>
+  <td id="tableHTML_column_5">1.3</td>
+  <td id="tableHTML_column_6">0.4</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">1.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02018")>02018</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 瑞声科技</span></td>
+  <td id="tableHTML_column_3">21578</td>
+  <td id="tableHTML_column_4">13</td>
+  <td id="tableHTML_column_5">2.5</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.6</td>
+  <td id="tableHTML_column_8">3.6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02601")>02601</k></td>
+  <td id="tableHTML_column_2">中国太保</td>
+  <td id="tableHTML_column_3">21526</td>
+  <td id="tableHTML_column_4">0</td>
+  <td id="tableHTML_column_5">2.7</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00288")>00288</k></td>
+  <td id="tableHTML_column_2">万洲国际</td>
+  <td id="tableHTML_column_3">20904</td>
+  <td id="tableHTML_column_4">-14</td>
+  <td id="tableHTML_column_5">0.3</td>
+  <td id="tableHTML_column_6">-1.6</td>
+  <td id="tableHTML_column_7">-0.9</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">tDN4</td>
+  <td id="tableHTML_column_11">tDN6</td>
+  <td id="tableHTML_column_12">tDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00358")>00358</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 江西铜业股份</span></td>
+  <td id="tableHTML_column_3">19634</td>
+  <td id="tableHTML_column_4">89</td>
+  <td id="tableHTML_column_5">3.9</td>
+  <td id="tableHTML_column_6">4.7</td>
+  <td id="tableHTML_column_7">1.9</td>
+  <td id="tableHTML_column_8">6.2</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00762")>00762</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中国联通</span></td>
+  <td id="tableHTML_column_3">17392</td>
+  <td id="tableHTML_column_4">31</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">1.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00728")>00728</k></td>
+  <td id="tableHTML_column_2">中国电信</td>
+  <td id="tableHTML_column_3">16700</td>
+  <td id="tableHTML_column_4">-29</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">0.4</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("07552")>07552</k></td>
+  <td id="tableHTML_column_2">XI二南方恒科</td>
+  <td id="tableHTML_column_3">16543</td>
+  <td id="tableHTML_column_4">47</td>
+  <td id="tableHTML_column_5">-2.6</td>
+  <td id="tableHTML_column_6">-5.9</td>
+  <td id="tableHTML_column_7">6</td>
+  <td id="tableHTML_column_8">9.8</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09666")>09666</k></td>
+  <td id="tableHTML_column_2">金科服务</td>
+  <td id="tableHTML_column_3">16342</td>
+  <td id="tableHTML_column_4">2</td>
+  <td id="tableHTML_column_5">4.7</td>
+  <td id="tableHTML_column_6">2.6</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">5.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00788")>00788</k></td>
+  <td id="tableHTML_column_2">中国铁塔</td>
+  <td id="tableHTML_column_3">14646</td>
+  <td id="tableHTML_column_4">8</td>
+  <td id="tableHTML_column_5">2.6</td>
+  <td id="tableHTML_column_6">-0.3</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">3.7</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01610")>01610</k></td>
+  <td id="tableHTML_column_2">中粮家佳康</td>
+  <td id="tableHTML_column_3">14502</td>
+  <td id="tableHTML_column_4">-50</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">-1.1</td>
+  <td id="tableHTML_column_7">-0.1</td>
+  <td id="tableHTML_column_8">3.8</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01929")>01929</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 周大福</span></td>
+  <td id="tableHTML_column_3">14377</td>
+  <td id="tableHTML_column_4">32</td>
+  <td id="tableHTML_column_5">6.5</td>
+  <td id="tableHTML_column_6">1.8</td>
+  <td id="tableHTML_column_7">1.2</td>
+  <td id="tableHTML_column_8">7</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02883")>02883</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中海油田服务</span></td>
+  <td id="tableHTML_column_3">14272</td>
+  <td id="tableHTML_column_4">44</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">6.1</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00267")>00267</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中信股份</span></td>
+  <td id="tableHTML_column_3">14072</td>
+  <td id="tableHTML_column_4">38</td>
+  <td id="tableHTML_column_5">1.6</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03067")>03067</k></td>
+  <td id="tableHTML_column_2">安硕恒生科技</td>
+  <td id="tableHTML_column_3">14022</td>
+  <td id="tableHTML_column_4">10</td>
+  <td id="tableHTML_column_5">4</td>
+  <td id="tableHTML_column_6">2.7</td>
+  <td id="tableHTML_column_7">-2</td>
+  <td id="tableHTML_column_8">-0.2</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01378")>01378</k></td>
+  <td id="tableHTML_column_2">中国宏桥</td>
+  <td id="tableHTML_column_3">13444</td>
+  <td id="tableHTML_column_4">7</td>
+  <td id="tableHTML_column_5">2</td>
+  <td id="tableHTML_column_6">3.3</td>
+  <td id="tableHTML_column_7">1.2</td>
+  <td id="tableHTML_column_8">6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01316")>01316</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 耐世特</span></td>
+  <td id="tableHTML_column_3">13232</td>
+  <td id="tableHTML_column_4">118</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3.4</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00998")>00998</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中信银行</span></td>
+  <td id="tableHTML_column_3">12899</td>
+  <td id="tableHTML_column_4">47</td>
+  <td id="tableHTML_column_5">1.3</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.5</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00522")>00522</k></td>
+  <td id="tableHTML_column_2">ASM太平洋</td>
+  <td id="tableHTML_column_3">12380</td>
+  <td id="tableHTML_column_4">94</td>
+  <td id="tableHTML_column_5">0.9</td>
+  <td id="tableHTML_column_6">-0.3</td>
+  <td id="tableHTML_column_7">-0.1</td>
+  <td id="tableHTML_column_8">1.7</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03606")>03606</k></td>
+  <td id="tableHTML_column_2">福耀玻璃</td>
+  <td id="tableHTML_column_3">11903</td>
+  <td id="tableHTML_column_4">2</td>
+  <td id="tableHTML_column_5">5.3</td>
+  <td id="tableHTML_column_6">1.8</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">6.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00322")>00322</k></td>
+  <td id="tableHTML_column_2">康师傅控股</td>
+  <td id="tableHTML_column_3">11830</td>
+  <td id="tableHTML_column_4">7</td>
+  <td id="tableHTML_column_5">2.4</td>
+  <td id="tableHTML_column_6">-0.8</td>
+  <td id="tableHTML_column_7">-0.5</td>
+  <td id="tableHTML_column_8">4.1</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00151")>00151</k></td>
+  <td id="tableHTML_column_2">中国旺旺</td>
+  <td id="tableHTML_column_3">11554</td>
+  <td id="tableHTML_column_4">14</td>
+  <td id="tableHTML_column_5">2.8</td>
+  <td id="tableHTML_column_6">1</td>
+  <td id="tableHTML_column_7">-0.5</td>
+  <td id="tableHTML_column_8">3.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02196")>02196</k></td>
+  <td id="tableHTML_column_2">复星医药</td>
+  <td id="tableHTML_column_3">11404</td>
+  <td id="tableHTML_column_4">-23</td>
+  <td id="tableHTML_column_5">3.2</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00390")>00390</k></td>
+  <td id="tableHTML_column_2">中国中铁</td>
+  <td id="tableHTML_column_3">10781</td>
+  <td id="tableHTML_column_4">-16</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">-0.4</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">2.2</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01313")>01313</k></td>
+  <td id="tableHTML_column_2">华润水泥控股</td>
+  <td id="tableHTML_column_3">10770</td>
+  <td id="tableHTML_column_4">-9</td>
+  <td id="tableHTML_column_5">1.3</td>
+  <td id="tableHTML_column_6">2.3</td>
+  <td id="tableHTML_column_7">1</td>
+  <td id="tableHTML_column_8">3.6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01876")>01876</k></td>
+  <td id="tableHTML_column_2">百威亚太</td>
+  <td id="tableHTML_column_3">10588</td>
+  <td id="tableHTML_column_4">-8</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">-1.2</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">1.6</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">tDN4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01691")>01691</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! JS环球生活</span></td>
+  <td id="tableHTML_column_3">10567</td>
+  <td id="tableHTML_column_4">22</td>
+  <td id="tableHTML_column_5">5.8</td>
+  <td id="tableHTML_column_6">2.2</td>
+  <td id="tableHTML_column_7">1</td>
+  <td id="tableHTML_column_8">7.3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01816")>01816</k></td>
+  <td id="tableHTML_column_2">中广核电力</td>
+  <td id="tableHTML_column_3">10016</td>
+  <td id="tableHTML_column_4">-10</td>
+  <td id="tableHTML_column_5">2.3</td>
+  <td id="tableHTML_column_6">-0.3</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">2.3</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02400")>02400</k></td>
+  <td id="tableHTML_column_2">心动公司</td>
+  <td id="tableHTML_column_3">9963</td>
+  <td id="tableHTML_column_4">69</td>
+  <td id="tableHTML_column_5">5.1</td>
+  <td id="tableHTML_column_6">0.7</td>
+  <td id="tableHTML_column_7">-1.5</td>
+  <td id="tableHTML_column_8">5.1</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01186")>01186</k></td>
+  <td id="tableHTML_column_2">中国铁建</td>
+  <td id="tableHTML_column_3">9750</td>
+  <td id="tableHTML_column_4">13</td>
+  <td id="tableHTML_column_5">2.4</td>
+  <td id="tableHTML_column_6">-1</td>
+  <td id="tableHTML_column_7">-0.6</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01800")>01800</k></td>
+  <td id="tableHTML_column_2">中国交通建设</td>
+  <td id="tableHTML_column_3">9593</td>
+  <td id="tableHTML_column_4">-3</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">-0.4</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">1.7</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06160")>06160</k></td>
+  <td id="tableHTML_column_2">百济神州</td>
+  <td id="tableHTML_column_3">9478</td>
+  <td id="tableHTML_column_4">-36</td>
+  <td id="tableHTML_column_5">2.4</td>
+  <td id="tableHTML_column_6">2.7</td>
+  <td id="tableHTML_column_7">-1.1</td>
+  <td id="tableHTML_column_8">2</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01044")>01044</k></td>
+  <td id="tableHTML_column_2">恒安国际</td>
+  <td id="tableHTML_column_3">9288</td>
+  <td id="tableHTML_column_4">5</td>
+  <td id="tableHTML_column_5">1.5</td>
+  <td id="tableHTML_column_6">2.5</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00384")>00384</k></td>
+  <td id="tableHTML_column_2">中国燃气</td>
+  <td id="tableHTML_column_3">8856</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">1.6</td>
+  <td id="tableHTML_column_6">-0.1</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.8</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06110")>06110</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 滔搏</span></td>
+  <td id="tableHTML_column_3">8725</td>
+  <td id="tableHTML_column_4">36</td>
+  <td id="tableHTML_column_5">2.7</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01813")>01813</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 合景泰富集团</span></td>
+  <td id="tableHTML_column_3">8637</td>
+  <td id="tableHTML_column_4">36</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">1.7</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">6.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06823")>06823</k></td>
+  <td id="tableHTML_column_2">香港电讯-SS</td>
+  <td id="tableHTML_column_3">8498</td>
+  <td id="tableHTML_column_4">105</td>
+  <td id="tableHTML_column_5">0.2</td>
+  <td id="tableHTML_column_6">-0.8</td>
+  <td id="tableHTML_column_7">-0.4</td>
+  <td id="tableHTML_column_8">1.1</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">tDN4</td>
+  <td id="tableHTML_column_11">tDN6</td>
+  <td id="tableHTML_column_12">tDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00066")>00066</k></td>
+  <td id="tableHTML_column_2">港铁公司</td>
+  <td id="tableHTML_column_3">8066</td>
+  <td id="tableHTML_column_4">-17</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">-0.1</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.2</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00867")>00867</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 康哲药业</span></td>
+  <td id="tableHTML_column_3">8023</td>
+  <td id="tableHTML_column_4">13</td>
+  <td id="tableHTML_column_5">4.8</td>
+  <td id="tableHTML_column_6">4.4</td>
+  <td id="tableHTML_column_7">1.2</td>
+  <td id="tableHTML_column_8">6.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00763")>00763</k></td>
+  <td id="tableHTML_column_2">中兴通讯</td>
+  <td id="tableHTML_column_3">7839</td>
+  <td id="tableHTML_column_4">-28</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">1.7</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03311")>03311</k></td>
+  <td id="tableHTML_column_2">中国建筑国际</td>
+  <td id="tableHTML_column_3">7626</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">1.8</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">-0.1</td>
+  <td id="tableHTML_column_8">2.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01108")>01108</k></td>
+  <td id="tableHTML_column_2">洛阳玻璃股份</td>
+  <td id="tableHTML_column_3">7457</td>
+  <td id="tableHTML_column_4">-52</td>
+  <td id="tableHTML_column_5">2.5</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">-1</td>
+  <td id="tableHTML_column_8">3.9</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02208")>02208</k></td>
+  <td id="tableHTML_column_2">金风科技</td>
+  <td id="tableHTML_column_3">7191</td>
+  <td id="tableHTML_column_4">-16</td>
+  <td id="tableHTML_column_5">2.4</td>
+  <td id="tableHTML_column_6">1.2</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01336")>01336</k></td>
+  <td id="tableHTML_column_2">新华保险</td>
+  <td id="tableHTML_column_3">7068</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">2</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01882")>01882</k></td>
+  <td id="tableHTML_column_2">海天国际</td>
+  <td id="tableHTML_column_3">6943</td>
+  <td id="tableHTML_column_4">-10</td>
+  <td id="tableHTML_column_5">0.5</td>
+  <td id="tableHTML_column_6">-0.4</td>
+  <td id="tableHTML_column_7">-0.4</td>
+  <td id="tableHTML_column_8">5.1</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01038")>01038</k></td>
+  <td id="tableHTML_column_2">长江基建集团</td>
+  <td id="tableHTML_column_3">6409</td>
+  <td id="tableHTML_column_4">16</td>
+  <td id="tableHTML_column_5">0.8</td>
+  <td id="tableHTML_column_6">-0.3</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">1.3</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01910")>01910</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 新秀丽</span></td>
+  <td id="tableHTML_column_3">6348</td>
+  <td id="tableHTML_column_4">32</td>
+  <td id="tableHTML_column_5">6.4</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01898")>01898</k></td>
+  <td id="tableHTML_column_2">中煤能源</td>
+  <td id="tableHTML_column_3">6290</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">2.5</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">-0.2</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00780")>00780</k></td>
+  <td id="tableHTML_column_2">同程旅行</td>
+  <td id="tableHTML_column_3">6258</td>
+  <td id="tableHTML_column_4">42</td>
+  <td id="tableHTML_column_5">3.6</td>
+  <td id="tableHTML_column_6">1.6</td>
+  <td id="tableHTML_column_7">-1.6</td>
+  <td id="tableHTML_column_8">1.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00006")>00006</k></td>
+  <td id="tableHTML_column_2">电能实业</td>
+  <td id="tableHTML_column_3">6020</td>
+  <td id="tableHTML_column_4">-18</td>
+  <td id="tableHTML_column_5">0.4</td>
+  <td id="tableHTML_column_6">-0.3</td>
+  <td id="tableHTML_column_7">-0.1</td>
+  <td id="tableHTML_column_8">0.9</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09995")>09995</k></td>
+  <td id="tableHTML_column_2">荣昌生物-B</td>
+  <td id="tableHTML_column_3">5884</td>
+  <td id="tableHTML_column_4">18</td>
+  <td id="tableHTML_column_5">10.5</td>
+  <td id="tableHTML_column_6">6.5</td>
+  <td id="tableHTML_column_7">-2.8</td>
+  <td id="tableHTML_column_8">2.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06060")>06060</k></td>
+  <td id="tableHTML_column_2">众安在线</td>
+  <td id="tableHTML_column_3">5709</td>
+  <td id="tableHTML_column_4">24</td>
+  <td id="tableHTML_column_5">3.6</td>
+  <td id="tableHTML_column_6">0.7</td>
+  <td id="tableHTML_column_7">-0.9</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00753")>00753</k></td>
+  <td id="tableHTML_column_2">中国国航</td>
+  <td id="tableHTML_column_3">5659</td>
+  <td id="tableHTML_column_4">-37</td>
+  <td id="tableHTML_column_5">1.8</td>
+  <td id="tableHTML_column_6">1.7</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02343")>02343</k></td>
+  <td id="tableHTML_column_2">太平洋航运</td>
+  <td id="tableHTML_column_3">5409</td>
+  <td id="tableHTML_column_4">30</td>
+  <td id="tableHTML_column_5">4.2</td>
+  <td id="tableHTML_column_6">0.5</td>
+  <td id="tableHTML_column_7">-0.4</td>
+  <td id="tableHTML_column_8">4.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">tDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02137")>02137</k></td>
+  <td id="tableHTML_column_2">腾盛博药-B</td>
+  <td id="tableHTML_column_3">5251</td>
+  <td id="tableHTML_column_4">15</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">-2</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">8.9</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01072")>01072</k></td>
+  <td id="tableHTML_column_2">东方电气</td>
+  <td id="tableHTML_column_3">4983</td>
+  <td id="tableHTML_column_4">-21</td>
+  <td id="tableHTML_column_5">1.9</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">3.1</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01385")>01385</k></td>
+  <td id="tableHTML_column_2">上海复旦</td>
+  <td id="tableHTML_column_3">4973</td>
+  <td id="tableHTML_column_4">-16</td>
+  <td id="tableHTML_column_5">4</td>
+  <td id="tableHTML_column_6">1.8</td>
+  <td id="tableHTML_column_7">0.8</td>
+  <td id="tableHTML_column_8">4</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00956")>00956</k></td>
+  <td id="tableHTML_column_2">新天绿色能源</td>
+  <td id="tableHTML_column_3">4964</td>
+  <td id="tableHTML_column_4">-45</td>
+  <td id="tableHTML_column_5">1.7</td>
+  <td id="tableHTML_column_6">0.1</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3.6</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02669")>02669</k></td>
+  <td id="tableHTML_column_2">中海物业</td>
+  <td id="tableHTML_column_3">4707</td>
+  <td id="tableHTML_column_4">10</td>
+  <td id="tableHTML_column_5">1.8</td>
+  <td id="tableHTML_column_6">-0.2</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02845")>02845</k></td>
+  <td id="tableHTML_column_2">GX中国电车</td>
+  <td id="tableHTML_column_3">4407</td>
+  <td id="tableHTML_column_4">18</td>
+  <td id="tableHTML_column_5">4.9</td>
+  <td id="tableHTML_column_6">0.1</td>
+  <td id="tableHTML_column_7">-0.2</td>
+  <td id="tableHTML_column_8">2.2</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01083")>01083</k></td>
+  <td id="tableHTML_column_2">港华燃气</td>
+  <td id="tableHTML_column_3">4136</td>
+  <td id="tableHTML_column_4">-46</td>
+  <td id="tableHTML_column_5">1.7</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01821")>01821</k></td>
+  <td id="tableHTML_column_2">ESR</td>
+  <td id="tableHTML_column_3">4068</td>
+  <td id="tableHTML_column_4">-53</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">1.2</td>
+  <td id="tableHTML_column_7">-1.4</td>
+  <td id="tableHTML_column_8">1.1</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09987")>09987</k></td>
+  <td id="tableHTML_column_2">百胜中国-S</td>
+  <td id="tableHTML_column_3">3972</td>
+  <td id="tableHTML_column_4">20</td>
+  <td id="tableHTML_column_5">0.8</td>
+  <td id="tableHTML_column_6">-0.3</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">1.7</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09698")>09698</k></td>
+  <td id="tableHTML_column_2">万国数据-SW</td>
+  <td id="tableHTML_column_3">3614</td>
+  <td id="tableHTML_column_4">103</td>
+  <td id="tableHTML_column_5">6.8</td>
+  <td id="tableHTML_column_6">3.3</td>
+  <td id="tableHTML_column_7">-2.4</td>
+  <td id="tableHTML_column_8">1.6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00270")>00270</k></td>
+  <td id="tableHTML_column_2">粤海投资</td>
+  <td id="tableHTML_column_3">3533</td>
+  <td id="tableHTML_column_4">-17</td>
+  <td id="tableHTML_column_5">0.4</td>
+  <td id="tableHTML_column_6">0.1</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.5</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02588")>02588</k></td>
+  <td id="tableHTML_column_2">中银航空租赁</td>
+  <td id="tableHTML_column_3">3441</td>
+  <td id="tableHTML_column_4">-12</td>
+  <td id="tableHTML_column_5">1.4</td>
+  <td id="tableHTML_column_6">0.3</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("07568")>07568</k></td>
+  <td id="tableHTML_column_2">FI二南方纳指</td>
+  <td id="tableHTML_column_3">3434</td>
+  <td id="tableHTML_column_4">-10</td>
+  <td id="tableHTML_column_5">-0.4</td>
+  <td id="tableHTML_column_6">-2</td>
+  <td id="tableHTML_column_7">2.1</td>
+  <td id="tableHTML_column_8">3.5</td>
+  <td id="tableHTML_column_9">tDN2</td>
+  <td id="tableHTML_column_10">tDN4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09959")>09959</k></td>
+  <td id="tableHTML_column_2">联易融科技-W</td>
+  <td id="tableHTML_column_3">3377</td>
+  <td id="tableHTML_column_4">81</td>
+  <td id="tableHTML_column_5">7.4</td>
+  <td id="tableHTML_column_6">2</td>
+  <td id="tableHTML_column_7">-2.6</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03883")>03883</k></td>
+  <td id="tableHTML_column_2">中国奥园</td>
+  <td id="tableHTML_column_3">3071</td>
+  <td id="tableHTML_column_4">-19</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">1</td>
+  <td id="tableHTML_column_7">-0.6</td>
+  <td id="tableHTML_column_8">6.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09939")>09939</k></td>
+  <td id="tableHTML_column_2">开拓药业-B</td>
+  <td id="tableHTML_column_3">2994</td>
+  <td id="tableHTML_column_4">-42</td>
+  <td id="tableHTML_column_5">4</td>
+  <td id="tableHTML_column_6">3.4</td>
+  <td id="tableHTML_column_7">-1.1</td>
+  <td id="tableHTML_column_8">4.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03868")>03868</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 信义能源</span></td>
+  <td id="tableHTML_column_3">2890</td>
+  <td id="tableHTML_column_4">12</td>
+  <td id="tableHTML_column_5">3</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">4.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01766")>01766</k></td>
+  <td id="tableHTML_column_2">中国中车</td>
+  <td id="tableHTML_column_3">2325</td>
+  <td id="tableHTML_column_4">-43</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">0.5</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00013")>00013</k></td>
+  <td id="tableHTML_column_2">和黄医药</td>
+  <td id="tableHTML_column_3">2155</td>
+  <td id="tableHTML_column_4">-27</td>
+  <td id="tableHTML_column_5">2.3</td>
+  <td id="tableHTML_column_6">0.4</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">1.1</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00670")>00670</k></td>
+  <td id="tableHTML_column_2">中国东方航空股份</td>
+  <td id="tableHTML_column_3">2147</td>
+  <td id="tableHTML_column_4">-6</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">0.9</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">1.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01873")>01873</k></td>
+  <td id="tableHTML_column_2">维亚生物</td>
+  <td id="tableHTML_column_3">1608</td>
+  <td id="tableHTML_column_4">-20</td>
+  <td id="tableHTML_column_5">4.4</td>
+  <td id="tableHTML_column_6">3.2</td>
+  <td id="tableHTML_column_7">1.4</td>
+  <td id="tableHTML_column_8">5.1</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00308")>00308</k></td>
+  <td id="tableHTML_column_2">香港中旅</td>
+  <td id="tableHTML_column_3">1576</td>
+  <td id="tableHTML_column_4">-53</td>
+  <td id="tableHTML_column_5">2.3</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">4.8</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00576")>00576</k></td>
+  <td id="tableHTML_column_2">浙江沪杭甬</td>
+  <td id="tableHTML_column_3">1408</td>
+  <td id="tableHTML_column_4">7</td>
+  <td id="tableHTML_column_5">0.7</td>
+  <td id="tableHTML_column_6">0.7</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">1.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02009")>02009</k></td>
+  <td id="tableHTML_column_2">金隅集团</td>
+  <td id="tableHTML_column_3">804</td>
+  <td id="tableHTML_column_4">-26</td>
+  <td id="tableHTML_column_5">0.8</td>
+  <td id="tableHTML_column_6">0</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">1.6</td>
+  <td id="tableHTML_column_9">kDN2</td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03300")>03300</k></td>
+  <td id="tableHTML_column_2">中国玻璃</td>
+  <td id="tableHTML_column_3">496</td>
+  <td id="tableHTML_column_4">-57</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">0</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+</tbody>
+</table>
+
+<h2><k class="orange"><br>tUP2Table</k></h2>
+total:  4 
+ <k onclick=changeCode("00881")>00881</k> <k onclick=changeCode("01929")>01929</k> <k onclick=changeCode("00267")>00267</k> <k onclick=changeCode("01316")>01316</k> 
+x
+
+<table style="border-collapse:collapse;" class=sortable border=1>
+<col><col><col><col><col><col><col><col><col><col><col><col>
+<thead>
+
+<tr>
+  <th id="tableHTML_header_1">stkcode</th>
+  <th id="tableHTML_header_2">chiname</th>
+  <th id="tableHTML_header_3">Amt_wan</th>
+  <th id="tableHTML_header_4">AmtDif%</th>
+  <th id="tableHTML_header_5">C-LWAv%</th>
+  <th id="tableHTML_header_6">pLWAv%</th>
+  <th id="tableHTML_header_7">L-WAv%</th>
+  <th id="tableHTML_header_8">H-WAv%</th>
+  <th id="tableHTML_header_9">Msg2</th>
+  <th id="tableHTML_header_10">Msg4</th>
+  <th id="tableHTML_header_11">Msg6</th>
+  <th id="tableHTML_header_12">Msg8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09988")>09988</k></td>
+  <td id="tableHTML_column_2">阿里巴巴-SW</td>
+  <td id="tableHTML_column_3">396855</td>
+  <td id="tableHTML_column_4">25</td>
+  <td id="tableHTML_column_5">4.8</td>
+  <td id="tableHTML_column_6">2</td>
+  <td id="tableHTML_column_7">-2.4</td>
+  <td id="tableHTML_column_8">-0.3</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00881")>00881</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中升控股</span></td>
+  <td id="tableHTML_column_3">39210</td>
+  <td id="tableHTML_column_4">58</td>
+  <td id="tableHTML_column_5">3.8</td>
+  <td id="tableHTML_column_6">2</td>
+  <td id="tableHTML_column_7">1</td>
+  <td id="tableHTML_column_8">4.5</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01929")>01929</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 周大福</span></td>
+  <td id="tableHTML_column_3">14377</td>
+  <td id="tableHTML_column_4">32</td>
+  <td id="tableHTML_column_5">6.5</td>
+  <td id="tableHTML_column_6">1.8</td>
+  <td id="tableHTML_column_7">1.2</td>
+  <td id="tableHTML_column_8">7</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00267")>00267</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中信股份</span></td>
+  <td id="tableHTML_column_3">14072</td>
+  <td id="tableHTML_column_4">38</td>
+  <td id="tableHTML_column_5">1.6</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01316")>01316</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 耐世特</span></td>
+  <td id="tableHTML_column_3">13232</td>
+  <td id="tableHTML_column_4">118</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3.4</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02400")>02400</k></td>
+  <td id="tableHTML_column_2">心动公司</td>
+  <td id="tableHTML_column_3">9963</td>
+  <td id="tableHTML_column_4">69</td>
+  <td id="tableHTML_column_5">5.1</td>
+  <td id="tableHTML_column_6">0.7</td>
+  <td id="tableHTML_column_7">-1.5</td>
+  <td id="tableHTML_column_8">5.1</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01108")>01108</k></td>
+  <td id="tableHTML_column_2">洛阳玻璃股份</td>
+  <td id="tableHTML_column_3">7457</td>
+  <td id="tableHTML_column_4">-52</td>
+  <td id="tableHTML_column_5">2.5</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">-1</td>
+  <td id="tableHTML_column_8">3.9</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01072")>01072</k></td>
+  <td id="tableHTML_column_2">东方电气</td>
+  <td id="tableHTML_column_3">4983</td>
+  <td id="tableHTML_column_4">-21</td>
+  <td id="tableHTML_column_5">1.9</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">3.1</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01385")>01385</k></td>
+  <td id="tableHTML_column_2">上海复旦</td>
+  <td id="tableHTML_column_3">4973</td>
+  <td id="tableHTML_column_4">-16</td>
+  <td id="tableHTML_column_5">4</td>
+  <td id="tableHTML_column_6">1.8</td>
+  <td id="tableHTML_column_7">0.8</td>
+  <td id="tableHTML_column_8">4</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00956")>00956</k></td>
+  <td id="tableHTML_column_2">新天绿色能源</td>
+  <td id="tableHTML_column_3">4964</td>
+  <td id="tableHTML_column_4">-45</td>
+  <td id="tableHTML_column_5">1.7</td>
+  <td id="tableHTML_column_6">0.1</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3.6</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02845")>02845</k></td>
+  <td id="tableHTML_column_2">GX中国电车</td>
+  <td id="tableHTML_column_3">4407</td>
+  <td id="tableHTML_column_4">18</td>
+  <td id="tableHTML_column_5">4.9</td>
+  <td id="tableHTML_column_6">0.1</td>
+  <td id="tableHTML_column_7">-0.2</td>
+  <td id="tableHTML_column_8">2.2</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00270")>00270</k></td>
+  <td id="tableHTML_column_2">粤海投资</td>
+  <td id="tableHTML_column_3">3533</td>
+  <td id="tableHTML_column_4">-17</td>
+  <td id="tableHTML_column_5">0.4</td>
+  <td id="tableHTML_column_6">0.1</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.5</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00013")>00013</k></td>
+  <td id="tableHTML_column_2">和黄医药</td>
+  <td id="tableHTML_column_3">2155</td>
+  <td id="tableHTML_column_4">-27</td>
+  <td id="tableHTML_column_5">2.3</td>
+  <td id="tableHTML_column_6">0.4</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">1.1</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00308")>00308</k></td>
+  <td id="tableHTML_column_2">香港中旅</td>
+  <td id="tableHTML_column_3">1576</td>
+  <td id="tableHTML_column_4">-53</td>
+  <td id="tableHTML_column_5">2.3</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">4.8</td>
+  <td id="tableHTML_column_9"><b>tUP2</b></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+</tbody>
+</table>
+
+<h2><k class="orange"><br>kUP2Table</k></h2>
+total:  12 
+<k onclick=changeCode("03759")>03759</k> <k onclick=changeCode("02018")>02018</k> <k onclick=changeCode("00358")>00358</k> <k onclick=changeCode("00762")>00762</k> <k onclick=changeCode("02883")>02883</k> <k onclick=changeCode("00998")>00998</k> <k onclick=changeCode("01691")>01691</k> <k onclick=changeCode("06110")>06110</k> <k onclick=changeCode("01813")>01813</k> <k onclick=changeCode("00867")>00867</k> <k onclick=changeCode("01910")>01910</k> <k onclick=changeCode("03868")>03868</k> 
+x
+
+<table style="border-collapse:collapse;" class=sortable border=1>
+<col><col><col><col><col><col><col><col><col><col><col><col>
+<thead>
+
+<tr>
+  <th id="tableHTML_header_1">stkcode</th>
+  <th id="tableHTML_header_2">chiname</th>
+  <th id="tableHTML_header_3">Amt_wan</th>
+  <th id="tableHTML_header_4">AmtDif%</th>
+  <th id="tableHTML_header_5">C-LWAv%</th>
+  <th id="tableHTML_header_6">pLWAv%</th>
+  <th id="tableHTML_header_7">L-WAv%</th>
+  <th id="tableHTML_header_8">H-WAv%</th>
+  <th id="tableHTML_header_9">Msg2</th>
+  <th id="tableHTML_header_10">Msg4</th>
+  <th id="tableHTML_header_11">Msg6</th>
+  <th id="tableHTML_header_12">Msg8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03759")>03759</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 康龙化成</span></td>
+  <td id="tableHTML_column_3">29670</td>
+  <td id="tableHTML_column_4">55</td>
+  <td id="tableHTML_column_5">4.7</td>
+  <td id="tableHTML_column_6">5.9</td>
+  <td id="tableHTML_column_7">1.9</td>
+  <td id="tableHTML_column_8">8.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02328")>02328</k></td>
+  <td id="tableHTML_column_2">中国财险</td>
+  <td id="tableHTML_column_3">28546</td>
+  <td id="tableHTML_column_4">20</td>
+  <td id="tableHTML_column_5">0.9</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01833")>01833</k></td>
+  <td id="tableHTML_column_2">平安好医生</td>
+  <td id="tableHTML_column_3">25400</td>
+  <td id="tableHTML_column_4">6</td>
+  <td id="tableHTML_column_5">2</td>
+  <td id="tableHTML_column_6">2.4</td>
+  <td id="tableHTML_column_7">-0.5</td>
+  <td id="tableHTML_column_8">4.3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00011")>00011</k></td>
+  <td id="tableHTML_column_2">恒生银行</td>
+  <td id="tableHTML_column_3">21687</td>
+  <td id="tableHTML_column_4">-27</td>
+  <td id="tableHTML_column_5">1.3</td>
+  <td id="tableHTML_column_6">0.4</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">1.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02018")>02018</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 瑞声科技</span></td>
+  <td id="tableHTML_column_3">21578</td>
+  <td id="tableHTML_column_4">13</td>
+  <td id="tableHTML_column_5">2.5</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.6</td>
+  <td id="tableHTML_column_8">3.6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02601")>02601</k></td>
+  <td id="tableHTML_column_2">中国太保</td>
+  <td id="tableHTML_column_3">21526</td>
+  <td id="tableHTML_column_4">0</td>
+  <td id="tableHTML_column_5">2.7</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00358")>00358</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 江西铜业股份</span></td>
+  <td id="tableHTML_column_3">19634</td>
+  <td id="tableHTML_column_4">89</td>
+  <td id="tableHTML_column_5">3.9</td>
+  <td id="tableHTML_column_6">4.7</td>
+  <td id="tableHTML_column_7">1.9</td>
+  <td id="tableHTML_column_8">6.2</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00762")>00762</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中国联通</span></td>
+  <td id="tableHTML_column_3">17392</td>
+  <td id="tableHTML_column_4">31</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">1.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00728")>00728</k></td>
+  <td id="tableHTML_column_2">中国电信</td>
+  <td id="tableHTML_column_3">16700</td>
+  <td id="tableHTML_column_4">-29</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">0.4</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09666")>09666</k></td>
+  <td id="tableHTML_column_2">金科服务</td>
+  <td id="tableHTML_column_3">16342</td>
+  <td id="tableHTML_column_4">2</td>
+  <td id="tableHTML_column_5">4.7</td>
+  <td id="tableHTML_column_6">2.6</td>
+  <td id="tableHTML_column_7">-0.3</td>
+  <td id="tableHTML_column_8">5.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02883")>02883</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中海油田服务</span></td>
+  <td id="tableHTML_column_3">14272</td>
+  <td id="tableHTML_column_4">44</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">0.8</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">6.1</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03067")>03067</k></td>
+  <td id="tableHTML_column_2">安硕恒生科技</td>
+  <td id="tableHTML_column_3">14022</td>
+  <td id="tableHTML_column_4">10</td>
+  <td id="tableHTML_column_5">4</td>
+  <td id="tableHTML_column_6">2.7</td>
+  <td id="tableHTML_column_7">-2</td>
+  <td id="tableHTML_column_8">-0.2</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01378")>01378</k></td>
+  <td id="tableHTML_column_2">中国宏桥</td>
+  <td id="tableHTML_column_3">13444</td>
+  <td id="tableHTML_column_4">7</td>
+  <td id="tableHTML_column_5">2</td>
+  <td id="tableHTML_column_6">3.3</td>
+  <td id="tableHTML_column_7">1.2</td>
+  <td id="tableHTML_column_8">6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00998")>00998</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 中信银行</span></td>
+  <td id="tableHTML_column_3">12899</td>
+  <td id="tableHTML_column_4">47</td>
+  <td id="tableHTML_column_5">1.3</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.5</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03606")>03606</k></td>
+  <td id="tableHTML_column_2">福耀玻璃</td>
+  <td id="tableHTML_column_3">11903</td>
+  <td id="tableHTML_column_4">2</td>
+  <td id="tableHTML_column_5">5.3</td>
+  <td id="tableHTML_column_6">1.8</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">6.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00151")>00151</k></td>
+  <td id="tableHTML_column_2">中国旺旺</td>
+  <td id="tableHTML_column_3">11554</td>
+  <td id="tableHTML_column_4">14</td>
+  <td id="tableHTML_column_5">2.8</td>
+  <td id="tableHTML_column_6">1</td>
+  <td id="tableHTML_column_7">-0.5</td>
+  <td id="tableHTML_column_8">3.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02196")>02196</k></td>
+  <td id="tableHTML_column_2">复星医药</td>
+  <td id="tableHTML_column_3">11404</td>
+  <td id="tableHTML_column_4">-23</td>
+  <td id="tableHTML_column_5">3.2</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01313")>01313</k></td>
+  <td id="tableHTML_column_2">华润水泥控股</td>
+  <td id="tableHTML_column_3">10770</td>
+  <td id="tableHTML_column_4">-9</td>
+  <td id="tableHTML_column_5">1.3</td>
+  <td id="tableHTML_column_6">2.3</td>
+  <td id="tableHTML_column_7">1</td>
+  <td id="tableHTML_column_8">3.6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01691")>01691</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! JS环球生活</span></td>
+  <td id="tableHTML_column_3">10567</td>
+  <td id="tableHTML_column_4">22</td>
+  <td id="tableHTML_column_5">5.8</td>
+  <td id="tableHTML_column_6">2.2</td>
+  <td id="tableHTML_column_7">1</td>
+  <td id="tableHTML_column_8">7.3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06160")>06160</k></td>
+  <td id="tableHTML_column_2">百济神州</td>
+  <td id="tableHTML_column_3">9478</td>
+  <td id="tableHTML_column_4">-36</td>
+  <td id="tableHTML_column_5">2.4</td>
+  <td id="tableHTML_column_6">2.7</td>
+  <td id="tableHTML_column_7">-1.1</td>
+  <td id="tableHTML_column_8">2</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01044")>01044</k></td>
+  <td id="tableHTML_column_2">恒安国际</td>
+  <td id="tableHTML_column_3">9288</td>
+  <td id="tableHTML_column_4">5</td>
+  <td id="tableHTML_column_5">1.5</td>
+  <td id="tableHTML_column_6">2.5</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06110")>06110</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 滔搏</span></td>
+  <td id="tableHTML_column_3">8725</td>
+  <td id="tableHTML_column_4">36</td>
+  <td id="tableHTML_column_5">2.7</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01813")>01813</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 合景泰富集团</span></td>
+  <td id="tableHTML_column_3">8637</td>
+  <td id="tableHTML_column_4">36</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">1.7</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">6.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00867")>00867</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 康哲药业</span></td>
+  <td id="tableHTML_column_3">8023</td>
+  <td id="tableHTML_column_4">13</td>
+  <td id="tableHTML_column_5">4.8</td>
+  <td id="tableHTML_column_6">4.4</td>
+  <td id="tableHTML_column_7">1.2</td>
+  <td id="tableHTML_column_8">6.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00763")>00763</k></td>
+  <td id="tableHTML_column_2">中兴通讯</td>
+  <td id="tableHTML_column_3">7839</td>
+  <td id="tableHTML_column_4">-28</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">1.7</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03311")>03311</k></td>
+  <td id="tableHTML_column_2">中国建筑国际</td>
+  <td id="tableHTML_column_3">7626</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">1.8</td>
+  <td id="tableHTML_column_6">0.2</td>
+  <td id="tableHTML_column_7">-0.1</td>
+  <td id="tableHTML_column_8">2.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02208")>02208</k></td>
+  <td id="tableHTML_column_2">金风科技</td>
+  <td id="tableHTML_column_3">7191</td>
+  <td id="tableHTML_column_4">-16</td>
+  <td id="tableHTML_column_5">2.4</td>
+  <td id="tableHTML_column_6">1.2</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">2.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01336")>01336</k></td>
+  <td id="tableHTML_column_2">新华保险</td>
+  <td id="tableHTML_column_3">7068</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">2</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.3</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01910")>01910</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 新秀丽</span></td>
+  <td id="tableHTML_column_3">6348</td>
+  <td id="tableHTML_column_4">32</td>
+  <td id="tableHTML_column_5">6.4</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01898")>01898</k></td>
+  <td id="tableHTML_column_2">中煤能源</td>
+  <td id="tableHTML_column_3">6290</td>
+  <td id="tableHTML_column_4">-13</td>
+  <td id="tableHTML_column_5">2.5</td>
+  <td id="tableHTML_column_6">0.6</td>
+  <td id="tableHTML_column_7">-0.2</td>
+  <td id="tableHTML_column_8">2.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00780")>00780</k></td>
+  <td id="tableHTML_column_2">同程旅行</td>
+  <td id="tableHTML_column_3">6258</td>
+  <td id="tableHTML_column_4">42</td>
+  <td id="tableHTML_column_5">3.6</td>
+  <td id="tableHTML_column_6">1.6</td>
+  <td id="tableHTML_column_7">-1.6</td>
+  <td id="tableHTML_column_8">1.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09995")>09995</k></td>
+  <td id="tableHTML_column_2">荣昌生物-B</td>
+  <td id="tableHTML_column_3">5884</td>
+  <td id="tableHTML_column_4">18</td>
+  <td id="tableHTML_column_5">10.5</td>
+  <td id="tableHTML_column_6">6.5</td>
+  <td id="tableHTML_column_7">-2.8</td>
+  <td id="tableHTML_column_8">2.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("06060")>06060</k></td>
+  <td id="tableHTML_column_2">众安在线</td>
+  <td id="tableHTML_column_3">5709</td>
+  <td id="tableHTML_column_4">24</td>
+  <td id="tableHTML_column_5">3.6</td>
+  <td id="tableHTML_column_6">0.7</td>
+  <td id="tableHTML_column_7">-0.9</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00753")>00753</k></td>
+  <td id="tableHTML_column_2">中国国航</td>
+  <td id="tableHTML_column_3">5659</td>
+  <td id="tableHTML_column_4">-37</td>
+  <td id="tableHTML_column_5">1.8</td>
+  <td id="tableHTML_column_6">1.7</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02343")>02343</k></td>
+  <td id="tableHTML_column_2">太平洋航运</td>
+  <td id="tableHTML_column_3">5409</td>
+  <td id="tableHTML_column_4">30</td>
+  <td id="tableHTML_column_5">4.2</td>
+  <td id="tableHTML_column_6">0.5</td>
+  <td id="tableHTML_column_7">-0.4</td>
+  <td id="tableHTML_column_8">4.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tDN4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">tDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01083")>01083</k></td>
+  <td id="tableHTML_column_2">港华燃气</td>
+  <td id="tableHTML_column_3">4136</td>
+  <td id="tableHTML_column_4">-46</td>
+  <td id="tableHTML_column_5">1.7</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">kDN6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01821")>01821</k></td>
+  <td id="tableHTML_column_2">ESR</td>
+  <td id="tableHTML_column_3">4068</td>
+  <td id="tableHTML_column_4">-53</td>
+  <td id="tableHTML_column_5">1.1</td>
+  <td id="tableHTML_column_6">1.2</td>
+  <td id="tableHTML_column_7">-1.4</td>
+  <td id="tableHTML_column_8">1.1</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09698")>09698</k></td>
+  <td id="tableHTML_column_2">万国数据-SW</td>
+  <td id="tableHTML_column_3">3614</td>
+  <td id="tableHTML_column_4">103</td>
+  <td id="tableHTML_column_5">6.8</td>
+  <td id="tableHTML_column_6">3.3</td>
+  <td id="tableHTML_column_7">-2.4</td>
+  <td id="tableHTML_column_8">1.6</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("02588")>02588</k></td>
+  <td id="tableHTML_column_2">中银航空租赁</td>
+  <td id="tableHTML_column_3">3441</td>
+  <td id="tableHTML_column_4">-12</td>
+  <td id="tableHTML_column_5">1.4</td>
+  <td id="tableHTML_column_6">0.3</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">2.4</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09959")>09959</k></td>
+  <td id="tableHTML_column_2">联易融科技-W</td>
+  <td id="tableHTML_column_3">3377</td>
+  <td id="tableHTML_column_4">81</td>
+  <td id="tableHTML_column_5">7.4</td>
+  <td id="tableHTML_column_6">2</td>
+  <td id="tableHTML_column_7">-2.6</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03883")>03883</k></td>
+  <td id="tableHTML_column_2">中国奥园</td>
+  <td id="tableHTML_column_3">3071</td>
+  <td id="tableHTML_column_4">-19</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">1</td>
+  <td id="tableHTML_column_7">-0.6</td>
+  <td id="tableHTML_column_8">6.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("09939")>09939</k></td>
+  <td id="tableHTML_column_2">开拓药业-B</td>
+  <td id="tableHTML_column_3">2994</td>
+  <td id="tableHTML_column_4">-42</td>
+  <td id="tableHTML_column_5">4</td>
+  <td id="tableHTML_column_6">3.4</td>
+  <td id="tableHTML_column_7">-1.1</td>
+  <td id="tableHTML_column_8">4.7</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03868")>03868</k></td>
+  <td id="tableHTML_column_2"><span class="orange">! 信义能源</span></td>
+  <td id="tableHTML_column_3">2890</td>
+  <td id="tableHTML_column_4">12</td>
+  <td id="tableHTML_column_5">3</td>
+  <td id="tableHTML_column_6">1.3</td>
+  <td id="tableHTML_column_7">0.3</td>
+  <td id="tableHTML_column_8">4.5</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01766")>01766</k></td>
+  <td id="tableHTML_column_2">中国中车</td>
+  <td id="tableHTML_column_3">2325</td>
+  <td id="tableHTML_column_4">-43</td>
+  <td id="tableHTML_column_5">1.2</td>
+  <td id="tableHTML_column_6">0.5</td>
+  <td id="tableHTML_column_7">0.1</td>
+  <td id="tableHTML_column_8">1.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00670")>00670</k></td>
+  <td id="tableHTML_column_2">中国东方航空股份</td>
+  <td id="tableHTML_column_3">2147</td>
+  <td id="tableHTML_column_4">-6</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">0.9</td>
+  <td id="tableHTML_column_7">0</td>
+  <td id="tableHTML_column_8">1.9</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("01873")>01873</k></td>
+  <td id="tableHTML_column_2">维亚生物</td>
+  <td id="tableHTML_column_3">1608</td>
+  <td id="tableHTML_column_4">-20</td>
+  <td id="tableHTML_column_5">4.4</td>
+  <td id="tableHTML_column_6">3.2</td>
+  <td id="tableHTML_column_7">1.4</td>
+  <td id="tableHTML_column_8">5.1</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">tUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("00576")>00576</k></td>
+  <td id="tableHTML_column_2">浙江沪杭甬</td>
+  <td id="tableHTML_column_3">1408</td>
+  <td id="tableHTML_column_4">7</td>
+  <td id="tableHTML_column_5">0.7</td>
+  <td id="tableHTML_column_6">0.7</td>
+  <td id="tableHTML_column_7">0.2</td>
+  <td id="tableHTML_column_8">1.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">kUP4</td>
+  <td id="tableHTML_column_11">kUP6</td>
+  <td id="tableHTML_column_12">kUP8</td>
+</tr>
+<tr>
+  <td id="tableHTML_column_1"><k onclick=changeCode("03300")>03300</k></td>
+  <td id="tableHTML_column_2">中国玻璃</td>
+  <td id="tableHTML_column_3">496</td>
+  <td id="tableHTML_column_4">-57</td>
+  <td id="tableHTML_column_5">1</td>
+  <td id="tableHTML_column_6">0</td>
+  <td id="tableHTML_column_7">0.4</td>
+  <td id="tableHTML_column_8">2.8</td>
+  <td id="tableHTML_column_9"><i>kUP2</i></td>
+  <td id="tableHTML_column_10">tUP4</td>
+  <td id="tableHTML_column_11">tUP6</td>
+  <td id="tableHTML_column_12">kDN8</td>
+</tr>
+</tbody>
+</table>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+  var showTopicNumber = true;
+  var bookid = "sortPopup" 
+  var topicEnd = ", ";
+  var markerName = "h2, span"
+  var divtoc = document.getElementById("toc");
+
+$(document).ready(function(){
+  $('h1, h2, h3, h4, h5, .goldword, strong,  div.title').click(function(){
+  parent.history.back();
+  $('#mustWatch').prepend("<br><br>=======================================================================<br>");
+  return false;
+  });
+});
+
+function getChar(event){
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which);}
+  else {return null;}}
+
+var topicLength;
+var topicpointer = topicLength;
+
+function changeTopic() {
+ if (topicpointer >= topicLength) { topicpointer = 1;}
+ else if (topicpointer < 0) { topicpointer = topicLength;}
+ else { topicpointer = topicpointer + 1;}
+ showTopic()
+}
+function backward() { topicpointer = topicpointer - 2; changeTopic();}
+function foreward() { changeTopic();}
+function showTopic() {
+  window.location = "#topic-" + topicpointer;
+  notvisitedList = notvisitedList.filter(item => item !== topicpointer) // remove topicpointer
+  if(notvisitedList.length == 0){
+   notvisitedList = [...Array(totalLength).keys()];
+  }
+}
+function jumpto(index) { topicpointer = index; showTopic();}
+function randomFlip() {
+  topicpointer = notvisitedList[Math.floor(Math.random() * notvisitedList.length)]; // random from not visited list
+
+  var index = notvisitedList.indexOf(topicpointer);
+  notvisitedList.splice(index, 1);
+
+  showTopic();
+}
+
+var totalLength = topicLength
+var notvisitedList = [...Array(totalLength).keys()];
+
+function storeBookmark(objName, pagepos) {
+  if(typeof objName != 'undefined') {
+    localStorage.setItem(objName, pagepos.toString())
+//    alert("Bookmark changed! " + objName +" " + pagepos)
+  }else{alert("No BookId!")}
+}
+function loadBookmark(objName) {
+  pos = Number(localStorage.getItem(objName))
+  console.log("Bookmark loaded! " + objName + " " + pos)
+  $('body').animate({scrollTop: pos}, 0);
+}
+
+function changeCode(thecode) {
+  localStorage.setItem("randomcode", thecode);
+  window.open("Random Charts.html#imgp4", "_blank");
+}
+
+function xunbao(xunbaocode) {
+  localStorage.setItem("randomcode", xunbaocode)
+  localStorage.setItem("otherCode", xunbaocode)
+  localStorage.setItem("stkCode", xunbaocode)
+  window.open("Random Charts.html");
+}
+
+
+$("#mustWatch").append('<pre><br><span class="silver">keys: <br>r random article<br>5 random article<br>b backward<br>4 backward<br>f foreward<br>6 foreward<br><br>t top of table<br>8 top of table<br>l last of table<br>2 last of table<br>7 go to table middle<br><br>T Top of page<br>e end of page<br><br>m mustWatch<br>p pause<br>c continU<br>s showPage<br><br>K set bookmark<br>k open bookmark</span></pre>');
+
+
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+
+</script>
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+
+<script>
+  // this goes after readbook to allow toc establish
+  // got to top to show the menu
+  window.location = '#toc';
+
+  // start a new chkKey to avoid readbook chkKey
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'e'){window.scrollTo(0,document.body.scrollHeight);}
+  if(testkey == "l"){window.location = '#startpt';
+    window.scrollTo(window.scrollX, window.scrollY - 300);}
+
+  else if(testkey == "2"){
+    $('body,html').animate({scrollTop:(divtoc.clientHeight + divtoc.offsetTop-600)}, 1); }
+  else if(testkey == "7"){
+    $('body,html').animate({scrollTop:(divtoc.clientHeight/2 + divtoc.offsetTop-600)}, 1); } //go to middle
+  else if(testkey == 'f'){changeTopic();}
+  else if(testkey == "r"){ randomFlip();}
+  else if(testkey == 's'){xunbao(markerList[topicpointer].split(' ')[0]);}
+  else if(testkey == 't'){window.location = '#toc';
+    window.scrollTo(window.scrollX, window.scrollY - 50);}
+  else if(testkey == '8'){window.location = '#toc';}
+  else if(testkey == "5"){
+    $('body,html').animate({scrollTop:(Math.floor(Math.random() * document.body.scrollHeight))}, 1); }
+
+  else if(testkey == "K"){ 
+    pos = document.getElementsByTagName("body")[0].scrollTop;
+    if(typeof bookid == 'undefined') { bookid = $('title').text() }
+    storeBookmark(bookid, pos.toString());
+  }
+  else if(testkey == "k"){
+    if(typeof bookid != 'undefined') {loadBookmark(bookid);}
+    else{alert("No BookId!")}
+  }
+  else if(testkey == 'd'){window.open("https://www.youdao.com/");}
+  else if(testkey == 'i'){window.open("https://williamkpchan.github.io/LibDocs/InspectChart.html");}
+  else if(testkey == 'u'){window.open("https://www.worldometers.info/coronavirus/");}
+  else if(testkey == 'T'){window.open("https://translate.google.com/#en/zh-CN");}
+  else if(testkey == 'F'){window.open("https://fanyi.baidu.com/#en/zh/");}
+  else if(testkey == "b"){ backward();}
+  else{chkOtherKeys(testkey)} 
+}
+
+</script>
+</pre></body></html>
