@@ -732,6 +732,7 @@ $("#lastValues").append(statusMsg);
 function assignList(){
   newList = eval(document.getElementById("selectList").value).split(" ");
   stkList = newList;
+  codeList = newList;
   // console.log(newList)
 
   document.getElementById("message").focus();
@@ -891,8 +892,10 @@ function handleRight( event ){
     theCode = codeList[codeListPtr];
     collectStkData(theCode);
 }
+
     codeList = codeList.split(' ')
     codeListPtr = 0
+
     $( "html" ).on( "swiperight", handleRight );
     $( "html" ).on( "swipeleft", askforCode );
     collectStkData(theCode);
