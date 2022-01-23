@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -32,9 +33,9 @@ select {border-radius:10px; font-size:20px;background-color:black; color:brown;}
 <canvas id="cvs" width="1150" height="600">[No canvas support]</canvas>
 <br>
 <p id="image"></p>
-<canvas id="accel" width="1150" height="240">[No canvas support]</canvas>
+<canvas id="动力0" width="1150" height="240">[No canvas support]</canvas>
 <canvas id="动力5" width="1150" height="240">[No canvas support]</canvas>
-<canvas id="TP" width="1150" height="240">[No canvas support]</canvas>
+<canvas id="巅峰" width="1150" height="240">[No canvas support]</canvas>
 <canvas id="强弱50" width="1150" height="240">[No canvas support]</canvas>
 
 <span id="lastValues"></span>
@@ -509,33 +510,17 @@ $("#lastValues").append(statusMsg);
 		wAveTrendRange.fill(null,0,intv9);
 		wAvemax = Math.max(...wAveTrendRange);
 		wAvemin = Math.min(...wAveTrendRange);
-		drawTrend(wAveTrendRange, wAvemax, wAvemin, 'TP');
+		drawTrend(wAveTrendRange, wAvemax, wAvemin, '巅峰');
 
 		// find derivative
 		derivative = diff(makeMovAve(mydata[0], 3));
 		derivative.unshift(0);
 		derivative.fill(null,0,intv1+3); //array.fill(value, start, end)
 
-		// diffaccel
-		// diffaccel = thedrawdata[baseSubIdx].map(function(item, index) { return item - thedrawdata[baseMinuIdx][index]; })
-		diffaccel = []
-		diffaccel.push(thedrawdata[1].map(function(item, index) { return item - thedrawdata[8][index]; }))
-		diffaccel.push(thedrawdata[2].map(function(item, index) { return item - thedrawdata[8][index]; }))
-		diffaccel.push(thedrawdata[3].map(function(item, index) { return item - thedrawdata[8][index]; }))
-		diffaccel.push(thedrawdata[4].map(function(item, index) { return item - thedrawdata[8][index]; }))
-		diffaccel.push(thedrawdata[5].map(function(item, index) { return item - thedrawdata[8][index]; }))
-		diffaccel.push(thedrawdata[6].map(function(item, index) { return item - thedrawdata[8][index]; }))
-		diffaccel[0].fill(null,0,intv8); //array.fill(value, start, end)
-		diffaccel[1].fill(null,0,intv8); //array.fill(value, start, end)
-		diffaccel[2].fill(null,0,intv8); //array.fill(value, start, end)
-		diffaccel[3].fill(null,0,intv8); //array.fill(value, start, end)
-		diffaccel[4].fill(null,0,intv8); //array.fill(value, start, end)
-		diffaccel[5].fill(null,0,intv8); //array.fill(value, start, end)
-
-		diffaccMax = Math.max(...[].concat.apply([], diffaccel));
-		diffaccMin = Math.min(...[].concat.apply([], diffaccel));
-		drawTrend(diffaccel, diffaccMax, diffaccMin, 'accel');
-
+          //derivative = derivative.map(item => Math.round(item*10000)/10000)
+		derivmax = Math.max(...derivative);
+		derivmin = Math.min(...derivative);
+		drawTrend(derivative, derivmax, derivmin, '动力0');
 
 		// find derivative9
 		derivative9 = diff(makeMovAve(mydata[5], 3));
@@ -851,8 +836,6 @@ function showDateTime() {
 
        		tickmarksDotLinewidth: 0,ticksize: 1, linewidth: 1, 
        		ymax: maxValue, ymin: minValue,
-               tickmarks: 'plus',
-
        		spline: false, shadow: false,
               // tooltips: dataTooltips,
 			backgroundGridVlines: true,
