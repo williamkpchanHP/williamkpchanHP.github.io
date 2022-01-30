@@ -1,0 +1,155 @@
+<base target="_blank"><html><head><title>pppp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+var showTopicNumber = false;
+var topicEnd = ", &emsp;";
+var bookid = "pppp"
+var markerName = "h3"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>Free for developers</h1>
+<a href="https://any-api.com/" class="whitebut ">Any API</a>
+
+<div id="toc"></div></center>
+<pre>
+<button>button</button>
+
+<h1>JavaScript Tips</h1>
+<h3>Flatten the array of the array</h3>
+This tip will help you to flatten a deeply nested array of arrays by using <code>Infinity</code> in <code>flat</code>.
+
+var array = [123, 500, [1, 2, [34, 56, 67, [234, 1245], 900]], 845, [30257]]
+//flatten array of array
+<b>array.flat(Infinity)</b>
+// output:
+// [123, 500, 1, 2, 34, 56, 67, 234, 1245, 900, 845, 30257]
+<h3>Easy Exchange Variables</h3>
+You probably swap the two variables using a third variable <code>temp</code>. But this tip will show you a new way to exchange variables using destructuring.
+
+//example 1
+var a = 6;
+var b = 7;
+<b>[a,b] = [b,a]</b>
+console.log(a,b) // 7 6
+<h3>Sort Alphabetically</h3>
+Sorting is a common problem in programming and this tip will save your valuable time by writing a long code to sort a string alphabetically.
+
+//sort alphabeticallyfunction alphabetSort(arr)
+{
+  return arr.sort((a, b) => a.localeCompare(b));
+}
+let array = ["d", "c", "b", "a"]
+console.log(<b>alphabetSort(array)</b>) // ["a", "b", "c", "d"]
+<h3><br>Generate Range of Numbers</h3>
+Suppose you want to generate a number between a specific range. The first approach you will use is the loop. But this tip will save you valuable time by doing it the easy way.
+
+let Start = 10, End = 15;
+//Generating
+<b>[...new Array(End + 1).keys()].slice(Start)</b>; // [10, 11.... 15]
+<b>Array.from({length: End - Start + 1}, (_,i) => Start + i)</b> // [10, 11.... 15]
+<h3>Shorten the Console log</h3>
+Tired of writing <code>console.log()</code> again and again? This tip will show how to shorter your console log and speed up your coding.
+
+var <b>c = console.log.bind(document)</b>
+c(455)
+c("hello world")
+<h3>Shortening an Array in an easy way</h3>
+This is an awesome tip for web developers to shorten an array in an easy way. You just need to use the <code>length</code> method by passing a number that denotes the new size of your array.
+
+let array = ["A", "B", "C", "D", "E", "F"]
+<b>array.length = 2</b>
+console.log(array) // ["A", "B"]
+<h3><br>Use isNumber</h3>
+This tip will show how to check whether a value or variable holding a number ( integer, float and etc ) or not.
+
+<b>function isNumber(n) { return !isNaN(parseFloat(n)) && isFinite(n); }</b>
+console.log(isNumber(900))  // true
+console.log(isNumber(23.98))  // true
+console.log(isNumber("JavaScript")) // false
+<h3>Use isString</h3>
+This useful tip will show you how to check whether a value or data is in string format or not. This comes in handy when you request data from the server and want to check the data type.
+
+<b>const isString = value => typeof value === 'string';</b>
+isString('JavaScript'); // true
+isString(345); // false
+isString(true); // false
+<h3>Check Null</h3>
+In Programming, sometimes we need to check whether a result or data is null.
+
+<b>const CheckNull= value => value === null || value === undefined;</b>
+CheckNull(null) // true
+CheckNull() // true
+CheckNull(123) // false
+CheckNull("J") // false
+<h3>Merge Array into One</h3>
+This tip will be useful when you need to combine the two arrays of any size into one. You need to use the JavaScript <code>concate</code> method for this.
+
+//Example Code
+let arr1 = ["JavaScript", "Python", "C++"]
+let arr2 = ["Dart", "Java", "C#"]
+<b>const mergeArr = arr1.concat(arr2)</b>
+console.log(mergeArr) // ["JavaScript", "Python", "C++", "Dart", "Java", "C#"]
+<h3>Quick Calculate Performance</h3>
+This tip is personally used most to calculate the performance of my JavaScript program.
+
+const starttime = performance.now();
+//some program
+const endtime = performance.now();
+const totaltime = startTime - endTime
+console.log("function takes "+totaltime +" milisecond");
+<h3>Remove Duplicates</h3>
+You probably encounter an array with duplicate data and use a loop way to get rid of these duplicates. This tip will help you remove duplicates in an easy way without using any loop.
+
+const ReDuplicates = array => [...new Set(array)];
+console.log(ReDuplicates([200,200,300,300,400,500,600,600])) // [200,300,400,600]
+<h3>Convert Number to Binary</h3>
+This tip is useful when you need to convert numbers into binary. 
+Take a look at the example code below.
+
+var num = 200
+console.log(num.toString(2)) // 11001000
+num = 300
+console.log(num.toString(2)) //100101100
+<h3>Character “e” for excessive zeros</h3>
+This is a time-saving tip for you. You can rid of writing a lot of zeros in JavaScript by replacing all of them with the character “e”.
+
+//normal way
+var num = 20000000
+//good way
+var num2 = 2e7
+console.log(num2) //20000000
+<h3>Make Array Empty</h3>
+This quick tip will save the time that you put to empty an array. I will show you the quick method to empty in an array using the JavaScript length method.
+
+let array = ["A", "B", "C", "D", "E", "F"]
+array.length=0
+console.log(array) // []
+<h3>Final Thoughts</h3>
+I hope you find this article useful and fun to learn these tips. If you had a good JavaScript tip feel free to share it with other developers in response.<strong> Happy JavaScript Coding.</strong>
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+<script>
+$("button").click(function(){
+  url= "http://web.ifzq.gtimg.cn/appstock/app/hkfqkline/get?_var=kline_dayqfq&param=hk00060,day,,,320,qfq",
+  $.get(url, function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+</script>
