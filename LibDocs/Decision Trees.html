@@ -1,0 +1,168 @@
+<base target="_blank"><html><head><title>Decision Trees</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = true;
+  var topicEnd = "<br>";
+  var bookid = "Decision Trees"
+  var markerName = "h2"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>Decision Trees</h1>
+<a href="#mustWatch" class="red goldbs" target="_self">Must Watch!</a>
+<br><br>
+<div id="toc"></div></center>
+<br><br>
+<div id="mustWatch"><center><span class="red">MustWatch</span></center><br>
+</div>
+<pre>
+<br>
+<br>
+<h2>A Complete Guide to Decision Trees</h2>
+<div id="DecisionTreesGuidetoc" class="toc"><a href="#DecisionTreesGuidetopic-0" target="_self">Introduction to Decision Trees</a><br><a href="#DecisionTreesGuidetopic-1" target="_self">Dataset Loading and Preparation</a><br><a href="#DecisionTreesGuidetopic-2" target="_self">Modeling</a><br><a href="#DecisionTreesGuidetopic-3" target="_self">Making Predictions</a><br><a href="#DecisionTreesGuidetopic-4" target="_self">Conclusion</a><br></div>
+
+Decision trees are among the most fundamental algorithms in supervised machine learning, used to handle both regression and classification tasks. 
+
+In a nutshell, you can think of it as a glorified collection of if-else statements, but more on that later.
+Today you’ll learn the basic theory behind the decision trees algorithm and also how to implement the algorithm in R.
+
+<h3 id="DecisionTreesGuidetopic-0">Introduction to Decision Trees</h3>Decision trees are intuitive. 
+All they do is ask questions, like is the gender male or is the value of a particular variable higher than some threshold. 
+Based on the answers, either more questions are asked, or the classification is made. 
+
+Simple!
+To predict class labels, the decision tree starts from the root (root node). 
+Calculating which attribute should represent the root node is straightforward and boils down to figuring which attribute best separates the training records. 
+
+The calculation is done with the<strong> gini impurity </strong>formula. 
+It’s simple math, but can get tedious to do manually if you have many attributes.
+After determining the root node, the tree “branches out” to better classify all of the impurities found in the root node.
+
+That’s why it’s common to hear decision tree = multiple if-else statements analogy. 
+The analogy makes sense to a degree, but the conditional statements are calculated automatically. 
+In simple words, the machine learns the best conditions for your data.
+
+Let’s take a look at the following decision tree representation to drive these points further home:
+<img src="https://miro.medium.com/max/716/1*Dpf1ZtH4H61kzMhLBe9N-g.png">
+Image 1 — Example decision tree
+As you can see, variables <em>Outlook?</em>, <em>Humidity?</em>, and <em>Windy?</em> are used to predict the dependent variable — <em>Play</em>.
+You now know the basic theory behind the algorithm, and you’ll learn how to implement it in R next.
+
+<h3 id="DecisionTreesGuidetopic-1">Dataset Loading and Preparation</h3>There’s no machine learning without data, and there’s no working with data without libraries. 
+You’ll need these ones to follow along:
+library(caTools)
+library(rpart)
+library(rpart.plot)
+library(caret)
+library(dplyr)
+
+head(iris)
+
+As you can see, we’ll use the Iris dataset to build our decision tree classifier. 
+
+This is how the first couple of lines look like (output from the <code>head()</code> function call):
+<img src="https://miro.medium.com/max/875/1*f-gGDeD4TWGMVXb-6JcLaw.png">
+Image 2 — Iris dataset head (image by author)
+The dataset is pretty much familiar to anyone with a week of experience in data science and machine learning, so it doesn’t require further introduction. 
+Also, the dataset is as clean as they come, which will save us a lot of time in this section.
+
+The only thing we have to do before continuing to predictive modeling is to split this dataset randomly into training and testing subsets. 
+You can use the following code snippet to do a split in 75:25 ratio:
+set.seed(42)
+sample_split &lt;- sample.split(Y = iris$Species, SplitRatio = 0.75)
+train_set &lt;- subset(x = iris, sample_split == TRUE)
+test_set &lt;- subset(x = iris, sample_split == FALSE)
+
+And that’s it! Let’s start with modeling next.
+
+<h3 id="DecisionTreesGuidetopic-2">Modeling</h3>We’re using the <code>rpart</code> library to build the model. 
+The syntax for building models is identical as with linear and logistic regression. 
+You’ll need to put the target variable on the left and features on the right, separated with the ~ sign. 
+
+If you want to use all features, put a dot (.) instead of feature names.
+Also, don’t forget to specify <code>method = "class"</code> since we’re dealing with a classification dataset here.
+Here’s how to train the model:
+
+model &lt;- rpart(Species ~ ., data = train_set, method = "class")
+model
+
+The output of calling <code>model</code> is shown in the following image:
+<img src="https://miro.medium.com/max/875/1*THdhoyveksQqSeuR3uSl4g.png">
+Image 3 — Decision tree classifier model (image by author)
+From this image alone, you can see the “rules” decision tree model used to make classifications. 
+If you’d like a more visual representation, you can use the <code>rpart.plot</code> package to visualize the tree:
+
+rpart.plot(model)
+
+<img src="https://miro.medium.com/max/875/1*XvzkP3bxXX3VZ-LxfjF4og.png">
+Image 4 — Visual representation of the decision tree (image by author)
+You can see how many classifications were correct (in the train set) by examining the bottom nodes. 
+The <em>setosa</em> was correctly classified every time, the <em>versicolor</em> was misclassified for <em>virginica</em> 5% of the time, and <em>virginica</em> was misclassified for <em>versicolor</em> 3% of the time. 
+It’s a simple graph, but you can read everything from it.
+
+Decision trees are also useful for examining feature importance, ergo, how much predictive power lies in each feature. 
+You can use the <code>varImp()</code> function to find out. 
+The following snippet calculates the importances and sorts them descendingly:
+
+importances &lt;- varImp(model)
+importances %&gt;%
+  arrange(desc(Overall))
+
+The results are shown in the image below:
+<img src="https://miro.medium.com/max/438/1*0z_Ep0gtK5MaAXhdeCa_Ow.png">
+Image 5 — Feature importances (image by author)
+You’ve built and explored the model so far, but there’s no use in it yet. 
+The next section shows you how to make predictions on previously unseen data and evaluate the model.
+
+<h3 id="DecisionTreesGuidetopic-3">Making Predictions</h3>Predicting new instances is now a trivial task. 
+All you have to do is use the <code>predict()</code> function and pass in the testing subset. 
+Also, make sure to specify <code>type = "class"</code> for everything to work correctly. 
+
+Here’s an example:
+preds &lt;- predict(model, newdata = test_set, type = "class")
+preds
+
+The results are shown in the following image:
+<img src="https://miro.medium.com/max/875/1*5qBIvucafPt_e-eIbrm0Dg.png">
+Image 6 — Decision tree predictions (image by author)
+But how good are these predictions? Let’s evaluate. 
+
+The confusion matrix is one of the most commonly used metrics to evaluate classification models. 
+In R, it also outputs values for other metrics, such as sensitivity, specificity, and the others.
+Here’s how you can print the confusion matrix:
+
+confusionMatrix(test_set$Species, preds)
+
+And here are the results:
+<img src="https://miro.medium.com/max/875/1*bVtD2EJIMpVUKMah9nN3Xw.png">
+Image 7 — Confusion matrix on the test set (image by author)
+As you can see, there are some misclassifications in <em>versicolor</em> and <em>virginica</em> classes, similar to what we’ve seen in the training set. 
+Overall, the model is just short of 90% accuracy, which is more than acceptable for a simple decision tree classifier.
+
+<h3 id="DecisionTreesGuidetopic-4">Conclusion</h3>Decision trees are an excellent introductory algorithm to the whole family of tree-based algorithms. 
+It’s commonly used as a baseline model, which more sophisticated tree-based algorithms (such as random forests and gradient boosting) need to outperform.
+Today you’ve learned basic logic and intuition behind decision trees, and how to implement and evaluate the algorithm in R. 
+
+You can expect the whole suite of tree-based algorithms covered soon, so stay tuned if you want to learn more.
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>
+</pre></body></html>
