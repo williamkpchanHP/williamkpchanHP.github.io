@@ -48,7 +48,7 @@ Simple!
 To predict class labels, the decision tree starts from the root (root node). 
 Calculating which attribute should represent the root node is straightforward and boils down to figuring which attribute best separates the training records. 
 
-The calculation is done with the<strong> gini impurity </strong>formula. 
+The calculation is done with the<b> gini impurity </b>formula. 
 It’s simple math, but can get tedious to do manually if you have many attributes.
 After determining the root node, the tree “branches out” to better classify all of the impurities found in the root node.
 
@@ -159,7 +159,10 @@ Today you’ve learned basic logic and intuition behind decision trees, and how 
 
 You can expect the whole suite of tree-based algorithms covered soon, so stay tuned if you want to learn more.
 
-<h2>Decision Trees in R</h2>Learn all about decision trees, a form of supervised learning used in a variety of ways to solve regression and classification problems.
+<h2>Decision Trees in R</h2>
+<div id="DecisionTreestoc" class="toc"><a href="#DecisionTreestopic-1" target="_self"><span class="orange">Introduction</span></a><br><a href="#DecisionTreestopic-2" target="_self"><span class="orange">Types of Decision Trees</span></a><br><a href="#DecisionTreestopic-3" target="_self"> Regression Trees</a><br><a href="#DecisionTreestopic-4" target="_self"> Classification Trees</a><br><a href="#DecisionTreestopic-5" target="_self"> Advantages and Disadvantages of Decision Trees</a><br><a href="#DecisionTreestopic-6" target="_self"><span class="orange">Tree-Based Methods</span></a><br><a href="#DecisionTreestopic-7" target="_self"> Bagging</a><br><a href="#DecisionTreestopic-8" target="_self"> Random Forests</a><br><a href="#DecisionTreestopic-9" target="_self"> Boosting</a><br><a href="#DecisionTreestopic-10" target="_self"><span class="orange">Decision Trees in R</span></a><br><a href="#DecisionTreestopic-11" target="_self"> Classification Trees</a><br><a href="#DecisionTreestopic-12" target="_self"> Random Forests</a><br><a href="#DecisionTreestopic-13" target="_self"> Boosting</a><br><a href="#DecisionTreestopic-14" target="_self"><span class="orange">Conclusion</span></a><br></div>
+
+Learn all about decision trees, a form of supervised learning used in a variety of ways to solve regression and classification problems.
 Let's imagine you are playing a game of <a href="https://en.wikipedia.org/wiki/Twenty_Questions">Twenty Questions</a>. 
 Your opponent has secretly chosen a subject, and you must figure out what he/she chose. 
 At each turn, you may ask a yes-or-no question, and your opponent must answer truthfully. 
@@ -169,7 +172,7 @@ It should be obvious some questions are better than others.
 For example, asking "Can it fly?" as your first question is likely to be unfruitful, whereas asking "Is it alive?" is a bit more useful. 
 
 Intuitively, you want each question to significantly narrow down the space of possibly secrets, eventually leading to your answer.
-That is the basic idea behind <strong>decision trees</strong>. 
+That is the basic idea behind <b>decision trees</b>. 
 At each point, you consider a set of questions that can partition your data set. 
 
 You choose the question that provides the best split and again find the best questions for the partitions. 
@@ -180,35 +183,35 @@ You can simply grab a point, and chuck it down the tree.
 The questions will guide it to its appropriate class.
 Since this tutorial is in R, I highly recommend you take a look at our <a href="https://www.datacamp.com/courses/free-introduction-to-r">Introduction to R</a> or <a href="https://www.datacamp.com/courses/intermediate-r">Intermediate R</a> course, depending on your level of advancement.
 
-<h3><span class="orange">Introduction</span></h3>
+<h3 id="DecisionTreestopic-1"><span class="orange">Introduction</span></h3>
 
 Decision tree is a type of supervised learning algorithm that can be used in both regression and classification problems. 
 It works for both categorical and continuous input and output variables.
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/decision-tree_c2yyos.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/decision-tree_c2yyos.png">
 
 Let's identify important terminologies on Decision Tree, looking at the image above:
 
-<strong>Root Node</strong> represents the entire population or sample. 
+<b>Root Node</b> represents the entire population or sample. 
 
 It further gets divided into two or more homogeneous sets.
 
-<strong>Splitting</strong> is a process of dividing a node into two or more sub-nodes.
+<b>Splitting</b> is a process of dividing a node into two or more sub-nodes.
 
-When a sub-node splits into further sub-nodes, it is called a <strong>Decision Node</strong>.
+When a sub-node splits into further sub-nodes, it is called a <b>Decision Node</b>.
 
-Nodes that do not split is called a <strong>Terminal Node</strong> or a <strong>Leaf</strong>.
+Nodes that do not split is called a <b>Terminal Node</b> or a <b>Leaf</b>.
 
-When you remove sub-nodes of a decision node, this process is called <strong>Pruning</strong>. 
+When you remove sub-nodes of a decision node, this process is called <b>Pruning</b>. 
 
-The opposite of pruning is <strong>Splitting</strong>.
+The opposite of pruning is <b>Splitting</b>.
 
-A sub-section of an entire tree is called <strong>Branch</strong>.
+A sub-section of an entire tree is called <b>Branch</b>.
 
-A node, which is divided into sub-nodes is called a <strong>parent node</strong> of the sub-nodes; whereas the sub-nodes are called the <strong>child</strong> of the parent node.
-<h3><span class="orange">Types of Decision Trees</span></h3>
+A node, which is divided into sub-nodes is called a <b>parent node</b> of the sub-nodes; whereas the sub-nodes are called the <b>child</b> of the parent node.
+<h3 id="DecisionTreestopic-2"><span class="orange">Types of Decision Trees</span></h3>
 
-<h3>&emsp;Regression Trees</h3>
-Let's take a look at the image below, which helps visualize the nature of partitioning carried out by a <strong>Regression Tree</strong>. 
+<h3 id="DecisionTreestopic-3"> Regression Trees</h3>
+Let's take a look at the image below, which helps visualize the nature of partitioning carried out by a <b>Regression Tree</b>. 
 This shows an unpruned tree and a regression tree fit to a random dataset. 
 
 Both the visualizations show a series of splitting rules, starting at the top of the tree. 
@@ -216,12 +219,12 @@ Notice that every split of the domain is aligned with one of the feature axes.
 The concept of axis parallel splitting generalises straightforwardly to dimensions greater than two. 
 
 For a feature space of size $p$, a subset of $\mathbb{R}^p$, the space is divided into $M$ regions, $R_{m}$, each of which is a $p$-dimensional "hyperblock".
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/regression-tree_g8zxq5.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/regression-tree_g8zxq5.png">
 In order to build a regression tree, you first use <em>recursive binary splititng</em> to grow a large tree on the training data, stopping only when each terminal node has fewer than some minimum number of observations. 
 
 Recursive Binary Splitting is a greedy and top-down algorithm used to minimize the <em>Residual Sum of Squares</em> (RSS), an error measure also used in linear regression settings. 
 The RSS, in the case of a partitioned feature space with M partitions is given by:
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914297/RSS-Eq_tppflw.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914297/RSS-Eq_tppflw.png">
 
 Beginning at the top of the tree, you split it into 2 branches, creating a partition of 2 spaces. 
 You then carry out this particular split at the top of the tree multiple times and choose the split of the features that minimizes the (current) RSS.
@@ -232,35 +235,35 @@ You can use <em>K-fold cross-validation</em> to choose $\alpha$.
 This technique simply involves dividing the training observations into K folds to estimate the test error rate of the subtrees. 
 
 Your goal is to select the one that leads to the lowest error rate.
-<h3>&emsp;Classification Trees</h3>
-A <strong>classifiction tree</strong> is very similar to a regression tree, except that it is used to predict a qualitative response rather than a quantitative one.
+<h3 id="DecisionTreestopic-4"> Classification Trees</h3>
+A <b>classifiction tree</b> is very similar to a regression tree, except that it is used to predict a qualitative response rather than a quantitative one.
 
 Recall that for a regression tree, the predicted response for an observation is given by the mean response of the training observations that belong to the same terminal node. 
 In contrast, for a classification tree, you predict that each observation belongs to the most commonly occurring class of training observations in the region to which it belongs.
 In interpreting the results of a classification tree, you are often interested not only in the class prediction corresponding to a particular terminal node region, but also in the class proportions among the training observations that fall into that region.
 
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/classification-tree_ygvats.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/classification-tree_ygvats.png">
 The task of growing a classification tree is quite similar to the task of growing a regression tree. 
 Just as in the regression setting, you use recursive binary splitting to grow a classification tree. 
 
 However, in the classification setting, <em>Residual Sum of Squares</em> cannot be used as a criterion for making the binary splits. 
 Instead, you can use either of these 3 methods below:
 
-<strong>Classification Error Rate</strong>: Rather than seeing how far a numerical response is away from the mean value, as in the regression setting, you can instead define the "hit rate" as the fraction of training observations in a particular region that don't belong to the most widely occuring class. 
+<b>Classification Error Rate</b>: Rather than seeing how far a numerical response is away from the mean value, as in the regression setting, you can instead define the "hit rate" as the fraction of training observations in a particular region that don't belong to the most widely occuring class. 
 The error is given by this equation:
 
 E = 1 - argmax<sub>c</sub>($\hat{\pi}_{mc}$)
 in which $\hat{\pi}_{mc}$ represents the fraction of training data in region <em>R<sub>m</sub></em> that belong to class <em>c</em>.
 
-<strong>Gini Index</strong>: The Gini Index is an alternative error metric that is designed to show how "pure" a region is. 
+<b>Gini Index</b>: The Gini Index is an alternative error metric that is designed to show how "pure" a region is. 
 "Purity" in this case means how much of the training data in a particular region belongs to a single class. 
 If a region <em>R<sub>m</sub></em> contains data that is mostly from a single class <em>c</em> then the Gini Index value will be small:
 
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914297/Eq1_irfawk.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914297/Eq1_irfawk.png">
 
-<strong>Cross-Entropy</strong>: A third alternative, which is similar to the Gini Index, is known as the Cross-Entropy or Deviance:
+<b>Cross-Entropy</b>: A third alternative, which is similar to the Gini Index, is known as the Cross-Entropy or Deviance:
 
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914297/Eq1_irfawk.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914297/Eq1_irfawk.png">
 
 The cross-entropy will take on a value near zero if the $\hat{\pi}_{mc}$’s are all near <em>0</em> or near <em>1</em>. 
 Therefore, like the Gini index, the cross-entropy will take on a small value if the mth node is pure. 
@@ -269,7 +272,7 @@ In fact, it turns out that the Gini index and the cross-entropy are quite simila
 When building a classification tree, either the Gini index or the cross-entropy are typically used to evaluate the quality of a particular split, since they are more sensitive to node purity than is the classification error rate. 
 Any of these 3 approaches might be used when pruning the tree, but the classification error rate is preferable if prediction accuracy of the final pruned tree is the goal.
 
-<h3>&emsp;Advantages and Disadvantages of Decision Trees</h3>
+<h3 id="DecisionTreestopic-5"> Advantages and Disadvantages of Decision Trees</h3>
 The major advantage of using decision trees is that they are intuitively very easy to explain. 
 They closely mirror human decision-making compared to other regression and classification approaches. 
 
@@ -278,28 +281,28 @@ However, decision trees generally do not have the same level of predictive accur
 A small change in the data can cause a large change in the final estimated tree.
 
 By aggregating many decision trees, using methods like <em>bagging</em>, <em>random forests</em>, and <em>boosting</em>, the predictive performance of decision trees can be substantially improved.
-<h3><span class="orange">Tree-Based Methods</span></h3>
-<h3>&emsp;Bagging</h3>
+<h3 id="DecisionTreestopic-6"><span class="orange">Tree-Based Methods</span></h3>
+<h3 id="DecisionTreestopic-7"> Bagging</h3>
 
 The decision trees discussed above suffer from <em>high variance</em>, meaning if you split the training data into 2 parts at random, and fit a decision tree to both halves, the results that you get could be quite different. 
 In contrast, a procedure with <em>low variance</em> will yield similar results if applied repeatedly to distinct dataset.
-<strong>Bagging</strong>, or <em>bootstrap aggregation</em>, is a technique used to reduce the variance of your predictions by combining the result of multiple classifiers modeled on different sub-samples of the same dataset. 
+<b>Bagging</b>, or <em>bootstrap aggregation</em>, is a technique used to reduce the variance of your predictions by combining the result of multiple classifiers modeled on different sub-samples of the same dataset. 
 
 Here is the equation for bagging:
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914598/Eq2_v2thbx.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528914598/Eq2_v2thbx.png">
 in which you generate $B$ different bootstrapped training datasets. 
 
 You then train your method on the $bth$ bootstrapped training set in order to get $\hat{f}_{b}(x)$, and finally average the predictions.
 The visual below shows the 3 different steps in bagging:
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/bagging_tpsdi5.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/bagging_tpsdi5.png">
 
-<strong>Step 1</strong>: Here you replace the original data with new data. 
+<b>Step 1</b>: Here you replace the original data with new data. 
 The new data usually have a fraction of the original data's columns and rows, which then can be used as hyper-parameters in the bagging model.
 
-<strong>Step 2</strong>: You build classifiers on each dataset. 
+<b>Step 2</b>: You build classifiers on each dataset. 
 Generally, you can use the same classifier for making models and predictions.
 
-<strong>Step 3</strong>: Lastly, you use an average value to combine the predictions of all the classifiers, depending on the problem. 
+<b>Step 3</b>: Lastly, you use an average value to combine the predictions of all the classifiers, depending on the problem. 
 Generally, these combined values are more robust than a single model.
 
 While bagging can improve predictions for many regression and classification methods, it is particularly useful for decision trees. 
@@ -310,9 +313,9 @@ Hence each individual tree has high variance, but low bias.
 
 Averaging these $B$ trees reduces the variance.
 Broadly speaking, bagging has been demonstrated to give impressive improvements in accuracy by combining together hundreds or even thousands of trees into a single procedure.
-<h3>&emsp;Random Forests</h3>
+<h3 id="DecisionTreestopic-8"> Random Forests</h3>
 
-<strong>Random Forests</strong> is a versatile machine learning method capable of performing both regression and classification tasks. 
+<b>Random Forests</b> is a versatile machine learning method capable of performing both regression and classification tasks. 
 It also undertakes dimensional reduction methods, treats missing values, outlier values and other essential steps of data exploration, and does a fairly good job.
 Random Forests provides an improvement over bagged trees by a small tweak that <em>decorrelates</em> the trees. 
 
@@ -321,7 +324,7 @@ But when building these decision trees, each time a split in a tree is considere
 The split is allowed to use only one of those $m$ predictors. 
 
 This is the main difference between random forests and bagging; because as in bagging, the choice of predictor $m = p$.
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/random-forest_d5pqfy.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/random-forest_d5pqfy.png">
 In order to grow a random forest, you should:
 
 First assume that the number of cases in the training set is K. 
@@ -338,8 +341,8 @@ It can also balance errors in datasets where the classes are imbalanced.
 Most importantly, it can handle massive datasets with large dimensionality. 
 
 However, one disadvantage of using Random Forests is that you might easily overfit noisy datasets, especially in the case of doing regression.
-<h3>&emsp;Boosting</h3>
-<strong>Boosting</strong> is another approach to improve the predictions resulting from a decision tree. 
+<h3 id="DecisionTreestopic-9"> Boosting</h3>
+<b>Boosting</b> is another approach to improve the predictions resulting from a decision tree. 
 
 Like bagging and random forests, it is a general approach that can be applied to many statistical learning methods for regression or classification. 
 Recall that bagging involves creating multiple copies of the original training dataset using the bootstrap, fitting a separate decision tree to each copy, and then combining all of the trees in order to create a single predictive model. 
@@ -347,7 +350,7 @@ Notably, each tree is built on a bootstrapped dataset, independent of the other 
 
 Boosting works in a similar way, except that the trees are grown <em>sequentially</em>: each tree is grown using information from previously grown trees. 
 Boosting does not involve bootstrap sampling; instead, each tree is fitted on a modified version of the original dataset.
-<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/boosting_b54vlm.png" />
+<img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1528907338/boosting_b54vlm.png">
 
 For both regression and classification trees, boosting works like this:
 
@@ -367,10 +370,10 @@ Boosting is very useful when you have a lot of data and you expect the decision 
 
 Boosting has been used to solve many challenging classification and regression problems, including risk analysis, sentiment analysis, predictive advertising, price modeling, sales estimation and patient diagnosis, among others.
 
-<h3><span class="orange">Decision Trees in R</span></h3>
+<h3 id="DecisionTreestopic-10"><span class="orange">Decision Trees in R</span></h3>
 
-<h3>&emsp;Classification Trees</h3>
-For this part, you work with the <a href="https://www.rdocumentation.org/packages/ISLR/versions/1.2/topics/Carseats"><code>Carseats</code></a> dataset using the <code>tree</code> package in R. 
+<h3 id="DecisionTreestopic-11"> Classification Trees</h3>
+For this part, you work with the <a href="https://www.rdocumentation.org/packages/ISLR/versions/1.2/DecisionTreestopics/Carseats"><code>Carseats</code></a> dataset using the <code>tree</code> package in R. 
 Mind that you need to install the <code>ISLR</code> and <code>tree</code> packages in your R Studio environment first. 
 
 Let's first load the <code>Carseats</code> dataframe from the <code>ISLR</code> package.
@@ -511,8 +514,8 @@ Seems like the correct classifications dropped a little bit.
 It has done about the same as your original tree, so pruning did not hurt much with respect to misclassification errors, and gave a simpler tree.
 
 Often case, trees don't give very good prediction errors, so let's go ahead take a look at random forests and boosting, which tend to outperform trees as far as prediction and misclassification are concerned.
-<h3>&emsp;Random Forests</h3>
-For this part, you will use the <a href="https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/topics/BostonHousing"><code>Boston housing data</code></a> to explore random forests and boosting. 
+<h3 id="DecisionTreestopic-12"> Random Forests</h3>
+For this part, you will use the <a href="https://www.rdocumentation.org/packages/mlbench/versions/2.1-1/DecisionTreestopics/BostonHousing"><code>Boston housing data</code></a> to explore random forests and boosting. 
 
 The dataset is located in the MASS package. 
 It gives housing values and other statistics in each of 506 suburbs of Boston based on a 1970 census.
@@ -542,8 +545,8 @@ As being said, you use the response <code>medv</code>, the median housing value 
 rf.boston</code>
 Printing out the random forest gives its summary: the # of trees (500 were grown), the mean squared residuals (MSR), and the percentage of variance explained. 
 
-The MSR and % variance explained are based on the <strong>out-of-bag estimates</strong>, a very clever device in random forests to get honest error estimates.
-The only tuning parameter in a random Forests is the argument called <a href="https://www.rdocumentation.org/packages/randomForest/versions/4.6-14/topics/randomForest"><code>mtry</code></a>, which is the number of variables that are selected at each split of each tree when you make a split. 
+The MSR and % variance explained are based on the <b>out-of-bag estimates</b>, a very clever device in random forests to get honest error estimates.
+The only tuning parameter in a random Forests is the argument called <a href="https://www.rdocumentation.org/packages/randomForest/versions/4.6-14/DecisionTreestopics/randomForest"><code>mtry</code></a>, which is the number of variables that are selected at each split of each tree when you make a split. 
 As seen here, <code>mtry</code> is 4 of the 13 exploratory variables (excluding <code>medv</code>) in the Boston Housing data - meaning that each time the tree comes to split a node, 4 variables would be selected at random, then the split would be confined to 1 of those 4 variables. 
 
 That's how <code>randomForests</code> de-correlates the trees.
@@ -571,7 +574,7 @@ test.err[mtry] = with(boston[-train,], mean( (medv-pred)^2 ))
 }</code>
 
 Basically you just grew 4550 trees (13 times 350). 
-Now let's make a plot using the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.4.3/topics/matplot"><code>matplot</code></a> command. 
+Now let's make a plot using the <a href="https://www.rdocumentation.org/packages/graphics/versions/3.4.3/DecisionTreestopics/matplot"><code>matplot</code></a> command. 
 The test error and the out-of-bag error are binded together to make a 2-column matrix. 
 
 There are a few other arguments in the matrix, including the plotting character values (<code>pch = 23</code> means filled diamond), colors (red and blue), type equals both (plotting both points and connecting them with the lines), and name of y-axis (Mean Squared Error). 
@@ -583,7 +586,7 @@ Ideally, these 2 curves should line up, but it seems like the test error is a bi
 
 However, there's a lot of variability in these test error estimates. 
 Since the out-of-bag error estimate was computed on one dataset and the test error estimate was computed on another dataset, these differences are pretty much well within the standard errors.
-<strong>Notice</strong> that the red curve is smoothly above the blue curve? These error estimates are very correlated, because the <code>randomForest</code> with <code>mtry = 4</code> is very similar to the one with <code>mtry = 5</code>. 
+<b>Notice</b> that the red curve is smoothly above the blue curve? These error estimates are very correlated, because the <code>randomForest</code> with <code>mtry = 4</code> is very similar to the one with <code>mtry = 5</code>. 
 
 That's why each of the curves is quite smooth. 
 What you see is that <code>mtry</code> around 4 seems to be the most optimal choice, at least for the test error. 
@@ -595,10 +598,10 @@ The mean squared error on out-of-bag is 26, and you've dropped down to about 15 
 
 This means you reduced the error by half. 
 Likewise for the test error, you reduced the error from 20 to 12.
-<h3>&emsp;Boosting</h3>
+<h3 id="DecisionTreestopic-13"> Boosting</h3>
 
 Compared to random forests, boosting grows smaller and stubbier trees and goes at the bias. 
-You will use the package <a href="https://www.rdocumentation.org/packages/gbm/versions/2.1.1/topics/gbm"><code>GBM</code></a> (Gradient Boosted Modeling), in R.
+You will use the package <a href="https://www.rdocumentation.org/packages/gbm/versions/2.1.1/DecisionTreestopics/gbm"><code>GBM</code></a> (Gradient Boosted Modeling), in R.
 <code>require(gbm)
 </code>
 GBM asks for the distribution, which is Gaussian, because you'll be doing squared error loss. 
@@ -635,7 +638,7 @@ dim(predmat)</code>
 It's time to compute the test error for each of the predict vectors:
 
 <code>predmat</code> is a matrix, <code>medv</code> is a vector, thus (<code>predmat</code> - <code>medv</code>) is a matrix of differences. 
-You can use the <a href="https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/apply"><code>apply</code></a> function to the columns of these square differences (the mean). 
+You can use the <a href="https://www.rdocumentation.org/packages/base/versions/3.4.3/DecisionTreestopics/apply"><code>apply</code></a> function to the columns of these square differences (the mean). 
 That would compute the column-wise mean squared error for the predict vectors.
 
 Then you make a plot using similar parameters to that one used for Random Forest. 
@@ -650,15 +653,1452 @@ This is an evidence showing that boosting is reluctant to overfit.
 Let's also include the best test error from the randomForest into the plot. 
 
 Boosting actually gets a reasonable amount below the test error for randomForest.
-<h3><span class="orange">Conclusion</span></h3>
+<h3 id="DecisionTreestopic-14"><span class="orange">Conclusion</span></h3>
 So that's the end of this R tutorial on building decision tree models: classification trees, random forests, and boosted trees. 
 
 The latter 2 are powerful methods that you can use anytime as needed. 
 In my experience, boosting usually outperforms RandomForest, but RandomForest is easier to implement. 
 In RandomForest, the only tuning parameter is the number of trees; while in boosting, more tuning parameters are required besides the number of trees, including the shrinkage and the interaction depth.
 
+<h2>Ordinary Least Squares (OLS) Linear Regression in R</h2>
+Ordinary Least Squares (OLS) linear regression is a statistical technique used for the analysis and modelling of linear relationships between a response variable and one or more predictor variables. 
+If the relationship between two variables appears to be linear, then a straight line can be fit to the data in order to model the relationship. 
+
+The linear equation (or equation for a straight line) for a bivariate regression takes the following form:
+<h3><em>y = mx + c</em></h3>
+where <em>y</em> is the response (dependent) variable, <em>m</em> is the gradient (slope),<em> x</em> is the predictor (independent) variable, and <em>c</em> is the intercept. 
+
+The modelling application of OLS linear regression allows one to predict the value of the response variable for varying inputs of the predictor variable given the slope and intercept coefficients of the line of best fit.
+The line of best fit is calculated in R using the lm() function which outputs the slope and intercept coefficients. 
+The slope and intercept can also be calculated from five summary statistics: the standard deviations of <em>x</em> and <em>y</em>, the means of <em>x</em> and <em>y</em>, and the <em><b>Pearson correlation coefficient</b> </em>between <em>x</em> and <em>y</em> variables.
+
+slope &lt;- cor(x, y) * (sd(y) / sd(x))
+intercept &lt;- mean(y) - (slope * mean(x))
+The scatterplot is the best way to assess linearity between two numeric variables. 
+
+From a scatterplot, the strength, direction and form of the relationship can be identified. 
+To carry out a linear regression in R, one needs only the data they are working with and the lm() and predict() base R functions. 
+In this brief tutorial, two packages are used which are not part of base R. 
+
+They are <em><b>dplyr</b></em> and <em><b>ggplot2</b></em>.
+The built-in mtcars dataset in R is used to visualise the bivariate relationship between fuel efficiency (mpg) and engine displacement (disp).
+library(dplyr)
+
+library(ggplot2)
+mtcars %&gt;%
+ggplot(aes(x = disp, y = mpg)) +
+
+geom_point(colour = &quot;red&quot;)
+<img class="lazy" data-src="https://sw23993.files.wordpress.com/2017/07/rplot.png">
+Upon visual inspection, the relationship appears to be linear, has a negative direction, and looks to be moderately strong. 
+
+The strength of the relationship can be quantified using the Pearson correlation coefficient.
+cor(mtcars$disp, mtcars$mpg)
+[1] -0.8475514
+
+This is a strong negative correlation. 
+Note that<em><b> correlation does not imply causation</b></em>. 
+It just indicates whether a mutual relationship, causal or not, exists between variables.
+
+If the relationship is non-linear, a common approach in linear regression modelling is to <b><em>transform</em> </b>the response and predictor variable in order to coerce the relationship to one that is more linear. 
+Common transformations include natural and base ten logarithmic, square root, cube root and inverse transformations. 
+The mpg and disp relationship is already linear but it can be strengthened using a square root transformation.
+
+mtcars %&gt;%
+ggplot(aes(x = sqrt(disp), y = sqrt(mpg))) +
+geom_point(colour = &quot;red&quot;) 
+
+cor(sqrt(mtcars$disp), sqrt(mtcars$mpg))
+[1] -0.8929046
+<img class="lazy" data-src="https://sw23993.files.wordpress.com/2017/07/rplot01.png">
+
+The next step is to determine whether the relationship is <em><b>statistically significant</b> </em>and not just some random occurrence. 
+This is done by investigating the variance of the data points about the fitted line. 
+If the data fit well to the line, then the relationship is likely to be a real effect. 
+
+The goodness of fit can be quantified using the <b><em>root mean squared error</em></b> (RMSE) and <b><em>R-squared</em></b> metrics. 
+The RMSE represents the variance of the model errors and is an absolute measure of fit which has units identical to the response variable.<em> R</em>-squared is simply the Pearson correlation coefficient squared and represents variance explained in the response variable by the predictor variable.
+The number of data points is also important and influences the <em><b>p-value</b></em> of the model. 
+
+A rule of thumb for OLS linear regression is that at least 20 data points are required for a valid model. 
+The <em>p</em>-value is the probability of there being no relationship (the null hypothesis) between the variables.
+An OLS linear model is now fit to the transformed data.
+
+mtcars %&gt;%
+ggplot(aes(x = sqrt(disp), y = sqrt(mpg))) +
+geom_point(colour = &quot;red&quot;) +
+
+geom_smooth(method = &quot;lm&quot;, fill = NA)
+<img class="lazy" data-src="https://sw23993.files.wordpress.com/2017/07/rplot02.png">
+The model object can be created as follows.
+
+lmodel &lt;- lm(sqrt(mpg) ~ sqrt(disp), data = mtcars)
+The slope and the intercept can be obtained.
+lmodel$coefficients
+
+(Intercept) sqrt(disp) 
+6.5192052 -0.1424601
+And the model summary contains the important statistical information.
+
+summary(lmodel)
+Call:
+lm(formula = sqrt(mpg) ~ sqrt(disp), data = mtcars)
+
+Residuals:
+Min 1Q Median 3Q Max 
+-0.45591 -0.21505 -0.07875 0.16790 0.71178
+
+Coefficients:
+Estimate Std. 
+Error t value Pr(&gt;|t|) 
+
+(Intercept) 6.51921 0.19921 32.73 &lt; 2e-16 ***
+sqrt(disp) -0.14246 0.01312 -10.86 6.44e-12 ***
+---
+
+Signif. 
+codes: 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Residual standard error: 0.3026 on 30 degrees of freedom
+
+Multiple R-squared: 0.7973, Adjusted R-squared: 0.7905 
+F-statistic: 118 on 1 and 30 DF, p-value: 6.443e-12
+The <em>p</em>-value of 6.443e-12 indicates a statistically significant relationship at the<em> p</em><0.001 cut-off level. 
+
+The multiple <em>R</em>-squared value (<em>R</em>-squared) of 0.7973 gives the variance explained and can be used as a measure of predictive power (in the absence of overfitting). 
+The RMSE is also included in the output (Residual standard error) where it has a value of 0.3026.
+The take home message from the output is that for every unit increase in the square root of engine displacement there is a -0.14246 decrease in the square root of fuel efficiency (mpg). 
+
+Therefore, fuel efficiency decreases with increasing engine displacement.
+
+<h2>Linear Regression Example using lm()</h2>
+<div id="LinearRegressiontoc" class="toc"><a href="#LinearRegressiontopic-0" target="_self">Simple (One Variable) and Multiple Linear Regression</a><br><a href="#LinearRegressiontopic-1" target="_self">Interpreting R's Regression Output</a><br><a href="#LinearRegressiontopic-2" target="_self">Analyzing Residuals</a><br><a href="#LinearRegressiontopic-3" target="_self"> Residuals are normally distributed</a><br><a href="#LinearRegressiontopic-4" target="_self">Residuals are independent</a><br><a href="#LinearRegressiontopic-5" target="_self">Residuals are Normally Distributed</a><br><a href="#LinearRegressiontopic-6" target="_self">Residuals are independent</a><br><a href="#LinearRegressiontopic-7" target="_self">Residuals have constant variance</a><br><a href="#LinearRegressiontopic-8" target="_self">Recap / Highlights</a><br></div>
+
+Summary: R linear regression uses the <b>lm</b>() function to create a regression model given some formula, in the form of Y~X+X2. 
+To look at the model, you use the <b>summary</b>() function. 
+
+To analyze the residuals, you pull out the <b>$resid</b> variable from your new model. 
+Residuals are the differences between the prediction and the actual results and you need to analyze these differences to find ways to improve your regression model.
+To do linear (simple and multiple) regression in R you need the built-in <b>lm</b> function.
+
+Here's the data we will use, one year of marketing spend and company sales by month. 
+Download: CSV
+
+Assuming you've downloaded the CSV, we'll read the data in to R and call it the <b>dataset</b> variable
+
+#You may need to use the setwd(directory-name) command to
+#change your working directory to wherever you saved the csv.
+#Use getwd() to see what your current directory is.
+
+dataset = read.csv("data-marketing-budget-12mo.csv", header=T,
+colClasses = c("numeric", "numeric", "numeric"))
+<h3 id="LinearRegressiontopic-0">Simple (One Variable) and Multiple Linear Regression</h3>
+The predictor (or independent) variable for our linear regression will be Spend (notice the capitalized S) and the dependent variable (the one we're trying to predict) will be Sales (again, capital S).
+The lm function really just needs a formula (Y~X) and then a data source. 
+We'll use Sales~Spend, data=dataset and we'll call the resulting linear model "fit".
+
+simple.fit = lm(Sales~Spend, data=dataset)
+summary(simple.fit)
+
+multi.fit = lm(Sales~Spend+Month, data=dataset)
+summary(multi.fit)
+Notices on the multi.fit line the Spend variables is accompanied by the Month variable and a plus sign (+). 
+The plus sign includes the Month variable in the model as a predictor (independent) variable.
+
+The summary function outputs the results of the linear regression model.
+<img class="lazy loaded" data-src="https://www.learnbymarketing.com/wp-content/uploads/2014/12/lm-r-regression-summary-output.png" src="https://www.learnbymarketing.com/wp-content/uploads/2014/12/lm-r-regression-summary-output.png" data-was-processed="true">
+Output for R's lm Function showing the formula used, the summary statistics for the residuals, the coefficients (or weights) of the predictor variable, and finally the performance measures including RMSE, R-squared, and the F-Statistic.
+Both models have significant models (see the F-Statistic for Regression) and the Multiple R-squared and Adjusted R-squared are both exceptionally high (keep in mind, this is a simplified example). 
+
+We also see that all of the variables are significant (as indicated by the "**")
+<h3 id="LinearRegressiontopic-1">Interpreting R's Regression Output</h3>
+
+<b>Residuals</b>: The section summarizes the residuals, the error between the prediction of the model and the actual results. 
+Smaller residuals are better.
+<b>Coefficients</b>: For each variable and the intercept, a weight is produced and that weight has other attributes like the standard error, a t-test value and significance.
+
+<b>Estimate</b>: This is the weight given to the variable. 
+In the simple regression case (one variable plus the intercept), for every one dollar increase in Spend, the model predicts an increase of $10.6222.
+
+<b>Std. Error</b>: Tells you how precisely was the estimate measured. 
+It's really only useful for calculating the t-value.
+
+<b>t-value</b> and <b>Pr(&gt;[t])</b>: The t-value is calculated by taking the coefficient divided by the Std. Error. It is then used to test whether or not the coefficient is significantly different from zero. 
+
+If it isn't significant, then the coefficient really isn't adding anything to the model and could be dropped or investigated further. 
+Pr(&gt;|t|) is the significance level.
+
+<b>Performance Measures</b>: Three sets of measurements are provided.
+<b>Residual Standard Error</b>: This is the standard deviation of the residuals. 
+Smaller is better.
+<b>Multiple / Adjusted R-Square</b>: For one variable, the distinction doesn't really matter. 
+R-squared shows the amount of variance explained by the model. 
+
+Adjusted R-Square takes into account the number of variables and is most useful for multiple-regression.
+<b>F-Statistic</b>: The F-test checks if at least one variable's weight is significantly different than zero. 
+This is a global test to help asses a model. 
+
+If the p-value is not significant (e.g. greater than 0.05) than your model is essentially not doing anything.
+
+Need more concrete explanations?  I explain summary output on this page.
+
+With the descriptions out of the way, let's start interpreting.
+<img src="https://www.learnbymarketing.com/wp-content/uploads/2017/06/lm-residuals.png">
+<b>Residuals</b>: We can see that the multiple regression model has a smaller range for the residuals: -3385 to 3034 vs. -1793 to 1911. 
+Secondly the median of the multiple regression is much closer to 0 than the simple regression model.
+
+<b>Coefficients</b>:
+(Intercept): The intercept is the left over when you average the independent and dependent variable. 
+
+In the simple regression we see that the intercept is much larger meaning there's a fair amount left over. 
+Multiple regression shows a negative intercept but it's closer to zero than the simple regression output.
+Spend: Both simple and multiple regression shows that for every dollar you spend, you should expect to get around 10 dollars in sales.
+
+Month: When we add in the Month variable it's multiplying this variable times the numeric (ordinal) value of the month. 
+So for every month you are in the year, you add an additional 541 in sales. 
+So February adds in $1,082 while December adds $6,492 in Sales.
+
+<b>Performance Measures</b>:
+
+<b>Residual Standard Error</b>: The simple regression model has a much higher standard error, meaning the residuals have a greater variance. 
+A 2,313 standard error is pretty high considering the average sales is $70,870.
+<b>Multiple / Adjusted R-Square</b>: The R-squared is very high in both cases. 
+
+The Adjusted R-square takes in to account the number of variables and so it's more useful for the multiple regression analysis.
+<b>F-Statistic</b>: The F-test is statistically significant. 
+This means that both models have at least one variable that is significantly different than zero.
+
+<h3 id="LinearRegressiontopic-2">Analyzing Residuals</h3>
+Anyone can fit a linear model in R. 
+The real test is analyzing the residuals (the error or the difference between actual and predicted results).
+
+There are four things we're looking for when analyzing residuals.
+The mean of the errors is zero (and the sum of the errors is zero)
+
+The distribution of the errors are normal.
+All of the errors are independent.
+Variance of errors is constant (Homoscedastic)
+
+In R, you pull out the residuals by referencing the model and then the <b>resid</b> variable inside the model. 
+Using the simple linear regression model (<b>simple.fit</b>) we'll plot a few graphs to help illustrate any problems with the model.
+
+<img src="https://www.learnbymarketing.com/wp-content/uploads/2014/12/lm-r-resid-dagnostics-simple.png">
+
+layout(matrix(c(1,1,2,3),2,2,byrow=T))
+#Spend x Residuals Plot
+
+plot(simple.fit$resid~dataset$Spend[order(dataset$Spend)],
+main="Spend x Residuals\nfor Simple Regression",
+xlab="Marketing Spend", ylab="Residuals")
+abline(h=0,lty=2)
+
+#Histogram of Residuals
+hist(simple.fit$resid, main="Histogram of Residuals",
+ylab="Residuals")
+
+#Q-Q Plot
+qqnorm(simple.fit$resid)
+qqline(simple.fit$resid)
+<h3 id="LinearRegressiontopic-3">Residuals are normally distributed</h3>
+The histogram and QQ-plot are the ways to visually evaluate if the residual fit a normal distribution.
+
+If the histogram looks like a bell-curve it might be normally distributed.
+If the QQ-plot has the vast majority of points on or very near the line, the residuals may be normally distributed.
+
+The plots don't seem to be very close to a normal distribution, but we can also use a statistical test.
+The Jarque-Bera test (in the fBasics library, which checks if the skewness and kurtosis of your residuals are similar to that of a normal distribution.
+
+The Null hypothesis of the jarque-bera test is that skewness and kurtosis of your data are both equal to zero (same as the normal distribution).
+
+library(fBasics)
+jarqueberaTest(simple.fit$resid) #Test residuals for normality
+
+#Null Hypothesis: Skewness and Kurtosis are equal to zero
+#Residuals X-squared: 0.9575 p Value: 0.6195
+With a p value of 0.6195, we fail to reject the null hypothesis that the skewness and kurtosis of residuals are statistically equal to zero.
+<h3 id="LinearRegressiontopic-4">Residuals are independent</h3>
+The Durbin-Watson test is used in time-series analysis to test if there is a trend in the data based on previous instances - e.g. a seasonal trend or a trend every other data point.
+Using the lmtest library, we can call the "dwtest" function on the model to check if the residuals are independent of one another.
+
+The Null hypothesis of the Durbin-Watson test is that the errors are serially UNcorrelated.
+
+library(lmtest) #dwtest
+dwtest(simple.fit) #Test for independence of residuals
+#Null Hypothesis: Errors are serially UNcorrelated
+
+#Results: DW = 1.1347, p-value = 0.03062
+Based on the results, we can reject the null hypothesis that the errors are serially uncorrelated. 
+This means we have more work to do.
+
+Let's try going through these motions for the multiple regression model.
+<img src="https://www.learnbymarketing.com/wp-content/uploads/2014/12/lm-r-resid-dagnostics-multi.png">
+
+layout(matrix(c(1,2,3,4),2,2,byrow=T))
+plot(multi.fit$fitted, rstudent(multi.fit),
+main="Multi Fit Studentized Residuals",
+xlab="Predictions",ylab="Studentized Resid",
+    ylim=c(-2.5,2.5))
+abline(h=0, lty=2)
+plot(dataset$Month, multi.fit$resid,
+
+main="Residuals by Month",
+    xlab="Month",ylab="Residuals")
+abline(h=0,lty=2)
+
+hist(multi.fit$resid,main="Histogram of Residuals")
+qqnorm(multi.fit$resid)
+qqline(multi.fit$resid)
+
+<h3 id="LinearRegressiontopic-5">Residuals are Normally Distributed</h3>
+Histogram of residuals does not look normally distributed.
+
+However, the QQ-Plot shows only a handful of points off of the normal line.
+We fail to reject the Jarque-Bera null hypothesis (p-value = 0.5059)
+
+library(fBasics)
+jarqueberaTest(multi.fit$resid) #Test residuals for normality
+#Null Hypothesis: Skewness and Kurtosis are equal to zero
+
+#Residuals X-squared: 1.3627 p Value: 0.5059
+<h3 id="LinearRegressiontopic-6">Residuals are independent</h3>
+We fail to reject the Durbin-Watson test's null hypothesis (p-value 0.3133)
+
+library(lmtest) #dwtest
+dwtest(multi.fit) #Test for independence of residuals
+#Null Hypothesis: Errors are serially UNcorrelated
+#Results: DW = 2.1077, p-value = 0.3133
+
+<h3 id="LinearRegressiontopic-7">Residuals have constant variance</h3>
+Constant variance can be checked by looking at the "Studentized" residuals - normalized based on the standard deviation. 
+"Studentizing" lets you compare residuals across models.
+
+The Multi Fit Studentized Residuals plot shows that there aren't any obvious outliers. 
+If a point is well beyond the other points in the plot, then you might want to investigate. 
+Based on the plot above, I think we're okay to assume the constant variance assumption. 
+
+More data would definitely help fill in some of the gaps.
+<h3 id="LinearRegressiontopic-8">Recap / Highlights</h3>
+Regression is a powerful tool for predicting numerical values.
+R's <b>lm</b> function creates a regression model.
+Use the <b>summary</b> function to review the weights and performance measures.
+
+The residuals can be examined by pulling on the <b>$resid</b> variable from your model.
+You need to check your residuals against these four assumptions.
+
+The mean of the errors is zero (and the sum of the errors is zero).
+The distribution of the errors are normal.
+All of the errors are independent.
+
+Variance of errors is constant (Homoscedastic)
+
+Here's the full code below
+dataset = read.csv("data-marketing-budget-12mo.csv", header=T,
+
+colClasses = c("numeric", "numeric", "numeric"))
+head(dataset,5)
+
+#/////Simple Regression/////
+simple.fit = lm(Sales~Spend,data=dataset)
+summary(simple.fit)
+
+#Loading the necessary libraries
+library(lmtest) #dwtest
+library(fBasics) #JarqueBeraTest
+#Testing normal distribution and independence assumptions
+
+jarqueberaTest(simple.fit$resid) #Test residuals for normality
+#Null Hypothesis: Skewness and Kurtosis are equal to zero
+dwtest(simple.fit) #Test for independence of residuals
+
+#Null Hypothesis: Errors are serially UNcorrelated
+#Simple Regression Residual Plots
+layout(matrix(c(1,1,2,3),2,2,byrow=T))
+
+#Spend x Residuals Plot
+plot(simple.fit$resid~dataset$Spend[order(dataset$Spend)],
+main="Spend x Residuals\nfor Simple Regression",
+
+xlab="Marketing Spend", ylab="Residuals")
+abline(h=0,lty=2)
+
+#Histogram of Residuals
+hist(simple.fit$resid, main="Histogram of Residuals",
+ylab="Residuals")
+#Q-Q Plot
+
+qqnorm(simple.fit$resid)
+qqline(simple.fit$resid)
+#///////////Multiple Regression Example///////////
+
+multi.fit = lm(Sales~Spend+Month, data=dataset)
+summary(multi.fit)
+#Residual Analysis for Multiple Regression
+
+dwtest(multi.fit) #Test for independence of residuals
+#Null Hypothesis: Errors are serially UNcorrelated
+jarqueberaTest(multi.fit$resid) #Test residuals for normality
+
+#Null Hypothesis: Skewness and Kurtosis are equal to zero
+#Multiple Regression Residual Plots
+layout(matrix(c(1,2,3,4),2,2,byrow=T))
+
+plot(multi.fit$fitted, rstudent(multi.fit),
+main="Multi Fit Studentized Residuals",
+xlab="Predictions",ylab="Studentized Resid",
+    ylim=c(-2.5,2.5))
+abline(h=0, lty=2)
+plot(dataset$Month, multi.fit$resid,
+
+main="Residuals by Month",
+    xlab="Month",ylab="Residuals")
+abline(h=0,lty=2)
+
+hist(multi.fit$resid,main="Histogram of Residuals")
+qqnorm(multi.fit$resid)
+qqline(multi.fit$resid)
+
+<h2>perform a Logistic Regression</h2>
+<div id="performLRtoc" class="toc"><a href="#performLRtopic-1" target="_self">Logistic regression implementation in R</a><br><a href="#performLRtopic-2" target="_self"> The dataset</a><br><a href="#performLRtopic-3" target="_self"> The data cleaning process</a><br><a href="#performLRtopic-4" target="_self"> Taking care of the missing values</a><br><a href="#performLRtopic-5" target="_self">Model fitting</a><br><a href="#performLRtopic-6" target="_self"> Interpreting the results of our logistic regression model</a><br><a href="#performLRtopic-7" target="_self">Assessing the predictive ability of the model</a><br></div>
+
+Logistic regression is a method for fitting a regression curve, <em>y = f(x)</em>, when y is a categorical variable. 
+The typical use of this model is predicting <em>y</em> given a set of predictors <em>x</em>. 
+
+The predictors can be continuous, categorical or a mix of both.
+The categorical variable <em>y</em>, in general, can assume different values. 
+In the simplest case scenario <em>y</em> is binary meaning that it can assume either the value 1 or 0. 
+
+A classical example used in machine learning is email classification: given a set of attributes for each email such as number of words, links and pictures, the algorithm should decide whether the email is spam (1) or not (0). 
+In this post we call the model <strong>“binomial logistic regression”</strong>, since the variable to predict is binary, however, logistic regression can also be used to predict a dependent variable which can assume more than 2 values. 
+In this second case we  call the model “multinomial logistic regression”. 
+
+A typical example for instance, would be classifying films between “Entertaining”, “borderline” or “boring”.
+<h3 id="performLRtopic-1">Logistic regression implementation in R</h3>
+R makes it very easy to fit a logistic regression model. 
+
+The function to be called is <code>glm()</code> and the fitting process is not so different from the one used in linear regression. 
+In this post I am going to fit a binary logistic regression model and explain each step.
+<h3 id="performLRtopic-2"> The dataset</h3>
+We’ll be working on the <em>Titanic dataset</em>. 
+There are different versions of this datasets freely available online, however I suggest to use the one available at <a href="https://www.kaggle.com/c/titanic" rel="nofollow" target="_blank">Kaggle</a>, since it is almost ready to be used (in order to download it you need to sign up to Kaggle).
+The dataset (training) is a collection of data about some of the passengers (889 to be precise), and the goal of the competition is to predict the survival (either 1 if the passenger survived or 0 if they did not) based on some features such as the <em>class of service</em>, the <em>sex</em>, the <em>age</em> etc. 
+
+As you can see, we are going to use both categorical and continuous variables.
+<h3 id="performLRtopic-3"> The data cleaning process</h3>
+When working with a real dataset we need to take into account the fact that some data might be missing or corrupted, therefore we need to prepare the dataset for our analysis. 
+
+As a first step we <a href="http://datascienceplus.com/importing-csv-files-into-r/" rel="nofollow" target="_blank">load the csv data</a> using the <code>read.csv()</code> function.
+Make sure that the parameter <code>na.strings</code> is equal to <code>c("")</code> so that each missing value is coded as a <code>NA</code>. 
+This will help us in the next steps.
+
+training.data.raw &lt;- read.csv('train.csv',header=T,na.strings=c(""))
+Now we need to check for missing values and look how many unique values there are for each variable using the <code>sapply()</code> function which applies the function passed as argument to each column of the dataframe.
+sapply(training.data.raw,function(x) sum(is.na(x)))
+
+PassengerId    Survived      Pclass        Name         Sex 
+0           0           0           0           0 
+Age       SibSp       Parch      Ticket        Fare 
+177           0           0           0           0 
+Cabin    Embarked 
+687           2 
+
+sapply(training.data.raw, function(x) length(unique(x)))
+PassengerId    Survived      Pclass        Name         Sex 
+891           2           3         891           2 
+
+Age       SibSp       Parch      Ticket        Fare 
+89           7           7         681         248 
+
+Cabin    Embarked 
+148           4
+A visual take on the missing values might be helpful: the Amelia package has a special plotting function <code>missmap()</code> that will plot your dataset and highlight missing values:
+library(Amelia)
+missmap(training.data.raw, main = "Missing values vs observed")
+
+<img src="https://i1.wp.com/datascienceplus.com/wp-content/uploads/2015/09/Rplot1-490x431.png">
+The variable cabin has too many missing values, we will not use it. 
+
+We will also drop PassengerId since it is only an index and Ticket.
+Using the <code>subset()</code> function we <a href="http://datascienceplus.com/subset-which-ifelse-functions/" rel="nofollow" target="_blank">subset</a> the original dataset selecting the relevant columns only.
+data &lt;- subset(training.data.raw,select=c(2,3,5,6,7,8,10,12))
+
+<h3 id="performLRtopic-4"> Taking care of the missing values</h3>
+Now we need to account for the other missing values. 
+R can easily deal with them when fitting a generalized linear model by setting a parameter inside the fitting function. 
+
+However, personally I prefer to replace the <code>NAs</code> “by hand”, when is possible. 
+There are different ways to do this, a typical approach is to replace the missing values with the average, the median or the mode of the existing one. 
+I’ll be using the average.
+
+data$Age[is.na(data$Age)] &lt;- mean(data$Age,na.rm=T)
+As far as categorical variables are concerned, using the <code>read.table()</code> or <code>read.csv()</code> by default will encode the categorical variables as factors. 
+A factor is how R deals categorical variables.
+
+We can check the encoding using the following lines of code
+is.factor(data$Sex)
+TRUE
+
+is.factor(data$Embarked)
+TRUE
+For a better understanding of how R is going to deal with the categorical variables, we can use the <code>contrasts()</code> function. 
+
+This function will show us how the variables have been dummyfied by R and how to interpret them in a model.
+contrasts(data$Sex)
+male
+female    0
+male      1
+contrasts(data$Embarked)
+
+Q S
+C 0 0
+Q 1 0
+S 0 1
+For instance, you can see that in the variable sex, female will be used as the reference. 
+As for the missing values in Embarked, since there are only two, we will discard those two rows (we could also have replaced the missing values with the mode and keep the datapoints).
+
+data &lt;- data[!is.na(data$Embarked),]
+rownames(data) &lt;- NULL
+Before proceeding to the fitting process, let me remind you how important is <em>cleaning and formatting of the data</em>. 
+
+This preprocessing step often is crucial for obtaining a good fit of the model and better predictive ability. 
+<h3 id="performLRtopic-5">Model fitting</h3>
+We split the data into two chunks: training and testing set. 
+
+The training set will be used to fit our model which we will be testing over the testing set.
+train &lt;- data[1:800,]
+test &lt;- data[801:889,]
+
+Now, let’s fit the model. 
+Be sure to specify the parameter <code>family=binomial</code> in the <code>glm()</code> function.
+model &lt;- glm(Survived ~.,family=binomial(link='logit'),data=train)
+
+By using function <code>summary()</code> we obtain the results of our model:
+summary(model)
+Call:
+
+glm(formula = Survived ~ ., family = binomial(link = "logit"), 
+data = train)
+Deviance Residuals: 
+
+Min       1Q   Median       3Q      Max  
+-2.6064  -0.5954  -0.4254   0.6220   2.4165  
+Coefficients:
+
+Estimate Std. 
+Error z value Pr(&gt;|z|)    
+(Intercept)  5.137627   0.594998   8.635  &lt; 2e-16 ***
+
+Pclass      -1.087156   0.151168  -7.192 6.40e-13 ***
+Sexmale     -2.756819   0.212026 -13.002  &lt; 2e-16 ***
+Age         -0.037267   0.008195  -4.547 5.43e-06 ***
+
+SibSp       -0.292920   0.114642  -2.555   0.0106 *  
+Parch       -0.116576   0.128127  -0.910   0.3629    
+Fare         0.001528   0.002353   0.649   0.5160    
+
+EmbarkedQ   -0.002656   0.400882  -0.007   0.9947    
+EmbarkedS   -0.318786   0.252960  -1.260   0.2076    
+---
+
+Signif. 
+codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Dispersion parameter for binomial family taken to be 1)
+
+Null deviance: 1065.39  on 799  degrees of freedom
+Residual deviance:  709.39  on 791  degrees of freedom
+AIC: 727.39
+
+Number of Fisher Scoring iterations: 5
+<h3 id="performLRtopic-6"> Interpreting the results of our logistic regression model</h3>
+Now we can analyze the fitting and interpret what the model is telling us.
+
+First of all, we can see that <em>SibSp</em>, <em>Fare</em> and <em>Embarked</em> are not statistically significant. 
+As for the statistically significant variables, sex has the lowest p-value suggesting a strong association of the sex of the passenger with the probability of having survived. 
+The negative coefficient for this predictor suggests that all other variables being equal, the male passenger is less likely to have survived. 
+
+Remember that in the logit model the response variable is log odds: ln(odds) = ln(p/(1-p)) = a*x1 + b*x2 + … + z*xn. 
+Since male is a dummy variable, being male reduces the log odds by 2.75 while a unit increase in age reduces the log odds by 0.037.
+Now we can run the <code>anova()</code> function on the model to analyze the table of deviance
+
+anova(model, test="Chisq")
+Analysis of Deviance Table
+Model: binomial, link: logit
+
+Response: Survived
+Terms added sequentially (first to last)
+Df Deviance Resid. 
+
+Df Resid. 
+Dev  Pr(&gt;Chi)    
+NULL                       799    1065.39              
+
+Pclass    1   83.607       798     981.79 &lt; 2.2e-16 ***
+Sex       1  240.014       797     741.77 &lt; 2.2e-16 ***
+Age       1   17.495       796     724.28 2.881e-05 ***
+
+SibSp     1   10.842       795     713.43  0.000992 ***
+Parch     1    0.863       794     712.57  0.352873    
+Fare      1    0.994       793     711.58  0.318717    
+
+Embarked  2    2.187       791     709.39  0.334990    
+---
+Signif. 
+
+codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+The difference between the null deviance and the residual deviance shows how our model is doing against the null model (a model with only the intercept). 
+The wider this gap, the better. 
+
+Analyzing the table we can see the drop in deviance when adding each variable one at a time. 
+Again, adding <em>Pclass</em>, <em>Sex</em> and <em>Age</em> significantly reduces the residual deviance. 
+The other variables seem to improve the model less even though <em>SibSp</em> has a low p-value. 
+
+A large p-value here indicates that the model without the variable explains more or less the same amount of variation. 
+Ultimately what you would like to see is a significant drop in deviance and the <code>AIC</code>.
+While no exact equivalent to the R<sup>2</sup> of linear regression exists, the McFadden R<sup>2</sup> index can be used to assess the model fit.
+
+library(pscl)
+pR2(model)
+llh      llhNull           G2     McFadden         r2ML         r2CU 
+
+-354.6950111 -532.6961008  356.0021794    0.3341513    0.3591775    0.4880244
+<h3 id="performLRtopic-7">Assessing the predictive ability of the model</h3>
+In the steps above, we briefly evaluated the fitting of the model, now we would like to see how the model is doing when predicting <em>y</em> on a new set of data. 
+
+By setting the parameter <code>type='response'</code>, R will output probabilities in the form of P(y=1|X). 
+Our decision boundary will be 0.5. 
+If P(y=1|X) &gt; 0.5 then y = 1 otherwise y=0. 
+
+Note that for some applications different thresholds could be a better option.
+fitted.results &lt;- predict(model,newdata=subset(test,select=c(2,3,4,5,6,7,8)),type='response')
+fitted.results &lt;- ifelse(fitted.results &gt; 0.5,1,0)
+
+misClasificError &lt;- mean(fitted.results != test$Survived)
+print(paste('Accuracy',1-misClasificError))
+"Accuracy 0.842696629213483"
+
+The 0.84 accuracy on the test set is quite a good result. 
+However, keep in mind that this result is somewhat dependent on the manual split of the data that I made earlier, therefore if you wish for a more precise score, you would be better off running some kind of cross validation such as k-fold cross validation.
+As a last step, we are going to plot the <em>ROC curve</em> and calculate the <em>AUC</em> (area under the curve) which are typical performance measurements for a binary classifier.
+
+The ROC is a curve generated by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings while the AUC is the area under the ROC curve. 
+As a rule of thumb, a model with good predictive ability should have an AUC closer to 1 (1 is ideal) than to 0.5.
+library(ROCR)
+
+p &lt;- predict(model, newdata=subset(test,select=c(2,3,4,5,6,7,8)), type="response")
+pr &lt;- prediction(p, test$Survived)
+prf &lt;- performance(pr, measure = "tpr", x.measure = "fpr")
+
+plot(prf)
+auc &lt;- performance(pr, measure = "auc")
+auc &lt;- <a href="/cdn-cgi/l/email-protection" data-cfemail="65041006251c4b130409100016">[email&nbsp;protected]</a>[[1]]
+
+auc
+0.8647186
+And here is the ROC plot:
+
+<img src="https://i0.wp.com/datascienceplus.com/wp-content/uploads/2015/09/Rplot011.png">
+I hope this post will be useful. 
+A gist with the full code for this example can be found <a href="https://gist.github.com/mick001/ac92e7c017aecff216fd" rel="nofollow" target="_blank">here</a>.
 
 
+<h2>R Classification - Algorithms, Applications and Examples</h2>
+<div id="RClassificationtoc" class="toc"><a href="#RClassificationtopic-0" target="_self" onclick="jumpto(0)">What is R Classification?</a><br><a href="#RClassificationtopic-1" target="_self" onclick="jumpto(1)">R Clustering vs R Classification</a><br><a href="#RClassificationtopic-2" target="_self" onclick="jumpto(2)">Basic Terminologies of R Classification</a><br><a href="#RClassificationtopic-3" target="_self" onclick="jumpto(3)">Classification Algorithms in R</a><br><a href="#RClassificationtopic-4" target="_self" onclick="jumpto(4)"> 1. R Logistic Regression</a><br><a href="#RClassificationtopic-5" target="_self" onclick="jumpto(5)"> 2. Decision Trees in R</a><br><a href="#RClassificationtopic-6" target="_self" onclick="jumpto(6)"> 3. Support Vector Machines in R</a><br><a href="#RClassificationtopic-7" target="_self" onclick="jumpto(7)"> 4. Naive Bayes Classifier</a><br><a href="#RClassificationtopic-8" target="_self" onclick="jumpto(8)"> 5. Artificial Neural Networks in R</a><br><a href="#RClassificationtopic-9" target="_self" onclick="jumpto(9)"> 6. K – Nearest Neighbor in R</a><br><a href="#RClassificationtopic-10" target="_self" onclick="jumpto(10)">Applications of R Classification Algorithms</a><br><a href="#RClassificationtopic-11" target="_self" onclick="jumpto(11)">Decision Tree Classifier</a><br><a href="#RClassificationtopic-12" target="_self" onclick="jumpto(12)">Naive Bayes Classifier</a><br><a href="#RClassificationtopic-13" target="_self" onclick="jumpto(13)">K-NN Classifier</a><br><a href="#RClassificationtopic-14" target="_self" onclick="jumpto(14)">Support Vector Machines(SVM’s)</a><br><a href="#RClassificationtopic-15" target="_self" onclick="jumpto(15)"><span class="orange">Building Classification Models in R </span></a><br><a href="#RClassificationtopic-16" target="_self" onclick="jumpto(16)">Data</a><br><a href="#RClassificationtopic-17" target="_self" onclick="jumpto(17)">Data Partitioning </a><br><a href="#RClassificationtopic-18" target="_self" onclick="jumpto(18)">Build, Predict and Evaluate the Model </a><br><a href="#RClassificationtopic-19" target="_self" onclick="jumpto(19)">Conclusion</a><br></div></center>
+In this R tutorial, we are going to learn about R Classification and various classification techniques and algorithms in machine learning and R. 
+We will start off with what is classification in R? We are then going to look at the differences between clustering and classification. 
+Then we will learn the various types of classification algorithms and look at them in detail. 
+Finally, we shall implement a classification algorithm in R.
+<img class="lazy loaded" data-src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Classification-Algorithms-in-R.jpg" src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Classification-Algorithms-in-R.jpg" data-was-processed="true">
+<h3 id="RClassificationtopic-0">What is R Classification?</h3>Classification is the process of predicting a categorical label of a data object based on its features and properties. 
+In classification, we locate identifiers or boundary conditions that correspond to a particular label or category. 
+We then try to place various unknown objects into those categories, by using the identifiers. 
+An example of this would be to predict the type of water(mineral, tap, smart, etc.), based on its purity and mineral content.
+<h3 id="RClassificationtopic-1">R Clustering vs R Classification</h3>In <strong>clustering in R</strong>, we try to group similar objects together. 
+The principle behind <a href="https://techvidvan.com/tutorials/cluster-analysis-in-r/">R clustering</a> is that objects in a group are similar to other objects in that set and no objects in different groups are similar to each other.
+In <strong>classification in R</strong>, we try to predict a target class. 
+The possible classes are already known and so are all of the classes’ identifying properties. 
+The algorithm needs to identify which class does a data object belong to.
+<h3 id="RClassificationtopic-2">Basic Terminologies of R Classification</h3><strong>1. Classifier:</strong> A classifier is an algorithm that classifies the input data into output categories.
+<strong>2. Classification model:</strong> A classification model is a model that uses a classifier to classify data objects into various categories.
+<strong>3. Feature:</strong> A feature is a measurable property of a data object.
+<strong>4. Binary classification:</strong> A binary classification is a classification with two possible output categories.
+<strong>5. Multi-class classification:</strong> A multi-class classification is a classification with more than two possible output categories.
+<strong>6. Multi-label classification:</strong> A multi-label classification is a classification where a data object can be assigned multiple labels or output classes.
+<h3 id="RClassificationtopic-3">Classification Algorithms in R</h3>There are various classifiers or classification algorithms in machine learning and R programming. 
+We are going to take a look at some of these classifiers.
+<h3 id="RClassificationtopic-4"> 1. R Logistic Regression</h3>As we studied in the logistic regression tutorial, it is a regression algorithm that predicts the value of a categorical variable. 
+It finds the value of a variable that can only take two possible values (ex: pass or fail). 
+Logistic regression finds the relationship between a categorical dependent variable and several independent variables. 
+We can also state this as logistic regression finds the relationship between which class does a data object lies into and said object’s features. 
+Not only does the algorithm find a class for an object, but it also gives justification and reasoning for that object to be in a specific class.
+<h3 id="RClassificationtopic-5"> 2. Decision Trees in R</h3>Decision trees represent a series of decisions and choices in the form of a tree. 
+They use the features of an object to decide which class the object lies in. 
+These classes usually lie on the terminal leavers of a decision tree. 
+Decision trees can be binary or multi-class classifiers. 
+They use multiple rules with binary results to form a series of checks that judge and tell the class of an object according to its features. 
+Decision trees are an example of divide and conquer algorithms as they use the rules to divide the objects repeatedly until a final decision has been made.
+
+<img class="lazy" data-src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Decision-Trees-in-R-1.jpg">
+<h3 id="RClassificationtopic-6"> 3. Support Vector Machines in R</h3>A support vector machine represents data objects as points in space. 
+It then devises a function that can split the space according to the target output classes. 
+SVM uses the training set to plot objects in space and to fine-tune the function that splits the space. 
+Once the function is finalized, it places the objects in different parts of the space depending on which class they fall into. 
+SVM’s are very lightweight and highly efficient in higher dimensional spaces.
+<a href="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Support-Vector-Machines-in-R.jpg"><img class="lazy" data-src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Support-Vector-Machines-in-R.jpg"></a>
+<h3 id="RClassificationtopic-7"> 4. Naive Bayes Classifier</h3>Naive Bayes classifier is a classification algorithm based on Bayes’s theorem. 
+It considers all the features of a data object to be independent of each other. 
+They are very fast and useful for large datasets. 
+They achieve very accurate results with very little training. 
+The following is the equation for the Bayes’s theorem:
+<strong>      P(Ci|x1,x2,…,xn)=P(x1,x2,…,xn).P(Ci)/P(x1,x2,…,xn)</strong>
+Where C is the target category,
+And x1, …. , xn are features of a particular object.
+<h3 id="RClassificationtopic-8"> 5. Artificial Neural Networks in R</h3>Artificial neural networks are collections of connections or neurons that connect various nodes. 
+Each connection between two nodes in a neural network represents a relationship between those two nodes. 
+These neurons are arranged in layers in an artificial neural network. 
+Each node contains a non-linear function that it applies to the input and then passes on the output to the next layer. 
+They are feed-forward networks which means that each layer passes on the output to the next layer until a final result is obtained. 
+During the training of the model, different weights are assigned to different layers, connections, and nodes. 
+These weights tell which values and outputs are to be preferred more and by how much. 
+Neural networks are very good when dealing with noisy data.
+<a href="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Artificial-Neural-Networks-in-R.jpg"><img class="lazy" data-src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/05/Artificial-Neural-Networks-in-R.jpg"></a>
+<h3 id="RClassificationtopic-9"> 6. K – Nearest Neighbor in R</h3>K-nearest neighbor is a lazy learning algorithm. 
+It maps and stores all of the objects in the training set in an n-dimensional space. 
+It uses the labeled objects to label other objects that are not labeled or classified yet. 
+To label a new object, it looks at its k nearest neighbors. 
+A count is then carried out and the label carried by the majority of the neighbors is assigned to the unlabeled object. 
+This algorithm is very robust for noisy data and also works fine for large datasets. 
+It is, however, more computationally heavy than other classification techniques.
+<h3 id="RClassificationtopic-10">Applications of R Classification Algorithms</h3>Now that we have looked at the various classification algorithms. 
+Let’s take a look at their applications:
+
+1. Logistic regression
+Weather forecast
+Word classification
+Symptom classification
+
+2. Decision trees
+Pattern recognition
+Pricing decisions
+Data exploration
+
+3. Support Vector Machines
+Investment suggestions
+Stock comparison
+
+4. Naive Bayes Classifier
+Spam filters
+Disease prediction
+Document classification
+
+5. Artificial Neural Network
+Handwriting analysis
+Object recognition
+Voice recognition
+
+6. k-Nearest Neighbor
+Industrial task classification
+Video recognition
+Image recognition
+
+<h3 id="RClassificationtopic-11">Decision Tree Classifier</h3>
+It is basically is a graph to represent choices. 
+The nodes or vertices in the graph represent an event and the edges of the graph represent the decision conditions. 
+Its common use is in Machine Learning and Data Mining applications.
+<strong>Applications:</strong>
+Spam/Non-spam classification of email, predicting of a tumor is cancerous or not. 
+Usually, a model is constructed with noted data also called training dataset. 
+Then a set of validation data is used to verify and improve the model. 
+R has packages that are used to create and visualize decision trees.
+The R package “party” is used to create decision trees.
+<strong>Command:</strong>
+install.packages("party")
+
+<code># Load the party package. 
+It will automatically load other</code>
+<code># dependent packages.</code>
+<code>library(party)</code>
+ <code># Create the input data frame.</code>
+<code>input.dat &lt;- readingSkills[c(1:105), ]</code>
+ <code># Give the chart file a name.</code>
+<code>png(file = "decision_tree.png")</code>
+ <code># Create the tree.</code>
+  <code>output.tree &lt;- ctree(</code>
+  <code>nativeSpeaker ~ age + shoeSize + score, </code>
+  <code>data = input.dat)</code>
+ <code># Plot the tree.</code>
+<code>plot(output.tree)</code>
+ <code># Save the file.</code>
+<code>dev.off()</code>
+
+<strong>Output:</strong>null device 
+          1 
+Loading required package: methods
+Loading required package: grid
+Loading required package: mvtnorm
+Loading required package: modeltools
+Loading required package: stats4
+Loading required package: strucchange
+Loading required package: zoo
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+   as.Date, as.Date.numeric
+
+Loading required package: sandwich
+<h3 id="RClassificationtopic-12">Naive Bayes Classifier</h3>
+Naïve Bayes classification is a general classification method that uses a probability approach, hence also known as a probabilistic approach based on Bayes’ theorem with the assumption of independence between features. 
+The model is trained on training dataset to make predictions by <code><strong>predict()</strong></code> function.
+<strong>Formula:</strong>P(A|B)=P(B|A)×P(A)P(B)
+
+It is a sample method in machine learning methods but can be useful in some instances. 
+The training is easy and fast that just requires considering each predictor in each class separately.
+<strong>Application:</strong>
+It is used generally in sentimental analysis.
+
+<code>library(caret)</code>
+<code>## Warning: package 'caret' was built under R version 3.4.3</code>
+<code>set.seed(7267166)</code>
+<code>trainIndex = createDataPartition(mydata$prog, p = 0.7)$Resample1</code>
+<code>train = mydata[trainIndex, ]</code>
+<code>test = mydata[-trainIndex, ]</code>
+ <code>## check the balance</code>
+<code>print(table(mydata$prog))</code>
+<code>## </code>
+<code>## academic    general vocational </code>
+<code>## 105         45         50</code>
+<code>print(table(train$prog))</code>
+
+<strong>Output:</strong>## Naive Bayes Classifier for Discrete Predictors
+## 
+## Call:
+## naiveBayes.default(x = X, y = Y, laplace = laplace)
+## 
+## A-priori probabilities:
+## Y
+##   academic    general vocational 
+##  0.5248227  0.2269504  0.2482270 
+## 
+## Conditional probabilities:
+##             science
+## Y                [, 1]     [, 2]
+##   academic   54.21622 9.360761
+##   general    52.18750 8.847954
+##   vocational 47.31429 9.969871
+## 
+##             socst
+## Y                [, 1]      [, 2]
+##   academic   56.58108  9.635845
+##   general    51.12500  8.377196
+##   vocational 44.82857 10.279865
+<h3 id="RClassificationtopic-13">K-NN Classifier</h3>
+Another used classifier is the K-NN classifier. 
+In pattern recognition, the k-nearest neighbor’s algorithm (k-NN) is a non-parametric method generally used for classification and regression. 
+In both cases, the input consists of the k closest training examples in the feature space. 
+In k-NN classification, the output is a class membership.
+<strong>Applications:</strong>
+Used in a variety of applications such as economic forecasting, data compression, and genetics.
+<strong>Example:</strong>
+<code># Write Python3 code here</code>
+<code>import numpy as np</code>
+<code>import pandas as pd</code>
+<code>from matplotlib import pyplot as plt</code>
+<code>from sklearn.datasets import load_breast_cancer</code>
+<code>from sklearn.metrics import confusion_matrix</code>
+<code>from sklearn.neighbors import KNeighborsClassifier</code>
+<code>from sklearn.model_selection import train_test_split</code>
+<code>import seaborn as sns</code>
+<code>sns.set()</code>
+<code>breast_cancer = load_breast_cancer()</code>
+<code>X = pd.DataFrame(breast_cancer.data, columns = breast_cancer.feature_names)</code>
+<code>X = X[['mean area', 'mean compactness']]</code>
+<code>y = pd.Categorical.from_codes(breast_cancer.target, breast_cancer.target_names)</code>
+<code>y = pd.get_dummies(y, drop_first = True)</code>
+<code>X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = 1)</code>
+<code>sns.scatterplot(</code>
+<code>    x ='mean area',</code>
+<code>    y ='mean compactness',</code>
+<code>    hue ='benign',</code>
+<code>    data = X_test.join(y_test, how ='outer')</code>
+<code>)</code>
+
+<strong>Output:</strong>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200508141609/Screenshot-6312.png">
+<h3 id="RClassificationtopic-14">Support Vector Machines(SVM’s)</h3>
+A support vector machine (SVM) is a supervised binary machine learning algorithm that uses classification algorithms for two-group classification problems. 
+After giving an SVM model sets of labeled training data for each category, they’re able to categorize new text.
+Mainly SVM is used for text classification problems. 
+It classifies the unseen data. 
+It is widely used than Naive Bayes.SVM id usually a fast and dependable classification algorithm that performs very well with a limited amount of data.
+<strong>Applications:</strong>
+SVMs have a number of applications in several fields like Bioinformatics, to classify genes, etc.
+<strong>Example:</strong>
+
+<code># Load the data from the csv file</code>
+<code>dataDirectory &lt;- "D:/" # put your own folder here</code>
+<code>data &lt;- read.csv(paste(dataDirectory, 'regression.csv', sep =""), header = TRUE)</code>
+ <code># Plot the data</code>
+<code>plot(data, pch = 16)</code>
+ <code># Create a linear regression model</code>
+<code>model &lt;- lm(Y ~ X, data)</code>
+ <code># Add the fitted line</code>
+<code>abline(model)</code>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200506200431/Screenshot-6215.png">
+
+<h3 id="RClassificationtopic-15"><span class="orange">Building Classification Models in R </span></h3>
+Building classification models is one of the most important data science use cases. 
+<em>Classification models</em> are models that predict a categorical label. 
+A few examples of this include predicting whether a customer will churn or whether a bank loan will default. 
+In this guide, you will learn how to build and evaluate a classification model in R. 
+We will train the logistic regression algorithm, which is one of the oldest yet most powerful classification algorithms. 
+
+<h3 id="RClassificationtopic-16">Data</h3>
+In this guide, we will use a fictitious dataset of loan applicants containing 600 observations and 10 variables, as described below:
+<code>Marital_status</code>: Whether the applicant is married ("Yes") or not ("No")
+<code>Is_graduate</code>: Whether the applicant is a graduate ("Yes") or not ("No")
+<code>Income</code>: Annual Income of the applicant (in USD)
+<code>Loan_amount</code>: Loan amount (in USD) for which the application was submitted
+<code>Credit_score</code>: Whether the applicant's credit score is good ("Good") or not ("Bad")
+<code>Approval_status</code>: Whether the loan application was approved ("Yes") or not ("No")
+<code>Age</code>: The applicant's age in years
+<code>Sex</code>: Whether the applicant is a male ("M") or a female ("F")
+<code>Investment</code>: Total investment in stocks and mutual funds (in USD) as declared by the applicant
+
+<code>Purpose</code>: Purpose of applying for the loan
+
+Let's start by loading the required libraries and the data.
+<code>library(plyr)
+library(readr)
+library(dplyr)
+library(caret)
+
+dat &lt;- read_csv("data.csv")
+glimpse(dat)
+</code>
+{r}
+
+Output:
+<code>1Observations: 600
+Variables: 10
+$ Marital_status  &lt;chr&gt; "Yes", "No", "Yes", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Ye...
+$ Is_graduate     &lt;chr&gt; "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Y...
+$ Income          &lt;int&gt; 30000, 30000, 30000, 30000, 89900, 133300, 136700, 136700, 17320...
+$ Loan_amount     &lt;int&gt; 60000, 90000, 90000, 90000, 80910, 119970, 123030, 123030, 15588...
+$ Credit_score    &lt;chr&gt; "Satisfactory", "Satisfactory", "Satisfactory", "Satisfactory", ...
+$ approval_status &lt;chr&gt; "Yes", "Yes", "No", "No", "Yes", "No", "Yes", "Yes", "Yes", "No"...
+$ Age             &lt;int&gt; 25, 29, 27, 33, 29, 25, 29, 27, 33, 29, 25, 29, 27, 33, 29, 30, ...
+$ Sex             &lt;chr&gt; "F", "F", "M", "F", "M", "M", "M", "F", "F", "F", "M", "F", "F",...
+$ Investment      &lt;int&gt; 21000, 21000, 21000, 21000, 62930, 93310, 95690, 95690, 121240, ...
+$ Purpose         &lt;chr&gt; "Education", "Travel", "Others", "Others", "Travel", "Travel", "...
+</code>
+
+The output shows that the dataset has four numerical (labeled as <code>int</code>) and six character variables (labeled as <code>chr</code>). 
+We will convert these into factor variables using the line of code below.
+<code>1names &lt;- c(1,2,5,6,8,10)
+dat[,names] &lt;- lapply(dat[,names] , factor)
+glimpse(dat)
+</code>
+{r}
+
+Output:
+<code>1Observations: 600
+Variables: 10
+$ Marital_status  &lt;fct&gt; Yes, No, Yes, No, Yes, Yes, Yes, Yes, Yes, Yes, No, No, Yes, Yes...
+$ Is_graduate     &lt;fct&gt; No, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, No, Yes, Yes, Y...
+$ Income          &lt;int&gt; 30000, 30000, 30000, 30000, 89900, 133300, 136700, 136700, 17320...
+$ Loan_amount     &lt;int&gt; 60000, 90000, 90000, 90000, 80910, 119970, 123030, 123030, 15588...
+$ Credit_score    &lt;fct&gt; Satisfactory, Satisfactory, Satisfactory, Satisfactory, Satisfac...
+$ approval_status &lt;fct&gt; Yes, Yes, No, No, Yes, No, Yes, Yes, Yes, No, No, No, Yes, No, Y...
+$ Age             &lt;int&gt; 25, 29, 27, 33, 29, 25, 29, 27, 33, 29, 25, 29, 27, 33, 29, 30, ...
+$ Sex             &lt;fct&gt; F, F, M, F, M, M, M, F, F, F, M, F, F, M, M, M, M, M, M, M, M, M...
+$ Investment      &lt;int&gt; 21000, 21000, 21000, 21000, 62930, 93310, 95690, 95690, 121240, ...
+$ Purpose         &lt;fct&gt; Education, Travel, Others, Others, Travel, Travel, Travel, Educa...
+ 
+</code>
+<h3 id="RClassificationtopic-17">Data Partitioning </h3>
+We will build our model on the training dataset and evaluate its performance on the test dataset. 
+This is called the <em>holdout-validation approach</em> to evaluating model performance.
+
+The first line of code below sets the random seed for reproducibility of results. 
+The second line loads the <code>caTools</code> package that will be used for data partitioning, while the third to fifth lines create the training and test datasets. 
+The train dataset contains 70 percent of the data (420 observations of 10 variables) while the test data contains the remaining 30 percent (180 observations of 10 variables).
+<code>set.seed(100)
+library(caTools)
+
+spl = sample.split(dat$approval_status, SplitRatio = 0.7)
+train = subset(dat, spl==TRUE)
+test = subset(dat, spl==FALSE)
+
+print(dim(train)); print(dim(test))
+</code>
+{r}
+
+Output:
+<code>1[1] 420  10
+
+[1] 180  10
+</code>
+<h3 id="RClassificationtopic-18">Build, Predict and Evaluate the Model </h3>
+To fit the logistic regression model, the first step is to instantiate the algorithm. 
+This is done in the first line of code below with the <code>glm()</code> function. 
+The second line prints the summary of the trained model.
+<code>1model_glm = glm(approval_status ~ . , family="binomial", data = train)
+summary(model_glm)
+</code>
+{r}
+
+Output:
+<code>1Call:
+glm(formula = approval_status ~ ., family = "binomial", data = train)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-2.19539  -0.00004   0.00004   0.00008   2.47763  
+
+Coefficients:
+                           Estimate Std. 
+Error z value Pr(&gt;|z|)    
+(Intercept)               6.238e-02  9.052e+03   0.000   1.0000    
+Marital_statusYes         4.757e-01  4.682e-01   1.016   0.3096    
+Is_graduateYes            5.647e-01  4.548e-01   1.242   0.2144    
+Income                    2.244e-06  1.018e-06   2.204   0.0275 *  
+Loan_amount              -3.081e-07  3.550e-07  -0.868   0.3854    
+Credit_scoreSatisfactory  2.364e+01  8.839e+03   0.003   0.9979    
+Age                      -7.985e-02  1.360e-02  -5.870 4.35e-09 ***
+SexM                     -5.879e-01  6.482e-01  -0.907   0.3644    
+Investment               -2.595e-06  1.476e-06  -1.758   0.0787 . 
+ 
+PurposeHome               2.599e+00  9.052e+03   0.000   0.9998    
+PurposeOthers            -4.172e+01  3.039e+03  -0.014   0.9890    
+PurposePersonal           1.577e+00  2.503e+03   0.001   0.9995    
+PurposeTravel            -1.986e+01  1.954e+03  -0.010   0.9919    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 524.44  on 419  degrees of freedom
+Residual deviance: 166.96  on 407  degrees of freedom
+AIC: 192.96
+
+Number of Fisher Scoring iterations: 19
+</code>
+
+The significance code <code>‘***’</code> in the above output shows the relative importance of the feature variables. 
+Let's evaluate the model further, starting by setting the baseline accuracy using the code below. 
+Since the majority class of the target variable has a proportion of 0.68, the baseline accuracy is 68 percent.
+<code>1#Baseline Accuracy
+prop.table(table(train$approval_status))
+</code>
+{r}
+
+Output:
+<code>1       No       Yes 
+.3166667 0.6833333
+</code>
+
+Let's now evaluate the model performance on the training and test data, which should ideally be better than the baseline accuracy. 
+We start by generating predictions on the training data, using the first line of code below. 
+The second line creates the confusion matrix with a threshold of 0.5, which means that for probability predictions equal to or greater than 0.5, the algorithm will predict the <code>Yes</code> response for the <code>approval_status</code> variable. 
+The third line prints the accuracy of the model on the training data, using the confusion matrix, and the accuracy comes out to be 91 percent. 
+We then repeat this process on the test data, and the accuracy comes out to be 88 percent.
+<code>1# Predictions on the training set
+predictTrain = predict(model_glm, data = train, type = "response")
+
+# Confusion matrix on training data
+table(train$approval_status, predictTrain &gt;= 0.5)
+(114+268)/nrow(train) #Accuracy - 91%
+
+#Predictions on the test set
+predictTest = predict(model_glm, newdata = test, type = "response")
+
+# Confusion matrix on test set
+table(test$approval_status, predictTest &gt;= 0.5)
+158/nrow(test) #Accuracy - 88%
+</code>
+{r}
+
+Output:
+<code>1# Confusion matrix and accuracy on training data
+
+     FALSE TRUE
+  No    114   19
+  Yes    19  268
+[1] 0.9095238
+# Confusion matrix and accuracy on testing data
+     FALSE TRUE
+  No     44   13
+  Yes     9  114
+
+[1] 0.8777778
+</code>
+<h3 id="RClassificationtopic-19">Conclusion</h3>
+
+In this guide, you have learned techniques of building a classification model in R using the powerful logistic regression algorithm. 
+The baseline accuracy for the data was 68 percent, while the accuracy on the training and test data was 91 percent, and 88 percent, respectively. 
+Overall, the logistic regression model is beating the baseline accuracy by a big margin on both the train and test datasets, and the results are very good. 
+To learn more about data science using R, please refer to the following guides:
+<a href="/guides/interpreting-data-using-descriptive-statistics-r/">Interpreting Data Using Descriptive Statistics with R</a>
+<a href="/guides/interpreting-data-using-statistical-models-r/">Interpreting Data Using Statistical Models with R</a>
+<a href="/guides/time-series-forecasting-using-r/">Time Series Forecasting Using R</a>
+<a href="/guides/hypothesis-testing-interpreting-data-statistical-models/">Hypothesis Testing - Interpreting Data with Statistical Models</a>
+<a href="/guides/machine-learning-text-data-using-r/">Machine Learning with Text Data Using R</a>
+<a href="/guides/visualization-text-data-using-word-cloud-r/">Visualization of Text Data Using Word Cloud in R</a>
+<a href="/guides/exploring-data-visually-r/">Exploring Data Visually with R</a>
+<a href="/guides/coping-missing-invalid-and-duplicate-data-r/">Coping with Missing, Invalid and Duplicate Data in R</a> 
+<a href="/guides/reshaping-data-r/">Reshaping Data with R</a>
+<a href="/guides/working-data-types-r/">Working with Data Types in R</a>
+<a href="/guides/splitting-combining-data-r/">Splitting and Combining Data with R</a>
+<a href="/guides/linear-lasso-and-ridge-regression-with-r/">Linear, Lasso, and Ridge Regression with R</a>
+
+
+
+
+<h2>How to perform a Logistic Regression in R</h2>
+Logistic Regression is similar to linear regression
+<div id="LogisticRegressiontoc" class="toc"><a href="#LogisticRegressiontopic-0" target="_self" onclick="jumpto(0)">How to perform a Logistic Regression in R</a><br><a href="#LogisticRegressiontopic-1" target="_self" onclick="jumpto(1)"><span class="orange">Logistic regression implementation in R</span></a><br><a href="#LogisticRegressiontopic-2" target="_self" onclick="jumpto(2)">The dataset</a><br><a href="#LogisticRegressiontopic-3" target="_self" onclick="jumpto(3)">The data cleaning process</a><br><a href="#LogisticRegressiontopic-4" target="_self" onclick="jumpto(4)">Taking care of the missing values</a><br><a href="#LogisticRegressiontopic-5" target="_self" onclick="jumpto(5)"><span class="orange">Model fitting</span></a><br><a href="#LogisticRegressiontopic-6" target="_self" onclick="jumpto(6)">Interpreting the results of our logistic regression model</a><br><a href="#LogisticRegressiontopic-7" target="_self" onclick="jumpto(7)"><span class="orange">Assessing the predictive ability of the model</span></a><br><a href="#LogisticRegressiontopic-8" target="_self" onclick="jumpto(8)"><span class="orange">Generalized Linear Models</span></a><br><a href="#LogisticRegressiontopic-9" target="_self" onclick="jumpto(9)"><span class="orange">Logistic Regression</span></a><br><a href="#LogisticRegressiontopic-10" target="_self" onclick="jumpto(10)"><span class="orange">Poisson Regression</span></a><br><a href="#LogisticRegressiontopic-11" target="_self" onclick="jumpto(11)"><span class="orange">Survival Analysis</span></a><br></div>
+
+Logistic regression is a method for fitting a regression curve, <b>y = f(x)</b>, when y is a categorical variable. 
+The typical use of this model is predicting <b>y</b> given a set of predictors <b>x</b>. 
+The predictors can be continuous, categorical or a mix of both.
+
+The categorical variable <b>y</b>, in general, can assume different values. 
+In the simplest case scenario <b>y</b> is binary meaning that it can assume either the value 1 or 0. 
+A classical example used in machine learning is email classification: given a set of attributes for each email such as number of words, links and pictures, the algorithm should decide whether the email is spam (1) or not (0). 
+In this post we call the model <strong>“binomial logistic regression”</strong>, since the variable to predict is binary, however, logistic regression can also be used to predict a dependent variable which can assume more than 2 values. 
+In this second case we  call the model “multinomial logistic regression”. 
+A typical example for instance, would be classifying films between “Entertaining”, “borderline” or “boring”.
+
+<h3 id="LogisticRegressiontopic-1"><span class="orange">Logistic regression implementation in R</span></h3>
+
+R makes it very easy to fit a logistic regression model. 
+The function to be called is <code>glm()</code> and the fitting process is not so different from the one used in linear regression. 
+In this post I am going to fit a binary logistic regression model and explain each step.
+
+<h4 id="LogisticRegressiontopic-2">The dataset</h4>
+We’ll be working on the <b>Titanic dataset</b>. 
+There are different versions of this datasets freely available online, however I suggest to use the one available at <a href="https://www.kaggle.com/c/titanic" rel="nofollow" target="_blank">Kaggle</a>, since it is almost ready to be used (in order to download it you need to sign up to Kaggle).
+
+The dataset (training) is a collection of data about some of the passengers (889 to be precise), and the goal of the competition is to predict the survival (either 1 if the passenger survived or 0 if they did not) based on some features such as the <b>class of service</b>, the <b>sex</b>, the <b>age</b> etc. 
+As you can see, we are going to use both categorical and continuous variables.
+
+<h4 id="LogisticRegressiontopic-3">The data cleaning process</h4>
+
+When working with a real dataset we need to take into account the fact that some data might be missing or corrupted, therefore we need to prepare the dataset for our analysis. 
+As a first step we <a href="http://datascienceplus.com/importing-csv-files-into-r/" rel="nofollow" target="_blank">load the csv data</a> using the <code>read.csv()</code> function.
+
+Make sure that the parameter <code>na.strings</code> is equal to <code>c("")</code> so that each missing value is coded as a <code>NA</code>. 
+This will help us in the next steps.
+
+<b>training.data.raw &lt;- read.csv('train.csv',header=T,na.strings=c(""))</b>
+
+Now we need to check for missing values and look how many unique values there are for each variable using the <code>sapply()</code> function which applies the function passed as argument to each column of the dataframe.
+
+<b>sapply(training.data.raw,function(x) sum(is.na(x)))</b>
+
+PassengerId    Survived      Pclass        Name         Sex 
+          0           0           0           0           0 
+        Age       SibSp       Parch      Ticket        Fare 
+        177           0           0           0           0 
+      Cabin    Embarked 
+        687           2 
+
+<b>sapply(training.data.raw, function(x) length(unique(x)))</b>
+
+PassengerId    Survived      Pclass        Name         Sex 
+        891           2           3         891           2 
+        Age       SibSp       Parch      Ticket        Fare 
+         89           7           7         681         248 
+      Cabin    Embarked 
+        148           4
+
+A visual take on the missing values might be helpful: the Amelia package has a special plotting function <code>missmap()</code> that will plot your dataset and highlight missing values:
+
+<b>library(Amelia)
+missmap(training.data.raw, main = "Missing values vs observed")</b>
+
+<img class="lazy" src="https://i1.wp.com/datascienceplus.com/wp-content/uploads/2015/09/Rplot1-490x431.png?w=450">
+
+The variable cabin has too many missing values, we will not use it. 
+We will also drop PassengerId since it is only an index and Ticket.
+
+Using the <code>subset()</code> function we subset the original dataset selecting the relevant columns only.
+
+<b>data &lt;- subset(training.data.raw,select=c(2,3,5,6,7,8,10,12))</b>
+
+<h4 id="LogisticRegressiontopic-4">Taking care of the missing values</h4>
+
+Now we need to account for the other missing values. 
+R can easily deal with them when fitting a generalized linear model by setting a parameter inside the fitting function. 
+However, personally I prefer to replace the <code>NAs</code> “by hand”, when is possible. 
+There are different ways to do this, a typical approach is to replace the missing values with the average, the median or the mode of the existing one. 
+I’ll be using the average.
+
+<b>data$Age[is.na(data$Age)] &lt;- mean(data$Age,na.rm=T)</b>
+
+As far as categorical variables are concerned, using the <code>read.table()</code> or <code>read.csv()</code> by default will encode the categorical variables as factors. 
+A factor is how R deals categorical variables.
+
+We can check the encoding using the following lines of code
+
+<b>is.factor(data$Sex)</b>
+TRUE
+
+<b>is.factor(data$Embarked)</b>
+TRUE
+
+For a better understanding of how R is going to deal with the categorical variables, we can use the <code>contrasts()</code> function. 
+This function will show us how the variables have been dummyfied by R and how to interpret them in a model.
+
+<b>contrasts(data$Sex)</b>
+       male
+female    0
+male      1
+
+<b>contrasts(data$Embarked)</b>
+  Q S
+C 0 0
+Q 1 0
+S 0 1
+
+For instance, you can see that in the variable sex, female will be used as the reference. 
+As for the missing values in Embarked, since there are only two, we will discard those two rows (we could also have replaced the missing values with the mode and keep the datapoints).
+
+<b>data &lt;- data[!is.na(data$Embarked),]
+rownames(data) &lt;- NULL</b>
+
+Before proceeding to the fitting process, let me remind you how important is <b>cleaning and formatting of the data</b>. 
+This preprocessing step often is crucial for obtaining a good fit of the model and better predictive ability. 
+
+<h3 id="LogisticRegressiontopic-5"><span class="orange">Model fitting</span></h3>
+
+We split the data into two chunks: training and testing set. 
+The training set will be used to fit our model which we will be testing over the testing set.
+
+<b>train &lt;- data[1:800,]
+test &lt;- data[801:889,]</b>
+
+Now, let’s fit the model. 
+Be sure to specify the parameter <code>family=binomial</code> in the <code>glm()</code> function.
+
+<b>model &lt;- glm(Survived ~.,family=binomial(link='logit'),data=train)</b>
+
+By using function <code>summary()</code> we obtain the results of our model:
+
+<b>summary(model)</b>
+Call:
+glm(formula = Survived ~ ., family = binomial(link = "logit"), 
+    data = train)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.6064  -0.5954  -0.4254   0.6220   2.4165  
+
+Coefficients:
+             Estimate Std. 
+Error z value Pr(&gt;|z|)    
+(Intercept)  5.137627   0.594998   8.635  &lt; 2e-16 ***
+Pclass      -1.087156   0.151168  -7.192 6.40e-13 ***
+Sexmale     -2.756819   0.212026 -13.002  &lt; 2e-16 ***
+Age         -0.037267   0.008195  -4.547 5.43e-06 ***
+SibSp       -0.292920   0.114642  -2.555   0.0106 *  
+Parch       -0.116576   0.128127  -0.910   0.3629    
+Fare         0.001528   0.002353   0.649   0.5160    
+EmbarkedQ   -0.002656   0.400882  -0.007   0.9947    
+EmbarkedS   -0.318786   0.252960  -1.260   0.2076    
+---
+Signif. 
+codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1065.39  on 799  degrees of freedom
+Residual deviance:  709.39  on 791  degrees of freedom
+AIC: 727.39
+
+Number of Fisher Scoring iterations: 5
+
+<h4 id="LogisticRegressiontopic-6">Interpreting the results of our logistic regression model</h4>
+
+Now we can analyze the fitting and interpret what the model is telling us.
+
+First of all, we can see that <b>SibSp</b>, <b>Fare</b> and <b>Embarked</b> are not statistically significant. 
+As for the statistically significant variables, sex has the lowest p-value suggesting a strong association of the sex of the passenger with the probability of having survived. 
+The negative coefficient for this predictor suggests that all other variables being equal, the male passenger is less likely to have survived. 
+Remember that in the logit model the response variable is log odds: ln(odds) = ln(p/(1-p)) = a*x1 + b*x2 + … + z*xn. 
+Since male is a dummy variable, being male reduces the log odds by 2.75 while a unit increase in age reduces the log odds by 0.037.
+
+Now we can run the <code>anova()</code> function on the model to analyze the table of deviance
+
+<b>anova(model, test="Chisq")</b>
+
+Analysis of Deviance Table
+Model: binomial, link: logit
+Response: Survived
+Terms added sequentially (first to last)
+
+         Df Deviance Resid. 
+Df Resid. 
+Dev  Pr(&gt;Chi)    
+NULL                       799    1065.39              
+Pclass    1   83.607       798     981.79 &lt; 2.2e-16 ***
+Sex       1  240.014       797     741.77 &lt; 2.2e-16 ***
+Age       1   17.495       796     724.28 2.881e-05 ***
+SibSp     1   10.842       795     713.43  0.000992 ***
+Parch     1    0.863       794     712.57  0.352873    
+Fare      1    0.994       793     711.58  0.318717    
+Embarked  2    2.187       791     709.39  0.334990    
+---
+Signif. 
+codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+The difference between the null deviance and the residual deviance shows how our model is doing against the null model (a model with only the intercept). 
+The wider this gap, the better. 
+Analyzing the table we can see the drop in deviance when adding each variable one at a time. 
+Again, adding <b>Pclass</b>, <b>Sex</b> and <b>Age</b> significantly reduces the residual deviance. 
+The other variables seem to improve the model less even though <b>SibSp</b> has a low p-value. 
+A large p-value here indicates that the model without the variable explains more or less the same amount of variation. 
+Ultimately what you would like to see is a significant drop in deviance and the <code>AIC</code>.
+
+While no exact equivalent to the R<sup>2</sup> of linear regression exists, the McFadden R<sup>2</sup> index can be used to assess the model fit.
+
+<b>library(pscl)
+pR2(model)</b>
+
+         llh      llhNull           G2     McFadden         r2ML         r2CU 
+-354.6950111 -532.6961008  356.0021794    0.3341513    0.3591775    0.4880244
+
+<h3 id="LogisticRegressiontopic-7"><span class="orange">Assessing the predictive ability of the model</span></h3>
+In the steps above, we briefly evaluated the fitting of the model, now we would like to see how the model is doing when predicting <b>y</b> on a new set of data. 
+By setting the parameter <code>type='response'</code>, R will output probabilities in the form of P(y=1|X). 
+Our decision boundary will be 0.5. 
+If P(y=1|X) &gt; 0.5 then y = 1 otherwise y=0. 
+Note that for some applications different thresholds could be a better option.
+
+<b>fitted.results &lt;- predict(model,newdata=subset(test,select=c(2,3,4,5,6,7,8)),type='response')
+fitted.results &lt;- ifelse(fitted.results &gt; 0.5,1,0)
+
+misClasificError &lt;- mean(fitted.results != test$Survived)
+print(paste('Accuracy',1-misClasificError))</b>
+
+"Accuracy 0.842696629213483"
+
+The 0.84 accuracy on the test set is quite a good result. 
+However, keep in mind that this result is somewhat dependent on the manual split of the data that I made earlier, therefore if you wish for a more precise score, you would be better off running some kind of cross validation such as k-fold cross validation.
+
+As a last step, we are going to plot the <b>ROC curve</b> and calculate the <b>AUC</b> (area under the curve) which are typical performance measurements for a binary classifier.
+
+The ROC is a curve generated by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings while the AUC is the area under the ROC curve. 
+As a rule of thumb, a model with good predictive ability should have an AUC closer to 1 (1 is ideal) than to 0.5.
+
+<b>library(ROCR)
+p &lt;- predict(model, newdata=subset(test,select=c(2,3,4,5,6,7,8)), type="response")
+pr &lt;- prediction(p, test$Survived)
+prf &lt;- performance(pr, measure = "tpr", x.measure = "fpr")
+plot(prf)
+
+auc &lt;- performance(pr, measure = "auc")
+auc &lt;- [email&nbsp;protected][[1]]
+auc</b>
+
+0.8647186
+
+And here is the ROC plot:
+<img class="lazy" src="https://i0.wp.com/datascienceplus.com/wp-content/uploads/2015/09/Rplot011.png">
+
+<h3 id="LogisticRegressiontopic-8"><span class="orange">Generalized Linear Models</span></h3>
+The form of the glm function is
+glm(formula, family=familytype(link=linkfunction), data=)
+
+Family	Default Link Function
+binomial	(link = "logit")
+gaussian	(link = "identity")
+Gamma	(link = "inverse")
+inverse.gaussian	(link = "1/mu^2")
+poisson	(link = "log")
+quasi	(link = "identity", variance = "constant")
+quasibinomial	(link = "logit")
+quasipoisson	(link = "log")
+
+<h3 id="LogisticRegressiontopic-9"><span class="orange">Logistic Regression</span></h3>
+Logistic regression is useful when you are predicting a binary outcome from a set of continuous predictor variables.
+It is frequently preferred over discriminant function analysis because of its less restrictive assumptions.
+
+# Logistic Regression
+# where F is a binary factor and x1-x3 are continuous predictors
+
+<b>fit &lt;- glm(F~x1+x2+x3, data=mydata, family=binomial())
+summary(fit) # display results
+confint(fit) # 95% CI for the coefficients
+exp(coef(fit)) # exponentiated coefficients
+exp(confint(fit)) # 95% CI for exponentiated coefficients
+predict(fit, type="response") # predicted values
+residuals(fit, type="deviance") # residuals</b>
+
+<h3 id="LogisticRegressiontopic-10"><span class="orange">Poisson Regression</span></h3>
+Poisson regression is useful when predicting an outcome variable representing counts from a set of continuous predictor variables.
+
+# Poisson Regression
+# where count is a count and x1-x3 are continuous predictors
+
+<b>fit &lt;- glm(count ~ x1+x2+x3, data=mydata, family=poisson())
+summary(fit) display results</b>
+
+If you have overdispersion (see if residual deviance is much larger than degrees of freedom), you may want to use quasipoisson() instead of poisson().
+
+<h3 id="LogisticRegressiontopic-11"><span class="orange">Survival Analysis</span></h3>
+Survival analysis (also called event history analysis or reliability analysis) covers a set of techniques for modeling the time to an event.
+Data may be right censored - the event may not have occured by the end of the study or we may have incomplete information on an observation but know that up to a certain time the event had not occured (e.g. the participant dropped out of study in week 10 but was alive at that time).
+
+While generalized linear models are typically analyzed using the glm( ) function, survival analyis is typically carried out using functions from the survival package.
+The survival package can handle one and two sample problems, parametric accelerated failure models, and the Cox proportional hazards model.
+
+Data are typically entered in the format start time, stop time, and status (1=event occured, 0=event did not occur). Alternatively, the data may be in the format time to event and status (1=event occured, 0=event did not occur).
+A status=0 indicates that the observation is right cencored. Data are bundled into a Surv object via the Surv( ) function prior to further analyses.
+
+survfit( ) is used to estimate a survival distribution for one or more groups.
+survdiff( ) tests for differences in survival distributions between two or more groups.
+coxph( ) models the hazard function on a set of predictor variables.
+
+# Mayo Clinic Lung Cancer Data
+library(survival)
+
+# learn about the dataset
+help(lung)
+
+# create a Surv object
+<b>survobj &lt;- with(lung, Surv(time,status))</b>
+
+# Plot survival distribution of the total sample
+# Kaplan-Meier estimator
+<b>fit0 &lt;- survfit(survobj~1, data=lung)
+summary(fit0)
+plot(fit0, xlab="Survival Time in Days",
+   ylab="% Surviving", yscale=100,
+   main="Survival Distribution (Overall)")</b>
+
+# Compare the survival distributions of men and women
+<b>fit1 &lt;- survfit(survobj~sex,data=lung)</b>
+
+# plot the survival distributions by sex
+<b>plot(fit1, xlab="Survival Time in Days",
+  ylab="% Surviving", yscale=100, col=c("red","blue"),
+  main="Survival Distributions by Gender")
+  legend("topright", title="Gender", c("Male", "Female"),
+  fill=c("red", "blue"))</b>
+
+# test for difference between male and female
+# survival curves (logrank test)
+<b>survdiff(survobj~sex, data=lung)</b>
+
+# predict male survival from age and medical scores
+<b>MaleMod &lt;- coxph(survobj~age+ph.ecog+ph.karno+pat.karno,
+  data=lung, subset=sex==1)</b>
+
+# display results
+MaleMod
+
+# evaluate the proportional hazards assumption
+cox.zph(MaleMod)
 
 
 <script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
