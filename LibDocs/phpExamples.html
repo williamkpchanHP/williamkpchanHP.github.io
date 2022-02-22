@@ -4253,9 +4253,7 @@ $username= $_POST['username_entered'];
 $password1= $_POST['password_entered'];
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $username_table= mysql_query( "SELECT username FROM $table WHERE username= '$username'" ) or die("SELECT Error: ".mysql_error()); 
 $count= mysql_num_rows($username_table);
@@ -7652,8 +7650,7 @@ JSON Format with PHP</a>.
 Related Resources<a href="http://www.learningaboutelectronics.com/Articles/Zip-code-from-google-maps-API-using-PHP.php">How to Obtain the Zip Code from the Google Maps API Using PHP</a>
 
 <h2>Connect to a MySQL Database</h2>
-To connect to a database in MySQL from PHP, the following code to do so is:
-This is done by the <b>mysql_connect</b> function shown below:
+To connect to a database in MySQL from PHP, this is done by the <b>mysql_connect</b> function shown below:
 &lt;?php
 $servername="server_name";
 $username="user_name";
@@ -7675,8 +7672,7 @@ mysql_connect($servername, $username, $password);
 This line of code above connects to the MySQL server. This is how connection to the MySQL server is established. 
 <h3><u>How to Connect to a Database</u></h3>
 Once we connect to the desired MySQL server,
-we now can connect to the database in this server
-that we desire to connect to.
+we now can connect to the database in this server that we desire to connect to.
 We connect to the desired database in MySQL by adding the following line to the above code:
 <b>@mysql_select_db($database) or die("Unable to select database");</b>
 The <b>@mysql_select_db($database)</b> function selects the database that is desired
@@ -7690,8 +7686,7 @@ This is because PHP will only reach the <b>echo</b> function if there were no er
 <h2>Connect to a MySQL Database Using PHP Data Objects (PDO)</h2>
 In this article, we show how to connect to a MySQL database using PHP 
 Data Objects (PDO).
-PHP supports all the major relational databases used by large companies, including Oracle, IBM's
-DB2, and Microsoft's SQL server. It also serves open source databases, such as SQLite, 
+PHP supports all the major relational databases used by large companies, including Oracle, IBM's DB2, and Microsoft's SQL server. It also serves open source databases, such as SQLite, 
 PostgreSQL, and MySQL. 
 In this code, we specifically focus on how to connect to a MySQL database with PHP, specifically using PHP Data Objects (PDO). 
 PDO, PHP Data Objects extension, is a data-access abstraction layer. With PDO< you no longer need to use functions for specific databases. PDO is a consistent interface
@@ -7780,8 +7775,7 @@ if ($create)
 echo "Table created successfully";
 }
 else 
-{
-die ("Table unsuccessfully created");
+{ die ("Table unsuccessfully created");
 }
 ?>
 
@@ -7839,16 +7833,12 @@ $host = "host";
 $dbase = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($dbase, $connection);
 $delete= mysql_query("DROP TABLE customers");
 if($delete !== FALSE)
-{
-   echo("This table has been deleted.");
-}else{
-   echo("This table has not been deleted.");
+{ echo("This table has been deleted.");
+}else{ echo("This table has not been deleted.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -7871,7 +7861,8 @@ In this article, we show how to rename a MySQL table using PHP.
 We rename a table using PHP to write the MySQL query to rename the table.
 ALTER TABLE Java RENAME TO PHP;
 So the above is the MySQL code to rename a table named Java to PHP. 
-So the original name of the table is Java and we rename the table to PHP. The table will now be called PHP.
+So the original name of the table is Java and we rename the table to PHP.
+The table will now be called PHP.
 We'll now show how to tie this in completely with the full PHP code to rename a table.
 &lt;?php 
 $user = "user"; 
@@ -7880,24 +7871,20 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $rename= mysql_query("ALTER TABLE Java RENAME TO PHP");
 if($rename !== FALSE)
-{
-   echo("The table has been renamed.");
-}else{
-   echo("The table has not been renamed.");
+{ echo("The table has been renamed.");
+}else{ echo("The table has not been renamed.");
 }
 ?>
 So, first, we must connect to the database. 
-After we do this, we create a variable named $rename. This $rename variable is set equal to a mysql_query()
-function that has the parameter "ALTER TABLE Java RENAME TO PHP". This renames the existing table Java in our database to 
-PHP.
+After we do this, we create a variable named $rename.
+This $rename variable is set equal to a mysql_query() function that has the parameter "ALTER TABLE Java RENAME TO PHP".
+This renames the existing table Java in our database to PHP.
 If the table name is entered into a variable, instead of putting the table name directly into the DROP TABLE query statement, put the variable instead.
-nd this is all that is needed to rename a MySQL table using PHP.
+And this is all that is needed to rename a MySQL table using PHP.
 
 Related Resources<a href="http://www.learningaboutelectronics.com/Articles/How-to-create-a-MySQL-table-using-PHP.php">How to Create a MySQL Table Using PHP</a>
 <a href="http://www.learningaboutelectronics.com/Articles/How-to-select-a-table-from-a-MySQL-database-using-PHP.php">How to Select a Table from a MySQL Database</a><br><br> 
@@ -7919,7 +7906,9 @@ In this article, we show how to add a new column to a MySQL table using PHP.
 We add a new column to a MySQL table using PHP to write the MySQL query to add the column the table.
 ALTER TABLE customers ADD email VARCHAR(50) NOT NULL;
 So the above is the PHP code to add a column to a MySQL table at the end of table, meaning it will be the last column. 
-So a column named email is added to the last column of the table. So if the table had 2 columns named first name and last name. It will now contain first name, last name, and email, in that order.
+So a column named email is added to the last column of the table.
+So if the table had 2 columns named first name and last name.
+It will now contain first name, last name, and email, in that order.
 We'll now show how to tie this in completely with the full PHP code to add a column to a MySQL table. 
 &lt;?php 
 $user = "user"; 
@@ -7927,28 +7916,28 @@ $password = "password";
 $host = "host"; 
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
-if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+if (!$connection) { die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $added= mysql_query("ALTER TABLE customers ADD email VARCHAR(50) NOT NULL");
 if($added !== FALSE)
-{
-   echo("The column has been added.");
-}else{
-   echo("The column has not been added.");
+{ echo("The column has been added.");
+}else{ echo("The column has not been added.");
 }
 ?>
 So, first, we must connect to the database. 
-After we do this, we create a variable named $add. This $add variable is set equal to a mysql_query()
-function that has the parameter "ALTER TABLE customers ADD email VARCHAR(50) NOT NULL". This adds the column, email, to the customers table.
+After we do this, we create a variable named $add.
+This $add variable is set equal to a mysql_query()
+function that has the parameter "ALTER TABLE customers ADD email VARCHAR(50) NOT NULL".
+This adds the column, email, to the customers table.
 PHP.
-The email column is of type VARCHAR(50) NOT NULL. This makes it a variable string up to 50 characters in length. 
+The email column is of type VARCHAR(50) NOT NULL.
+This makes it a variable string up to 50 characters in length. 
 
 <h3>How to Add a Column After a Specified Column</h3>
-So the code above shows how to add a column to the end of a table. The column you add will be the last column of the table. 
-However, you may not want to add the column to the end of a table. You may want to add it after a specific column. 
+So the code above shows how to add a column to the end of a table.
+The column you add will be the last column of the table. 
+However, you may not want to add the column to the end of a table.
+You may want to add it after a specific column. 
 The MySQL query below is the general format to add a column after a specified column. 
 ALTER TABLE customers ADD email VARCHAR(50) NOT NULL AFTER firstname;
 So the code above adds a column named email of type VARCHAR(50) after the column firstname to the table customers. 
@@ -7960,16 +7949,12 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $added= mysql_query("ALTER TABLE customers ADD email VARCHAR(50) NOT NULL AFTER firstname");
 if($added !== FALSE)
-{
-   echo("The column has been added.");
-}else{
-   echo("The column has not been added.");
+{ echo("The column has been added.");
+}else{ echo("The column has not been added.");
 }
 ?>
 So the code above adds a column named email of type VARCHAR(50) after the column named firstname. 
@@ -7988,16 +7973,12 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $added= mysql_query("ALTER TABLE customers ADD ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;");
 if($added !== FALSE)
-{
-   echo("The column has been added.");
-}else{
-   echo("The column has not been added.");
+{ echo("The column has been added.");
+}else{ echo("The column has not been added.");
 }
 ?>
 So this code shows how to add a column to the beginning of a MySQL table using PHP.
@@ -8043,8 +8024,7 @@ if ($create)
 echo "Table created successfully";
 }
 else 
-{
-die ("Table unsuccessfully created");
+{ die ("Table unsuccessfully created");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8113,8 +8093,7 @@ if ($create)
 echo "Table created successfully";
 }
 else 
-{
-die ("Table unsuccessfully created");
+{ die ("Table unsuccessfully created");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8133,16 +8112,12 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $unique= mysql_query("ALTER TABLE customers MODIFY email VARCHAR(50) NOT NULL UNIQUE");
 if($unique !== FALSE)
-{
-   echo("The column has been made unique.");
-}else{
-   echo("The column has not been made unique.");
+{ echo("The column has been made unique.");
+}else{ echo("The column has not been made unique.");
 }
 ?>
 So the PHP code above makes the email column unique. 
@@ -8168,16 +8143,12 @@ $host = "DatabaseExamples.db.7475584.hostedresource.com";
 $database = "DatabaseExamples"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $renamecolumn= mysql_query("ALTER TABLE customers CHANGE emailaddress email VARCHAR(50) NOT NULL UNIQUE");
 if($renamecolumn !== FALSE)
-{
-   echo("The column has been renamed.");
-}else{
-   echo("The column has not been renamed.");
+{ echo("The column has been renamed.");
+}else{ echo("The column has not been renamed.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8210,16 +8181,12 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $deletecolumn= mysql_query("ALTER TABLE customers DROP email");
 if($deletecolumn !== FALSE)
-{
-   echo("The column has been deleted.");
-}else{
-   echo("The column has not been deleted.");
+{ echo("The column has been deleted.");
+}else{ echo("The column has not been deleted.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8259,16 +8226,12 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $setdefault= mysql_query("ALTER TABLE customers ALTER state SET DEFAULT 'NY'");
 if($setdefault !== FALSE)
-{
-   echo("The column now has a default value.");
-}else{
-   echo("The default value has not been set.");
+{ echo("The column now has a default value.");
+}else{ echo("The default value has not been set.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8304,16 +8267,12 @@ $host = "host";
 $database = "database"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $dropdefault= mysql_query("ALTER TABLE customers ALTER state DROP DEFAULT");
 if($dropdefault !== FALSE)
-{
-   echo("The default value has been dropped.");
-}else{
-   echo("The default value has not been dropped.");
+{ echo("The default value has been dropped.");
+}else{ echo("The default value has not been dropped.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8353,16 +8312,12 @@ $host = "host";
 $database = "dataabase"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $modifycolumn= mysql_query("ALTER TABLE customers MODIFY middlename CHAR(1) NOT NULL");
 if($modifycolumn !== FALSE)
-{
-   echo("The column has been renamed.");
-}else{
-   echo("The column has not been renamed.");
+{ echo("The column has been renamed.");
+}else{ echo("The column has not been renamed.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8394,9 +8349,7 @@ $database= "database_name";
 $table= "table_name";
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 mysql_query("INSERT INTO $table (column1_name, column2_name, column3_name)
 VALUES ('Value1', 'Value2', 'Value3')");
@@ -8420,16 +8373,12 @@ $host = "host";
 $database= "database";
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $deleterow= mysql_query("DELETE FROM Users_table WHERE name='Michelle'");
 if($deleterow !== FALSE)
-{
-   echo("The row has been deleted.");
-}else{
-   echo("The row has not been deleted.");
+{ echo("The row has been deleted.");
+}else{ echo("The row has not been deleted.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8459,18 +8408,14 @@ $host = "host";
 $database= "database";
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $truncatetable= mysql_query("TRUNCATE TABLE table_name");
 if($truncatetable !== FALSE)
-{
-   echo("All rows have been deleted.");
+{ echo("All rows have been deleted.");
 }
 else
-{
-   echo("No rows have been deleted.");
+{ echo("No rows have been deleted.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8528,9 +8473,7 @@ $country= $_POST['country_entered'];
 //Block 3
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 //Block 4
 mysql_query("INSERT INTO $table (column1, column2, column3)
@@ -8610,16 +8553,12 @@ $host = "host";
 $database= "database";
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $update= mysql_query("UPDATE Users_Table SET state='FL' WHERE name='John'");
 if($update !== FALSE)
-{
-   echo("The column has been deleted.");
-}else{
-   echo("The column has not been deleted.");
+{ echo("The column has been deleted.");
+}else{ echo("The column has not been deleted.");
 }
 ?>
 So, first, we must connect to the database. 
@@ -8662,9 +8601,7 @@ $host = "host";
 $database= "database";
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($database, $connection);
 $copytabledefinition= "CREATE TABLE table2 AS SELECT * FROM table1 WHERE 1=0";
 $create= mysql_query($copytabledefinition, $connection);
@@ -8710,9 +8647,7 @@ $password = "password";
 $host = "host"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 $result= mysql_query("SHOW GRANTS FOR username");
 while($row=mysql_fetch_array($result)){
 echo $row[0];
@@ -9010,9 +8945,7 @@ $table = "table";
 //Block 3
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($dbase, $connection);
 //Block 4
 if((!empty($description)) && ($success == 1)){
@@ -9175,9 +9108,7 @@ $dbase = "database";
 $table = "table"; 
 $connection= mysql_connect ($host, $user, $password);
 if (!$connection)
-{
-die ('Could not connect:' . mysql_error());
-}
+{ die ('Could not connect:' . mysql_error()); }
 mysql_select_db($dbase, $connection);
 if(!empty($description)){
 mysql_query("INSERT INTO $table (description, filename)

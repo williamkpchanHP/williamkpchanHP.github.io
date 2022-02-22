@@ -1,0 +1,3710 @@
+<base target="_blank">
+<html>
+<head>
+<title>Active Activity Log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@13.0.1/dist/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/showChartSeries.js"></script>
+<script src="https://williamkpchan.github.io/sorttable.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('h1, h2, h3, h4, h5, .goldword, strong,  .pages').click(function(){
+    parent.history.back();
+    return false;
+    });
+});
+</script>
+<style>
+thead{  position: sticky; top: 0; }
+
+k{color:#908050;}
+a{color:#808060;}
+a:hover{transition-property: none; background-color:black;border-radius: none;border: none;box-shadow: none; color:#008080;}
+a:visited{color:#454;}
+body{width:94%;margin-left: 3%; font-size:16px; color:#808060;}
+.pages, strong, h1, h2 {color: gold; margin-top: 10px;}
+img {margin-top: 2%;margin-bottom: 1%; border-radius:3px;}
+#toc a{color:gray; max-width:110%;}
+span{color: cyan;}
+pre{color:#f80;}
+table{font-size:16px;}
+</style>
+</head>
+<body onkeypress="chkKey()">
+<center>
+<div id="toc"></div></center>
+<pre id="startpt">
+<h2> 20大活躍股 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th ><U+00A0></th>
+				<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change1','ASC')" ><a href="javascript:sortTbl('Change1','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>			</tr>
+<tr >
+<td >1</td>
+<td ><k>07500</k></td>
+<td >ＦＩ二南方恒指</td>
+<td >5.535</td>
+<td >0.335</td>
+<td >6.4</td>
+<td >7.86千萬</td>
+<td >4.29億</td>
+<td >31.37億</td>
+</tr>
+<tr >
+<td >2</td>
+<td ><k>00990</k></td>
+<td >榮暉國際</td>
+<td >0.980</td>
+<td >0.060</td>
+<td >6.5</td>
+<td >1.64千萬</td>
+<td >1.54千萬</td>
+<td >123.94億</td>
+</tr>
+<tr >
+<td >3</td>
+<td  title="中達集團控(<k>00139</k>)"><k>00139</k></td>
+<td  title="中達集團控(<k>00139</k>)">中達集團控</td>
+<td >0.024</td>
+<td >0.002</td>
+<td >9.1</td>
+<td >4.48億</td>
+<td >1.00千萬</td>
+<td >3.51億</td>
+</tr>
+<tr >
+<td >4</td>
+<td ><k>01269</k></td>
+<td >首控集團</td>
+<td >0.285</td>
+<td >0.041</td>
+<td >16.8</td>
+<td >1.22千萬</td>
+<td >3.57百萬</td>
+<td >3.28億</td>
+</tr>
+<tr >
+<td >5</td>
+<td ><k>09933</k></td>
+<td >GHW Intl</td>
+<td >0.490</td>
+<td >0.040</td>
+<td >8.9</td>
+<td >1.85百萬</td>
+<td >87.34萬</td>
+<td >4.50億</td>
+</tr>
+<tr >
+<td >6</td>
+<td  title="粵港灣控(<k>01396</k>)"><k>01396</k></td>
+<td  title="粵港灣控(<k>01396</k>)">粵港灣控</td>
+<td >0.360</td>
+<td >0.030</td>
+<td >9.1</td>
+<td >1.20百萬</td>
+<td >40.41萬</td>
+<td >14.97億</td>
+</tr>
+<tr >
+<td >7</td>
+<td  title="東方支付集團控(<k>08613</k>)"><k>08613</k></td>
+<td  title="東方支付集團控(<k>08613</k>)">東方支付集團控</td>
+<td >0.179</td>
+<td >0.011</td>
+<td >6.6</td>
+<td >2.34百萬</td>
+<td >40.00萬</td>
+<td >1.68億</td>
+</tr>
+<tr >
+<td >8</td>
+<td ><k>00380</k></td>
+<td >中國管業</td>
+<td >0.146</td>
+<td >0.030</td>
+<td >25.9</td>
+<td >1.49百萬</td>
+<td >20.81萬</td>
+<td >1.55億</td>
+</tr>
+<tr >
+<td >9</td>
+<td ><k>08160</k></td>
+<td >金匯教育</td>
+<td >0.079</td>
+<td >0.005</td>
+<td >6.8</td>
+<td >2.58百萬</td>
+<td >20.38萬</td>
+<td >3.87千萬</td>
+</tr>
+<tr >
+<td >10</td>
+<td  title="創建集團控(<k>01609</k>)"><k>01609</k></td>
+<td  title="創建集團控(<k>01609</k>)">創建集團控</td>
+<td >0.550</td>
+<td >0.060</td>
+<td >12.2</td>
+<td >34.20萬</td>
+<td >17.36萬</td>
+<td >5.37億</td>
+</tr>
+<tr >
+<td >11</td>
+<td  title="星凱控(<k>01166</k>)"><k>01166</k></td>
+<td  title="星凱控(<k>01166</k>)">星凱控</td>
+<td >0.058</td>
+<td >0.004</td>
+<td >7.4</td>
+<td >1.50百萬</td>
+<td >8.28萬</td>
+<td >1.28億</td>
+</tr>
+<tr >
+<td >12</td>
+<td ><k>00690</k></td>
+<td >聯康生物科技集團</td>
+<td >0.097</td>
+<td >0.006</td>
+<td >6.6</td>
+<td >62.00萬</td>
+<td >5.99萬</td>
+<td >5.78億</td>
+</tr>
+<tr >
+<td >13</td>
+<td ><k>08056</k></td>
+<td >生活概念</td>
+<td >0.167</td>
+<td >0.034</td>
+<td >25.6</td>
+<td >20.00萬</td>
+<td >3.36萬</td>
+<td >1.08億</td>
+</tr>
+<tr >
+<td >14</td>
+<td ><k>00529</k></td>
+<td >新龍國際集團</td>
+<td >2.200</td>
+<td >0.400</td>
+<td >22.2</td>
+<td >1.40萬</td>
+<td >2.98萬</td>
+<td >5.00億</td>
+</tr>
+<tr >
+<td >15</td>
+<td ><k>01026</k></td>
+<td >環球實業科技</td>
+<td >0.158</td>
+<td >0.011</td>
+<td >7.5</td>
+<td >6.00萬</td>
+<td >9350</td>
+<td >8.10億</td>
+</tr>
+<tr >
+<td >16</td>
+<td ><k>03978</k></td>
+<td >卓越教育集團</td>
+<td >0.290</td>
+<td >0.020</td>
+<td >7.4</td>
+<td >9000</td>
+<td >2555</td>
+<td >2.29億</td>
+</tr>
+<tr >
+<td >17</td>
+<td ><k>08271</k></td>
+<td >環球數碼創意</td>
+<td >0.108</td>
+<td >0.010</td>
+<td >10.2</td>
+<td >2.40萬</td>
+<td >2472</td>
+<td >1.48億</td>
+</tr>
+<tr >
+<td >18</td>
+<td ><k>08280</k></td>
+<td >中國數字視頻</td>
+<td >0.112</td>
+<td >0.011</td>
+<td >10.9</td>
+<td >2.00萬</td>
+<td >2240</td>
+<td >6.37千萬</td>
+</tr>
+<tr >
+<td >19</td>
+<td  title="千盛集團控(<k>08475</k>)"><k>08475</k></td>
+<td  title="千盛集團控(<k>08475</k>)">千盛集團控</td>
+<td >0.097</td>
+<td >0.008</td>
+<td >9.0</td>
+<td >2.00萬</td>
+<td >1920</td>
+<td >3.92千萬</td>
+</tr>
+<tr >
+<td >20</td>
+<td ><k>00833</k></td>
+<td >華訊</td>
+<td >0.335</td>
+<td >0.025</td>
+<td >8.1</td>
+<td >4000</td>
+<td >1290</td>
+<td >2.93億</td>
+</tr>
+</table><h2> 20大跌幅 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th ><U+00A0></th>
+				<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change1','ASC')" ><a href="javascript:sortTbl('Change1','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>			</tr>
+<tr >
+<td >1</td>
+<td ><k>01600</k></td>
+<td >天倫燃氣</td>
+<td >7.210</td>
+<td >-2.420</td>
+<td >-25.1</td>
+<td >6.73千萬</td>
+<td >5.49億</td>
+<td >92.45億</td>
+</tr>
+<tr >
+<td >2</td>
+<td ><k>00486</k></td>
+<td >俄鋁</td>
+<td >6.480</td>
+<td >-1.450</td>
+<td >-18.3</td>
+<td >7.97百萬</td>
+<td >5.20千萬</td>
+<td >1,204.81億</td>
+</tr>
+<tr >
+<td >3</td>
+<td ><k>02258</k></td>
+<td >華滋國際海洋</td>
+<td >0.330</td>
+<td >-0.070</td>
+<td >-17.5</td>
+<td >8.00萬</td>
+<td >2.67萬</td>
+<td >3.30億</td>
+</tr>
+<tr >
+<td >4</td>
+<td ><k>00620</k></td>
+<td >大唐西市</td>
+<td >1.950</td>
+<td >-0.400</td>
+<td >-17.0</td>
+<td >55.16萬</td>
+<td >1.08百萬</td>
+<td >15.69億</td>
+</tr>
+<tr >
+<td >5</td>
+<td ><k>08619</k></td>
+<td >WAC Holdings</td>
+<td >0.104</td>
+<td >-0.018</td>
+<td >-14.8</td>
+<td >1.67百萬</td>
+<td >17.92萬</td>
+<td >1.41億</td>
+</tr>
+<tr >
+<td >6</td>
+<td ><k>08128</k></td>
+<td >中國地熱能</td>
+<td >0.082</td>
+<td >-0.014</td>
+<td >-14.6</td>
+<td >64.80萬</td>
+<td >5.57萬</td>
+<td >4.35億</td>
+</tr>
+<tr >
+<td >7</td>
+<td ><k>00936</k></td>
+<td >佳兆業資本</td>
+<td >0.300</td>
+<td >-0.050</td>
+<td >-14.3</td>
+<td >2.00萬</td>
+<td >6000</td>
+<td >3.71億</td>
+</tr>
+<tr >
+<td >8</td>
+<td ><k>08222</k></td>
+<td >壹照明集團</td>
+<td >0.045</td>
+<td >-0.007</td>
+<td >-13.5</td>
+<td >4000</td>
+<td >180</td>
+<td >2.35千萬</td>
+</tr>
+<tr >
+<td >9</td>
+<td  title="盛源控(<k>00851</k>)"><k>00851</k></td>
+<td  title="盛源控(<k>00851</k>)">盛源控</td>
+<td >0.041</td>
+<td >-0.006</td>
+<td >-12.8</td>
+<td >0</td>
+<td >0</td>
+<td >1.80億</td>
+</tr>
+<tr >
+<td >10</td>
+<td ><k>00673</k></td>
+<td >中國衛生集團</td>
+<td >0.049</td>
+<td >-0.007</td>
+<td >-12.5</td>
+<td >28.80萬</td>
+<td >1.41萬</td>
+<td >2.46億</td>
+</tr>
+<tr >
+<td >11</td>
+<td ><k>00515</k></td>
+<td >中華銀科技</td>
+<td >0.044</td>
+<td >-0.006</td>
+<td >-12.0</td>
+<td >1.03千萬</td>
+<td >46.81萬</td>
+<td >1.39億</td>
+</tr>
+<tr >
+<td >12</td>
+<td ><k>00077</k></td>
+<td >進智公共交通</td>
+<td >0.650</td>
+<td >-0.080</td>
+<td >-11.0</td>
+<td >3.60萬</td>
+<td >2.37萬</td>
+<td >1.98億</td>
+</tr>
+<tr >
+<td >13</td>
+<td ><k>02688</k></td>
+<td >新奧能源</td>
+<td >109.100</td>
+<td >-13.400</td>
+<td >-10.9</td>
+<td >1.25百萬</td>
+<td >1.42億</td>
+<td >1,384.43億</td>
+</tr>
+<tr >
+<td >14</td>
+<td ><k>00886</k></td>
+<td >銀基集團</td>
+<td >0.041</td>
+<td >-0.005</td>
+<td >-10.9</td>
+<td >2.54百萬</td>
+<td >10.18萬</td>
+<td >1.04億</td>
+</tr>
+<tr >
+<td >15</td>
+<td ><k>01889</k></td>
+<td >三愛健康集團</td>
+<td >0.074</td>
+<td >-0.009</td>
+<td >-10.8</td>
+<td >61.25萬</td>
+<td >4.74萬</td>
+<td >2.55億</td>
+</tr>
+<tr >
+<td >16</td>
+<td ><k>02500</k></td>
+<td >啟明醫療－Ｂ</td>
+<td >20.600</td>
+<td >-2.500</td>
+<td >-10.8</td>
+<td >3.28百萬</td>
+<td >6.71千萬</td>
+<td >101.87億</td>
+</tr>
+<tr >
+<td >17</td>
+<td ><k>01683</k></td>
+<td >曠逸國際</td>
+<td >0.170</td>
+<td >-0.020</td>
+<td >-10.5</td>
+<td >41.20萬</td>
+<td >7.01萬</td>
+<td >1.37億</td>
+</tr>
+<tr >
+<td >18</td>
+<td ><k>06128</k></td>
+<td >烯石電車新材料</td>
+<td >1.190</td>
+<td >-0.140</td>
+<td >-10.5</td>
+<td >1.69百萬</td>
+<td >2.09百萬</td>
+<td >6.80億</td>
+</tr>
+<tr >
+<td >19</td>
+<td ><k>09996</k></td>
+<td >沛嘉醫療－Ｂ</td>
+<td >11.160</td>
+<td >-1.280</td>
+<td >-10.3</td>
+<td >59.00萬</td>
+<td >6.67百萬</td>
+<td >84.16億</td>
+</tr>
+<tr >
+<td >20</td>
+<td ><k>01395</k></td>
+<td >強泰環保</td>
+<td >0.151</td>
+<td >-0.017</td>
+<td >-10.1</td>
+<td >10.00萬</td>
+<td >1.52萬</td>
+<td >1.86億</td>
+</tr>
+</table><h2> 行业表现 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" ><tbody>
+<tr>
+<th >指數</th>
+					<th >最新指數</th>
+					<th >升跌率<br>(%)
+</th>
+					<th >上升份</th>
+					<th >份總數</th>
+					<th >上升份<br>比率(%)
+</th>
+					<th >大市成交額</th>
+					<th ><U+00A0></th>
+				</tr>
+<tr>
+<td >恒生指數</td>
+					<td ><k>23444</k>.15</td>
+										<td >-3.0</td>
+					<td >202</td>
+					<td >2,474</td>
+					<td >8.2</td>
+					<td >817.60億</td>
+					<td ><U+00A0></td>
+				</tr>
+</tbody></table> <table class=sortable border="0" cellspacing="0" cellpadding="0" ><tbody>
+<tr>
+<th >行業</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >上升份</th>
+				<th >份總數</th>
+				<th >上升份<br>比率(%)
+</th>
+				<th >成交額</th>
+				<th >佔大市<br>成交額<br>比率(%)
+</th>
+			</tr>
+<tr >
+<td >石油化工</td>
+<td >-0.3</td>
+<td >9</td>
+<td >66</td>
+<td >13.64</td>
+<td >16.38億</td>
+<td >2.00</td>
+</tr>
+<tr >
+<td >其他</td>
+<td >-1.1</td>
+<td >37</td>
+<td >299</td>
+<td >12.37</td>
+<td >86.10億</td>
+<td >10.53</td>
+</tr>
+<tr >
+<td >地產</td>
+<td >-1.9</td>
+<td >28</td>
+<td >300</td>
+<td >9.33</td>
+<td >31.29億</td>
+<td >3.83</td>
+</tr>
+<tr >
+<td >建築及建築材料</td>
+<td >-1.9</td>
+<td >15</td>
+<td >175</td>
+<td >8.57</td>
+<td >4.42億</td>
+<td >0.54</td>
+</tr>
+<tr >
+<td >基建</td>
+<td >-2.0</td>
+<td >0</td>
+<td >18</td>
+<td >0.00</td>
+<td >1.41億</td>
+<td >0.17</td>
+</tr>
+<tr >
+<td >食品/飲料製造</td>
+<td >-2.2</td>
+<td >2</td>
+<td >88</td>
+<td >2.27</td>
+<td >15.22億</td>
+<td >1.86</td>
+</tr>
+<tr >
+<td >航空</td>
+<td >-2.3</td>
+<td >0</td>
+<td >10</td>
+<td >0.00</td>
+<td >1.60億</td>
+<td >0.20</td>
+</tr>
+<tr >
+<td >影視/傳媒</td>
+<td >-2.4</td>
+<td >4</td>
+<td >61</td>
+<td >6.56</td>
+<td >9.79千萬</td>
+<td >0.12</td>
+</tr>
+<tr >
+<td >綜合企業</td>
+<td >-2.6</td>
+<td >0</td>
+<td >22</td>
+<td >0.00</td>
+<td >2.86億</td>
+<td >0.35</td>
+</tr>
+<tr >
+<td >零售/貿易</td>
+<td >-2.8</td>
+<td >6</td>
+<td >93</td>
+<td >6.45</td>
+<td >2.08億</td>
+<td >0.25</td>
+</tr>
+<tr >
+<td >科技</td>
+<td >-2.9</td>
+<td >18</td>
+<td >189</td>
+<td >9.52</td>
+<td >250.09億</td>
+<td >30.59</td>
+</tr>
+<tr >
+<td >銀行</td>
+<td >-2.9</td>
+<td >2</td>
+<td >40</td>
+<td >5.00</td>
+<td >41.36億</td>
+<td >5.06</td>
+</tr>
+<tr >
+<td >飲食/酒店/旅遊</td>
+<td >-3.0</td>
+<td >9</td>
+<td >89</td>
+<td >10.11</td>
+<td >11.19億</td>
+<td >1.37</td>
+</tr>
+<tr >
+<td >電子</td>
+<td >-3.1</td>
+<td >6</td>
+<td >69</td>
+<td >8.70</td>
+<td >2.65億</td>
+<td >0.32</td>
+</tr>
+<tr >
+<td >保健/生物科技</td>
+<td >-3.2</td>
+<td >16</td>
+<td >199</td>
+<td >8.04</td>
+<td >30.97億</td>
+<td >3.79</td>
+</tr>
+<tr >
+<td >物流運輸</td>
+<td >-3.3</td>
+<td >1</td>
+<td >54</td>
+<td >1.85</td>
+<td >8.45億</td>
+<td >1.03</td>
+</tr>
+<tr >
+<td >公用事業</td>
+<td >-3.4</td>
+<td >4</td>
+<td >73</td>
+<td >5.48</td>
+<td >27.99億</td>
+<td >3.42</td>
+</tr>
+<tr >
+<td >金融證券</td>
+<td >-3.4</td>
+<td >12</td>
+<td >169</td>
+<td >7.10</td>
+<td >49.18億</td>
+<td >6.02</td>
+</tr>
+<tr >
+<td >紡織/服飾製造</td>
+<td >-3.6</td>
+<td >8</td>
+<td >95</td>
+<td >8.42</td>
+<td >8.95億</td>
+<td >1.09</td>
+</tr>
+<tr >
+<td >工業</td>
+<td >-4.0</td>
+<td >15</td>
+<td >269</td>
+<td >5.58</td>
+<td >48.50億</td>
+<td >5.93</td>
+</tr>
+<tr >
+<td >金屬/採礦</td>
+<td >-4.3</td>
+<td >10</td>
+<td >96</td>
+<td >10.42</td>
+<td >19.57億</td>
+<td >2.39</td>
+</tr>
+</tbody></table><h2> 异动股 </h2></pre>
+<table class=sortable id="mwtbl" border="0" cellspacing="0" cellpadding="0" ><tbody>
+<tr>
+<th >代號</th>
+  <th >名稱</th>
+  <th >現價</th>
+  <th >升跌</th>
+  <th >升跌率<br>(%)
+</th>
+  <th >市盈率<br>(%)
+</th>
+  <th >成交量</th>
+  <th >成交額</th>
+</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PERatio','ASC')" ><a href="javascript:sortTbl('PERatio','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>07500</k></td>
+<td >ＦＩ二南方恒指</td>
+<td >5.540</td>
+<td >0.340</td>
+<td >6.5</td>
+<td >0.000</td>
+<td >7.83千萬</td>
+<td >4.28億</td>
+</tr>
+<tr >
+<td ><k>07568</k></td>
+<td >ＦＩ二南方納指</td>
+<td >1.510</td>
+<td >0.088</td>
+<td >6.2</td>
+<td >0.000</td>
+<td >6.28千萬</td>
+<td >9.47千萬</td>
+</tr>
+<tr >
+<td ><k>07300</k></td>
+<td >ＦＩ南方恒指</td>
+<td >5.175</td>
+<td >0.165</td>
+<td >3.3</td>
+<td >0.000</td>
+<td >3.29百萬</td>
+<td >1.69千萬</td>
+</tr>
+<tr >
+<td ><k>03175</k></td>
+<td >Ｆ三星原油期</td>
+<td >6.460</td>
+<td >0.225</td>
+<td >3.6</td>
+<td >0.000</td>
+<td >2.37百萬</td>
+<td >1.53千萬</td>
+</tr>
+<tr >
+<td ><k>07522</k></td>
+<td >ＦＩ二華夏納一百</td>
+<td >2.202</td>
+<td >0.122</td>
+<td >5.9</td>
+<td >0.000</td>
+<td >5.44百萬</td>
+<td >1.20千萬</td>
+</tr>
+<tr >
+<td ><k>01269</k></td>
+<td >首控集團</td>
+<td >0.285</td>
+<td >0.041</td>
+<td >16.8</td>
+<td >0.000</td>
+<td >1.22千萬</td>
+<td >3.57百萬</td>
+</tr>
+<tr >
+<td ><k>03097</k></td>
+<td >ＦＧＸ原油</td>
+<td >5.325</td>
+<td >0.170</td>
+<td >3.3</td>
+<td >0.000</td>
+<td >36.65萬</td>
+<td >1.97百萬</td>
+</tr>
+<tr >
+<td ><k>07333</k></td>
+<td >ＸＩ南方滬深三百</td>
+<td >7.400</td>
+<td >0.125</td>
+<td >1.7</td>
+<td >0.000</td>
+<td >26.23萬</td>
+<td >1.94百萬</td>
+</tr>
+<tr >
+<td ><k>07588</k></td>
+<td >ＦＩ二南方國指</td>
+<td >5.655</td>
+<td >0.325</td>
+<td >6.1</td>
+<td >0.000</td>
+<td >26.43萬</td>
+<td >1.48百萬</td>
+</tr>
+<tr >
+<td ><k>00196</k></td>
+<td >宏華集團</td>
+<td >0.265</td>
+<td >0.010</td>
+<td >3.9</td>
+<td >22.973</td>
+<td >3.12百萬</td>
+<td >81.45萬</td>
+</tr>
+<tr >
+<td ><k>07322</k></td>
+<td >ＸＩＧＸ標普</td>
+<td >6.380</td>
+<td >0.150</td>
+<td >2.4</td>
+<td >0.000</td>
+<td >12.23萬</td>
+<td >78.13萬</td>
+</tr>
+<tr >
+<td  title="粵港灣控(1396)"><k>01396</k></td>
+<td  title="粵港灣控(1396)">粵港灣控</td>
+<td >0.360</td>
+<td >0.030</td>
+<td >9.1</td>
+<td >3.310</td>
+<td >1.20百萬</td>
+<td >40.41萬</td>
+</tr>
+<tr >
+<td ><k>07331</k></td>
+<td >ＦＩ華夏納一百</td>
+<td >4.000</td>
+<td >0.112</td>
+<td >2.9</td>
+<td >0.000</td>
+<td >7.39萬</td>
+<td >29.58萬</td>
+</tr>
+<tr >
+<td ><k>00380</k></td>
+<td >中國管業</td>
+<td >0.146</td>
+<td >0.030</td>
+<td >25.9</td>
+<td >7.682</td>
+<td >1.49百萬</td>
+<td >20.81萬</td>
+</tr>
+<tr >
+<td  title="恒達集團控(3616)"><k>03616</k></td>
+<td  title="恒達集團控(3616)">恒達集團控</td>
+<td >1.030</td>
+<td >0.050</td>
+<td >5.1</td>
+<td >3.489</td>
+<td >15.20萬</td>
+<td >15.37萬</td>
+</tr>
+<tr >
+<td ><k>01408</k></td>
+<td >濠江機電</td>
+<td >0.250</td>
+<td >0.015</td>
+<td >6.4</td>
+<td >3.891</td>
+<td >37.20萬</td>
+<td >9.84萬</td>
+</tr>
+<tr >
+<td ><k>07336</k></td>
+<td >ＦＩＧＸ恒指</td>
+<td >5.215</td>
+<td >0.165</td>
+<td >3.3</td>
+<td >0.000</td>
+<td >1.27萬</td>
+<td >6.61萬</td>
+</tr>
+<tr >
+<td  title="佳明集團控(1271)"><k>01271</k></td>
+<td  title="佳明集團控(1271)">佳明集團控</td>
+<td >7.900</td>
+<td >0.080</td>
+<td >1.0</td>
+<td >74.476</td>
+<td >8000</td>
+<td >6.32萬</td>
+</tr>
+<tr >
+<td ><k>07348</k></td>
+<td >ＸＩ南方Ａ５０</td>
+<td >8.755</td>
+<td >0.190</td>
+<td >2.2</td>
+<td >0.000</td>
+<td >6900</td>
+<td >6.04萬</td>
+</tr>
+<tr >
+<td ><k>08401</k></td>
+<td >源想集團</td>
+<td >0.460</td>
+<td >0.015</td>
+<td >3.4</td>
+<td >0.000</td>
+<td >8.80萬</td>
+<td >4.05萬</td>
+</tr>
+<tr >
+<td ><k>00183</k></td>
+<td >宏輝集團</td>
+<td >0.335</td>
+<td >0.010</td>
+<td >3.1</td>
+<td >5.031</td>
+<td >1.60萬</td>
+<td >5360</td>
+</tr>
+<tr >
+<td ><k>08271</k></td>
+<td >環球數碼創意</td>
+<td >0.108</td>
+<td >0.010</td>
+<td >10.2</td>
+<td >20.000</td>
+<td >2.40萬</td>
+<td >2472</td>
+</tr>
+<tr >
+<td  title="千盛集團控(8475)"><k>08475</k></td>
+<td  title="千盛集團控(8475)">千盛集團控</td>
+<td >0.097</td>
+<td >0.008</td>
+<td >9.0</td>
+<td >0.000</td>
+<td >2.00萬</td>
+<td >1920</td>
+</tr>
+<tr >
+<td ><k>00169</k></td>
+<td >萬達酒店發展</td>
+<td >0.310</td>
+<td >0.015</td>
+<td >5.1</td>
+<td >8.381</td>
+<td >6000</td>
+<td >1860</td>
+</tr>
+<tr >
+<td ><k>00833</k></td>
+<td >華訊</td>
+<td >0.335</td>
+<td >0.025</td>
+<td >8.1</td>
+<td >2.396</td>
+<td >3000</td>
+<td >955</td>
+</tr>
+</tbody></table><h2> 內銀 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00416</k></td>
+<td >錦州銀行</td>
+<td >1.550</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >54.52億</td>
+</tr>
+<tr >
+<td ><k>00939</k></td>
+<td >建設銀行</td>
+<td >5.900</td>
+<td >-0.150</td>
+<td >-2.5</td>
+<td >1.06億</td>
+<td >6.33億</td>
+<td >14,545.25億</td>
+</tr>
+<tr >
+<td ><k>00998</k></td>
+<td >中信銀行</td>
+<td >3.770</td>
+<td >-0.080</td>
+<td >-2.1</td>
+<td >1.57千萬</td>
+<td >5.96千萬</td>
+<td >572.96億</td>
+</tr>
+<tr >
+<td ><k>01288</k></td>
+<td >農業銀行</td>
+<td >3.010</td>
+<td >-0.070</td>
+<td >-2.3</td>
+<td >5.05千萬</td>
+<td >1.53億</td>
+<td >946.76億</td>
+</tr>
+<tr >
+<td ><k>01398</k></td>
+<td >工商銀行</td>
+<td >4.730</td>
+<td >-0.100</td>
+<td >-2.1</td>
+<td >7.15千萬</td>
+<td >3.41億</td>
+<td >4,192.15億</td>
+</tr>
+<tr >
+<td ><k>01988</k></td>
+<td >民生銀行</td>
+<td >3.120</td>
+<td >-0.040</td>
+<td >-1.3</td>
+<td >1.14千萬</td>
+<td >3.56千萬</td>
+<td >262.92億</td>
+</tr>
+<tr >
+<td ><k>02016</k></td>
+<td >浙商銀行</td>
+<td >3.160</td>
+<td >-0.020</td>
+<td >-0.6</td>
+<td >4.60萬</td>
+<td >14.59萬</td>
+<td >144.82億</td>
+</tr>
+<tr >
+<td ><k>02066</k></td>
+<td >盛京銀行</td>
+<td >6.350</td>
+<td >-0.400</td>
+<td >-5.9</td>
+<td >20.40萬</td>
+<td >1.29百萬</td>
+<td >158.00億</td>
+</tr>
+<tr >
+<td ><k>03328</k></td>
+<td >交通銀行</td>
+<td >5.440</td>
+<td >-0.110</td>
+<td >-2.0</td>
+<td >1.14千萬</td>
+<td >6.27千萬</td>
+<td >1,943.16億</td>
+</tr>
+<tr >
+<td ><k>03618</k></td>
+<td >重慶農村商業銀行</td>
+<td >2.950</td>
+<td >-0.040</td>
+<td >-1.3</td>
+<td >7.72百萬</td>
+<td >2.29千萬</td>
+<td >75.15億</td>
+</tr>
+<tr >
+<td ><k>03698</k></td>
+<td >徽商銀行</td>
+<td >2.560</td>
+<td >-0.010</td>
+<td >-0.4</td>
+<td >2.40萬</td>
+<td >6.14萬</td>
+<td >89.40億</td>
+</tr>
+<tr >
+<td ><k>03866</k></td>
+<td >青島銀行</td>
+<td >3.950</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >90.53億</td>
+</tr>
+<tr >
+<td ><k>03968</k></td>
+<td >招商銀行</td>
+<td >67.650</td>
+<td >-1.850</td>
+<td >-2.7</td>
+<td >5.61百萬</td>
+<td >3.82億</td>
+<td >3,190.68億</td>
+</tr>
+<tr >
+<td ><k>03988</k></td>
+<td >中國銀行</td>
+<td >3.100</td>
+<td >-0.060</td>
+<td >-1.9</td>
+<td >1.53億</td>
+<td >4.76億</td>
+<td >2,642.46億</td>
+</tr>
+<tr >
+<td ><k>06138</k></td>
+<td >哈爾濱銀行</td>
+<td >0.780</td>
+<td >-0.010</td>
+<td >-1.3</td>
+<td >9.80萬</td>
+<td >7.64萬</td>
+<td >23.89億</td>
+</tr>
+<tr >
+<td ><k>06196</k></td>
+<td >鄭州銀行</td>
+<td >1.730</td>
+<td >-0.020</td>
+<td >-1.1</td>
+<td >26.70萬</td>
+<td >46.27萬</td>
+<td >32.14億</td>
+</tr>
+</table><h2> 保險 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00966</k></td>
+<td >中國太平</td>
+<td >9.830</td>
+<td >-0.190</td>
+<td >-1.9</td>
+<td >4.56百萬</td>
+<td >4.50千萬</td>
+<td >360.12億</td>
+</tr>
+<tr >
+<td ><k>01336</k></td>
+<td >新華人壽保險</td>
+<td >23.200</td>
+<td >-0.500</td>
+<td >-2.1</td>
+<td >1.50百萬</td>
+<td >3.49千萬</td>
+<td >245.08億</td>
+</tr>
+<tr >
+<td ><k>01339</k></td>
+<td >中國人民保險集團</td>
+<td >2.560</td>
+<td >-0.050</td>
+<td >-1.9</td>
+<td >1.02千萬</td>
+<td >2.63千萬</td>
+<td >227.75億</td>
+</tr>
+<tr >
+<td ><k>01508</k></td>
+<td >中國再保險</td>
+<td >0.780</td>
+<td >-0.010</td>
+<td >-1.3</td>
+<td >9.59百萬</td>
+<td >7.48百萬</td>
+<td >52.77億</td>
+</tr>
+<tr >
+<td ><k>02318</k></td>
+<td >中國平安</td>
+<td >64.300</td>
+<td >-2.900</td>
+<td >-4.3</td>
+<td >1.39千萬</td>
+<td >9.04億</td>
+<td >5,004.77億</td>
+</tr>
+<tr >
+<td ><k>02328</k></td>
+<td >中國財險</td>
+<td >8.300</td>
+<td >-0.230</td>
+<td >-2.7</td>
+<td >1.22千萬</td>
+<td >1.02億</td>
+<td >588.51億</td>
+</tr>
+<tr >
+<td ><k>02601</k></td>
+<td >中國太保</td>
+<td >23.000</td>
+<td >-0.850</td>
+<td >-3.6</td>
+<td >5.13百萬</td>
+<td >1.19億</td>
+<td >661.91億</td>
+</tr>
+<tr >
+<td ><k>02628</k></td>
+<td >中國人壽</td>
+<td >13.400</td>
+<td >-0.360</td>
+<td >-2.6</td>
+<td >1.81千萬</td>
+<td >2.44億</td>
+<td >1,023.91億</td>
+</tr>
+</table><h2> 中資券商 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td  title="中國光大控(<k>00165</k>)"><k>00165</k></td>
+<td  title="中國光大控(<k>00165</k>)">中國光大控</td>
+<td >8.900</td>
+<td >-0.200</td>
+<td >-2.2</td>
+<td >86.80萬</td>
+<td >7.78百萬</td>
+<td >153.36億</td>
+</tr>
+<tr >
+<td ><k>00218</k></td>
+<td >申萬宏源香港</td>
+<td >0.890</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >13.89億</td>
+</tr>
+<tr >
+<td ><k>00227</k></td>
+<td >第一上海</td>
+<td >0.187</td>
+<td >-0.001</td>
+<td >-0.5</td>
+<td >19.20萬</td>
+<td >3.61萬</td>
+<td >2.94億</td>
+</tr>
+<tr >
+<td ><k>00812</k></td>
+<td >西證國際證券</td>
+<td >0.042</td>
+<td >-0.001</td>
+<td >-2.3</td>
+<td >52.80萬</td>
+<td >2.22萬</td>
+<td >1.57億</td>
+</tr>
+<tr >
+<td ><k>00993</k></td>
+<td >華融金控</td>
+<td >0.161</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >14.02億</td>
+</tr>
+<tr >
+<td ><k>01375</k></td>
+<td >中州證券</td>
+<td >1.470</td>
+<td >-0.020</td>
+<td >-1.3</td>
+<td >1.96百萬</td>
+<td >2.88百萬</td>
+<td >17.81億</td>
+</tr>
+<tr >
+<td ><k>01461</k></td>
+<td >魯証期貨</td>
+<td >0.800</td>
+<td >-0.010</td>
+<td >-1.2</td>
+<td >1.10百萬</td>
+<td >87.93萬</td>
+<td >2.24億</td>
+</tr>
+<tr >
+<td ><k>01476</k></td>
+<td >恒投證券</td>
+<td >0.000</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >13.57億</td>
+</tr>
+<tr >
+<td ><k>01788</k></td>
+<td >國泰君安國際</td>
+<td >1.080</td>
+<td >-0.020</td>
+<td >-1.8</td>
+<td >6.79百萬</td>
+<td >7.34百萬</td>
+<td >105.81億</td>
+</tr>
+<tr >
+<td ><k>02611</k></td>
+<td >國泰君安</td>
+<td >11.800</td>
+<td >-0.280</td>
+<td >-2.3</td>
+<td >70.86萬</td>
+<td >8.41百萬</td>
+<td >168.13億</td>
+</tr>
+<tr >
+<td ><k>03908</k></td>
+<td >中金公司</td>
+<td >19.500</td>
+<td >-1.050</td>
+<td >-5.1</td>
+<td >5.65百萬</td>
+<td >1.11億</td>
+<td >391.21億</td>
+</tr>
+<tr >
+<td ><k>06030</k></td>
+<td >中信証券</td>
+<td >19.220</td>
+<td >-0.380</td>
+<td >-1.9</td>
+<td >9.66百萬</td>
+<td >1.87億</td>
+<td >513.54億</td>
+</tr>
+<tr >
+<td ><k>06178</k></td>
+<td >光大證券</td>
+<td >5.990</td>
+<td >-0.100</td>
+<td >-1.6</td>
+<td >33.80萬</td>
+<td >2.03百萬</td>
+<td >42.88億</td>
+</tr>
+<tr >
+<td  title="海通證券份(<k>06837</k>)"><k>06837</k></td>
+<td  title="海通證券份(<k>06837</k>)">海通證券份</td>
+<td >6.970</td>
+<td >-0.090</td>
+<td >-1.3</td>
+<td >2.97百萬</td>
+<td >2.08千萬</td>
+<td >240.72億</td>
+</tr>
+<tr >
+<td ><k>06881</k></td>
+<td >中國銀河</td>
+<td >4.620</td>
+<td >-0.070</td>
+<td >-1.5</td>
+<td >5.70百萬</td>
+<td >2.65千萬</td>
+<td >173.11億</td>
+</tr>
+<tr >
+<td ><k>06886</k></td>
+<td >華泰證券</td>
+<td >13.140</td>
+<td >-0.400</td>
+<td >-3.0</td>
+<td >2.06百萬</td>
+<td >2.73千萬</td>
+<td >232.76億</td>
+</tr>
+</table><h2> 中資電力 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00836</k></td>
+<td >華潤電力</td>
+<td >15.820</td>
+<td >-0.480</td>
+<td >-2.9</td>
+<td >1.46千萬</td>
+<td >2.31億</td>
+<td >784.10億</td>
+</tr>
+<tr >
+<td  title="華能國際電力份(<k>00902</k>)"><k>00902</k></td>
+<td  title="華能國際電力份(<k>00902</k>)">華能國際電力份</td>
+<td >3.770</td>
+<td >-0.220</td>
+<td >-5.5</td>
+<td >4.23千萬</td>
+<td >1.62億</td>
+<td >187.55億</td>
+</tr>
+<tr >
+<td ><k>00991</k></td>
+<td >大唐發電</td>
+<td >1.400</td>
+<td >-0.050</td>
+<td >-3.5</td>
+<td >6.36百萬</td>
+<td >9.02百萬</td>
+<td >88.60億</td>
+</tr>
+<tr >
+<td  title="華電國際電力份(<k>01071</k>)"><k>01071</k></td>
+<td  title="華電國際電力份(<k>01071</k>)">華電國際電力份</td>
+<td >2.700</td>
+<td >-0.070</td>
+<td >-2.5</td>
+<td >7.15百萬</td>
+<td >1.94千萬</td>
+<td >47.57億</td>
+</tr>
+<tr >
+<td ><k>02380</k></td>
+<td >中國電力</td>
+<td >3.680</td>
+<td >-0.170</td>
+<td >-4.4</td>
+<td >7.42千萬</td>
+<td >2.70億</td>
+<td >417.09億</td>
+</tr>
+</table><h2> 內房 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00207</k></td>
+<td >大悅城地產</td>
+<td >0.380</td>
+<td >-0.005</td>
+<td >-1.3</td>
+<td >35.20萬</td>
+<td >13.45萬</td>
+<td >54.79億</td>
+</tr>
+<tr >
+<td  title="深圳控(<k>00604</k>)"><k>00604</k></td>
+<td  title="深圳控(<k>00604</k>)">深圳控</td>
+<td >1.810</td>
+<td >-0.030</td>
+<td >-1.6</td>
+<td >2.99百萬</td>
+<td >5.44百萬</td>
+<td >163.76億</td>
+</tr>
+<tr >
+<td ><k>00688</k></td>
+<td >中國海外發展</td>
+<td >25.050</td>
+<td >-0.400</td>
+<td >-1.6</td>
+<td >1.02千萬</td>
+<td >2.55億</td>
+<td >2,785.46億</td>
+</tr>
+<tr >
+<td ><k>00813</k></td>
+<td >世茂集團</td>
+<td >5.580</td>
+<td >-0.150</td>
+<td >-2.6</td>
+<td >6.33千萬</td>
+<td >3.79億</td>
+<td >217.62億</td>
+</tr>
+<tr >
+<td  title="中國金茂控(<k>00817</k>)"><k>00817</k></td>
+<td  title="中國金茂控(<k>00817</k>)">中國金茂控</td>
+<td >2.950</td>
+<td >-0.040</td>
+<td >-1.3</td>
+<td >5.65百萬</td>
+<td >1.67千萬</td>
+<td >379.40億</td>
+</tr>
+<tr >
+<td  title="旭輝控集團(<k>00884</k>)"><k>00884</k></td>
+<td  title="旭輝控集團(<k>00884</k>)">旭輝控集團</td>
+<td >6.030</td>
+<td >-0.110</td>
+<td >-1.8</td>
+<td >1.55千萬</td>
+<td >9.44千萬</td>
+<td >539.31億</td>
+</tr>
+<tr >
+<td ><k>00960</k></td>
+<td >龍湖集團</td>
+<td >44.300</td>
+<td >-0.600</td>
+<td >-1.3</td>
+<td >1.38百萬</td>
+<td >6.11千萬</td>
+<td >2,727.77億</td>
+</tr>
+<tr >
+<td  title="新城發展控(<k>01030</k>)"><k>01030</k></td>
+<td  title="新城發展控(<k>01030</k>)">新城發展控</td>
+<td >5.000</td>
+<td >-0.200</td>
+<td >-3.9</td>
+<td >4.40百萬</td>
+<td >2.24千萬</td>
+<td >338.30億</td>
+</tr>
+<tr >
+<td ><k>01109</k></td>
+<td >華潤置地</td>
+<td >39.250</td>
+<td >-0.450</td>
+<td >-1.1</td>
+<td >2.65百萬</td>
+<td >1.04億</td>
+<td >2,830.98億</td>
+</tr>
+<tr >
+<td ><k>01124</k></td>
+<td >沿海家園</td>
+<td >0.046</td>
+<td >-0.002</td>
+<td >-4.2</td>
+<td >57.40萬</td>
+<td >2.72萬</td>
+<td >1.99億</td>
+</tr>
+<tr >
+<td  title="時代中國控(<k>01233</k>)"><k>01233</k></td>
+<td  title="時代中國控(<k>01233</k>)">時代中國控</td>
+<td >2.870</td>
+<td >-0.080</td>
+<td >-2.7</td>
+<td >2.83百萬</td>
+<td >8.22百萬</td>
+<td >62.00億</td>
+</tr>
+<tr >
+<td ><k>01238</k></td>
+<td >寶龍地產</td>
+<td >4.210</td>
+<td >-0.080</td>
+<td >-1.9</td>
+<td >86.60萬</td>
+<td >3.65百萬</td>
+<td >177.62億</td>
+</tr>
+<tr >
+<td ><k>01628</k></td>
+<td >禹洲集團</td>
+<td >0.670</td>
+<td >-0.010</td>
+<td >-1.5</td>
+<td >1.23百萬</td>
+<td >82.58萬</td>
+<td >44.50億</td>
+</tr>
+<tr >
+<td  title="花樣年控(<k>01777</k>)"><k>01777</k></td>
+<td  title="花樣年控(<k>01777</k>)">花樣年控</td>
+<td >0.290</td>
+<td >-0.010</td>
+<td >-3.3</td>
+<td >4.68百萬</td>
+<td >1.38百萬</td>
+<td >17.32億</td>
+</tr>
+<tr >
+<td ><k>01813</k></td>
+<td >合景泰富集團</td>
+<td >4.050</td>
+<td >-0.110</td>
+<td >-2.6</td>
+<td >4.64百萬</td>
+<td >1.89千萬</td>
+<td >132.39億</td>
+</tr>
+<tr >
+<td ><k>01918</k></td>
+<td >融創中國</td>
+<td >8.810</td>
+<td >-0.110</td>
+<td >-1.2</td>
+<td >3.03千萬</td>
+<td >2.68億</td>
+<td >486.04億</td>
+</tr>
+<tr >
+<td  title="中駿集團控(<k>01966</k>)"><k>01966</k></td>
+<td  title="中駿集團控(<k>01966</k>)">中駿集團控</td>
+<td >1.780</td>
+<td >-0.020</td>
+<td >-1.1</td>
+<td >2.34百萬</td>
+<td >4.22百萬</td>
+<td >76.00億</td>
+</tr>
+<tr >
+<td ><k>02007</k></td>
+<td >碧桂園</td>
+<td >6.560</td>
+<td >-0.160</td>
+<td >-2.4</td>
+<td >1.09千萬</td>
+<td >7.20千萬</td>
+<td >1,555.57億</td>
+</tr>
+<tr >
+<td  title="萬科企業份(<k>02202</k>)"><k>02202</k></td>
+<td  title="萬科企業份(<k>02202</k>)">萬科企業份</td>
+<td >20.500</td>
+<td >-0.150</td>
+<td >-0.7</td>
+<td >3.46百萬</td>
+<td >7.13千萬</td>
+<td >392.60億</td>
+</tr>
+<tr >
+<td  title="中梁控(<k>02772</k>)"><k>02772</k></td>
+<td  title="中梁控(<k>02772</k>)">中梁控</td>
+<td >3.300</td>
+<td >-0.030</td>
+<td >-0.9</td>
+<td >12.75萬</td>
+<td >42.16萬</td>
+<td >119.27億</td>
+</tr>
+<tr >
+<td ><k>02777</k></td>
+<td >富力地產</td>
+<td >3.820</td>
+<td >-0.090</td>
+<td >-2.3</td>
+<td >5.42百萬</td>
+<td >2.09千萬</td>
+<td >146.72億</td>
+</tr>
+<tr >
+<td ><k>03333</k></td>
+<td >中國恒大</td>
+<td >1.620</td>
+<td >-0.030</td>
+<td >-1.8</td>
+<td >2.04千萬</td>
+<td >3.30千萬</td>
+<td >217.87億</td>
+</tr>
+<tr >
+<td ><k>03377</k></td>
+<td >遠洋集團</td>
+<td >1.790</td>
+<td >-0.040</td>
+<td >-2.2</td>
+<td >3.19百萬</td>
+<td >5.75百萬</td>
+<td >139.37億</td>
+</tr>
+<tr >
+<td ><k>03380</k></td>
+<td >龍光集團</td>
+<td >3.730</td>
+<td >-0.130</td>
+<td >-3.4</td>
+<td >7.47百萬</td>
+<td >2.81千萬</td>
+<td >219.61億</td>
+</tr>
+<tr >
+<td ><k>03383</k></td>
+<td >雅居樂集團</td>
+<td >4.090</td>
+<td >-0.090</td>
+<td >-2.2</td>
+<td >3.10百萬</td>
+<td >1.28千萬</td>
+<td >163.73億</td>
+</tr>
+</table>
+<h2> 中資電訊 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00552</k></td>
+<td >中國通信服務</td>
+<td >4.280</td>
+<td >-0.050</td>
+<td >-1.2</td>
+<td >2.96百萬</td>
+<td >1.27千萬</td>
+<td >103.55億</td>
+</tr>
+<tr >
+<td ><k>00728</k></td>
+<td >中國電信</td>
+<td >3.090</td>
+<td >-0.040</td>
+<td >-1.3</td>
+<td >2.42千萬</td>
+<td >7.52千萬</td>
+<td >434.36億</td>
+</tr>
+<tr >
+<td ><k>00762</k></td>
+<td >中國聯通</td>
+<td >4.330</td>
+<td >-0.050</td>
+<td >-1.1</td>
+<td >4.19千萬</td>
+<td >1.82億</td>
+<td >1,340.20億</td>
+</tr>
+<tr >
+<td ><k>00763</k></td>
+<td >中興通訊</td>
+<td >19.860</td>
+<td >-0.940</td>
+<td >-4.5</td>
+<td >3.58百萬</td>
+<td >7.18千萬</td>
+<td >157.14億</td>
+</tr>
+<tr >
+<td ><k>00788</k></td>
+<td >中國鐵塔</td>
+<td >0.940</td>
+<td >-0.020</td>
+<td >-2.1</td>
+<td >5.23千萬</td>
+<td >4.97千萬</td>
+<td >447.97億</td>
+</tr>
+<tr >
+<td ><k>00941</k></td>
+<td >中國移動</td>
+<td >55.550</td>
+<td >-0.350</td>
+<td >-0.6</td>
+<td >1.43千萬</td>
+<td >7.95億</td>
+<td >11,445.79億</td>
+</tr>
+</table><h2> 汽車 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00175</k></td>
+<td >吉利汽車</td>
+<td >15.400</td>
+<td >-0.960</td>
+<td >-5.9</td>
+<td >4.06千萬</td>
+<td >6.34億</td>
+<td >1,639.41億</td>
+</tr>
+<tr >
+<td ><k>00425</k></td>
+<td >敏實集團</td>
+<td >30.600</td>
+<td >-1.400</td>
+<td >-4.4</td>
+<td >1.03百萬</td>
+<td >3.15千萬</td>
+<td >371.77億</td>
+</tr>
+<tr >
+<td  title="東風集團份(<k>00489</k>)"><k>00489</k></td>
+<td  title="東風集團份(<k>00489</k>)">東風集團份</td>
+<td >6.970</td>
+<td >-0.210</td>
+<td >-2.9</td>
+<td >4.09百萬</td>
+<td >2.87千萬</td>
+<td >205.04億</td>
+</tr>
+<tr >
+<td  title="中升控(<k>00881</k>)"><k>00881</k></td>
+<td  title="中升控(<k>00881</k>)">中升控</td>
+<td >55.750</td>
+<td >-1.850</td>
+<td >-3.2</td>
+<td >1.08百萬</td>
+<td >6.05千萬</td>
+<td >1,391.06億</td>
+</tr>
+<tr >
+<td ><k>01114</k></td>
+<td >華晨中國汽車</td>
+<td >7.300</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >368.30億</td>
+</tr>
+<tr >
+<td  title="慶鈴汽車份(<k>01122</k>)"><k>01122</k></td>
+<td  title="慶鈴汽車份(<k>01122</k>)">慶鈴汽車份</td>
+<td >1.560</td>
+<td >-0.030</td>
+<td >-1.9</td>
+<td >30.80萬</td>
+<td >48.09萬</td>
+<td >19.69億</td>
+</tr>
+<tr >
+<td  title="比亞迪份(<k>01211</k>)"><k>01211</k></td>
+<td  title="比亞迪份(<k>01211</k>)">比亞迪份</td>
+<td >235.600</td>
+<td >-11.200</td>
+<td >-4.5</td>
+<td >3.30百萬</td>
+<td >7.83億</td>
+<td >2,709.86億</td>
+</tr>
+<tr >
+<td ><k>01316</k></td>
+<td >耐世特</td>
+<td >7.820</td>
+<td >-0.390</td>
+<td >-4.8</td>
+<td >3.86百萬</td>
+<td >3.07千萬</td>
+<td >206.06億</td>
+</tr>
+<tr >
+<td ><k>01728</k></td>
+<td >正通汽車</td>
+<td >0.630</td>
+<td >-0.010</td>
+<td >-1.6</td>
+<td >32.25萬</td>
+<td >20.48萬</td>
+<td >17.57億</td>
+</tr>
+<tr >
+<td  title="北京汽車份(<k>01958</k>)"><k>01958</k></td>
+<td  title="北京汽車份(<k>01958</k>)">北京汽車份</td>
+<td >2.820</td>
+<td >-0.080</td>
+<td >-2.8</td>
+<td >5.94百萬</td>
+<td >1.69千萬</td>
+<td >73.10億</td>
+</tr>
+<tr >
+<td ><k>02238</k></td>
+<td >廣汽集團</td>
+<td >7.880</td>
+<td >-0.190</td>
+<td >-2.4</td>
+<td >7.34百萬</td>
+<td >5.81千萬</td>
+<td >250.06億</td>
+</tr>
+<tr >
+<td ><k>02333</k></td>
+<td >長城汽車</td>
+<td >17.560</td>
+<td >-1.520</td>
+<td >-8.0</td>
+<td >1.96千萬</td>
+<td >3.51億</td>
+<td >591.39億</td>
+</tr>
+<tr >
+<td ><k>03669</k></td>
+<td >中國永達汽車</td>
+<td >9.690</td>
+<td >-0.100</td>
+<td >-1.0</td>
+<td >90.95萬</td>
+<td >8.75百萬</td>
+<td >192.82億</td>
+</tr>
+<tr >
+<td ><k>03808</k></td>
+<td >中國重汽</td>
+<td >11.560</td>
+<td >-0.240</td>
+<td >-2.0</td>
+<td >71.75萬</td>
+<td >8.31百萬</td>
+<td >325.80億</td>
+</tr>
+</table><h2> 基建鐵路 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00390</k></td>
+<td >中國中鐵</td>
+<td >4.870</td>
+<td >-0.110</td>
+<td >-2.2</td>
+<td >7.04百萬</td>
+<td >3.44千萬</td>
+<td >209.53億</td>
+</tr>
+<tr >
+<td ><k>01186</k></td>
+<td >中國鐵建</td>
+<td >5.510</td>
+<td >-0.120</td>
+<td >-2.1</td>
+<td >5.26百萬</td>
+<td >2.91千萬</td>
+<td >116.90億</td>
+</tr>
+<tr >
+<td ><k>01766</k></td>
+<td >中國中車</td>
+<td >3.550</td>
+<td >-0.090</td>
+<td >-2.5</td>
+<td >5.79百萬</td>
+<td >2.07千萬</td>
+<td >159.11億</td>
+</tr>
+<tr >
+<td ><k>01786</k></td>
+<td >鐵建裝備</td>
+<td >0.860</td>
+<td >-0.020</td>
+<td >-2.3</td>
+<td >23.50萬</td>
+<td >20.21萬</td>
+<td >4.68億</td>
+</tr>
+<tr >
+<td ><k>01800</k></td>
+<td >中國交通建設</td>
+<td >4.780</td>
+<td >-0.180</td>
+<td >-3.6</td>
+<td >1.40千萬</td>
+<td >6.74千萬</td>
+<td >219.16億</td>
+</tr>
+<tr >
+<td ><k>03898</k></td>
+<td >時代電氣</td>
+<td >38.000</td>
+<td >-1.350</td>
+<td >-3.4</td>
+<td >1.66百萬</td>
+<td >6.40千萬</td>
+<td >215.37億</td>
+</tr>
+</table><h2> 煤炭 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00639</k></td>
+<td >首鋼資源</td>
+<td >2.540</td>
+<td >-0.110</td>
+<td >-4.2</td>
+<td >3.68百萬</td>
+<td >9.44百萬</td>
+<td >133.87億</td>
+</tr>
+<tr >
+<td ><k>00866</k></td>
+<td >中國秦發</td>
+<td >0.355</td>
+<td >-0.005</td>
+<td >-1.4</td>
+<td >30.40萬</td>
+<td >10.86萬</td>
+<td >8.98億</td>
+</tr>
+<tr >
+<td ><k>00975</k></td>
+<td >Mongol Mining</td>
+<td >2.080</td>
+<td >-0.070</td>
+<td >-3.3</td>
+<td >40.51萬</td>
+<td >85.05萬</td>
+<td >22.18億</td>
+</tr>
+<tr >
+<td ><k>01088</k></td>
+<td >中國神華</td>
+<td >22.000</td>
+<td >-0.500</td>
+<td >-2.2</td>
+<td >8.77百萬</td>
+<td >1.96億</td>
+<td >759.93億</td>
+</tr>
+<tr >
+<td ><k>01171</k></td>
+<td >兗礦能源集團</td>
+<td >19.560</td>
+<td >-0.340</td>
+<td >-1.7</td>
+<td >7.87百萬</td>
+<td >1.57億</td>
+<td >378.10億</td>
+</tr>
+<tr >
+<td ><k>01393</k></td>
+<td >恒鼎實業</td>
+<td >0.465</td>
+<td >-0.005</td>
+<td >-1.1</td>
+<td >52.60萬</td>
+<td >24.58萬</td>
+<td >9.61億</td>
+</tr>
+<tr >
+<td ><k>01733</k></td>
+<td >易大宗</td>
+<td >1.220</td>
+<td >-0.040</td>
+<td >-3.2</td>
+<td >4.04百萬</td>
+<td >4.95百萬</td>
+<td >38.14億</td>
+</tr>
+<tr >
+<td ><k>01878</k></td>
+<td >南戈壁－Ｓ</td>
+<td >1.270</td>
+<td >-0.130</td>
+<td >-9.3</td>
+<td >11.26萬</td>
+<td >15.00萬</td>
+<td >3.84億</td>
+</tr>
+<tr >
+<td ><k>01898</k></td>
+<td >中煤能源</td>
+<td >5.160</td>
+<td >-0.190</td>
+<td >-3.6</td>
+<td >1.61千萬</td>
+<td >8.55千萬</td>
+<td >219.71億</td>
+</tr>
+</table><h2> 航空 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00357</k></td>
+<td >美蘭空港</td>
+<td >23.450</td>
+<td >-1.150</td>
+<td >-4.7</td>
+<td >32.56萬</td>
+<td >7.74百萬</td>
+<td >55.82億</td>
+</tr>
+<tr >
+<td  title="中國東方航空份(<k>00670</k>)"><k>00670</k></td>
+<td  title="中國東方航空份(<k>00670</k>)">中國東方航空份</td>
+<td >3.230</td>
+<td >-0.150</td>
+<td >-4.4</td>
+<td >3.80百萬</td>
+<td >1.25千萬</td>
+<td >174.98億</td>
+</tr>
+<tr >
+<td  title="北京首都機場份(<k>00694</k>)"><k>00694</k></td>
+<td  title="北京首都機場份(<k>00694</k>)">北京首都機場份</td>
+<td >5.180</td>
+<td >-0.160</td>
+<td >-3.0</td>
+<td >1.49百萬</td>
+<td >7.79百萬</td>
+<td >100.36億</td>
+</tr>
+<tr >
+<td ><k>00753</k></td>
+<td >中國國航</td>
+<td >6.370</td>
+<td >-0.180</td>
+<td >-2.8</td>
+<td >4.12百萬</td>
+<td >2.65千萬</td>
+<td >298.86億</td>
+</tr>
+<tr >
+<td  title="中國南方航空份(<k>01055</k>)"><k>01055</k></td>
+<td  title="中國南方航空份(<k>01055</k>)">中國南方航空份</td>
+<td >5.330</td>
+<td >-0.150</td>
+<td >-2.7</td>
+<td >3.56百萬</td>
+<td >1.91千萬</td>
+<td >234.28億</td>
+</tr>
+<tr >
+<td ><k>01848</k></td>
+<td >中國飛機租賃</td>
+<td >5.690</td>
+<td >-0.050</td>
+<td >-0.9</td>
+<td >9.96萬</td>
+<td >56.08萬</td>
+<td >42.68億</td>
+</tr>
+<tr >
+<td ><k>02588</k></td>
+<td >中銀航空租賃</td>
+<td >72.950</td>
+<td >-0.650</td>
+<td >-0.9</td>
+<td >18.32萬</td>
+<td >1.34千萬</td>
+<td >510.79億</td>
+</tr>
+</table><h2> 航運及港口 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00144</k></td>
+<td >招商局港口</td>
+<td >15.500</td>
+<td >-0.300</td>
+<td >-1.9</td>
+<td >1.23百萬</td>
+<td >1.91千萬</td>
+<td >598.13億</td>
+</tr>
+<tr >
+<td ><k>00316</k></td>
+<td >東方海外國際</td>
+<td >202.000</td>
+<td >-12.400</td>
+<td >-5.8</td>
+<td >72.83萬</td>
+<td >1.49億</td>
+<td >1,415.84億</td>
+</tr>
+<tr >
+<td ><k>00598</k></td>
+<td >中國外運</td>
+<td >2.540</td>
+<td >-0.080</td>
+<td >-3.1</td>
+<td >2.28百萬</td>
+<td >5.84百萬</td>
+<td >56.20億</td>
+</tr>
+<tr >
+<td ><k>01138</k></td>
+<td >中遠海能</td>
+<td >3.440</td>
+<td >-0.020</td>
+<td >-0.6</td>
+<td >1.08千萬</td>
+<td >3.77千萬</td>
+<td >44.84億</td>
+</tr>
+<tr >
+<td ><k>01199</k></td>
+<td >中遠海運港口</td>
+<td >6.570</td>
+<td >-0.170</td>
+<td >-2.5</td>
+<td >78.28萬</td>
+<td >5.16百萬</td>
+<td >223.45億</td>
+</tr>
+<tr >
+<td ><k>01308</k></td>
+<td >海豐國際</td>
+<td >30.700</td>
+<td >-1.950</td>
+<td >-6.0</td>
+<td >1.96百萬</td>
+<td >6.11千萬</td>
+<td >875.81億</td>
+</tr>
+<tr >
+<td ><k>01919</k></td>
+<td >中遠海控</td>
+<td >14.520</td>
+<td >-0.860</td>
+<td >-5.6</td>
+<td >2.11千萬</td>
+<td >3.11億</td>
+<td >515.97億</td>
+</tr>
+<tr >
+<td ><k>02343</k></td>
+<td >太平洋航運</td>
+<td >3.850</td>
+<td >-0.050</td>
+<td >-1.3</td>
+<td >1.22千萬</td>
+<td >4.67千萬</td>
+<td >187.69億</td>
+</tr>
+<tr >
+<td ><k>02866</k></td>
+<td >中遠海發</td>
+<td >1.440</td>
+<td >-0.040</td>
+<td >-2.7</td>
+<td >4.38百萬</td>
+<td >6.36百萬</td>
+<td >54.40億</td>
+</tr>
+<tr >
+<td ><k>03378</k></td>
+<td >廈門港務</td>
+<td >0.840</td>
+<td >-0.030</td>
+<td >-3.4</td>
+<td >12.80萬</td>
+<td >10.80萬</td>
+<td >8.58億</td>
+</tr>
+<tr >
+<td ><k>03382</k></td>
+<td >天津港發展</td>
+<td >0.640</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >48.40萬</td>
+<td >30.86萬</td>
+<td >39.41億</td>
+</tr>
+<tr >
+<td ><k>06198</k></td>
+<td >青島港國際</td>
+<td >4.340</td>
+<td >-0.040</td>
+<td >-0.9</td>
+<td >48.60萬</td>
+<td >2.11百萬</td>
+<td >48.14億</td>
+</tr>
+</table><h2> 燃氣 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00003</k></td>
+<td >香港中華煤氣</td>
+<td >12.020</td>
+<td >-0.100</td>
+<td >-0.8</td>
+<td >8.86百萬</td>
+<td >1.06億</td>
+<td >2,261.58億</td>
+</tr>
+<tr >
+<td ><k>00342</k></td>
+<td >新海能源</td>
+<td >0.059</td>
+<td >0.001</td>
+<td >1.7</td>
+<td >32.80萬</td>
+<td >1.85萬</td>
+<td >8.52千萬</td>
+</tr>
+<tr >
+<td ><k>00384</k></td>
+<td >中國燃氣</td>
+<td >12.520</td>
+<td >-0.640</td>
+<td >-4.9</td>
+<td >2.36千萬</td>
+<td >2.99億</td>
+<td >728.51億</td>
+</tr>
+<tr >
+<td  title="北京控(<k>00392</k>)"><k>00392</k></td>
+<td  title="北京控(<k>00392</k>)">北京控</td>
+<td >27.050</td>
+<td >-0.850</td>
+<td >-3.1</td>
+<td >1.32百萬</td>
+<td >3.59千萬</td>
+<td >352.11億</td>
+</tr>
+<tr >
+<td ><k>00579</k></td>
+<td >京能清潔能源</td>
+<td >2.250</td>
+<td >-0.070</td>
+<td >-3.0</td>
+<td >5.34百萬</td>
+<td >1.22千萬</td>
+<td >65.65億</td>
+</tr>
+<tr >
+<td ><k>00603</k></td>
+<td >中油燃氣</td>
+<td >0.425</td>
+<td >-0.005</td>
+<td >-1.2</td>
+<td >94.00萬</td>
+<td >40.37萬</td>
+<td >24.80億</td>
+</tr>
+<tr >
+<td ><k>01083</k></td>
+<td >港華智慧能源</td>
+<td >5.450</td>
+<td >-0.390</td>
+<td >-6.7</td>
+<td >8.42百萬</td>
+<td >4.66千萬</td>
+<td >184.54億</td>
+</tr>
+<tr >
+<td ><k>01193</k></td>
+<td >華潤燃氣</td>
+<td >37.500</td>
+<td >-2.400</td>
+<td >-6.0</td>
+<td >2.37百萬</td>
+<td >8.95千萬</td>
+<td >923.29億</td>
+</tr>
+<tr >
+<td  title="蘇創燃氣份(<k>01430</k>)"><k>01430</k></td>
+<td  title="蘇創燃氣份(<k>01430</k>)">蘇創燃氣份</td>
+<td >2.420</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >21.85億</td>
+</tr>
+<tr >
+<td ><k>02688</k></td>
+<td >新奧能源</td>
+<td >109.100</td>
+<td >-13.400</td>
+<td >-10.9</td>
+<td >1.24百萬</td>
+<td >1.42億</td>
+<td >1,384.43億</td>
+</tr>
+<tr >
+<td ><k>03633</k></td>
+<td >中裕能源</td>
+<td >7.450</td>
+<td >-0.150</td>
+<td >-2.0</td>
+<td >67.00萬</td>
+<td >5.07百萬</td>
+<td >215.37億</td>
+</tr>
+</table><h2> 水泥 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00743</k></td>
+<td >亞洲水泥（中國）</td>
+<td >5.170</td>
+<td >-0.100</td>
+<td >-1.9</td>
+<td >68.58萬</td>
+<td >3.56百萬</td>
+<td >82.57億</td>
+</tr>
+<tr >
+<td ><k>00914</k></td>
+<td >海螺水泥</td>
+<td >43.900</td>
+<td >-0.250</td>
+<td >-0.6</td>
+<td >90.21萬</td>
+<td >3.97千萬</td>
+<td >573.77億</td>
+</tr>
+<tr >
+<td  title="華潤水泥控(<k>01313</k>)"><k>01313</k></td>
+<td  title="華潤水泥控(<k>01313</k>)">華潤水泥控</td>
+<td >7.040</td>
+<td >-0.140</td>
+<td >-2.0</td>
+<td >3.14百萬</td>
+<td >2.21千萬</td>
+<td >501.37億</td>
+</tr>
+<tr >
+<td ><k>02009</k></td>
+<td >金隅集團</td>
+<td >1.310</td>
+<td >-0.030</td>
+<td >-2.2</td>
+<td >5.57百萬</td>
+<td >7.37百萬</td>
+<td >31.34億</td>
+</tr>
+<tr >
+<td ><k>02233</k></td>
+<td >西部水泥</td>
+<td >1.360</td>
+<td >-0.030</td>
+<td >-2.2</td>
+<td >1.34千萬</td>
+<td >1.85千萬</td>
+<td >75.60億</td>
+</tr>
+<tr >
+<td ><k>03311</k></td>
+<td >中國建築國際</td>
+<td >9.900</td>
+<td >-0.320</td>
+<td >-3.1</td>
+<td >1.94百萬</td>
+<td >1.93千萬</td>
+<td >514.84億</td>
+</tr>
+<tr >
+<td ><k>03323</k></td>
+<td >中國建材</td>
+<td >10.700</td>
+<td >-0.340</td>
+<td >-3.1</td>
+<td >7.92百萬</td>
+<td >8.53千萬</td>
+<td >503.22億</td>
+</tr>
+</table><h2> 物業管理 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00873</k></td>
+<td >世茂服務</td>
+<td >6.370</td>
+<td >-0.130</td>
+<td >-2.0</td>
+<td >5.85百萬</td>
+<td >3.76千萬</td>
+<td >161.13億</td>
+</tr>
+<tr >
+<td ><k>01209</k></td>
+<td >華潤萬象生活</td>
+<td >43.000</td>
+<td >-0.950</td>
+<td >-2.2</td>
+<td >1.76百萬</td>
+<td >7.59千萬</td>
+<td >1,003.16億</td>
+</tr>
+<tr >
+<td ><k>01417</k></td>
+<td >浦江中國</td>
+<td >1.550</td>
+<td >0.010</td>
+<td >0.6</td>
+<td >3.40萬</td>
+<td >5.01萬</td>
+<td >6.24億</td>
+</tr>
+<tr >
+<td ><k>01516</k></td>
+<td >融創服務</td>
+<td >7.870</td>
+<td >-0.460</td>
+<td >-5.5</td>
+<td >7.15百萬</td>
+<td >5.71千萬</td>
+<td >256.43億</td>
+</tr>
+<tr >
+<td ><k>01538</k></td>
+<td >中奧到家</td>
+<td >0.630</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >5.38億</td>
+</tr>
+<tr >
+<td ><k>01755</k></td>
+<td >新城悅服務</td>
+<td >14.380</td>
+<td >-0.420</td>
+<td >-2.8</td>
+<td >73.00萬</td>
+<td >1.05千萬</td>
+<td >128.79億</td>
+</tr>
+<tr >
+<td ><k>01778</k></td>
+<td >彩生活服務</td>
+<td >0.890</td>
+<td >-0.010</td>
+<td >-1.1</td>
+<td >6.80萬</td>
+<td >5.98萬</td>
+<td >13.39億</td>
+</tr>
+<tr >
+<td ><k>01895</k></td>
+<td >鑫苑服務</td>
+<td >2.018</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >11.45億</td>
+</tr>
+<tr >
+<td ><k>01922</k></td>
+<td >銀城生活服務</td>
+<td >3.800</td>
+<td >0.020</td>
+<td >0.5</td>
+<td >2000</td>
+<td >7600</td>
+<td >10.10億</td>
+</tr>
+<tr >
+<td ><k>01995</k></td>
+<td >旭輝永升服務</td>
+<td >15.300</td>
+<td >-0.460</td>
+<td >-2.9</td>
+<td >2.03百萬</td>
+<td >3.13千萬</td>
+<td >276.42億</td>
+</tr>
+<tr >
+<td ><k>02168</k></td>
+<td >佳兆業美好</td>
+<td >11.060</td>
+<td >-0.380</td>
+<td >-3.3</td>
+<td >27.40萬</td>
+<td >3.08百萬</td>
+<td >17.63億</td>
+</tr>
+<tr >
+<td ><k>02669</k></td>
+<td >中海物業</td>
+<td >8.700</td>
+<td >-0.360</td>
+<td >-4.0</td>
+<td >1.78百萬</td>
+<td >1.56千萬</td>
+<td >297.79億</td>
+</tr>
+<tr >
+<td ><k>02869</k></td>
+<td >綠城服務</td>
+<td >8.180</td>
+<td >-0.110</td>
+<td >-1.3</td>
+<td >2.37百萬</td>
+<td >1.93千萬</td>
+<td >269.05億</td>
+</tr>
+<tr >
+<td ><k>03319</k></td>
+<td >雅生活服務</td>
+<td >15.240</td>
+<td >-0.460</td>
+<td >-2.9</td>
+<td >2.28百萬</td>
+<td >3.49千萬</td>
+<td >222.94億</td>
+</tr>
+<tr >
+<td ><k>03662</k></td>
+<td >奧園健康</td>
+<td >2.380</td>
+<td >-0.050</td>
+<td >-2.1</td>
+<td >27.10萬</td>
+<td >64.19萬</td>
+<td >17.65億</td>
+</tr>
+<tr >
+<td ><k>03686</k></td>
+<td >祈福生活服務</td>
+<td >0.490</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >4.98億</td>
+</tr>
+<tr >
+<td ><k>03699</k></td>
+<td >光大永年</td>
+<td >0.500</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >2.21億</td>
+</tr>
+<tr >
+<td ><k>03913</k></td>
+<td >合景悠活</td>
+<td >3.530</td>
+<td >-0.150</td>
+<td >-4.1</td>
+<td >1.84百萬</td>
+<td >6.59百萬</td>
+<td >74.23億</td>
+</tr>
+<tr >
+<td ><k>06098</k></td>
+<td >碧桂園服務</td>
+<td >49.800</td>
+<td >-2.350</td>
+<td >-4.5</td>
+<td >5.67百萬</td>
+<td >2.83億</td>
+<td >1,755.40億</td>
+</tr>
+<tr >
+<td ><k>09983</k></td>
+<td >建業新生活</td>
+<td >4.770</td>
+<td >-0.070</td>
+<td >-1.5</td>
+<td >79.80萬</td>
+<td >3.77百萬</td>
+<td >61.43億</td>
+</tr>
+</table><h2> 公路 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00107</k></td>
+<td >四川成渝高速公路</td>
+<td >2.190</td>
+<td >-0.050</td>
+<td >-2.2</td>
+<td >1.69百萬</td>
+<td >3.72百萬</td>
+<td >20.06億</td>
+</tr>
+<tr >
+<td ><k>00177</k></td>
+<td >江蘇寧滬高速公路</td>
+<td >8.460</td>
+<td >-0.070</td>
+<td >-0.8</td>
+<td >53.00萬</td>
+<td >4.49百萬</td>
+<td >104.24億</td>
+</tr>
+<tr >
+<td ><k>00269</k></td>
+<td >中國資源交通</td>
+<td >0.022</td>
+<td >-0.002</td>
+<td >-8.3</td>
+<td >95.50萬</td>
+<td >2.28萬</td>
+<td >2.55億</td>
+</tr>
+<tr >
+<td ><k>00576</k></td>
+<td >浙江滬杭甬</td>
+<td >6.950</td>
+<td >-0.030</td>
+<td >-0.4</td>
+<td >2.20百萬</td>
+<td >1.54千萬</td>
+<td >100.08億</td>
+</tr>
+<tr >
+<td ><k>00995</k></td>
+<td >安徽皖通高速公路</td>
+<td >7.520</td>
+<td >-0.200</td>
+<td >-2.6</td>
+<td >35.70萬</td>
+<td >2.69百萬</td>
+<td >38.06億</td>
+</tr>
+<tr >
+<td ><k>01052</k></td>
+<td >越秀交通基建</td>
+<td >5.070</td>
+<td >-0.030</td>
+<td >-0.6</td>
+<td >1.41百萬</td>
+<td >7.14百萬</td>
+<td >85.33億</td>
+</tr>
+</table><h2> 食品及飲料 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00151</k></td>
+<td >中國旺旺</td>
+<td >7.710</td>
+<td >-0.160</td>
+<td >-2.0</td>
+<td >1.85百萬</td>
+<td >1.42千萬</td>
+<td >936.49億</td>
+</tr>
+<tr >
+<td ><k>00220</k></td>
+<td >統一企業中國</td>
+<td >8.400</td>
+<td >-0.080</td>
+<td >-0.9</td>
+<td >1.63百萬</td>
+<td >1.37千萬</td>
+<td >366.28億</td>
+</tr>
+<tr >
+<td ><k>00288</k></td>
+<td >萬洲國際</td>
+<td >5.570</td>
+<td >-0.120</td>
+<td >-2.1</td>
+<td >1.51千萬</td>
+<td >8.47千萬</td>
+<td >730.04億</td>
+</tr>
+<tr >
+<td  title="康師傅控(<k>00322</k>)"><k>00322</k></td>
+<td  title="康師傅控(<k>00322</k>)">康師傅控</td>
+<td >17.840</td>
+<td >-0.540</td>
+<td >-2.9</td>
+<td >1.42百萬</td>
+<td >2.53千萬</td>
+<td >1,035.06億</td>
+</tr>
+<tr >
+<td ><k>00345</k></td>
+<td >維他奶國際集團</td>
+<td >14.540</td>
+<td >-0.480</td>
+<td >-3.2</td>
+<td >1.88百萬</td>
+<td >2.73千萬</td>
+<td >160.72億</td>
+</tr>
+<tr >
+<td ><k>00520</k></td>
+<td >呷哺呷哺餐飲</td>
+<td >5.280</td>
+<td >-0.210</td>
+<td >-3.8</td>
+<td >1.30百萬</td>
+<td >6.92百萬</td>
+<td >59.62億</td>
+</tr>
+<tr >
+<td ><k>00538</k></td>
+<td >味千（中國）</td>
+<td >1.260</td>
+<td >-0.010</td>
+<td >-0.8</td>
+<td >1000</td>
+<td >1270</td>
+<td >13.86億</td>
+</tr>
+<tr >
+<td  title="H&amp;H國際控(<k>01112</k>)"><k>01112</k></td>
+<td  title="H&amp;H國際控(<k>01112</k>)">H&amp;H國際控</td>
+<td >12.220</td>
+<td >-0.780</td>
+<td >-6.0</td>
+<td >91.20萬</td>
+<td >1.12千萬</td>
+<td >83.88億</td>
+</tr>
+<tr >
+<td ><k>01458</k></td>
+<td >周黑鴨國際</td>
+<td >5.790</td>
+<td >-0.350</td>
+<td >-5.7</td>
+<td >5.78百萬</td>
+<td >3.36千萬</td>
+<td >146.32億</td>
+</tr>
+<tr >
+<td ><k>01579</k></td>
+<td >頤海國際</td>
+<td >34.000</td>
+<td >-2.800</td>
+<td >-7.6</td>
+<td >3.43百萬</td>
+<td >1.18億</td>
+<td >385.26億</td>
+</tr>
+<tr >
+<td ><k>02319</k></td>
+<td >蒙牛乳業</td>
+<td >48.750</td>
+<td >-1.750</td>
+<td >-3.5</td>
+<td >3.74百萬</td>
+<td >1.82億</td>
+<td >1,996.40億</td>
+</tr>
+<tr >
+<td ><k>03799</k></td>
+<td >達利食品</td>
+<td >4.150</td>
+<td >-0.140</td>
+<td >-3.3</td>
+<td >2.53百萬</td>
+<td >1.06千萬</td>
+<td >587.48億</td>
+</tr>
+<tr >
+<td ><k>06862</k></td>
+<td >海底撈國際</td>
+<td >18.740</td>
+<td >-0.340</td>
+<td >-1.8</td>
+<td >8.88百萬</td>
+<td >1.66億</td>
+<td >1,063.52億</td>
+</tr>
+<tr >
+<td ><k>09633</k></td>
+<td >農夫山泉</td>
+<td >47.700</td>
+<td >-0.450</td>
+<td >-0.9</td>
+<td >5.19百萬</td>
+<td >2.48億</td>
+<td >2,424.19億</td>
+</tr>
+<tr >
+<td ><k>09922</k></td>
+<td >九毛九</td>
+<td >18.160</td>
+<td >-1.320</td>
+<td >-6.8</td>
+<td >7.98百萬</td>
+<td >1.47億</td>
+<td >283.12億</td>
+</tr>
+<tr >
+<td ><k>09987</k></td>
+<td >百勝中國－Ｓ</td>
+<td >396.200</td>
+<td >-10.600</td>
+<td >-2.6</td>
+<td >3.44萬</td>
+<td >1.37千萬</td>
+<td >1,704.92億</td>
+</tr>
+</table><h2> 工業機械 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td  title="第一拖拉機份(<k>00038</k>)"><k>00038</k></td>
+<td  title="第一拖拉機份(<k>00038</k>)">第一拖拉機份</td>
+<td >3.870</td>
+<td >-0.150</td>
+<td >-3.7</td>
+<td >1.81百萬</td>
+<td >7.09百萬</td>
+<td >15.76億</td>
+</tr>
+<tr >
+<td ><k>00631</k></td>
+<td >三一國際</td>
+<td >8.150</td>
+<td >-0.200</td>
+<td >-2.4</td>
+<td >90.30萬</td>
+<td >7.35百萬</td>
+<td >263.37億</td>
+</tr>
+<tr >
+<td ><k>01148</k></td>
+<td >新晨動力</td>
+<td >0.680</td>
+<td >-0.030</td>
+<td >-4.2</td>
+<td >85.70萬</td>
+<td >59.97萬</td>
+<td >9.10億</td>
+</tr>
+<tr >
+<td ><k>01157</k></td>
+<td >中聯重科</td>
+<td >5.400</td>
+<td >-0.190</td>
+<td >-3.4</td>
+<td >2.54百萬</td>
+<td >1.38千萬</td>
+<td >88.43億</td>
+</tr>
+<tr >
+<td ><k>03339</k></td>
+<td >中國龍工</td>
+<td >2.090</td>
+<td >-0.030</td>
+<td >-1.4</td>
+<td >3.49百萬</td>
+<td >7.33百萬</td>
+<td >90.74億</td>
+</tr>
+</table><h2> 金礦 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>01787</k></td>
+<td >山東黃金</td>
+<td >14.780</td>
+<td >0.160</td>
+<td >1.1</td>
+<td >5.14百萬</td>
+<td >7.68千萬</td>
+<td >125.58億</td>
+</tr>
+<tr >
+<td ><k>01818</k></td>
+<td >招金礦業</td>
+<td >7.140</td>
+<td >0.030</td>
+<td >0.4</td>
+<td >5.69百萬</td>
+<td >4.12千萬</td>
+<td >185.54億</td>
+</tr>
+<tr >
+<td ><k>02099</k></td>
+<td >中國黃金國際</td>
+<td >23.200</td>
+<td >-0.100</td>
+<td >-0.4</td>
+<td >15.90萬</td>
+<td >3.69百萬</td>
+<td >92.36億</td>
+</tr>
+<tr >
+<td ><k>02899</k></td>
+<td >紫金礦業</td>
+<td >11.640</td>
+<td >-0.220</td>
+<td >-1.9</td>
+<td >1.30千萬</td>
+<td >1.52億</td>
+<td >680.40億</td>
+</tr>
+<tr >
+<td ><k>03330</k></td>
+<td >靈寶黃金</td>
+<td >1.060</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >12.00萬</td>
+<td >12.67萬</td>
+<td >3.15億</td>
+</tr>
+</table><h2> 金屬礦業 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td  title="江西銅業份(<k>00358</k>)"><k>00358</k></td>
+<td  title="江西銅業份(<k>00358</k>)">江西銅業份</td>
+<td >14.060</td>
+<td >-0.460</td>
+<td >-3.2</td>
+<td >3.25百萬</td>
+<td >4.64千萬</td>
+<td >201.46億</td>
+</tr>
+<tr >
+<td ><k>00486</k></td>
+<td >俄鋁</td>
+<td >6.440</td>
+<td >-1.490</td>
+<td >-18.8</td>
+<td >7.87百萬</td>
+<td >5.13千萬</td>
+<td >1,204.81億</td>
+</tr>
+<tr >
+<td ><k>00769</k></td>
+<td >中國稀土</td>
+<td >0.830</td>
+<td >-0.020</td>
+<td >-2.4</td>
+<td >3.63百萬</td>
+<td >3.06百萬</td>
+<td >19.90億</td>
+</tr>
+<tr >
+<td ><k>01091</k></td>
+<td >南方錳業</td>
+<td >1.140</td>
+<td >-0.030</td>
+<td >-2.6</td>
+<td >1.69千萬</td>
+<td >1.97千萬</td>
+<td >40.11億</td>
+</tr>
+<tr >
+<td ><k>02600</k></td>
+<td >中國鋁業</td>
+<td >5.250</td>
+<td >-0.080</td>
+<td >-1.5</td>
+<td >4.37千萬</td>
+<td >2.33億</td>
+<td >210.21億</td>
+</tr>
+<tr >
+<td ><k>03833</k></td>
+<td >新疆新鑫礦業</td>
+<td >1.480</td>
+<td >-0.050</td>
+<td >-3.3</td>
+<td >5.65百萬</td>
+<td >8.61百萬</td>
+<td >11.61億</td>
+</tr>
+<tr >
+<td ><k>03993</k></td>
+<td >洛陽鉬業</td>
+<td >4.650</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >1.14千萬</td>
+<td >5.31千萬</td>
+<td >182.91億</td>
+</tr>
+</table><h2> 紡織 </h2></pre>
+<table class=sortable border="0" cellspacing="0" cellpadding="0" >
+<tr>
+<th >代號</th>
+				<th >名稱</th>
+				<th >現價</th>
+				<th >升跌</th>
+				<th >升跌率<br>(%)
+</th>
+				<th >成交量</th>
+				<th >成交額</th>
+				<th >市值</th>
+			</tr>
+<tr >
+<td ><a href="javascript:sortTbl('Symbol','ASC')" ><a href="javascript:sortTbl('Symbol','DESC')" ></td>
+<td ><U+00A0></td>
+<td ><a href="javascript:sortTbl('Last','ASC')" ><a href="javascript:sortTbl('Last','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Change','ASC')" ><a href="javascript:sortTbl('Change','DESC')" ></td>
+<td ><a href="javascript:sortTbl('PctChange','ASC')" ><a href="javascript:sortTbl('PctChange','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Volume','ASC')" ><a href="javascript:sortTbl('Volume','DESC')" ></td>
+<td ><a href="javascript:sortTbl('Turnover','ASC')" ><a href="javascript:sortTbl('Turnover','DESC')" ></td>
+<td ><a href="javascript:sortTbl('MarketCap','ASC')" ><a href="javascript:sortTbl('MarketCap','DESC')" ></td>
+</tr>
+<tr >
+<td ><k>00321</k></td>
+<td >德永佳集團</td>
+<td >1.630</td>
+<td >-0.070</td>
+<td >-4.1</td>
+<td >37.80萬</td>
+<td >62.23萬</td>
+<td >23.49億</td>
+</tr>
+<tr >
+<td ><k>00393</k></td>
+<td >旭日企業</td>
+<td >0.810</td>
+<td >0.000</td>
+<td >0.0</td>
+<td >0</td>
+<td >0</td>
+<td >12.39億</td>
+</tr>
+<tr >
+<td ><k>01382</k></td>
+<td >互太紡織</td>
+<td >3.910</td>
+<td >-0.050</td>
+<td >-1.3</td>
+<td >71.30萬</td>
+<td >2.80百萬</td>
+<td >55.88億</td>
+</tr>
+<tr >
+<td ><k>02313</k></td>
+<td >申洲國際</td>
+<td >139.600</td>
+<td >-7.500</td>
+<td >-5.1</td>
+<td >92.06萬</td>
+<td >1.30億</td>
+<td >2,211.24億</td>
+</tr>
+<tr >
+<td ><k>02678</k></td>
+<td >天虹紡織</td>
+<td >10.800</td>
+<td >-0.300</td>
+<td >-2.7</td>
+<td >18.07萬</td>
+<td >1.95百萬</td>
+<td >101.90億</td>
+</tr>
+<tr >
+<td ><k>02698</k></td>
+<td >魏橋紡織</td>
+<td >2.490</td>
+<td >-0.020</td>
+<td >-0.8</td>
+<td >5.40萬</td>
+<td >13.53萬</td>
+<td >10.38億</td>
+</tr>
+<tr >
+<td ><k>06288</k></td>
+<td >FAST RETAIL-DRS</td>
+<td >42.000</td>
+<td >-0.800</td>
+<td >-1.9</td>
+<td >300</td>
+<td >1.26萬</td>
+<td >214.00億</td>
+</tr>
+</table><script src="https://williamkpchanhp.github.io/headerApp.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+  var showTopicNumber = false;
+  var bookid = "sortPopup" 
+  var topicEnd = ", ";
+  var markerName = "h2, span"
+  var divtoc = document.getElementById("toc");
+
+$(document).ready(function(){
+  $('h1, h2, h3, h4, h5, .goldword, strong,  div.title').click(function(){
+  parent.history.back();
+  $('#mustWatch').prepend("<br><br>=======================================================================<br>");
+  return false;
+  });
+});
+
+function getChar(event){
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which);}
+  else {return null;}}
+
+var topicLength;
+var topicpointer = topicLength;
+
+function changeTopic() {
+ if (topicpointer >= topicLength) { topicpointer = 1;}
+ else if (topicpointer < 0) { topicpointer = topicLength;}
+ else { topicpointer = topicpointer + 1;}
+ showTopic()
+}
+function backward() { topicpointer = topicpointer - 2; changeTopic();}
+function foreward() { changeTopic();}
+function showTopic() {
+  window.location = "#topic-" + topicpointer;
+  notvisitedList = notvisitedList.filter(item => item !== topicpointer) // remove topicpointer
+  if(notvisitedList.length == 0){
+   notvisitedList = [...Array(totalLength).keys()];
+  }
+}
+function jumpto(index) { topicpointer = index; showTopic();}
+function randomFlip() {
+  topicpointer = notvisitedList[Math.floor(Math.random() * notvisitedList.length)]; // random from not visited list
+
+  var index = notvisitedList.indexOf(topicpointer);
+  notvisitedList.splice(index, 1);
+
+  showTopic();
+}
+
+var totalLength = topicLength
+var notvisitedList = [...Array(totalLength).keys()];
+
+function storeBookmark(objName, pagepos) {
+  if(typeof objName != 'undefined') {
+    localStorage.setItem(objName, pagepos.toString())
+//    alert("Bookmark changed! " + objName +" " + pagepos)
+  }else{alert("No BookId!")}
+}
+function loadBookmark(objName) {
+  pos = Number(localStorage.getItem(objName))
+  console.log("Bookmark loaded! " + objName + " " + pos)
+  $('body').animate({scrollTop: pos}, 0);
+}
+
+function changeCode(thecode) {
+  localStorage.setItem("randomcode", thecode);
+  window.open("Random Charts.html#imgp4", "_blank");
+}
+
+function xunbao(xunbaocode) {
+  localStorage.setItem("randomcode", xunbaocode)
+  localStorage.setItem("otherCode", xunbaocode)
+  localStorage.setItem("stkCode", xunbaocode)
+  window.open("Random Charts.html");
+}
+
+
+$("#mustWatch").append('<pre><br><span class="silver">keys: <br>r random article<br>5 random article<br>b backward<br>4 backward<br>f foreward<br>6 foreward<br><br>t top of table<br>8 top of table<br>l last of table<br>2 last of table<br>7 go to table middle<br><br>T Top of page<br>e end of page<br><br>m mustWatch<br>p pause<br>c continU<br>s showPage<br><br>K set bookmark<br>k open bookmark</span></pre>');
+
+
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+
+</script>
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+
+<script>
+  // this goes after readbook to allow toc establish
+  // got to top to show the menu
+  window.location = '#toc';
+
+  // start a new chkKey to avoid readbook chkKey
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'e'){window.scrollTo(0,document.body.scrollHeight);}
+  if(testkey == "l"){window.location = '#startpt';
+    window.scrollTo(window.scrollX, window.scrollY - 300);}
+
+  else if(testkey == "2"){
+    $('body,html').animate({scrollTop:(divtoc.clientHeight + divtoc.offsetTop-600)}, 1); }
+  else if(testkey == "7"){
+    $('body,html').animate({scrollTop:(divtoc.clientHeight/2 + divtoc.offsetTop-600)}, 1); } //go to middle
+  else if(testkey == 'f'){changeTopic();}
+  else if(testkey == "r"){ randomFlip();}
+  else if(testkey == 's'){xunbao(markerList[topicpointer].split(' ')[0]);}
+  else if(testkey == 't'){window.location = '#toc';
+    window.scrollTo(window.scrollX, window.scrollY - 50);}
+  else if(testkey == '8'){window.location = '#toc';}
+  else if(testkey == "5"){
+    $('body,html').animate({scrollTop:(Math.floor(Math.random() * document.body.scrollHeight))}, 1); }
+
+  else if(testkey == "K"){ 
+    pos = document.getElementsByTagName("body")[0].scrollTop;
+    if(typeof bookid == 'undefined') { bookid = $('title').text() }
+    storeBookmark(bookid, pos.toString());
+  }
+  else if(testkey == "k"){
+    if(typeof bookid != 'undefined') {loadBookmark(bookid);}
+    else{alert("No BookId!")}
+  }
+  else if(testkey == 'd'){window.open("https://www.youdao.com/");}
+  else if(testkey == 'i'){window.open("https://williamkpchan.github.io/LibDocs/InspectChart.html");}
+  else if(testkey == 'X'){window.open("https://williamkpchan.github.io/LibDocs/Random Charts.html");}
+  else if(testkey == 'u'){window.open("https://www.worldometers.info/coronavirus/");}
+  else if(testkey == 'T'){window.open("https://translate.google.com/#en/zh-CN");}
+  else if(testkey == 'F'){window.open("https://fanyi.baidu.com/#en/zh/");}
+  else if(testkey == "b"){ backward();}
+  else{chkOtherKeys(testkey)} 
+}
+
+</script>
+</pre></body></html>
