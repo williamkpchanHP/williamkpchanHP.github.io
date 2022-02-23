@@ -1,0 +1,52 @@
+<base target="_blank"><html><head><title>LibDocs Index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "&emsp;";
+  var bookid = "LibDocs Index"
+  var markerName = "h2"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:20px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:110%; display: inline-block; margin-left: -9%; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+</style></head><body onkeypress="chkKey()"><center>
+<div id="toc"></div></center>
+<br><br>
+<a href="phpExamples.html" class="whitebut ">phpExamples</a>
+<a href="Decision Trees.html" class="whitebut ">Decision Trees</a>
+<a href="filterResulitLib.txt" class="whitebut ">filterResulitLib</a>
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+function chkKey() {
+	var testkey = getChar(event);
+     if(testkey == 'e'){window.scrollTo(0,document.body.scrollHeight);}
+     if(testkey == ','){window.open("https://williamkpchan.github.io/LibDocs/mlinechart.html");}
+     if(testkey == '"'){window.open("https://williamkpchan.github.io/LibDocs/mline11Minutechart.html");}
+     if(testkey == "X"){window.open("https://williamkpchan.github.io/LibDocs/Random Charts.html");}
+     else if(testkey == 't'){window.location = '#toc';
+     else{chkOtherKeys(testkey)} 
+}
+
+</script>
+</pre></body></html>
