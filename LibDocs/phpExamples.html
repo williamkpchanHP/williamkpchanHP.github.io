@@ -90,8 +90,8 @@ Related Resources
 There are two methods which you can use to retrieve information from a web form, the <b>POST</b> and <b>GET</b>
 methods.
 In this article, we discuss the difference between the POST and GET method, so you can know which one to utilize during information retrieval of form data. 
-<h3>Difference Between POST and GET Method</h3>
-<h3>POST Method</h3>
+<b>Difference Between POST and GET Method</b>
+<b>POST Method</b>
 The <b>POST</b> method retrieves information and can add it directly to a web form. Let's say you have
 the following web form below which asks for a user's first name, last name, email address, and telephone number. 
 &lt;fieldset>
@@ -107,7 +107,7 @@ the following web form below which asks for a user's first name, last name, emai
 &lt;/fieldset>
 The <b>POST</b> method can take all these filled-in fields of the form and write them to a web page, such as the confirmation page that this form creates when the submit button is pressed. 
 The <b>POST</b> method is the most used method when retrieving information from an HTML form using PHP. 
-<h3>GET Method</h3>
+<b>GET Method</b>
 The <b>GET</b> method retrieves the information from a form and appends it to the URL of the website in use. Unlike the <b>POST</b> method, it cannot output information directly to a web page, but adds the user-added information from the form fields to the URL. 
 Below is the same exact form above but with the <b>method</b> of the form action attribute changed to <b>"GET"</b>.
 &lt;fieldset>
@@ -130,10 +130,15 @@ FirstName=Peter&LastName=Williams&EmailAddress=PeterWilliams@yahoo.com&Telephone
 &form=Submit+Query
 This URL broken down so that you can see better is:
 http://learningaboutelectronics.com/Articles/Difference-between-the-post-and-get-method-in-PHP
+
 <b>?FirstName=Peter</b>
+
 <b>&LastName=Williams</b>
+
 <b>&EmailAddress=PeterWilliams@yahoo.com</b>
+
 <b>&TelephoneNumber=800-489-7849</b>
+
 <b>&form=Submit+Query</b>
 This is how the <b>GET</b> method works. 
 Because of its functions, it is used much less than the <b>POST</b> method. Also, because it appends
@@ -152,14 +157,14 @@ The difference between single and double quotes in PHP is that, with single quot
 An example is shown below:
 echo "This is a line with a br tag added to create line space&lt;br>";
 This statement above will create a line break so that the next statement you write will start on a new line. 
-<h3>Example</h3>
+<b>Example</b>
 These students are going on the trip:1)Sarah 2)Bill 3)Ryan 
 You can see in this example how everything is jumbled on one line.
 It would be much better put on separate lines.
 Below are the statements with line breaks:
 These students are going on the trip:&lt;br>1)Sarah&lt;br>2)Bill&lt;br>3)Ryan
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP Code to create the above code is:
 &lt;?php
 echo "These students are going on the trip:&lt;br>";
@@ -186,16 +191,20 @@ The <b>date()</b> function uses 4 characters to help denote the date, shown belo
 </tbody>
 </table>
 
-<h3>Formatting the Date</h3>
+<b>Formatting the Date</b>
+
 <b>Year-month-day</b>
 $date= date('Y-m-d'); // 2012-02-10
+
 <b>month/day/year</b>
 $date= date('m/d/y'); // 02/10/12
+
 <b>month.day.Year</b>
 $date= date('d.m.Y'); // 10.02.2012
+
 <b>Year</b>
 $date= date ('Y'); // 2012
-<h3>Displaying the Date</h3>
+<b>Displaying the Date</b>
 Once you have formatted the date above and assigned it to a variable, you then display the date
 by using the <b>echo</b> function to display the date. 
 $date= date('Y-m-d');
@@ -206,26 +215,28 @@ $date= date('d.m.Y');
 echo $date;// 10.02.2012
 $date= date ('Y');
 echo $date; //2012
+
 <b>Actual PHP Output</b>
 2022-02-22<br>02/22/22<br>22.02.2022<br>2022
+
 <b>Note</b>- PHP's date() function is very useful and used because it displays the real-time date. This isn't a function used to display past dates. For past static dates which don't change, you can just manually type in the date with plain HTML. PHP's date() function is used because it always provides the current real-time date. This is why you see the today's current date
 above below the <b>Actual PHP Output</b>. Javascript has a similar function which allows real-time current dates to be shown as well.
  
 <h2>Generate a Random Number</h2>
 To generate a random number in PHP, we use the <b>mt_rand</b> function. 
 The general form to generate a random number is:
-<b>
-$random_number= mt_rand(<i>minimum_number_range, maximum_number_range</i>);
-</b>
+
+<b>$random_number= mt_rand(<i>minimum_number_range, maximum_number_range</i>);</b>
 where
 <i>minimum_number_range</i> is the minimum number value that the <b>mt_rand</b> function can generate
 <i>maximum_number_range</i> is the maximum number value that the <b>mt_rand</b> function can generate
 The <b>$random_number</b> variable stores the random number which you generate from the <b>mt_rand()</b> function. 
 For example, if you want to generate a random number from 50 to 70, the minimum number range would be 50 and the maximum number range would be 70, because you want to generate a random number between 50 and 70.
-<h3>Example</h3>
+<b>Example</b>
 To generate and display a number from 1 to 100, the code to do this is:
 $random_number= mt_rand(1, 100);
 echo $random_number;
+
 <b>Actual PHP Output</b>
 Refresh this page to see a new generated random number:
 11
@@ -233,15 +244,16 @@ Refresh this page to see a new generated random number:
 <h2>Find and Replace Text</h2>
 In this article, we will go over how you can find and replace text in PHP. 
 The function to find and replace text in PHP is the <b>str_replace()</b> function which accepts the following parameters in the format:
-<b>
-str_replace(<i>text_to_replace</i>, <i>word/phrase_to_replace_text_with</i>, <i>which_block_of_text_this_affects</i>);
-</b>
 
+<b>str_replace(<i>text_to_replace</i>, <i>word/phrase_to_replace_text_with</i>, <i>which_block_of_text_this_affects</i>);</b>
 This function will now be explained:
+
 <b>text_to_replace</b>- The first parameter is the word/phrase which you want to replace. For example, if you want to replace the word 'John' in your paragraph with the word 'Kevin', John is the word that you want to replace. Therefore, it would be the first parameter of the <b>str_replace()</b> function.
+
 <b>word/phrase_to_replace_text_with</b>- This is the parameter of the word you want to replace the text with. Let's use the same example as before. If you want to replace the word 'John' with 'Kevin', Kevin would be the 2nd parameter of this function, since you want 'Kevin' to replace 'John'.
+
 <b>which_block_of_text_this_affects</b>- This is the of the block of code which you want the find/replace function to apply to. This can be a paragraph tag, a text box, a text area, any element on the web page. For example, if you want to carry out this function on a paragraph tag with a <b>name</b> attribute of <b>paragraph1</b>, then <b>paragraph1</b> would be the 3rd parameter.
-<h3>Example</h3>
+<b>Example</b>
 Now that we've gone over the <b>str_replace()</b> function, let's do an example to get a practical and real-world feel of it.
 Below rare 2 text boxes and 1 text area. You can type your main text into the text area and can find and replace strings with the text boxes.
 
@@ -252,22 +264,21 @@ Replace: &lt;input type="text" name="replace" value=''/>
 &lt;/form>
 You can see above that the main text area to type your text into is the text area, which is a multi-line input
 area for typing text, such as a paragraph. The text boxes above this text area are the Find and Replace text boxes. These text boxes will find the text you want and replace it with the text you want, much like a standard Find & Replace feature that are common to many text editors or word programs, such as Microsoft Word and Notepad. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML Code to create the above text boxes and text area is:
-<b>
-&lt;form action="" method="post">
+
+<b>&lt;form action="" method="post">
 Find: &lt;input type="text" name="find" value='&lt;?php echo $find; ?>'/>&lt;br>&lt;br>
 Replace: &lt;input type="text" name="replace" value='&lt;?php echo $replace; ?>'/>&lt;br>&lt;br>
 &lt;input type="submit" value="Replace"/>&lt;br>&lt;br>
 &lt;textarea name="maintext" rows="8" cols="80">&lt;?php echo $newtext; ?>&lt;/textarea>
-&lt;/form>
-</b>
+&lt;/form></b>
 Notice how all the form fields must have a <b>name</b> attribute. This is because we use this <b>name</b> attribute to allow PHP to extract data from each of the form fields, as
 you'll see below. PHP uses the <b>name</b> attribute to know which form field you are referring to.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to create the find/replace function is:
-<b>
-&lt;?php
+
+<b>&lt;?php
 $find= $_POST['find'];<br> 
 $replace= $_POST['replace'];
 $text= $_POST['maintext'];
@@ -277,8 +288,7 @@ if (isset($find) && isset($replace))
 $newtext= str_replace($find, $replace, $text);
 }
 
-?>
-</b>
+?></b>
 The PHP code extracts the information from each of the form fields. If it finds the word present which you want to replace in the text area of the main text, it will replace it with the text on the 'Replace' form field. 
 We extract the data from the form fields with the superglobal $_POST array. If the $find and $replace variables are set, then we carry out the <b>str_replace</b> function and assign it to the variable <b>$newtext</b>.
 If you go back to the HTML code above, we echo out this $newtext in the text area, so that when the user presses the 'Replace' button, the new updated text will be displayed. This, again, is echoed between the &lt;textarea>&lt;/textarea>
@@ -297,7 +307,7 @@ This will be demonstrated below.
 So, if we have the string "GPS ", after passing it through the trim() function, the string
 would then change to "GPS".
 The trim() function erases white space from the left and right sides of a string. So if the string is " GPS", and we apply the trim() function, it would change to "GPS". Similarly, the string, " GPS ", would change to "GPS".
-<h3>Example</h3>
+<b>Example</b>
 Below is an example of the trim() function in action, which removes all whitespace from the left and right side of a string 
 &lt;php
 $string1= "GPS ";
@@ -310,6 +320,7 @@ echo $trimmed1 . "&lt;br>";
 echo $trimmed2 . "&lt;br>";
 echo $trimmed3 . "&lt;br>";
 ?>
+
 <b>Actual PHP Output</b>
 GPS<br>GPS<br>GPS
 The trim() function is a very useful and powerful PHP function. An example of prime use of the trim() function is a search box, where a user enters in a search term. For example, say if a user is looking up hotels in Hawaii, he or she may add a space at the beginning or end of the search query by mistake. In PHP, " hotels" is not equal to "hotels". To prove this, let's run the following PHP code. 
@@ -363,7 +374,7 @@ echo "These 2 strings are also not the same<br>";
 The output of the above PHP code is:
 Before the trim() function<br>These 2 strings are not the same<br>These 2 strings are also not the same<br><br>After the trim() function<br>These 2 strings are the same<br>These 2 strings are also the same
 So this is the perfect example to illustrate the power of the PHP trim() function to equalize strings that vary only in the white space before or after them. 
-<h3>How to Remove All Spaces in a String</h3>
+<b>How to Remove All Spaces in a String</b>
 So the PHP trim() function we demonstrated above removes whitespace from the front or end of a string. 
 If we want to remove all spaces in a string with PHP, the trim() function would not be used. Instead,
 we could use the str_replace() function in the following way.
@@ -376,6 +387,7 @@ The str_replace() takes in 3 parameters. The first parameter is the character(s)
 parameter is what you want to replace it with. And the third parameter is the string that you want to change, the object of the replacement. 
 Since we want to replace whitespace with none, the first parameter is whitespace (" "). The second parameter is to replace the whitespace with none (no whitespace). The third parameter is the string that we want to manipulation with these replacements. 
 This will remove all whitespace from a string. 
+
 <b>Actual PHP Output</b>
 WhatdayoftheweekisJuly4ththisyear?
 Sometimes this may be the case where you want to remove all whitespace from a string. Usually this is not the intention. 
@@ -387,13 +399,14 @@ In this article, we go over how to capitalize the first word of a string in PHP 
 The ucfirst() function capitalizes the first word in a string. 
 So, if we have the string "bob went to the park today", after passing it through the ucfirst() function, the string
 would then change to "Bob went to the park today."
-<h3>Example</h3>
+<b>Example</b>
 Below is an example of the ucfirst() function in action. 
 &lt;php
 $string= "bob went to the store";
 $capitalized= ucfirst($string);
 echo $capitalized;
 ?>
+
 <b>Actual PHP Output</b>
 Bob went to the storeThe ucfirst() function is the function to use when you want to capitalize the first word in a string. 
  
@@ -402,13 +415,14 @@ In this article, we go over how to capitalize each (and every) word in a string 
 The ucwords() function capitalizes the first letter of all the words in a string. 
 So, if we have the string "wild at heart", after passing it through the ucwords() function, the string
 would then change to "Wild at Heart".
-<h3>Example</h3>
+<b>Example</b>
 Below is an example of the Ucwords() function in action. 
 &lt;php
 $string= "wild at heart";
 $capitalized= ucwords($string);
 echo $capitalized;
 ?>
+
 <b>Actual PHP Output</b>
 Wild At HeartThe ucwords() function is the function to use when you want to capitalize the first letter of all the words in a string. This is useful for such strings as headlines or titles of articles or books, where all words are usually capitalized.
  
@@ -416,19 +430,18 @@ Wild At HeartThe ucwords() function is the function to use when you want to capi
 In this article, we will go over the PHP print_r() function. 
 The print_r() function is a function which can be used to show the contents, or make-up, of an array. 
 Let's say, for example, we create the following array in PHP.
+
 <b>$students= array("Steve", "Bob", "Tom", "Gary");</b>
 If we just used the following line to show display the array, it would not work:
-<b>
-echo $students;
-</b>
+
+<b>echo $students;</b>
 This would produce the following output in PHP:
 Array
 An array is a special object in PHP. A programmer cannot print out the contents of an array, as shown above, simply with the <b>echo</b> or <b>print</b> function. 
 However, applying the <b>print_r()</b> function, can be used for showing all of the contents of an array. 
 So the line of code would be:
-<b>
-print_r($students);
-</b>
+
+<b>print_r($students);</b>
 The above line of code would yield the following in PHP:
 Array
 (
@@ -439,15 +452,14 @@ Array
 )
 The following print_r() function shows all of the contents of the array. Since we created an array of 4 elements, the array has elements with keys of 0-3. 0 is the first element and 3 is the last element. Since our first element is "Steve", it is assigned to the 0 key. Since our second element is "Bob", it assigned to key 1. Since our third element is "Tom", it is assigned to key 2. Since our fourth element is "Gary", it is assigned to key 3. 
 Thus, the <b>print_r()</b> function will show all the keys and values of an array.
-<h3>Another Example</h3>
+<b>Another Example</b>
 The <b>print_r()</b> function can be used with any type of array. 
 Another example we will show its use with is an array where the elements are assigned a value. 
 Let's create the array:
 $children= array("Peter"=>age 7, "John"=>age 4, "Lisa"=>age 9);
 If we print out the following line with the <b>print_r()</b> function, with the line:
-<b>
-print_r($children);
-</b>
+
+<b>print_r($children);</b>
 This line would produce the following PHP code:
 Array
 (
@@ -459,9 +471,8 @@ You can see that now because of the <b>print_r</b> function, we can see that the
 This can be a good array if we wanted to have an array with a list of children and their ages. 
 We can also assign strings to strings for arrays. 
 Check out the following array:
-<b>
-$people= array("James"=>gmail, "Scott"=>yahoo, "Fred"=>gmail);
-</b>
+
+<b>$people= array("James"=>gmail, "Scott"=>yahoo, "Fred"=>gmail);</b>
 When printing this out, with the line:
 print_r($people);
 We get the following PHP output:
@@ -483,87 +494,83 @@ The foreach loop allows us to print out all the contents of an array.
 The foreach loop goes through each element of an array, one by one, and using an <b>echo</b> statement, we can print out the contents of an array. The number of times the loop will execute will be equal to the number of elements in the array.
 There are 2 ways for that the foreach loop can be used. If an array only has values assigned to them, with no keys, we use the foreach loop, only to specify the values of each of the elements in the array. This is shown in the first example. 
 The 2nd way we can use the foreach loop is with arrays with the <b>keys</b> and <b>values</b> specified. This is shown in the second example.
-<h3>foreach Loop with Only Values</h3>
+<b>foreach Loop with Only Values</b>
 Say, that we have an array that only has values specified, and not keys. 
 For example, let's take the following array below:
+
 <b>$ages= array(10, 12, 15, 16, 17);</b>
 For an array like this, many times we are only interested in the values of the elements of the array. Even though PHP creates the keys 0, 1, 2, 3, 4 as an index, many times we aren't interested in these values. We just want to know the values of the elements in the array. 
 Using the foreach loop in the following format below, we can print out all the values of the above array:
-<b>
-&lt;?php>
+
+<b>&lt;?php>
 $ages= array(10, 12, 15, 16, 17);
 foreach ($ages as $value)
 {
 echo "$value&lt;br>";
 }
-?>
-</b>
+?></b>
+
 <b>Actual PHP Output</b>
 10<br>12<br>15<br>16<br>17
 You can see that the foreach loop prints out all of the elements of the array. 
 Realize that although the variable <b>$value</b> is used with the <b>as</b> keyword, it can be named anything. 
 We can change value to $value to $kids, so that our new code is:
-<b>
-&lt;?php>
+
+<b>&lt;?php>
 $ages= array(10, 12, 15, 16, 17);
 foreach ($ages as $kids)
 {
 echo "$kids&lt;br>";
 }
-?>
-</b>
+?></b>
 In other words, PHP will know that the variable after the <b>as</b> keyword is the variable which stores the values of the array, and it can be named anything.
 <hr>
-<h3>Foreach loop with Keys and Values</h3>
+<b>Foreach loop with Keys and Values</b>
 The other way a foreach loop can be used is to specify both the keys and values of an array. 
 Let's say we have the following array below:
-<b>
-$children= array("John"=>11, "Peter"=>12, "Bill"=>10);
-</b>
+
+<b>$children= array("John"=>11, "Peter"=>12, "Bill"=>10);</b>
 Here in this array, the keys are John, Peter, and Bill. The values are 11, 12, and 10. Here, the keys represent the names of the children and the values represent their ages. 
 So when printing out the array, we want to know and print out both the keys and values of each element of the array. 
 And we can do this, using the foreach loop in the following format:
-<b>
-&lt;?php
+
+<b>&lt;?php
 foreach($children as $key=>$value)
 {
 echo "$key is $value years old&lt;br>";
 }
-?>
-</b>
+?></b>
+
 <b>Actual PHP Output</b>
 John is 11 years old<br>Peter is 12 years old<br>Bill is 10 years old
 Here print out all the children names along with their ages. 
 Again, just like with the first loop, we don't have the use the variables <b>$key</b> and <b>$value</b>; we can really names these variables anything. 
 For example, we can change them to <b>$name</b> and <b>$age</b>, so that you can know what each one represents. 
 So we can change the above code to:
-<b>
-&lt;?php
+
+<b>&lt;?php
 $children= array("John"=>11, "Peter"=>12, "Bill"=>10);
 foreach($children as $name=>$age)
 {
 echo "$name is $age years old&lt;br>";
 }
-?>
-</b>
-
+?></b>
 And it will work the same as the before code. 
 Printing the key and value of an array can also work for arrays where only values are specified. 
 Say, we have the following array:
-<b>
-$children_ages= array(10, 9, 8, 12, 13, 7);
-</b>
+
+<b>$children_ages= array(10, 9, 8, 12, 13, 7);</b>
 The keys which will be created for this array by PHP are 0-5, to represent each element. 
 Even though we created an array and only specified values, we can also print out the assigned keys which PHP creates for them, starting with index 0 and going up 1 each successive element. 
 To print out the above array <b>$children_ages</b>, we use the code:
-<b>
-&lt;?php 
+
+<b>&lt;?php 
 $children_ages= array(10, 9, 8, 12, 13, 7);
 foreach ($children_ages as $key=>$value){
 echo "Key $key is $value$lt;br>";
 }
-?>
-</b>
+?></b>
+
 <b>Actual PHP Output</b>
 Key 0 is 10<br>Key 1 is 9<br>Key 2 is 8<br>Key 3 is 12<br>Key 4 is 13<br>Key 5 is 7
 So even though we did not specify keys with the array, PHP automatically assigns integer keys to the array, and we can output each integer keys with the code above.
@@ -582,7 +589,7 @@ else {
 echo 'The string is not empty';
 If the string $name is empty, it will print the first echo statement.
 If the string is not empty, it will print out the last echo statement.
-<h3>Example</h3>
+<b>Example</b>
 
 
 &lt;form action="#form1" method="POST">
@@ -590,13 +597,13 @@ If the string is not empty, it will print out the last echo statement.
 &lt;input type="submit" name="submit" value="submit"/>
 &lt;/form>
 You have left the name field empty. You must enter a name.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The following code below is the HTML code needed to create the form shown above.
 &lt;form action="" method="POST">
 &lt;label>Enter your first name:&lt;/label>&lt;input type="text" name="first_name">&lt;br>
 &lt;input type="submit" name="submit" value="submit"/>
 &lt;/form>
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 Since the <b>name</b> attribute of the text box in HTML was <b><i>first_name</i></b>, the 
 PHP code to generate the program above is:
 &lt;?php
@@ -618,7 +625,7 @@ Therefore, it normally is not desired to show the statement, "You have left the 
 a name" until you have clicked the submit button and really left it empty while trying to submit the form. 
 To remedy this, we need to get data from the submit button to determine if it has been clicked or not. If it has not been clicked, we don't want to display the statement, "You have left the name field empty. You must enter a name", until the user
 clicks the submit button and left it empty.
-<h3>Second Example</h3>
+<b>Second Example</b>
 The example again is shown below. 
 &lt;form action="#form2" method="POST">
 &lt;label>Enter your first name:&lt;/label>&lt;input type="text" name="first_name2">
@@ -629,7 +636,7 @@ If a user has now left a field empty and clicked the submit button of the form, 
 the field blank which needs to be filled. If a user has filled in the field and clicked the submit button, then we echo the name
 that the user has entered.
 The HTML code to build the example right above is unchanged. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to build the example above is shown below.
 &lt;?php
 $first_name= $_POST['first_name'];
@@ -652,7 +659,7 @@ This can be useful in very applications such as when a user is typing a string i
 We measure the string that the user enters when registering a password. If the password is less than 6 characters
 or greater than 25 characters, we can send a message, stating to the user that this password
 is not acceptable. 
-<h3>PHP Code to Measure the Length of a String</h3>
+<b>PHP Code to Measure the Length of a String</b>
 To meausre the length of a password in PHP, we use the <b>strlen()</b> function in 
 PHP, following the format below:
 &lt;?php
@@ -660,6 +667,7 @@ $fruit= "Cantaloupe";
 $length_of_string= strlen($fruit);
 echo "The string length of the fruit cantaloupe is $length_of_string";
 ?>
+
 <b>Actual PHP Output</b>
 The string length of the fruit cantaloupe is 10
 
@@ -667,7 +675,7 @@ To find the length of a string in PHP, all we must do is put the string inside o
 Since the word 'Cantaloupe' has 10 letters, the PHP <b>strlen</b> function will return '10' as output. 
 
 
-<h3>String Length Measurer</h3>
+<b>String Length Measurer</b>
 Enter any string into the text box below. Once you enter a string and press the 'Find Length of String' button, it will output the length of that string in the text box right beneath it. 
 &lt;form action="#result" method="POST">
 Enter string: &lt;input type="text" name="string_value" value=''/>
@@ -675,7 +683,7 @@ Length of String: &lt;input type="text" value=''  READONLY/>
 &lt;input type="submit" name="submitbutton" value="Find Length of String"/>
 &lt;/form>
 This text box, above, again takes the string and computes its length through the <b>strlen()</b> function. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML code to create the above text boxes and submit button are:
 &lt;form action="" method="POST">
 Enter string: &lt;input type="text" name="string_value" value='&lt;?php echo $string; ?>'/>
@@ -684,7 +692,7 @@ Length of String: &lt;input type="text" value='&lt;?php echo $length; ?>'  READO
 &lt;/form>
 
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to compute the length of the entered string is:
 &lt;?php
 $string= $_POST['string_value'];
@@ -698,27 +706,27 @@ PHP extracts the information entered into the text box and assigns it to the <b>
 <h2>Get the Current Page URL of a Web Page</h2>
 In this tutorial, we show how to get the current page URL of a web page using PHP.
 
-<h3>Full URL of Current Page</h3>
+<b>Full URL of Current Page</b>
 To get the full URL of the current page, which takes the form http://www.website.com/Directory/pagename.html, you can use the following code below.
 &lt;?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; 
 ?>
 The $_SERVER['HTTP_HOST'] gets the www.website.com name of the website in use. For this web page you are current on, this would return www.learningaboutelectronics.com
 The $_SERVER['REQUEST_URI'] returns the directory pathway and file name of the page you are on. 
-<b>Actual PHP Output of this Page</b>
 
+<b>Actual PHP Output of this Page</b>
 http://www.learningaboutelectronics.com/Articles/How-to-get-the-current-page-url-of-a-web-page-using-PHP.php
 
-<h3>Directory Pathway and File name</h3>
+<b>Directory Pathway and File name</b>
 To return just the directory pathway and the file name of the web page, you can use the following code below.
 This is the part after http://www.website.com/
 &lt;?php echo $_SERVER['REQUEST_URI']; 
 ?>
 So this code above returns the part after the type of domain name the web page is. 
-<b>Actual PHP Output of this Page</b>
 
+<b>Actual PHP Output of this Page</b>
 /Articles/How-to-get-the-current-page-url-of-a-web-page-using-PHP.php
 <br><hr>
-<h3>Just the Directory Pathway</h3>
+<b>Just the Directory Pathway</b>
 To return just the directory pathway of the current web page URL, you can use the following code below.
 &lt;?php 
 $url= $_SERVER['REQUEST_URI']; 
@@ -728,7 +736,7 @@ echo $pathway;
 ?>
 This code above returns just the directory pathway to the current page URL.
 
-<h3>Just the File Name</h3>
+<b>Just the File Name</b>
 To just return the file name of the current page, you can use the following code below.
 &lt;?php 
 $url= $_SERVER['REQUEST_URI']; 
@@ -737,11 +745,11 @@ $filename= substr($url, $positionslash + 1);
 echo $filename;
 ?>
 This code above returns only the file name of the current page URL.
-<b>Actual PHP Output of this Page</b>
 
+<b>Actual PHP Output of this Page</b>
 How-to-get-the-current-page-url-of-a-web-page-using-PHP.php
 
-<h3>Just the File Name Without the File Extension</h3>
+<b>Just the File Name Without the File Extension</b>
 Sometimes you may just want to return the file name without the file extension. 
 To do this, you can use the following code below.
 &lt;?php 
@@ -753,8 +761,8 @@ $filename_without_extension= substr($extensionremoved, $positionslash + 1);
 echo $filename_without_extension;
 ?>
 The code above returns just the file name without the file extension included.
-<b>Actual PHP Output of this Page</b>
 
+<b>Actual PHP Output of this Page</b>
 How-to-get-the-current-page-url-of-a-web-page-using-PHP
 
 Related Resources
@@ -774,30 +782,30 @@ Related Resources
  
 <h2>Merge Arrays</h2>
 To merge arrays in PHP, the <b>array_merge</b> function is used with the following general syntax, as shown below:
+
 <b>array_merge($array1, $array2, ...)</b>
 where
 $array2 is now appended to $array1
 The <b>array_merge</b> function returns an array with the elements of two or more arrays into a single array. 
-<h3>Example</h3>
+<b>Example</b>
 So if we wanted to join together two arrays, $Male_students and $Female_students, we would do it with the following code.
-<b>
-$Male_students= array('John', 'Steve', 'Rick', 'Greg');
+
+<b>$Male_students= array('John', 'Steve', 'Rick', 'Greg');
 $Female_students= array('Lisa', 'Michelle', 'Elizabeth');
 $All_students= array_merge($Male_students, $Female_students);
-echo implode (', ', $All_students);
-</b>
+echo implode (', ', $All_students);</b>
 The <b>implode</b> function decides what separates the elements in the two arrays. In this example, we specify and separate them with a comma (, ). 
+
 <b>Actual PHP Output</b>
 John, Steve, Rick, Greg, Lisa, Michelle, Elizabeth
-<h3>Example Merging 3 Arrays</h3>
+<b>Example Merging 3 Arrays</b>
 If you want to merge three arrays together, an example of PHP code to do so would be:
-<b>
-$Group1= array ('John', 'Michelle', 'Jeff');
+
+<b>$Group1= array ('John', 'Michelle', 'Jeff');
 $Group2= array('Steve', 'Elizabeth', 'Lisa');
 $Group3= array('Rick', 'Greg', 'Kobe');
 $Total_groups= array_merge ($Group1, $Group2, $Group3);
-echo implode (', ', $Total_groups);
-</b>
+echo implode (', ', $Total_groups);</b>
 
 <b>Actual PHP Output</b>
 John, Michelle, Jeff, Steve, Elizabeth, Lisa, Rick, Greg, Kobe
@@ -810,21 +818,19 @@ all 100s: 100, 100, 100, 100, 100
 all 50s: 50, 50, 50, 50, 50, 50, 50, 50, 50, 50
 The reason why some languages such as PHP have a function to fill an array is to save time for the programmer. Say, if a programmer wants an array with 70 repeated 100 times in the array. Without the <b>array_fill</b> function, a programmer would have to manually type out '70' 100 times. This is tedious. With the <b>array_fill</b> function, we just type in '70' and how many times we want it repeated. This way, we save a lot of time programming.
 To fill an array in PHP, we use the <b>array_fill</b> PHP function using the following general syntax:
-<b>
-$array_name= array_fill($start, $count, $value)
-</b>
+
+<b>$array_name= array_fill($start, $count, $value)</b>
 where
 $start is the index at which the array starts
 $count is the number of elements that is in the array
 $value is the value of each of the elements in the array
 So the <b>array_fill</b> function returns an array filled with $count $values starting at index
 $start. 
-<h3>Example</h3>
+<b>Example</b>
 So, to create an array that has 7 elements of the number 10 and starts at index 0, the PHP code to do this would be:
-<b>
-$array_name= array_fill(0, 7, 10) //10, 10, 10, 10, 10, 10, 10
-</b>
-<h3>PHP Output</h3>
+
+<b>$array_name= array_fill(0, 7, 10) //10, 10, 10, 10, 10, 10, 10</b>
+<b>PHP Output</b>
 10 10 10 10 10 10 10 
 So the array is filled with 7 10s.
  
@@ -837,9 +843,8 @@ Padding 4 7s to the end of the array would produce:
 (10, 2, 4, 5, 6, 7, 7, 7, 7)
 So, again, padding an array just means appending new elements to the array.
 To pad an array, we use the <b>array_pad</b> PHP function using the following general syntax below:
-<b>
-$array_name= array_pad($array, $size, $value);
-</b>
+
+<b>$array_name= array_pad($array, $size, $value);</b>
 where
 $array is the original array in which you want to pad elements onto
 $size is number of elements that the new padded array will contain in total
@@ -847,13 +852,12 @@ $value is the value of the elements which are padded onto the array
 
 So the <b>array_pad</b> function returns an array with $value added to the end of 
 $array until it contains $size elements. If $size is negative, the value is added to the start of the array. 
-<h3>Examples</h3>
+<b>Examples</b>
 If we have our orignal array named $numbers and we want to pad onto it 3 10s, the PHP code to do this would be:
-<b>
-$numbers= array(7, 2, 3, 4, 8);
-$numbers_2= array_pad($numbers, 8, 10);
-</b>
-<h3>PHP Output</h3>
+
+<b>$numbers= array(7, 2, 3, 4, 8);
+$numbers_2= array_pad($numbers, 8, 10);</b>
+<b>PHP Output</b>
 7 2 3 4 8 10 10 10 
 In this example, $size is 8, since we want the total number of elements in our array to be 8 in total when the 3 10s are padded onto it. And $value is 10, since we want to add 10s into the array.
 
@@ -862,11 +866,10 @@ In this example, $size is 8, since we want the total number of elements in our a
 
 In the example above we padded elements onto the end of the array. In this example, we will pad elements to the beginning of an array. We will use the same array as our last example and pad on the same 3 10s, but this time to the beginning of the array.
 The PHP code to do so is:
-<b>
-$numbers= array(7, 2, 3, 4, 8);
-$numbers_2= array_pad($numbers, -8, 10);
-</b>
-<h3>PHP Output</h3>
+
+<b>$numbers= array(7, 2, 3, 4, 8);
+$numbers_2= array_pad($numbers, -8, 10);</b>
+<b>PHP Output</b>
 10 10 10 7 2 3 4 8 
 In this array, we have almost identifical conditions to our first example. The only difference is the minus sign ("-") in front of the $size. The value of 8 is still the same, since
 the total number of elements in the array will still be 8, but with the minus sign in front of the 8, the new elements will be padded to the beginning of the array and not to the end of it.
@@ -884,19 +887,19 @@ the following array:
 So Greg and Steve got sliced out of the array. 
 This is what is meant by slicing an array, cutting off or erasing part of the array.
 To slice an array in PHP, we use the <b>array_slice</b> function following the general syntax below:
-<b>
-array_slice ($array, $index, $len)
-</b>
+
+<b>array_slice ($array, $index, $len)</b>
 where
 $array is the original array in which you want to slice
 $index is the index number of the element that you start at and want to keep
 $len is the number of elements that you want to keep
 Array_slice returns part of an array starting from $index and containing $len elements. 
 If $len is omitted, it returns the elements to the end of the array. 
-<h3>Example</h3>
+<b>Example</b>
 $Students= array('Greg', 'Lisa', 'Bobby', 'Tom', 'Troy', 'Matthew', 'Peter', 'John');
 $Students_going_on_trip= array_slice($Students, 2);
 echo implode (', ', $Students_going_on_trip);
+
 <b>Actual PHP Output</b>
 Bobby, Tom, Troy, Matthew, Peter, John
 The above array originally has 8 elements, representing 8 names of students. 
@@ -909,22 +912,24 @@ $Students_going_on_trip= array_slice($Students, 2, 4);
 echo implode (', ', $Students_going_on_trip);
 All we have to do is specify the number 4, because from index 2 to index 5, there are 4 elements (
 2, 3, 4, 5). This will slice the array from Bobby to Matthew.
+
 <b>Actual PHP Output</b>
 Bobby, Tom, Troy, Matthew
  
 <h2>Create an Associative Array</h2>
+
 <b>How to Create an Associative Array in PHP</b>
 To create an associate array in PHP, we can either create it all using one statement or we can do it in multiple statements. 
-<h3>One Statement</h3>
+<b>One Statement</b>
 To create an associative array all in one statement, we must declare and initialize the values of the array all on one line. 
 We do this by the following general format:
 $array_name= array('key1' => 'value1, 'key2' => 'value2', 'key3' => 'value3');
-<h3>Examples</h3>
-<h3>Integer Assignment</h3>
+<b>Examples</b>
+<b>Integer Assignment</b>
 $telephone_extensions= array('John' => 345, 'Lisa' => 678, 'Terry' => 456);
-<h3>String Assignment</h3>
+<b>String Assignment</b>
 $Eye_color= array ('George' => 'Brown', 'Mary' => 'Blue', 'Marie' => 'Green');
-<h3>Multiple Statements</h3>
+<b>Multiple Statements</b>
 To create an associative array in multiple lines, we first declare the array and then we
 assign values to each element using separate lines. 
 The format to create an associative array using multiple lines is:
@@ -932,18 +937,19 @@ array_name= array();
 array_name['key1']= value1;
 array_name['key2']= value2;
 array_name['key3']= value3;
-<h3>Examples</h3>
-<h3>Integer Assignment</h3>
+<b>Examples</b>
+<b>Integer Assignment</b>
 $telephone_extensions= array();
 $telephone_extensions['John']= 345;
 $telephone_extensions['Lisa']= 678;
 $telephone_extensions['Terry']= 456;
-<h3>String Assignment</h3>
+<b>String Assignment</b>
 $Eye_color= array();
 $Eye_color['George']= 'Brown';
 $Eye_color['Mary']= 'Blue';
 $Eye_color['Marie']= 'Green';
 As seen in the examples, when assigning a string value to an element in an array, we must enclose the string in single quotes (' '). When assigning an integer value, we use no quotes at all. 
+
 <b>Actual PHP Output</b>
 John: 345<br>Lisa: 678<br>Terry: 456<br><br>George: Brown<br>Mary: Blue<br>Marie: Green<br>  
  
@@ -959,7 +965,7 @@ $Eye_color['Steve']= 'Brown';
 $Eye_color['Michelle']= 'Green';
 We've now created an associative array. The <b>keys</b> of the array are 'John', 'Steve', and 
 'Michelle'. The <b>values</b> of the array are 'Blue', 'Brown', and 'Green'.
-<h3>Displaying the Entire Array</h3>
+<b>Displaying the Entire Array</b>
 To display all of the elements of an associative array, we use the general format:
 foreach ($array_name as $key => $value) {
 echo "$key = $value &lt;br>"; 
@@ -972,7 +978,7 @@ would be:
 foreach ($Eye_color as $key => $value) {
 echo "$key = $value <br>";
 ?>
-<h3>PHP Output</h3>
+<b>PHP Output</b>
 John = Blue <br>Steve = Brown <br>Michelle = Green 
  
 <h2>Sort Numbers of an Array in Ascending Order</h2>
@@ -987,7 +993,7 @@ sort($array_name);
 where <i>$array_name</i> is the name of the array we want to sort in ascending order numerically. 
 For the above array we created, the code to put it in ascending order is:
 sort($numbers);
-<h3>PHP Output</h3>
+<b>PHP Output</b>
 93 48 32 21 17 11 6 4 
  
 <h2>Sort Numbers of an Array in Descending Order</h2>
@@ -1003,7 +1009,7 @@ rsort($array_name);
 where <i>$array_name</i> is the name of the array we want to sort in descending order numerically. 
 For the above array we created, the code to put it in descending order is:
 rsort($numbers);
-<h3>PHP Output</h3>
+<b>PHP Output</b>
 93 48 32 21 17 11 6 4 
  
 <h2>Sort Strings of an Array in Ascending Order</h2>
@@ -1017,7 +1023,7 @@ The general form to put an array of strings in ascending order:
 sort($array_name);
 For the above array we created, the code to put it in ascending order is:
 sort($class);
-<h3>PHP Output</h3>
+<b>PHP Output</b>
 Adam Bob Craig Mike Richard Steve 
  
 <h2>Sort Strings of an Array in Descending Order</h2>
@@ -1031,7 +1037,7 @@ The general form to put an array of strings in descending order is:
 rsort($array_name);
 For the above array we created, the code to put it in descending order is:
 rsort($class);
-<h3>PHP Output</h3>
+<b>PHP Output</b>
 Steve Richard Mike Craig Bob Adam 
  
 <h2>Find the Smallest Number in an Array</h2>
@@ -1047,6 +1053,7 @@ $smallest= max($array_name);
 where <i>$array_name</i> is the name of the array and $smallest is the variable which contains the lowest numerical value of the array.
 For the above array we created, the code to find the smallest number is:
 $smallest= min($numbers);
+
 <b>Actual PHP Output</b>
 The smallest value in the array is 103
 Finding the smallest value in an array is very crucial for many applications. With finding the smallest value, we can find the cheapest price, meal, airline tickets, hotel, taxi fare, etc. 
@@ -1067,7 +1074,7 @@ $largest= max($array_name);
 where <i>$array_name</i> is the name of the array and $largest is the variable which contains the largest value of the array.
 For the above array we created, the code to find the largest number is:
 $largest= max($numbers);
-<h3>PHP Output</h3>
+<b>PHP Output</b>
 The largest value in the array is 470
 Find the largest number in an array can be useful in a number of web applications. It can locate the most expensive prices or the greatest amount of anything from a list or a column in a table. 
 For a tutorial on finding the smallest number in an array, see 
@@ -1122,8 +1129,8 @@ There are 3 people in this array. We have the name, email, city, and state of ea
 So to create this multidimensional array, we created key-value pairs. The keys are name, email, city, and state. The values
 are whatever the name, email, city and state is of each person. 
 So if we use the print_r function along with the pre tags to make this more readable, we get the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Array
 (
     [0] => Array
@@ -1152,7 +1159,7 @@ Array
 So you can use our array. This is creating a multidimensional array that has key-value pairs. 
 You can also create the same array above without key-value pairs. 
 
-<h3>Creating a Multidimensional Array Without Key-Value Pairs</h3>
+<b>Creating a Multidimensional Array Without Key-Value Pairs</b>
  To create the same array without key-value pairs, we use the following PHP code below. 
 &lt;?php 
 $people= array(
@@ -1174,8 +1181,8 @@ array(
 );
 ?>
 If we the print_r function along with the pre tags again, we get the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Array
 (
     [0] => Array
@@ -1241,14 +1248,14 @@ So we've created a multidimensional array composed of individual people, holding
 We then access every individual element in the array. We do this using the array name, $people followed by the row number, followed by the name of the column we want to access (name, email, city, or state). 
 This is how the individual element of a multidimensional array are accessed. 
 Running the above PHP code, we get the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Jennifer Kimbers<br>abc@gmail.com<br>Seattle<br>Washington<br><br>Rodney Hutchers<br>def@gmail.com<br>Los Angeles<br>California<br><br>Robert Smith<br>ghi@gmail.com<br>Michigan<br>Missouri
 
 So this is how the elements of a multidimensional array can be accessed that has key-value pairs. 
 We will show now below to access the elements of multidimensional array that does not have key-value pairs. 
 
-<h3>Accessing the Elements of a Multidimensional Array Without Key-Value Pairs</h3>
+<b>Accessing the Elements of a Multidimensional Array Without Key-Value Pairs</b>
 So now we show how to access the elements of a multidimensinal array that does not have key-value pairs. 
 The PHP code below creates the array and outputs the elements of the array.
 &lt;?php 
@@ -1279,8 +1286,8 @@ So $people[0][0] corresponds to the first row of the first column. Since arrays 
 This corresponds to the name,  Jennifer Kimbers. 
 You can see the difference of accessing multidimensional arrays with key-value pairs and those without. Usually those with key-value pairs are preferred because the column can be referenced by name instead of by number. But a programmer may have his or her preference.
 Running the PHP code above, we get the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Jennifer Kimbers<br>abc@gmail.com<br>Seattle<br>Washington<br><br>Rodney Hutchers<br>def@gmail.com<br>Los Angeles<br>California<br><br>Robert Smith<br>ghi@gmail.com<br>Michigan<br>Missouri
 And this is all that is required to access elements of a multidimensional array. 
 
@@ -1331,8 +1338,8 @@ We echo out these key-value pairs.
 We create a variable called $num and initially it is set equal to 0. However, in the first foreach() loop, it is incremented by 1. This is so we can numerically each track of each new record. We echo out this number for each array that the foreach loop encounters in the multidimensional array.
 Because multidimensional arrays are basically arrays nested inside other arrays, all we have to do to loop through them is use nested loops.
 Running the above PHP code, we get the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 <br><b># 1</b><br>name: Jennifer Kimbers <br>email: abc@gmail.com <br>city: Seattle <br>state: Washington <br><br><b># 2</b><br>name: Rodney Hutchers <br>email: def@gmail.com <br>city: Los Angeles <br>state: California <br><br><b># 3</b><br>name: Robert Smith <br>email: ghi@gmail.com <br>city: Michigan <br>state: Missouri 
 
 Related Resources
@@ -1372,8 +1379,8 @@ echo print_r($books);
 echo "&lt;/pre>";
 ?>
 So running the code above gives use the following output below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Array
 (
     [0] => Array
@@ -1402,8 +1409,8 @@ But what if you want to sort the books by the publication year or by the author'
 This can be done but unfortunately not without a bit of work. In order for this to happen with the array_multisort() function, you would have to change the order of the columns. The array_multisort() function only sorts the first column of an array. So however you want to sort an array (by which column), you would have to put that column first. 
 So if you wanted to sort the books by publication year, for instance, you would have to put that column first in the multidimensional array. 
 So if I put the publication year column first in each of the arrays within the multidimensional array and ran the code, I get the following output shown below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Array
 (
     [0] => Array
@@ -1442,8 +1449,8 @@ Multidimensional Array in PHP</a>
 There are two methods which you can use to retrieve information from a web form, the <b>POST</b> and <b>GET</b>
 methods.
 In this article, we discuss the difference between the POST and GET method, so you can know which one to utilize during information retrieval of form data. 
-<h3>Difference Between POST and GET Method</h3>
-<h3>POST Method</h3>
+<b>Difference Between POST and GET Method</b>
+<b>POST Method</b>
 The <b>POST</b> method retrieves information and can add it directly to a web form. Let's say you have
 the following web form below which asks for a user's first name, last name, email address, and telephone number. 
 &lt;fieldset>
@@ -1459,7 +1466,7 @@ the following web form below which asks for a user's first name, last name, emai
 &lt;/fieldset>
 The <b>POST</b> method can take all these filled-in fields of the form and write them to a web page, such as the confirmation page that this form creates when the submit button is pressed. 
 The <b>POST</b> method is the most used method when retrieving information from an HTML form using PHP. 
-<h3>GET Method</h3>
+<b>GET Method</b>
 The <b>GET</b> method retrieves the information from a form and appends it to the URL of the website in use. Unlike the <b>POST</b> method, it cannot output information directly to a web page, but adds the user-added information from the form fields to the URL. 
 Below is the same exact form above but with the <b>method</b> of the form action attribute changed to <b>"GET"</b>.
 &lt;fieldset>
@@ -1482,10 +1489,15 @@ FirstName=Peter&LastName=Williams&EmailAddress=PeterWilliams@yahoo.com&Telephone
 &form=Submit+Query
 This URL broken down so that you can see better is:
 http://learningaboutelectronics.com/Articles/Difference-between-the-post-and-get-method-in-PHP
+
 <b>?FirstName=Peter</b>
+
 <b>&LastName=Williams</b>
+
 <b>&EmailAddress=PeterWilliams@yahoo.com</b>
+
 <b>&TelephoneNumber=800-489-7849</b>
+
 <b>&form=Submit+Query</b>
 This is how the <b>GET</b> method works. 
 Because of its functions, it is used much less than the <b>POST</b> method. Also, because it appends
@@ -1508,8 +1520,8 @@ so that we can do whatever we want with it? How do we now take the information t
 And the answer is, we can do this using PHP. 
 Using PHP, we can extract the information that is input into a text box and either post it on a web page, such as create a confirmation page with the data that the user has
 entered or store it into a database. In this article, we focus on extracting the information and displaying it on a web page. 
-<h3>Coding</h3>
-<h3>HTML Code</h3>
+<b>Coding</b>
+<b>HTML Code</b>
 The HTML code to create the text box you see above, asking for a user's name is:
 &lt;form action="" method="post">
 &lt;label>Please enter your Name:&lt;/label>&lt;input type="text" name="Name" value='&lt;?php echo $name; ?>'/>
@@ -1522,13 +1534,15 @@ Difference between the POST and GET Method in PHP</a>.
 The code which creates the text box is <b>&lt;input type="text" name="name_of_person"/></b>. This creates a text box
 and assigns it to the <b>name</b> attribute of <b>name_of_person</b>.
 We then create a submit button. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to extract the information which the user enters and display it is:
 &lt;?php 
 $name= $_POST['name_of_person'];
 ?>
 How we retrieve the information using PHP is shown above. To retrieve the information from the text box, we use its <b>name</b> attribute. The <b>name</b> attribute of the text box, in this case, is
+
 <b>name_of_person</b>. Therefore, to extract the information from this <b>name_of_person</b> text box, we use the line <b>$name= $_POST['name_of_person'];</b>. The <b>$_POST</b> is a superglobal array which extracts information from HTML form fields. In this case, it extracts the data from the text box with a name attribute of 
+
 <b>name_of_person</b> and assigns and stores it to the <b>$name</b> variable. 
 &lt;?php
 echo "&lt;fieldset>";
@@ -1538,6 +1552,7 @@ echo "&lt;/fieldset>";
 Once we've retrieved the data which the user has entered using the superglobal $_POST array, we now use the <b>echo</b> statements to output the data which the user entered wherever you want it on the web page. 
 Therefore, since we are placing the PHP output below the text box, it goes below the text box after a few &lt;br> tags.
 And this is how information can be retrieved from a text box using PHP.
+
 <b>Note:</b> In order for PHP to retrieve information from a text box, the PHP code to retrieve the data must come before the text box. It cannot come after. So in this case, since
 we have a text box, the PHP code to retrieve the data from the text box must come before the actual HTML text box. 
 Related Resources
@@ -1564,7 +1579,9 @@ Now that we have this above questionnaire that we want a user to answer, we need
 a way to extract the data from this form and process it, so that we can know which radio button 
 (credit card) the user selects. 
 And we can do this using PHP.
+
 <b>Coding</b>
+
 <b>HTML Code</b>
 First, the HTML Code to Create the Radio Button Form Above:
 &lt;form action="" method="post">
@@ -1580,10 +1597,12 @@ the <b>type</b>, <b>name</b>, and <b>value</b> attributes.
 "American Express". When displaying the data from a selected radio button, it is the <b>value</b>
 attribute which is shown.
 -If you want to select a radio button by default, usually the first one, you add 
+
 <b>checked="checked"</b> to the first radio button. 
 The text you place after the <b>input</b> tag is the text that is shown in the radio button options. 
 In order for PHP to extract the data from the HTML form, the following line of code
 are  used.
+
 <b>PHP Code</b>
 &lt;?php
 $name_of_radio_button= $_POST ['name_of_radio_button'];
@@ -1606,6 +1625,7 @@ $name_of_radio_button= $_POST ['name_of_radio_button'];
 $name_of_radio_button= "No Button Selected";
 }
 ?>
+
 
 <b>Note:</b> Note that even if the line <b>checked="checked"</b> is added to a radio button, it will be checked by default but it still will not be a selected choice until the user clicks the 'Submit' button of the form. This is why when you first load the page, no credit card is chosen. Only until the submit button is clicked with a radio button selected is one selected.
 Related Resources
@@ -1635,7 +1655,9 @@ Select the checkboxes above and click submit. You will see the update below.
 &lt;fieldset>
 The activities you want to do are&lt;br>No activities chosen yet
 &lt;/fieldset>
+
 <b>Coding</b>
+
 <b>HTML Code</b>
 First, the HTML Code to Create the Checkbox Form Above:
 &lt;form action="" method="post">
@@ -1650,6 +1672,7 @@ the <b>type</b> and <b>name</b> attributes.
 -If you want to select a checkbox by default, you can use the line <b>checked="checked"</b> for the given checkbox. However, in this case, no checkboxes are selected by default.
 The text you place after the <b>input</b> tag is the text that is shown in the checkbox options.
 In order for PHP to extract the data from the HTML form, the following line of coding is used:
+
 <b>PHP Code</b>
 &lt;?php
 $name_of_checkbox1= $_POST['name_of_checkbox1'];
@@ -1714,6 +1737,7 @@ Below is an array of checkboxes in HTML which is very common in forms on the web
 &lt;input type="submit" name="button" value="Submit"/>&lt;/form>
 
 &lt;fieldset>You haven't selected any destination&lt;/fieldset>
+
 <b>Coding</b>
 To create the array of checkboxes shown above, the HTML code is:
 &lt;form action="" method="post">
@@ -1726,13 +1750,14 @@ To create the array of checkboxes shown above, the HTML code is:
 Every form element in HTML must be enclosed by the <b>form</b> tag. So in this case, since we are creating an array of checkboxes, this must be closed in a pair of opening and closing <b>form</b> tags.
 After this, we now create the actual array of checkboxes.
 This is done with a pair of opening and closing <b>option</b> tags for each checkbox. This tag contains the <b>type</b>,
+
 <b>name</b>, and <b>value</b> attributes.
 -The <b>type</b> attribute must be set to <b>"checkbox"</b>.
 -The <b>name</b> attribute is the name of the whole array of checkboxes. It must have a name followed by square brackets [ ], which means that is an array. 
 Since the choices in this example involve tropical island destinations, the array is called "Islands[]".
 -The <b>Value</b> attribute is unique for each of the array elements. In this case, it is set to the names of the islands. 
 A submit button, as in all forms, was added below this. And then after, the closing <b>form</b> tag was inserted to close the form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 <body>
 &lt;?php
 $destinations= $_POST['Islands'];
@@ -1788,7 +1813,9 @@ You will see the update below.
 &lt;fieldset>
 &lt;b>The pay method that you have chose to use is:&lt;/b>
 &lt;/b>&lt;br>&lt;/fieldset>
+
 <b>Coding</b>
+
 <b>HTML Code</b>
 First, the HTML Code to Create the drop-down list above:
 &lt;form action="" method="post">
@@ -1808,6 +1835,7 @@ The <b>Value</b> attribute is unique to all of the options. This is the text tha
 If you don't select any by default, the first option on the list will be selected by default.
 The text you place after the <b>option</b> tag is the text that is shown in the drop-down list options.
 In order for PHP to extract the data from the HTML form, the following line of coding is used:
+
 <b>PHP Code</b>
 &lt;?php
 $Select_name=$_POST['Select_name'];
@@ -1849,7 +1877,7 @@ Below is an example:
 You have not selected any credit card.
 &lt;/fieldset>
 You can see that the choice that you select gets updated. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 &lt;form action="" method="post">
 &lt;label>Which Credit Card Would You Like to Use?&lt;/label>&lt;br>
 &lt;select name="credit_card" size="3">
@@ -1860,7 +1888,7 @@ You can see that the choice that you select gets updated.
 &lt;input type="submit" name="submit" value="Submit"/>
 &lt;/form>
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP to retrieve data from a list box is:
 &lt;?php
 $choice= $_POST['credit_card'];
@@ -1875,7 +1903,7 @@ The $choice variable retrieves the selected option that the user has selected. I
 Otherwise, if no options have been selected, the statement is echoed that the user hasn't selected any credit
 cards. 
 <br><br><hr>
-<h3>List Box Where Multiple Options Can Be Selected</h3>
+<b>List Box Where Multiple Options Can Be Selected</b>
 Now below is a list box where multiple options can be selected.
 &lt;form action="#selection2" method="post">
 &lt;label>What Do You Want In Your Salad?&lt;/label>
@@ -1888,7 +1916,7 @@ Now below is a list box where multiple options can be selected.
 &lt;/form>
 
 You haven't selected any foods to be in your salad.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 &lt;form action="" method="post">
 &lt;label>What Do You Want In Your Salad?&lt;/label>&lt;br>
 &lt;select name="foods[]" size="3" multiple="multiple">
@@ -1899,7 +1927,7 @@ You haven't selected any foods to be in your salad.
 &lt;input type="submit" name="submit" value="Submit"/>
 &lt;/form>
 &lt;/textarea>&lt;/form>
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 &lt;?php
 $choices= $_POST['foods'];
 if(isset($choices)) {
@@ -1939,15 +1967,15 @@ As an example, below is a textarea  in HTML which is very common in forms on the
 
 &lt;fieldset>The comment that you entered is:&lt;br>&lt;br>&lt;br>&lt;br>&lt;/fieldset>
 PHP allows us to extract the data from this input text area to do whatever we want to accomplish with the data. 
-<h3>Coding</h3>
-<h3>HTML Code</h3>
+<b>Coding</b>
+<b>HTML Code</b>
 This is the HTML code to create the <b>Additional Comments</b> multi-line text input.
 &lt;form action="" method="post">
 &lt;label>Additional Comments:&lt;/label>&lt;br>
 &lt;php echo $comments; ?>
 &lt;/textarea>&lt;br>
 &lt;input type="submit" name="button" value="Submit"/>&lt;/form>
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 This is the PHP code to retrieve the data entered into the textarea.
 &lt;?php
 $comments= $_POST['comments'];
@@ -1959,6 +1987,7 @@ echo "The comment that you entered is:" . "&lt;br><br>" . $comments;
 The reason these 2 pieces of PHP code have to broken up is because PHP retrieval of an HTML form element must be done before the HTML form element. Therefore, the code to retrieve the data from the textarea, which is <b>$comments= $_POST['comments'];</b> must come before the HTML text area. With the retrieval done before, we can now output the retrieved data after the HTML element.
 The superglobal aray $_POST retrieves all which is written in the multi-line text
 input form and stores it in the 
+
 <b>$comments</b> variable. The <b>echo</b> statement then prints out the comment which is written in this field. 
 Related Resources
 <a href="http://www.learningaboutelectronics.com/Articles/How-to-retrieve-data-from-a-textbox-using-PHP.php">How to Retrieve Data from a Text Box with PHP</a><br><br> 
@@ -1978,23 +2007,23 @@ Below is an example of a form field which checks for number validation. Only num
 &lt;input name="form" type="submit" value="Submit"/>&lt;br>&lt;br>&lt;/form>
 &lt;/p>
 &lt;fieldset>
-&lt;h3>Result&lt;/h3>
+&lt;b>Result&lt;/b>
 &lt;/fieldset>
 Above is a form which checks for number validation. In this form, it is wanted that users
 enter numbers only into the form field. If a user enters a nonnumeric character, an error is thrown and the user is told to enter numbers only into the field. 
-<h3>PHP</h3>
+<b>PHP</b>
 So how do we perform number validation in PHP on a form field to make sure only numbers have been entered?
 The answer is, we use a function in PHP called the <b>is_numeric</b> function. 
 The <b>is_numeric</b> function is used to check whether the character(s) which are entered. If all the characters are numeric, it returns a true value. If all the characters are not numeric, it returns a false, or not true, value.
 Knowing now how this function works, we can implement it based on an if-else statement. If true, we can make it execute one statement. If false, we can make it execute another statement, such as the form above does.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 &lt;form action="" method="POST">
 &lt;label>Enter Number(s) Only:&lt;/label>&lt;input type="text" name="number_entered" id="number"/>
 &lt;input name="form" type="submit" value="Submit"/>
 &lt;/form>&lt;br>
 This HTML code creates the text field in which a user enters characters.
 The important thing we need to know from this HTML Code is the <b>"name"</b> attribute of the text field, which in this case is <i>number</i>. We will need to know this for the PHP code, because the "name" attribute is what we use in PHP of the HTML form field to test the characters that the user enters into this field.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 &lt;?php
 $number= $_POST['number_entered'];
 $form_result= $_POST['form'];
@@ -2030,8 +2059,8 @@ Please create a password: &lt;input type="password" name="password" value=''/>
 &lt;/form>
 
 So how do we create this form above and provide output back if the username is too short or too long? 
-<h3>Coding</h3>
-<h3>HTML Code</h3>
+<b>Coding</b>
+<b>HTML Code</b>
 The HTML code to create the form above, the 2 text boxes and the 'Enter' button, is:
 &lt;form action="#answer" method="POST">
 Please create a username: 
@@ -2042,7 +2071,7 @@ Please create a password:
 &lt;/form>
 This HTML code creates the username and password text boxes, as well as the 'Enter' button. 
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to retrieve the user-entered information, measures the length of the strings, and then outputs the appropriate feedback to the user, so that he can know if he's making any mistakes:
 &lt;?php 
 $username= $_POST['username'];
@@ -2086,10 +2115,10 @@ Below is an typical form field that you would find on the web:
 &lt;input name="submitbutton" type="submit" value="Submit"/>&lt;br>&lt;br>&lt;/form>
 &lt;/p>
 &lt;fieldset>
-&lt;h3>Result&lt;/h3>
+&lt;b>Result&lt;/b>
 &lt;/fieldset>
 Above is a form which asks a user to enter his or her name into the form field. If the user enters in characters into this field and clicks submit, then the form will tell the user the name which s/he entered. If the user leaves the field blank and clicks 'Submit', then the form will tell the user that s/he did not enter a name and that s/he must do so. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML code of this form field is:
 &lt;form action="" method="POST">
 &lt;label>Enter Your Name Please:&lt;/label>
@@ -2098,7 +2127,7 @@ The HTML code of this form field is:
 &lt;/form>
 The most important part of this form field in HTML is the "name" of the submit button, which in this case is called "submitbutton". This will be important because
 our PHP code needs to extract information from this submit button, which is how it determines whether it has been clicked or not. PHP code knows which submit button to refer to by the "name" attribute of the submit button. 
-<h3>PHP code</h3>
+<b>PHP code</b>
 The PHP code used to determine whether the submit button has been clicked is:
 &lt;?php
 $name= $_POST['name_entered'];
@@ -2113,18 +2142,18 @@ echo 'You did not enter a name. Please enter a name into this form field.';
 }
 ?>
 With the PHP Code, first we have to extract the data from the submit button before we can process it to check whether it is clicked or not. We do this by the line:
+
 <b>$submitbutton= $_POST['submitbutton'];</b>
 Here, we created a PHP variable, <b>$submitbutton</b>. Using the superglobal $_POST array, we extract the value of the submit button with the form name 'submitbutton', and assign it to the PHP variable, $submitbutton. 
 Now that we have the value extracted, we can do an if statement to see whether it is clicked or not. We do this by the following line:
-<b>
-if ($submitbutton){
+
+<b>if ($submitbutton){
 //This statement to be executed
 }
 else
 {
 //This statement to be executed
-}
-</b>
+}</b>
 How we check to see if the submit button is clicked is with a simple if statement. If the $submitbutton is clicked, the function will return true. 
 If the $submitbutton is not clicked, the function will return false. This simple if statement checks the boolean value of the variable.
 Based on this, you can make any function or statement be executed. 
@@ -2151,7 +2180,7 @@ Email Address &lt;input type= "text" name="email_entered" value=''/>
 In this article, we show how to validate an email address using PHP.
 This is to make sure that the email that a user enters into an email text box is actually a valid email address. 
 PHP has a built-in function, filter_var() function, to check for email validation.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to validate an email is shown below.
 &lt;?php
 $email= "example@gmail.com";
@@ -2214,11 +2243,11 @@ With AJAX, we can call the function to validate the email address once the user 
 So AJAX along with PHP is a powerful tool that can be used in forms, such as validation which is what we are doing now. 
 So, as you can see in the above form, an email can be entered in.
 I use the Javascript onblur() function to validate the email address once the user clicks away from the text box. So once the user enters in the email and clicks away from the text box, s/he will be able to know if the email address is a valid email.  
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML code to validate we use to create the above email text box is shown below. 
 Email Address &lt;input type= "text" id="email_entered" onblur="validateemail();"/>&lt;label id="validate">&lt;/label>
 So the above code is the HTML needed to create the text box where the user enters in his or her email.
-<h3>Javascript & AJAX Code</h3>
+<b>Javascript & AJAX Code</b>
 Below is the Javascript and AJAX code needed to make this email validation form. 
 <script>
 function validateemail() {
@@ -2264,7 +2293,7 @@ Once the request is ready, we have a creatd variable return_data and we set this
 We then update the element on our page that has an Id tag of "validate" and change the contents of it through the innerHTML method() and set equal to return_data (the output of the PHP file). If you back at the HTML code, to the right of the email address text box is a label tag having an Id of "validate". This label tag will be updated when the PHP returns the output data. 
 The line, request.send(vars), actually executes the sending of the data. 
 This concludes the Javascript and AJAX code. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code that validates an email address is shown below. 
 &lt;?php
 $email= $_POST['email'];
@@ -2293,7 +2322,7 @@ In this article, we show how to validate a credit card using PHP.
 So, as you can see in the above form, a credit card can be entered in. 
 When you press the Submit button, you see whether or not it is valid. 
 If the card is valid, this form can detect what type of card it is. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML code to validate a credit card and find out what type of credit card it is is shown below. 
 &lt;form action="" method="POST">
 Credit card number:&lt;input type="text" name="number_entered" value='&lt;?php if ($submitbutton) { echo "$number";} ?>'/> 
@@ -2316,7 +2345,7 @@ So the first thing we do is create a form. Since we want to keep the data posted
 We then create a credit card text box. Since we want the text box to retain the value that a user enters, we set the value attribute equal to the $number. You'll see later that this $number holds the credit card number that the user entered. We put PHP code by the right side of this text box. This PHP code checks a function called validatecard to see whether the card is
 valid or not. This will update right next to the credit card box when a user presses Submit. 
 We then code the Submit button and end the form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code that validates a credit card is shown below. 
 &lt;?php
 $submitbutton= $_POST['submitbutton'];
@@ -2436,7 +2465,7 @@ So AJAX along with PHP is a powerful tool that can be used in forms, such as val
 So, as you can see in the above form, a credit card can be entered in. 
 I used the Javascript onblur() function to validate the credit card number once the user clicks away from the credit card number text box to go to the expiration date text box, to enter in the expiration date. So when a user clicks the expiration date text box, s/he will know whether the credit card number entered is valid or not. 
 If the card is valid, this form can detect what type of card it is based on the number entered. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML code to validate a credit card and find out what type of credit card it is is shown below. 
 &lt;table>
 &lt;tr>&lt;td>Credit Card Number&lt;/td>&lt;td>&lt;input type= "text" id="number_entered" onblur="validatecreditcard();"/>&lt;label id="validate">&lt;/label>&lt;/td>&lt;/tr>
@@ -2449,7 +2478,7 @@ The HTML code to validate a credit card and find out what type of credit card it
 So the above code is the HTML needed to create the form to enter a credit card number, along with other information such as the expiration date and the security code.
 We create a credit card text box, a expiration date text box, a security code text box, and a submit button.
 It's in tabular form to be neat and orderly. 
-<h3>Javascript & AJAX Code</h3>
+<b>Javascript & AJAX Code</b>
 Below is the Javascript and AJAX code needed to make this credit card validation form. 
 <script>
 function validatecreditcard() {
@@ -2497,7 +2526,7 @@ Once the request is ready, we have a creatd variable return_data and we set this
 We then update the element on our page that has an Id tag of "validate" and change the contents of it through the innerHTML method() and set equal to return_data (the output of the PHP file). If you back at the HTML code, to the right of the credit card number text box is a label tag having an Id of "validate". This label tag will be updated when the PHP returns the output data. 
 The line, request.send(vars), actually executes the sending of the data. 
 This concludes the Javascript and AJAX code. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code that validates a credit card is shown below. 
 &lt;?php
 $number= $_POST['creditcardnumber'];
@@ -2674,7 +2703,7 @@ The <b>"action"</b> attribute is set to the PHP file that will contain the scrip
 PHP file that it references. The <b>"method"</b> attribute tells the server that we want to retrieve this data and post it to a web page.  
 All of the data below this first line is just standard HTML to create the text boxes. 
 Now that we know the HTML to set up for the creation of the confirmation page, let's go over what goes into the PHP file. 
-<h3>PHP File</h3>
+<b>PHP File</b>
 This is the PHP file:
 <h2>Confirmation Page of Customer Info</h2>
 Thank you for submitting this form. 
@@ -2731,7 +2760,7 @@ youtube
 hess toy truck
 LM7805
 </i>
-<h3>HTML Code</h3> 
+<b>HTML Code</b> 
 The HTML Code to create this text box above is:<br><br> 
 &lt;form action="searchpage.php" method="post"> 
 &lt;h2>Product Search&lt;/h2> 
@@ -2744,7 +2773,7 @@ Now that we've created a text box and a user is able to type in  the term he or 
 To do this, we use PHP. PHP will extract the  search term that the user has entered and use a series of if statements to see if that term matches a term we have in our list of if statements. If it does, we then direct the user to the necessary URL page on that search term using the PHP <b>header</b> function. This will be explained below. 
 If no search term matches any that we have on our website,  then we redirect the user to a page that states, "No results found for this search". 
 <br><br> 
-<h3>Example</h3> 
+<b>Example</b> 
 An example of this is a user looking up the term 'Hess toy trucks'. We need to create the  page Hess toy trucks so that when the user enters the term, we have the page to redirect them to, and  we need to create an if statement on the PHP page, <i>searchpage.php</i> to check which term is selected.  
 This is what the PHP page, searchpage.php, will look like:<br><br> 
 &lt;?php 
@@ -2817,7 +2846,7 @@ youtube
 hess toy truck
 LM7805
 </i><br><br><br> 
-<h3>HTML Code</h3> 
+<b>HTML Code</b> 
 The HTML Code to create this text box above is:<br><br> 
 &lt;form action="searchpage.php" method="post"> 
 &lt;h2>Product Search&lt;/h2> 
@@ -2829,7 +2858,7 @@ The HTML Code to create this text box above is:<br><br>
  
 Now that we've created a text box and a user is able to type in  the term he or she is searching for, we now need to redirect the user to the necessary page based on the search query s/he has entered. For example,  if the user enters the search query, "wikipedia", we then need to redirect him to the wikipedia website. To do this, we use PHP. PHP will extract the  search term that the user has entered and use a series of if statements to see if that term matches a term we have in our website. If it does, we then direct the user to the necessary page on that search term using the PHP <b>header</b> function. This will be explained below. If no search term matches any that we have on our website,  then we redirect the user to a page that states, "No Searches Matched". 
 <br><br> 
-<h3>Example</h3> 
+<b>Example</b> 
 An example of this is a user looking up the term 'Hess toy trucks'. We need to create the  page Hess toy trucks so that when the user enters the term, we have the page to redirect them to, and  we need to create an if statement on the PHP page, <i>searchpage.php</i> to check which term is selected.  
 This is what the PHP page, searchpage.php, will look like:<br><br> 
 &lt;?php 
@@ -2951,7 +2980,7 @@ If you just want the code, the full code of this image search engine is at the f
 <a href="http://www.learningaboutelectronics.com/Code-to-create-own-search-engine-for-website-using-PHP.txt">Code to create your own search engine for your website using PHP</a>.
 Remember that you have to change the directory to the directory you want to search. Also you have to change the website name to your website name when outputting the link to the search engine result returned.
 Also when you copy this code to your web page, make sure it's saved as a PHP file. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now we'll first go over the HTML code needed for this search engine.
 The HTML code is needed just to create the search text box.
 Everything else is PHP.
@@ -2967,8 +2996,8 @@ We also add PHP code so that if the submit button is clicked and the search text
 We then close the form. 
 This concludes the HTML code needed to make this search engine. 
 
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 We now go on to the PHP code necessary to make this search engine work. 
 We separate the PHP code into 2 blocks of code.
 The first block of PHP code is shown below.
@@ -2992,7 +3021,7 @@ So we'll miss this search. Only a term that has "transistor circuit" with the te
 and beef to pizza" will not be returned because the phrase "pepperoni beef pizza" isn't in it, even though all the terms are in it. So you can see why we wouldn't want to just use the phrase exactly that the user inputs. 
 So after we explode the search query based on spaces, we then count the number of terms in the $search variable. Again, the explode() function separates the string into separate entities based on the parameter entered, in this case a space (" "). We now count the number terms in the $search variable. This is how we know how many terms the user has entered in.
 Lastly, we make sure that we obtain the value of the submit button to see if it has been clicked. If it has been clicked, it returns true. If not, it returns false.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 This is now the second and last block of PHP code shown below.
 &lt;?php
 $directory = "Articles/";
@@ -3200,7 +3229,7 @@ Code to create a custom search engine for your website using PHP</a>.
 Remember that you have to change the directory to the directory you want to search. 
 Also you have to change the website name to your website name when outputting the link to the search engine result returned.
 Also when you copy this code to your web page, make sure it's saved as a PHP file. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now we'll first go over the HTML code needed for this search engine.
 The HTML code is needed just to create the search text box.
 Everything else is PHP.
@@ -3216,8 +3245,8 @@ We also add PHP code so that if the submit button is clicked and the search text
 We then close the form. 
 This concludes the HTML code needed to make this search engine. 
 
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 We now go on to the PHP code necessary to make this search engine work. 
 We separate the PHP code into 2 blocks of code.
 The first block of PHP code is shown below.
@@ -3241,7 +3270,7 @@ So we'll miss this search. Only a term that has "transistor circuit" with the te
 and beef to pizza" will not be returned because the phrase "pepperoni beef pizza" isn't in it, even though all the terms are in it. So you can see why we wouldn't want to just use the phrase exactly that the user inputs. 
 So after we explode the search query based on spaces, we then count the number of terms in the $search variable. Again, the explode() function separates the string into separate entities based on the parameter entered, in this case a space (" "). We now count the number terms in the $search variable. This is how we know how many terms the user has entered in.
 Lastly, we make sure that we obtain the value of the submit button to see if it has been clicked. If it has been clicked, it returns true. If not, it returns false.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 This is now the second and last block of PHP code shown below.
 &lt;?php
 $directory = "Datasheets/";
@@ -3463,7 +3492,7 @@ If you just want the code, the full code of this image search engine is at the f
 <a href="http://www.learningaboutelectronics.com/Code-to-create-an-image-search-engine.txt">Code to create an image search engine</a>.
 Remember that you have to change the directory to the directory you have images on your site. Usually this will be the same directory. 
 Also when you copy this code to your web page, make sure it's saved as a PHP file. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now we'll first go over the HTML code needed for this search engine.
 The HTML code is needed just to create the search text box.
 Everything else is PHP.
@@ -3479,8 +3508,8 @@ We also add PHP code so that if the submit button is clicked and the search text
 We then close the form. 
 This concludes the HTML code needed to make this search engine. 
 
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 We now go on to the PHP code necessary to make this search engine work. 
 We separate the PHP code into 2 blocks of code.
 The first block of PHP code is shown below.
@@ -3504,7 +3533,7 @@ So we'll miss this search. Only a term that has "transistor circuit" with the te
 and beef to pizza" will not be returned because the phrase "pepperoni beef pizza" isn't in it, even though all the terms are in it. So you can see why we wouldn't want to just use the phrase exactly that the user inputs. 
 So after we explode the search query based on spaces, we then count the number of terms in the $search variable. Again, the explode() function separates the string into separate entities based on the parameter entered, in this case a space (" "). We now count the number terms in the $search variable. This is how we know how many terms the user has entered in.
 Lastly, we make sure that we obtain the value of the submit button to see if it has been clicked. If it has been clicked, it returns true. If not, it returns false.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 This is now the second and last block of PHP code shown below.
 &lt;?php
 $directory = "images/";
@@ -3698,7 +3727,7 @@ If you just want the code, the full code of this video search engine is at the f
 Remember that you have to change the directory to the directory you have videos on your site.Usually this will be the same directory. 
 Also when you copy this code to your web page, make sure it's saved as a PHP file. Also if your videos directory is located in the root or home directory, this page should be uploaded
 to the home directory.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now we'll first go over the HTML code needed for this search engine.
 The HTML code is needed just to create the search text box.
 Everything else is PHP.
@@ -3714,8 +3743,8 @@ We also add PHP code so that if the submit button is clicked and the search text
 We then close the form. 
 This concludes the HTML code needed to make this search engine. 
 
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 We now go on to the PHP code necessary to make this search engine work. 
 We separate the PHP code into 2 blocks of code.
 The first block of PHP code is shown below.
@@ -3739,7 +3768,7 @@ So we'll miss this search. Only a term that has "transistor circuit" with the te
 and beef to pizza" will not be returned because the phrase "pepperoni beef pizza" isn't in it, even though all the terms are in it. So you can see why we wouldn't want to just use the phrase exactly that the user inputs. 
 So after we explode the search query based on spaces, we then count the number of terms in the $search variable. Again, the explode() function separates the string into separate entities based on the parameter entered, in this case a space (" "). We now count the number terms in the $search variable. This is how we know how many terms the user has entered in.
 Lastly, we make sure that we obtain the value of the submit button to see if it has been clicked. If it has been clicked, it returns true. If not, it returns false.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 This is now the second and last block of PHP code shown below.
 &lt;?php
 $directory = "Videos/";
@@ -3980,7 +4009,7 @@ If you just want the code, the full code of this audio file search engine is at 
 Remember that you have to change the directory to the directory you have audio files on your site.
 Also when you copy this code to your web page, make sure it's saved as a PHP file. Also if your sound files directory is located in the root or home directory, this page should be uploaded
 to the home directory.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now we'll first go over the HTML code needed for this search engine.
 The HTML code is needed just to create the search text box.
 Everything else is PHP.
@@ -3996,8 +4025,8 @@ We also add PHP code so that if the submit button is clicked and the search text
 We then close the form. 
 This concludes the HTML code needed to make this search engine. 
 
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 We now go on to the PHP code necessary to make this search engine work. 
 We separate the PHP code into 2 blocks of code.
 The first block of PHP code is shown below.
@@ -4024,7 +4053,7 @@ Another example of this is a user typing in, "pepperoni pizza". Without explodin
 and beef to pizza" will not be returned because the phrase "pepperoni beef pizza" isn't in it, even though all the terms are in it. So you can see why we wouldn't want to just use the phrase exactly that the user inputs. 
 So after we explode the search query based on spaces, we then count the number of terms in the $search variable. Again, the explode() function separates the string into separate entities based on the parameter entered, in this case a space (" "). We now count the number terms in the $search variable. This is how we know how many terms the user has entered in.
 Lastly, we make sure that we obtain the value of the submit button to see if it has been clicked. If it has been clicked, it returns true. If not, it returns false.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 This is now the second and last block of PHP code shown below.
 &lt;?php
 $directory = "Audio/";
@@ -4243,17 +4272,17 @@ you just want people on your site to have accounts, so that maybe they could upl
 For, example, this site doesn't have members (forum doesn't count). It doesn't sign up members so that a member has his/her own account. 
 But if it did, it could be used for something like a member trying to share his/her own electronic product or possibly code.
 So a register and login system can be used for something like that. 
-<h3>Register Page</h3>
+<b>Register Page</b>
 So before we have a login page, we need to first register users. We need to first get users in the database so that they are officially registered. 
 How we do this is we create a database through MySQL.
 And then once we have this database, we use a register form where a user can type in information, such as his/her first name, last name, username and password.
 Once the user clicks the form submit button, this information is then sent and stored in the MySQL database. 
 So what's the code to go about the create a register form?
-<h3>Code for Register Page</h3>
+<b>Code for Register Page</b>
 We will show and explain the code needed to create the register page below. 
 You can also see it in the following text file at the following link: 
 <a href="http://www.learningaboutelectronics.com/Articles/register.txt">Code for Register Page</a>.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The first block of code needed to make this form work is the PHP code. 
 &lt;?php
 $user = "user"; //Enter the user name
@@ -4304,7 +4333,7 @@ If the fields are not empty (the user has entered into all of them), then there 
 The last line simply closes the database connection. Since we've already inserted the data from the HTML form into the MySQL table (if the username wasn't taken and the form fields
 were all entered), we can close the connection to the database and its table.
 This is all the PHP code needed to create the register form.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 The HTML code for the register form is shown below.
 &lt;form action="" method="POST">
 First name: 
@@ -4327,10 +4356,10 @@ and the $count variable is not equal to 0, this means this username has already 
 Lastly, we have the submit button. We name this button "submit". 
 This completes the form. 
 This completes all of the code needed to create the register page.
-<h3>Login Page</h3>
+<b>Login Page</b>
 
 Next we need the login page. 
-<h3>Code for Login Page</h3>
+<b>Code for Login Page</b>
 So now we go over the code for the login page.
 This code is shown below.
 We also show this code in the following text file at the following link: 
@@ -4347,10 +4376,10 @@ The form, as only forms require, needs a submit button.
 Once clicked, the form redirects the user to the PHP page, login-confirmation-page.php using the 
 POST method.
 Again, this is all that is required for the login page.
-<h3>Login Confirmation Page</h3>
+<b>Login Confirmation Page</b>
 The last page is the login confirmation page. This is the page the user gets brought to after s/he has logged in. 
 Once you use the login page, you'll be brought to the confirmation page. 
-<h3>Code for the Login Confirmation Page</h3>
+<b>Code for the Login Confirmation Page</b>
 The code needed for the login confirmation page, which is entirely PHP code, is shown below.
 We also show it here in the following text file at the following link: 
 <a href="http://www.learningaboutelectronics.com/Articles/login-confirmation-page.txt">Code for Login Confirmation 
@@ -4458,7 +4487,7 @@ Before we go get into the code for this tutorial, enter your first name into the
 This form will illustrate sessions for you. 
 You will see how you go from page to page, yet each page knows your first name. This is done through sessions. 
 We will now go over how to do this below in code.
-<h3>HTML Code<h3>
+<b>HTML Code<b>
 So let's say just like above we have an HTML form that gets data from a user, such as above with a text box asking for the user's first name. 
 The HTML code for this is shown below.
 &lt;form action="userpage.php" method="POST">
@@ -4470,7 +4499,7 @@ We set the action attribute of the form to userpage.php. This is because this is
 The method is set to POST because we're posting it to the actual page, not the URL, which is what the GET method does.
 We then have a standard HTML text box that asks for the user's name. 
 This is followed by a submit button, which allows a form to be submitted.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 So now we go to the first PHP code that is used once the user submits the form. 
 The contents of the PHP file, userpage.php, is shown below.
 &lt;?php
@@ -4703,7 +4732,7 @@ So you've read the contents of a file using PHP without having to manually go to
 So how is this done in PHP code? 
 This is shown below.
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The code to read the contents of a file using PHP is shown below.
 &lt;?php
 $fileread= file_get_contents('file_name.txt');
@@ -4736,14 +4765,14 @@ This is the contents of the file, sample.txt.
 ththththth&lt;/fieldset>
 So you can see the contents of the file above.
 
-<h3>Write something to this Textarea to Write to the File Shown Above</h3>
+<b>Write something to this Textarea to Write to the File Shown Above</b>
 So above is an area where you can write contents. When you click the submit button, the contents that you wrote will be written to the file, sample.txt. 
 If you wrote something and submitted it by clicking the submit button, you should see the contents above that show the file change to include this. You will have to refresh the page though after you submit the form to see the changes to the content of the file.
 So you've now written contents to a file using PHP without having to manually go to the file and write it. 
 So how is this done in PHP code? 
 This is shown below.
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The code to write contents to a file using PHP is shown below.
 &lt;?php
 $contents="Content that you want to write to file";
@@ -4868,7 +4897,7 @@ So this code above tells us everything. It tells us whether the file we want to 
 us whether the file rename was successful or not.
 And this is all that is required to rename a file using PHP.
 
-<h3>How to Rename All Files in a Directory with a Certain Criterion or Criteria</h3>
+<b>How to Rename All Files in a Directory with a Certain Criterion or Criteria</b>
 The above code is great and works well. But the true beauty of this PHP rename() function, if you want to tap into the true beauty of it, is that it can rename all files in a directory matching a certain criterion. 
 Say, you have a list of files that have the word, "MD" standing for Maryland, such as "flowers-in-MD", 
 "gifts-to-buy-in-MD", "places-to-go-in-MD" and you've decided that you don't want to use the state abbreviation; instead
@@ -4953,7 +4982,7 @@ So this code above tells us everything. It tells us whether the file we want to 
 us whether the file delete was successful or not.
 And this is all that is required to delete a file using PHP.
 
-<h3>How to Delete All Files in a Directory with a Certain Criterion or Criteria</h3>
+<b>How to Delete All Files in a Directory with a Certain Criterion or Criteria</b>
 The above code is great and works well. But the true beauty of this PHP delete() function, if you want to tap into the true beauty of it, is that it can delete all files in a directory matching a certain criterion or certain criteria. 
 Say, you have a list of files that have the word, "HTML4", such as 
 "How-to-create-a-horizontal-line-using-HTML4", 
@@ -5001,7 +5030,7 @@ And we create new files with PHP through the fopen() function.
 This is the same PHP function that is used to open an existing file. 
 However, if the file does not exist, PHP will create the file. So this is how PHP can be used to create a new file. 
 So below we show the code.
-<h3>Code</h3>
+<b>Code</b>
 The code to create a new file called newfile.php is shown below.
 &lt;?php
 fopen("newfile.php", "w") or die("Unable to open file!");
@@ -5071,7 +5100,7 @@ So how do we do this? How do we create a directory?
 And we create a directory through the PHP mkdir() function. 
 This function is very simple. All you need to know is that it takes one parameter, which is the name of the directory that you want to create.
 So below we show the code.
-<h3>Code</h3>
+<b>Code</b>
 The code to create a directory called Pocahontas is shown below.
 &lt;?php
 mkdir("Pocahontas");
@@ -5130,7 +5159,7 @@ is a script that checks for broken links found on a website. One of the most pro
 So web crawlers are in full use on the internet and is a very valuable tool. 
 So how do we go about creating one with PHP? This will be shown below.
 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 All we need to create this spider web crawler is a single block of PHP code.
 This code is shown below.
 
@@ -5267,7 +5296,7 @@ Being that PHP is a dynamic, server-side language, it can access other remote pa
 It can fetch any URL so that you can get the contents of the page of that
 URL.
 This can be done in a few ways. 
-<h3>file_get_contents() function</h3>
+<b>file_get_contents() function</b>
 The first way we can retrieve and get the contents
 of a page is through the file_get_contents() function. 
 This takes the contents of the page specified in the parameter and gets the contents of it on the current page. 
@@ -5282,7 +5311,7 @@ This function is only supposed to do used to get the contents of a page so that 
 appears like your site has actually transformed into ebay, it hasn't. 
 You simply have the contents of ebay's home page on your site, not the functionality. If you try to use the search text box to look for an item on ebay, it won't work. Your site hasn't become ebay. It's simply loaded the contents of ebay's page onto your website. The file_get_content(), as the name implies, is simply to get the contents of a web page, mostly the text. The actual images, themselves will be missing the majority of the time, because that information is in the folder of any website, not on yours. However, you can still get the contents of an image, such as the image source and the alt tags, if you scrape for it. 
 If you simply want to redirect to another site, you would use the PHP Location header redirect function. 
-<h3>CURL</h3>
+<b>CURL</b>
 Another way of retrieving and getting the contents of a page is through the 
 CURL function. 
 This achieves the same effect as above, with the file_get_contents() function.
@@ -5328,7 +5357,7 @@ You need a username and password to get access into the FTP server.
 Otherwise, you won't be able to transfer files or do anything.
 So, again, you need to connect to an actual FTP server and you connect to it via the ftp_connect() function. Next, you need a username and password to gain access into the FTP server and this is done via the PHP ftp_login function. 
 We show how to do these in the code below.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to connect to an FTP server and log into the FTP server is shown below.
 &lt;?php
 $connect= ftp_connect("ftp.godaddy.com")
@@ -5353,7 +5382,7 @@ So this is all that is required to connect to and log into an FTP server.
 PHP then has a number of function so that we can interact and do useful things with the 
 FTP servers such as create, delete, rename, copy, get a listing of, and transfer files, as an FTP does. 
 
-<h3>Getting a Directory Listing</h3>
+<b>Getting a Directory Listing</b>
 One way to get a directory listing with PHP is through the ftp_nlist() function. 
 The ftp_nlist() function gets a directory listing from the remote computer and stores it in an array.
 The ftp_nlist() function takes 2 parameters. The first parameter establishes connection, via the $connection variable we previously used. 
@@ -5365,7 +5394,7 @@ foreach ($filesdirectory as $file)
 echo "$file ";
 }
 So this code prints all the files in the directory you specified.
-<h3>Downloading Files with an FTP</h3>
+<b>Downloading Files with an FTP</b>
 Files can be downloaded with an FTP from the remote computer with the ftp_get() function. 
 The following code can be used below to download a file from the computer once you've logged into the FTP server.
 ftp_get($connection, "file_name.txt", "file_downloaded.txt", FTP_ASCII);
@@ -5377,7 +5406,7 @@ The FTP_ASCII parameter tells the FTP what kind of file is being downloaded. It 
 text files (FTP_ASCII) or machine language files (FTP_BINARY), which is basically anything that isn't plain text. You can determine which one you need by the contents of the file.If the contents are regular characters that are human readable, that you can read and understand, it is an ASCII file. 
 IF the contents are all machine code, ones and zeros, the file is binary. Graphic files, for example, are binary. 
 
-<h3>Uploading Files with an FTP</h3>
+<b>Uploading Files with an FTP</b>
 Files can be uploaded with an FTP to the remote computer with the ftp_put() function. 
 The following code can be used below to upload a file to the computer once you've logged into the FTP server.
 ftp_put ($connect, "file_name.txt", "file_uploaded.txt", FTP_ASCII);
@@ -5495,8 +5524,8 @@ a user from a regular page to a secure page, so that a user can never submit inf
 page to a secure page. To see how to redirect a user from a regular page to a secure page, see 
 <a href="http://www.learningaboutelectronics.com/Articles/How-to-redirect-to-a-secure-connection-using-PHP.php">
 How to Redirect a User to a Secure Connection Using PHP</a>.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 This page is not secure.
 
 
@@ -5555,7 +5584,7 @@ with many different databases, with no need to modify the code  at all. So it's 
 This is why CSV files are a popular format for working with data that goes into tables of databases. If working with many databases, it serves as a platform-neutral choice to minimize or completely get rid of the need to modify code. 
 You can write a CSV file by hand or you can use PHP to create a CSV file. 
 We can then later load this file into a MySQL table so that this data can be added to the table. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to create a CSV file is shown below. 
 &lt;?php
 $user[]= "John williams,52,Custodian";
@@ -5605,7 +5634,7 @@ Using "..", we go a directory up from the current directory. Since the Articles 
 directory, this brings us to the root directory. 
 Using ".." allows you to go the parent of the current directory. 
 The code outputs all the files in the parent directory of the current directory. 
-<h3>Going Multiple Directories Up From the Current Directory</h3>
+<b>Going Multiple Directories Up From the Current Directory</b>
 So the following code above goes up one directory from the current directory. 
 You can go how many directories up that you want. 
 Suppose you are in the Articles/Uploads directory of your website and you want to get to the root directory. 
@@ -5616,7 +5645,7 @@ if (is_dir($directory)){
 echo $file;
 }
 We simply use ".." twice to go up 2 directories from the current directory. 
-<h3>How to Go to Another Directory in the Same Parent Directory </h3>
+<b>How to Go to Another Directory in the Same Parent Directory </b>
 Now we will show how to go to a directory on the same level as the current directory. 
 Let's say we are in the Articles directory, which is on the root directory. And we want to go to another directory on the root directory, let's say, images. 
 We first have to go up one directory, getting out of the current directory to the root directory. We then have the specify the directory on the root directory we want to access. 
@@ -5648,7 +5677,7 @@ Related Resources
 <h2>Get and Send HTTP Headers</h2>
 In this article, we show how to get and send HTTP headers using PHP.
 HTTP headers hold all sorts of information, such as the type of file that the document requested is, as well as the type of request that is made by the client.
-<h3>How to Get HTTP Headers From the Server</h3>
+<b>How to Get HTTP Headers From the Server</b>
 So the first thing we'll show how to do is get headers from the server. 
 The following PHP code below shows how to get the accept and verb from the headers from the server.
 &lt;?php 
@@ -5657,8 +5686,8 @@ echo "&lt;br>";
 echo "Verb: " . $_SERVER['REQUEST_METHOD'];
 ?>
 For this page, running the above PHP yields the following result shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Accept: <br>Verb: GET
 So you can see a lot of information from the above code.
 $_SERVER is a superglobal array in PHP which allows us to be able to get a lot of information from the server. This includes HTTP headers information. 
@@ -5667,7 +5696,7 @@ The */* shows that the Accepter header indicates support for every possible cont
 The verb is obtained through the array $_SERVER['REQUEST_METHOD']. There are several methods that can do used when communicating through HTTP. The GET method simply retrieves a page. The PUT method adds content to the requested page. The DELETE method deletes a resource from the requested page. 
 If you look at the above verb, it will be the GET method, because you clicked on the link to get to this page, which is a GET request. Any time you're simply retrieving a web page, such as clicking on a hyperlink, it is always a GET request made to the server by the browser. 
 
-<h3>How to Send HTTP Headers</h3>
+<b>How to Send HTTP Headers</b>
 Now we will show how to send HTTP headers, so that it can be sent from the server to the client. 
 The following PHP code below sends HTTP headers to a client. 
 //send headers to the client
@@ -5723,7 +5752,7 @@ Even though there are other ways of doing it, serializing the data is one of the
 In this way, you can view serializing data as making the data platform or language neutral. 
 Practically every language can understand a plain text string, so this data can work with other applications.
 
-<h3>Serializing an Object</h3>
+<b>Serializing an Object</b>
 So we'll now show how to serialize an object in PHP. 
 This converts the object to a plain text string. 
 Below is PHP code that serializes an object in PHP and outputs the serialized data so that you can see its form. 
@@ -5736,8 +5765,8 @@ $cars_serialized= serialize($car1);
 echo "This is the serialized object: '$cars_serialized'";
 ?>
 The PHP output of this code is shown below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 This is the serialized object: 'O:4:"cars":0:{}'
 So you can see the output above. 
 We'll explain the code of it now below.
@@ -5751,7 +5780,7 @@ This is shown below.
 unserialize($box1); 
 So you can serialize the object for it to be able to work with applications outside of PHP and unserialize it to convert it back to native PHP code. 
 
-<h3>Serializing an Array</h3>
+<b>Serializing an Array</b>
 In the same way that we serialized an object, we can serialize an array. 
 An array is a complex structure that may need to be serialized to work with outside applications of PHP.
 The PHP code below serializes an array and shows the output. 
@@ -5761,8 +5790,8 @@ $colors_serialized= serialize($colors);
 echo "This is the serialized array: '$colors_serialized'";
 ?>
 This PHP code yields the following shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 This is the serialized array: 'a:4:{i:0;s:4:"blue";i:1;s:6:"orange";i:2;s:5:"black";i:3;s:5:"green";}'
 
 So it's really the same principle, just now with arrays. 
@@ -5781,7 +5810,7 @@ However, when we're done with the outside applications, we may want to convert t
 So, again, unserializing data is done through the unserialize function. 
 Below is an example of a code that serializes an object and then unserializes the object. 
 
-<h3>Unserializing an Object</h3>
+<b>Unserializing an Object</b>
 So we'll now show how to unserialize an object in PHP. 
 This converts the object to a plain text string and then converts the plain text string back into an ojbect.
 Below is PHP code that serializes and unserializes an object in PHP and outputs both the serialized data and the unserialized data.
@@ -5806,8 +5835,8 @@ echo "&lt;br>";
 echo "Object property:" . $car1_unserialized->color;
 ?>
 The PHP output of this code is shown below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 This is the serialized data shown below:<br> 'O:4:"cars":1:{s:5:"color";s:3:"red";}'<br><br>This is the unserialized data shown below: <br>object(cars)#2 (1) {
   ["color"]=>
   string(3) "red"
@@ -5826,7 +5855,7 @@ We then output the breakdown of the object through the PHP var_dump() function.
 We also output the color property of the $cars1_unserialized object so that you can see that it is in fact an object in that we're referencing as an object would be
 (showing it's an object). Of course, you don't have to call the variable $cars1_unserialized. You can call it the original value $car1 again. 
 
-<h3>Unserializing an Array</h3>
+<b>Unserializing an Array</b>
 In the same way that we unserialized an object, we can unserialize an array. 
 An array is a complex structure that may need to be serialized to work with outside applications of PHP. Later on in the code, once we have dealt with the external languages or applications, we may need to convert it back into an array. And we do this through the unserialize function. 
 The PHP code below serializes an array and then unserializes the serialized data back into an array.
@@ -5842,8 +5871,8 @@ echo print_r($colors_unserialized);
 echo "&lt;/pre>";
 ?>
 This PHP code yields the following shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 This is the serialized array shown below<br>: 'a:4:{i:0;s:4:"blue";i:1;s:6:"orange";i:2;s:5:"black";i:3;s:5:"green";}'<br><br>This is the unserialized array shown below:<br>Array
 (
     [0] => blue
@@ -5874,10 +5903,10 @@ The 64 characters that youtube uses is 0-9 (10 combinations), lowercase alphabet
 So the characters are 0-9, a-z, A-Z, -, and _ 
 These are all the possible characters that youtube uses to create a video id. 
 
-<h3>Random video id:</h3>
-<h3>0B7jmvV82Ll</h3>
-<h3>Full youtube URL:</h3>
-<h3>https://www.youtube.com/watch?v=0B7jmvV82Ll</h3>
+<b>Random video id:</b>
+<b>0B7jmvV82Ll</b>
+<b>Full youtube URL:</b>
+<b>https://www.youtube.com/watch?v=0B7jmvV82Ll</b>
 
 So you can see above we have created a random video id, such as what you would find generated by youtube. 
 If you refresh the page, each time you do so, a new video id will be generated. 
@@ -5957,10 +5986,10 @@ So creating a class is very simple. All that is needed is the PHP keyword class 
 It's just that that's the normal convention.
 Once you create a class, you delve into the world of OOP in which you have many limitless possibilities of what you can do based on that class. Possibilities include extending the class, in which you create another class that inherits all the properties, methods, and functions of that original class. There's many things you can do in the world of OOP that applies not just to PHP, but to all OO porgramming languages including Java and C++.
 Going back to the PHP code above, if it's run, this gives the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Lion Characteristic: King of the jungle<br>I eat food
-<h3>How to Create a Child Class</h3>
+<b>How to Create a Child Class</b>
 To create a child class of a class, you can use the keyword extends. 
 The format to create a child class is shown below.
 class dogs extends animals
@@ -5995,8 +6024,8 @@ It's not found in the animals class. It's specialized to the dogs class.
 We then echo out these values. 
 And this is how a child class can be built in PHP.
 If we run the above code, this yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The dog's skin: furry<br>A dog barks
 
 <h2>Create and Access a Class Constant</h2>
@@ -6020,8 +6049,8 @@ To access the class constant, you use the name of the class (in this case mathem
 In this code, we echo out the constant, so an echo precedes this code.
 Usually by convention, constants are put in all uppercase. This is just a coding convention, not a necessity. But this helps to differentiate constants from variables. 
 Running the PHP code above, we get the following output shown below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 3.14159265
 
 <h2>Instantiate an Object</h2>
@@ -6059,8 +6088,8 @@ So this is the most basic example of create an instance of a class. It can get m
 a constructor method that is able to initialize the values to the object. But just to make this tutorial simple, I've just shown how to make the most basic type of object of a class that can be done with PHP.
 In further tutorials, I'll show more. 
 Going back to the PHP code above, if it's run, this gives the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Car type: Toyota Camry<br>Car color: Green<br>Car cost: $20,000
 
 <h2>Delete an Object</h2>
@@ -6089,7 +6118,7 @@ We assign the $car1 object the type, Hyundai Elantra.
 We then delete the $car1 object through the unset() function. 
 It's very simple.
 
-<h3>Creating a Destructor Method</h3>
+<b>Creating a Destructor Method</b>
 You also have the option of puting a destructor method in a PHP class. 
 When an object is deleted, the destructor method is automatically called and you can do anything in this code, just as with any method. For example, you can close a database connection. Output that the object is being deleted. If you're keeping track of the number of objects in a class, you would decrement the variable keeping count by 1 
 (since an object is deleted when this method is called).
@@ -6174,8 +6203,8 @@ After we've created this instance of a class, we've initalized a few values, the
 I echoed out the object properties just to show you how it would work to create an object, give it properties, and then output those properties. 
 So this is a basic example of how to initialize and output the initialized values of an object in PHP.
 Going back to the PHP code above, if it's run, this gives the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Car type: Toyota Camry<br>Car color: green<br>Car number of doors: 4<br>Car engine type:  automatic
 
 <h2>Invoke an Object Method</h2>
@@ -6219,8 +6248,8 @@ So it's rather simple to invoke methods on objects in PHP.
 Of course, some methods take parameters if you've created that for your method. But it works in the same method. If a method
 takes parameters, it's called in the same way, only with the parameter(s) included.
 Going back to the PHP code above, if it's run, this gives the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 I'm an animal and I walk.
 
 <h2>Access Overridden Methods</h2>
@@ -6272,8 +6301,8 @@ To access the overridden method in PHP, we use the parent keyword, followed by 2
 So to access the overridden parent method, in this case, the code to do so is, parent::move($speed).
 And this is all that is required to access a parent class in PHP.
 Running the code above yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 I run at 10 miles per hour<br>As a cheetah, I run fast, at 75 miles per hour<br>I run at 15 miles per hour
 
 Related Resources
@@ -6326,8 +6355,8 @@ We then call the getHeight() function. This echos out the child's height.
 So now you've gotten a firsthand experience of what a getter and setter is, what it's used for, and how to create and call them in PHP code. 
 The encapsulation it provides really helps to filter bad data and gives you, the coder cleaner, safer code that doesn't present bad data. 
 Running the above PHP yields the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The child's height is 40 inches tall
 
 There's also a way in PHP that create getter and setter methods using the 
@@ -6387,8 +6416,8 @@ To automatically get the property of an object, you call an output function such
 The only parameter needed for the __get() method is the $property variable. We return out what the child's height is in inches.
 So this is all that is required to use the PHP __get and __set magic methods. It's very adaptable because you don't need to declare variables in the class and you don't need to call a function. If you set it up properly, like how demonstrated, it will automatically call the __get or __set magic methods. So in this way, it simplifies code.
 Running the PHP code above yields the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The child's height is 45 inches tall
 
 Related Resources
@@ -6448,10 +6477,11 @@ to 2013.
 We then simply echo the object, $car1. 
 When we do this, what we put into the __toString method is output.
 If we echoed out the object without the __toString method in the code, the program would output a fatal error, such as the following:
+
 <b>Catchable fatal error:</b> Object of class cars could not be converted to string. 
 Running the PHP code above yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Car type: Toyota Camry<br>Car year: 2013
 
 Related Resources
@@ -6471,6 +6501,7 @@ So the class above is a final PHP class.
 No child class can be created from it. 
 If you attempt to create a child class from a final class, you will get a fatal error.
 I took the above animals class and tried to create a subclass named zebras from it. I got an output shown as that shown below.
+
 <b>Fatal error:</b> Class zebras may not inherit from final class (animals) 
 A final class is one where you absolutely do not want any inheritance. You do not want any child classes to inherit a final class.
 In this way, a final class can be seen as a standalone class.
@@ -6496,6 +6527,7 @@ echo "Move ahead";
 So the class above creates a class named animals.
 Being that we've declared this function to be final, it cannot be modified in any child class at all. No child class can even use the same method in name, or a fatal error will be output. 
 Just to show you the output you would get if you created a child class and attempted to use the same method name move(), I created a child class and named a method in the child class the same name, move(). In return, the program output a fatal error, such as shown below.
+
 <b>Fatal error:</b> Cannot override final method animals::move()
 A final method is one where you absolutely do not want any change to the method at all in the parent class or any child classes. 
 In this way, a final class can be seen as an immutable method.
@@ -6540,7 +6572,7 @@ Abstract methods also cannot be defined as final, because they need to be overri
 Lastly, when you specify the abstract method in the parent class, the exact same method with the exact same parameters must be used in all the children classes. Meaning you cannot have a method that accepts different parameters in any of the child classes. It must be the exact methods that receives the same exact arguments, or else an error will be output.
 So just to give a complete example of abstract code, see the following code below.
 <br><br><hr>
-<h3>Complete Code of an Abstract Class</h3>
+<b>Complete Code of an Abstract Class</b>
 
 &lt;?php
 abstract class shapes
@@ -6574,8 +6606,8 @@ We then create another child class of the abstract shapes class named square. In
 for calculating the area of a square.
 We then create objects of each of the classes and call the methods. 
 This leads to us getting the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 You calculate the area of a circle by the formula, A= πr<sup>2</sup><br>You calculate the area of a square by the formula, A= (length)<sup>2</sup>
 So you can see how the abstract class provides the abstract foundation. And then we create child classes that actually implement the methods.
 So this is a quick run-down of abstract classes, how it can be created, and the rules that apply for them in PHP.
@@ -6617,11 +6649,12 @@ In the calculateArea() function, we echo out the formula for a rectangle.
 To test the code, we create an object of the rectangle class, $rectangle1. We then invoke the calculateArea() method on the $rectangle1 object.
 And the code works.
 Running the above PHP code yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The formula to calculate the area of a rectangle is, A= l x w
 
 If the class that you create that implements an interface does not implement the method(s) in the interface, a fatal error will be output, such as shown below.
+
 <b>Fatal error:</b> Class rectangle contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (calculation::calculateArea) 
 There's a few other rules when you are dealing with interfaces in PHP.
 The interface itself does not implement any methods. The methods in the interface are empty methods; they contain nothing. 
@@ -6676,8 +6709,8 @@ So the $car2 object is the same as the $car1 object, except $car2 is a 2014, not
 This still saved us a lot of time, because we didn't have to write out all the properties again. All we had to do was change the year property. 
 So this is all that is needed to clone an object of a class in PHP.
 Going back to the PHP code above, if it's run, this gives the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Car 1: Toyota Camry 2015 Green Automatic<br>Car 2: Toyota Camry 2014 Green Automatic
 
 <h2>Inspect an Object</h2>
@@ -6711,8 +6744,8 @@ We assign this $car1 object its type, year, engine type, and energy type.
 We then echo out the object using the var_dump() function. 
 We use the &lt;pre>&lt;/pre> tags just to make the code readable. These tags separate the data into separate lines, making the code more readable.
 Running the PHP code yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 object(cars)#1 (4) {
   ["type"]=>
   string(13) "Tesla Model 3"
@@ -6793,8 +6826,8 @@ The constructor is called. These values get passed into the $car object.
 We then echo out the values of the $car object based on the standard way of echoing out object properties. Taking the object name and property with "->" in between.
 And this is call that is required to create class constructors in PHP.
 Going back to the PHP code above, if it's run, this gives the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Honda Accord 2009
 
 <h2>Create a Class Destructor</h2>
@@ -6858,8 +6891,8 @@ Again, a destructor method is called whenever an object is deleted using the
 PHP unset() function. It also will be called after a script ends. 
 And this is all that is required to make a destructor method in PHP.
 Running the PHP code above yields the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The Tesla Model X is being deleted<br>The number of objects in the class is 4
 
 Related Resources
@@ -6869,6 +6902,7 @@ Related Resources
 Sorry, my fellow PHPeople, but as of today of me writing this (July 23, 2016), PHP (Version 7) does not support the overloading of constructors. 
 I'm not knocking PHP in any way. I'm the biggest PHP fan. Most of this website was written in PHP, but it doesn't yet support the overloading of constructors. 
 I tried running a program in which I had 2 constructors (__construct methods). The 2 methods had different parameters or arguments. However, what happened was the program output a fatal error, such as shown below.
+
 <b>Fatal error: </b>Cannot redeclare vehicles::__construct()
 This was the complete program that I ran, shown below.
 &lt;?php
@@ -6899,6 +6933,7 @@ However, PHP outputs that you can't redeclare the __construct method within a gi
 So PHP, though it has great object oriented ability and has come a long way from PHP4 to PHP5, it does not yet have the OOP capability of Java, for instance, which does support constructor overloading.
 But again, this may change in future versions and I'm almost sure it will be updated. 
 However, as of now, it does not yet support constructor overloading directly. I'm not sure if there's any ways or tricks around it. I don't know of any. But as of direct constructor overloading, PHP does not yet support this. 
+
 <b>Note</b>: If you are reading this article and PHP has added functionality so that constructors can be overloaded, please write a comment below and I'll get to it and update
 this article. Thank you. It would be much appreciated.
 
@@ -6919,7 +6954,7 @@ $this.
 Static properties are often seen in libraries where the functionality is independent of any object properties. It can be seen as a property separate from the object properties.
 Static methods, similarly, can be seen as outsiders to objects. Being that they aren't directly invoked on objects, they can be used for outside tasks such as getting the number of objects created in a class, for example.
 
-<h3>Static Properties</h3>
+<b>Static Properties</b>
 So now we show how to create static properties inside of a class in PHP.
 To create a static property, you add the static keyowrd just before the property name. 
 Below is an example.
@@ -6933,7 +6968,7 @@ So the code below shows how to access and output the static property $number of 
 echo thisClass::$number;
 So now we output the static property $number. 
 
-<h3>Static Methods</h3>
+<b>Static Methods</b>
 So now we show how to create static methods inside of a class in PHP.
 To create a static method, you add the static keyowrd just before the method name.
 Below is the general format to do so.
@@ -6949,7 +6984,7 @@ To call a static method, you write the class name, followed by 2 colons (::) fol
 So the code below shows how to call the move() method of the thisClass class.
 thisClass::move();
 
-<h3>Full PHP Code</h3>
+<b>Full PHP Code</b>
 So below is PHP code that creates a static object and a static method. We then output the static property and call the method, so that you can see how to do so.
 &lt;?php 
 class kids
@@ -6976,8 +7011,8 @@ This outputs 20, which is what this property is set to.
 We then have a break line just for spacing to make the output more readable. 
 We then call the move() method by using the class name, followed by 2 colons (::), followed by the method name. This outputs "Get up kids".
 Running the above PHP code above yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 20<br>Get up kids
 
 <h2>Count the Number of Objects in a Class</h2>
@@ -7015,11 +7050,11 @@ We then use the increment operator to increment the cars::$count property.
 Because the constructor is called each time an object is created, we can use this fact to keep track of how many objects are created. 
 Initially, the cars::$count variable is 0. However, with each object that is instantiated, the count goes up by 1. Thus, we're able to know how many objects have been created.
 Since we've created 5 cars, at the end of this program, you'll see that the program says there are 5 objects created.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The number of objects in the class is 5
 
-<h3>Keeping Count of the Number of Objects If Any Are Deleted</h3>
+<b>Keeping Count of the Number of Objects If Any Are Deleted</b>
 You could make this program a little more elaborate.
 For example, what if an object is destroyed? What if we delete one or more of the objects after they are created?
 In that case, you would also have to make a destructor function for the class. When an object is destroyed (if you unset an object) then you place in the destructor function, a decrement operator for the cars::$count variable. So if an object is destroyed, the count goes down by 1. This way, you can keep track of how many objects currently exist for a class. 
@@ -7053,8 +7088,8 @@ So all the code is mostly the same except now we have a class destructor and we 
 called. And the destructor function is called when we delete an object through the PHP unset() function. So whenever we delete an object, the count goes down by 1. 
 So now when we run our code, now that we've deleted one of the objects, the count will be 4. 
 So if I run the PHP code above, we get the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 The number of objects in the class is 4
 
 So using a static variable is a very effective and easy way to keep track of the number of objects in a class. 
@@ -7072,7 +7107,7 @@ So, again, the __autoload() function is called if the PHP script cannot find the
 If not in the current script, it looks for it in the PHP file you specify in the __autoload() function. 
 The function stores the name of the nonexistent class in a $classname parameter. You then would normally use a require or require_once function to include the script in the function. The function will then go through the script to find the class name you specified. 
 So let's go through an example now of an autoload function. 
-<h3>__autoload() Function Code</h3>
+<b>__autoload() Function Code</b>
 The following below is a very common and used __autoload() function example.
 &lt;?php
 function __autoload($classname)
@@ -7110,8 +7145,8 @@ If you need to use more than one class, nothing changes with the __autoload func
 If the PHP script can't find an __autoload() function or if your __autoload() function fails to find the class in the file specified, the script withts with a
 Class Not Found error.
 So going back to the original PHP script above, if this is run, this yields the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 This elephant is brown 
 
 Related Resources
@@ -7144,8 +7179,8 @@ Fox" and it is element 1 in the array. The third book, titled "The Dominant Lion
 We then use the print_r() function to show the contents of the PHP array. 
 We place the &lt;pre>&lt;/pre> tags in between the print_r() function just to make the result more readable. 
 The output of the PHP code above is shown below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Array
 (
     [0] => Array
@@ -7190,8 +7225,8 @@ Thus, PHP and JSON work very well with each, similarly how PHP works well with o
 MySQL.
 So taking the PHP code above, we get the following output shown below.
 You can see how it's in beautiful JSON format.  
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 [{"title":"The Wandering Oz","PublicationDate":2007},{"title":"The Roaming Fox","PublicationDate":2009},{"title":"The Dominant Lion","PublicationDate":2012}]
 
 Related Resources
@@ -7223,8 +7258,8 @@ So, we first have json data stored in the variable $jsonData.
 PHP cannot read or handle json data, as is. So it converts the json data into something that PHP can understand through the json_decode function. The json_decode() function is a built-in PHP function that converts JSON data into a multidimensional PHP array. We then can handle all of the data after the json_decode function like a multidimensional array (which it now is). 
 So in the above, we output all of the data of by accessing each individual data item in the multidimensional array. 
 Running the above PHP code, we get the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Bill Smith<br>Fort Lauderdale<br>Florida<br><br>Vanessa Halls<br>New York City<br>New York<br><br>Ryan Mitchells<br>Miami<br>Florida
 
 So we can access all of the data individually that we want through the above code, but this is not really parsing through the data. 
@@ -7261,8 +7296,8 @@ So, as a recap, first we must take the json data and decode it through the json_
 the json data to a PHP multidimensional array. Then we can just handle the data as you would a multidimensional array. You can access
 a particular value in an array and use the standard programming methods to extract data, such as through using for loops. 
 If I take the above PHP code and run it, I get the following output shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 Bill Smith<br>Fort Lauderdale<br>Florida<br><br>Ryan Mitchells<br>Miami<br>Florida
 So now you see how you can access any element and use for loops. 
 If we want to see whether a person has the name "Vanessa Halls" from the JSON data and output her city and state, we can use the following PHP code. 
@@ -7277,8 +7312,8 @@ echo $people[$i]["state"] . "&lt;br><br>";
 ?>
 So this finds if there is a person named Vanessa Halls and finds her city and state. 
 Running the full PHP code gives us the following output.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 New York City<br>New York
 So, by now, you can pretty much see the trend of how you can manipulate what was originally JSON data and convert it
 to PHP through the json_decode() function. This data gets converted from JSON to a PHP multidimensional array. We then can parse through this data as you would any PHP multidimensional array. 
@@ -7306,7 +7341,7 @@ After the word address, you simply put in the location that you want to enter. T
 Using this base URL, we can have a user enter in an address, concatenate it to the above URL, putting in the address
 in the URL, retrieve the page with PHP, decode the JSON data with PHP, and then extract the data that we want from the API. As said before, we will extract the latitude and longitude associated with the address.
 So let's go on to the code necessary to do this. This is shown below. We'll separate it into blocks.
-<h3>First Block of PHP Code</h3>
+<b>First Block of PHP Code</b>
 So the first block of PHP code does the majority of the work as far as PHP code is concerned.
 It takes the address from the form that a user has entered and puts into the URL representing the google maps API. It then retrieves the page, decodes the JSON data, and extracts the latitude and longitude value from the google maps API.
 &lt;?php 
@@ -7330,7 +7365,7 @@ Lastly, we extract the latitude and longitude values from this google maps api d
 Since the latitudes and longitudes are found under the first element of results, this is located in ['results'][0]. 
 Under results, it is found in geometry. Under geometry, it is found in location. In location, the attribute is lat for latitude and lng for longitude.
 We create the PHP variable $latitude and $longitude and set them equal to these points.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 Next we have the HTML code that we need so that we can create a form where a user can enter the address into. 
 It's a very simple form that just has a text box for entering the address and a submit button for submitting the data through.
 &lt;form action="" method="POST">
@@ -7343,7 +7378,7 @@ to the current page's URL. Instead we want it appended to the URL we have in the
 We then create the text box and assign it the name location_entered. We set its value equal to $location, which is the PHP variable that stores the address that the user has entered. This is so that we can see the address that the user has entered into the text box even after the submit button is clicked.
 We then have a submit button so that the form can be submitted to the server.
 This concludes the HTML code.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 We then have our last block of PHP code, which is very simple, put underneath the text box. 
 &lt;?php if (!empty($location))
 {
@@ -7398,7 +7433,7 @@ Doing so yields the following PHP page:
 books.php</a>.
 ?>
 
-<h3>Creating a Separate XML Document</h3>
+<b>Creating a Separate XML Document</b>
 The following code above is great and generates XML. However, the XML data is generated on a PHP page.
 This is probably not what you want. However, you more than likely want XML generated on a complete and separate XML page. 
 This way, it's just as if you created an XML document (with .xml extension) and wrote it complete with XML tags. 
@@ -7433,7 +7468,7 @@ Related Resources
 In this article, we show how to read XML, either an XML file or a string containing XML, with PHP.
 This means that we use PHP code to read the contents of an XML document or a string containing XML. 
 We'll show how to do these things below.
-<h3>Reading an XML File<h3>
+<b>Reading an XML File<b>
 First, we'll go over how to read an XML file. This is a file with a .xml extension that contains full XML code. A regular, typical 
 XML file.
 There's many ways that this can be done, but probably the easiest way to read an XML file with PHP is to use the simplexml_load_file() function. Inside the parameters of this function, you specify the XML document or file that you want to read. 
@@ -7441,7 +7476,7 @@ This function loads the entire document into memory and then you can display the
 As an example XML file, I have an XML named 
 <a href="http://www.learningaboutelectronics.com/Articles/books.xml">books.xml</a>. This is an XML file that contains book elements which show the title  and the publication date of each book. 
 We will be reading this file as our example code shown below.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to read the contents of the XML file, books.xml, is shown below. 
 &lt;?php
 $file= simplexml_load_file('books.xml');
@@ -7454,8 +7489,8 @@ This loads in the books.xml function into memory.
 We then print out the contents of the $file variable which holds the XML document using the PHP print_r() function. 
 The print_r() function is a function which can show us the contents of a PHP array. 
 So running the above PHP yields the following output below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 SimpleXMLElement Object
 (
     [book] => Array
@@ -7487,7 +7522,7 @@ So you can see [1] next to this set of data.
 The third element has a title of "The Dominant Lion" and a publication date of 2012.
 So you can see [2] next to this set of data.
 So this is how with the simplexml_load_file() function, we can read an XML file with PHP.
-<h3>Reading a String Containing XML</h3>
+<b>Reading a String Containing XML</b>
 Now that we've shown how to read an XML file, we'll now show how to read a string containing XML.
 PHP also has a built-in function, simplexml_load_string(), that can read a string containing XML.
 It works in the same way as the simplexml_load_file() function except that it reads a string instead of a file. 
@@ -7511,8 +7546,8 @@ So with this PHP code above, we read the XML string contained in the variable $c
 We read this string using the simplexml_load_string() function and place the variable holding the string, $classics, into this function as the parameter. 
 We then output the result using the PHP print_r() function, just as before. And as before, we use the pre tags for better formatting and readability. 
 Below is the results of this PHP output.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 SimpleXMLElement Object
 (
     [movie] => Array
@@ -7543,7 +7578,7 @@ id. And for each person, we have their name, email, and phone number.
 The XML document that we are going to parse can be found at the following link: 
 <a href="http://www.learningaboutelectronics.com/Articles/contacts.xml">contacts.xml</a>.
 So we'll show now how to use PHP to extract from the fields of the person element.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 So we use the following PHP code to extract the name, email, and phone number of each person on the XML document. 
 &lt;?php 
 $xmlload= simplexml_load_file('contacts.xml');
@@ -7566,10 +7601,10 @@ We then create a PHP variable for all the elements within the person element. We
 This is how we extract all the data within the elements of the person element. 
 We then echo out the results. 
 So using the XML document above, the PHP output is shown below. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 name: John Smith<br>email: Johnsmith@gmail.com<br>phone number: (111)111-1111<br>city: Miami<br>state: Florida<br><br>name: Peter Phils<br>email: Peterphils@gmail.com<br>phone number: (222)222-2222<br>city: New York City<br>state: New York<br><br>name: Michael Thoms<br>email: Michaelthoms@gmail.com<br>phone number: (333)333-3333<br>city: Daytona Beach<br>state: Florida
-<h3>Parsing for More Specific Data</h3>
+<b>Parsing for More Specific Data</b>
 Let's say you don't want to output every person. You instead want to find every person that lives in Florida and only output their information. 
 The following PHP code does this below.
 &lt;?php 
@@ -7591,10 +7626,10 @@ So now we've shown how to parse data from an XML document and only extract data 
 Now we only show people who live in Florida from an XML document. 
 We loop through all the person elements and use a simple if statement to see if the state equals Florida. 
 The PHP output of the above code is shown below.
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 name: John Smith<br>email: Johnsmith@gmail.com<br>phone number: (111)111-1111<br>city: Miami<br>state: Florida<br><br>name: Michael Thoms<br>email: Michaelthoms@gmail.com<br>phone number: (333)333-3333<br>city: Daytona Beach<br>state: Florida
-<h3>How to Parse an Attribute of an Element</h3>
+<b>How to Parse an Attribute of an Element</b>
 Now that you know how to parse elements of an XML document using PHP, we now show how to parse an attribute of element. 
 Going back to our example XML document, the only attribute we use is the id attribute. This ranges from 1 to 3 for the 3 individual people. 
 To parse an attribute of an element, the PHP code to do is shown below.
@@ -7615,8 +7650,8 @@ echo "name: $name<br>id: $id<br>email: $email<br>phone number: $phonenumber<br>c
 }
 ?>
 Now all the id attributes will be printed as well. 
-<b>Actual PHP Output</b>
 
+<b>Actual PHP Output</b>
 name: John Smith<br>id: 1<br>email: Johnsmith@gmail.com<br>phone number: (111)111-1111<br>city: Miami<br>state: Florida<br><br>name: Peter Phils<br>id: 2<br>email: Peterphils@gmail.com<br>phone number: (222)222-2222<br>city: New York City<br>state: New York<br><br>name: Michael Thoms<br>id: 3<br>email: Michaelthoms@gmail.com<br>phone number: (333)333-3333<br>city: Daytona Beach<br>state: Florida
 
 So this is all the basics of parsing a basic XML document using PHP. 
@@ -7643,7 +7678,7 @@ After the word address, you simply put in the location that you want to enter. T
 Using this base URL, we can have a user enter in an address, concatenate it to the above URL, putting in the address
 in the URL, retrieve the page with PHP, decode the JSON data with PHP, and then extract the data that we want from the API. As said before, we will extract the latitude and longitude associated with the address.
 So let's go on to the code necessary to do this. This is shown below. We'll separate it into blocks.
-<h3>First Block of PHP Code</h3>
+<b>First Block of PHP Code</b>
 So the first block of PHP code does the majority of the work as far as PHP code is concerned.
 It takes the address from the form that a user has entered and puts into the URL representing the google maps API. It then retrieves the page, loads in the XML data, and extracts the latitude and longitude value from the google maps API.
 &lt;?php 
@@ -7669,7 +7704,7 @@ So therefore, going forward from the loading point, we have $xmlload->result->ge
 And we have $xmlload->result->geometry->location->lng for the longitude. 
 These give us the latitude and longitude values for the address entered in.
 We create the PHP variable $latitude and $longitude and set them equal to these values.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 Next we have the HTML code that we need so that we can create a form where a user can enter the address into. 
 It's a very simple form that just has a text box for entering the address and a submit button for submitting the data through.
 &lt;form action="" method="POST">
@@ -7682,7 +7717,7 @@ to the current page's URL. Instead we want it appended to the URL we have in the
 We then create the text box and assign it the name location_entered. We set its value equal to $location, which is the PHP variable that stores the address that the user has entered. This is so that we can see the address that the user has entered into the text box even after the submit button is clicked.
 We then have a submit button so that the form can be submitted to the server.
 This concludes the HTML code.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 We then have our last block of PHP code, which is very simple, put underneath the text box. 
 &lt;?php if (!empty($location))
 {
@@ -7714,22 +7749,23 @@ mysql_connect($servername, $username, $password);
 echo "Connected to MySQL";
 ?>
 where <b>servername</b> is the address of the server where the MySQL database is located, 
+
 <b>username</b> is the user name to log into this MySQL server, and <b>password</b> is the password
 that allows access to this MySQL server.
-<h3><u>How to Connect to the MySQL Server</u></h3>
+<b><u>How to Connect to the MySQL Server</u></b>
 To connect to the MySQL server, not database, just the server, the line of code that allows us to make this connection is:
-<b>
-mysql_connect($servername, $username, $password);
-</b>
+
+<b>mysql_connect($servername, $username, $password);</b>
 This line of code above connects to the MySQL server. This is how connection to the MySQL server is established. 
-<h3><u>How to Connect to a Database</u></h3>
+<b><u>How to Connect to a Database</u></b>
 Once we connect to the desired MySQL server,
 we now can connect to the database in this server that we desire to connect to.
 We connect to the desired database in MySQL by adding the following line to the above code:
+
 <b>@mysql_select_db($database) or die("Unable to select database");</b>
 The <b>@mysql_select_db($database)</b> function selects the database that is desired
 to be connected to, where $database is the variable that contains the name of the database.
-<h3><u>Output if Successfully Connected to Database</u></h3>
+<b><u>Output if Successfully Connected to Database</u></b>
 If the line:
 Connected to MySQL Database 
 is shown, you have successfully connected to the database in the MySQL database. 
@@ -7990,7 +8026,7 @@ PHP.
 The email column is of type VARCHAR(50) NOT NULL.
 This makes it a variable string up to 50 characters in length. 
 
-<h3>How to Add a Column After a Specified Column</h3>
+<b>How to Add a Column After a Specified Column</b>
 So the code above shows how to add a column to the end of a table.
 The column you add will be the last column of the table. 
 However, you may not want to add the column to the end of a table.
@@ -8017,7 +8053,7 @@ if($added !== FALSE)
 So the code above adds a column named email of type VARCHAR(50) after the column named firstname. 
 So the MySQL keyword AFTER can enable us to add columns after a specified column in a table. 
 
-<h3>How to Add a Column to the Beginning of a Table</h3>
+<b>How to Add a Column to the Beginning of a Table</b>
 Now we show how to add a column to the beginning of a MySQL table.
 The MySQL query below is the general format to add a column to the beginning of a table is shown below. 
 ALTER TABLE customers ADD ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
@@ -8089,7 +8125,7 @@ So, first, we must connect to the database.
 After this, we create a $createtable variable which creates a table named customers. 
 After this, we create the line, PRIMARY KEY (ID). This makes the ID column a primary key. 
 
-<h3>How to Make Multiple Columns of a MySQL Table a Primary Key</h3>
+<b>How to Make Multiple Columns of a MySQL Table a Primary Key</b>
 So, in the above code, we make a single column the ID column. 
 In other instances, it may be necessary to make multiple columns a primary key. 
 More than one column can be a primary key. And, in certain instances, you may need more than one column to be a primary key. 
@@ -8160,7 +8196,7 @@ After this, we create a $createtable variable which creates a table named custom
  create an ID, firstname, lastname, and email column. 
 To make the email column is made unique by adding UNIQUE to the definition of the declaration. This makes the email column unique. It's very simple. 
 
-<h3>How to Make an Existing Column Unique</h3>
+<b>How to Make an Existing Column Unique</b>
 So above we created a table and made a column unique. 
 How can an existing column be made UNIQUE when the table has already been made? 
 The following PHP code below modifies the existing email column to be unique. 
@@ -8405,7 +8441,7 @@ After you have the connection, you select the database that you would like to co
 After you've selected the database, you now use the <b>INSERT INTO</b> command to insert
 data into the table that you specify. 
 The code to perform this is below:
-<h3>Coding</h3>
+<b>Coding</b>
 &lt;?php
 $user= "user_name";
 $password= "password";
@@ -8420,6 +8456,7 @@ mysql_query("INSERT INTO $table (column1_name, column2_name, column3_name)
 VALUES ('Value1', 'Value2', 'Value3')");
 mysql_close($connection);
 ?>
+
 
 <b>Author's Note:</b>- Using PHP to insert data into a MySQL table is a great and the best method for when you have to automate the insertion of data into a MySQL table, for example, when retrieving data from an HTML form to store the data in a MySQL table. You can also use this method when inserting data into your own table. Remember, also you can directly manually enter in data from phpmyAdmin. 
  
@@ -8508,14 +8545,14 @@ Below is a form which asks a user for his first name, city, and country.
 &lt;input type="submit" name=submit value="Submit"/>
 &lt;/form>
 How do we put this data into a MySQL Database so that we can have a table containing everyone who enters to join this email list?
-<h3>MySQL</h3>
+<b>MySQL</b>
 The first thing you must do is create the MySQL table in which you are going to transfer the data to. 
 Choose or create the database which is going to contain the table and then create the table. In this example, the table will be called <i>email_list</i>. 
 The MySQL code to create the table is:
 CREATE TABLE (first_name VARCHAR(50), last_name VARCHAR(50), email VARCHAR (50));
 Once this table is created, we now create the PHP code. To create the PHP code, we must first
 examine the HTML code of the form. 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 &lt;form action="" method="post">
 &lt;label>First Name:&lt;/label>&lt;input type="text" name="firstname_entered"/>
 &lt;label>City:&lt;/label>&lt;input type="text" name="city_entered"/>
@@ -8525,7 +8562,7 @@ examine the HTML code of the form.
 The HTML code creates the HTML form. This form has 3 fields: first name, city, and country. It also has a submit button. 
 PHP code is added to this HTML form, so that if any of the fields are left empty after the submit button is clicked, the statement is output, "This field cannot be left empty".
 So the next thing we do is create the PHP code that adds functionality to this HTML form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 &lt;?php
 //Block 1
 $user = "user"; //Enter the user name
@@ -8660,7 +8697,7 @@ So the MySQL code to copy a table definition is shown below.
 CREATE TABLE table2 AS SELECT * FROM table1 WHERE 1=0";
 So the above is the MySQL code to create a table, table2, which copies the structure of table 1 (has all the same structured columns).
 We'll now show how to tie this in with PHP. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to copy a table definition is shown below. 
 &lt;?php 
 $user = "user"; 
@@ -8772,7 +8809,7 @@ Related Resources
  In this article, we will show how to display a table that you have in a MySQL database. 
 To do this, first we have to connect to the database of the MySQL server and select the table we would like to display. 
 Once we do this, we can display the table with PHP using the HTML elements to place information in tabular form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The full code to choose a table from a MySQL table and to display it is:
 &lt;?php
 //First Block- Database Information
@@ -8803,6 +8840,7 @@ print "&lt;/table>\n";
 ?>
 The first block of code is where you place in your servername, user name, password, database name, and table name of the MySQL server, database, and table, that you want to connect to. 
 The second block of code connects you to the MySQL server and the database of in the MySQL server that you want to connect to. The line <b>mysql_connect($host, $user, $password);</b> connects you to the MySQL server and the line
+
 <b>@mysql_select_db($database) or die("Unable to select datbase");</b> connects you to the database in the server which you would like to connect to. If the program can't connect successfully to the database, the line "Unable to select database" will appear.
 The third block of code connects you to the table in the database which you would like to display. This connection is stored in the <b>$result</b> variable. We will use this variable in the next block of code to print out the table in table form.
 The fourth block of code prints outs all the rows in the table. This uses standard HTML elements to create the table. 
@@ -8815,6 +8853,7 @@ column. With this data, now we can show these columns. For your table, substitut
 <li>The line <b>$image_show= "/images/$images_field";</b> specifies the path of images. When we put images in our MySQL tables which are displayed, we don't place the whole images in the database. All we do in the MySQL table is specify the image name and type. Using PHP code, we then specify the complete path to the image in order to display. This line specifies the complete path to the images, so that they can be displayed. These images are located in the /images/ folder. If they are located somewhere else, then specify that path. If you're not putting images in your table, this line can be disregarded.
 <li>The line <b>print "&lt;tr>\n";</b> creates a new row in the table. Every time a while statement loops back and starts from the beginning, a new row is created each time until there are no more rows left in the table. </li>
 <li>The <b>print "\t<td>\n";</b> and <b>print "</td>\n";</b> lines create each of the columns for each row of data. If you have 3 columns which you want to display, then you have to have three of these statements. If you have 7 columns, then you'll have to have 7 of these lines. It all depends on the amount of columns in the table. In the above example, we have three of them. They display the <b>images</b> column, the <b>Type</b> column, and the <b>Price</b> column. If you want to align the data from the column in the center of it, you would add the line
+
 <b>&lt;div align=center>&lt;/div></b> to it.
 <li>The remaining line <b>print "&lt;/table>\n";</b> closes the table, respectively. </li>
 </ul>
@@ -8841,7 +8880,7 @@ Fruits
 </table>
 
 The above table shown is a table from a MySQL database. You can see the images to the left of the table. This is not HTML. This is PHP code. So now you know that I know how to build a MySQL table and insert images. 
-<h3>How to Insert Images into a MySQL Database Table</h3>
+<b>How to Insert Images into a MySQL Database Table</b>
 In order to insert images into a MySQL database, we don't actually put the images in the database. We put the images in our regular folder of our website, which most people do by placing images in their <b>images</b> folder. In the MySQL database, all you do is place the image name along with the image type using the format <i>image_name.image_type</i> into the table. For example, we
 may name a picture of a clown, clown.jpg. This is the only piece of information we place in our MySQL table. 
 We will go through this below. 
@@ -8852,7 +8891,7 @@ Now to insert an image into the table, all we put do is type the image name and 
 clown and it's a jpg file, we place <b>clown.jpg</b> into the table. This is shown below:
 Once we place this into the table, along with the other column information upon insertion of all the row data, we are finishing with the MySQL part of this program.
 We now can proceed to the PHP code to extract the data from the MySQL database table and display, such as the table shown above. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP Code of the table shown above is:
 &lt;?php
 $user = "user_name"; 
@@ -8942,7 +8981,7 @@ The reason we use VARCHAR for all these fields is because it allows a variable a
 amount. You would use CHAR when every upload is the same amount of characters. This would be the case for a few things such as state abbreviations, since they are all 2 characters. In this case, CHAR wouldn't work for any of the fields. Even the file extension can vary between 3 characters (mp4) and 4 characters (webm).
 Of course, if you need to, modify the amount parameters to satisfy your needs.
 
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now let's go over the HTML code needed to create the uploader seen above, which allows for videos to be uploaded.
 The HTML code is shown below.
 &lt;form action="" method='post' enctype="multipart/form-data">
@@ -8959,8 +8998,8 @@ We then create a submit button, as pretty much every form needs. We give it the 
 appears on the button. If not, it would just have submit by default.
 We then close the form.
 This concludes the HTML needed for this page.
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 There are 3 blocks of PHP codes needed.
 The first block is shown below.
 This block is for uploading the file entered to the directory, where we will store the video, in this case this is the Uploads/videos/ directory.
@@ -9004,7 +9043,7 @@ If the user has clicked the Upload button without specifying a file, the stateme
 "Uploaded" is then output.
 This concludes this block of PHP code.
 
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 The next block of PHP code inserts the data into the MySQL table for storage. These include the description of the video, the filename of the video, and the file extension of the video.
 This block of code is shown below.
 &lt;?php
@@ -9034,7 +9073,7 @@ fileextension.
 If the description text box is not empty, then we insert into the Videos MySQL table the description, filename, and fileextension of the video. 
 We then close the database.
 
-<h3>Third Block of PHP Code</h3>
+<b>Third Block of PHP Code</b>
 The next block of PHP code displays the table with the video description and actual video.
 &lt;?php
 $user = "user"; 
@@ -9122,7 +9161,7 @@ The filename column is set to VARCHAR(50) to allow for a somewhat long filename.
 The reason we use VARCHAR for all these fields is because it allows a variable amount of characters. CHAR is a fixed
 amount. You would use CHAR when every upload is the same amount of characters. This would be the case for a few things such as state abbreviations, since they are all 2 characters. In this case, CHAR wouldn't work for any of the fields. 
 Of course, if you need to, modify the amount parameters to satisfy your needs.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 So now let's go over the HTML code needed to create the uploader seen above, which allows for files to be uploaded.
 The HTML code is shown below.
 &lt;form action="#file" method='post' enctype="multipart/form-data">
@@ -9139,8 +9178,8 @@ We then create a submit button, as pretty much every form needs. We give it the 
 appears on the button. If not, it would just have submit by default.
 We then close the form.
 This concludes the HTML needed for this page.
-<h3>PHP Code</h3>
-<h3>First Block of PHP Code</h3>
+<b>PHP Code</b>
+<b>First Block of PHP Code</b>
 There are 3 blocks of PHP codes needed.
 The first block is shown below.
 This block is for uploading the file entered to the directory, where we will store the file, in this case this is the Uploads/files/ directory.
@@ -9170,7 +9209,7 @@ This function creates a temporary name for the file upload and then permanently 
 "Uploaded" is then output.
 This concludes this block of PHP code.
 
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 The next block of PHP code inserts the data into the MySQL table for storage. These include the description of the file and its filename.
 This block of code is shown below.
 &lt;?php
@@ -9194,7 +9233,7 @@ As stated above, a MySQL table was created with phpMyAdmin. This table has 3 col
 If the description text box is not empty, then we insert into the Files MySQL table the description and filename of the file. 
 We then close the database.
 
-<h3>Third Block of PHP Code</h3>
+<b>Third Block of PHP Code</b>
 The next block of PHP code displays the table with the file description and the link to the actual file.
 &lt;?php
 $user = "user"; 
@@ -9252,7 +9291,7 @@ When we write the subject and body of the email and then click the submit button
 The form below is nonfunctional, so nothing will happen. It simply shows you how the frontend interactive is when you write the code.
 
 The HTML Code to create the above forms is below:
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 &lt;form action="sendemail.php" method="post">
 &lt;label>Subject of email:&lt;/label>&lt;br>
 &lt;input type="text" name="subject" id="subject"/>&lt;br>
@@ -9263,7 +9302,7 @@ The HTML Code to create the above forms is below:
 The HTML form transfer to the PHP file, <i>sendemail.php</i>, and then this file executes the PHP
 script that is located in it. 
 So after creating this, we now must create the PHP file, <i>sendemail.php</i>.
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 &lt;?php
 //Block 1
 $user = "user_name"; 
@@ -9330,7 +9369,7 @@ For example, the following newsletter below asks for a user's first name, last n
 
 In actuality, you may ask just for email, or you may ask for the first and last name and email as  below, or you may even  ask for additional information. The choice is yours. However, we will use the above model to create the newsletter  that asks just for these 3 pieces of information. Once you know the HTML, PHP, and MySQL code to create fields, you  will be able to modify to add what you want.  
 To create this newsletter above, the HTML code to do is:<br><br> 
-<h3>HTML Code</h3> 
+<b>HTML Code</b> 
 &lt;br>&lt;textarea cols="35" rows="20" id="para1"> 
 &lt;fieldset> 
 &lt;legend>Sign up for Newsletter&lt;/legend> 
@@ -9349,13 +9388,13 @@ Above is the HTML code just to create the text boxes with their various names, w
 This HTML code, though, will be the basis for the PHP code which we are going to write. In order to extract data from this form, we need PHP to retrieve the data and  place it in the database we will create. This data is the first name, last name, and email of whoever signs up.  
 If you look at the first line of the HTML code, the <b>form</b> tag specifies the <b>action</b> attribute, which is set to <i>Newletter-signup.php</i>. This is the separate PHP page that we'll have to create which processes the data that the user types in (his or her name and email) and places it into a database, which we can use to gather every email of everyone who  signs up. After that, we just have to create one more HTML and PHP page, which sends out an email to everyone on the list.  
 <br><br> 
-<h3>MySQL Table Creation</h3> 
+<b>MySQL Table Creation</b> 
 Before we create the PHP code to retrieve the HTML form data and places them all in one table of a database, we have to create the MySQL table first so that it can be entered into  that database.  
 In order to create a MySQL table, go into your web hosting account and find out where the resource is to create a MySQL table. Most web hosts offer MySQL database creation.  
 If you have one, find out how to access this resource. If not, you will have to obtain a web host that offers MySQL or some other SQL server access. Having a database is crucial to keeping a list of all the people who sign up for the newsletter you want to create, so it's absolutely important to have one.  
 Once you create a database name, a username and a password, you then will have a host name for that account. This you need to enter into the PHP code. Then you'll just have to create a table. To create the table which we want, we will need to have 4 columns. The first column will serve as the primary key. This serves as a chronological list to make each entry into the table  unique, so if we wanted to, we can definitely refer to each row. The 2nd, 3rd, and 4th columns serve as the columns to store the <b>first name</b>, <b>last name</b>, and <b>email</b> of each user. 
 The PHP code to create the <i>Newsletter-signup.php</i> page is below:<br><br> 
-<h3>PHP Code</h3> 
+<b>PHP Code</b> 
 &lt;?php 
 $user = "user_name";  
 $password = "password";  
@@ -9383,7 +9422,7 @@ The next line inserts the user's data into the 3 columns we have created in the 
 If everything has gone through successfully, the PHP code will tell the user once he or she has signed up that "You have been successfully added." 
 Now that we have the HTML code to create the newsletter-signup, the MySQL table where we will gather all the users' information, and the PHP code to retrieve the data the user  enters and place all contact info in one table, all we need now is the HTML code where we can write an email and have it sent out to all user's on our newsletter-signup database.  
 This code is shown below:<br><br> 
-<h3>HTML Code to Send Out Mass Email</h3>
+<b>HTML Code to Send Out Mass Email</b>
 &lt;form action="send-email.php" method="post"> 
 &lt;label>Subject of email:&lt;/label>&lt;br>&lt;input type="text" name="subject" id="subject"/>&lt;br> 
 &lt;label>Body of email:&lt;/label>&lt;br>&lt;textarea cols="35" rows="10" name="Comments">&lt;/textarea>&lt;br> 
@@ -9429,7 +9468,7 @@ We then connect to our database. If there is an error, the line "Error querying 
 The next block of code then delivers the message using the <b>mail</b> function. Realize that you can modify the <b>$msg</b> variable to anything you want. In this example, we start it over addressing each person with "Dear <i>first_name last_name</i> and then skipping a line and giving them the body of the email. However, you may choose to do it a different way. If you want to,  just modify the <b>$msg</b> variable.  
 If everything has gone successfully, you will get the screen with the words "Email Sent to: " followed by all the email contacts we have on our database.  
 <br><br> 
-<h3>Unsubscribe Option</h3> 
+<b>Unsubscribe Option</b> 
 Of course, you may have to add one more functionality to this email, a link that you can put on emails so that subscribers can unsubscribe if they decide they no longer  want emails about your service.  
 This isn't difficult, but also requires a separate HTML and PHP page of its own. 
 The HTML code to delete a subscriber by him entering his email is shown below.<br><br> 
@@ -9489,7 +9528,7 @@ Basically, the gist of it is that PHP is a powerful server side language. It can
 And we can convert any file extension from one to another.
 Yes, this is the power of a server side language such as PHP.
 We will go over this below.
-<h3>PHP Script to Convert HTML Files (.html) to PHP Files (.php) Files</h3>
+<b>PHP Script to Convert HTML Files (.html) to PHP Files (.php) Files</b>
 Okay, let's take one case first. 
 Let's convert HTML files (.html) to PHP files (.php).
 So let's say you want to upgrade your website from static HTML to dynamic PHP pages, which offer much more power for your webpages.
@@ -9545,7 +9584,7 @@ So you can see that this code above is a lot simpler than the previous one that 
 Change the $directory variable to the directory that you want to convert the files.
 Other than that, most things else is the same. 
 This, again, converts all HTML files in the directory you specify to PHP files. 
-<h3>PHP Script to Convert PHP Files (.html) to HTML Files (.php) Files</h3>
+<b>PHP Script to Convert PHP Files (.html) to HTML Files (.php) Files</b>
 So now we'll do the reverse. Below is the code to convert all PHP files in the root directory and all subdirectories in the root directory on your website to HTML pages. 
 &lt;?php
 $homedirectory = ".";
@@ -9569,7 +9608,7 @@ echo "$files_subdirectories has been renamed to $file_rename" . "&lt;br>";
 }
 ?>
 Everything is the same as the previous code but now we search for PHP files and use the str_replace() function to replace the .php extension with the .html extension. 
-<h3>PHP Script to Convert PHP Files (.html) to ASP Files (.asp) Files</h3>
+<b>PHP Script to Convert PHP Files (.html) to ASP Files (.asp) Files</b>
 And we really can convert any file extension to any other file extension with this PHP code. 
 Below is the code to convert all PHP files in the root directory and all subdirectories in the root directory on your website to ASP (active server pages) pages. 
 &lt;?php
@@ -9594,7 +9633,7 @@ echo "$files_subdirectories has been renamed to $file_rename" . "&lt;br>";
 }
 ?>
 To convert any file extension to any file extension with PHP, all you have to do is manipulate the if statement that searches the string (this is the if statement that has the PHP strpos() function. And you just have to manipulate the $file_rename variable via the PHP str_replace() function. Once you do this, you can convert any file name to any file name. 
-<h3>PHP Script to Convert ASP Files (.asp) to PHP Files (.php) Files</h3>
+<b>PHP Script to Convert ASP Files (.asp) to PHP Files (.php) Files</b>
 Below is the code to convert all ASP files in the root directory and all subdirectories in the root directory on your website to PHP pages. 
 &lt;?php
 $homedirectory = ".";
@@ -9646,7 +9685,7 @@ After the word address, you simply put in the location that you want to enter. T
 Using this base URL, we can have a user enter in an address, concatenate it to the above URL, putting in the address
 in the URL, retrieve the page with PHP, decode the JSON data with PHP, and then extract the data that we want from the API. As said before, we will extract the zip code for the address. The zip code is in 5-digit format without the 4-digit extension.
 So let's go on to the code necessary to do this. This is shown below. We'll separate it into blocks.
-<h3>First Block of PHP Code</h3>
+<b>First Block of PHP Code</b>
 So the first block of PHP code does the majority of the work as far as PHP code is concerned.
 It takes the address from the form that a user has entered and puts into the URL representing the google maps API. It then retrieves the page, decodes the JSON data, and extracts the zip code from the google maps API.
 &lt;?php 
@@ -9675,7 +9714,7 @@ tag in the data. For example, for California, the zip code will be found at the 
 ['address_components'][7]. 
 We just made this code very simple, so it doesn't have if statements checking where the location is. So if you type in a California address, you will get the postal code suffix instead of the 5-digit postal code.
 So it's a little tricky but you may even argue that google maps API is not the best for getting zip codes of locations.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 Next we have the HTML code that we need so that we can create a form where a user can enter the address into. 
 It's a very simple form that just has a text box for entering the address and a submit button for submitting the data through.
 &lt;form action="" method="POST">
@@ -9688,7 +9727,7 @@ to the current page's URL. Instead we want it appended to the URL we have in the
 We then create the text box and assign it the name location_entered. We set its value equal to $location, which is the PHP variable that stores the address that the user has entered. This is so that we can see the address that the user has entered into the text box even after the submit button is clicked.
 We then have a submit button so that the form can be submitted to the server.
 This concludes the HTML code.
-<h3>Second Block of PHP Code</h3>
+<b>Second Block of PHP Code</b>
 We then have our last block of PHP code, which is very simple, put underneath the text box. 
 &lt;?php if (!empty($location))
 {
@@ -9713,7 +9752,7 @@ So now let's get to the code.
 If you want to see the full code, see the following link:
 <a href="http://www.learningaboutelectronics.com/Articles/Code-for-ebay-API-search-by-keywords.txt">Code for Ebay API Search by Keywords</a>.
 The only thing you have to add is the form seen right below under HTML code.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 Below is the HTML code needed to create the form that has the text box where a user enters in 
 &lt;form action="Ebay-search-by-keywords.php" method="POST">
 Search for Items on Ebay 
@@ -9725,7 +9764,7 @@ data processing in the code.
 This form simply has one text box, where a user searches any item wanted on ebay. The name attribute of the input text box is "search_entered". We will need this later in the separate PHP file that we create.
 We then have a submit button so that we can submit the form data to the server. 
 We then end the form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 Below is the contents of the separate PHP file that we create which processes the request made by the user in the form. 
 The only thing you have to change in this PHP is to put your own unique app ID in the PHP variable $appid.
 If you are changing the country from US to something else, you'll need to change the global ID.
@@ -9771,7 +9810,7 @@ $totalprice= number_format($totalprice, 2);
 }
 // If the response does not indicate 'Success,' print an error
 else {
-  $results  = "<h3>The request was not successful.</h3>";
+  $results  = "<b>The request was not successful.</b>";
 }
 ?>
 &lt;?h2>eBay Search Results for &lt;?php echo $query; ?>&lt;?/h2>
@@ -9824,7 +9863,7 @@ So now let's get to the code.
 If you want to see the full code, see the following link:
 <a href="http://www.learningaboutelectronics.com/Articles/Code-for-ebay-API-search-by-ISBN.txt">Code for Ebay API Search by ISBN</a>.
 The only thing you have to add is the form seen right below under HTML code.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 Below is the HTML code needed to create the form that has the text box where a user enters in 
 &lt;form action="Ebay-search-by-ISBN.php" method="POST">
 Search for Books on Ebay by ISBN 
@@ -9838,7 +9877,7 @@ This form simply has one text box, where a user searches for any book by ISBN on
 The name attribute of the input text box is "ISBN_entered". We will need this later in the separate PHP file that we create.
 We then have a submit button so that we can submit the form data to the server. 
 We then end the form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 Below is the contents of the separate PHP file that we create which processes the request made by the user in the form. 
 The only thing you have to change in this PHP is to put your own unique app ID in the PHP variable $appid.
 If you are changing the country from US to something else, you'll need to change the global ID.
@@ -9883,7 +9922,7 @@ $totalprice= number_format($totalprice, 2);
 }
 // If the response does not indicate 'Success,' print an error
  else {
-  $results  = "<h3>Oops! The request was not successful.</h3>";
+  $results  = "<b>Oops! The request was not successful.</b>";
 }
 ?>
 So the code above, taken mostly from ebay's site but modified by me, is shown above. 
@@ -9936,7 +9975,7 @@ So now let's get to the code.
 If you want to see the full code, see the following link:
 <a href="http://www.learningaboutelectronics.com/Articles/Code-for-ebay-API-search-by-UPC.txt">Code for Ebay API Search by UPC</a>.
 The only thing you have to add is the form seen right below under HTML code.
-<h3>HTML Code</h3>
+<b>HTML Code</b>
 Below is the HTML code needed to create the form that has the text box where a user enters in 
 &lt;form action="Ebay-search-by-UPC.php" method="POST">
 Search for Items on Ebay by UPC
@@ -9951,7 +9990,7 @@ This form simply has one text box, where a user searches for any item by UPC on 
 The name attribute of the input text box is "UPC_entered". We will need this later in the separate PHP file that we create.
 We then have a submit button so that we can submit the form data to the server. 
 We then end the form. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 Below is the contents of the separate PHP file that we create which processes the request made by the user in the form. 
 The only thing you have to change in this PHP is to put your own unique app ID in the PHP variable $appid.
 If you are changing the country from US to something else, you'll need to change the global ID. 
@@ -9998,7 +10037,7 @@ Users who are subscribed to the RSS feed then get fed this new updated content. 
 are new articles.
 Besides subscribiing to an RSS feed, another way to do it is to create a PHP program that reads an RSS feed. 
 This is what we'll do in this article. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to search an RSS feed for any keyword is shown below.
 &lt;?php
 $rss = new DOMDocument();
@@ -10066,7 +10105,7 @@ This is what we'll do in this article. However, instead of just reading the RSS 
 For example, say you're interested in news in Israel, you can look for articles on 'Israel.' Say if you love driverless cars and reading new updates on that, you can search 'driverless' and see which articles have new stories pertaining to that. 
 So searching a RSS feed isn't hard. You simply read the RSS feed and then use an if statement to see if the searh term that
 the user enters is in any of the titles in the RSS feed. This is how you can search any RSS feed for any term. 
-<h3>PHP Code</h3>
+<b>PHP Code</b>
 The PHP code to search an RSS feed for any keyword is shown below.
 &lt;?php
 $rss = new DOMDocument();
@@ -10238,6 +10277,7 @@ So to get the value of the memory_limit configuration setting, the following cod
 &lt;?php 
 echo "The memory limit of this script is " . ini_get('memory_limit');
 ?>
+
 <b>Actual PHP Output</b>
 The memory limit of this script is 128M
 
@@ -10246,6 +10286,7 @@ And, of course, you can apply the PHP ini_get() function  to any numerous other 
 The configuration setting, max_execution_time, is the maximum time that a PHP script can take to be processed by the server. 
 The configuration setting, upload_max_filesize, is the maximum file size that can be uploaded to the server with a PHP script.
 So if I ran the PHP ini_get function wtih the max_execution_time and upload_max_filesize configuration settings, I would get the following code below. 
+
 <b>Actual PHP Output</b>
 Maximum execution time is 30<br>Maximum file upload size is 32M
 
@@ -10334,9 +10375,8 @@ So this is how we can change the maximum upload file size in a PHP script.
 
 <h2>PHP Header Location Error- Warning: Cannot Modify Header Information- Headers Already Sent </h2>
 So sometimes when using the PHP header function to cause a redirect to another page, you will get the error:
-<b>
-Warning: Cannot Modify Header Information- Headers Already Sent by (output started at /home/content/84/.../searchpage.php:1)
-</b>
+
+<b>Warning: Cannot Modify Header Information- Headers Already Sent by (output started at /home/content/84/.../searchpage.php:1)</b>
 This can happen such as with using the following code:
 &lt;?php
 header('Location: http://www.google.com');
