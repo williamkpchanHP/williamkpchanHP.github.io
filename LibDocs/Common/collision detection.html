@@ -1,0 +1,103 @@
+<base target="_blank"><html><head><title>collision detection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = true;
+  var bookid = "collision detection"
+  var markerName = "h3"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>collision detection</h1>
+<a href="#mustWatch" class="red goldbs" target="_self">Must Watch!</a>
+<br><br>
+<div id="toc"></div></center>
+<br><br>
+<div id="mustWatch"><center><span class="red">MustWatch</span></center><br>
+</div>
+<pre>
+<br>
+<br>
+Collision detection is the computational problem of detecting the intersection of two or more objects. 
+Collision detection is a classic issue of computational geometry and has applications in various computing fields, primarily in computer graphics, computer games, computer simulations, robotics and computational physics. 
+Collision detection algorithms can be divided into operating on 2D and 3D objects.
+
+<h2>2D collision detection</h2>
+Algorithms to detect collision in 2D games depend on the type of shapes that can collide (e.g. Rectangle to Rectangle, Rectangle to Circle, Circle to Circle). 
+Generally you will have a simple generic shape that covers the entity known as a "hitbox" so even though collision may not be pixel perfect, it will look good enough and be performant across multiple entities. 
+This article provides a review of the most common techniques used to provide collision detection in 2D games.
+<h3>Axis-Aligned Bounding Box</h3>
+One of the simpler forms of collision detection is between two rectangles that are axis aligned — meaning no rotation. 
+The algorithm works by ensuring there is no gap between any of the 4 sides of the rectangles. 
+Any gap means a collision does not exist.
+<code>var rect1 = {x: 5, y: 5, width: 50, height: 50}
+var rect2 = {x: 20, y: 10, width: 10, height: 10}
+if (rect1.x &lt; rect2.x + rect2.width &amp;&amp;
+   rect1.x + rect1.width &gt; rect2.x &amp;&amp;
+   rect1.y &lt; rect2.y + rect2.height &amp;&amp;
+   rect1.y + rect1.height &gt; rect2.y) {
+    // collision detected!
+}
+// filling in the values =&gt;
+if (5 &lt; 30 &amp;&amp;
+    55 &gt; 20 &amp;&amp;
+    5 &lt; 20 &amp;&amp;
+    55 &gt; 10) {
+    // collision detected!
+}
+</code>
+<iframe class="sample-code-frame" title="Rect code sample" width="700" height="300" src="https://yari-demos.prod.mdn.mozit.cloud/en-US/docs/Games/Techniques/2D_collision_detection/_sample_.Rect_code.html" loading="lazy"></iframe>
+<strong>Note</strong>: <a href="https://jsfiddle.net/jlr7245/217jrozd/3/" class="external" rel=" noopener">Another example without Canvas or external libraries</a>.
+<h3>Circle Collision</h3>
+Another simple shape for collision detection is between two circles. 
+This algorithm works by taking the centre points of the two circles and ensuring the distance between the centre points are less than the two radii added together.
+
+<code>var circle1 = {radius: 20, x: 5, y: 5};
+var circle2 = {radius: 12, x: 10, y: 5};
+var dx = circle1.x - circle2.x;
+var dy = circle1.y - circle2.y;
+var distance = Math.sqrt(dx * dx + dy * dy);
+if (distance &lt; circle1.radius + circle2.radius) {
+    // collision detected!
+}
+</code>
+<iframe class="sample-code-frame" title="Playable code sample" width="700" height="300" src="https://yari-demos.prod.mdn.mozit.cloud/en-US/docs/Games/Techniques/2D_collision_detection/_sample_.Playable_code.html" loading="lazy"></iframe>
+<strong>Note</strong>: &nbsp;<a href="https://jsfiddle.net/jlr7245/teb4znk0/20/" class="external" rel=" noopener">Here is another example without Canvas or external libraries.</a>
+<h3>Separating Axis Theorem</h3>
+This is a collision algorithm that can detect a collision between any two *convex* polygons. 
+It's more complicated to implement than the above methods but is more powerful. 
+The complexity of an algorithm like this means we will need to consider performance optimization, covered in the next section.
+Implementing SAT is out of scope for this page so see the recommended tutorials below:
+<a href="https://www.sevenson.com.au/actionscript/sat/" class="external" rel=" noopener">Separating Axis Theorem (SAT) explanation</a>
+<a href="https://www.metanetsoftware.com/technique/tutorialA.html" class="external" rel=" noopener">Collision detection and response</a>
+<a href="https://gamedevelopment.tutsplus.com/tutorials/collision-detection-using-the-separating-axis-theorem--gamedev-169" class="external" rel=" noopener">Collision detection Using the Separating Axis Theorem</a>
+<a href="https://www.dyn4j.org/2010/01/sat/" class="external" rel=" noopener">SAT (Separating Axis Theorem)</a>
+<a href="https://programmerart.weebly.com/separating-axis-theorem.html" class="external" rel=" noopener">Separating Axis Theorem</a>
+<h3>Collision Performance</h3>
+While some of these algorithms for collision detection are simple enough to calculate, it can be a waste of cycles to test *every* entity with every other entity. 
+Usually games will split collision into two phases, broad and narrow.
+<h3>Broad Phase</h3>
+Broad phase should give you a list of entities that *could* be colliding. 
+This can be implemented with a spacial data structure that will give you a rough idea of where the entity exists and what exist around it. 
+Some examples of spacial data structures are Quad Trees, R-Trees or a Spacial Hashmap.
+<h3>Narrow Phase</h3>
+When you have a small list of entities to check you will want to use a narrow phase algorithm (like the ones listed above) to provide a certain answer as to whether there is a collision or not.
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>
