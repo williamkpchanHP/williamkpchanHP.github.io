@@ -37,6 +37,18 @@ img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; bor
 https://www.quora.com/Given-3-points-in-the-Cartesian-plane-how-can-you-find-the-coordinates-of-the-center-of-the-circle-that-intersects-all-three-points-if-there-exists-such-a-circle
 
 <img class="falsezy" src="center of a circle.jpg">
+input 3 coordinates
+input pt1 x,y -> a1, a2
+input pt2 x,y -> b1, b2
+input pt3 x,y -> c1, c2
+
+d = (a1 — b1) (b2 — c2) — (b1 — c1) (a2 — b2)
+u = a1*a1 - b1*b1 + a2*a2 - b2*b2
+v = b1*b1 - c1*c1 + b2*b2 - c2*c2
+
+#center coordinates (x, y)
+x = (u*(b2-c2) - v*(a2-b2))/d
+y = (v*(a1-b1) - u*(b1-c1))/d
 
 <script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
 <script>
