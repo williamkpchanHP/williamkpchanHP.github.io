@@ -15,6 +15,7 @@ window.addEventListener('click', function (evt) {
       var y = window.scrollY;
 
       $("body").toggleClass('stop-scrolling');
+      alert("x"+x+"y"+y)
       window.scrollTo(x, y);
     }
 });
