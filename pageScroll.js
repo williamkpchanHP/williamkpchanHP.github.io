@@ -8,3 +8,10 @@ function randomScroll(){
   window.location = "#topic-" + topicpointer;
   pageScroll();
 }
+
+window.addEventListener('click', function (evt) {
+    if (evt.detail === 3) {
+      $("body").toggleClass('stop-scrolling');
+    }
+});
+
