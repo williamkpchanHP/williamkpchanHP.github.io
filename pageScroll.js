@@ -19,3 +19,4 @@ window.addEventListener('click', function (evt) {
     }
 });
 
+randomScroll();
