@@ -11,7 +11,7 @@ $("img").dblclick(function() {
 
 function pageScroll() {
     window.scrollBy(0,1);
-    scrolldelay = setTimeout(pageScroll,20);
+    scrolldelay = setTimeout(pageScroll,50);
 }
 
 function randomScroll(){
