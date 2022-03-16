@@ -177,4 +177,12 @@ proverbList = [
 "Josh Billings\nMarrying for love may be a bit risky, but it is so honest that God can't help but smile on it.",
 "Patch Adams\nI love you without knowing how, why, or even from where...",
 "春游湖 宋·徐俯\n双飞燕子几时回？夹岸桃花蘸水开。\n春雨断桥人不度, 小舟撑出柳阴来。",
+"江南春 杜牧\n千里莺啼绿映红，水村山郭酒旗风。南朝四百八十寺，多少楼台烟雨中。",
+"春夜喜雨 杜甫\n好雨知时节，当春乃发生。随风潜入夜，润物细无声。",
+"野径云俱黑，江船火独明。晓看红湿处，花重锦官城。",
+"滁州西涧 韦应物\n独怜幽草涧边生，上有黄鹂深树鸣。春潮带雨晚来急，野渡无人舟自横。",
+"竹外桃花三两枝，春江水暖鸭先知。",
+"沾衣欲湿杏花雨，吹面不寒杨柳风。",
+"夜雨寄北 李商隐\n君问归期未有期，巴山夜雨涨秋池。何当共剪西窗烛，却话巴山夜雨时。",
+"小楼一夜听春雨，深巷明朝卖杏花。",
 ]
