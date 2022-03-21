@@ -1,4 +1,5 @@
 proverbList = [
+'愚蠢经济学\n本质上都是靠着刺激人们的虚荣心来获得超额利润。\n愚蠢经济的核心在于你不能告诉消费者经济实惠量大管饱\n总之千方百计让消费者无法轻松的满足，然后一小部分小资消费者就会发作，付出远远高于正常的溢价。',
 'A股升應該買A股 靈活應變',
 '信念是由無數广告累積而成的',
 '有些事情并不能持续的深入研究\n市场的持续需求会不断催生刺激, 技术就不断进步。',
@@ -14,7 +15,7 @@ proverbList = [
 'Life isn’t about waiting for the flood to recede, \nit’s about learning to surf in the forest.',
 '成功需要想象力, 但你的天地终归要靠双手拼出来。',
 '不怕失败, 不怕跌倒, 身经千锤百炼, 才能所向披靡！',
-\'seven seconds is the standard amount of time you can wait for an answer',
+'seven seconds is the standard amount of time you can wait for an answer',
 'Dreams without goals are just dreams and they ultimately fuel disappointment. ',
 'fiat currency, by itself, has no value.\nIt is only valuable when it’s backed by, mostly, commodities.',
 'What you want to do is start with empowerment promise.\nTo give you some samples of heuristics,\na good idea to cycle on the subject. Tell him what you want to tell him.\nTell him again, and then tell him a third time.',
@@ -188,7 +189,7 @@ proverbList = [
 'Diane Ackerman\nEveryone admits that love is wonderful and necessary,\nyet no one agrees on just what it is.',
 'Josh Billings\nMarrying for love may be a bit risky,\nbut it is so honest that God can\'t help but smile on it.',
 'Patch Adams\nI love you without knowing how, why, or even from where...',
-\'students shouldn\'t go out into life without the ability to communicate\nyour success in life will be determined largely by your ability to speak,\nyour ability to write, and the quality of your ideas, in that order',
+'students shouldn\'t go out into life without the ability to communicate\nyour success in life will be determined largely by your ability to speak,\nyour ability to write, and the quality of your ideas, in that order',
 '春游湖 宋·徐俯\n双飞燕子几时回？夹岸桃花蘸水开。\n春雨断桥人不度, 小舟撑出柳阴来。',
 '江南春 杜牧\n千里莺啼绿映红，水村山郭酒旗风。南朝四百八十寺，多少楼台烟雨中。',
 '春夜喜雨 杜甫\n好雨知时节，当春乃发生。随风潜入夜，润物细无声。',
