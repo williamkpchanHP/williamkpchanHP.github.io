@@ -230,4 +230,5 @@ pictList = [
 '<img src="http://mtdata.ru/u3/photo552D/20758729621-0/original.jpg">',
 '<img src="http://mtdata.ru/u3/photo1CF6/20204875319-0/original.jpg">',
 '<img src="http://mtdata.ru/u3/photoF3AC/20543312413-0/original.jpg">',
+'<img src="https://i.pinimg.com/564x/57/af/c9/57afc91ac2c0c8fda02b7f2c7f2ab53c.jpg">',
 ]
