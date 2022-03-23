@@ -27,8 +27,8 @@ img {max-width:100%; max-height:600px; display: inline-block; margin-top: 2%;mar
 #pictList{max-width:100%;max-height:600px;}
 </style></head><body onkeypress="chkKey()"><center>
 <h1>view js contents</h1>
-<pre id="proverb"></pre>
-<pre id="pictList"></pre>
+<pre id="proverb" style="text-align: center;"></pre>
+<pre id="pictList" style="text-align: center;"></pre>
 <br>
 <br>
 
@@ -43,6 +43,7 @@ function chkKey() {
   }
   else if(testkey == 's'){
     $("#pictList").html(pictList[Math.floor(Math.random() * pictList.length)]);
+    window.location="#pictList" + 300;
   }
 }
 function getChar(event) {
