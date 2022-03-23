@@ -1,4 +1,4 @@
-<base target="_blank"><html><head><title>hp Literature index</title>
+<base target="_blank"><html><head><title>view js contents</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
@@ -7,12 +7,15 @@
 <script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
 <script src="https://williamkpchan.github.io/commonfunctions.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src='https://williamkpchanhp.github.io/LibDocs/pictList.js'></script>
+<script src='https://williamkpchanhp.github.io/LibDocs/proverbs.js'></script>
+
 
 <script>
   var showTopicNumber = false;
   var topicEnd = "<br>";
-  var bookid = "hp Literature index"
-  var markerName = "h2"
+  var bookid = "view js contents"
+  var markerName = "h3"
 </script>
 <style>
 body{width:80%;margin-left: 10%; font-size:22px;}
@@ -21,30 +24,40 @@ strong {color: orange;}
 pre{width:100%;}
 #toc{color:cyan; font-size:20px;}
 img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
-.stop-scrolling { height: 100%; overflow: hidden; }
-iframe {width:100%; height:100%;}
+#pictList{max-width:100%;max-height:650px;}
 </style></head><body onkeypress="chkKey()"><center>
-<h1>hp Literature index</h1>
-<a href="#mustWatch" class="red goldbs" target="_self">Must Watch!</a>
-<br><br>
-<div id="toc"></div></center>
-<br><br>
-
+<h1>view js contents</h1>
+<pre id="proverb"></pre>
+<pre id="pictList"></pre>
 <br>
-<a href="楊慎的二十一史彈詞.html" class="whitebut ">楊慎的二十一史彈詞</a>
-<a href="天龙八部.html" class="whitebut ">天龙八部</a>
-<a href="宋词三百首.html" class="whitebut ">宋词三百首</a>
-<a href="蘇軾词.html" class="whitebut ">蘇軾词</a>
-<a href="元曲四大家.html" class="whitebut ">元曲四大家</a>
-<a href="全元曲.html" class="whitebut ">全元曲</a>
-<a href="viewJsContents.html" class="whitebut ">viewJsContents</a>
+<br>
 
-<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+</center>
+
 <script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'r'){
+    $("#proverb").text(proverbList[Math.floor(Math.random() * proverbList.length)]);
+  }
+  else if(testkey == 's'){
+    $("#pictList").html(pictList[Math.floor(Math.random() * pictList.length)]);
+  }
+}
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+    $("#proverb").text(proverbList[Math.floor(Math.random() * proverbList.length)]);
+    $("#pictList").append(pictList[Math.floor(Math.random() * pictList.length)]);
+
 var lazyLoadInstance = new LazyLoad({
     elements_selector: ".lazy"
     // ... more custom settings?
 });
-randomScroll();
 </script>
-</pre></body></html>
+</body></html>
