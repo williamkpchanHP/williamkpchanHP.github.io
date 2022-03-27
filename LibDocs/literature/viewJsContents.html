@@ -53,7 +53,7 @@ function getChar(event) {
 
 function showRandomMsg() {
   topicpointer = notvisitedList[Math.floor(Math.random() * notvisitedList.length)];
-  $("#proverb").text(notvisitedList[Math.floor(Math.random() * notvisitedList.length)]);
+  $("#proverb").text(topicpointer);
   var index = notvisitedList.indexOf(topicpointer);
   notvisitedList.splice(index, 1);
   if(notvisitedList.length == 0){ notvisitedList = proverbList}
@@ -61,7 +61,7 @@ function showRandomMsg() {
 
 function showRandomImg() {
   imgpointer = imgnotvisitedList[Math.floor(Math.random() * imgnotvisitedList.length)];
-  $("#pictList").html(imgnotvisitedList[Math.floor(Math.random() * imgnotvisitedList.length)]);
+  $("#pictList").html(imgpointer);
   var index = imgnotvisitedList.indexOf(imgpointer);
   imgnotvisitedList.splice(index, 1);
   console.log(imgpointer)
