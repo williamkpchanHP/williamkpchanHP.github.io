@@ -38,6 +38,7 @@ img {max-width:100%; max-height:600px; display: inline-block; margin-top: 2%;mar
 function chkKey() {
   var testkey = getChar(event);
   if(testkey == 'r'){ showRandomMsg(); }
+  else if(testkey == 'a'){autoShowImg()}
   else if(testkey == 's'){
     showRandomImg();
     window.location="#pictList";
@@ -67,6 +68,16 @@ function showRandomImg() {
   console.log(imgpointer)
   if(imgnotvisitedList.length == 0){ imgnotvisitedList = pictList}
 }
+function autoShowImg(repeats = 10) {
+  console.log("auto")
+  if (repeats > 0) {
+    showRandomImg()
+    setTimeout(() => autoShowImg(repeats - 1), 12000)
+  }
+}
+
+
+
 
     notvisitedList = proverbList
     showRandomMsg()
