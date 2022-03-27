@@ -26,9 +26,8 @@ pre{width:100%;}
 img {max-width:100%; max-height:600px; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
 #pictList{max-width:100%;max-height:600px;}
 </style></head><body onkeypress="chkKey()"><center>
-<h1>view js contents</h1>
-<pre id="proverb" style="text-align: center;"></pre>
 <pre id="pictList" style="text-align: center;"></pre>
+<pre id="proverb" style="text-align: center;"></pre>
 <br>
 <br>
 
@@ -38,12 +37,10 @@ img {max-width:100%; max-height:600px; display: inline-block; margin-top: 2%;mar
 
 function chkKey() {
   var testkey = getChar(event);
-  if(testkey == 'r'){
-    $("#proverb").text(proverbList[Math.floor(Math.random() * proverbList.length)]);
-  }
+  if(testkey == 'r'){ showRandomMsg(); }
   else if(testkey == 's'){
-    $("#pictList").html(pictList[Math.floor(Math.random() * pictList.length)]);
-    window.location="#pictList" + 300;
+    showRandomImg();
+    window.location="#pictList";
   }
 }
 function getChar(event) {
@@ -53,8 +50,28 @@ function getChar(event) {
     return null // special key
   }
 }
-    $("#proverb").text(proverbList[Math.floor(Math.random() * proverbList.length)]);
-    $("#pictList").append(pictList[Math.floor(Math.random() * pictList.length)]);
+
+function showRandomMsg() {
+  topicpointer = notvisitedList[Math.floor(Math.random() * notvisitedList.length)];
+  $("#proverb").text(notvisitedList[Math.floor(Math.random() * notvisitedList.length)]);
+  var index = notvisitedList.indexOf(topicpointer);
+  notvisitedList.splice(index, 1);
+  if(notvisitedList.length == 0){ notvisitedList = proverbList}
+}
+
+function showRandomImg() {
+  imgpointer = imgnotvisitedList[Math.floor(Math.random() * imgnotvisitedList.length)];
+  $("#pictList").html(imgnotvisitedList[Math.floor(Math.random() * imgnotvisitedList.length)]);
+  var index = imgnotvisitedList.indexOf(imgpointer);
+  imgnotvisitedList.splice(index, 1);
+
+  if(imgnotvisitedList.length == 0){ imgnotvisitedList = pictList}
+}
+
+    notvisitedList = proverbList
+    showRandomMsg()
+    imgnotvisitedList = pictList
+    showRandomImg()
 
 var lazyLoadInstance = new LazyLoad({
     elements_selector: ".lazy"
