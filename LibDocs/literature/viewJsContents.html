@@ -23,7 +23,7 @@ h1, h2 {color: gold;}
 strong {color: orange;}
 pre{width:100%;}
 #toc{color:cyan; font-size:20px;}
-img {max-width:100%; max-height:600px; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+img {max-width:100%; max-height:100vh; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
 #pictList{max-width:100%;max-height:600px;}
 </style></head><body onkeypress="chkKey()"><center>
 <pre id="pictList" style="text-align: center;"></pre>
@@ -38,7 +38,8 @@ img {max-width:100%; max-height:600px; display: inline-block; margin-top: 2%;mar
 function chkKey() {
   var testkey = getChar(event);
   if(testkey == 'r'){ showRandomMsg(); }
-  else if(testkey == 'a'){autoShowImg()}
+  else if(testkey == 'a'){autoShowImg(repeats)}
+  else if(testkey == 'A'){autoShowImg(imgnotvisitedList.length)}
   else if(testkey == 's'){
     showRandomImg();
     window.location="#pictList";
@@ -68,17 +69,15 @@ function showRandomImg() {
   console.log(imgpointer)
   if(imgnotvisitedList.length == 0){ imgnotvisitedList = pictList}
 }
-function autoShowImg(repeats = 10) {
+function autoShowImg(countNumber) {
   console.log("auto")
-  if (repeats > 0) {
+  if (countNumber > 0) {
     showRandomImg()
-    setTimeout(() => autoShowImg(repeats - 1), 12000)
+    setTimeout(() => autoShowImg(countNumber - 1), 12000)
   }
 }
 
-
-
-
+    repeats = 10
     notvisitedList = proverbList
     showRandomMsg()
     imgnotvisitedList = pictList
