@@ -43,6 +43,8 @@ function chkKey() {
   else if(testkey == 'a'){autoShowImg(repeats)}
   else if(testkey == 'A'){autoShowImg(imgnotvisitedList.length)}
   else if(testkey == 'm'){alert(imgnotvisitedList[imgpointer])}
+  else if(testkey == '5'){ zoomin();}
+  else if(testkey == '2'){ zoomout();}
   else if(testkey == 'f'){
     forwardImg();
     window.location="#pictList";
@@ -94,6 +96,18 @@ function shuffle(array) {
     }
     return pictList;
 }
+
+function zoomin(){
+        var currWidth = $("#pictList > img").clientWidth;
+ console.log(currWidth)
+        $("#pictList").style.width = (currWidth + 100) + "px";
+}
+function zoomout(){
+        var currWidth = $("#pictList > img").clientWidth;
+        if(currWidth > 100){
+          $("#pictList > img").style.width = (currWidth - 100) + "px";
+        }
+    }
 
     repeats = 10
     notvisitedList = proverbList
