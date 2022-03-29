@@ -717,5 +717,13 @@ proverbList = [
 '没有口德的人命一般都不会好。有没有好运，先看有没有口德。说话尖酸刻薄，什么缺德的话都说，日积月累，福气也跑光了。别总是挖苦嘲笑，人不是十全十美，你在别人的眼中也是浑身弱点的。你给别人难堪，别人日后也可能给你难堪。',
 '抱怨是世上最无用的东西，怨天尤人不过是承认自己懦弱。怨天尤人的话少说，看看自己身上的问题。怨天尤人只能浪费自己的时间，还不如转化为实际行动，自己不努力，天给你再多的好运气都没有。',
 '人类的身体自古以来就脆弱，现代的人类是文明的整体强大，而不是个人体能的飞跃进化。离开大城市，都不用狮子老虎下嘴，连自然环境都熬不过去，能自己把自己折腾死。野外求生，要么是作死，要么是作秀。',
-
+'The west might not like how Russian and Chinese society are structured, but the west cannot force them to adopt a system which does not work for them. There is a lot more to these societies than just changing their leadership.',
+'When has their freedom of speech helped in making meaningful changes in society and in government? Most of the time, with all their freedoms, they are NOT able to make changes in government policy. ',
+'if you don’t have wealth, what good are freedom of speech going to do you?',
+'Western democracy as practiced tend to have each individual as the basic social unit instead of the family. ',
+'Authority is not perfect, but it usually brings order. ',
+'Western society sacrifices social order in order to give individuals freedom. For Chinese, order is more important than individual freedom.',
+'Large countries with long histories like Russia and China tend to NOT have the individual as the most basic social unit in the society, but the family as the basic social unit instead. ',
+'The establishment of authority is important for the preservation of social order, even if the leadership is less than perfect, because it is designed to benefit the majority of society, and not a special interest group.',
+'social relationships are very important in getting things done. In Chinese society, creating wealth and assets are more important than freedom of speech, freedom of religion and the freedom to vote. ',
 ]
