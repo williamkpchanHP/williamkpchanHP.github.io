@@ -51,6 +51,326 @@ v = b1*b1 - c1*c1 + b2*b2 - c2*c2
 x = (u*(b2-c2) - v*(a2-b2))/d
 y = (v*(a1-b1) - u*(b1-c1))/d
 
+<h2>统计学知识</h2>
+道德经云：道生一，一生二，二生三，三生万物。
+学习知识亦是如此，一个概念衍生出两个概念，两个概念演化出更小的子概念，接着衍生出整个知识体系。
+
+笔者结合自己对统计学和概率论知识的理解写了这篇文章，有以下几个目标。
+目标一：构建出可以让人理解的知识架构，让读者对这个知识体系一览无余
+目标二：尽l量阐述每个知识在数据分析工作中的使用场景及边界条件
+目标三：为读者搭建从“理论”到“实践"的桥梁
+
+<b>01 概述 你的“对象” 是谁？</b>
+此对象非彼“对象”，我们学习“概率和统计学”目的在于应用到对于“对象”的研究中，笔者将我们要研究的“对象”按照维度分为了两大类。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDh8o6C0pIo3rUWdRNxn942VHF7xzFA7ooE1bAxFJfEiavIklXBHSD104A/640">
+一维：就是当前摆在我们面前的“一组”，“一批”，哪怕是“一坨”数据。这里我们会用到统计学的知识去研究这类对象。
+二维：就是研究某个“事件”，笔者认为事件是依托于“时间轴”存在的，过去是否发生，现在是可能会出现几种情况，每种情况未来发生的可能性有多大？
+
+这类问题是属于概率论的范畴。
+因此，我们在做数据分析的研究前，先弄清我们研究的对象属于哪类范畴，然后在按着这个分支检索自己该用到的知识或方法来解决问题。
+分析就像在给 “爱人” 画肖像从外观的角度描述一个姑娘，一般是面容怎么样？身段怎么样？
+
+两个维度去描述。
+就像画一幅肖像画，我们的研究“对象”在描述性分析中也是通过两个维度去来描述即，“集中趋势---代表值”，“分散和程度”。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDh7icC0ctSbUibAWv0yoHXzibGotxLBEpib9NHUNBUu1ZgehCToRcDxhKiaXg/640">
+看到这几个概念是不是就很熟悉了？
+笔者认为一个描述性的分析就是从这两个维度来说清楚你要研究的对象是什么样子？
+至于从哪些特征开始说呢？
+就是常用的概念“均值”，“方差”之类的。
+下面我们进入正题，笔者将详细阐述整个知识架构。
+
+<b>02 对数据的描述性分析</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_png/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEpwu13baAGy84QlYibCjB8zfwlVgRsknANyVzsUlCDCsTicDmSKa2v2Ivw/640">
+数据分析中最常规的情况，比如你手上有一组，一批或者一坨数据，数据分析的过程就是通过“描述”从这些数据中获取的信息，通常可以从两个维度去描述：
+
+<b>1. 集中趋势量度：为这批数据找到它们的“代表”</b>均值（μ）
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDhbI5kcHlmcX9b97dmHZbGnKzzHxo8rAdWRUjrQic3A6ednRnsTwXsvAA/640">
+
+<b>均值的局限性</b>均值是最常用的平均数之一，但是它的局限性在于“若用均值描述的数据中存在异常值的情况，会产生偏差” ；
+
+例如下面一组数据就不太适合用均值来代表这5个人的年龄均值是：31.2岁
+
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDhHic9Byic4nnVPCF6cHNQdWFO6XGzwxywIM3E16xplgc1gfb6cGuwb4BQ/640">
+很显然，在这组数据中，大部分人的年龄是10几岁的青少年，但是E的年龄是100岁为异常值，用均值来描述他们的年龄是31.2岁，很显然用均值作为描述这组数据是不合适的，那么我们该如何准确的表征这组数据呢？？？
+
+<b>中位数</b>中位数，又称中点数，中值。
+是按顺序排列的一组数据中居于中间位置的数。
+中位数的局限
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDhVXCNmbdeticqib8D0dib6wlKV0dmia7RhVvUNg0tcJZLun8Hia1Sz9lUlcg/640">
+回到上一个例子，若用中位数来表征这组数据的平均年龄，就变得更加合理，中位数15。
+
+那么我们在看一下下面一组数据，中位数的表现又如何？
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDhLHBSKeIrfWXvpHA6fvHE7dcv1LTffMoLHv18UC4oBVwpJWh7icgSxXQ/640">
+中位数：45
+这组数据的中位数为：45，但是中位数45并不能代表这组数据。
+因为这组数据分为两批，两批的差异很大。
+
+那么如何处理这类数据呢？
+接下来介绍第三位平均数。
+<b>众数</b>众数是样本观测值在频数分布表中频数最多的那一组的组中值。
+平均数可以表征一批数据的典型值，但是仅凭平均数还不能给我们提供足够的信息，平均数无法表征一组数据的分散程度。
+
+<b>2.分散性与变异性的量度</b>（全距，迷你距，四分位数，标准差，标准分）
+<b>全距</b>=max-min全距也叫“极差”极差。
+它是一组数据中最大值与最小值之差。
+可以用于度量数据的分散程度。
+全距的局限性全距虽然求解方便快捷，但是它的局限性在于“若数据中存在异常值的情况，会产生偏差。
+为了摆脱异常值带来的干扰，比如我们看一下下面的两组数据。
+只是增加了一个异常值，两组数据的全距产生了巨大的差异。
+
+<b>四分位数</b>所有观测值从小到大排序后四等分，处于三个分割点位置的数值就是四分位数：Q1，Q2和Q3。
+Q1：第一四分位数 (Q1)，又称“较小四分位数”，等于该样本中所有数值由小到大排列后第25%的数字。
+Q2：第二四分位数 (Q2)，又称“中位数”，等于该样本中所有数值由小到大排列后第50%的数字。
+Q3：第三四分位数 (Q3)，又称“较大四分位数”，等于该样本中所有数值由小到大排列后第75%的数字。
+
+<b>迷你距 也叫“四分位距”</b>迷你距。
+它是一组数据中较小四分位数与较大四分位数之差。
+即：迷你距 = 上四分位数 - 下四分位数
+迷你距可以反映中间50%的数据，如果出现了极大或极小的异常值，将会被排除在中心数据50%以外。
+因此使用迷你距可以剔除数据中异常值。
+
+全距，四分位距，箱形图可以表征一组数据极大和极小值之间的差值跨度，一定程度上反应了数据的分散程度，但是却无法精准的告诉我们，这些数值具体出现的频率，那么我们该如何表征呢？
+
+我们度量每批数据中数值的“变异”程度时，可以通过观察每个数据与均值的距离来确定，各个数值与均值距离越小，变异性越小数据越集中，距离越大数据约分散，变异性越大。
+方差和标准差就是这么一对儿用于表征数据变异程度的概念。
+
+<b>方差</b>方差是度量数据分散性的一种方法，是数值与均值的距离的平方数的平均值。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDhF7Ry17ichXeoibyslEzGXiaX4AsUukywCRhRpTbvJ7odqxLIwNphSSGAA/640">
+<b>标准差</b>标准差为方差的开方。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/yAyQKzCbAHaURMrFPDe8qD6k33yCeicDh5icltExsjXia4sS1hC29ia4qBnvsqDaEcXlh3r2HicRic3pEJSibbSx88JoA/640">
+通过方差和标准差我们现在可以表征一组数据的数值的变异程度。
+那么对于拥有不同均值和不同标准差的多个数据集我们如何比较呢？
+标准分——表征了距离均值的标准差的个数
+<img src="https://mmbiz.qpic.cn/mmbiz_png/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEpCwUnOvdiaBdxiaqunbog8TGAichCvY9MQo8BgMY3FH0gtxGOK5yfZQvkA/640">
+
+标准分为我们提供了解决方法，当比较均值和标准差各不相同的数据集时，我们可以把这些数值视为来自同一个标准的数据集，然后进行比较。
+标准分将把每一个数据集转化为通用的分布形态，进行比较。
+标准分还有个重要的作用，它可以把正态分布变为标准正态分布，后文会有介绍。
+
+<b>第一部分小结</b>
+1. 描述一批数据，通过集中趋势分析，找出其“代表值” ；
+通过分散和变异性的描述，查看这批数据的分散程度。
+
+2. 集中趋势参数：均值，中位数，众数3. 
+
+分散性和变异性参数:全距，四分位距，方差，标准差，标准分
+
+<b>03 关于“事件”的研究分析概率论
+1.一个事件的情况</b>
+为了让读者更好理解，笔者概率论中最核心的概念以及概念之间彼此的关系绘制成了下图，那么接下来笔者开始“讲故事”了。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYErZ10A4ibwomslGlNGtSadbIQ3VamnELkUusEvEkMDUaRfjPOpqtSLXw/640">
+<b>事件：</b>有概率可言的一件事情，一个事情可能会发生很多结果，结果和结果之间要完全穷尽，相互独立。
+<b>概率：</b>每一种结果发生的可能性。
+所有结果的可能性相加等于1，也就是必然！！！
+
+<b>概率分布：</b>我们把事件和事件所对应的概率组织起来，就是这个事件的概率分布。
+概率分布可以是图象，也可以是表格。
+如下图1和表2都可以算是概率分布
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYEl8uWLkug5QvibSQJicqrzfb0ex5CSTcuFVaxC7RbKVKngaLOVQGtjibQg/640">
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYENtnGUc4TicaoZSd3DVnCkCbicPzU0wricBzib9MrHfGEibJw2LKnCd4KMIw/640">
+
+期望：表征了综合考虑事情的各种结果和结果对应的概率后这个事情的综合影响值。
+（一个事件的期望，就是代表这个事件的“代表值”，类似于统计里面的均值）
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYEc9EnW4E2sxnoZYu9EPbuIKBEAeZia1iaynDmz4TOTXv0ibzoibZp1hA22w/640">
+
+方差：表征了事件不同结果之间的差异或分散程度。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYEUwFULSmeJyOJMkGecYHB5OZ8bbQ6iarvvMa0jMZ9dV8yblSkwtj5mow/640">
+<b>2.细说分布</b>
+理想很丰满，现实很骨感。
+真实的生活中别说去算一个事件的期望，即使把这个事件的概率分布能够表述完整，每个事件对应的概率值得出来就已经是一件了不起的事情了。
+因此，为了能更快更准确的求解出事件的概率分布，当某些事件，满足某些特定的条件，那么我们可以直接根据这些条件，来套用一些固定的公式，来求解这些事件的分布，期望以及方差。
+
+“离散型”数据和“连续性”数据差异在我们展开分布的知识之前，先补充一个预备知识，什么是离散数据，什么是连续数据，它们二者之间有什么差异？
+离散数据：一个粒儿，一个粒儿的数据就是离散型数据。
+连续数据：一个串儿，一个串儿的数据就是连续型数据。
+
+其实上述描述并没有错误，离散型和连续型数据是一对相对概念，同样的数据既可能是离散型数据，又可能是连续型数据。
+
+判别一个数据是连续还是离散最本质的因素在于，一个数据组中数据总体的量级和数据粒度之间的差异。
+差异越大越趋近于连续型数据，差异越小越趋近于离散型数据。
+举个例子:人这个单位，对于一个家庭来说，就离散型数据，一个家庭可能有 3个人，4个人，5个人....等等。
+
+对于一个国家来说，就是连续型数据，我们的国家有14亿人口，那么以个人为单位在这个量级的数据群体里就是连续型数据。
+清楚了离散型和连续型数据的差异，我们接下来一块科普这几种常用的特殊分布。
+
+<b>离散型分布</b>离散数据的概率分布，就是离散分布。
+这三类离散型的分布，在“0-1事件”中可以采用，就是一个事只有成功和失败两种状态。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYEwSM6VdnNaD6Yl4AvnNr26CpxibnPW9hX2yW6CsCO31axKHjnHP4r0jQ/640">
+<b>连续型分布</b>连续型分布本质上就是求连续的一个数据段概率分布。
+<b>正态分布</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEpqPbUlzDeSQ5wzbrtspVgL2b6ByOv1fyTial0J6O9GxURyXWHgUQoL6Q/640">
+f（x）----是该关于事件X的概率密度函数
+μ ---均值
+σ^2 ---方差
+σ ---标准差
+
+绿色区域的面积 ---该区间段的概率正态分布概率的求法step1 ---确定分布和范围 ，求出均值和方差
+step2 ---利用标准分将正态分布转化为标准正态分布 （还记得 第一部分的标准分吗？）
+step3 ---查表找概率
+
+<b>离散型分布 → 正态分布 （离散分布转化为正态分布）</b>精彩的地方在这里，笔者已经阐述了连续型数据和离散型数据是一对相对的概念，那么这就意味着在某种“边界”条件下，离散型分布和连续型分布之间是可以相互转化的。
+进而简化概率分布的计算。
+这里笔者不在偷懒直接上皂片了（编公式快吐了！）
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYEvlEQkQZaECQCjk83nbCASt7jpNLicD3yXP3ia7VqIeBbLEDn9z44KbjQ/640">
+<b>3. 多个事件的情况：
+“概率树”和“贝叶斯定理”</b>多个事件就要探讨事件和事件之间的关系对立事件：
+
+如果一个事件，A’包含所有A不包含的可能性，那么我们称A’和A是互为对立事件
+穷尽事件：如何A和B为穷尽事件，那么A和B的并集为1
+互斥事件：如何A和B为互斥事件，那么A和B没有任何交集
+独立事件：如果A件事的结果不会影响B事件结果的概率分布那么A和B互为独立事件。
+
+例子：10个球，我随机抽一个，放回去还是10个球，第二次随机抽,还是10选1，那么第一次和第二次抽球的事件就是独立的。
+
+<b>相关事件：如果A件事的结果会影响B事件结果的概率分布那么A和B互为独立事件。</b>
+例子：10个球，我随机抽一个，不放回去还是10个球，第二次随机抽是9选1，那么第一次和第二次抽球的事件就是相关的。
+<b>条件概率（条件概率，概率树，贝叶斯公式）</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEpyDuIgCt1DTnJbsAR7icKEwpmoHGAHAmaZiasIaDCcbWibUGxPA5b0WibRA/640">
+条件概率代表：已知B事件发生的条件下，A事件发生的概率
+
+<b>概率树 --- 一种描述条件概率的图形工具。</b>
+假设有个甜品店，顾客买甜甜圈的概率是3/4 ；
+不买甜甜圈直接买咖啡的概率是1/3 ；
+同时买咖啡和甜甜圈概率是9/20。
+从图中我们可以发现以下两个信息:
+1. 顾客买不买甜甜圈可以影响喝不喝咖啡的概率，所以事件甜甜圈与事件咖啡是一组相关事件
+2. 概率树每个层级分支的概率和都是1
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHbYto5lhukncRfg0yY1xfYEM5D3ZEewVaptQhXpnSxYQAnnjTIDqf4egiaphfWaUIoV7hVTibn1obyw/640">
+<b>贝叶斯公式 ----提供了一种计算逆条件概率的方法</b>贝叶斯公式用于以下场景，当我们知道A发生的前提下B发生的概率，我们可以用贝叶斯公式来推算出B发生条件下A发生的概率。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_jpg/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEpIibplyLZicaKLWllWj5GxPib97iaQMotwmyQxnDBIPJd0Pr72sHSUqUlyw/640">
+<b>第二部分小结</b>
+1. 事件，概率，概率分布之间的关系
+2. 期望，方差的意义
+3. 连续型数据和离散型数据之间的区别和联系
+4. 几何分布，二项分布，泊松分布，正态分布，标准正态分布
+5. 离散分布和正态分布可以转化6. 
+多个事件之间的关系，相关事件和独立事件，条件概率和贝叶斯公式
+
+<b>04 关于“小样本” 预测“大总体”</b>
+现实生活中，总体的数量如果过于庞大我们无法获取总体中每个数据的数值，进行对总体的特征提取进而完成分析工作。
+那么接下来就用到了本章节的知识。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0ibhRwmIITA6YLn6ibiaP0SdibKmJkTJdC3XmoSGicCOhsZZsz3WmpJh7qkw/640">
+<b>1.抽取样本</b>
+总体：你研究的所有事件的集合
+样本：总体中选取相对较小的集合，用于做出关于总体本身的结论
+偏倚：样本不能代表目标总体，说明该样本存在偏倚
+简单随机抽样：随机抽取单位形成样本。
+分成抽样：总体分成几组或者几层，对每一层执行简单随机抽样
+系统抽样：选取一个参数K，每到第K个抽样单位，抽样一次。
+
+<b>2.预测总体（点估计预测，区间估计预测）</b>点估计量--- 一个总参数的点估计量就是可用于估计总体参数数值的某个函数或算式。
+
+场景1：样本无偏的情况下，已知样本，预测总体的均值，方差。
+（1） 样本的均值 = 总体的估算均值（总体均值的点估计量） ≈ 总体实际均值（误差是否可接受）
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0zZMSCgN7RE2C6fz5dibTHPhKBAKp8GrjTZUgFfjw5hvLJib3eJF28ibicA/640">
+（2）总体方差  估计总体方差
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0erWuRc384L7oalcwUyvI7tvvrNaDjmyQRlnHwfzgy4KYP3PdqiaynPQ/640">
+
+场景2：已知总体，研究抽取样本的概率分布<b>比例抽样分布</b>：
+考虑从同一个总体中取得所有大小为n的可能样本，由这些样本的比例形成一个分布，这就是“比例抽样分布”。
+样本的比例就是随机变量。
+
+举个栗子：已知所有的糖球（总体）中红色糖球比例为0.25。
+从总体中随机抽n个糖球，我们可以求用比例抽样分布求出这n个糖球中对应红球各种可能比例的概率。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0n2a3nAeYic2h0kJX4DAQOPP0MIukavHohD0wcNj1vG4N0A4aAwAAmAQ/640">
+<b>样本均值分布：</b>
+考虑同一个总体中所有大小为n的可能样本，然后用这个样本的均值形成分布，该分布就是“样本均值分布” ，样本的均值就是随机变量。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0FVzuupuIJEMhR9d6wdib8CPKoSQiaOnuPSFoAevEWWr6Uibpb1d6O3W3g/640">
+
+<b>中心极限定理：</b>
+如果从一个非正态总体X中抽出一个样本，且样本极大（至少大于30），则图片.png的分布近似正态分布。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0ZM7ibT7IHH1zjgMBMY7lbU7UNDG6VcwP21fhlHWUJGVLCdIBaUpicX0w/640">
+区间估计量--- 点估计量是利用一个样本对总体进行估计，区间估计是利用样本组成的一段区间对样本进行估计。
+
+举个栗子：今天下午3点下雨；今天下午3点到4点下雨。
+如果我们的目的是为了尽可能预测正确，你会使用那句话术？
+如何求置信区间？
+（这里笔者讲一下思路，不画图码公式了，读者有兴趣可以查阅一下教材）
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0VkO4rkVJzc4w6HZ0ibdOGpOPOkvEcAmsTFBFoP6ykXuFWMxRk4fD5ZQ/640">
+求置信区间简便公式（直接上皂片）
+<b>关于C值参数：
+置信水平 90% C=1.64 ， 95% C=1.96 ， 99% C=2.58</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_png/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEpNVvNH3ehI2JVEeZ8wiaaWAU98MnK9YTB4bGkAXHfq03icibrnvyrWAU7Q/640">
+
+待补充知识一（t分布）我们之前的区间预测有个前提，就是利用了中心极限定理，当样本量足够大的时候（通常大于30），均值抽样分布近似于正态分布。
+若样本量不够大呢？
+这是同样的思路，只是样本均值分布将近似于另一种分布处理更加准确，那就是t分布。
+这里笔者直接放张图，不做拓展了。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/ObiazFcNN6icp0YJP8FIA00eg6z6sRibNEppg7hn2iagc5EWM3vOGPicqkTs2HNt1thGaaVNfGaDpeoZdUVRZe3ic0gw/640">
+待补充知识二（卡方分布）----注意待补充不代表不重要，是笔者水平有限，目前还不能用简单的语言概述其中的精髓。
+<b>卡方分布的定义</b>
+若n个相互独立的随机变量ξ、ξ、……、ξn ，均服从标准正态分布，则这n个服从标准正态分布的随机变量的平方和构成一新的随机变量，其分布规律称为卡方分布。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0eshD3sbQCK4HdEKEEUOcUl3zWfYZrMppial24sQoz99uibAYnUCVsO9w/640">
+<b>卡方分布的应用场景</b>
+用途1：用于检验拟合优度。
+也就是检验一组给定的数据与指定分布的吻合程度；
+
+用途2：检验两个变量的独立性。
+通过卡方分布可以检查变量之间是否存在某种关联:
+
+<b>3.验证结果（假设检验）</b>
+假设检验是一种方法用于验证结果是否真实可靠。具体操作分为六个步骤。
+
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0ibfKxnTESV3JIBXjricibP4lU6PqlDKHT6qM3BsN6a7swcmqB79v11J2g/640">
+两类错误---即使我们进行了“假设检验”依然无法保证决策是百分百正确的，会出现两类错误
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj003FufSGOEVgaicXfw9PQwOKLbnN1QKHtRiaVfYSNic7cxfFsbGqpWqJGw/640">
+第一类错误：拒绝了一个正确的假设，错杀了一个好人
+第二类错误：接收了一个错误的假设，放过了一个坏人
+
+<b>第三部分小结：</b>
+1. 无偏抽样
+2. 点估计量预测（已知样本预测总体，已知总体预测样本）
+3. 区间估计量预测（求置信区间）
+4. 假设检验
+
+<b>05 相关与回归（y=ax+b）</b>
+这里介绍的相关和回归是关于二维双变量的最简单最实用的线性回归，非线性回归这里不暂不做拓展。
+
+<b>散点图：</b>显示出二变量数据的模式
+<b>相关性：</b>变量之间的数学关系。
+<b>线性相关性：</b>两个变量之间呈现的直线相关关系。
+<b>最佳拟合直线：</b>与数据点拟合程度最高的线。
+（即每个因变量的值与实际值的误差平方和最小）
+<b>误差平方和SSE： 线性回归法：</b>
+求最佳拟合直线的方法（y=ax+b），就是求参数a和b<b>斜率a公式：</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj09MgfBN4msC3VG97vA8CYnADGC2N969Nl2VgHEw6M3oD4vyndDfhAPQ/640">
+<b>b公式：</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj02LDhicnicMRicOTChNYJQOeqibA6pwibtQnKWAMIwdO9og3243Qkn1H7sOQ/640">
+<b>相关系数r：</b>表征描述的数据与最佳拟合线偏离的距离。
+（r=-1完全负相关，r=1完全正相关，r=0不相关）<b>r公式：</b>
+<img src="https://mmbiz.qpic.cn/mmbiz_png/yAyQKzCbAHZQzpibU35619IGnIqdVFXj0Wsia3pGoZrMFRmACOP06XqqJOPZ0AxvKoVg5dCSjB1E8Esj9ohODqmA/640">
+
+<b>结束语</b>笔者这里梳理了统计与概率学最基础的概念知识，尽量阐述清楚这些概念知识之间关联的关系，以及应用的场景。
+底层概念是上层应用的基础，当今浮躁的“机器学习”，“神经网络”，“AI自适应”这些高大上的关键字满天飞。
+笔者认为踏踏实实的把“基础”打扎实，才是向上发展的唯一途径。
+
+
+
+
+
+
+
+
+
+
 <script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
 <script>
 var lazyLoadInstance = new LazyLoad({

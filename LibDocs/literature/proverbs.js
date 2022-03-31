@@ -733,4 +733,5 @@ proverbList = [
 'Large countries with long histories like Russia and China tend to NOT have the individual as the most basic social unit in the society, but the family as the basic social unit instead. ',
 'The establishment of authority is important for the preservation of social order, even if the leadership is less than perfect, because it is designed to benefit the majority of society, and not a special interest group.',
 'social relationships are very important in getting things done. In Chinese society, creating wealth and assets are more important than freedom of speech, freedom of religion and the freedom to vote. ',
+'能源粮食和武器必须三合一才具备威力，少一个都是废物。',
 ]
