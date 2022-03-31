@@ -734,4 +734,5 @@ proverbList = [
 'The establishment of authority is important for the preservation of social order, even if the leadership is less than perfect, because it is designed to benefit the majority of society, and not a special interest group.',
 'social relationships are very important in getting things done. In Chinese society, creating wealth and assets are more important than freedom of speech, freedom of religion and the freedom to vote. ',
 '能源粮食和武器必须三合一才具备威力，少一个都是废物。',
+'鱼对水温的敏感度非常高，水温变化幅度超过3～5摄氏度，就容易造成鱼死亡。因此要想养好鱼，就一定要控制好水温，最好是控制在恒温范围内。',
 ]
