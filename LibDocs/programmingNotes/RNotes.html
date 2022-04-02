@@ -1,0 +1,239 @@
+<base target="_blank"><html><head><title>RNotes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "<br>";
+  var bookid = "RNotes"
+  var markerName = "h2"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+.stop-scrolling { height: 100%; overflow: hidden; }
+iframe {width:100%; height:100%;}
+</style></head><body onkeypress="chkKey()"><center>
+
+<div id="toc"></div></center>
+<pre>
+<br>
+<br>
+
+<h2>Web Scraping with R and PhantomJS</h2>
+<div class="toc" id="PhantomJStoc"><a href="#PhantomJStopic-1" target="_self">Load the necessary packages</a><br><a href="#PhantomJStopic-2" target="_self">Scraping Javascript Generated Data with R</a><br></div></center>
+
+Short tutorial on scraping Javascript generated data with R using PhantomJS.
+When you need to do web scraping, you would normally make use of Hadley Wickham’s <code>rvest</code> package.
+This package provides an easy to use, out of the box solution to fetch the html code that generates a webpage.
+However, when the website or webpage makes use of JavaScript to display the data you're interested in, the <code>rvest</code> package misses the required functionality.
+One solution is to make use of PhantomJS.
+
+<h3 id="PhantomJStopic-1">Load the necessary packages</h3>
+<code>library(rvest)
+library(stringr)
+library(plyr)
+library(dplyr)
+library(ggvis)
+library(knitr)
+options(digits = 4)</code>
+
+<h3 id="PhantomJStopic-2">Scraping Javascript Generated Data with R</h3>
+The next step is the collection of the TechStars data using PhantomJS. Check out the following basic .js file:
+
+<code>// scrape_techstars.js
+
+var webPage = require('webpage');
+var page = webPage.create();
+
+var fs = require('fs');
+var path = 'techstars.html'
+
+page.open('http://www.techstars.com/companies/stats/', function (status) {
+  var content = page.content;
+  fs.write(path,content,'w')
+  phantom.exit();
+});</code>
+
+The script basically renders the HTML page after the underlying javascript code has done its work, allowing you to fetch the HTML page, with all the tables in there. To stay in R for the rest of this analysis, we suggest you use the <code>system()</code> function to invoke PhantomJS (you'll have to <a href="http://phantomjs.org/download.html">download and install PhantomJS</a> and put it in your working directory):
+
+<code># Let phantomJS scrape techstars, output is written to techstars.html
+system("./phantomjs scrape_techstars.js")</code>
+
+After this small detour, you finally have an HTML file, <code>techstars.html</code>, on our local system, that can be scrape with <code>rvest</code>. An inspection of the Techstars webpage reveals that the tables we're interested in are located in divs with the css class <code>batch</code>:
+
+<code>batches &lt;- html("techstars.html") %&gt;%
+  html_nodes(".batch")
+
+class(batches)</code>
+
+<code>[1] "XMLNodeSet"</code>
+You now have a list of <code>XMLNodeSet</code> objects: each object contains the data for a single TechStars batch. 
+In there, we can find information concerning the batch location, the year, the season, but also about the companies, their current headquarters, their current status and the amount of funding they raised in total. 
+We will not go into detail on the data collection and cleaning steps below; you can execute the code yourself and inspect what they accomplish. 
+
+You'll see that some custom cleaning is going on to make sure that each bit of information is nicely formatted:
+
+<code>batch_titles &lt;- batches %&gt;%
+  html_nodes(".batch_class") %&gt;%
+  html_text()
+
+batch_season &lt;- str_extract(batch_titles, "(Fall|Spring|Winter|Summer)")
+batch_year &lt;- str_extract(batch_titles, "([[:digit:]]{4})")
+# location info is everything in the batch title that is not year info or season info
+batch_location &lt;- sub("\\s+$", "",
+                      sub("([[:digit:]]{4})", "",
+                          sub("(Fall|Spring|Winter|Summer)","",batch_titles)))
+
+# create data frame with batch info.
+batch_info &lt;- data.frame(location = batch_location,
+                         year = batch_year,
+                         season = batch_season)
+
+breakdown &lt;- lapply(batches, function(x) {
+  company_info &lt;- x %&gt;% html_nodes(".parent")
+  companies_single_batch &lt;- lapply(company_info, function(y){
+    as.list(gsub("\\[\\+\\]\\[\\-\\]\\s", "", y %&gt;%
+       html_nodes("td") %&gt;%
+       html_text()))
+  })
+  df &lt;- data.frame(matrix(unlist(companies_single_batch),
+                   nrow=length(companies_single_batch),
+                   byrow=T,
+                   dimnames = list(NULL, c("company","funding","status","hq"))))
+  return(df)
+})
+
+# Add batch info to breakdown
+batch_info_extended &lt;- batch_info[rep(seq_len(nrow(batch_info)),
+                                  sapply(breakdown, nrow)),]
+breakdown_merged &lt;- rbind.fill(breakdown)
+
+# Merge all information
+techstars &lt;- tbl_df(cbind(breakdown_merged, batch_info_extended)) %&gt;%
+  mutate(funding = as.numeric(gsub(",","",gsub("\\$","",funding))))</code>
+
+With a combination of core R, <code>rvest</code>, <code>plyr</code> and <code>dplyr</code> functions, we now we have the <code>techstars</code> data frame; a data set of all TechStars company, with all publicly available information that is nicely formatted:
+
+<code>techstars</code>
+
+<code>## Source: local data frame [535 x 7]
+##
+##          company funding   status                hq location year season
+## 1    Accountable  110000   Active    Fort Worth, TX   Austin 2013   Fall
+## 2          Atlas 1180000   Active        Austin, TX   Austin 2013   Fall
+## 3        Embrace  110000   Failed        Austin, TX   Austin 2013   Fall
+## 4  Filament Labs 1490000   Active        Austin, TX   Austin 2013   Fall
+## 5        Fosbury  300000   Active        Austin, TX   Austin 2013   Fall
+## 6          Gone!  840000   Active San Francisco, CA   Austin 2013   Fall
+## 7     MarketVibe  110000 Acquired        Austin, TX   Austin 2013   Fall
+## 8           Plum 1630000   Active        Austin, TX   Austin 2013   Fall
+## 9  ProtoExchange  110000   Active        Austin, TX   Austin 2013   Fall
+## 10       Testlio 1020000   Active        Austin, TX   Austin 2013   Fall
+## ..           ...     ...      ...               ...      ...  ...    ...</code>
+
+<code>names(techstars)</code>
+
+<code>## [1] "company"  "funding"  "status"   "hq"       "location" "year"
+## [7] "season"</code>
+
+<h2>start chrome from R console with ChromeDriver and RSelenium</h2>
+
+verbose logging to check server in more detail:
+library(wdman)
+library(RSelenium)
+selServ <- selenium(jvmargs = c("-Dwebdriver.chrome.verboseLogging=true"))
+remDr <- remoteDriver(port = 4567L, browserName = "chrome")
+remDr$open()
+selServ$log()
+
+or if you prefer running seperately in the terminal start a selenium server as follows:
+
+java -Dwebdriver.chrome.verboseLogging=true -Dwebdriver.chrome.driver=/home/hdpusr/ChromeDriver/chromedr‌​‌​iver -jar selenium-server-standalone-3.0.1.jar -port 4444
+
+You can then file an issue with https://bugs.chromium.org/p/chromedriver/issues/list if the problem is not apparent.
+
+<a href="https://www.selenium.dev/" class="whitebut ">Selenium automates browsers</a>
+
+<a href="https://chromedriver.chromium.org/getting-started" class="whitebut ">ChromeDriver for testing website on desktop</a>
+
+https://github.com/rstudio/webdriver
+A client for the ‘WebDriver’ ‘API’ only tested with ‘PhantomJS’
+
+<h2>R extrect pdf Title</h2>
+assumptions about the structure of the pdf we wish to scrape. 
+The code below makes the following assumptions:
+
+Title and abstract are on page 1
+Title is of height 15
+The abstract is between the first occurrence of the word "Abstract" and first occurrence of the word "Introduction"
+
+options("encoding" = "native.enc")
+Sys.setlocale(category = 'LC_ALL', 'Chinese')
+
+datapathOCR = "C:/Users/william/Desktop"
+setwd(datapathOCR)
+
+library(tidyverse)
+library(pdftools)
+#data = pdf_data("~/Desktop/a.pdf")
+# ~/Desktop isC:/Users/william/Documents
+data = pdf_data("a.pdf")
+
+#Get First page
+page_1 = data[[1]]
+
+# title = data[[11]] %>% filter(height == 12) %>% .$text
+# title
+# writeClipboard(as.character(data[[11]]))
+
+# Get Title, here we assume its of size 15
+title = page_1 %>% filter(height == 15) %>% .$text %>% paste0(collapse = " ")
+
+#Get Abstract
+abstract_start = which(page_1$text == "Abstract.")[1]
+introduction_start = which(page_1$text == "Introduction")[1]
+
+abstract = page_1$text[abstract_start:(introduction_start-2)]%>%
+paste0(collapse = " ")
+
+# str(data[[1]])
+# tbl_df [18 x 6] (S3: tbl_df/tbl/data.frame)
+#  $ width : int [1:18] 183 13 15 9 14  ...
+#  $ height: int [1:18] 14 150 45 9 14  ...
+#  $ x     : int [1:18] 119 384 57 240 240  ...
+#  $ y     : int [1:18] 114 162 401 515 529  ...
+#  $ space : logi [1:18] FALSE FALSE FALSE FALSE  ...
+#  $ text  : chr [1:18] "\"十二五\"国家重点图书出版规划项目" "中华中医药学会组织编写" ...
+
+# page11 = data[[11]]$text
+# page11text = gsub('U001001ba.*','',page11) not work
+# data[[11]][10,]
+
+
+
+
+
+
+
+
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+randomScroll();
+</script>
+</pre></body></html>

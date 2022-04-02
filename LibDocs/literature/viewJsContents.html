@@ -39,7 +39,10 @@ img {max-width:100%; max-height:100vh; display: inline-block; margin-top: 2%;mar
 
 function chkKey() {
   var testkey = getChar(event);
-  if(testkey == 'r'){ showRandomMsg(); }
+  if(testkey == 'r'){ showRandomMsg(); 
+    window.location="#proverb";
+    document.body.style.cursor = "auto";
+  }
   else if(testkey == 'a'){autoShowImg(repeats)}
   else if(testkey == 'A'){autoShowImg(imgnotvisitedList.length)}
   else if(testkey == 'm'){alert(imgnotvisitedList[imgpointer])}
@@ -48,10 +51,12 @@ function chkKey() {
   else if(testkey == 'f'){
     forwardImg();
     window.location="#pictList";
+    document.body.style.cursor = "none"
   }
   else if(testkey == 'b'){
     backwordImg();
     window.location="#pictList";
+    document.body.style.cursor = "none"
   }
   else{chkOtherKeys(testkey)} 
 
