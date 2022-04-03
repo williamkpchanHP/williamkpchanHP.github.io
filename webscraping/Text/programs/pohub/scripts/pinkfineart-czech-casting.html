@@ -1,0 +1,132 @@
+<base target="_blank">
+<title>pinkfineart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src='pinkfineart.js'></script>
+<script>
+  var showTopicNumber = true;
+  var bookid = "pinkfineart-czech-casting"
+  var markerName = "h2"
+</script>
+
+<style>
+body{width:98%;margin-left: 0%; font-size:24px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+img {max-width:100%; margin: 2px; display: inline-block;  border-radius:3px;}
+select {border-radius:10px; font-size:20px;background-color:black; color:brown;}
+
+</style></head><body onkeypress="chkKey()"><center>
+<select id="selectList" onchange="chooseList()"></select>
+
+<div id="displayBoard"></div>
+
+<script>
+$(document).ready(function(){shuffle();});
+
+urlHeader = "https://www.pinkfineart.com/galleries/"
+siteKey = "czech-casting" // convert _
+thumbKey = "pthumbs/"
+fullKey = "full/"
+imgTail = ".jpg"
+listArray = []
+
+
+      var options = '';  // build the List select option
+      for (var i = 0; i < allVidListNames.length; i++) {
+         options += '<option value="' + allVidListNames[i]+ '">' + allVidListNames[i] + '</option>';
+      }
+      $("#selectList").html(options);
+
+chooseList() // init list
+
+function chooseList(){
+  newList = eval(document.getElementById("selectList").value);
+  listArray = newList;
+  showArray = listArray;
+  siteKey = document.getElementById("selectList").value.replace(/_/g, "-")
+
+
+  alert("Total: " + listArray.length + "\ndetails see end of this page.\nremember to modify mustadd list!\n" + newList)
+        $("#message").text("Total: " + listArray.length + "\n"+listArray);
+}
+
+
+     function chkKey() {
+       var testkey = getChar(event);
+       if(testkey == 'r'){shuffle();}
+       if(testkey == 'e'){shuffleFull();}
+
+     }
+     function getChar(event) {
+       if (event.which!=0 && event.charCode!=0) {
+         return String.fromCharCode(event.which)   // the rest
+       } else {
+         return null // special key
+       }
+     }
+
+showArray = listArray;
+
+function shuffle(){
+  $("div#displayBoard").text("")
+  for(var i=0; i<8; i++){
+    totalLength = showArray.length + 1;
+    pointer = Math.floor(Math.random() * totalLength)
+    topicSelected = showArray[pointer];
+    randomImgNo = 14 + Math.floor(Math.random() * 2)
+    theImg = "<img style=\"width:24%;\" src=\"" + urlHeader + siteKey + "/" + topicSelected + thumbKey +randomImgNo +imgTail
+         + "\" onclick=showAll(\'" + topicSelected + "\')>"
+    $("div#displayBoard").append(theImg)
+    showArray.splice(pointer,1)
+    if(showArray.length == 0){showArray = listArray;}
+  }
+}
+
+function shuffleFull(){
+  $("div#displayBoard").text("")
+    totalLength = showArray.length + 1;
+    pointer = Math.floor(Math.random() * totalLength)
+    topicSelected = showArray[pointer];
+  for(var i=0; i<26; i++){
+    if((siteKey == "czech-casting") | (siteKey == "wet-and-puffy") | (siteKey == "anilos")){
+      theImg = "<img src=\"" + urlHeader + siteKey + "/" + topicSelected + fullKey +i +imgTail + "\">"
+    }else{
+      theImg = "<img src=\"" + urlHeader + siteKey + "/" + topicSelected + fullKey + formatNum(i, 2) +imgTail + "\">"
+    }
+
+    $("div#displayBoard").append(theImg)
+  }
+    showArray.splice(pointer,1)
+    if(showArray.length == 0){showArray = listArray;}
+}
+
+function formatNum(num, size) {
+    var stkcode = "000000000" + num;
+    return stkcode.substr(stkcode.length-size);
+}
+
+function showAll(pointer) {
+  $("div#displayBoard").text("")
+  topicSelected = pointer
+console.log(topicSelected)
+  for(var i=0; i<26; i++){
+    if((siteKey == "czech-casting") | (siteKey == "wet-and-puffy") | (siteKey == "anilos")){
+      theImg = "<img src=\"" + urlHeader + siteKey + "/" + topicSelected + fullKey +i +imgTail + "\"><br>"
+    }else{
+      theImg = "<img src=\"" + urlHeader + siteKey + "/" + topicSelected + fullKey + formatNum(i, 2) +imgTail + "\">"
+    }
+
+    $("div#displayBoard").append(theImg)
+  }
+}
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>

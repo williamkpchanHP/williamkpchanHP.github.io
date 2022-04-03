@@ -1,0 +1,33 @@
+# http://pinkfineart.com/galleries/cosmid/2210-aubrey_chase-purple_sweater-022415/pthumbs/01.jpg ~ 16
+# http://pinkfineart.com/cosmid/page/2/ ~17
+
+setwd("C:/Users/user/mpg/Text/programs")
+totalpages = 17
+pageHeader="http://pinkfineart.com/cosmid/page/"
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+imgHeader = "<img src=\"/galleries/cosmid/"
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix()
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    thepage =gsub(".*cosmid/|/pthumbs/.*", "", thepage)  #purify
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholepage=theWholepage[-1]
+sink("cosmid.txt")
+cat(theWholepage, sep="\n")
+sink()
+
+#======

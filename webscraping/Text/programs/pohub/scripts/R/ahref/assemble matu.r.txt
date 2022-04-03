@@ -1,0 +1,54 @@
+# read a page a assemble the img html
+# 15 pics 
+# head: <table width="770" 
+# tail: <a href="http://www.allover30.com/v1/mature-pictures
+
+set.seed(sample(10000,1))
+dirStr = "C:/Users/user/mpg/Text/programs/ahref/"
+setwd(dirStr)
+
+cat(inputFilename,"\n")
+thelist <- readLines("maturevlog.txt") 
+listlength = length(thelist)
+
+startstr="start chrome.exe --start-fullscreen "
+
+pageHead = '<div align="center">'
+pageTail = '<img src="images/footer.gif'
+
+imgHeader = "<img "
+ahrefHeader = "<a href="
+
+trialnum = 25
+
+for(trial in 1:trialnum){
+  cat("total pages:",listlength,"\n")
+  theChoice=sample(1:listlength,1)
+  Selection = readline(prompt="enter number: ")
+  if(Selection != "")   {
+    theChoice = as.numeric(Selection)
+  }
+  cat(" ",theChoice,"\n")
+  cat(thelist[theChoice])
+  thepage=readLines(thelist[theChoice], warn = F)
+
+  thepage=unlist(strsplit(thepage, split = ">"))
+
+  imglinenum=grep(ahrefHeader, thepage)  # extract img
+  thepage=thepage[imglinenum]
+
+  imglinenum=grep('<a href=\"images', thepage)  # extract img
+  thepage=thepage[imglinenum]
+
+  thepage =gsub(".*<a href=\"|jpg.*", "", thepage)  #purify
+#  thepage =gsub("pthumbs", "full", thepage)  #purify
+  thepage =paste0(thelist[theChoice],"/", thepage, "jpg")
+
+  sink("Temp.html")
+  cat('<body bgcolor="#000000">\n')
+  for(thenum in 1:length(thepage)){
+    cat(paste0("\n<img src='" ,thepage[thenum], "'>"))
+  }
+  sink()
+  shell(paste0(startstr, dirStr, "Temp.html"))
+}

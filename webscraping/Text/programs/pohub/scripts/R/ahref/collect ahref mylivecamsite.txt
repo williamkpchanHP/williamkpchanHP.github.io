@@ -1,0 +1,32 @@
+# http://www.mylivecamsite.com/female-cams/?page=2 ~32
+# <a href="/karups-ow/lauren/122/" title
+# http://www.mylivecamsite.com/female-cams/?page=2
+
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "mylivecamsite"
+totalpages = 32
+
+pageHeader = 'http://www.mylivecamsite.com/female-cams/?page='
+pageHead = '<ul class="list">'
+pageTail = '<ul class="paging">'
+
+theWholeApage= matrix()
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+for (page in 2:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    theWholeApage=rbind(theWholeApage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholeApage=theWholeApage[-1]
+sink(paste0("Ahref-",sitename,".txt"))
+cat(theWholeApage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

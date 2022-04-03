@@ -1,0 +1,37 @@
+# this is thumb http://pinkfineart.com/galleries/czech-casting/2709-zuzana-042312/pthumbs/04.jpg
+
+# this is first img http://pinkfineart.com/galleries/czech-casting/2974-christyna-050216/full/1.jpg
+# this is 20 img http://pinkfineart.com/galleries/czech-casting/2974-christyna-050216/full/20.jpg
+
+# http://pinkfineart.com/czech-casting/page/25/
+
+# "amour-angels" this is the site name
+sitename = "amour-angels"
+pageHeader=paste0("http://pinkfineart.com/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+
+imgHeader = paste0("<img src=\"/galleries/", sitename , "/")
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix()
+for (page in 1:27){
+    cat(" ",page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    thepage =gsub(paste0(".*", sitename, "/|/pthumbs.*"), "", thepage)  #purify
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholepage=theWholepage[-1]
+sink(paste0(sitename, ".txt"))
+cat(theWholepage, sep="\n")
+sink()
+

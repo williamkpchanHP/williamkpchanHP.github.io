@@ -1,0 +1,32 @@
+# http://pinkfineart.com/galleries/cosmid/2210-aubrey_chase-purple_sweater-022415/pthumbs/01.jpg ~ 16
+
+setwd("C:/Users/user/mpg/Text/programs")
+set.seed(sample(100,1))
+
+thelinkhead="http://pinkfineart.com/galleries/cosmid/"
+thelinkmid="/full/"
+thelinktail=".jpg"
+startstr="start chrome.exe --start-fullscreen "
+
+thelist=readLines("cosmid.txt")
+thelistlength=length(thelist)
+trialnum = 25
+for(trial in 1:trialnum){
+cat("total pages:",thelistlength,"\n")
+theChoice=sample(1:thelistlength,1)
+Selection = readline(prompt="enter number: ")
+
+if(Selection != "")   {
+    theChoice = Selection
+  }
+cat(" ",theChoice," ")
+ theCmdhead=paste0(startstr,thelinkhead,thelist[theChoice],thelinkmid)
+  numberofimg = 16
+  for(thenum in numberofimg:1){
+#    thenumchar = nchar(thenum)
+    thenum = sprintf(paste0("%0", 2, "d"), as.integer(thenum))
+    shell(paste0(theCmdhead,thenum,thelinktail))
+    thenum = as.integer(thenum) +1
+  }
+}
+  

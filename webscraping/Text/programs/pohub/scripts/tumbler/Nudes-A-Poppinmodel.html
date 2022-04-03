@@ -1,0 +1,207 @@
+<base href="http://nsfwpics.net/albums/"
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 80%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+
+'<img src="_data/i/upload/2014/05/29/20140529214656-8793dc8f-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214658-b8856733-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214659-d6b58f6f-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214701-b22f201f-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214702-14109aac-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214704-efeb1329-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214705-3a24b225-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214707-f086b4d6-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214708-de2f8186-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214710-fbfb2f71-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214711-a1719d6e-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214712-644707e3-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214713-f92f8822-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214715-e5d2920a-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214716-e8cb9050-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214718-842f72be-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214720-ce17e344-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214721-fc197d83-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214722-f14d9dba-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214724-15ff3e0c-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214725-a7d8e6e6-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214726-c519de04-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214727-2d053fe5-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214729-5dff21a7-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214730-1835326e-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214732-5fc41b08-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214733-f062f2d7-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214735-0639aaab-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214736-287705af-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214738-9a1f9854-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214739-9c01f1e1-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214740-fc292df5-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214741-02a095a3-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214743-c4c1368c-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214745-b38b8368-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214746-d2d209f6-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214748-d537c468-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214750-fb909268-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214751-a7b54292-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214752-a9fd6078-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214754-65e07668-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214756-2f2fa1a0-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214806-ca9254e1-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214807-630eb777-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214809-ecec7f89-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214810-ce394263-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214812-f497256a-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214813-0f60c1ea-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214814-550500c5-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214816-a22a54ef-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214817-1b765266-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214819-4224ae53-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214820-3ce3716b-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214821-b25eaad4-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214823-79ea3dc9-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214824-a852d51e-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214826-b2a3e11c-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214830-1737c63d-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214831-d3291562-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214832-b5c31360-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214834-50792122-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214835-f7214334-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214836-73e51ec3-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214838-dbd5edae-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214839-e41afd49-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214841-8105036f-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214843-7cbec98e-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214845-96e0719f-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214846-16918ec8-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214847-e4f26cd9-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214849-cb586c43-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214850-70366d71-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214851-a318b767-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214853-3f917570-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214854-b5bc7a8c-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214856-be2310d1-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214857-07a47a23-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214858-6e883d83-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214859-79735df2-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214901-cb14c18a-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214902-05960dff-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214904-50fe4098-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214905-48cc7b9d-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214909-602727dd-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214914-f926a95b-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214916-b1a1ceb0-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214918-714d23c7-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214919-2ddd9a0a-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214920-f319c902-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214922-f60b5a95-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214923-8cb82391-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214925-5bef7d96-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214926-060c15e6-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214927-8cf98ea9-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214929-909628e9-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214930-8d6b4f01-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214932-124e1d20-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214933-08ac1c30-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214934-c87e77ef-me.jpg">',
+'<img src="_data/i/upload/2014/05/29/20140529214936-88c6a37a-me.jpg">',
+
+];
+
+var listLen = ImgList.length, timer = 15000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+changeImg();
+var myVar = setInterval(changeImg, timer);
+</script>
+
+</body>
+</html>

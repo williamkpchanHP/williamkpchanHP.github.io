@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle Links</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<style>
+body {background-color: black;}
+html {height: 100%;overflow: scroll;}
+::-webkit-scrollbar {width: 0px;background: transparent;}
+body { margin: auto; width: 100%; background-color: #000000; color: #20C030;}
+img { width: 50%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+</head>
+<body onkeypress="chkKey()">
+<br><br><br><br><br>
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+var testkey = getChar(event);
+if(testkey == "b"){ backward();}
+if(testkey == "f"){ foreward();}
+if(testkey == "p"){ pause();}
+if(testkey == "c"){ continU();}
+if(testkey == "s"){ showMov();}}
+function getChar(event){if (event.which!=0 && event.charCode!=0) {return String.fromCharCode(event.which)}
+ else {return null}}
+var ImgList = [
+'<a href ="https://www.pornhub.com/embed/ph56aa9f769bcbd"><img src="https://di.phncdn.com/videos/201601/28/67256281/original/(m=eaf8Ggaaaa)(mh=JpL_egrVsPBDwDQM)16.jpg" alt="Paris Kennedy strips out of micro lingerie &amp; plays with her pussy lips"></a>',
+'<a href ="https://www.pornhub.com/embed/ph57d989578eb68"><img src="https://di.phncdn.com/videos/201609/14/89490601/original/(m=eaf8Ggaaaa)(mh=8sK8B1HXUFulF15b)12.jpg" alt="Hot Latina Teen Dancing"></a>',
+'<a href ="https://www.pornhub.com/embed/ph58b0b7ea9141d"><img src="https://ci.phncdn.com/videos/201702/24/107467762/original/(m=eaf8Ggaaaa)(mh=l7XZfMgMmiw82v7s)3.jpg" alt="Luciana tbfttl model modeling on a show"></a>',
+'<a href ="https://www.pornhub.com/embed/ph58b421362a2c8"><img src="https://ci.phncdn.com/videos/201702/27/107813682/original/(m=eaf8Ggaaaa)(mh=5lzZRYGgmH-uXwC9)4.jpg" alt="Sexy bristish angel dance (no porn)"></a>',
+'<a href ="https://www.pornhub.com/embed/ph58bc19b3d63bf"><img src="https://ci.phncdn.com/videos/201703/05/108557102/original/(m=eaf8Ggaaaa)(mh=ArMGciNycpO1psY9)3.jpg" alt="young girl slingshot bikini"></a>',
+'<a href ="https://www.pornhub.com/embed/ph591657a41603b"><img src="https://ci.phncdn.com/videos/201705/13/116273001/original/(m=eaf8Ggaaaa)(mh=vdPykfxSvaYag476)12.jpg" alt="Valentina Nappi Teases in a Teeny Bikini"></a>',
+'<a href ="https://www.pornhub.com/embed/ph59403a7560626"><img src="https://di.phncdn.com/videos/201706/13/120340781/original/(m=eaf8Ggaaaa)(mh=ZodIRKNPHo9eXyt0)12.jpg" alt="latina2"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5949ee7f2ec4a"><img src="https://ci.phncdn.com/videos/201706/21/121259201/original/(m=eaf8Ggaaaa)(mh=wZeg7HB7V87rR11a)12.jpg" alt="Jewels Teases in a Y shaped micro bikini. (Trailer)"></a>',
+'<a href ="https://www.pornhub.com/embed/ph598265bada7b0"><img src="https://ci.phncdn.com/videos/201708/03/126980351/original/(m=eaf8Ggaaaa)(mh=eTCUoPpQ6Wo4WSn4)1.jpg" alt="Sexy Model - AM - Tnk"></a>',
+'<a href ="https://www.pornhub.com/embed/ph59840f0e17e05"><img src="https://ci.phncdn.com/videos/201708/04/127151521/original/(m=eaf8Ggaaaa)(mh=26qczzbI2WseE41g)9.jpg" alt="Sexy Model - KB - Tnk 1"></a>',
+'<a href ="https://www.pornhub.com/embed/ph59dba99b14b32"><img src="https://di.phncdn.com/videos/201710/09/136186222/original/(m=eaf8Ggaaaa)(mh=ReRqPMev46nyX6fP)1.jpg" alt="Valentina Nappi bikini photo shoot"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5a24fea478b22"><img src="https://ci.phncdn.com/videos/201712/04/143921432/original/(m=eaf8Ggaaaa)(mh=9J07nB6YMeyg8ez6)10.jpg" alt="Abby and Karly Play in their Micro Sling Bikinis"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5a81de862a05a"><img src="https://ci.phncdn.com/videos/201802/12/154427062/original/(m=eaf8Ggaaaa)(mh=9euIV9O01l4itNxO)15.jpg" alt="H Slingshot"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5ace2979abd98"><img src="https://ci.phncdn.com/videos/201804/11/161684102/original/(m=eaf8Ggaaaa)(mh=Aql8htRX2wAkbHMx)5.jpg" alt="Vladmodels Marina(y 161) - Visit To The Spa"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5ae8ea83008b6"><img src="https://ci.phncdn.com/videos/201805/01/164367951/original/(m=eaf8Ggaaaa)(mh=jvE2w30Pa8cEkLBX)4.jpg" alt="Betsy Glamgirl"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b13424d007e4"><img src="https://ci.phncdn.com/videos/201806/03/168840502/original/(m=eaf8Ggaaaa)(mh=ht0cdkZEPMLSwTPm)4.jpg" alt="Daniela Florez Bonus"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1acb5ac1edc"><img src="https://di.phncdn.com/videos/201806/08/169617162/original/(m=eaf8Ggaaaa)(mh=tYBndT0g0OQUi4p0)7.jpg" alt="Latina teen tease"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1dbd9b3ba50"><img src="https://di.phncdn.com/videos/201806/11/169913241/original/(m=eaf8Ggaaaa)(mh=8vBrCpdt62Ov7S6N)8.jpg" alt="Raine - wet"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1dbd9b58811"><img src="https://ci.phncdn.com/videos/201806/11/169913311/original/(m=eaf8Ggaaaa)(mh=ZkLtg4862NFlCQw3)7.jpg" alt="Raine - seeing stars"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1dbd9b67ed6"><img src="https://di.phncdn.com/videos/201806/11/169913151/original/(m=eaf8Ggaaaa)(mh=OIfm07I7kO9ekfny)2.jpg" alt="Raine - ornaments"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bc18eae"><img src="https://ci.phncdn.com/videos/201806/12/170106791/original/(m=eaf8Ggaaaa)(mh=lfXJbJwoZ0mopoaN)7.jpg" alt="pretty pamela - TCG 003"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bc47413"><img src="https://di.phncdn.com/videos/201806/12/170106831/original/(m=eaf8Ggaaaa)(mh=-eF0UKxEIL61DD4d)10.jpg" alt="pretty pamela 4"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bc54f11"><img src="https://ci.phncdn.com/videos/201806/12/170106421/original/(m=eaf8Ggaaaa)(mh=fLSICCbkyXGfevcx)14.jpg" alt="pretty pamela - TM4B 7"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bc81035"><img src="https://di.phncdn.com/videos/201806/12/170106951/original/(m=eaf8Ggaaaa)(mh=854oev3K-RHzr0-K)12.jpg" alt="pretty pamela 5"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bc84f0f"><img src="https://di.phncdn.com/videos/201806/12/170106471/original/(m=eaf8Ggaaaa)(mh=QNvLl6x8hq8nV-qL)4.jpg" alt="pretty pamela 8"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bcb2898"><img src="https://ci.phncdn.com/videos/201806/12/170106751/original/(m=eaf8Ggaaaa)(mh=oQvOl-OR0_5F6gdG)10.jpg" alt="pretty pamela 13"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b1f98bce971e"><img src="https://ci.phncdn.com/videos/201806/12/170106671/original/(m=eaf8Ggaaaa)(mh=uCBQWM63x7VuO145)13.jpg" alt="pretty pamela 18"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b252fa42ea96"><img src="https://di.phncdn.com/videos/201806/16/170667731/original/(m=eaf8Ggaaaa)(mh=KXLLFNtFJYfE1Qt8)15.jpg" alt="rose 1"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b3870958c3b6"><img src="https://ci.phncdn.com/videos/201807/01/172620711/original/(m=eaf8Ggaaaa)(mh=wKLxaZGEE1ocSLk-)8.jpg" alt="Sling Bikini"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b4a1761c5dc1"><img src="https://ci.phncdn.com/videos/201807/14/174490811/original/(m=eaf8Ggaaaa)(mh=MX9oxYeH9M84Ub3U)3.jpg" alt="Yeraldin TBF 040"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b4a1761c5dc1"><img src="https://di.phncdn.com/videos/201807/14/174490811/original/(m=eaf8Ggaaaa)(mh=MX9oxYeH9M84Ub3U)3.jpg" alt="Yeraldin TBF 040"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b4c5e29e5477"><img src="https://ci.phncdn.com/videos/201807/16/174733091/original/(m=eaf8Ggaaaa)(mh=ngM0Q9Lnx0Y_hcA6)6.jpg" alt="tcg natalia 005"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b4d9716e98af"><img src="https://ci.phncdn.com/videos/201807/17/174859921/original/(m=eaf8Ggaaaa)(mh=VTY-nMUJrdJckVuu)8.jpg" alt="tcg andrea hernosa 001 part 2"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b605b31c5449"><img src="https://ci.phncdn.com/videos/201807/31/176724691/original/(m=eaf8Ggaaaa)(mh=EcpLEfB-RkGFVlNR)11.jpg" alt="TeenModel – Jasmin"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b7410b135f77"><img src="https://ci.phncdn.com/videos/201808/15/178697051/original/(m=eaf8Ggaaaa)(mh=PJpMvcd8GLXIRRh5)12.jpg" alt="Teenmarvel FREYA - Sheer Purple"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5b912786c9155"><img src="https://ci.phncdn.com/videos/201809/06/181769041/original/(m=eaf8Ggaaaa)(mh=arS7qqEAxP8nJJIh)12.jpg" alt="Bare Tits TTL Comp"></a>',
+'<a href ="https://www.pornhub.com/embed/ph5bb3a3af0b0eb"><img src="https://di.phncdn.com/videos/201810/02/185759771/original/(m=eaf8Ggaaaa)(mh=nszPYLmkkpDj9HEZ)8.jpg" alt="Jasmin TTL Comp"></a>',
+]
+ var listLen = ImgList.length, timer = 15000
+function shuffle(array) { var i = ImgList.length, j = 0, temp
+while (i--) { j = Math.floor(Math.random() * (i+1))
+temp = ImgList[i]
+ ImgList[i] = ImgList[j]
+ ImgList[j] = temp
+ } 
+return ImgList
+}
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()))
+function changeImg() { if (listLen >= ImgList.length - 1) { listLen = 0
+ }
+ else if (listLen < 0) { listLen = ImgList.length - 1
+ } 
+else { listLen = listLen + 1
+ }
+showImg()
+}
+function backward() { listLen = listLen - 2
+changeImg()
+}
+function foreward() { changeImg()
+}
+function pause() { clearInterval(myVar)
+}
+function continU() { myVar = setInterval(changeImg, timer)
+ foreward()
+}
+function showImg() { var thePointerImg = document.querySelector(".imagearea")
+ thePointerImg.innerHTML = ImgList[listLen]
+ console.log(thePointerImg.innerHTML)
+}
+function showMov() { var imgAdr = ImgList[listLen]
+ var start = imgAdr.indexOf("=")+1
+ var end = imgAdr.indexOf('"', start+1)
+ var list = imgAdr.substring(start+1, end)
+ window.open(list)
+}changeImg()
+var myVar = setInterval(changeImg, timer)
+</script></body></html>
+

@@ -1,0 +1,50 @@
+# read a page a assemble the img html
+set.seed(sample(100000,1))
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "karups-pc"
+
+siteFilename = paste0("Ahref-", sitename)
+startstr="start chrome.exe --start-fullscreen "
+pageHead = "thumbsContainer"
+pageTail = '<div class="pagebar-left underline">'  # this is the after chopped
+pagewebname = paste0("http://pinkfineart.com/", sitename)
+imgHeader = "<img "
+dirStr = "C:/Users/user/mpg/Text/programs/ahref/"
+
+thelist=readLines(paste0(siteFilename, ".txt"))
+thelistlength=length(thelist)
+trialnum = 25
+
+for(trial in 1:trialnum){
+  cat("total pages:",thelistlength,"\n")
+  theChoice=sample(1:thelistlength,1)
+  Selection = readline(prompt="enter number: ")
+  if(Selection != "")   {
+    theChoice = as.numeric(Selection)
+  }
+  cat(" ",theChoice," ")
+  pageAddr =paste0(pagewebname, "/", thelist[theChoice])
+  cat(pageAddr, '\n')
+  thepage=readLines(pageAddr, warn = F)
+  headlinenum=grep(pageHead, thepage)  # chop head
+  thepage=thepage[-(1:headlinenum)]
+
+  taillinenum=grep(pageTail, thepage)  # chop tail
+  thepage=thepage[-(taillinenum:length(thepage))]
+
+  imglinenum=grep(imgHeader, thepage)  # extract img
+  thepage=thepage[imglinenum]
+
+  thepage =gsub('.*src="/|jpg.*', "", thepage)  #purify
+  thepage =gsub("pthumbs", "full", thepage)  #purify
+  thepage =paste0("http://pinkfineart.com/", thepage, "jpg")
+
+  sink("Temp.html")
+  cat('<body bgcolor="#000000">\n')
+  for(thenum in 1:length(thepage)){
+    cat(paste0("\n<img src='" ,thepage[thenum], "'>"))
+  }
+  sink()
+  shell(paste0(startstr,dirStr, "Temp.html"))
+}
+

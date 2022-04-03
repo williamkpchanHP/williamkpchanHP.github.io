@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle Links</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'2011-02-07/1754_',
+'2011-05-24/12979_',
+'2011-09-23/27234_',
+'2011-09-23/27315_',
+'2011-11-08/33753_',
+'2011-11-14/34719_',
+'2011-11-15/34810_',
+'2011-11-23/35927_',
+'2011-12-23/39982_',
+'2012-01-18/43354_',
+'2012-02-21/48825_',
+'2012-07-12/61394_',
+'2012-07-12/61396_',
+'2012-07-12/61399_',
+'2012-10-08/77064_',
+'2012-10-26/78453_',
+'2013-03-18/96370_',
+'2013-09-10/112877_',
+'2013-09-23/114432_',
+'2013-10-21/117487_',
+'2013-11-20/121149_',
+'2013-11-29/122236_',
+'2014-02-04/129519_',
+'2014-04-10/137761_',
+'2014-04-10/137762_',
+'2014-05-10/141254_',
+'2014-05-18/141850_',
+'2014-05-18/141851_',
+'2014-05-18/141852_',
+'2014-06-05/142577_',
+'2014-06-05/142578_',
+'2014-06-05/142580_',
+'2014-06-23/143554_',
+'2014-08-23/149357_',
+'2014-08-23/149358_',
+'2014-09-29/153429_',
+'2014-09-29/153431_',
+'2014-09-29/153432_',
+'2014-09-30/153511_',
+'2014-09-30/153598_',
+'2014-09-30/153685_',
+'2014-09-30/153763_',
+'2014-10-20/156532_',
+'2014-12-28/165159_',
+'2015-02-12/170357_',
+'2015-02-12/170369_',
+'2015-02-12/170409_',
+'2015-02-13/170436_',
+'2015-02-13/170448_',
+'2015-02-24/171768_',
+'2015-02-24/171771_',
+'2015-04-17/177955_',
+'2015-04-17/177956_',
+'2015-04-17/177957_',
+'2015-05-18/181087_',
+'2015-05-18/181088_',
+'2015-05-30/182349_',
+'2015-05-30/182350_',
+'2015-06-16/183930_',
+'2015-06-16/183931_',
+'2015-08-24/191361_',
+'2015-08-24/191362_',
+'2015-08-24/191363_',
+'2015-08-24/191365_',
+'2015-09-18/193536_',
+'2015-09-18/193537_',
+'2015-10-13/196784_',
+'2015-10-13/196786_',
+'2015-10-13/196787_',
+'2015-11-11/200962_',
+'2015-11-11/200963_',
+'2015-11-11/200964_',
+'2015-11-12/200965_',
+'2015-11-25/203534_',
+'2015-11-25/203535_',
+'2015-11-30/204391_',
+'2015-11-30/204392_',
+'2015-12-14/206728_',
+'2016-01-25/211770_',
+'2016-01-25/211830_',
+'2016-01-25/211926_',
+'2016-03-11/216821_',
+'2016-03-11/216822_',
+'2016-03-11/216823_',
+'2016-04-12/219941_',
+'2016-04-12/219942_',
+'2016-04-25/221674_',
+'2016-04-25/221675_',
+'2016-05-04/223349_',
+'2016-05-04/223351_',
+'2016-05-04/223353_',
+'2016-05-12/224095_',
+'2016-06-09/227451_',
+'2016-06-09/227531_',
+'2016-06-20/228589_',
+'2016-06-21/228901_',
+'2016-07-07/231074_',
+'2016-07-07/231075_',
+'2016-07-20/232124_',
+'2016-07-20/232125_',
+'2016-07-20/232126_',
+'2016-07-21/232291_',
+'2016-07-21/232292_',
+'2016-07-31/234092_',
+'2016-08-05/234530_',
+'2016-08-05/234531_',
+'2016-08-08/234787_',
+'2016-08-08/234788_',
+'2016-08-10/235003_',
+'2016-08-28/237199_',
+'2016-09-05/238023_',
+'2016-09-05/238024_',
+'2016-09-08/238190_',
+'2016-09-08/238191_',
+'2016-09-08/238192_',
+'2016-09-25/240029_',
+'2016-10-16/242624_',
+'2016-10-21/243293_',
+'2016-10-21/243294_',
+'2016-10-21/243295_',
+'2016-10-21/243296_',
+'2016-11-03/245350_',
+'2016-11-05/245488_',
+'2016-11-05/245489_',
+'2016-12-24/251808_',
+'2016-12-28/252212_',
+'2017-01-21/255027_',
+'2017-01-21/255028_',
+'2017-02-10/257072_',
+'2017-02-25/259314_',
+'2017-03-12/261231_',
+'2017-03-12/261232_',
+'2017-04-05/263404_',
+'2017-05-09/266885_',
+'2017-05-09/266886_',
+];
+
+var listLen = ImgList.length, timer = 120000;
+var imgNo = 1;
+const imgHeader = "<img src='https://cdn.pornpics.com/pics/"
+const imgTailer = "big.jpg'>"
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	imgNo = 0;
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	theImgAddr = 0;
+	nextImg();
+}
+
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+changeImg();
+document.body.style.cursor = "none"
+</script>
+
+</body>
+</html>

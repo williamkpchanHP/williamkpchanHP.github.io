@@ -1,0 +1,136 @@
+# this is thumb http://pinkfineart.com/galleries/czech-casting/2709-zuzana-042312/pthumbs/04.jpg
+
+# this is first img http://pinkfineart.com/galleries/czech-casting/2974-christyna-050216/full/1.jpg
+# this is 20 img http://pinkfineart.com/galleries/czech-casting/2974-christyna-050216/full/20.jpg
+
+# http://pinkfineart.com/czech-casting/page/25/
+
+pageHeader="http://pinkfineart.com/czech-casting/page/"
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+imgHeader = "<img src=\"/galleries/czech-casting/"
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix()
+for (page in 1:25){
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    thepage =gsub(".*czech-casting/|/pthumbs/.*", "", thepage)  #purify
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholepage=theWholepage[-1]
+sink("thePinkCZ.txt")
+cat(theWholepage, sep="\n")
+sink()
+
+#======
+7960-katka-milf-050616/pthumbs/6.jpg" alt="czech-casting/7960-katka-milf-050616/pthumbs/6.jpg" width="160" height="160"/>
+
+replace pthumbs with full
+repeat 50times
+
+</div> <div id="thumbsContainer">
+<div class="thumb thumb-left">
+<div class="thumb">
+<div class="thumb">
+<div class="thumb">
+<a href="/czech-casting/lucie-czech-casting-8472/104898/" title="PinkFineArt presents Lucie Czech Casting 8472 from Czech Casting">
+<img src="
+/galleries/czech-casting/8472-lucie-040916/pthumbs/
+6.jpg"
+ alt="czech-casting/8472-lucie-040916/pthumbs/6.jpg" width="160" height="160"/>
+<div class="desc">Lucie Czech Casting 8472 by Czech Casting</div>
+</a>
+</div>
+<div class="thumb thumb-right">
+
+header:
+</div> <div id="thumbsContainer">
+tailer:
+firstBtn
+
+
+
+#-------
+theList = readLines("C:/Users/user/mpg/definebabe/Listoffile")
+
+for (i in 1:length(theList)){
+thepage = readLines("C:/Users/user/Desktop/galleries/index-39.htm")
+linnum=grep("<a href=", thepage)
+count = 1
+
+for (i in 1:length(linnum)){
+theadrList[count] = paste0("http://definebabe.com", thepage[i])
+count = count +1
+}
+
+setwd("C:/Users/user/mpg/definebabe/")
+theAllList = readLines("C:/Users/user/mpg/definebabe/Listoffile")
+for (k in 1:length(theAllList)){
+  theList = readLines(theAllList[k])
+  for (i in 1:length(theList)){
+    theList[i] = gsub(" title.*", ">", theList[i])
+    theList[i] = gsub(" class(.*)src", " src", theList[i])
+    theList[i] = gsub("</noscript>", "", theList[i])
+  }
+  theLines = grep("<span><u>", theList)
+  theList=theList[-theLines]
+  sink(theAllList[k])
+  writeLines(theList)
+  sink()
+}  
+
+gsub(" class(.*)src", " src", theList[2])
+gsub(".*'>|</span>.*", "", theList[3184])
+
+a <- c("foo_5fta", "bar_7ftal")
+gsub(".*_", "", a)	# chop from start down to "_" including "_"
+gsub("_.*", "", a)	# chop from "_" including "_" down to end of line
+gsub("*._", "", a)	# chop from one char before "_" including "_" 
+gsub("*..._", "", a)	# chop from 3 char before "_" including "_" 
+
+gsub(" class(.*)src", " src", theList[2])
+
+rr="0097_abcdef/0097_0/0097_0_04_bed.dbf"
+
+gsub("ab(.*)be", "",  rr)	# this is it
+
+
+
+setwd("C:/Users/user/mpg/definebabe/")
+count = 1
+theAllList = readLines("C:/Users/user/mpg/definebabe/list")
+for (k in 1:floor(length(theAllList)/500)){
+  theT = theAllList[c(1:500)]
+  sink(paste0("P", count))
+  writeLines(theT)
+  sink()
+  theAllList = theAllList[-c(1:500)]
+  count = count + 1  
+}  
+  sink(paste0("P", count, 'txt'))
+  writeLines(theAllList)
+  sink()
+
+setwd("C:/Users/user/mpg/definebabe/allpage")
+theAllList = readLines("list.htm")
+  theT = c(1:length(theAllList))
+  theAllList = paste0(theAllList, theT)
+  theAllList = paste0(theAllList, "</a>")
+  sink("list.htm")
+  writeLines(theAllList)
+  sink()
+
+setwd("C:/Users/user/mpg/anilos/women")
+thepage=dir(all.files = TRUE)	# can also use list.files()
+
+linenum = grep("html-.htm",thepage)
+thepage = thepage[linenum]

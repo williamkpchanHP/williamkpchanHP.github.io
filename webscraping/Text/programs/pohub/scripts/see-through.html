@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<style>
+body {background-color: black;}
+html {height: 100%; overflow:   scroll;}
+::-webkit-scrollbar {width: 0px; background: transparent;}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+  if(testkey == '-'){ addTo_RmvList();}
+  if(testkey == '*'){ show_RmvList();}
+  if(testkey == '/'){ clr_RmvList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var thePointerImg = document.querySelector('.imagearea');
+
+var ImgList = [
+
+'<img src="https://thumb-p0.xhcdn.com/a/NNjN9Qtumhr6LtfoqCzo6w/000/102/054/200_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/NOqGSIp3ExrKS8UUmzFRaw/000/102/054/204_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/Nr8WX5_hlhjPvioYWpo6-Q/000/102/054/203_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/AMlWMZCDwEA8SebyhBS85g/000/102/054/202_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/tF2Rd-UZrRTXp8ssSAfvCA/000/102/054/201_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/ByznZhWCINGXDHIkcxPytw/000/102/054/199_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/RWPTYToAeK_yHB2xIdex2A/000/102/054/198_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/cOUvifB1NLgSf4SwmqCKUg/000/102/054/197_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/N_wj8CEK5-cAi0iVLmxVjA/000/102/054/196_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/F1XhVRB-Ce6GScfm7jkv0A/000/102/054/195_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/Lwsy6JsbPb_umKrnCC54yA/000/102/054/194_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/5kzs-mbyVjcwrfIjJ7R_Gg/000/102/054/193_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/Buc3hBJBMaGWhlw1Os0wGg/000/102/062/360_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/b1weAKb2gfTcD0sGxVntiA/000/102/062/368_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/V1IEAWfOUJ-QZLCmuCql9Q/000/102/062/367_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/6Nt2qrWyIDtGeKl6UDg29g/000/102/062/366_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/x8nkpmq_mFgCXfz_D14KUQ/000/102/062/365_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/oDkpWgMmmik2s6t8ifuccQ/000/102/062/364_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/vk3Y9IxvXEUiXKTEHoNf2A/000/102/062/363_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/9MAqBQMR1Ralu1_fwEKgog/000/102/062/362_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/Jpma59xrEAOhyVwsrx2-cA/000/102/062/361_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/0YeFAOME99Jxdmhc_5xswA/000/102/062/359_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/KBpHKJ4VZxIAGEnatnQHzA/000/102/062/358_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/PQ0afe0y-qizrMIyZML_WQ/000/102/062/357_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/xFNP9MojUMSGkKvaP5nZ_A/000/102/047/420_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/NZ8Y7pKi8rPSMGx3F7-0lw/000/102/047/424_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/kRvoDwbfEj-6AH6ARmDQNQ/000/102/047/423_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/2H520LDqzqfDiOuMdfwynQ/000/102/047/422_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/iduqfsMrxcR-6iA_dzKbJw/000/102/047/421_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/voqkSGiSvvMqsX-p_Btrbg/000/102/047/419_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/og06wvyMg-JSs4fj4KG0mA/000/102/047/418_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/UELENJuqButjzCWYsQDIuA/000/102/047/417_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/wi0cEans1UOtERggWF900A/000/102/047/416_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/wsG-O0VtEQ9YhEhe7Ar_xg/000/102/047/415_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/j1BteAn1FqY7w7Jvd1BpsQ/000/102/047/414_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/FKDxOZKLLL1Sp2S7R1IAqw/000/102/047/413_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/WtL4dyt7pdeEYEfXp3L7Ug/000/116/660/976_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/M3pVfCIL8s32sgjLDnk2Bg/000/116/660/979_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/sz6u5dJliBXrMt-NOQq4cg/000/116/660/978_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/qkLNJT6tNW5QSrjDD_ZTsg/000/116/660/977_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/FfHLngIlmO3u2wHkCjtYxQ/000/116/660/975_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/ZBuZXY0vsM0nwPVNb0FmEw/000/116/660/974_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/YqVd5rIDhV0QZ7LTS2EtXg/000/116/660/973_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/Y4BrhNjWSeYejSy5pKG4iA/000/116/660/972_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/i-T22WstKW1E0thXwwVXBQ/000/116/660/971_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/2puK2ksAfo5GC4Xlqbs5YQ/000/224/633/944_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/DzalVHdzWBpN9LdhOcGzag/000/225/234/157_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/gt2z9QY7caTn8YlWrZaRZg/000/225/234/141_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/mZB-VmS6Mgeer1OMePvVCw/000/225/234/137_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/6ZgtwtApwQJNsba8ezklSQ/000/225/234/133_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/OjG6s82SsjTSOU9YXAAsdw/000/225/234/120_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/UaaxneA-uWQo95DoA4p6Tg/000/225/234/095_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/rUfPX_WDMP8GjCkpL-VERA/000/225/234/076_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/WZiHtc6RaqKejlNgMCPIBg/000/225/234/068_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/yrnQUftC57MkpZGHEdvntg/000/225/234/054_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/BAVl7bJoIhVZRO38m8higA/000/225/234/049_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/C763KBlnKANNd_ygIse0VA/000/225/234/045_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/izKYQdAJvG7ko_on8qAjeA/000/224/633/958_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/tyt4j70uqQQPYZ3X_-XERg/000/224/633/957_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/rCI4ltAAK4pf4jsFptzxCw/000/224/633/953_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/rPEv_zub-A-BXQrxIu1T8Q/000/224/633/951_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/vqPuxh_rtuVo6-YG6HgFCg/000/224/633/949_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/kY8V4r3jYaqb4rW6YT0JUg/000/224/633/943_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/wSpRXP5AaCVZvQcdIPAa3Q/000/224/633/940_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/R1MveXpnD0RX02zPHKqOLw/000/224/633/938_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/E6RdP1fLSuntEbryf3iOZQ/000/224/633/931_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/eDO7t6UeKtZTyGI7peEaMA/000/224/633/927_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/fKzibbXuZLrRFqPppMV76g/000/224/633/925_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/2Gx708JYtkia-M6mxPKJsw/000/224/633/922_1000.jpg">',
+];
+
+
+var listLen = ImgList.length, timer = 150000;
+
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function showthumbs() {
+	imgNos = 0
+	theImgAddr = ""
+	for (var imgNos = 1; imgNos <= 18; imgNos++) {
+	temptheImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNos) + imgsTailer;
+	theImgAddr = theImgAddr + temptheImgAddr 
+	}
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_AllList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+	if (localStorage.getItem("toRmvList") === null) {
+	  toBeRmvList = [];
+	  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+	} else{
+	  toBeRmvList = JSON.parse(localStorage.toRmvList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  // check if the image already incluede
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList)) //Create an Array from a String
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    //alert("this image has been added to mypicList")
+    //console.log(mypicList);
+  }
+}
+
+function addTo_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  // check if the image already incluede
+  if (!toBeRmvList.includes(ImgList[listLen])) {
+    toBeRmvList.push(ImgList[listLen]);
+    toBeRmvList = Array.from(new Set(toBeRmvList)) //Create an Array from a String
+    localStorage.toRmvList = JSON.stringify(toBeRmvList);
+    //alert("this image has been added to toBeRmvList")
+    //console.log(toBeRmvList);
+  }
+}
+function show_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  console.log(toBeRmvList);
+  thePointerImg.innerHTML = escapeHtml(JSON.stringify(toBeRmvList));
+  copyStringToClipboard(toBeRmvList);
+  alert("listed in console! and copied to clipboard!");
+}
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+
+function clr_RmvList() {
+  toBeRmvList = [];
+  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+  alert("toBeRmvList has been cleared")
+}
+
+function copyStringToClipboard (str) {
+   var tempElement = document.createElement('textarea');
+   tempElement.value = str;
+   tempElement.setAttribute('readonly', '');
+   tempElement.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(tempElement);
+   tempElement.select();
+   document.execCommand('copy');
+   document.body.removeChild(tempElement);
+}
+
+init_AllList();
+changeImg();
+document.body.style.cursor = "none"
+
+</script>
+<script src="viewPic.js"></script>
+
+</body>
+</html>

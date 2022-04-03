@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle images</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body { background-color: black;}
+html {height: 100%;  overflow:   scroll;}
+::-webkit-scrollbar { width: 0px; background: transparent;}
+body {margin: auto; width: 100%; background-color: #000000; color: #20C030; vertical-align:middle;}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;  vertical-align:middle;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea" style="vertical-align:middle;"> </div>
+
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == '-'){ backward();}
+  if(testkey == '+'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_009.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_013.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_017.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_021.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_025.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_029.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_033.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_037.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_041.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_045.jpg">',
+'<img src="https://media.karups.com/content/kow/2018-06/photos/teresa_lynn-solo-1/lowres/teresa_lynn_lowres_049.jpg">',
+'<img src="https://y2.pichunter.com/3683755_1_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_3_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_4_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_5_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_6_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_7_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_8_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_9_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_10_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_11_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_12_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_13_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_14_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_15_o.jpg">',
+'<img src="https://y2.pichunter.com/3683755_16_o.jpg">',
+];
+
+// Tip Limit counter
+	var listLen = ImgList.length, timer = 120000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+	console.log(ImgList[listLen]);
+}
+changeImg();
+// var myVar = setInterval(changeImg, timer);
+document.body.style.cursor = "none"
+
+</script>
+
+</body>
+</html>
+<pre>
+from:
+https://www.karupsow.com/?nats=MTAwMDA4My4xLjQuNC4wLjAuMC4wLjA
+press F12
+
+thumbs:
+https://media.karups.com/content/kow/v/vanda/5-1500/lowres/thumbs/vanda-5-1500-037.thumb.jpg
+real image:
+https://media.karups.com/content/kow/v/vanda/5-1500/lowres/vanda-5-1500-037.jpg
+</pre>

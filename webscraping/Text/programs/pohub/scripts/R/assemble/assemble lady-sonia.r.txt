@@ -1,0 +1,46 @@
+# assemble img html
+
+set.seed(sample(10000,1))
+dirStr = "C:/Users/user/mpg/Text/programs/"
+setwd(dirStr)
+
+sitename = "lady-sonia"
+numberofimg = 15
+
+thelinkhead=paste0("http://www.pinksmilfs.com/content/", sitename, "/galleries/")
+thelinkmid="/full/"
+thelinktail=".jpg"
+
+theImgHeader = "\n<img src='"
+
+thelist=readLines(paste0(sitename, ".txt"))
+thelistlength=length(thelist)
+trialnum = 25
+
+startstr="start chrome.exe --start-fullscreen "
+
+for(trial in 1:trialnum){
+cat("total pages:",thelistlength,"\n")
+theChoice=sample(1:thelistlength,1)
+Selection = readline(prompt="enter number: ")
+
+if(Selection != "")   {
+    theChoice = as.numeric(Selection)
+  }
+cat(" ",theChoice," ")
+
+ theCmdhead=paste0(startstr,thelinkhead,thelist[theChoice],thelinkmid)
+
+  sink("Temp.html")
+cat('<body bgcolor="#000000">\n')
+
+  for(thenum in 1:numberofimg){
+    thenum = sprintf(paste0("%0", 1, "d"), as.integer(thenum))
+    cat(paste0(theImgHeader ,thelinkhead,thelist[theChoice],thelinkmid,thenum, thelinktail, "'>"))
+    thenum = as.integer(thenum) +1
+  }
+sink()
+shell(paste0(startstr, dirStr, "Temp.html"))
+}
+
+

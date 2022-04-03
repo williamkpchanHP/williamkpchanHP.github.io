@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>..</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('h1, h2, h3, h4, h5, .goldword, strong,  div.title').click(function(){
+    parent.history.back();
+    return false;
+    });
+});
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+strong, h1, h2 {color: gold;}
+img {width: 150px; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px;}
+</style>
+</head>
+<body onkeypress="chkKey()">
+<br>
+<br>
+<br>
+
+<video onmouseover="this.play()" onmouseout="this.pause();"  controls="controls">
+<source src="https://cw.phncdn.com/videos/201810/09/186637051/180P_225K_186637051.webm?MCw2uBGXQJJ04wKDkB0yXVtdQVJ5TVKHU4vgoVl9rwHFoyQqTnHVqkbKsqv3kW0me2Y9iH3B949QFIgv8LzizELOqOMIgTnHRj9MEtBEQPRayuVvWHKVQy_oiccJRjoaXoeyq0M-jOLxCbWIOr6XbN-lcsS_8TEyNtcwcu0_5LZXNfZQQTgsCRGJQ28w4vdA4_EnFxNvEKE" type="video/ogg"></source>
+</video>  
+
+
+<script>
+var vid = document.getElementById("myVideo");
+function enableAutoplay() { 
+  vid.autoplay = true;
+}
+
+function disableAutoplay() { 
+  vid.autoplay = false;
+  vid.load();
+} 
+
+function checkAutoplay() { 
+  alert(vid.autoplay);
+} 
+enableAutoplay();
+</script> 

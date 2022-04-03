@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle Links</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'2011-02-04/1442_',
+'2011-02-05/1518_',
+'2011-02-05/1586_',
+'2011-02-08/1779_',
+'2017-06-21/270667_',
+'2017-06-21/270668_',
+'2017-11-01/284287_',
+'2012-06-18/60416_',
+'2013-05-08/101504_',
+'2013-10-20/117345_',
+'2013-10-30/118562_',
+'2013-10-30/118607_',
+'2013-12-15/123974_',
+'2013-12-15/124035_',
+'2013-12-27/125349_',
+'2014-01-03/126012_',
+'2014-01-03/126013_',
+'2014-01-10/126652_',
+'2014-01-29/128798_',
+'2014-01-29/128799_',
+'2014-01-29/128800_',
+'2014-01-29/128801_',
+'2014-02-21/131986_',
+'2014-02-21/131987_',
+'2014-02-26/132538_',
+'2014-02-26/132539_',
+'2014-03-03/133073_',
+'2014-03-16/134625_',
+'2014-03-18/134996_',
+'2014-05-06/140754_',
+'2014-05-06/140755_',
+'2014-05-07/140795_',
+'2014-05-07/140796_',
+'2014-07-24/146954_',
+'2014-07-24/146955_',
+'2014-07-24/146956_',
+'2014-08-28/149842_',
+'2014-08-28/149843_',
+'2014-08-28/149844_',
+'2014-10-24/157265_',
+'2014-10-24/157266_',
+'2014-12-28/165109_',
+'2014-12-28/165162_',
+'2015-01-10/166328_',
+'2015-01-10/166329_',
+'2015-01-10/166330_',
+'2015-01-26/168199_',
+'2015-01-26/168200_',
+'2015-01-26/168201_',
+'2015-02-09/169928_',
+'2015-02-09/169929_',
+'2015-03-31/175708_',
+'2015-03-31/175709_',
+'2015-04-04/176439_',
+'2015-04-12/177320_',
+'2015-04-12/177321_',
+'2015-05-22/181450_',
+'2015-05-22/181451_',
+'2015-07-22/187068_',
+'2015-07-22/187069_',
+'2015-12-25/208739_',
+'2015-12-25/208740_',
+'2015-12-25/208741_',
+'2015-12-25/208742_',
+'2015-12-25/208743_',
+'2016-02-04/212904_',
+'2016-02-04/212922_',
+'2016-02-04/212923_',
+'2016-02-04/212924_',
+'2016-02-05/213047_',
+'2016-02-05/213048_',
+'2016-02-06/213115_',
+'2016-03-14/216997_',
+'2016-03-14/216998_',
+'2016-03-21/217654_',
+'2016-03-21/217655_',
+'2016-04-21/221331_',
+'2016-04-28/222360_',
+'2016-04-28/222361_',
+'2016-04-29/222459_',
+'2016-04-29/222460_',
+'2016-04-29/222461_',
+'2016-05-11/223919_',
+'2016-05-17/224732_',
+'2016-05-17/224733_',
+'2016-06-21/228950_',
+'2016-06-21/228951_',
+'2016-07-26/232931_',
+'2016-07-26/232932_',
+'2016-07-31/233941_',
+'2016-07-31/233942_',
+'2016-08-28/237282_',
+'2016-08-28/237283_',
+'2016-08-31/237751_',
+'2016-09-17/238745_',
+'2016-09-17/238746_',
+'2016-09-19/239034_',
+'2016-10-11/242114_',
+'2016-10-11/242115_',
+'2016-10-12/242297_',
+'2016-10-13/242404_',
+'2016-10-18/242887_',
+'2016-11-01/245273_',
+'2016-11-03/245362_',
+'2016-11-04/245465_',
+'2016-11-06/245567_',
+'2016-12-15/250601_',
+'2017-01-13/254263_',
+'2017-02-02/256271_',
+'2017-02-02/256272_',
+'2017-02-05/256419_',
+'2017-02-13/257594_',
+'2017-02-13/257652_',
+'2017-02-14/257744_',
+'2017-02-14/257766_',
+'2017-02-21/258527_',
+'2017-02-21/258531_',
+'2017-02-21/258543_',
+'2017-02-23/258937_',
+'2017-03-03/260074_',
+'2017-03-20/262292_',
+'2017-03-20/262293_',
+'2017-03-27/262975_',
+'2017-03-27/262977_',
+'2017-04-25/265310_',
+'2017-04-26/265309_',
+'2017-05-14/267343_',
+'2017-05-14/267344_',
+'2017-06-13/269828_',
+'2017-06-13/269829_',
+'2017-07-26/274180_',
+'2017-07-26/274181_',
+'2017-08-18/276672_',
+'2017-08-23/277197_',
+'2017-08-23/277198_',
+'2017-09-11/278583_',
+'2017-09-11/278584_',
+'2017-09-11/278585_',
+'2017-10-14/281617_',
+'2017-11-13/285504_',
+'2017-11-13/285505_',
+'2017-11-20/286491_',
+'2017-11-20/286492_',
+];
+
+var listLen = ImgList.length, timer = 120000;
+var imgNo = 1;
+const imgHeader = "<img src='https://cdn.pornpics.com/pics/"
+const imgTailer = "big.jpg'>"
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	imgNo = 0;
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	theImgAddr = 0;
+	nextImg();
+}
+
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_mypicList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList))
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    console.log(mypicList);
+  }
+}
+
+init_mypicList();
+changeImg();
+document.body.style.cursor = "none"
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>Hot Pussy</title>
+<link rel="stylesheet" href="../projects/projcss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<style>
+html {height: 100%;overflow: scroll;}
+::-webkit-scrollbar {width: 0px;background: transparent;}
+body { margin: auto; width: 100%; background-color: #000000; color: #20C030;}
+a { text-decoration: none; color: #28B8B8; font-size: inherit; background-color:transparent;-webkit-text-decoration-skip:objects}
+a:visited { color: #389898;}
+
+img { width: 50%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+</head>
+<body onkeypress="chkKey()">
+<br><br><br>
+<center>
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+var testkey = getChar(event);
+if(testkey == "b"){ backward();}
+if(testkey == "f"){ foreward();}
+if(testkey == "p"){ pause();}
+if(testkey == "c"){ continU();}
+if(testkey == "s"){ showMov();}}
+function getChar(event){if (event.which!=0 && event.charCode!=0) {return String.fromCharCode(event.which)}
+ else {return null}}
+var ImgList = [
+'<a href="https://www.pornhub.com/embed/1200050358"><img src="https://ci.phncdn.com/videos/201311/25/20107011/original/(m=ecuKGgaaaa)(mh=kt_sh6hTySw9N0Gj)7.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/1609642476"><img src="https://ci.phncdn.com/videos/201311/19/19865621/original/(m=ecuKGgaaaa)(mh=mKMbjUjbNrOt5npc)2.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/2093237905"><img src="https://ci.phncdn.com/videos/201311/22/19994301/original/(m=ecuKGgaaaa)(mh=YIGZ5OZvVWC9LsfO)12.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/355863622"><img src="https://ci.phncdn.com/videos/201311/19/19865181/original/(m=ecuKGgaaaa)(mh=fbC9vwvVfOAAVsDi)9.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/524386956"><img src="https://ci.phncdn.com/videos/201311/19/19863441/original/(m=ecuKGgaaaa)(mh=R5tDxbTXqRCPZ04z)8.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/973628239"><img src="https://ci.phncdn.com/videos/201311/22/19995601/original/(m=ecuKGgaaaa)(mh=mgE0ndZ7OUKkNccR)13.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/ph591d9af57d075"><img src="https://ci.phncdn.com/videos/201705/18/116915981/thumbs_15/(m=ecuKGgaaaa)(mh=Yyz_MY4lCSyAveAo)12.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/ph592d59c2936aa"><img src="https://ci.phncdn.com/videos/201705/30/118434081/thumbs_20/(m=ecuKGgaaaa)(mh=BRhUckvIuGDcVCK8)7.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/ph594926af4940f"><img src="https://ci.phncdn.com/videos/201706/20/121187941/thumbs_5/(m=ecuKGgaaaa)(mh=N1VnUmBkNjZo2ypV)8.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/ph598b52047edea"><img src="https://ci.phncdn.com/videos/201708/09/127938381/thumbs_30/(m=ecuKGgaaaa)(mh=VwS_trv-obAqOdyx)16.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/ph5a60c78b6f268"><img src="https://ci.phncdn.com/videos/201801/18/150726832/original/(m=ecuKGgaaaa)(mh=8lmnYXg9uO_dmv0v)16.jpg"></a>',
+'<a href="https://www.pornhub.com/embed/ph5adf7f9405043"><img src="https://ci.phncdn.com/videos/201804/24/163372142/original/(m=ecuKGgaaaa)(mh=V4BAWsdGz_bNLeB9)9.jpg"></a>',
+]
+ var listLen = ImgList.length, timer = 15000
+function shuffle(array) { var i = ImgList.length, j = 0, temp
+while (i--) { j = Math.floor(Math.random() * (i+1))
+temp = ImgList[i]
+ ImgList[i] = ImgList[j]
+ ImgList[j] = temp
+ } 
+return ImgList
+}
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()))
+function changeImg() { if (listLen >= ImgList.length - 1) { listLen = 0
+ }
+ else if (listLen < 0) { listLen = ImgList.length - 1
+ } 
+else { listLen = listLen + 1
+ }
+showImg()
+}
+function backward() { listLen = listLen - 2
+changeImg()
+}
+function foreward() { changeImg()
+}
+function pause() { clearInterval(myVar)
+}
+function continU() { myVar = setInterval(changeImg, timer)
+ foreward()
+}
+function showImg() { var thePointerImg = document.querySelector(".imagearea")
+ thePointerImg.innerHTML = ImgList[listLen]
+ console.log(thePointerImg.innerHTML)
+}
+function showMov() { var imgAdr = ImgList[listLen]
+ var start = imgAdr.indexOf("=")+1
+ var end = imgAdr.indexOf('"', start+1)
+ var list = imgAdr.substring(start+1, end)
+ window.open(list)
+}changeImg()
+</script></body></html>

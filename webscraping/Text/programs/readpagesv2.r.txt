@@ -1,0 +1,49 @@
+# next improvement is to read a list of addrs and show 20 pages and wait for a key press to continue
+# further improvement is to read the page and locate the img link
+# further improvement is to read the addr and write the web page and call it
+# further to tailor made for automating specific addr type to chop the diff parts
+# eg to chop the pink ftv addr, read addr, remove thumb,replace full, strip numbers and ext.
+# eg. to read the next btn
+
+cat(getwd())
+Selection = readline(prompt="enter working directory: ")
+  if(Selection != "")   {
+    setwd(Selection)
+  }
+
+theEndnum = 15
+for(loopnum in 1:100){
+    Selection = readline(prompt="enter header: ")
+  if(Selection != "")   {
+    theheader = Selection
+  }
+
+  Selection = readline(prompt="enter start number: ")
+  if(Selection != "")   {
+    thefirstnum = Selection
+  }
+  thenum = thefirstnum
+  thenumchar = nchar(thenum)
+  
+  Selection = readline(prompt="enter total number: ")
+  if(Selection != "")   {
+    thetotalnum = Selection
+  }
+  thenum = thefirstnum
+  theEndnum = thetotalnum
+  
+  Selection <- readline(" read tail: ")
+  if(Selection != "")   {
+    thetail = Selection
+  }
+  
+  startstr="start chrome.exe --start-fullscreen "
+  
+  for(i in 1:theEndnum){
+    shell(paste0(startstr,theheader,thenum,thetail))
+    thenum = as.integer(thenum) +1
+    thenum = sprintf(paste0("%0", thenumchar, "d"), as.integer(thenum))
+  }
+  
+}
+  

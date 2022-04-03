@@ -1,0 +1,30 @@
+# http://ddfcash.ddfstatic.com/content/ddf/51300/fulm/008.jpg
+
+setwd("C:/Users/user/mpg/Text/programs")
+thelinkhead="http://ddfcash.ddfstatic.com/content/ddf/5"
+library(RCurl)
+
+thelistlength=2307
+cat("total pages:",thelistlength,"\n")
+cat("start: ", sub(".* | .*", "", Sys.time()))
+starttime = Sys.time()
+theList=vector(mode="numeric", length=0)
+
+for(trial in 1:thelistlength){
+  cat("\n",trial)
+  thepagenum = sprintf(paste0("%0", 4, "d"), as.integer(trial))
+  theCmdhead=paste0(thelinkhead, thepagenum, "/fulm/001.jpg")
+  fileExist = url.exists(theCmdhead)
+  if(fileExist){
+    theList = append(theList, trial)
+  }
+
+  cat(" ", fileExist, " ", theCmdhead)
+}
+sink("theDataBase.txt")
+cat(theList)
+sink()
+cat("end: ", sub(".* | .*", "", Sys.time()))
+endtime = Sys.time()
+endtime  - starttime
+

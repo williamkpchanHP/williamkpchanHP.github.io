@@ -1,0 +1,42 @@
+# double parameter
+# http://pinkfineart.com/galleries/eternal-desire/ed_2016-03-16_PRIVAT/pthumbs/ed_2016-03-16_PRIVAT_01.jpg ~ 17
+
+# http://pinkfineart.com/eternal-desire/page/2/ ~ 7
+
+setwd("C:/Users/user/mpg/Text/programs")
+sitename = "eternal-desire"
+totalpages = 7
+
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+pageHeader= paste0("http://pinkfineart.com/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+imgHeader = paste0("<img src=\"/galleries/", sitename, "/")
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix(, ncol=2, nrow=0)
+
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    the1ststr =gsub(paste0(".*", sitename, "/|/pthumbs.*"), "", thepage)  #purify
+    the2ndstr =gsub(paste0(".*pthumbs|.jpg.*"), "", thepage)  #purify
+    the2ndstr = substr(the2ndstr, 1, (nchar(the2ndstr) - 2))
+    thepage = c(the1ststr, the2ndstr)
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=2))
+}
+
+write.table(theWholepage, paste0(sitename,".txt"), row.names=F, col.names=F, sep="\t", quote = F) 
+
+cat("\nJob complete!\n")
+#======

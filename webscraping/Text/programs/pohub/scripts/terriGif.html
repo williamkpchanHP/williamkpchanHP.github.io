@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<style>
+body {background-color: black;}
+html {height: 100%; overflow:   scroll;}
+::-webkit-scrollbar {width: 0px; background: transparent;}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 50%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+  if(testkey == '-'){ addTo_RmvList();}
+  if(testkey == '*'){ show_RmvList();}
+  if(testkey == '/'){ clr_RmvList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'<img src="https://thumb-p4.xhcdn.com/a/HI2QZPJMXvJA3lrMUmUNBw/000/169/210/374_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/qDXAr0P4RxQgw2KuqdMVTg/000/169/210/380_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/SuTlWiA2Ob8UUkrYACB5nQ/000/169/210/379_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/KtDsuQfd8Q7lMYt3pWLcSg/000/169/210/378_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/aOguvfvg6bYMgySfeWODAQ/000/169/210/377_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/eGKC1L9UwohThZzaJjZ7qw/000/169/210/376_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/Ayjlba46LVuYHX-CX0R84w/000/169/210/375_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/zsqEYyLCplTQmgGt6Y7NYw/000/169/210/373_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/41im4lm65NHU8SLDMG98Qg/000/169/210/372_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/ns25nt8TQSE6cr6SswyHOA/000/169/210/371_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/PWnQMVgd4762raj_HPFqJg/000/169/210/370_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/kWtDIoWBENmp2LQCD9PCLg/000/169/210/369_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/nncVdza0HoKnrm6cQY09YA/000/169/210/368_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/bp1zOQiFf3v9GaV2Pb_YEA/000/169/210/367_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/BH5ivoeETkCDIRIxAQmOhQ/000/169/210/366_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/uDdGBbyL1CKMh2tif_V5PA/000/169/210/365_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/Tq-BdxURMSPskP76tSofLw/000/169/210/364_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/-R1t9dXuDjkU1vHm6xT-vg/000/169/210/363_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/TuimuwzoiJRizW5lBjvORA/000/169/210/362_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/NlaNhenaJksVDmbj7TLjvA/000/169/210/361_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/SDnlG6H-uEKQG5cHVD5tsA/000/169/210/360_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/J2leNarxqjwQ4o7rqZqRBg/000/169/210/359_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/wHxWBSq8oKCwhmotIbDZ0Q/000/169/210/358_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/6ZkaLm12qmn_-RQCyVwBmQ/000/169/210/357_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/aHUOVEWGPLQmm4ZmoHOKdA/000/169/210/356_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/3F2dbZwzzsiTmzJaBXmeNw/000/169/210/355_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/-NfuXjBZP8HKUAUXg08kOw/000/169/210/354_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/TC6fROJQBdTZQCScd53sOA/000/169/210/353_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/ogTelFcaMQ68Q18GC-5JXA/000/169/210/351_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/B3RIwFfUBejq42mtzySFiA/000/169/210/350_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/Y2VSTNB8Oco_tQatN-uPJw/000/169/210/349_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/COptMle0EhBzkvfJa1GsEA/000/169/210/348_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/3jnfYiWZWiV7VjzB-izQqQ/000/169/210/347_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/UzShraoysc2MTx1X6OWj4Q/000/169/210/346_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/ccPvZEr_IFI_NnoNPJ1Skw/000/169/210/345_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/lPNCPlLSlbVWARmzgABaLA/000/169/210/344_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/biUWxga1DRlrjN61wK65uA/000/169/208/712_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/S4U5OTKjut1fifwwHKn_pQ/000/169/208/711_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/CluA_RkGQkf0TwpwbxjIIA/000/169/208/710_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/3wmfa3YywNhvnp0udA-Cyg/000/169/208/709_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/E9-1DY7LSUky6yQxugceog/000/169/208/708_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/yK9nonC5yhhu4ZAbFq7nXQ/000/169/208/707_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/ZgDnYJuguRssCVW4rmZN8w/000/169/208/706_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/-r3JvjtzhZrenQXXBD0eSw/000/169/208/705_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/ZymphrwQSIpXofqiFYxslQ/000/169/208/704_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/4wQjHHOgw1IOoIANklZwcw/000/169/208/703_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/83gTJ36hULCwNlV9ZXUk4A/000/169/208/702_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/Gtv0xQrEo_gwsx0cWReNNA/000/169/208/701_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/OJHmrN_JzKu1QVREc5IMRg/000/169/208/700_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/uUoJ99Bn6bxr4VET6YdaqQ/000/169/208/699_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/nygxrVMCBaBeKiLXywo0Cg/000/169/208/698_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/9V-Zlw604aiqiRaHTe7Gag/000/169/208/697_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/fRSWPdHa3fcfhBlgCdZM5g/000/169/208/696_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/wipLfsxdQkyo7dDuaXkhyQ/000/169/208/695_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/dylj7FhL_U4CGVw-EZT2sA/000/169/208/694_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/UQ0F-ccXvdfRov35UhI_4Q/000/169/208/693_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/xi4xpPEEBNQxLxVPTmRxPA/000/169/208/199_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/64SDUJexUtWbpPS384l_Cw/000/169/208/198_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/on_2crznqxbpNBT6RKbBXQ/000/169/208/197_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/wCY4g8dabG-U3SccP2RxTg/000/169/208/196_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/EmtuoB3oTC9M5vHrsXwdyw/000/169/208/195_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/0hZxed8A1gbz6tvHwHkrrA/000/169/208/194_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/shksZoTjb_XxYAlM1aUAcQ/000/169/208/193_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/N9pNYiT3QfwHP_EBYiwmVA/000/169/208/192_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/gGn2JmBsC3yvKMfxFp5aiw/000/169/208/191_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/xV68Jn-jfMdy-rtoHGt1EA/000/169/208/190_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/H-z0pEVEDJKFep62adSEJw/000/169/208/189_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/U2Tighk2Uu9WB6yNv5wwdA/000/169/208/188_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/ijycTDaoFx3yXYNmmuCzuw/000/169/208/187_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/BesvGj9GmT5V_sB8HQ9XlA/000/169/208/186_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/VRuWb-csOx6OMotpOYGG6g/000/169/208/185_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/cs3ZgdLDmrnpNEhzBkzhIg/000/169/208/184_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/V7qhupFP1PfZ_-nNOElWrQ/000/169/208/183_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/P68kC0-_m1xD55ga5KSCrw/000/169/208/182_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/pfUrG2kZWvuOKYNQvI5_RA/000/169/208/181_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/jBIyNK-TynRouZxqVsCnFg/000/169/208/180_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/C5GkAU64uxsZGvmwjll_pA/000/169/207/491_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/z5eIqejUCM1eZ4-IX3akwA/000/169/207/490_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/PsdaLh2-fHtxq4_ov4PpfQ/000/169/207/489_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/ODyzP2ZfPeBO__wJS0Ef6g/000/169/207/488_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/7M4ZJCuVSDTO_4B7YcgVLw/000/169/207/487_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/ocLRWJaXwDpeyzLy6IbxvQ/000/169/207/486_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/AcuvtrF9G73bdylYiSeJqg/000/169/207/485_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/saRFCmbJlsiCzxlYjJzs_w/000/169/207/484_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/WWEUPOOF4cGvPtO8QY3AbQ/000/169/207/483_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/-_abV8TXh6MWO15wSbnS5w/000/169/207/482_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/np92Ka8gK-I5w3-iGWpksg/000/169/207/481_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/xM9kR8N64BjtS10FAf7J5A/000/169/207/480_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/AK2cdz-svwEiN4c3sof3Ag/000/169/207/479_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/-5-fJMzdTZYxkERjLrgssg/000/169/207/478_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/qVhJy8XA9is5VU0i0ZMXIQ/000/169/207/477_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/1k5vAJOImXxrfGIvgJ0otA/000/169/207/476_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/RbidKEjd2JPgIgNFjAfNHg/000/169/207/475_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/01N0cx-KJOURzqsV6PJDRg/000/169/207/474_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/bcS88vozX78hw1hxhDUGng/000/169/207/473_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/xUNnkG_2A2X4Z8h7Qa_TMA/000/169/207/472_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/eesDTIYRAJOt6yhPZSfyog/000/169/207/471_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/bEhO_B73tFBaQXFX65NqCw/000/169/207/470_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/OKqO4PEWnjoYWGSnw4Nkhw/000/169/207/469_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/oVrD1oJhtTrozm74jfHwOA/000/169/206/758_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/c2dbF_TWsPmS2eFpK8g1-Q/000/169/206/757_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/rYQyRoLDHBlr8gKwKFKvcA/000/169/206/756_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/Kvk4xa6QdCs6PgXLd-URBg/000/169/206/755_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/so2JVjarmQnUa-f_TAsCjw/000/169/206/754_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/f-yPgFnmXvkd78dbC20v6A/000/169/206/753_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/fPWILa-SPb-Wv6ls1ETi0A/000/169/206/752_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/SB6c2hXM57VSY8hZLOuVsw/000/169/206/751_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/d0K4zWiJ88YGw0uqe2ZtAQ/000/169/206/750_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/44bhv5s3Pnn6JAD46kB-0Q/000/169/206/749_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/4zbZWTtPbB6Y2TwNZz6ZGg/000/169/206/748_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/4VAz1w920PNdcVHzOE87sA/000/169/206/747_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/8l4OOP4wGQeJC8y0y7gVzg/000/169/206/746_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/ywbCJoTm0FtazjTIizjlhg/000/169/206/745_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/4V9GnuhzM30sQFkq5H9NKw/000/169/206/744_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/MQNWt2cvGgDHCKvmnqrkog/000/169/206/743_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/f8ZYKUCzXBW2jSzfS7sQyg/000/169/206/742_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/mnp5w2NR9q8i9BDZTR9kPA/000/169/206/741_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/wXh2E1c3C8fR0xWVG6ZLBg/000/169/206/740_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/0yxT-8ct1yQUDcdZbB_kfw/000/169/206/739_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/fstK-6IiUV_4SgQc9Lq2jA/000/169/206/737_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/K7vXbL9rbPy7WrJX5dh15Q/000/169/206/736_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/6ZTU2nA3oK2E2pTGjnRJjQ/000/169/206/735_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/nbOntS-qFnWsF2esn5gRyg/000/169/206/734_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/AEIMCb6yFlxKgrPYVGFB-g/000/169/206/733_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/jfIWABubGe-p9FIsSjbajw/000/169/205/593_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/1avjMRAvQXxmWMgjDr8A-g/000/169/205/592_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/QS_no5h2j0Y3PGClClUHHA/000/169/205/591_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/_Ga9oNVaZ5uvA0MbGvy-ZQ/000/169/205/590_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/6Pg4qdLV8Y8OCI1l62hKxQ/000/169/205/589_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/2wFXmyr5gSDDWiqFL_0OTg/000/169/205/588_1000.gif">',
+'<img src="https://thumb-p7.xhcdn.com/a/sD0alGTwwHPSp6C1QrqKEw/000/169/205/587_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/iOjrFFFlMlyXd20Oy-6_EA/000/169/205/586_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/cdh14vguTC79569noAdSUQ/000/169/205/585_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/X0Yi0N1AFcghjKJzZ_jAbQ/000/169/205/584_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/yeIDGz5Y9kvV6EtqgKqFmw/000/169/205/583_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/TzwwCVw0T3_qXbJmayf_Vg/000/169/205/582_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/k-2n-G9l1sv4xr49Bq39hA/000/169/205/581_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/B58rdFg172XbRQAQQprT7A/000/169/205/580_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/O5TDTW74KaXQjlw5LTetyQ/000/169/205/579_1000.gif">',
+'<img src="https://thumb-p8.xhcdn.com/a/h5hBXRWgJJQooAi-8dcpRg/000/169/205/578_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/yDA09YIqsVdaTueDzVJtEQ/000/169/205/576_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/YhOYB9PO5No54_uUJnmvRA/000/169/205/575_1000.gif">',
+'<img src="https://thumb-p4.xhcdn.com/a/tGn2990oR2lR1dsYiJHCBw/000/169/205/574_1000.gif">',
+'<img src="https://thumb-p3.xhcdn.com/a/CHeXqZqjutnpa08vKVSefw/000/169/205/573_1000.gif">',
+'<img src="https://thumb-p2.xhcdn.com/a/7DBYco-E80CMOPqNs-6spA/000/169/205/572_1000.gif">',
+'<img src="https://thumb-p1.xhcdn.com/a/QWjN9N-jT3wqfb7sPcwmBQ/000/169/205/571_1000.gif">',
+'<img src="https://thumb-p0.xhcdn.com/a/1W0EM_Y7tGfz8dGoxJbpSA/000/169/205/570_1000.gif">',
+'<img src="https://thumb-p9.xhcdn.com/a/npX2_nVTuWkGAcvPp-cmZQ/000/169/205/569_1000.gif">',
+'<img src="https://thumb-p6.xhcdn.com/a/GQX0ueSw7l55OENDSC7Teg/000/169/205/566_1000.gif">',
+'<img src="https://thumb-p5.xhcdn.com/a/G7IOhZA53C4mNNWvIOfebQ/000/169/205/565_1000.gif">',
+
+];
+
+
+var listLen = ImgList.length, timer = 15000;
+
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function showthumbs() {
+	imgNos = 0
+	theImgAddr = ""
+	for (var imgNos = 1; imgNos <= 18; imgNos++) {
+	temptheImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNos) + imgsTailer;
+	theImgAddr = theImgAddr + temptheImgAddr 
+	}
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_AllList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+	if (localStorage.getItem("toRmvList") === null) {
+	  toBeRmvList = [];
+	  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+	} else{
+	  toBeRmvList = JSON.parse(localStorage.toRmvList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  // check if the image already incluede
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList)) //Create an Array from a String
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    //alert("this image has been added to mypicList")
+    //console.log(mypicList);
+  }
+}
+
+function addTo_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  // check if the image already incluede
+  if (!toBeRmvList.includes(ImgList[listLen])) {
+    toBeRmvList.push(ImgList[listLen]);
+    toBeRmvList = Array.from(new Set(toBeRmvList)) //Create an Array from a String
+    localStorage.toRmvList = JSON.stringify(toBeRmvList);
+    //alert("this image has been added to toBeRmvList")
+    //console.log(toBeRmvList);
+  }
+}
+function show_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  console.log(toBeRmvList);
+  alert("listed in console!");
+}
+function clr_RmvList() {
+  toBeRmvList = [];
+  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+  alert("toBeRmvList has been cleared")
+}
+init_AllList();
+changeImg();
+document.body.style.cursor = "none"
+
+</script>
+
+</body>
+</html>

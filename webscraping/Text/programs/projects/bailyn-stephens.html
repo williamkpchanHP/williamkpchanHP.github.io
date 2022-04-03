@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>bailyn-stephens</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body { background-color: black;}
+html {height: 100%;  overflow:   scroll;}
+::-webkit-scrollbar { width: 0px; background: transparent;}
+body {margin: auto; width: 100%; background-color: #000000; color: #20C030; vertical-align:middle;}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;  vertical-align:middle;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea" style="vertical-align:middle;"> </div>
+
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == '-'){ backward();}
+  if(testkey == '+'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+"<img src='http://caraudio-reviews.com/357/463106.jpg'>",
+"<img src='http://caraudio-reviews.com/357/936071.jpg'>",
+"<img src='http://caraudio-reviews.com/357/bailyn-stephens-nude-2.jpg'>",
+"<img src='http://caraudio-reviews.com/357/bailyn-stephens-nude-3.jpg'>",
+"<img src='http://caraudio-reviews.com/357/bailyn-stephens-nude-4.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/19/23/05/913a61d888/04.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/19/23/05/913a61d888/05.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/19/23/05/913a61d888/10.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/19/23/05/913a61d888/15.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/20/23/05/d30c54e14b/11.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/20/23/05/d30c54e14b/16.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/21/23/05/2b467f22f5/03.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/21/23/05/2b467f22f5/13.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/22/23/05/e38905e97b/14.jpg'>",
+"<img src='http://cdn-i30.definebabe.com/_idb/g/22/23/05/e38905e97b/15.jpg'>",
+"<img src='http://cdn.pornpics.com/pics/2014-09-18/151703_08big.jpg'>",
+"<img src='http://img.sexpornpages.com/images11/image-18343.jpg'>",
+"<img src='http://kdh-datentechnik.com/364/bailyn-stephens-nude.jpg'>",
+"<img src='http://themasterairsmith.com/424/480185.jpg'>",
+"<img src='http://themasterairsmith.com/424/602223.jpg'>",
+"<img src='http://themasterairsmith.com/424/bailyn-stephens-nude-2.jpg'>",
+"<img src='http://themasterairsmith.com/424/bailyn-stephens-nude.jpg'>",
+"<img src='http://themasterairsmith.com/424/f58619c6ea979d0f164d8cdb3a83e694.jpg'>",
+"<img src='https://cdn.pornpics.com/pics/2017-08-17/276545_05big.jpg'>",
+"<img src='https://img.sexpornpages.com/images11/image-18346.jpg'>",
+];
+
+// Tip Limit counter
+	var listLen = ImgList.length, timer = 120000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+//ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+	console.log(ImgList[listLen]);
+}
+changeImg();
+// var myVar = setInterval(changeImg, timer);
+document.body.style.cursor = "none"
+
+</script>
+
+</body>
+</html>

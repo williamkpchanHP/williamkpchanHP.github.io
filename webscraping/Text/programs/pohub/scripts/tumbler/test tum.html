@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'<img src="http://static.tumblr.com/b452e8be47716a788461ff3be6b8ef0e/q6vklwc/HIon7kd2z/tumblr_static_6kywksg5x3swoo4wswgs4o00g_2048_v2.jpg">',
+'<img src="http://66.media.tumblr.com/b1871068128701e332603f1628f5445f/tumblr_o6wvdusehP1utyb5oo1_400.jpg">',
+'<img src="http://67.media.tumblr.com/53e24f5ebf1fc6e27770644a0d0e6182/tumblr_o86mxtgO481vsfwabo1_540.jpg">',
+'<img src="http://67.media.tumblr.com/e1ca379517fbf5e08eac9cce7f25c16d/tumblr_o86mxtgO481vsfwabo2_400.jpg">',
+'<img src="http://66.media.tumblr.com/67fd0e4eee5a5f02f24e0389b7bec680/tumblr_o86mxtgO481vsfwabo3_400.jpg">',
+'<img src="http://66.media.tumblr.com/9f3e47e83a451741f663e2030b507b06/tumblr_o86mxtgO481vsfwabo4_540.jpg">',
+'<img src="http://67.media.tumblr.com/159ecdaae906e574bcc2bd7d7470648b/tumblr_o3pigqVm6L1u2jpfko1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/58fa676dfceebf6dde0abd4f22a9e69e/tumblr_nj4tvm5Xqh1txnmgyo1_400.png">',
+'<img src="http://66.media.tumblr.com/ac4cc4c882acb32c6a611c5acc870d7e/tumblr_nj4tvm5Xqh1txnmgyo2_400.png">',
+'<img src="http://67.media.tumblr.com/3c54fd6ef32c2d6da49505b54cecdb34/tumblr_nj4vpbGa3m1txnmgyo1_500.png">',
+'<img src="http://66.media.tumblr.com/8aec78131a1559a9248f5c98be586a14/tumblr_oa18ri3jq11u2y9pvo1_500.jpg">',
+'<img src="http://66.media.tumblr.com/4550decafadfc93d19592af6536bd193/tumblr_o5twwq4B5p1u4w44io1_540.gif">',
+'<img src="http://65.media.tumblr.com/5853aab9eb3438b74bc273396b7286ef/tumblr_o9jpsggB6D1vnxupeo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/29d0f9258702e66940ebb78efae9fe07/tumblr_nazwjrV3ka1t3myexo1_540.jpg">',
+'<img src="http://67.media.tumblr.com/549ff7cd81e4397c62e0f816dcf884d3/tumblr_nazwjrV3ka1t3myexo2_540.jpg">',
+'<img src="http://66.media.tumblr.com/3569fc9adf91d33487a6c2d7a439215c/tumblr_o80ccqcG3q1td7lhxo5_250.jpg">',
+'<img src="http://67.media.tumblr.com/a44ec44b8839ad044ec2818e09fa0c33/tumblr_o80ccqcG3q1td7lhxo8_400.jpg">',
+'<img src="http://67.media.tumblr.com/fc77b15ff2ad2699557307c256543ec4/tumblr_o80ccqcG3q1td7lhxo9_540.jpg">',
+'<img src="http://67.media.tumblr.com/06387fad938b379e05db492c73b39ec4/tumblr_o80ccqcG3q1td7lhxo10_540.jpg">',
+'<img src="http://67.media.tumblr.com/c407410d3cdb44d3dc09219bf16c0708/tumblr_nvxvf9XaVc1u2j8oyo1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/d1f296614da19cf2c44a9ead28476bda/tumblr_o6mci7nKCa1rseh3wo1_540.png">',
+'<img src="http://67.media.tumblr.com/cae0c7d5ddddbcfb4478a4671b7a2872/tumblr_noo57nVVsN1tgxsjho3_540.jpg">',
+'<img src="http://67.media.tumblr.com/0aba9b5c3f8a8fb2b93a77eb8ce46b70/tumblr_o40lnfY7YW1v9j4ceo1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/b6a7d4e19b97b43b1a94244f9ea03be6/tumblr_npdvt7jcZS1qmzvdfo1_400.gif">',
+'<img src="http://67.media.tumblr.com/8b7286ea286216ccbde39b5c2c543ea3/tumblr_o0yc21NfHJ1thdxyvo1_400.gif">',
+'<img src="http://67.media.tumblr.com/a5da820503f0811ef168d18613a2d323/tumblr_o5xrh0EI8F1td7lhxo1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/a9dcf38545b62c1b2b5375a7457a5d6b/tumblr_nxc52rfwOK1uj9x2uo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/8bd6681c99155a11cb698230069b5fe5/tumblr_n9pgiw7Nfw1tf6xsgo6_640.jpg">',
+'<img src="http://67.media.tumblr.com/d02f987c0871d7fbe9e9a061a7a18243/tumblr_n9pgiw7Nfw1tf6xsgo7_640.jpg">',
+'<img src="http://66.media.tumblr.com/68f4d44268ad82b311a935e28175e5b1/tumblr_n9pgiw7Nfw1tf6xsgo5_640.jpg">',
+'<img src="http://66.media.tumblr.com/bd59b37761e47c26ad2eda93ad924b2d/tumblr_n9pgiw7Nfw1tf6xsgo4_640.jpg">',
+'<img src="http://66.media.tumblr.com/2913c5f44b94b1ae8fb275c5a68d0c85/tumblr_n9pgiw7Nfw1tf6xsgo3_640.jpg">',
+'<img src="http://66.media.tumblr.com/c6aacf9cc9c655576d688478617ae3e0/tumblr_n9pgiw7Nfw1tf6xsgo2_640.jpg">',
+'<img src="http://66.media.tumblr.com/f885c25e3cadcbec10e63259d6deb7d0/tumblr_n9pgiw7Nfw1tf6xsgo1_640.jpg">',
+'<img src="http://67.media.tumblr.com/ea41b033c5f251cca88896f309f7a340/tumblr_o30189jVpI1tezdyro1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/d4345081b2d874a2aa420f331cbcd6e5/tumblr_o7qcmrqXLx1si5695o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/6805bf88c5bfea1c3699370a1a9211f5/tumblr_o719xmogSS1sxrbnco1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/a94e666ab998b5029a6df92c9ae28322/tumblr_o731x3j0dl1s19q86o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/316c59016fa141ee21e40d4fd4a32ad6/tumblr_o735gtPSVY1s19q86o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/64b4c02e1106c9b3b5f183c4dd2006b3/tumblr_nmdxbgNtxC1u9oftbo1_500.jpg">',
+'<img src="http://65.media.tumblr.com/3226c402d84584ab1075c3bced340e3c/tumblr_o8t7sob86w1u9xmz0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/590077b9923dbda804786c8f8cb1fb88/tumblr_o3e4crktrO1vn2pbro1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/avatar_c8b4617270ce_128.png">',
+'<img src="http://66.media.tumblr.com/3343bb6bcf60d5fbc5ec4b5ce6fb752e/tumblr_o83geeLJeC1soo64io1_540.jpg">',
+'<img src="http://67.media.tumblr.com/a532c93d5166bddf1145f4bcc4e6415c/tumblr_o8d4w2s8XN1t513jeo1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/83cd044ab8f8f4caf05b4a88acf2c2a9/tumblr_o90qmgWpWE1uzc8nmo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/d1fe59c67e9d9753a2aade24366099c8/tumblr_o8xxdaTQwX1vvbto2o1_540.jpg">',
+'<img src="http://66.media.tumblr.com/f7614e9b8914dec324941fc8bf074e28/tumblr_o90rw4Qq8w1uzc8nmo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/a3b3e9c8d36ba7dc869707f107afd794/tumblr_o90rz97qsL1uzc8nmo1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/0ffe4f13489f88b88758d6b00797a5bb/tumblr_o7ko5wMTX51vv1nvao1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/bbbebf706a33a8bf43b258181836252f/tumblr_o8t4ylGG381vv1nvao1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/1ef9f769ea5e9723b7fbfd09843d219f/tumblr_o9kqhhRCJk1t26hxho1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/21f5b9ff87ab506507595dcd8df90d40/tumblr_o63aghhG7A1rykrh8o1_500.jpg">',
+'<img src="http://65.media.tumblr.com/8e2f6799dfe312fa1536fbb2a191df39/tumblr_o6pp8hVOdk1rykrh8o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/9523c427548f19561b4eb6dbc80608c7/tumblr_o6o479WkP61up5uj1o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/tumblr_mb4e578rPx1rgjsdgo1_500.jpg">',
+'<img src="http://66.media.tumblr.com/029af2adef66576cb31bc9ee0620acc0/tumblr_o3qblyL53r1us1trbo1_500.jpg">',
+'<img src="http://66.media.tumblr.com/073069122955c599ecd6d319e6cfec08/tumblr_o9a0182qWK1s8wipvo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/11a900831f4a0f8539304dddd0c7c008/tumblr_o9aq3eAW7d1s19q86o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/546d4c50eb0cccf661f2e8b658add68c/tumblr_o7mosgJhUg1uzf6ebo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/625cc932f575fcca56cc7466d121820d/tumblr_o55q59Ab091uzf6ebo1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/62bdaf7a3b8032c5732b75110fc09164/tumblr_nymzosABAJ1u4qz51o1_500.jpg">',
+'<img src="http://66.media.tumblr.com/9086a2c71c47f584e339d411836af85e/tumblr_o970yyxNAj1vsfr4ro1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/970c77919da8224ffd1d791a23261fd5/tumblr_o9fkh371Li1rykrh8o1_500.jpg">',
+'<img src="http://66.media.tumblr.com/c3e4c20fceec956dc25b37a2ff59d471/tumblr_o3mkti8Yzw1uzf6ebo1_500.jpg">',
+'<img src="http://66.media.tumblr.com/d592d9f0165106c081b73625eec07899/tumblr_o8z31jWoaO1tis3eno1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/da33542022824d6c4b82af4c34c88864/tumblr_nqm845VxVy1rie104o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/f4162d4a7018183136fc17307be579b0/tumblr_nyv54sCTsR1uc4873o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/f66cc04391d02f66bfcdc4a598b74564/tumblr_o9kqhzDMvD1t26hxho1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/21ba5173103fbe9a700d2e70ab7530f3/tumblr_o300bpqFWl1uzf6ebo1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/3562e22a430c1d2cb5f4e0bc00523cd2/tumblr_o97oigfJEy1v2jlxco1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/4dcadfd9469a5d5d890aa31370e0d41d/tumblr_o76lt4n5VA1uc4873o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/7d59f3dfe6e5ff4e988d2143f70e4400/tumblr_o9bb60m3Sp1uzc8nmo1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/7f5fca18f8199aa85c7885f87149d616/tumblr_o97147x1qu1vsfr4ro1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/88b676bb9da3c8bb6783b2a822fce5ee/tumblr_o9710wBnIt1vsfr4ro1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/d32b0931b42dcb83faa3957de6eba9a4/tumblr_o6shzuVIh51u6t44to1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/e00d8c7e9ebd043a3967fd413d8b278a/tumblr_o8nm4lDYwb1s6y1qlo1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/f553a09cecd5c33d78efa75b70dd797f/tumblr_o9fuavpDyI1tavjpjo1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/b2c8aaa73c25109eb82419b292d71321/tumblr_o98hwhobTL1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/20be1de17525a6e12f0e698c57078daa/tumblr_o98hx4NIBH1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/465841f6cac035a92b26a03eb2bda4be/tumblr_o98hwsWZmf1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/490dfb1e89a6eac3dc0e00dfdfa8c534/tumblr_o98hwgW7KU1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/629fc030e9b0dfcc35bebdc063703456/tumblr_o98hw8vrrI1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/a500dbc7431d6fe68a4d4e41dc99f592/tumblr_o98hwnFZEZ1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/a6017c6a11ea3437f6802c7e21a4c28c/tumblr_o98hw6q67I1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/aa45029c9e1d807b83ce3960c70cb8c6/tumblr_o98hwx3etB1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/adb8bde2d481fbf920fbea593ba7a6e7/tumblr_o98hwa6Bf71vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/bd8279484f98afa43a4747d99288377c/tumblr_o98hvzp27u1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/d56a374faffd3dd500fdfd89d0d59431/tumblr_o98hw9aQdW1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/e50f8a33bdc32e08f46e595903fb43f3/tumblr_o98hw0k93L1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/25b4bf5db4fde956ee56182a739fc5aa/tumblr_o98hwtTIHK1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/261e28aed30abda481a2daab44dcccb3/tumblr_o98hwo9HfQ1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/3c2eeab1596295e3381b9d001d1f56b0/tumblr_o98hwkvUbL1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/448164857766e3101bde67765c6cb63d/tumblr_o98hw54Gt81vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/7c3cfa459075db1768c418ee0f4ccf29/tumblr_o98hx20WNw1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/8b3f3ed41fc7e50111c0a649f2bb4332/tumblr_o98hwygWVk1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/a0ba267ef930ff67d087cb2c6a43e045/tumblr_o98hwq3e6R1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/adba814aeef6cb8a93d9d4a7fbbba559/tumblr_o98hwlXs171vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/dddc9560a48633941e174e973ba86afc/tumblr_o98hwcIj1I1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/e32c0ea6b9dd2996f2e36b5cb8a5d910/tumblr_o98hx6Nm001vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/e3d814a289c470b90d87fbf394d8712e/tumblr_o98hweEX1o1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/e6c8f2560be38988145895190c9c00e2/tumblr_o98hw4jxfK1vy1bj0o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/1bb12e3290350a09b72efc94d1689148/tumblr_o98hyk9Pje1vy1bj0o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/3073a17d4fc524d03e7e653dab5dcb12/tumblr_o98hyfnecJ1vy1bj0o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/72addd7ba5883b318aa87843b4a13493/tumblr_o98hyq31eY1vy1bj0o1_500.jpg">',
+'<img src="http://65.media.tumblr.com/7cebb13e65d235458ebb060754c10973/tumblr_o98hyodI5B1vy1bj0o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/8a05d33421950df4a0076cf3db909e9b/tumblr_o98hyxPXs41vy1bj0o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/ed2b75bdd6d439b3f3250be33662bd24/tumblr_o98hymYLGt1vy1bj0o1_1280.jpg">',
+'<img src="http://65.media.tumblr.com/f000b9fa3589001259e28a2f408e1d07/tumblr_o98hxzDUul1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/095f72e9384438ebb001efe2d2b2ba41/tumblr_o98hxy5LNT1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/0e3bc0a6e042f749c0ed5119786c7b9e/tumblr_o98hyu8bH21vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/7b5c1592972f465015ac5bc498791468/tumblr_o98hybeIuR1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/8be738fb7eb056f2b87c4fedff46a2db/tumblr_o98hyjHMWK1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/9610b35e321fc3f7a89bec9dec39b706/tumblr_o98hy4M6FF1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/dbaf898b3ed8bff367609adfb377bd10/tumblr_o98hxxMniO1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/e88dc02dc3dfbdbec6b6c01f67edd89b/tumblr_o98hyh7AJv1vy1bj0o1_1280.jpg">',
+'<img src="http://66.media.tumblr.com/ffb8ca84f22343a1515a5a23d67951c8/tumblr_o98hyg3t8C1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/2e519ef9ad3f78c6516fc1c8677b8d7d/tumblr_o98hy2rSid1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/363dfc068e09d0d9d0e3e80bed979969/tumblr_o98hy8OKpR1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/490fb8756e0fc0956f5e457fedbeef3d/tumblr_o98hypEFse1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/5aa57f41c117ff4724bc6f5467ba75f4/tumblr_o98hysOcG21vy1bj0o1_540.jpg">',
+'<img src="http://67.media.tumblr.com/8635f02caa8931b8fd0a6cd0b6580409/tumblr_o98hy6xSsE1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/8d70a8f070acf2811bdfc6f86086d439/tumblr_o98hydwu2x1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/a0ed3aa9b065be7ff518e91c8086060c/tumblr_o98hyvh6ql1vy1bj0o1_500.jpg">',
+'<img src="http://67.media.tumblr.com/aa6c4f386ffe8725e0ca434817bd784d/tumblr_o98hy59TRv1vy1bj0o1_1280.jpg">',
+'<img src="http://67.media.tumblr.com/d549e94fca5125c91b4492ea8f0c00d9/tumblr_o98hyaA8Mg1vy1bj0o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/00c74e082b0dc56e971f2e52615adc62/tumblr_p1oerfeN3B1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/072e7084bc1fb14742353295298bc32b/tumblr_p1pvj7OAAy1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/08ac48ed477045c82a2330de9c409cb4/tumblr_p1pcydQ88f1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/0ba49546ca08e6d72f703c9e44919538/tumblr_p1pua3D7jJ1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/0ffcbf720bf3f34e8e5fd3b232736abe/tumblr_p1pu7xQlPN1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/12406bed1acbeb15b4613f1c8814381a/tumblr_p1pzigqzAR1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/12faa16ee0b321a823856aee864c3953/tumblr_p1ptvzQuNh1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/14b87bff15f9b4ae1dbb3c628ada1fc7/tumblr_p1q82fVqZS1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/16c11d849cacd0615bfe79a23baef44a/tumblr_p1mbnzvCaV1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/197596f32a12765356011c37638c34b5/tumblr_p1og3vsBNr1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/1b6384f01fd98cc06cd67988b182a92a/tumblr_p1o4wlWak11u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/1c178b62af8c8c33e2dc19e37645ebd7/tumblr_p1q6pkDMNK1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/236b6c4a59196e439017ed18a462e905/tumblr_p1m3u4hKRu1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/2385c92ce44f7b0a2cfb526963d4949c/tumblr_p1q54kwFdA1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/259f0e5b9e0e835d8283b933e2ea5a52/tumblr_p1oftt0NzI1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/263fbac3bbda91a883fd088d846a2506/tumblr_p1o3bkH6pJ1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/297e1dfd84b154ad46b836e1d1cb0540/tumblr_p1px0lQNhX1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/2b07434cd3fd9e44e01d8eab6542dde5/tumblr_p1ogjbOvLA1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/2e149f96a3ed87d3bd9c0bb876d420aa/tumblr_p1ofqzt9Bh1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/2edca773a4cf3bd5937607e56646f92e/tumblr_p1oe2aYXKm1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/37a6158f0e606bff85a96e35a51c4c2f/tumblr_p1m7s7bbyR1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5738145f3a94229863b33060ea486214/tumblr_p1px2yvbtz1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5802e328c1cd6d0afa0a14afe8c46c43/tumblr_p1kk0m2BJJ1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/59d9915c46b9866f07f21929e97089cb/tumblr_p1pt6f5Ent1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5b4b7425a142a9c9b4ef808d57186720/tumblr_p1pvhjmdDK1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5c401c3eee9945ede58d02cf6446a9ae/tumblr_p1oewmzz341u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5d6745e2432c89146e63bd0e574a75a6/tumblr_p1q4um8zTs1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5e6be281d50dfaceafdd4d41f8d35a52/tumblr_p1q7lgeQL91u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5f1d675daf58170980d59d8edc9ec164/tumblr_p1pzkrD0bb1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5f941243da541825a055121949166c72/tumblr_p1q9gjJbFA1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/671fe46b56caae87af346d968226ba5a/tumblr_p1q81oShVW1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/67776a8551e0247a308d8cc882a5440d/tumblr_p1pvksbGpO1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/6836a6cd0bf39ab2b3baddf228d3ef08/tumblr_p1o3fbTzl81u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/68b631b9d4c6258b997f5859f329b36c/tumblr_p1q53wwMND1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/68c08bf3fef93cce4f87e53b7fa75a4b/tumblr_p1pvm2uYWs1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/71d488c0fd578e6bfd823b59504e9576/tumblr_p1q4h48YiZ1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/7676d01047d5062204fc1ec6b0f3575c/tumblr_p1q9h4OM8y1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/7e0069eadb3e2fffd1f93759760fd4f9/tumblr_p1pzm2dBua1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/82d3e1f98a8af947132dbea4228816c3/tumblr_p1pzjwKHZ01u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/8a4acc951ff9d1a78806577af66678fa/tumblr_p1o4ukLmNA1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/8f50428905e3bb3f2cb3109f629a75ec/tumblr_p1kc4aN48C1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/90dedcb03e9a2c33512ac145687dcb16/tumblr_p1ohp0vcL91u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/94914f4e00eef6be4d8d52a00662c2bc/tumblr_p1pu2uUtx01u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/98f643df77d1573ed098deef8a07f54e/tumblr_p1pt9uHrFX1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/9941f08e7026189b819dc9ba4f88c37c/tumblr_p1ptsqPw9e1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/9a7f644d3e5eb7eeff66b6f36307afbb/tumblr_p1px4cmoKK1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/9ff4ac9050220845682895475ab711c2/tumblr_p1pwblHSQO1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/a6253a7f34831665a50785ff1eb5354d/tumblr_p1pwg9cxa21u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/af2eaff7cebab10684bb0a812ba6bbe8/tumblr_p1pv6iuXVT1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/b3d283145bd15c8b1447cb1a04b0f758/tumblr_p1ptblmKx31u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/b58ad2fdf8357e5581352eb83481823a/tumblr_p1m44bbbKl1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/b90a796eebbce505da78db00e7b3aec2/tumblr_p1pttmLJ0R1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/bb8de8973b27f21e50e4de9cd5b07513/tumblr_p1pzjaUK4d1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/c441a3f489645174e9fdfbae4e33919b/tumblr_p1pdisjQJF1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/c50deeae344d2ecfcb687f1e86e4bce4/tumblr_p1q67v1utr1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/c84684dc6e8a604e9f1faca643e4b570/tumblr_p1pwce45DZ1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/d3d09dc3e0bc14e6af158cb331eb1847/tumblr_p1pd36AM0i1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/d696b84ee49d1ec39c9c6d8c30e80716/tumblr_p1pt79uGHk1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/d852bc2d03bc1b2ecf34a3276b4b71cf/tumblr_p1o3tvr0xn1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/db68a595a520da0ed71a08960154ceb0/tumblr_p1o3wutijd1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/eafa21c961a1a3e53116eba1d3db6a3b/tumblr_p1ptudyuF01u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/f5d133ed28cfaf9327eebc0e0361f593/tumblr_p1pv5u5JjQ1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/f7c6663638b6b0dd72d0f8c9771114b1/tumblr_p1q7jvQgQp1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/f84111a580c0d947508720fce1a7aed7/tumblr_p1pt8sO81e1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/fc5a4c04e77c11344f47537176be4fc2/tumblr_p1o3drqQD31u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/fe7a54638e3e90ce4ad250f249baaec1/tumblr_p1ofpu0uNd1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/fecad68cdd192c865a35151a6dc83165/tumblr_p1pv81GkXV1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/ff0329325b2a13f2b797a1e013069ecf/tumblr_p1q84kCK8o1u1ka35o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/06b9254bb62e298f7deaa294bcb230aa/tumblr_p1m3n56XmV1t4fpqbo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/092ba9e73d9e6fc888fce07ed3beec7e/tumblr_p1qazbwPuK1rig2b0o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/228068eb8a2a34404ab7425ec1a9e39f/tumblr_p1pd76hmTN1wocwhgo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/29565b8621696ad596e2b947e792d84b/tumblr_oyyjh2SJla1u8zt4io1_1280.png">',
+'<img src="http://78.media.tumblr.com/528d4e36a949caffbcce07c3369d281d/tumblr_p1qcsrIzPO1t2rp9ko2_1280.jpg">',
+'<img src="http://78.media.tumblr.com/5c2695392851515e901b9631466ced29/tumblr_p1m3n56XmV1t4fpqbo2_1280.jpg">',
+'<img src="http://78.media.tumblr.com/726303754ca4a9944ce619695c536d2e/tumblr_p1qcsrIzPO1t2rp9ko1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/766f33c74cd04e1caa1cd6830ef193e7/tumblr_p1qazbwPuK1rig2b0o3_1280.jpg">',
+'<img src="http://78.media.tumblr.com/a49e9c10abce3a83ea48b3579dfac8f8/tumblr_p1qazbwPuK1rig2b0o4_1280.jpg">',
+'<img src="http://78.media.tumblr.com/ac37cbb43228048eb2aeffb204dd47f8/tumblr_p1qazbwPuK1rig2b0o2_1280.jpg">',
+'<img src="http://78.media.tumblr.com/ba7dc3da810e01e1ff924066bfa1acea/tumblr_p1qcsrIzPO1t2rp9ko3_1280.jpg">',
+'<img src="http://78.media.tumblr.com/c750871e8702ba4b480b85bb59c441b6/tumblr_p1p8zmg10i1ro2z1wo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/d0980e2b5ff5aaa09e9addc196fff6fb/tumblr_p1p8ywPcQl1ro2z1wo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/ebdac417434ca0bec10aec22ed493560/tumblr_p1qazbwPuK1rig2b0o5_1280.jpg">',
+'<img src="http://78.media.tumblr.com/fc7fae6e2b03ad9062314e9420af4cfa/tumblr_p1qazbwPuK1rig2b0o6_1280.jpg">',
+'<img src="http://78.media.tumblr.com/3078e7fbf1041dba9e917e366d5ab93e/tumblr_p1bagaHXZe1w1ylioo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/3191f2ef5e78464c01d5c77877101902/tumblr_otywuyhEum1vcq2c4o1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/41ee3293529967954bebdd193bf25511/tumblr_p1o4zjiGfG1rvt0yvo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/743d611f5c4d88f721a046d2f158838d/tumblr_p1hjahLGbq1rvt0yvo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/9158720dfe4a15c405bf3fc5b4c0f528/tumblr_owynq6Tliy1ufxtapo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/a49b0125ce9c7bd3ae26de3e6b106010/tumblr_p1l0h6zVYk1w1ylioo1_1280.jpg">',
+'<img src="http://78.media.tumblr.com/ed7c4976d28fa88dc866dc57302990cd/tumblr_p1hj0sVDQR1rvt0yvo1_1280.jpg">'
+
+];
+
+var listLen = ImgList.length, timer = 15000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+changeImg();
+var myVar = setInterval(changeImg, timer);
+</script>
+
+</body>
+</html>

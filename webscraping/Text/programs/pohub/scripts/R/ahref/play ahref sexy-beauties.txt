@@ -1,0 +1,55 @@
+# http://www.sexy-beauties.com/galleries/Aletta.php
+# http://images.sexy-beauties.com/pics/Aiwe_001/thumbs/aiw001FPH_146148074.jpg
+# http://images.sexy-beauties.com/pics/Aiwe_001/aiw001FPH_146148074.jpg
+# <a href="http://images.sexy-beauties.com/pics/Aletta/ale086FPH_153562003.jpg" class="fancybox" rel="group">
+set.seed(sample(100000,1))
+set.seed(sample(100000,1))
+dirStr = "C:/Users/user/mpg/Text/programs/ahref/"
+setwd(dirStr)
+sitename = "sexy-beauties"
+
+siteFilename = paste0("Ahref-", sitename)
+startstr="start chrome.exe --start-fullscreen "
+pageHead = '<div class="center IN vetsi">'
+pageTail = '<div class="sexymodel IN" id="sexymodel">'
+pagewebname = paste0("http://www.sexy-beauties.com/galleries")
+imgHeader = '<img'
+
+thelist=readLines(paste0(siteFilename, ".txt"))
+thelistlength=length(thelist)
+trialnum = 25
+
+for(trial in 1:trialnum){
+  cat("total pages:",thelistlength,"\n")
+  theChoice=sample(1:thelistlength,1)
+  Selection = readline(prompt="enter number: ")
+  if(Selection != "")   {
+    theChoice = as.numeric(Selection)
+  }
+  cat(" ",theChoice," ")
+  pageAddr =paste0(pagewebname, "/", thelist[theChoice])
+  cat(pageAddr, '\n')
+  thepage=readLines(pageAddr, warn = F)
+  headlinenum=grep(pageHead, thepage)  # chop head
+  thepage=thepage[-(1:headlinenum)]
+
+  taillinenum=grep(pageTail, thepage)  # chop tail
+  thepage=thepage[-(taillinenum:length(thepage))]
+
+  thepage=unlist(strsplit(thepage, split = ">"))
+
+  imglinenum=grep('a href="http://images', thepage)  # extract img
+  thepage=thepage[imglinenum]
+
+  thepage =gsub('.*href="|" class.*', "", thepage)  #purify
+#   thepage =gsub("pthumbs", "", thepage)  #purify
+#   thepage =paste0(thepage,"jpg")
+
+  sink("Temp.html")
+  cat('<body bgcolor="#000000">\n')
+  for(thenum in 1:length(thepage)){
+    cat(paste0("\n<img src='" ,thepage[thenum], "'>"))
+  }
+  sink()
+  shell(paste0(startstr,dirStr, "Temp.html"))
+}

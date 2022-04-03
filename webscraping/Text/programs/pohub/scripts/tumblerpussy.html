@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<style>
+body {background-color: black;}
+html {height: 100%; overflow:   scroll;}
+::-webkit-scrollbar {width: 0px; background: transparent;}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<center>
+<div class="imagearea"> </div>
+</center>
+<script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+  if(testkey == '-'){ addTo_RmvList();}
+  if(testkey == '*'){ show_RmvList();}
+  if(testkey == '/'){ clr_RmvList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var thePointerImg = document.querySelector('.imagearea');
+var ImgList = [
+'<img src="https://66.media.tumblr.com/aae61f668e2ed07cefef2dbc0f84a83a/36de903605306a51-a9/s2048x3072/1b99104240997b7f4e124316499c7e6c9b37a313.jpg">',
+'<img src="https://66.media.tumblr.com/a8501f997d70e7f68c9b24a52ace925a/ddbc141e6fb93e9d-d7/s640x960/f76f3ecac3110cacab39080dd6b9965a394ea64f.jpg">',
+'<img src="https://66.media.tumblr.com/80fa814d16f6e82552de9f64e43479b9/2137c040686cff25-0d/s640x960/32466b36d1ff4a5ee0112a4a1a48dbb49f3e67ad.jpg">',
+'<img src="https://66.media.tumblr.com/be90c7043e0aea6cee43097cd21c51f1/3e12e37f0b8aee72-e3/s640x960/6a03c1a0794148e69380f4a9485907c5b6040b73.jpg">',
+'<img src="https://66.media.tumblr.com/69a103e2bdf222578ce339712781d23b/tumblr_p5hpe5UiIX1x1s87uo1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/c7d12fa28e5c30d3135024efeada9e6b/tumblr_mkezs3CGG71rf0143o1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/f5509066de4336a95018f3ca76777630/tumblr_pmnvpyLQt01y54cs6o2_r1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/6b1352bd086096bac8b282463481e338/00675fbbe5608d50-47/s640x960/168c6b6a595287efe1d271daec009ce48ef17c3e.gif">',
+'<img src="https://66.media.tumblr.com/b8c7825b7101dc547d4f8cda9f08d1f3/00675fbbe5608d50-d1/s640x960/5e451c95bf463b6941d09e7208010ac7fa3fe1cd.gif">',
+'<img src="https://66.media.tumblr.com/fc74c62d0b90ab5a8fc51469ac347760/00675fbbe5608d50-09/s640x960/698eeb24cfde0ef7bc38d4e12f5b921d9660c6b3.gif">',
+'<img src="https://66.media.tumblr.com/f050e4dd293b959f59d679646dfd55c8/tumblr_inline_pt1d9dlQot1wes4cw_1280.jpg">',
+'<img src="https://66.media.tumblr.com/044a88ac04ff6bc3d04d2d67137e0c99/tumblr_ppa4ttHDi01wrbxbl_1280.jpg">',
+'<img src="https://66.media.tumblr.com/30b4d86226ed7a08904c0310803cbf89/tumblr_inline_pt8x25moGT1wd4274_1280.jpg">',
+'<img src="https://66.media.tumblr.com/3ee38e34cd3794eb0f6436f760e8bc71/tumblr_pjysoeyfmQ1udtais_1280.jpg">',
+'<img src="https://66.media.tumblr.com/df8f6614af83a57d4614f81f15cef53b/tumblr_ptsptxNvKf1vi07ec_1280.jpg">',
+'<img src="https://66.media.tumblr.com/8c3d474ffe4c4fff9312370529d60d65/35832a4c90d509e7-52/s640x960/66ac4c7d250bc7bec6da281f48f6d35ad2b6fba7.jpg">',
+'<img src="https://66.media.tumblr.com/9226438942bf3713fa83a0056f7a9db2/eb0c867321270fed-eb/s640x960/1b01a658e6f615d621e5c522dcc146687e1c92d2.jpg">',
+'<img src="https://66.media.tumblr.com/6227a44b713bda52acabb638f81bafe4/d8b4e24037c2eb49-99/s640x960/e3ba815787d4072dfd917913780a1eda93a65c6d.jpg">',
+'<img src="https://66.media.tumblr.com/cf7ae78ff0b359caeb0a1818044309d2/tumblr_inline_psivm4E7sJ1tirmnx_1280.jpg">',
+'<img src="https://66.media.tumblr.com/b62bfd5e4f63c594053629449f3c1a17/tumblr_inline_psivm7jHUD1tirmnx_1280.jpg">',
+'<img src="https://66.media.tumblr.com/43ff407de76e728c365d4ea55b402350/tumblr_inline_psivmnHH0H1tirmnx_1280.jpg">',
+'<img src="https://66.media.tumblr.com/4fd31226e321597fbec19029b74e6768/tumblr_inline_psivofSVVK1tirmnx_1280.jpg">',
+'<img src="https://66.media.tumblr.com/d9be96e4830bad86bb00272975cb635d/tumblr_inline_psivp6wcai1tirmnx_1280.jpg">',
+'<img src="https://66.media.tumblr.com/78fc304b88428afecf39ce32f2d05903/tumblr_inline_psivq6JoV21tirmnx_1280.jpg">',
+'<img src="https://66.media.tumblr.com/06a8fd4e2a892d01d270e274795c1b38/tumblr_oifli2RIUN1uk9rm4o1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/63442529be953d9cb7b814447dba75e5/tumblr_pwwkziZKdd1qeu577o1_r1_640.jpg">',
+'<img src="https://66.media.tumblr.com/80db6687312a93881a5d2b9409bbeab4/8a3f70618e26825e-ab/s540x810/4f0a86f790ba437dccfae16f5660da56bdc48751.jpg">',
+'<img src="https://66.media.tumblr.com/83264d34b00d344f5bb9514876f5cbdb/20d868c50a745267-01/s640x960/fc8da7009bf264179e45235e7a105345f2d5f405.jpg">',
+'<img src="https://66.media.tumblr.com/a24fb7be6f5b4cbabf3bf63e81ec2b5f/tumblr_plbrywxAHr1y2ibd1o1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/547f9cf76bf769fc66c5448f55afe728/tumblr_inline_psmpzl8NFI1wd4274_1280.jpg">',
+'<img src="https://66.media.tumblr.com/7dced5e51885a882f346fe31fc63e360/88bf9e3c0117a497-c5/s640x960/beb3fd3a9b2005f25d9d3b0644fa474bcc45242b.jpg">',
+'<img src="https://66.media.tumblr.com/ed9fe87c95984d923ed43e8df43e15d4/73c6d50423e16547-f3/s500x750/e01e15f13b880500a9712b318a0ce98f23323a9a.jpg">',
+'<img src="https://66.media.tumblr.com/186422ffccfbfd903cef36b4308360bd/tumblr_pv38i2DuuZ1uti756o2_r1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/f6294f48f45e2bee066c4c93d95d38ab/765bf97005423f69-89/s640x960/a199baead9ffd66be294e02bb73acb82bfbd7e4a.jpg">',
+'<img src="https://66.media.tumblr.com/df6166bb45c90dc7142f0cb26794464e/f18569c1f932c8a7-92/s640x960/fda0f03e7daef804f01939e97627bbb70723b306.jpg">',
+'<img src="https://66.media.tumblr.com/86cb022e471a01cdaa4c5c9eb4dc08f4/6e93e302358bb939-b7/s640x960/0b12f93358b8e72bc71c41b6bafba4e9fc3f4185.jpg">',
+'<img src="https://66.media.tumblr.com/2a5f332ee60ffe6a9ce87efdc9678e79/eb12bc18da60cfa7-0d/s640x960/6793818d1b2f073e9876a2f1b52d6adbea6da950.jpg">',
+'<img src="https://66.media.tumblr.com/e80c644ef8af6c0652a8c1149d06b94c/tumblr_pjbyh7hyxU1w5a96r_1280.jpg">',
+'<img src="https://66.media.tumblr.com/f3e46f974b9a86002423728c237473c6/3d63f29b46097af3-bd/s540x810/dee7438e0364b7817a3d52a46cb1874fabc73cb0.jpg">',
+'<img src="https://66.media.tumblr.com/b2b6b4531c0f139520fd95e4bd25b3e6/b8b2124fe90cff1f-eb/s640x960/54c455f023ddd00404258af61a274536f4792f75.jpg">',
+'<img src="https://66.media.tumblr.com/ed9c893e7549b14fa0bbfbdc5b8f3359/ed1c3a306d47bfdd-18/s640x960/fd09c53b342602b2c62e2cb66c35e0fc8d153894.jpg">',
+'<img src="https://66.media.tumblr.com/6dd3bfef260d9e093bdf01f384d8f987/ed1c3a306d47bfdd-83/s640x960/bf864456dc99a3e326508cac6a4b2146e13cbae8.jpg">',
+'<img src="https://66.media.tumblr.com/ac08bd8645d75d729e474aa924cd19e8/ed1c3a306d47bfdd-33/s640x960/050c2447e7acd7be8526f14fe5590ba2b312b49d.jpg">',
+'<img src="https://66.media.tumblr.com/4e297bb7f079b19b88a5eff33d30b3b9/8a2baf04cad1e5a4-0b/s640x960/edc0de52de387f20a97ad5f49fd7f7daa1cba490.png">',
+'<img src="https://66.media.tumblr.com/677366671d06f930fae4115d4c4f54db/a59f8a6a0fc62638-4a/s640x960/c1d4e6792a86c641d8d597fb929fe7eb2b558a59.jpg">',
+'<img src="https://66.media.tumblr.com/66d512ff53279050cb0a63a141195b2d/9edd5eebc8479142-1c/s640x960/c772d82de60e00fd581808beb63cd6737d145dfb.jpg">',
+'<img src="https://66.media.tumblr.com/d6218a171f8f801b9baf7f79b0366901/8fd7157a3904475e-ec/s640x960/0ef8c4dff8671ea421a291fc7071258ad79bf609.jpg">',
+'<img src="https://66.media.tumblr.com/a1ae4c66bcc3ce6500f3a1ad8644debc/eb82c080094bfdf5-1f/s640x960/1210333f1974c4143defb6a04c94109e0a24e7a8.jpg">',
+'<img src="https://66.media.tumblr.com/e97a5a9d10573701f71f18c31afce96a/8d8129788a3bd6e0-db/s640x960/640f899840cf3a697afbc8b3e3d2ec88610870ff.jpg">',
+'<img src="https://66.media.tumblr.com/cfbb96fcb8cb9caf14d0f8447becaaac/e6b417134f7440b5-42/s640x960/224e84836f86b87b88e3cf1bbd44d002229dee57.jpg">',
+'<img src="https://66.media.tumblr.com/b389661dc17344602706d335e506ec7b/eb06849483ee8728-39/s640x960/582c3c197c97f3f100bca50fea7267649e6e5bc6.jpg">',
+'<img src="https://66.media.tumblr.com/c7ec8137bf056c84ae11e53914a9bfa6/30f01156a1625c5a-55/s640x960/ff0d88faea86c6795bc9d32b3629cd443cd19e7d.jpg">',
+'<img src="https://66.media.tumblr.com/6227a44b713bda52acabb638f81bafe4/d8b4e24037c2eb49-99/s640x960/e3ba815787d4072dfd917913780a1eda93a65c6d.jpg">',
+'<img src="https://66.media.tumblr.com/7660a6107f6555e696266f3841e999b8/11b206ede3fdc1ab-82/s640x960/cdd7c5d06001e924dafd06a89ccd20c4e674f22b.jpg">',
+'<img src="https://66.media.tumblr.com/f050e4dd293b959f59d679646dfd55c8/tumblr_inline_pt1d9dlQot1wes4cw_1280.jpg">',
+'<img src="https://66.media.tumblr.com/000e4d8cc109987ff06564d96b0b893b/72b237080966be61-71/s640x960/a13435bdef468490a6b4539503369f8f5a37d8b2.jpg">',
+'<img src="https://66.media.tumblr.com/145e0f31811e17439ce348e564c26a59/tumblr_o6ozgzmy6t1tz0kwjo1_400.gifv">',
+'<img src="https://66.media.tumblr.com/cf1403a14bfd0447394774e27c51c0aa/tumblr_pqxr650wgl1twwlj9_1280.jpg">',
+'<img src="https://66.media.tumblr.com/92ed33cce4b3eb6187814194dc6b8a5a/8a6bb1913b54a8aa-d6/s2048x3072/abff2d2918464caf9676eac1aab2ec42fde63542.jpg">',
+'<img src="https://66.media.tumblr.com/1a206c52a972ecfa00b2938586bcdac4/8a6bb1913b54a8aa-a0/s2048x3072/32c063d112759867dd50df9d111fe32528008de0.jpg">',
+'<img src="https://66.media.tumblr.com/0e194380cd4502e9da89431176c3dbfa/8a6bb1913b54a8aa-23/s2048x3072/9ce559cb5cf5c027b99b5b426ff1c1710743141c.jpg">',
+'<img src="https://66.media.tumblr.com/383ef5e3f6b7638e010dbbe31e5a140a/8a6bb1913b54a8aa-19/s2048x3072/34d085fc5404b1ce20c42ff1b09dde7ee7bc6d81.jpg">',
+'<img src="https://66.media.tumblr.com/1776c5fb5e2783a6e72907741d2988ec/8a6bb1913b54a8aa-40/s2048x3072/502fa9dd2d6438251606d7af5565c51dc2de902d.jpg">',
+'<img src="https://66.media.tumblr.com/5fa0e3a889e4be424f7d1a874405c7d1/8a6bb1913b54a8aa-9d/s2048x3072/720efc817957fc21508354e682f712f4c5d53d5a.jpg">',
+'<img src="https://66.media.tumblr.com/747caf9eeb4fea019941d57cd051d9d0/8a6bb1913b54a8aa-5e/s2048x3072/6bccf3aba6f1ace0f30a4a31f198df638b0daebd.jpg">',
+'<img src="https://66.media.tumblr.com/b49e9748e2ea757da3ce453c457f7169/8a6bb1913b54a8aa-0a/s2048x3072/fcd452b061cdf1cf3ab992e3df9e0e93718c4e85.jpg">',
+'<img src="https://66.media.tumblr.com/c84de46d6c12ce0fcd8f8b4d98fe17ad/8a6bb1913b54a8aa-33/s2048x3072/0319f3af2784a1b1854ee2dda160d60bf0cd0dfc.jpg">',
+'<img src="https://66.media.tumblr.com/67eb27395852ca57ab1d9040d61dbf3b/05e1e9149a983d71-8d/s2048x3072/1d0b5c3c2a18282663cabcde13e89adc0c34d9d1.jpg">',
+'<img src="https://66.media.tumblr.com/a5bedd8dcf405157a7f412555d1b2566/05e1e9149a983d71-45/s2048x3072/40fda6b6a6bab0c4fa9966a8d7ec56174777c0c8.jpg">',
+'<img src="https://66.media.tumblr.com/78a8ce9ef88e1f876d908ccc11ce3789/05e1e9149a983d71-f3/s2048x3072/df97e59ff4d50b68411b28311077b7a5ba5a92ed.jpg">',
+'<img src="https://66.media.tumblr.com/330312f42576a4eb9f7eaeaaba521966/05e1e9149a983d71-35/s2048x3072/f2e6558ac42348eb3e0d8bf58165f547f7146741.jpg">',
+'<img src="https://66.media.tumblr.com/a330d09feb4d3a6fdc3f55e9ce811dc8/05e1e9149a983d71-8d/s2048x3072/a399cebff0ae2f95cede317a603dc519f4f095bd.jpg">',
+'<img src="https://66.media.tumblr.com/400f65e899b07a1701b1ba6a57313b31/05e1e9149a983d71-b3/s2048x3072/e924e39115ea4f68eb9804989a369408132faeab.jpg">',
+'<img src="https://66.media.tumblr.com/f918b4c3299ada4ba53189adc11c7ec9/05e1e9149a983d71-64/s2048x3072/a47c7cde220b46949c685fd19dd2df86613ac080.jpg">',
+'<img src="https://66.media.tumblr.com/522fab3a4e3ca9924e9053df06fb9fad/05e1e9149a983d71-29/s2048x3072/f25a0a9f54c852d3f011b2332befe8fe3052fd16.jpg">',
+'<img src="https://66.media.tumblr.com/399ec304945ea570ef35b9ea71d07dfc/05e1e9149a983d71-cc/s2048x3072/ed740ca957e701eb9f30540de758040d02b803dd.jpg">',
+'<img src="https://66.media.tumblr.com/8f909f12c10ed8c4e49cf7442d6328ad/05e1e9149a983d71-48/s2048x3072/c841225bf5cd05d7247f5733c69d0354df28d3ef.jpg">',
+'<img src="https://66.media.tumblr.com/dd8a5f357a274f6f021bd5a148cfafe9/tumblr_inline_p2upz347211ulqp9u_1280.jpg">',
+'<img src="https://66.media.tumblr.com/ca397d537b98751619dece4f01120e85/tumblr_phme5f4Hyk1v31mhyo1_1280.jpg">',
+'<img src="https://66.media.tumblr.com/16c9633657f837f39a7ecd50c900ff1a/tumblr_inline_pj9bf1JVPd1rn4hh8_1280.jpg">',
+'<img src="https://66.media.tumblr.com/2ca70dbdc2ab983ed341a9c5a4041848/tumblr_inline_psiznnWNY51wd4274_1280.jpg">',
+'<img src="https://66.media.tumblr.com/549a0ba6152cda6fff6faae72a8b3db9/ef43dc0ff380e675-76/s640x960/a0360e8342eeb43e04537346bc44f52a7052cb19.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/09/adultnode_ab39f5514a00989d44cd01429eccd042.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/09/adultnode_17e352ced7915b52dced89077db829e5.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/09/adultnode_d27bb303a54c06620c2ef7c748618a48.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/09/adultnode_1cddf197cf193b2ee43fa487caabf872.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/09/adultnode_4520f4c72e94f798a6caaa3eb3ea59b5.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/09/adultnode_11da8d760671734cf0e1736ca066015a.jpg">',
+'<img src="https://media.adultnode.com/uploads/photos/2019/08/adultnode_dae3bfa8655c5bb304cc608c8c826cf4.jpg">',
+];
+
+
+var listLen = ImgList.length, timer = 15000;
+
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function showthumbs() {
+	imgNos = 0
+	theImgAddr = ""
+	for (var imgNos = 1; imgNos <= 18; imgNos++) {
+	temptheImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNos) + imgsTailer;
+	theImgAddr = theImgAddr + temptheImgAddr 
+	}
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_AllList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+	if (localStorage.getItem("toRmvList") === null) {
+	  toBeRmvList = [];
+	  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+	} else{
+	  toBeRmvList = JSON.parse(localStorage.toRmvList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  // check if the image already incluede
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList)) //Create an Array from a String
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    //alert("this image has been added to mypicList")
+    //console.log(mypicList);
+  }
+}
+
+function addTo_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  // check if the image already incluede
+  if (!toBeRmvList.includes(ImgList[listLen])) {
+    toBeRmvList.push(ImgList[listLen]);
+    toBeRmvList = Array.from(new Set(toBeRmvList)) //Create an Array from a String
+    localStorage.toRmvList = JSON.stringify(toBeRmvList);
+    //alert("this image has been added to toBeRmvList")
+    //console.log(toBeRmvList);
+  }
+}
+function show_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  console.log(toBeRmvList);
+  thePointerImg.innerHTML = escapeHtml(JSON.stringify(toBeRmvList));
+  copyStringToClipboard(toBeRmvList);
+  alert("listed in console! and copied to clipboard!");
+}
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+
+function clr_RmvList() {
+  toBeRmvList = [];
+  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+  alert("toBeRmvList has been cleared")
+}
+
+function copyStringToClipboard (str) {
+   var tempElement = document.createElement('textarea');
+   tempElement.value = str;
+   tempElement.setAttribute('readonly', '');
+   tempElement.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(tempElement);
+   tempElement.select();
+   document.execCommand('copy');
+   document.body.removeChild(tempElement);
+}
+
+init_AllList();
+changeImg();
+document.body.style.cursor = "none"
+
+</script>
+<script src="viewList.js"></script>
+
+</body>
+</html>

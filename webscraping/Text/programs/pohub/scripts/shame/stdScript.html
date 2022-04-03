@@ -1,0 +1,31 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+html {  overflow:   scroll;}
+::-webkit-scrollbar { width: 0px; background: transparent;}
+body { margin: auto; width: 100%; background-color: black; color: #20C030;}
+img { width: 600px; position: absolute; left: 0px; top: 0px; margin:0 auto; opacity:0; animation: imgOut 2s;}
+@keyframes imgOut {
+ 0% {opacity:0; }
+ 1% {opacity:1; }
+ 99% {opacity:1;}
+100% {opacity:0;}
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js">
+</script>
+</head>
+<body>
+<center>
+
+
+
+<script>
+$(document).ready(function(){
+	$('img').each(function(i) {
+		var thisImg = $(this);
+		timelag= i * 2 + "s";
+		thisImg.css("animation-delay", timelag);
+	});
+});
+</script>

@@ -1,0 +1,45 @@
+<base target="_blank">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+
+body {
+margin:5%;
+background-color: #000000;
+ color: #109080;
+ font-size: 18px;
+}
+a { text-decoration: none;
+	color: #28B8B8;}
+a:visited {	color: #389898;}
+A:hover {	color: yellow;}
+A:focus {	color: red;}
+code { color: pink; background-color: #302030}
+pre { color: gray; background-color: #001010}
+
+</STYLE>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+<script>
+function makepage(thedb) {
+	imgHead = '<img src="https://icdn.shameless.com/contents/videos_screenshots/60000/60372/400x300/';
+	imgTail = '.jpg"><br><br>';
+
+	var imgWindow = window.open("");
+	thepage ='<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">body {background-color: #000000; color: #109080; font-size: 18px;}</style></head><body><center><br>'
+	for( var imgno = 1; imgno < 81; imgno++){
+    	thepage = thepage + imgHead + imgno + imgTail;
+	};
+	imgWindow.document.write(thepage);
+}
+function fmtnumber(num) {
+    var s = num+"";
+    while (s.length < 2) s = "0" + s;
+    return s;
+}
+</script>
+<br>
+<img src="https://icdn.shameless.com/contents/videos_screenshots/60000/60372/400x300/41.jpg" onclick=makepage("2013-07-23/108873")>

@@ -1,0 +1,39 @@
+# http://pinkfineart.com/thai-cuties/page/2/ ~ 7
+# <img src="/galleries/thai-cuties/mo_chada-2-green_dress-061713/pthumbs/thai_cuties_mo_chada_set2_08.jpg" alt="thai-cuties/mo_chada-2-green_dress-061713/pthumbs/thai_cuties_mo_chada_set2_08.jpg" width="160" height="160"/>
+# <a href="/thai-cuties/mo-chada-green-dress/67708/" title="PinkFineArt presents Mo Chada Green Dress from Thai Cuties">
+
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "thai-cuties"
+totalpages = 7
+pageHeader= paste0("http://pinkfineart.com/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+
+AhrefHeader = paste0('<a href="/', sitename, '/')
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+
+theWholeApage= matrix()
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    Ahreflinenum=grep(AhrefHeader, thepage)  # extract img
+    thepage=thepage[Ahreflinenum]
+
+    thepage =gsub(paste0('.*<a href="/', sitename, '/|" title=.*') , "", thepage)  #purify
+    theWholeApage=rbind(theWholeApage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholeApage=theWholeApage[-1]
+sink(paste0("Ahref-",sitename,".txt"))
+cat(theWholeApage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

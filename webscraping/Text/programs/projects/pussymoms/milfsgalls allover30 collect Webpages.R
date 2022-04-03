@@ -1,0 +1,26 @@
+
+setwd("C:/Users/user/mpg/Text/programs/projects/pussymoms/")
+
+pageList = c("http://www.milfsgalls.com/allover30/06da66/", "http://www.milfsgalls.com/allover30/0a5a67/", "http://www.milfsgalls.com/allover30/170cc1/", "http://www.milfsgalls.com/allover30/2945b6/", "http://www.milfsgalls.com/allover30/2b8b66/", "http://www.milfsgalls.com/allover30/397eb7/", "http://www.milfsgalls.com/allover30/43564b/", "http://www.milfsgalls.com/allover30/4dc252/", "http://www.milfsgalls.com/allover30/5e3b20/", "http://www.milfsgalls.com/allover30/600f68/", "http://www.milfsgalls.com/allover30/6b1eb5/", "http://www.milfsgalls.com/allover30/6f2f28/", "http://www.milfsgalls.com/allover30/6fbb6f/", "http://www.milfsgalls.com/allover30/70f1bf/", "http://www.milfsgalls.com/allover30/7c7984/", "http://www.milfsgalls.com/allover30/7e0f08/", "http://www.milfsgalls.com/allover30/83f96a/", "http://www.milfsgalls.com/allover30/92a8ef/", "http://www.milfsgalls.com/allover30/a306e8/", "http://www.milfsgalls.com/allover30/a500c4/", "http://www.milfsgalls.com/allover30/a7a8b8/", "http://www.milfsgalls.com/allover30/a7a8cb/", "http://www.milfsgalls.com/allover30/ac1662/", "http://www.milfsgalls.com/allover30/b28ce9/", "http://www.milfsgalls.com/allover30/b5c39e/", "http://www.milfsgalls.com/allover30/c7ac45/", "http://www.milfsgalls.com/allover30/e3a435/", "http://www.milfsgalls.com/allover30/ec6062/", "http://www.milfsgalls.com/allover30/ed2c31/", "http://www.milfsgalls.com/allover30/f4a1d0/", "http://www.milfsgalls.com/allover30/f4c951/", "http://www.milfsgalls.com/allover30/f4e505/", "http://www.milfsgalls.com/allover30/f65928/", "http://www.milfsgalls.com/allover30/f7bf16/", "http://www.milfsgalls.com/allover30/fc4103/")
+totalpages = length(pageList)
+
+theWholepage = ""
+for (page in 1:totalpages){
+	cat(" ", page)
+	thepage=readLines(pageList[page])
+	result = unlist(strsplit(thepage, "<a"))
+	thelinkLines = grep("href", result)
+	result = result[thelinkLines]
+	thelinkLines = grep("onmouseover", result)
+	result = result[-thelinkLines]
+	imgadr = paste0('<img src=', pageList[page])
+	result = gsub('.*href="', imgadr, result)
+	result = gsub('"><img src.*', "><br>", result)
+
+	theWholepage = c(theWholepage , result)
+}
+sink("milfsgalls allover30 TOC.html")
+cat(theWholepage, sep="\n")
+sink()
+
+#======

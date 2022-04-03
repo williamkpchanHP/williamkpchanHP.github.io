@@ -1,0 +1,208 @@
+<head>
+<meta charset="utf-8">
+<title>piercedpookiefanclub vid</title>
+
+<script src="https://www.tumblr.comhttp://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+iframe, img { display: block; margin-left: 10%; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<br>
+<br>
+
+<div class="imagearea"> </div>
+
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == '4'){ backward();}
+  if(testkey == '6'){ foreward();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171397476525/photoset_iframe/piercedpookiefanclub/tumblr_owxz6iuiLA1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155416808095/photoset_iframe/piercedpookiefanclub/tumblr_oj1ei2mOTm1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155417038875/photoset_iframe/piercedpookiefanclub/tumblr_oj1ei2mOTm1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158176641545/photoset_iframe/piercedpookiefanclub/tumblr_omcowyM4Sm1vbquiw/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/173452917700/photoset_iframe/piercedpookiefanclub/tumblr_p7vozuj1yf1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156385808625/photoset_iframe/piercedpookiefanclub/tumblr_ok5xqqOlQC1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155418772810/photoset_iframe/piercedpookiefanclub/tumblr_ohaf34gisL1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155753468615/photoset_iframe/piercedpookiefanclub/tumblr_ojlippxh981vfj8q1/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156168407600/photoset_iframe/piercedpookiefanclub/tumblr_ok403x7G4P1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155418869320/photoset_iframe/piercedpookiefanclub/tumblr_oj4qm8d1Gg1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155882998960/photoset_iframe/piercedpookiefanclub/tumblr_ojr996fPnF1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/159213875920/photoset_iframe/piercedpookiefanclub/tumblr_onl4lsuxrw1v4u5u8/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/172031250230/photoset_iframe/piercedpookiefanclub/tumblr_p5tjvdeCf71v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171110727440/photoset_iframe/piercedpookiefanclub/tumblr_oz34gbye221vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171110735115/photoset_iframe/piercedpookiefanclub/tumblr_ouymk2yzJG1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/174786905770/photoset_iframe/piercedpookiefanclub/tumblr_pa1lrcvdho1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155932767505/photoset_iframe/piercedpookiefanclub/tumblr_ojurllnStX1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157594980060/photoset_iframe/piercedpookiefanclub/tumblr_oi02ab4nLp1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157716164110/photoset_iframe/piercedpookiefanclub/tumblr_olx4rz9cuL1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157761277405/photoset_iframe/piercedpookiefanclub/tumblr_om0ijqplmf1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158647525930/photoset_iframe/piercedpookiefanclub/tumblr_omoz9sUL1K1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155515667315/photoset_iframe/piercedpookiefanclub/tumblr_oje6e7JvNR1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171110724495/photoset_iframe/piercedpookiefanclub/tumblr_ozsvgtzsZ11vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171739137455/photoset_iframe/piercedpookiefanclub/tumblr_p5dzgi0kLE1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/174453677965/photoset_iframe/piercedpookiefanclub/tumblr_ozfpyaAfWx1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171397494925/photoset_iframe/piercedpookiefanclub/tumblr_ovuxn0AIHo1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171032019605/photoset_iframe/piercedpookiefanclub/tumblr_p4d1r5jEjb1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156806557090/photoset_iframe/piercedpookiefanclub/tumblr_oku5nyAi2B1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156546827875/photoset_iframe/piercedpookiefanclub/tumblr_okhesfFjwq1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157441753765/photoset_iframe/piercedpookiefanclub/tumblr_oljuu1kz3T1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158457736605/photoset_iframe/piercedpookiefanclub/tumblr_omvvkepT0G1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158647515030/photoset_iframe/piercedpookiefanclub/tumblr_ompp134mGl1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/173685289590/photoset_iframe/piercedpookiefanclub/tumblr_p8c6x3OJF21v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158176626575/photoset_iframe/piercedpookiefanclub/tumblr_om5vfb7YIv1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/175706937820/photoset_iframe/piercedpookiefanclub/tumblr_pbk1joxH2T1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/172777768360/photoset_iframe/piercedpookiefanclub/tumblr_p6weq15h2f1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171397482415/photoset_iframe/piercedpookiefanclub/tumblr_owkuqqp4Zg1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155643830230/photoset_iframe/piercedpookiefanclub/tumblr_ojg5h7Lv4c1vsjb86/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158647501945/photoset_iframe/piercedpookiefanclub/tumblr_omxmiwF9PU1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155416828220/photoset_iframe/piercedpookiefanclub/tumblr_oiii1a68fD1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155419161420/photoset_iframe/piercedpookiefanclub/tumblr_oiii1a68fD1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158647519160/photoset_iframe/piercedpookiefanclub/tumblr_omozvv5phs1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/159900085665/photoset_iframe/piercedpookiefanclub/tumblr_oosvlnrlVx1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158176645955/photoset_iframe/piercedpookiefanclub/tumblr_omd2nbFmay1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/173557345100/photoset_iframe/piercedpookiefanclub/tumblr_omd2nbFmay1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158647511325/photoset_iframe/piercedpookiefanclub/tumblr_omt3u0UcSp1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/159213895715/photoset_iframe/piercedpookiefanclub/tumblr_ondqe2PFlW1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155529730530/photoset_iframe/piercedpookiefanclub/tumblr_ojed60OJDS1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156041722880/photoset_iframe/piercedpookiefanclub/tumblr_ojwi9k60sr1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155417034085/photoset_iframe/piercedpookiefanclub/tumblr_oj381hk8cO1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155924353870/photoset_iframe/piercedpookiefanclub/tumblr_ojt7vgvR2I1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155932759365/photoset_iframe/piercedpookiefanclub/tumblr_ojusg6VAcH1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155416814735/photoset_iframe/piercedpookiefanclub/tumblr_oix83tKNZ71v4u5u8/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156147446675/photoset_iframe/piercedpookiefanclub/tumblr_ok056gftI31vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158176674135/photoset_iframe/piercedpookiefanclub/tumblr_omb7gsnNG41vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155417149285/photoset_iframe/piercedpookiefanclub/tumblr_oeyjssdskq1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171397489680/photoset_iframe/piercedpookiefanclub/tumblr_ow7xcvPDMl1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/174573597030/photoset_iframe/piercedpookiefanclub/tumblr_p9s2rzf9JC1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157441748540/photoset_iframe/piercedpookiefanclub/tumblr_olldl5hfvf1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/173519905200/photoset_iframe/piercedpookiefanclub/tumblr_ouhl1lkfVI1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155580463255/photoset_iframe/piercedpookiefanclub/tumblr_ojg1pdpY421v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155438988755/photoset_iframe/piercedpookiefanclub/tumblr_ojamd7vUh01vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155753462655/photoset_iframe/piercedpookiefanclub/tumblr_ojn7hhJoeH1w02vxz/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157441810840/photoset_iframe/piercedpookiefanclub/tumblr_okxfxukd6g1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/174453705075/photoset_iframe/piercedpookiefanclub/tumblr_oxnqzivtQg1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157441768990/photoset_iframe/piercedpookiefanclub/tumblr_olea4mzKum1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155924359260/photoset_iframe/piercedpookiefanclub/tumblr_ojt9excjsL1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155580480080/photoset_iframe/piercedpookiefanclub/tumblr_ojg8vyrkK01v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/157441799575/photoset_iframe/piercedpookiefanclub/tumblr_ol958jEPYh1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155417048665/photoset_iframe/piercedpookiefanclub/tumblr_oibr7yifSG1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156546834175/photoset_iframe/piercedpookiefanclub/tumblr_okhep3yD2U1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/172777763055/photoset_iframe/piercedpookiefanclub/tumblr_p6sw6hmaI71v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/173519901435/photoset_iframe/piercedpookiefanclub/tumblr_oupbclb0541vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/174077978175/photoset_iframe/piercedpookiefanclub/tumblr_p8ydnlksTm1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155417044355/photoset_iframe/piercedpookiefanclub/tumblr_oinzjhxlfo1ufphyl/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171397470250/photoset_iframe/piercedpookiefanclub/tumblr_oxau0waQLJ1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155416799850/photoset_iframe/piercedpookiefanclub/tumblr_oj8f7sBqzd1t33ltl/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155419030415/photoset_iframe/piercedpookiefanclub/tumblr_obx95mn9JT1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158176665260/photoset_iframe/piercedpookiefanclub/tumblr_ombmswTf8P1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155418993295/photoset_iframe/piercedpookiefanclub/tumblr_oetcglLrWB1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171397524635/photoset_iframe/piercedpookiefanclub/tumblr_oti439AdH71vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155421642825/photoset_iframe/piercedpookiefanclub/tumblr_ohnjviTerU1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158647530630/photoset_iframe/piercedpookiefanclub/tumblr_omovdkTSaO1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/159768426625/photoset_iframe/piercedpookiefanclub/tumblr_oood593LNi1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/175984513075/photoset_iframe/piercedpookiefanclub/tumblr_pbzkea3cFZ1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156955881620/photoset_iframe/piercedpookiefanclub/tumblr_ol17e66XiR1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/158176653085/photoset_iframe/piercedpookiefanclub/tumblr_omcmelz78i1v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/171110780685/photoset_iframe/piercedpookiefanclub/tumblr_p0jkf6RLvM1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/172806965305/photoset_iframe/piercedpookiefanclub/tumblr_nxiejlu8kd1uidqdx/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/155696185700/photoset_iframe/piercedpookiefanclub/tumblr_ojjqmwqswB1vb7m49/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/159737845290/photoset_iframe/piercedpookiefanclub/tumblr_oo23vl4E771vhusxe/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/156386920535/photoset_iframe/piercedpookiefanclub/tumblr_ok4b9eHAw51v8bevt/0/false"></iframe>',
+'<iframe  width="100%" style="border: 0px; background-color: transparent; overflow: hidden; width: 1452px; height: 1900px;" src="https://www.tumblr.com/post/173452924435/photoset_iframe/piercedpookiefanclub/tumblr_p7vop09oYh1v8bevt/0/false"></iframe>',
+'<iframe src="https://www.tumblr.comhttps://www.tumblr.com/video/piercedpookiefanclub/155422750385/700/" style="display: block; background-color: transparent; overflow: hidden; width: 100%; height: 253.849px;" class="embed_iframe tumblr_video_iframe"  data-can-gutter="" data-can-resize="" data-width="700" data-height="394" width="700" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen=""></iframe>',
+'<iframe src="https://www.tumblr.comhttps://www.tumblr.com/video/piercedpookiefanclub/155423820690/700/" style="display: block; background-color: transparent; overflow: hidden; width: 100%; height: 253.849px;" class="embed_iframe tumblr_video_iframe"  data-can-gutter="" data-can-resize="" data-width="700" data-height="394" width="700" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen=""></iframe>',
+'<iframe src="https://www.tumblr.comhttps://www.tumblr.com/video/piercedpookiefanclub/155461422780/700/" style="display: block; background-color: transparent; overflow: hidden; width: 100%; height: 801.491px;" class="embed_iframe tumblr_video_iframe"  data-can-gutter="" data-can-resize="" data-width="700" data-height="1244" width="700" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen=""></iframe>',
+'<iframe src="https://www.tumblr.comhttps://www.tumblr.com/video/piercedpookiefanclub/156385825015/700/" style="display: block; background-color: transparent; overflow: hidden; width: 100%; height: 253.849px;" class="embed_iframe tumblr_video_iframe"  data-can-gutter="" data-can-resize="" data-width="700" data-height="394" width="700" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen=""></iframe>',
+
+];
+
+var listLen = ImgList.length, timer = 25000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+changeImg();
+// var myVar = setInterval(changeImg, timer);
+</script>
+<script src="https://williamkpchan.github.io/viewPic.js"></script>
+
+</body>
+</html>

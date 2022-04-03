@@ -1,0 +1,29 @@
+setwd("C:/Users/user/mpg/Text/programs")
+# http://pinkfineart.com/galleries/amour-angels/11518-lapa-burning_lust-091216/full/bp_003.jpg
+set.seed(sample(10000,1))
+
+sitename = "amour-angels"
+thelinkhead=paste0("http://pinkfineart.com/galleries/", sitename, "/")
+thelinkmid="/full/bp_0"
+thelinktail=".jpg"
+startstr="start chrome.exe --start-fullscreen "
+
+thelist=readLines(paste0(sitename, ".txt"))
+thelistlength=length(thelist)
+
+for(trial in 1:20){
+cat("total pages:",thelistlength,"\n")
+theChoice=sample(1:thelistlength,1)
+Selection = readline(prompt="enter number: ")
+
+if(Selection != "")   {
+    theChoice = as.numeric(Selection)
+  }
+cat(" ",theChoice," ")
+ theCmdhead=paste0(startstr,thelinkhead,thelist[theChoice],thelinkmid)
+  
+  for(thenum in 1:20){
+    thenum = sprintf(paste0("%0", 2, "d"), as.integer(thenum))
+    shell(paste0(theCmdhead,thenum,thelinktail))
+  }
+}

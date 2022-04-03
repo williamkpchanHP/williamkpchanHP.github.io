@@ -1,0 +1,184 @@
+<base target="_blank">
+<head>
+<title>Jordyn playlist</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script>
+$(document).ready(function(){
+    $('h1, h2, h3, h4, h5, .goldword, strong,  div.title').click(function(){
+    parent.history.back();
+    return false;
+    });
+    $('h2').click(function() { scrollTo(0,document.body.scrollHeight);});
+});
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+strong, h1, h2 {color: gold;}
+img {width:50%; display: inline-block; margin-left: auto; margin-right: auto;border-radius: 3%;}
+pre { text-align: left; width:70%;}
+
+</style>
+</head>
+<body onkeypress="chkKey()">
+<center>
+<a href="#mustWatch" class="red goldbs" target="_self">Must Watch!</a>
+<div class="imagearea"> </div>
+<br>
+
+<div id="toc"></div>
+<br>
+<br>
+<span class="redbut whitebs silver">keys: b backward, f foreward, t TOC, T top, e bottom, m must watch, r random</span>
+<br><br>
+<div id="mustWatch">
+</div>
+</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+var toc = $('#toc');
+var patt1 = /(<h2>).*(<\/h2>)/i;
+var patt2 = /(<h2[^>]*>|<\/h2>)/g;
+
+function makeTOC(theStr, index) {
+	var topic = theStr.match(patt1)[0];
+	topic = topic.replace(patt2, "");
+	toc.append((index +1) + ' <span class="gray" onclick="jumpto(' + index + ')">' + topic +'</span><br>');
+}
+
+function jumpto(index) {
+	topicpointer = index;
+	showImg();
+}
+function chkKey() {
+var testkey = getChar(event);
+if(testkey == "b"){ backward();}
+if(testkey == 'e'){window.scrollTo(0,document.body.scrollHeight);}
+if(testkey == "f"){ foreward();}
+if(testkey == "l"){divtoc = document.getElementById("toc");$('body,html').animate({scrollTop:(divtoc.clientHeight + divtoc.offsetTop-600)}, 1); }
+if(testkey == "m"){ location = '#mustWatch';}
+if(testkey == "p"){ pause();}
+if(testkey == "c"){ continU();}
+if(testkey == "r"){ randomFlip();}
+if(testkey == "s"){ showMov();}
+if(testkey == 't'){window.location = '#toc';}
+if(testkey == 'T'){window.scrollTo(0,0);}
+}
+function getChar(event){if (event.which!=0 && event.charCode!=0) {return String.fromCharCode(event.which)}
+ else {return null}}
+
+var ImgList = [
+'<h2>Jordyn Khaled shows of her leggings</h2><img src="https://ci.phncdn.com/videos/202002/25/287475952/original/(m=eafTGgaaaa)(mh=r84vD0peJvcjhdxC)16.jpg"><br><a href="https://www.pornhub.com/embed/ph5e547a880b2e3" title="Jordyn Khaled shows of her leggings">Jordyn Khaled shows of her leggings</a>',
+'<h2>Jordyn Khaled spanks her butt Outside</h2><img src="https://ci.phncdn.com/videos/202002/24/287431842/original/(m=eafTGgaaaa)(mh=KALEKtbzFizsUHus)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5e544466829fd" title="Jordyn Khaled spanks her butt Outside">Jordyn Khaled spanks her butt Outside</a>',
+'<h2>Fuck you Windows</h2><img src="https://ci.phncdn.com/videos/202002/24/287388682/original/(m=eafTGgaaaa)(mh=nqI_p_MpWHOxGPFl)13.jpg"><br><a href="https://www.pornhub.com/embed/ph5e5415892af58" title="Fuck you Windows">Fuck you Windows</a>',
+'<h2>Shower Voyeur</h2><img src="https://ci.phncdn.com/videos/202002/24/287207732/original/(m=eafTGgaaaa)(mh=n2xOrrHHm2bD87R1)12.jpg"><br><a href="https://www.pornhub.com/embed/ph5e533c568a782" title="Shower Voyeur">Shower Voyeur</a>',
+'<h2>Trying on Heels</h2><img src="https://ci.phncdn.com/videos/202002/24/287175052/original/(m=eafTGgaaaa)(mh=_3IO6hsBRKoIvaFF)13.jpg"><br><a href="https://www.pornhub.com/embed/ph5e53126d85243" title="Trying on Heels">Trying on Heels</a>',
+'<h2>Shaving full body</h2><img src="https://ci.phncdn.com/videos/202002/23/287156672/original/(m=eafTGgaaaa)(mh=pHVHgP7S7pz-9LPr)8.jpg"><br><a href="https://www.pornhub.com/embed/ph5e52fd4967f00" title="Shaving full body">Shaving full body</a>',
+'<h2>Oil Tease</h2><img src="https://ci.phncdn.com/videos/202002/23/287145102/original/(m=eafTGgaaaa)(mh=Oo6huQQxwmswxVrf)6.jpg"><br><a href="https://www.pornhub.com/embed/ph5e52eeea6c6ce" title="Oil Tease">Oil Tease</a>',
+'<h2>I can\'t pay my Rent this month</h2><img src="https://ci.phncdn.com/videos/202002/19/285808642/thumbs_1/(m=eafTGgaaaa)(mh=vqiTOpLHNCb__zOo)12.jpg"><br><a href="https://www.pornhub.com/embed/ph5e4c9ba5c735b" title="I can\'t pay my Rent this month">I can\'t pay my Rent this month</a>',
+'<h2>Worship my natural body 2</h2><img src="https://ci.phncdn.com/videos/202002/19/285809312/thumbs_1/(m=eafTGgaaaa)(mh=5V0wxsmv-kU-SQj8)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5e4c9c4032829" title="Worship my natural body 2">Worship my natural body 2</a>',
+'<h2>Look but don’t touch daddy</h2><img src="https://ci.phncdn.com/videos/202002/17/285243772/original/(m=eafTGgaaaa)(mh=rkmPWYZpAqiNjWPK)6.jpg"><br><a href="https://www.pornhub.com/embed/ph5e49f9dcdbd11" title="Look but don’t touch daddy">Look but don’t touch daddy</a>',
+'<h2>Ignoring daddy, I’m playing pokemon</h2><img src="https://ci.phncdn.com/videos/202002/17/285243632/original/(m=eafTGgaaaa)(mh=lW3NMGLXWpM48as7)2.jpg"><br><a href="https://www.pornhub.com/embed/ph5e49f999917a1" title="Ignoring daddy, I’m playing pokemon">Ignoring daddy, I’m playing pokemon</a>',
+'<h2>Valentine\'s Day Striptease</h2><img src="https://ci.phncdn.com/videos/202002/05/282058411/original/(m=qIO_1JVbeafTGgaaaa)(mh=l_EONSk1Q9cssRvv)0.jpg"><br><a href="https://www.pornhub.com/embed/ph5e3a3ca7c8bd1" title="Valentine\'s Day Striptease">Valentine\'s Day Striptease</a>',
+'<h2>Spreading Ass &amp; Pussy </h2><img src="https://ci.phncdn.com/videos/202002/05/282206821/original/(m=eafTGgaaaa)(mh=FqZVSxBeEiEzlytL)9.jpg"><br><a href="https://www.pornhub.com/embed/ph5e3afd5d6a4d8" title="Spreading Ass &amp; Pussy ">Spreading Ass &amp; Pussy </a>',
+'<h2>Valentine\'s Day Impregnation</h2><img src="https://ci.phncdn.com/videos/202002/04/281779751/thumbs_1/(m=eafTGgaaaa)(mh=I4kN1HGsYPf21Ekk)2.jpg"><br><a href="https://www.pornhub.com/embed/ph5e38d83a29daa" title="Valentine\'s Day Impregnation">Valentine\'s Day Impregnation</a>',
+'<h2>First Anal Play</h2><img src="https://ci.phncdn.com/videos/202002/03/281559651/original/(m=eafTGgaaaa)(mh=_5RCz-wgoYEOJrXz)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5e37b8c0cdd15" title="First Anal Play">First Anal Play</a>',
+'<h2>Hidden Camera in Bedroom</h2><img src="https://ci.phncdn.com/videos/202001/30/280472471/original/(m=eafTGgaaaa)(mh=GH1h26DRsEovBu_H)5.jpg"><br><a href="https://www.pornhub.com/embed/ph5e325670a23c8" title="Hidden Camera in Bedroom">Hidden Camera in Bedroom</a>',
+'<h2>Titty Fucking in Dutch</h2><img src="https://ci.phncdn.com/videos/202001/30/280468411/original/(m=eafTGgaaaa)(mh=SYCvutsiA102-Os8)14.jpg"><br><a href="https://www.pornhub.com/embed/ph5e3251203d2b6" title="Titty Fucking in Dutch">Titty Fucking in Dutch</a>',
+'<h2>Trying on Swimwear </h2><img src="https://ci.phncdn.com/videos/202001/28/279944281/original/(m=eafTGgaaaa)(mh=5HYUzUXCyrlqIGYA)9.jpg"><br><a href="https://www.pornhub.com/embed/ph5e2fb26a1f69e" title="Trying on Swimwear ">Trying on Swimwear </a>',
+'<h2>Showing you my hairy pussy</h2><img src="https://ci.phncdn.com/videos/202001/22/278415761/original/(m=eafTGgaaaa)(mh=XwTSMuTjHQ-QxnAq)14.jpg"><br><a href="https://www.pornhub.com/embed/ph5e27a8007702d" title="Showing you my hairy pussy">Showing you my hairy pussy</a>',
+'<h2>I want to get Pregnant </h2><img src="https://ci.phncdn.com/videos/202001/21/278160981/original/(m=eafTGgaaaa)(mh=tU05Kx7aIvdu_m7Q)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5e265b9968076" title="I want to get Pregnant ">I want to get Pregnant </a>',
+'<h2>Blowjob and Facial</h2><img src="https://ci.phncdn.com/videos/202001/21/278146471/thumbs_1/(m=eafTGgaaaa)(mh=D-F5ECAW180-2eTn)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5e2647abf153d" title="Blowjob and Facial">Blowjob and Facial</a>',
+'<h2>Bouncing Huge Tits in Slomo (trailer)</h2><img src="https://ci.phncdn.com/videos/202001/15/276915491/original/(m=eafTGgaaaa)(mh=rQQ3HIcc50zIwOnW)9.jpg"><br><a href="https://www.pornhub.com/embed/ph5e1fa3cf82f94" title="Bouncing Huge Tits in Slomo (trailer)">Bouncing Huge Tits in Slomo (trailer)</a>',
+'<h2>Slow Motion Spanking</h2><img src="https://ci.phncdn.com/videos/201911/20/262851852/original/(m=eafTGgaaaa)(mh=CSmRnpGKBiRpZ2RI)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5dd48d3c05b48" title="Slow Motion Spanking">Slow Motion Spanking</a>',
+'<h2>Such a Tease</h2><img src="https://ci.phncdn.com/videos/201911/07/259928822/original/(m=eafTGgaaaa)(mh=HdVC-3HC90ljtHpm)12.jpg"><br><a href="https://www.pornhub.com/embed/ph5dc3b2fa7090e" title="Such a Tease">Such a Tease</a>',
+'<h2>Peeing in the Toilet </h2><img src="https://ci.phncdn.com/videos/201911/07/259905422/original/(m=eafTGgaaaa)(mh=o2-6NIHBy7Z-HPTl)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5dc38eb8dd24b" title="Peeing in the Toilet ">Peeing in the Toilet </a>',
+'<h2>Naked Singing </h2><img src="https://ci.phncdn.com/videos/201911/07/259905062/original/(m=eafTGgaaaa)(mh=Sm0_J2_EROmrU4Id)2.jpg"><br><a href="https://www.pornhub.com/embed/ph5dc38e0ba8aeb" title="Naked Singing ">Naked Singing </a>',
+'<h2>Teasing you</h2><img src="https://ci.phncdn.com/videos/201911/07/259903302/original/(m=eafTGgaaaa)(mh=pG07tXP-NhtcAEps)4.jpg"><br><a href="https://www.pornhub.com/embed/ph5dc38afd0e23b" title="Teasing you">Teasing you</a>',
+'<h2>Titties</h2><img src="https://ci.phncdn.com/videos/201911/06/259667762/thumbs_1/(m=eafTGgaaaa)(mh=XQRSjYEPMV30aZE5)13.jpg"><br><a href="https://www.pornhub.com/embed/ph5dc230067856a" title="Titties">Titties</a>',
+'<h2>Playing with my Glass TOY</h2><img src="https://ci.phncdn.com/videos/201906/18/230046392/original/(m=eafTGgaaaa)(mh=nSUIDZ7WPWw8OxaO)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5d08484c83ba9" title="Playing with my Glass TOY">Playing with my Glass TOY</a>',
+'<h2>Hidden camera</h2><img src="https://ci.phncdn.com/videos/201904/09/217461561/original/(m=eafTGgaaaa)(mh=i-dcHanBKHG1n1wi)10.jpg"><br><a href="https://www.pornhub.com/embed/ph5cad15832ca5c" title="Hidden camera">Hidden camera</a>',
+'<h2>TABOO: Spying on my sister</h2><img src="https://ci.phncdn.com/videos/201904/08/217279902/original/(m=eafTGgaaaa)(mh=DjumwcPxNe_JiqQB)8.jpg"><br><a href="https://www.pornhub.com/embed/ph5cabac8b27d91" title="TABOO: Spying on my sister">TABOO: Spying on my sister</a>',
+'<h2>I\'ll suck your cock Daddy</h2><img src="https://ci.phncdn.com/videos/201903/25/214808152/original/(m=eafTGgaaaa)(mh=2BuDxCzHjNE66dax)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5c980a03522d9" title="I\'ll suck your cock Daddy">I\'ll suck your cock Daddy</a>',
+'<h2>Shaving my hairy pussy</h2><img src="https://ci.phncdn.com/videos/201903/18/213616322/original/(m=eafTGgaaaa)(mh=TPU8n5q31tFxRESB)2.jpg"><br><a href="https://www.pornhub.com/embed/ph5c8ed2be34fa6" title="Shaving my hairy pussy">Shaving my hairy pussy</a>',
+'<h2>Camgirl: Infinity War (trailer)</h2><img src="https://ci.phncdn.com/videos/201903/08/211848532/original/(m=qIWLWOUbeafTGgaaaa)(mh=o582-TpaCNXfxK6s)0.jpg"><br><a href="https://www.pornhub.com/embed/ph5c81db4169f5a" title="Camgirl: Infinity War (trailer)">Camgirl: Infinity War (trailer)</a>',
+'<h2>Hairy pussy masturbation</h2><img src="https://ci.phncdn.com/videos/201903/07/211648152/original/(m=eafTGgaaaa)(mh=KbvYnzqB5wQDgV8-)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5c8064564b146" title="Hairy pussy masturbation">Hairy pussy masturbation</a>',
+'<h2>Shhh... Don\'t tell my boyfriend</h2><img src="https://ci.phncdn.com/videos/201903/06/211630912/thumbs_5/(m=eafTGgaaaa)(mh=6SMRBss8ZrZwM5SF)15.jpg"><br><a href="https://www.pornhub.com/embed/ph5c8047227e3ee" title="Shhh... Don\'t tell my boyfriend">Shhh... Don\'t tell my boyfriend</a>',
+'<h2>Clenching booty</h2><img src="https://ci.phncdn.com/videos/201903/06/211614862/original/(m=eafTGgaaaa)(mh=9znbMLwNlOK8JSS2)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5c802b48c948b" title="Clenching booty">Clenching booty</a>',
+'<h2>Butt plug and masturbating (full video)</h2><img src="https://ci.phncdn.com/videos/201903/04/211091471/original/(m=eafTGgaaaa)(mh=WlEsf7zcvmlkfWKb)3.jpg"><br><a href="https://www.pornhub.com/embed/ph5c7c950ba1d03" title="Butt plug and masturbating (full video)">Butt plug and masturbating (full video)</a>',
+'<h2>Feet Focused (full video)</h2><img src="https://ci.phncdn.com/videos/201903/03/211049861/original/(m=eafTGgaaaa)(mh=3HiTmvsYiFjsgNs3)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5c7c4f8fa1a41" title="Feet Focused (full video)">Feet Focused (full video)</a>',
+'<h2>You like my stockings daddy? (full video)</h2><img src="https://ci.phncdn.com/videos/201902/25/209889351/original/(m=eafTGgaaaa)(mh=cEs7bvIuunjCLmKF)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5c74746850fb7" title="You like my stockings daddy? (full video)">You like my stockings daddy? (full video)</a>',
+'<h2>Fucking my Trimmed Pussy (full video)</h2><img src="https://ci.phncdn.com/videos/201902/25/209869911/original/(m=eafTGgaaaa)(mh=mMFfjPQM0dPoMWJ0)14.jpg"><br><a href="https://www.pornhub.com/embed/ph5c745459d3e15" title="Fucking my Trimmed Pussy (full video)">Fucking my Trimmed Pussy (full video)</a>',
+'<h2>First blowjob video + facial (full video)</h2><img src="https://ci.phncdn.com/videos/201902/20/208729271/original/(m=eafTGgaaaa)(mh=XRZ3ED-cTTaeA9IL)9.jpg"><br><a href="https://www.pornhub.com/embed/ph5c6ca8a189c84" title="First blowjob video + facial (full video)">First blowjob video + facial (full video)</a>',
+'<h2>Close up masturbation (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/07/200526091/original/(m=eafTGgaaaa)(mh=s-hqtZLKAQ1sjtGZ)9.jpg"><br><a href="https://www.pornhub.com/embed/ph5c32e467091b4" title="Close up masturbation (premium snap preview)">Close up masturbation (premium snap preview)</a>',
+'<h2>Tiny dress and Masturbating (full video)</h2><img src="https://ci.phncdn.com/videos/201901/07/200505601/original/(m=eafTGgaaaa)(mh=HJWL605s5t4ltOiq)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5c32ba6063862" title="Tiny dress and Masturbating (full video)">Tiny dress and Masturbating (full video)</a>',
+'<h2>Balcony Blowjob  (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/07/200498871/original/(m=eafTGgaaaa)(mh=j0bMNOkMYM_1owyr)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5c32ae1addd38" title="Balcony Blowjob  (premium snap preview)">Balcony Blowjob  (premium snap preview)</a>',
+'<h2>shower BJ (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/07/200491271/original/(m=eafTGgaaaa)(mh=-GkxpnHV1PHVEKkj)10.jpg"><br><a href="https://www.pornhub.com/embed/ph5c32a0d6c933b" title="shower BJ (premium snap preview)">shower BJ (premium snap preview)</a>',
+'<h2>Pool BJ (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/07/200488981/original/(m=eafTGgaaaa)(mh=qqwzD_x08CFad9z7)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5c329c7bdcd07" title="Pool BJ (premium snap preview)">Pool BJ (premium snap preview)</a>',
+'<h2>Pussy Close Up (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/07/200483931/original/(m=eafTGgaaaa)(mh=ZWhUqKTjGCrjqXKs)2.jpg"><br><a href="https://www.pornhub.com/embed/ph5c3292c7165ee" title="Pussy Close Up (premium snap preview)">Pussy Close Up (premium snap preview)</a>',
+'<h2>Dildo Play (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/06/200480541/original/(m=eafTGgaaaa)(mh=O1tSQhZlqfSVbtKy)5.jpg"><br><a href="https://www.pornhub.com/embed/ph5c328d1271860" title="Dildo Play (premium snap preview)">Dildo Play (premium snap preview)</a>',
+'<h2>Taking a Shower (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/06/200471011/original/(m=eafTGgaaaa)(mh=qtYdeg2CJR6QMgR0)6.jpg"><br><a href="https://www.pornhub.com/embed/ph5c327b5481aa1" title="Taking a Shower (premium snap preview)">Taking a Shower (premium snap preview)</a>',
+'<h2>Ice Cube in Pussy (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201901/06/200468061/original/(m=eafTGgaaaa)(mh=UONVXN3JOQWH9Dqs)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5c32741593985" title="Ice Cube in Pussy (premium snap preview)">Ice Cube in Pussy (premium snap preview)</a>',
+'<h2>Showing off Curves (full video)</h2><img src="https://ci.phncdn.com/videos/201901/06/200464041/original/(m=eafTGgaaaa)(mh=o7KRYWl9q8HSJZAv)2.jpg"><br><a href="https://www.pornhub.com/embed/ph5c326ea49b60e" title="Showing off Curves (full video)">Showing off Curves (full video)</a>',
+'<h2>My Fav Toys (full video)</h2><img src="https://ci.phncdn.com/videos/201901/06/200440061/original/(m=eafTGgaaaa)(mh=WR7e0-pcdPIPCunu)5.jpg"><br><a href="https://www.pornhub.com/embed/ph5c324471e3d26" title="My Fav Toys (full video)">My Fav Toys (full video)</a>',
+'<h2>Blonde Gets Fucked</h2><img src="https://ci.phncdn.com/videos/201901/06/200377941/original/(m=eafTGgaaaa)(mh=9by71LIXrt2kgEpn)1.jpg"><br><a href="https://www.pornhub.com/embed/ph5c31bd2b3906d" title="Blonde Gets Fucked">Blonde Gets Fucked</a>',
+'<h2>Getting a buttplug in my ass</h2><img src="https://ci.phncdn.com/videos/201901/06/200336861/original/(m=eafTGgaaaa)(mh=F_UlOi919kTy6lX8)14.jpg"><br><a href="https://www.pornhub.com/embed/ph5c3162ed02275" title="Getting a buttplug in my ass">Getting a buttplug in my ass</a>',
+'<h2>Shower BJ + Facial (full video)</h2><img src="https://ci.phncdn.com/videos/201901/06/200327031/thumbs_10/(m=eafTGgaaaa)(mh=BbaK2kzD342wvZha)15.jpg"><br><a href="https://www.pornhub.com/embed/ph5c314e7977644" title="Shower BJ + Facial (full video)">Shower BJ + Facial (full video)</a>',
+'<h2>Pillow humping (full video)</h2><img src="https://ci.phncdn.com/videos/201901/05/200296861/original/(m=eafTGgaaaa)(mh=jASgKdljCKQNXwht)14.jpg"><br><a href="https://www.pornhub.com/embed/ph5c3111ea07cdd" title="Pillow humping (full video)">Pillow humping (full video)</a>',
+'<h2>Pee compilation (full video)</h2><img src="https://ci.phncdn.com/videos/201901/05/200191911/original/(m=eafTGgaaaa)(mh=xYuwpmE0Vdhf_N65)8.jpg"><br><a href="https://www.pornhub.com/embed/ph5c303ce1a45cb" title="Pee compilation (full video)">Pee compilation (full video)</a>',
+'<h2>Bouncing in Slow Motion (full video)</h2><img src="https://ci.phncdn.com/videos/201901/05/200174901/original/(m=eafTGgaaaa)(mh=wkj7j7ttpOifzGIU)9.jpg"><br><a href="https://www.pornhub.com/embed/ph5c301af700b5e" title="Bouncing in Slow Motion (full video)">Bouncing in Slow Motion (full video)</a>',
+'<h2>Jordyn changes her swimwear (full video)</h2><img src="https://ci.phncdn.com/videos/201901/04/200133031/thumbs_5/(m=eafTGgaaaa)(mh=xOWzjtU1H952zSMc)12.jpg"><br><a href="https://www.pornhub.com/embed/ph5c2fcc2e96b79" title="Jordyn changes her swimwear (full video)">Jordyn changes her swimwear (full video)</a>',
+'<h2>Jordyn sucks cock (premium snap preview)</h2><img src="https://ci.phncdn.com/videos/201810/30/189836321/original/(m=eafTGgaaaa)(mh=2_bCf5obRT7gXpBW)1.jpg"><br><a href="https://www.pornhub.com/embed/ph5bd8c9020978a" title="Jordyn sucks cock (premium snap preview)">Jordyn sucks cock (premium snap preview)</a>',
+'<h2>Curvy slut makes her first solo porn (full video)</h2><img src="https://ci.phncdn.com/videos/201810/03/185906531/original/(m=eafTGgaaaa)(mh=l-wXxHugdZZAe6P-)11.jpg"><br><a href="https://www.pornhub.com/embed/ph5bb50067a7010" title="Curvy slut makes her first solo porn (full video)">Curvy slut makes her first solo porn (full video)</a>',
+'<h2>First sextape! (full video)</h2><img src="https://ci.phncdn.com/videos/201806/26/171930141/thumbs_25/(m=eafTGgaaaa)(mh=wlUMRD0OgGY-qBAE)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5b31eec9ac526" title="First sextape! (full video)">First sextape! (full video)</a>',
+'<h2>Jordyn plays with all her toys  (full video)</h2><img src="https://ci.phncdn.com/videos/201804/19/162681752/original/(m=eafTGgaaaa)(mh=Vv0TX8c8oUXWL1dv)15.jpg"><br><a href="https://www.pornhub.com/embed/ph5ad8639c139fd" title="Jordyn plays with all her toys  (full video)">Jordyn plays with all her toys  (full video)</a>',
+'<h2>Let me take my clothes of for you (full video)</h2><img src="https://ci.phncdn.com/videos/201804/19/162641752/original/(m=eafTGgaaaa)(mh=QI0oAIsksg72tP_y)1.jpg"><br><a href="https://www.pornhub.com/embed/ph5ad7ebde9e092" title="Let me take my clothes of for you (full video)">Let me take my clothes of for you (full video)</a>',
+'<h2>I want you to worship my boob (full video)</h2><img src="https://ci.phncdn.com/videos/201804/19/162635932/original/(m=eafTGgaaaa)(mh=zMMxRgjU_plDqdwr)8.jpg"><br><a href="https://www.pornhub.com/embed/ph5ad7d8d1c3d81" title="I want you to worship my boob (full video)">I want you to worship my boob (full video)</a>',
+'<h2>Jordyn sucks her 8&quot; dildo (full video)</h2><img src="https://ci.phncdn.com/videos/201803/26/159564722/original/(m=eafTGgaaaa)(mh=xk_kL9Err6ysF_m-)4.jpg"><br><a href="https://www.pornhub.com/embed/ph5ab835208efc9" title="Jordyn sucks her 8&quot; dildo (full video)">Jordyn sucks her 8" dildo (full video)</a>',
+'<h2>Jordyn gives you a Footjob (full video)</h2><img src="https://ci.phncdn.com/videos/201803/13/158022632/original/(m=eafTGgaaaa)(mh=55J4LzPhZFNweHPU)10.jpg"><br><a href="https://www.pornhub.com/embed/ph5aa82dafde118" title="Jordyn gives you a Footjob (full video)">Jordyn gives you a Footjob (full video)</a>',
+'<h2>Jordyn plays with her favorite toy (full video)</h2><img src="https://ci.phncdn.com/videos/201803/07/157254201/original/(m=eafTGgaaaa)(mh=DacK4NSSlVsOEetf)7.jpg"><br><a href="https://www.pornhub.com/embed/ph5aa03e27ae625" title="Jordyn plays with her favorite toy (full video)">Jordyn plays with her favorite toy (full video)</a>',
+'<h2>Jordyn takes her clothes off for you (full video)</h2><img src="https://ci.phncdn.com/videos/201803/07/157157741/original/(m=eafTGgaaaa)(mh=GkuGb6rOYZ8jhAaq)6.jpg"><br><a href="https://www.pornhub.com/embed/ph5a9f2fa3b6042" title="Jordyn takes her clothes off for you (full video)">Jordyn takes her clothes off for you (full video)</a>',
+'<h2>Jordyn teases you in the shower (tease)</h2><img src="https://ci.phncdn.com/videos/201803/06/157132371/original/(m=eafTGgaaaa)(mh=9Zyn2doT0SVWLB1f)8.jpg"><br><a href="https://www.pornhub.com/embed/ph5a9eed682e2ba" title="Jordyn teases you in the shower (tease)">Jordyn teases you in the shower (tease)</a>',
+]
+var topicpointer = ImgList.length, timer = 15000
+function shuffle(array) {
+ var i = ImgList.length, j = 0, temp;
+ while (i--) { j = Math.floor(Math.random() * (i+1))
+  temp = ImgList[i];  ImgList[i] = ImgList[j];  ImgList[j] = temp;
+ } 
+ return ImgList;
+}
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()))
+ImgList.forEach(makeTOC);
+function changeImg() {
+ if (topicpointer >= ImgList.length - 1) { topicpointer = 0;}
+ else if (topicpointer < 0) { topicpointer = ImgList.length - 1;} 
+ else { topicpointer = topicpointer + 1;}
+ showImg()
+}
+function backward() { topicpointer = topicpointer - 2; changeImg();}
+function foreward() { changeImg();}
+function pause() { clearInterval(myVar);}
+function continU() { myVar = setInterval(changeImg, timer); foreward()}
+function showImg() { var thePointerImg = document.querySelector(".imagearea");
+ thePointerImg.innerHTML = ImgList[topicpointer];
+ console.log(thePointerImg.innerHTML); scroll(0,0);
+}
+function showMov() { var imgAdr = ImgList[topicpointer];
+ var start = imgAdr.indexOf("=\"")+1;
+ var end = imgAdr.indexOf('"></a>', start+1);
+ var list = imgAdr.substring(start+1, end);
+ console.log(list); window.open(list);
+}
+function randomFlip() { topicpointer = Math.floor(Math.random() * ImgList.length); changeImg();}
+changeImg();
+</script>
+</body></html>

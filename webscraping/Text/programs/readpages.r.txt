@@ -1,0 +1,15 @@
+theheader <- readline(prompt="enter header: ")
+thenum <- readline(prompt="enter number: ")
+thenumchar = nchar(thenum)
+thetail <- readline(prompt="enter tail: ")
+
+startstr="start chrome.exe "
+
+for(i in 1:16){
+{
+shell(paste0(startstr,theheader,thenum,thetail))
+thenum = as.integer(thenum) +1
+thenum = sprintf(paste0("%0", thenumchar, "d"), as.integer(thenum))
+}
+}
+

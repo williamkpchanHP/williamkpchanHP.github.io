@@ -1,0 +1,31 @@
+# http://pinkfineart.com/galleries/watch4beauty/875-kiara_lorens-casting/full/middle001.jpg
+# http://pinkfineart.com/watch4beauty/page/2/2/
+
+pageHeader="http://pinkfineart.com/watch4beauty/page/"
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+imgHeader = "<img src=\"/galleries/watch4beauty/"
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix()
+for (page in 1:13){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    thepage =gsub(".*watch4beauty/|/pthumbs/.*", "", thepage)  #purify
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholepage=theWholepage[-1]
+sink("watch4beauty.txt")
+cat(theWholepage, sep="\n")
+sink()
+
+#======

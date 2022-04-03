@@ -1,0 +1,27 @@
+# to compare two list and drop new comers
+# set operation only works on vector, so unlist the read.table
+
+cat("\n\nSelect the Target Table to be checked...\n")
+targetFile <- file.choose()
+targetTable <- unlist(read.table(targetFile, header=F, colClasses = "character"))
+Targetlistlength = length(targetTable)
+cat(targetFile,"\n")
+cat("Targetlistlength: ", Targetlistlength, "\n")
+
+cat("\n\nSelect the Master Table for comparison...\n")
+compareFile <- file.choose()
+compareTable <- unlist(read.table(compareFile, header=F, colClasses = "character"))
+Cmplistlength = length(compareTable)
+cat(compareFile,"\n")
+cat("Cmplistlength: ", Cmplistlength, "\n")
+
+intersetTable = intersect(targetTable,compareTable)
+diffTable = setdiff(targetTable, intersetTable)
+cat("\nAfter comparison, length of table left behind: ", length(diffTable), "\n")
+
+theInputName <<- strsplit(basename(targetFile), "\\.")[[1]][1]
+resultFile <<- paste0("output ",theInputName, ".txt")
+
+write(diffTable, resultFile)
+cat("\nComparison Completed!", "\n")
+

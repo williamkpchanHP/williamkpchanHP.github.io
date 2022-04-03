@@ -1,0 +1,38 @@
+# http://www.pinksmilfs.com/host/karups-ow/page/13/ ~ 16
+# <a href="/karups-ow/lauren/122/" title
+
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "karups-ow"
+totalpages = 16
+pageHeader= paste0("http://www.pinksmilfs.com/host/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "pagebarWrap"
+
+AhrefHeader = paste0('<a href="/', sitename, '/')
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+
+theWholeApage= matrix()
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    Ahreflinenum=grep(AhrefHeader, thepage)  # extract img
+    thepage=thepage[Ahreflinenum]
+
+    thepage =gsub(paste0('.*<a href="/', sitename, '/|" title=.*') , "", thepage)  #purify
+    theWholeApage=rbind(theWholeApage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholeApage=theWholeApage[-1]
+sink(paste0("Ahref-",sitename,".txt"))
+cat(theWholeApage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

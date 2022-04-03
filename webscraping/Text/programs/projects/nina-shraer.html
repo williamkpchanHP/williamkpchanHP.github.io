@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle images</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body { background-color: black;}
+html {height: 100%;  overflow:   scroll;}
+::-webkit-scrollbar { width: 0px; background: transparent;}
+body {margin: auto; width: 100%; background-color: #000000; color: #20C030; vertical-align:middle;}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;  vertical-align:middle;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea" style="vertical-align:middle;"> </div>
+
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == '-'){ backward();}
+  if(testkey == '+'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324497_4164d00.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324498_08ec537.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324499_8ebdd7e.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324500_4836735.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324501_bc188d8.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324502_14a37f3.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324503_06acfae.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324504_fc942aa.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324505_3d27741.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324506_69e530c.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324507_b8112eb.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324508_40d602b.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324509_fa3c0a4.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324510_f88e2d6.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324511_a545f16.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324512_623907e.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324513_74a1bc3.jpg">',
+'<img src="https://content.wafflegirl.com/galleries/content/2/324/2324514_cb6883b.jpg">','<img src="http://static.babesandstars.com/galleries/1000/1426/01.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/02.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/03.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/04.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/05.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/06.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/07.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/08.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/09.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/10.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/11.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/12.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/13.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/14.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/15.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/01.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/02.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/03.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/04.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/05.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/06.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/07.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/08.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/09.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/10.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/11.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/12.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/13.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/14.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1426/15.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/01.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/02.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/03.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/04.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/05.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/06.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/07.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/08.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/09.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/10.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/11.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/12.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/13.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/14.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1700/15.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/01.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/02.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/03.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/04.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/05.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/06.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/07.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/08.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/09.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/10.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/11.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/12.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/13.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/14.jpg">',
+'<img src="http://static.babesandstars.com/galleries/1000/1910/15.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/01.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/02.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/03.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/04.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/05.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/06.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/07.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/08.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/09.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/10.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/11.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/12.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/13.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/14.jpg">',
+'<img src="http://static.babesandstars.com/galleries/2000/2020/15.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/1.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/3.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/5.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/7.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/9.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/11.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/13.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/15.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/17.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/19.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/21.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/23.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/25.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/27.jpg">',
+'<img src="http://www.erotiqlinks.com/tgp/babes/nina-boobies/golemi/29.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/01.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/02.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/03.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/04.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/05.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/06.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/07.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/08.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/09.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/10.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/11.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/12.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/14.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/15.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/81/77/00/266d337aee/Nina-Shraer-twistys-13.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/01.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/02.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/03.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/04.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/05.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/06.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/07.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/08.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/09.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/10.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/11.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/13.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/14.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/15.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/16.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/82/77/00/4cefd5eeff/Nina-Shraer-twistys-12.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/01.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/02.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/03.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/04.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/05.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/06.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/07.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/08.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/09.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/10.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/11.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/12.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/13.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/14.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/15.jpg">',
+'<img src="http://cdn-i30.definebabe.com/_idb/g/83/77/00/12d156b123/Nina-Shraer-twistys-16.jpg">',
+];
+
+// Tip Limit counter
+	var listLen = ImgList.length, timer = 120000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+	console.log(ImgList[listLen]);
+}
+changeImg();
+// var myVar = setInterval(changeImg, timer);
+document.body.style.cursor = "none"
+
+</script>
+
+</body>
+</html>
+<pre>
+https://www.pornwatchers.com/video/nina-shraer-naked-with-her-wet-pussy-lips-out-10132.html
+http://www.great-babes.net/twisty150/nina_shraer/
+http://www.great-babes.net/blog/
+http://www.babesandstars.com/n/nina-shraer/
+https://www.nudevista.com/?q=nina+shraer&s=t
+https://tits-guru.com/boobs-model/nina-shraer
+https://www.pichunter.com/models/Nina_Shraer
+https://www.pornrabbit.com/video/30816192/nina-shraer-masturbates-eager-pussy
+https://www.youx.xxx/tag/nina-shraer/
+https://www.jjgirls.com/pornpics/twistys-nina-shraer-sleeping-pornbabe-purviindiansex
+https://www.boysfood.com/free-porn-videos/30816191/nina-shraer-masturbates-eager-pussy
+</pre>

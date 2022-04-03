@@ -1,0 +1,122 @@
+<head>
+<meta charset="utf-8">
+<title>xiser6</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'<img src="https://78.media.tumblr.com/0616481e061c92c2df5793aa8681303d/tumblr_pa1l9amI8e1v8bevto1_400.gif">',
+'<img src="https://78.media.tumblr.com/158b2a89df1e93028678dd61961c573f/tumblr_p5ssrnGUIJ1v8bevto1_400.gif">',
+'<img src="https://78.media.tumblr.com/1a75046d97e9602e098d31eef405ff84/tumblr_okmj4x8KPJ1vb7m49o1_400.gif">',
+'<img src="https://78.media.tumblr.com/46745c6d2bb363531416e9dae891002c/tumblr_oohlig6XJH1v8bevto1_400.gif">',
+'<img src="https://78.media.tumblr.com/c2de1f3d3c791872884ae74a634ed5cc/tumblr_ow1xf7j2W41vb7m49o1_400.gif">',
+'<img src="https://78.media.tumblr.com/cce475eb25749644d158641c4cbc76a0/tumblr_omh0fizIyq1vb7m49o1_400.gif">',
+'<img src="https://78.media.tumblr.com/2b463865e51a24b555d0dcb41ec1b04a/tumblr_oj0p9fA7Xg1vb7m49o1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/3dc431c5c0163927ca57f3888c88a731/tumblr_o9q5ql4aaT1vy16efo1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/422489c122501e1ea611e78b3bb01a56/tumblr_ok713sDM071v8bevto1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/47fee96a769204fdb734e724e4c632f7/tumblr_oogflbUqYY1v8bevto1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/640598aeeeca608e283d4e2b0dc6a0ea/tumblr_oj3ct53d8t1vb7m49o1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/899e760a0df9aaa264c2846b048dfa6c/tumblr_ojgfg7WTXI1vb7m49o1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/b2531bbf277ce3c0fcc9f0364ab62615/tumblr_ojg4xwsSqE1v8bevto1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/b30867a79bfbca7fe7814b72be07724f/tumblr_onui8kIa201v8bevto1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/bb8e12e85ef386ff03d6f0b8476bdf84/tumblr_oim637Qgxk1vb7m49o1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/e46d1bdcd9a2cdb71ad7a157f401d6fb/tumblr_olx51pKwGE1v8bevto1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/e5709d19006accf49fdac1083aa09134/tumblr_owv33cxSQn1vb7m49o1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/ec57249f74512dd2812a2c48b9ab4811/tumblr_oofgfym1U71v8bevto1_1280.jpg">',
+'<img src="https://78.media.tumblr.com/eb041bacf55320071fec27bcd569a67e/tumblr_oj8f7sBqzd1t33ltlo3_1280.jpg">',
+];
+
+var listLen = ImgList.length, timer = 25000;
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	var thePointerImg = document.querySelector('.imagearea');
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+changeImg();
+// var myVar = setInterval(changeImg, timer);
+</script>
+
+</body>
+</html>

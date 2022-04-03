@@ -1,0 +1,39 @@
+# http://pinkfineart.com/inthecrack/page/2/ ~ 16
+# <a href="/met-art/una-piccola-in-tonochi/104588/" title="PinkFineArt presents Una Piccola in Tonochi from Met-Art">
+
+
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "inthecrack"
+totalpages = 16
+pageHeader= paste0("http://pinkfineart.com/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+
+AhrefHeader = paste0('<a href="/inthecrack/')
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+
+theWholeApage= matrix()
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    Ahreflinenum=grep(AhrefHeader, thepage)  # extract img
+    thepage=thepage[Ahreflinenum]
+
+    thepage =gsub('.*<a href="/inthecrack/|" title=.*' , "", thepage)  #purify
+    theWholeApage=rbind(theWholeApage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholeApage=theWholeApage[-1]
+sink(paste0("Ahref-",sitename,".txt"))
+cat(theWholeApage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

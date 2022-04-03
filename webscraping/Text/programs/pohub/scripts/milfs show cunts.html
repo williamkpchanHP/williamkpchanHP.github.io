@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<style>
+body {background-color: black;}
+html {height: 100%; overflow:   scroll;}
+::-webkit-scrollbar {width: 0px; background: transparent;}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+  if(testkey == '-'){ addTo_RmvList();}
+  if(testkey == '*'){ show_RmvList();}
+  if(testkey == '/'){ clr_RmvList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var thePointerImg = document.querySelector('.imagearea');
+var ImgList = [
+'<img src="https://thumb-p9.xhcdn.com/a/IylZVuCEl0yBdP5pyJ6-kg/000/165/742/559_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/jG3H9_josys4chsA79dX6Q/000/165/742/676_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/DIgqdGapFEvUazKvazNYPw/000/165/742/675_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/571f-wX9N-hcYF8YpQfQYw/000/165/742/674_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/dOo7MPjLWAl581N521EtsA/000/165/742/673_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/dy0eOOAENXSq3RHNAdvwkA/000/165/742/672_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/UxxhVYTw--OvM8k2GA0FDg/000/165/742/671_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/kBGthRCBlGtBAwtnAczGDA/000/165/742/670_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/d4knor3GRPGIVXXwwPpGFA/000/165/742/669_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/bDqYkidvo5Hp074Tou_C_g/000/165/742/668_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/UP6j3qxQS5kxg3x33oAkxA/000/165/742/667_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/2eioQ0xLdSlmxsXWTI3XIw/000/165/742/666_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/6iD2IVQrbokQZIbP4-37Jg/000/165/742/665_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/mayZewSiKPufOke-D0IVDA/000/165/742/663_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/V60ESBDA09S6W0tZc3JPEw/000/165/742/662_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/o9uAIgkjMqHYzl5jLxxXVg/000/165/742/661_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/VaQML5ruP2rV4PEJIER_jg/000/165/742/660_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/za-pxtfBj3VahL8SXDL6Ow/000/165/742/659_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/nwZMhnFtnZ4Myb61qGrD1g/000/165/742/658_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/0q_r5px2vt7Nyaa7VFBjug/000/165/742/654_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/f6SmWiZNIOa_MK76e2r1Pw/000/165/742/653_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/QUCHh6GelrCkSGIBPNCyzA/000/165/742/652_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/wAEKzgvBrPdiEy2ZRJcQfA/000/165/742/651_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/PBU8UzcOjCpor57YFxdEyQ/000/165/742/650_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/mjV-oArghbEY7nbsYdBmQw/000/165/742/649_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/huXJo54SiQm_QhRkblv1mQ/000/165/742/646_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/XmSF22_YidSaBeJF_w6PFw/000/165/742/645_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/bfllzTVtrCtS2-OFMqcTbw/000/165/742/644_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/WL1tKpJYLyVJCwOAudK_8A/000/165/742/643_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/9_h1BYT37QUUS5-Qtj45Mg/000/165/742/642_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/sFwbk86_yLNk900nq3I_tw/000/165/742/641_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/icioBmVIfWhawUR5a_VBvQ/000/165/742/640_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/EMphDxZvN27tP2Z4ax2qGQ/000/165/742/639_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/T2lOpa09OPj5zhHm5rAHvg/000/165/742/638_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/ngNTNJUAbeUDnQrrXLxXhg/000/165/742/637_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/yWtlEu5O96JrJxBwPErz0w/000/165/742/636_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/pokFgQc7bA728wydW2vbeQ/000/165/742/635_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/weESJptj9Og8z7PZGDojvA/000/165/742/634_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/hKfhgm9nkP6UCt3v-jeHGg/000/165/742/633_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/UM_aDiDR_RkIp4Zel-OWHg/000/165/742/632_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/vWzWnYaj2pEVlmZswaHD9w/000/165/742/631_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/f488nT8ivMP1KJfzBbaMKg/000/165/742/630_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/m_IxucdE96MxqWJjO2oX7A/000/165/742/629_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/8UJE9a92-Af2F7ql6Ox6VA/000/165/742/628_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/BzwV9SzpLsOqM-hQ01Pzbg/000/165/742/627_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/VOk9iLtFK7iLpqz9Zw7DIA/000/165/742/626_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/E8jInlIJrxne-GAyOjw0OA/000/165/742/625_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/dalgVmhYN8eLsMtulnkPJg/000/165/742/624_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/syUsCIsdoi74OQ2YkiYJpw/000/165/742/623_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/Z3DZeBghbkp2MWui5xnLdQ/000/165/742/622_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/RHHo3PhcN3FR2jfe-Boiuw/000/165/742/621_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/kVcurCnFFzuGxBZRwXMlGQ/000/165/742/620_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/zUhqr-4ChbFm2Bd7X8HItw/000/165/742/618_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/OasugtCXAtmINQYTLzF_1A/000/165/742/617_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/HG0hhppr9o62BTYw7tTm5w/000/165/742/616_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/J-KspCfl1YNnyCoNaZcqlA/000/165/742/614_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/8r004eoDcAQ9i7xbvcP3TA/000/165/742/613_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/Pg5Ul6XfGTUafTb4ZuKZkw/000/165/742/612_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/WRvNT9l352WxfYtYr4733g/000/165/742/611_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/b8f_nsceNwgU_F2GyWH3qg/000/165/742/610_1000.jpg">',
+];
+
+
+var listLen = ImgList.length, timer = 15000;
+
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function showthumbs() {
+	imgNos = 0
+	theImgAddr = ""
+	for (var imgNos = 1; imgNos <= 18; imgNos++) {
+	temptheImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNos) + imgsTailer;
+	theImgAddr = theImgAddr + temptheImgAddr 
+	}
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_AllList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+	if (localStorage.getItem("toRmvList") === null) {
+	  toBeRmvList = [];
+	  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+	} else{
+	  toBeRmvList = JSON.parse(localStorage.toRmvList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  // check if the image already incluede
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList)) //Create an Array from a String
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    //alert("this image has been added to mypicList")
+    //console.log(mypicList);
+  }
+}
+
+function addTo_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  // check if the image already incluede
+  if (!toBeRmvList.includes(ImgList[listLen])) {
+    toBeRmvList.push(ImgList[listLen]);
+    toBeRmvList = Array.from(new Set(toBeRmvList)) //Create an Array from a String
+    localStorage.toRmvList = JSON.stringify(toBeRmvList);
+    //alert("this image has been added to toBeRmvList")
+    //console.log(toBeRmvList);
+  }
+}
+function show_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  console.log(toBeRmvList);
+  thePointerImg.innerHTML = escapeHtml(JSON.stringify(toBeRmvList));
+  copyStringToClipboard(toBeRmvList);
+  alert("listed in console! and copied to clipboard!");
+}
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+
+function clr_RmvList() {
+  toBeRmvList = [];
+  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+  alert("toBeRmvList has been cleared")
+}
+
+function copyStringToClipboard (str) {
+   var tempElement = document.createElement('textarea');
+   tempElement.value = str;
+   tempElement.setAttribute('readonly', '');
+   tempElement.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(tempElement);
+   tempElement.select();
+   document.execCommand('copy');
+   document.body.removeChild(tempElement);
+}
+
+init_AllList();
+changeImg();
+document.body.style.cursor = "none"
+
+</script>
+<script src="viewPic.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<style>
+body {background-color: black;}
+html {height: 100%; overflow:   scroll;}
+::-webkit-scrollbar {width: 0px; background: transparent;}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+  if(testkey == '-'){ addTo_RmvList();}
+  if(testkey == '*'){ show_RmvList();}
+  if(testkey == '/'){ clr_RmvList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var thePointerImg = document.querySelector('.imagearea');
+var ImgList = [
+
+'<img src="https://thumb-p3.xhcdn.com/a/dsgIFCZ2PTQIGbobLu-jyg/000/248/048/713_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/vv0fq-PoEXF_WmgFESzxCQ/000/248/048/779_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/h6mqSvcWOC-965c8ZGbZeA/000/248/048/771_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/1pL9xVHBtad0je2Qp-6YDA/000/248/048/769_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/eMicgx-bw56CO5n7eoXE3g/000/248/048/767_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/cbUDUHMmmC8pTRYlX5mSTg/000/248/048/764_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/tA2Ni7jp8X-o_NqeSsQx_A/000/248/048/760_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/npKI95zmEks947-0Z-WNpw/000/248/048/751_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/Id_uJyHP31_lJ_Kpjj9FpQ/000/248/048/743_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/HYQ3wCb-FL7umvBteMpocA/000/248/048/740_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/jBG9EWbpbFkt3fqVzTZ2rg/000/248/048/736_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/vc-25c0sW0cd-cDQSgjpPw/000/248/048/729_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/6kGUYTSfSkQ26xVWQTQmlw/000/248/048/721_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/xXNph_y4v-rg_RGINyZFYg/000/248/048/717_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/zbFSRG0fceh0XoclrfJ6aQ/000/248/048/715_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/ZctBeJmnvXSjwz6lvnxBzQ/000/248/048/712_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/TDVSIg1Cxa6yTH7M9nZBaw/000/248/048/710_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/NLW26y_lxmQ-xRCgbTUJ4w/000/248/048/709_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/KnogFNoJ0vGYupgiwdhsSg/000/248/048/708_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/lIjjDFWbGIOHUZnd13T1yg/000/073/113/487_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/qzOwYBhoxrBmY7duQBYx_A/000/073/113/495_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/8qP4UgGJoonXBM3vZcVrbw/000/073/113/494_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/gD-tkL9ZSS-857MT1R_5Hw/000/073/113/493_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/6MmpaEEonex3ZSIyatLpGg/000/073/113/492_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/dSnj1tHoqaQS3cfJLKIhXw/000/073/113/491_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/JlaXP25ZnnF8hFlMDtnwZg/000/073/113/490_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/oeaXtA2NOd6t7PAaXAXkmQ/000/073/113/489_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/Why8iKkT7ctIqseTeJU7hw/000/073/113/488_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/nlvNoXuvm5Qmt0O_9K43mQ/000/073/113/486_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/svazL-j_1p7VfZtCOdwmPA/000/089/980/750_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/VlEQ4ymj7s2tuyYnJkEDrg/000/089/980/756_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/ow0ollfhdYx1-XrrBPNpAA/000/089/980/755_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/8AP1ExiRwJ_rTJm4QwWTsw/000/089/980/754_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/pg0eJpZ3oD2kcEiPD3dDNQ/000/089/980/753_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/dSwn7JLbqGjNNQmc-BNILg/000/089/980/752_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/9CH1WQtl7B5uITUnmfpJZg/000/089/980/751_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/LimX8MHWVESKT46w_FM5LA/000/089/980/749_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/PsQak3agrzdG6th4eMJwFw/000/089/980/748_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/zPzrfwQz-7JYCdLZrLfSRA/000/089/980/747_1000.jpg">',
+];
+
+
+var listLen = ImgList.length, timer = 15000;
+
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function showthumbs() {
+	imgNos = 0
+	theImgAddr = ""
+	for (var imgNos = 1; imgNos <= 18; imgNos++) {
+	temptheImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNos) + imgsTailer;
+	theImgAddr = theImgAddr + temptheImgAddr 
+	}
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_AllList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+	if (localStorage.getItem("toRmvList") === null) {
+	  toBeRmvList = [];
+	  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+	} else{
+	  toBeRmvList = JSON.parse(localStorage.toRmvList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  // check if the image already incluede
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList)) //Create an Array from a String
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    //alert("this image has been added to mypicList")
+    //console.log(mypicList);
+  }
+}
+
+function addTo_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  // check if the image already incluede
+  if (!toBeRmvList.includes(ImgList[listLen])) {
+    toBeRmvList.push(ImgList[listLen]);
+    toBeRmvList = Array.from(new Set(toBeRmvList)) //Create an Array from a String
+    localStorage.toRmvList = JSON.stringify(toBeRmvList);
+    //alert("this image has been added to toBeRmvList")
+    //console.log(toBeRmvList);
+  }
+}
+function show_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  console.log(toBeRmvList);
+  thePointerImg.innerHTML = escapeHtml(JSON.stringify(toBeRmvList));
+  alert("listed in console!");
+}
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+
+function clr_RmvList() {
+  toBeRmvList = [];
+  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+  alert("toBeRmvList has been cleared")
+}
+init_AllList();
+changeImg();
+document.body.style.cursor = "none"
+
+</script>
+
+</body>
+</html>

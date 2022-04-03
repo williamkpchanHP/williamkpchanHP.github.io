@@ -1,0 +1,60 @@
+# http://www.pinksmilfs.com/page/7
+# 15 x 5 pics
+# 75 pages * 75 sets = 5625 sets
+# 5625 sets * 15 imgs = 84375 addrs
+pageHead = "thumbsContainer"
+pageTail = '<div class="pagebarWrap clear">'
+
+
+
+
+# http://www.pinksmilfs.com/host/anilos/	26 p
+
+# http://www.pinksmilfs.com/host/40-something-mag/	5p
+# http://www.pinksmilfs.com/host/karups-ow/	16p
+# http://www.pinksmilfs.com/content/karups-ow/galleries/2918-mercedes_johnson-naked_cougar-031413/pthumbs/001.jpg
+# http://www.pinksmilfs.com/content/karups-ow/galleries/2918-mercedes_johnson-naked_cougar-031413/pthumbs/015.jpg
+
+# http://www.pinksmilfs.com/host/lady-sonia/	6p
+# http://www.pinksmilfs.com/host/lusty-grandmas/		4p
+# http://www.pinksmilfs.com/host/my-friends-hot-mom/	4p
+# http://www.pinksmilfs.com/host/old-pussy-exam/	4p
+
+
+# this is first img http://pinkfineart.com/galleries/czech-casting/2974-christyna-050216/full/1.jpg
+# this is 20 img http://pinkfineart.com/galleries/czech-casting/2974-christyna-050216/full/20.jpg
+
+# http://pinkfineart.com/czech-casting/page/25/
+http://www.pinksmilfs.com/host/karups-ow/page/2
+
+# "anilos" this is the site name
+sitename = "karups-ow"
+pageHeader=paste0("http://www.pinksmilfs.com/host/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "<div class="pagebarWrap clear">"
+="/content/karups-ow/galleries/pamela_rivett-110612/pthumbs/pamela_rivett-5-1024-015.jpg" a
+
+imgHeader = paste0("<img src=\"/galleries/", sitename , "/")
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix()
+for (page in 1:16){
+    cat(" ",page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    thepage =gsub(paste0(".*", sitename, "/|/pthumbs.*"), "", thepage)  #purify
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholepage=theWholepage[-1]
+sink(paste0(sitename, ".txt"))
+cat(theWholepage, sep="\n")
+sink()
+

@@ -1,0 +1,73 @@
+# http://ddfcash.ddfstatic.com/content/ddf/51300/fulm/010.jpg
+# this added a midcounter, midConnect
+# next improvement is to read a list of addrs and show 20 pages and wait for a key press to continue
+# further improvement is to read the page and locate the img link
+# further improvement is to read the addr and write the web page and call it
+# further to tailor made for automating specific addr type to chop the diff parts
+# eg to chop the pink ftv addr, read addr, remove thumb,replace full, strip numbers and ext.
+# eg. to read the next btn
+
+setwd("C:/Users/g3363_000/Desktop/")
+theheader = ""
+midCounter = ""
+midConnect =""
+thefirstnum = ""
+thetotalnum = ""
+theEndnum = 15
+thetail = ""
+theImgHeader = "\n<img src='"
+
+for(loopnum in 1:100){
+  cat("\n")
+  promptMsg = paste(theheader, "  enter header: ")
+  Selection = readline(prompt = promptMsg)
+  if(Selection != "")   {
+    theheader = Selection
+  }
+  
+  promptMsg = paste(midCounter, "  enter midCounter: ")
+  Selection = readline(prompt = promptMsg)
+  if(Selection != "")   {
+    midCounter = Selection
+  }
+  
+  promptMsg = paste(midConnect, "  enter midConnect: ")
+  Selection = readline(prompt = promptMsg)
+  if(Selection != "")   {
+    midConnect = Selection
+  }
+
+  promptMsg = paste(thefirstnum, "  enter thefirstnum: ")
+  Selection = readline(prompt = promptMsg)
+  if(Selection != "")   {
+    thefirstnum = Selection
+  }
+  thenum = thefirstnum
+  thenumchar = nchar(thenum)
+  
+  promptMsg = paste(thetotalnum, "  enter thetotalnum: ")
+  Selection = readline(prompt = promptMsg)
+  if(Selection != "")   {
+    thetotalnum = Selection
+  }
+  thenum = thefirstnum
+  theEndnum = thetotalnum
+  
+  promptMsg = paste(thetail, "  enter thetail: ")
+  Selection = readline(prompt = promptMsg)
+  if(Selection != "")   {
+    thetail = Selection
+  }
+  
+  startstr="start chrome.exe --start-fullscreen "
+  sink("Temp.html")
+  cat('<body bgcolor="#000000">\n')
+  for(i in 1:theEndnum){
+    cat(paste0(theImgHeader ,theheader, midCounter, midConnect, thenum, thetail, "'>"))
+    thenum = as.integer(thenum) +1
+    thenum = sprintf(paste0("%0", thenumchar, "d"), as.integer(thenum))
+  }
+  sink()
+  shell(paste0(startstr, getwd(), "/", "Temp.html"))
+}
+  

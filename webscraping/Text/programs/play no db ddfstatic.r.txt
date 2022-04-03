@@ -1,0 +1,34 @@
+# http://ddfcash.ddfstatic.com/content/ddf/51300/fulm/008.jpg
+
+setwd("C:/Users/user/mpg/Text/programs")
+set.seed(sample(10000,1))
+set.seed(sample(10000,1))
+
+numberofimg = 16
+thelinkhead="http://ddfcash.ddfstatic.com/content/ddf/5"
+thelinktail=".jpg"
+startstr="start chrome.exe --start-fullscreen "
+
+thelistlength=3300
+trialnum = 25
+for(trial in 1:trialnum){
+cat("total pages:",thelistlength,"\n")
+theChoice=sample(1:thelistlength,1)
+Selection = readline(prompt="enter number: ")
+
+if(Selection != "")   {
+    theChoice = Selection
+  }
+cat(" ",theChoice," ")
+
+thepagenum = sprintf(paste0("%0", 4, "d"), as.integer(theChoice))
+ theCmdhead=paste0(startstr, thelinkhead, thepagenum, "/fulm/0")
+
+  for(thenum in numberofimg:1){
+#    thenumchar = nchar(thenum)
+    thenum = sprintf(paste0("%0", 2, "d"), as.integer(thenum))
+    shell(paste0(theCmdhead,thenum,thelinktail))
+    thenum = as.integer(thenum) +1
+  }
+}
+  

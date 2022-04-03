@@ -1,0 +1,37 @@
+
+# http://www.pinksmilfs.com/host/black-cougars/
+# src="/content/black-cougars/galleries/114-sasha_royce-ebony_cougar_posing-040812/pthumbs/5.jpg" alt="5.jpg" />
+
+setwd("C:/Users/user/mpg/Text/programs")
+sitename = "black-cougars"
+totalpages = 1
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+pageHeader= paste0("http://www.pinksmilfs.com/host/", sitename, "/")
+pageHead = "thumbsContainer"
+pageTail = "thumbsbanner"
+
+imgHeader = paste0("/content/black-cougars/galleries/")
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+theWholepage= matrix()
+for (page in 1:totalpages){
+    thepage=readLines(paste0(pageHeader))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    imglinenum=grep(imgHeader, thepage)  # extract img
+    thepage=thepage[imglinenum]
+
+    thepage =gsub(paste0(".*", imgHeader, "|/pthumbs.*"), "", thepage)  #purify
+    theWholepage=rbind(theWholepage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholepage=theWholepage[-1]
+sink(paste0(sitename,".txt"))
+cat(theWholepage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

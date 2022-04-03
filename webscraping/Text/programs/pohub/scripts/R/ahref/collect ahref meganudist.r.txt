@@ -1,0 +1,42 @@
+# http://meganudist.com/closeup/page/1/ ~4
+
+
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "meganudist"
+totalpages = 4
+pageHeader= paste0("http://meganudist.com/closeup/page/")
+pageHead = "maincontentwrp"
+pageTail = "navigation border"
+
+
+AhrefHeader = paste0('href="')
+# imgTail = "/pthumbs/"
+# imgReplace = "/full/"
+
+theWholeApage= matrix()
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    thepage=unlist(strsplit(thepage, split = ">"))
+
+    Ahreflinenum=grep(AhrefHeader, thepage)  # extract img
+    thepage=thepage[Ahreflinenum]
+
+    thepage =gsub(paste0('.*href="|html.*'), "", thepage)  #purify
+    thepage =paste0(thepage, "html")
+    theWholeApage=rbind(theWholeApage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholeApage=theWholeApage[-1]
+sink(paste0("Ahref-",sitename,".txt"))
+cat(theWholeApage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

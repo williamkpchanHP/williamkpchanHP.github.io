@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle Links</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'2011-02-05/1517_',
+'2011-02-05/1588_',
+'2011-02-05/1613_',
+'2011-02-06/1680_',
+'2011-02-08/1805_',
+'2011-02-08/1859_',
+'2011-02-09/1911_',
+'2011-02-10/2003_',
+'2011-02-19/3332_',
+'2011-02-19/3334_',
+'2011-03-14/5175_',
+'2011-03-15/5420_',
+'2011-03-15/5421_',
+'2011-03-26/6555_',
+'2011-03-28/6679_',
+'2011-03-29/6951_',
+'2011-03-30/7023_',
+'2011-06-10/14595_',
+'2011-06-11/14676_',
+'2011-06-12/14845_',
+'2011-06-13/14890_',
+'2011-06-13/14927_',
+'2011-07-11/18561_',
+'2011-09-07/25648_',
+'2011-09-08/25694_',
+'2011-09-08/25703_',
+'2011-09-08/25705_',
+'2012-03-03/50379_',
+'2012-04-27/56996_',
+'2012-09-08/66529_',
+'2013-02-21/94963_',
+'2013-02-21/95073_',
+'2013-10-08/269835_',
+'2014-01-31/274866_',
+'2014-10-30/158618_',
+'2014-10-30/158629_',
+'2015-02-21/307059_',
+'2015-04-30/179750_',
+'2015-04-30/179752_',
+'2016-01-18/210835_',
+'2016-01-19/210836_',
+'2016-01-19/211011_',
+'2016-01-21/211348_',
+'2016-03-06/340367_',
+'2016-05-19/224929_',
+'2016-05-19/224930_',
+'2016-05-31/226771_',
+'2016-06-03/227062_',
+'2016-07-28/233231_',
+'2016-07-28/363729_',
+'2016-07-31/233964_',
+'2016-08-08/234667_',
+'2016-08-14/235149_',
+'2016-10-13/242332_',
+'2016-10-16/371410_',
+'2016-10-16/371413_',
+'2016-12-02/249288_',
+'2016-12-07/249879_',
+'2016-12-07/249880_',
+'2016-12-29/391992_',
+'2016-12-29/391993_',
+'2017-02-02/256305_',
+'2017-02-27/259646_',
+'2017-03-07/260529_',
+'2017-03-09/403565_',
+'2017-03-09/403566_',
+'2017-03-12/261150_',
+'2017-03-12/261151_',
+'2017-06-26/271096_',
+'2017-07-25/274054_',
+'2017-08-10/475063_',
+'2017-08-10/475064_',
+'2017-09-03/278030_',
+'2017-09-06/278248_',
+'2017-09-06/278249_',
+'2017-10-12/480226_',
+'2017-10-12/480227_',
+'2017-10-17/281942_',
+'2017-10-17/281943_',
+'2017-11-15/285779_',
+'2017-11-15/285780_',
+'2017-11-30/484217_',
+'2018-01-03/487559_',
+'2018-02-03/500400_',
+'2018-02-04/500426_',
+'2009-10-12/30440_',
+
+];
+
+var listLen = ImgList.length, timer = 120000;
+var imgNo = 1;
+const imgHeader = "<img src='https://cdn.pornpics.com/pics/"
+const imgTailer = "big.jpg'>"
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	imgNo = 0;
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	theImgAddr = 0;
+	nextImg();
+}
+
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+changeImg();
+document.body.style.cursor = "none"
+</script>
+
+</body>
+</html>

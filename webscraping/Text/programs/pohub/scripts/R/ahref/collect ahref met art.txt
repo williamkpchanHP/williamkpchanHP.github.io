@@ -1,0 +1,42 @@
+# http://pinkfineart.com/met-art/page/2/ ~138
+# http://pinkfineart.com/galleries/met-art/met-art_2016-07-28_RINAJA/full/met-art_2016-07-28_RINAJA_01.jpg
+# <img src="/galleries/met-art/met-art_2016-07-28_RINAJA/pthumbs/met-art_2016-07-28_RINAJA_16.jpg
+# <img id="id-1-19" src="/galleries/met-art/met-art_2016-07-28_TONOCHI/pthumbs/met-art_2016-07-28_TONOCHI_01.jpg" alt="met-art/met-art_2016-07-28_TONOCHI/pthumbs/met-art_2016-07-28_TONOCHI_01.jpg"/>
+# <a href="/met-art/una-piccola-in-tonochi/104588/" title="PinkFineArt presents Una Piccola in Tonochi from Met-Art">
+
+
+setwd("C:/Users/user/mpg/Text/programs/ahref/")
+sitename = "met-art"
+totalpages = 138
+pageHeader= paste0("http://pinkfineart.com/", sitename, "/page/")
+pageHead = "thumbsContainer"
+pageTail = "firstBtn"
+
+AhrefHeader = paste0('<a href="/met-art/')
+imgTail = "/pthumbs/"
+imgReplace = "/full/"
+
+theWholeApage= matrix()
+cat("\n", sitename, " totalpages: ", totalpages, "\n")
+
+for (page in 1:totalpages){
+    cat(" ", page)
+    thepage=readLines(paste0(pageHeader,page))
+    headlinenum=grep(pageHead, thepage)  # chop head
+    thepage=thepage[-(1:headlinenum)]
+
+    taillinenum=grep(pageTail, thepage)  # chop tail
+    thepage=thepage[-(taillinenum:length(thepage))]
+
+    Ahreflinenum=grep(AhrefHeader, thepage)  # extract img
+    thepage=thepage[Ahreflinenum]
+
+    thepage =gsub('.*<a href=\"/met-art/|\" title=.*' , "", thepage)  #purify
+    theWholeApage=rbind(theWholeApage, matrix(thepage, ncol=1, byrow=T))
+}
+theWholeApage=theWholeApage[-1]
+sink(paste0("Ahref-",sitename,".txt"))
+cat(theWholeApage, sep="\n")
+sink()
+cat("\nJob complete!\n")
+#======

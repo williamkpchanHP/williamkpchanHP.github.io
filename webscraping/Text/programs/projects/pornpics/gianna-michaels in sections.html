@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width"/>
+<title>shuffle Links</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+
+<style>
+body {
+  background-color: black;
+}
+html {
+height: 100%;
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+
+<div class="imagearea"> </div>
+<script>
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+
+    return String.fromCharCode(event.which)
+  } else {
+    return null // special key
+  }
+}
+
+var ImgList = [
+'2010-08-22/145005_',
+'2011-02-05/1638_',
+'2011-02-08/1874_',
+'2011-02-16/2689_',
+'2011-04-19/8828_',
+'2011-04-19/8934_',
+'2011-04-22/9407_',
+'2011-04-22/9425_',
+'2011-04-27/10005_',
+'2011-04-27/9996_',
+'2011-06-14/14981_',
+'2011-06-14/194648_',
+'2011-07-29/21369_',
+'2011-07-29/21461_',
+'2011-07-30/21520_',
+'2011-07-30/21521_',
+'2011-08-02/21828_',
+'2011-08-03/21873_',
+'2011-08-03/21881_',
+'2011-08-03/21884_',
+'2011-08-03/21899_',
+'2011-08-03/21908_',
+'2011-08-03/21948_',
+'2011-08-03/21956_',
+'2011-08-03/21959_',
+'2011-08-03/21973_',
+'2011-08-03/22004_',
+'2011-08-03/22019_',
+'2011-08-07/22358_',
+'2011-08-08/22511_',
+'2011-08-08/22525_',
+'2011-08-10/22890_',
+'2011-08-10/22892_',
+'2011-08-10/22901_',
+'2011-08-11/22963_',
+'2011-08-11/22972_',
+'2011-08-11/23012_',
+'2011-08-11/23013_',
+'2011-08-11/23122_',
+'2011-08-11/23125_',
+'2011-08-12/23183_',
+'2011-08-12/23258_',
+'2011-08-13/23303_',
+'2011-08-13/23334_',
+'2011-08-13/23350_',
+'2011-08-13/23402_',
+'2011-08-16/23706_',
+'2011-09-19/26652_',
+'2011-09-20/26768_',
+'2012-04-24/56538_',
+'2012-07-12/61403_',
+'2012-08-03/64058_',
+'2012-08-12/64959_',
+'2012-08-12/64960_',
+'2012-10-07/76998_',
+'2012-11-25/81593_',
+'2012-11-25/81594_',
+'2012-11-27/81797_',
+'2012-12-20/250128_',
+'2013-03-07/93454_',
+'2013-03-12/95562_',
+'2013-08-27/268192_',
+'2013-11-13/120041_',
+'2014-01-14/127004_',
+'2014-01-15/127070_',
+'2014-01-28/128685_',
+'2014-02-03/129197_',
+'2014-02-03/129198_',
+'2014-02-03/129199_',
+'2014-02-03/129200_',
+'2014-02-24/132293_',
+'2014-04-26/139546_',
+'2014-05-15/141583_',
+'2014-05-16/141643_',
+'2014-05-16/141699_',
+'2014-05-17/141743_',
+'2014-05-30/142216_',
+'2014-05-30/142217_',
+'2014-05-30/142218_',
+'2014-07-08/145522_',
+'2014-07-08/145523_',
+'2014-07-10/145693_',
+'2014-10-20/156562_',
+'2014-10-30/158699_',
+'2014-11-20/160964_',
+'2014-11-20/160965_',
+'2014-12-25/286384_',
+'2015-06-02/182634_',
+'2015-06-02/182635_',
+'2015-07-10/185998_',
+'2015-07-10/185999_',
+'2015-07-11/186011_',
+'2015-07-16/186713_',
+'2015-08-19/299873_',
+'2015-12-22/297800_',
+'2016-05-07/350292_',
+'2016-05-07/350298_',
+'2016-05-09/350341_',
+'2016-05-09/350343_',
+'2016-05-27/226091_',
+'2016-05-27/226092_',
+'2016-05-27/226095_',
+'2016-05-28/226286_',
+'2016-05-28/226288_',
+'2016-07-29/233367_',
+'2016-09-25/240036_',
+'2016-09-30/240800_',
+'2016-11-04/379251_',
+'2016-12-23/388872_',
+'2016-12-23/388875_',
+'2017-02-02/256233_',
+'2017-02-02/256234_',
+'2017-04-18/264440_',
+'2017-05-18/267956_',
+'2017-05-18/267957_',
+'2017-06-02/268950_',
+'2017-06-03/269001_',
+'2017-06-03/269046_',
+'2017-06-05/269074_',
+'2017-06-07/269214_',
+'2017-07-24/273958_',
+'2017-07-26/273959_',
+'2017-12-02/484231_',
+'2017-12-27/290407_',
+'2017-12-27/290408_',
+'2018-02-02/498644_',
+'2018-02-24/505976_',
+
+];
+
+var listLen = ImgList.length, timer = 120000;
+var imgNo = 1;
+const imgHeader = "<img src='https://cdn.pornpics.com/pics/"
+const imgTailer = "big.jpg'>"
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen >= ImgList.length - 1) {
+		listLen = 0;
+	} else if (listLen < 0) {
+		listLen = ImgList.length - 1;
+	} else {
+		listLen = listLen + 1;
+	};
+	imgNo = 0;
+	showImg();
+};
+function backward() {
+	listLen = listLen - 2;
+	changeImg();
+}
+function foreward() {
+	changeImg();
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	theImgAddr = 0;
+	nextImg();
+}
+
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	var thePointerImg = document.querySelector('.imagearea');
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+changeImg();
+document.body.style.cursor = "none"
+</script>
+
+</body>
+</html>

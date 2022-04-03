@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>shuffle images</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+
+<style>
+body {background-color: black;}
+html {height: 100%; overflow:   scroll;}
+::-webkit-scrollbar {width: 0px; background: transparent;}
+
+body {
+ margin: auto;
+ width: 100%;
+ background-color: #000000;
+ color: #20C030;
+}
+img { width: 100%; display: block; margin-left: auto; margin-right: auto;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<div class="imagearea"> </div>
+<script>
+
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'b'){ backward();}
+  if(testkey == 'f'){ foreward();}
+  if(testkey == 'p'){ pause();}
+  if(testkey == 'c'){ continU();}
+  if(testkey == 's'){ showMov();}
+  if(testkey == 'd'){ nextImg();}
+  if(testkey == 'v'){ prevImg();}
+  if(testkey == '+'){ addTo_mypicList();}
+  if(testkey == '-'){ addTo_RmvList();}
+  if(testkey == '*'){ show_RmvList();}
+  if(testkey == '/'){ clr_RmvList();}
+}
+
+function getChar(event) {
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which)   // the rest
+  } else {
+    return null // special key
+  }
+}
+
+var thePointerImg = document.querySelector('.imagearea');
+var ImgList = [
+
+'<img src="https://thumb-p8.xhcdn.com/a/9etMxu9Rrc4m1So5awF2MQ/000/331/938/368_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/yuHWvCmt9yHCI51pg2gZkQ/000/331/938/400_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/UDicrownP68HkAz35CL49w/000/331/938/386_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/me8pma7AYze_q3QU6LMW9g/000/331/938/380_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/gTgcTlHpi--Va6ayS69IcA/000/331/938/365_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/81HEHkBSawEvgmADgPwUEw/000/331/938/358_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/LHE4F150BDZPY9a5pPqhlQ/000/331/938/351_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/GpdzJ0P9khfRmz-jLy6RRg/000/331/938/346_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/bFoH_34h90hdqh65xqPfVg/000/331/938/337_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/IwQEgXs6c5vyvADCqxpWvA/000/331/938/326_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/E9Z-7GmFipfWLAxHtNDItg/000/331/938/317_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/mgPZhxuLOajTLdHOjQ8-2w/000/331/938/313_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/3onMhIF0YnGBSkY2xsiKNQ/000/331/938/298_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/GrTeJSLeLRUH5Eyrtnp4Gg/000/331/938/288_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/PVl3k5Lt3HE4yIl6vJvDmw/000/331/938/273_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/GTzW4XX7dsjdCSqHh42q5A/000/331/938/267_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/BD9MBt4gENnL-0_Ue7giAg/000/331/938/254_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/HnIXK2PCv-jhBWn1Bl6pmQ/000/331/938/008_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/Tc16QhjKfbfQM69Jofx1Hg/000/331/937/988_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/Z_SZaf6strNeTxI5dmNAAA/000/331/937/981_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/DAWw-O2c_WBice3yeEiM-g/000/331/937/968_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/FMwrfR0hsM4KlFaTEfg_zw/000/331/937/960_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/anxJzzGbKwZwskVxaYIplw/000/331/937/953_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/IiGdSglFHTPyyHqBagBIZg/000/331/937/937_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/NMCmCqNPqzenOSEHGMi1ew/000/331/937/922_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/0CBjdyVvw_VgawrCUcuoeA/000/331/937/917_1000.jpg">',
+'<img src="https://thumb-p8.xhcdn.com/a/cdatAjonTRiJuoh6ag-eVw/000/331/937/908_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/JX7BRJUQkTq-dZv882Thlg/000/331/937/893_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/kv3rM9x68lIpCsRtS0zirw/000/331/937/886_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/jRJ33ZXI2LW-mfoQoHrvfg/000/331/937/873_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/2WBEV1VJgQFXu_im7w1OxA/000/331/937/851_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/cihwh4z-YXdH8Zsk5LxxfQ/000/331/937/847_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/84rcRevwC3sCGEvPeII5rg/000/331/937/833_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/MZFMHHQXh6M-bTZ6onou2A/000/331/937/806_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/UVYxzTLwWIMx26wcaq2pvQ/000/331/937/793_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/rRhM-NwiOQGsn5LukQnfZw/000/331/937/780_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/lgcdxsd590oAg-mB49DWHQ/000/331/937/776_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/tBM16_JVLNpi7W_3u80ksw/000/331/937/770_1000.jpg">',
+'<img src="https://thumb-p6.xhcdn.com/a/wLqXjVxi6dIwFzakFfwxRA/000/331/937/766_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/LFeG7iQpLAlo65tx2jIeqQ/000/331/937/764_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/oKrEm3ka4lb-E218QMb-RA/000/331/937/751_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/fq_E28FHbNHwAZHX9qq8IA/000/331/937/737_1000.jpg">',
+'<img src="https://thumb-p3.xhcdn.com/a/kcbv9hBk3eUbqhu-H46akA/000/331/937/733_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/Rof7L1utj98UFN2oD7jZhg/000/331/937/725_1000.jpg">',
+'<img src="https://thumb-p5.xhcdn.com/a/S0BfHJDo7utQUFx3jx4sKw/000/331/937/715_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/t1oFhmwtSx2VoqZl4_kehQ/000/331/937/712_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/5kpAbNLFx6NwqaROi-7sIw/000/331/937/701_1000.jpg">',
+'<img src="https://thumb-p1.xhcdn.com/a/HKJtLJjx4Mj2wBleAgtb5A/000/331/937/691_1000.jpg">',
+'<img src="https://thumb-p7.xhcdn.com/a/n3urrSltJz_YMNB08yQCwA/000/331/937/687_1000.jpg">',
+'<img src="https://thumb-p9.xhcdn.com/a/1gSreQkFxdWgIgJgUSJoMw/000/331/937/679_1000.jpg">',
+'<img src="https://thumb-p2.xhcdn.com/a/VQsEizh26PBjVnuA361Cag/000/331/937/662_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/mmAqCZUReGOBngZmTjnkqw/000/331/937/644_1000.jpg">',
+'<img src="https://thumb-p4.xhcdn.com/a/HaRZMg-TJGY0QF24aGRYew/000/331/937/634_1000.jpg">',
+'<img src="https://thumb-p0.xhcdn.com/a/1zgib4Xqdbj4d7JG5mo8dw/000/331/937/630_1000.jpg">',
+];
+
+
+var listLen = ImgList.length, timer = 15000;
+
+
+// Generate a number
+function shuffle(array) {
+    var i = ImgList.length, j = 0, temp;
+    while (i--) {
+        j = Math.floor(Math.random() * (i+1)); temp = ImgList[i];
+        ImgList[i] = ImgList[j]; ImgList[j] = temp;
+    }
+    return ImgList;
+}
+
+ImgList = shuffle(Array.from(Array(ImgList.length).keys()));
+
+function changeImg() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+	} else {
+		listLen = ImgList.length;
+	};
+	showImg();
+};
+function backward() {
+	if (listLen < ImgList.length) {
+		listLen = listLen + 1;
+		showImg();
+	};
+}
+function foreward() {
+	if (listLen > 0) {
+		listLen = listLen - 1;
+		showImg();
+	};
+}
+function pause() {
+	clearInterval(myVar);
+}
+function continU() {
+	myVar = setInterval(changeImg, timer);
+	foreward();
+}
+function showImg() {
+	thePointerImg.innerHTML = ImgList[listLen];
+}
+function nextImg() {
+	imgNo = imgNo +1;
+	if(imgNo > 16){ imgNo = 16;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+}
+
+function showthumbs() {
+	imgNos = 0
+	theImgAddr = ""
+	for (var imgNos = 1; imgNos <= 18; imgNos++) {
+	temptheImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNos) + imgsTailer;
+	theImgAddr = theImgAddr + temptheImgAddr 
+	}
+	thePointerImg.innerHTML = theImgAddr;
+	console.log(theImgAddr);
+
+}
+
+function prevImg() {
+	imgNo = imgNo -1;
+	if(imgNo < 1){ imgNo = 1;}
+	theImgAddr = imgHeader + ImgList[listLen] +  FormatNumberLength(imgNo) + imgTailer;
+	thePointerImg.innerHTML = theImgAddr;
+}
+
+
+function FormatNumberLength(num) {
+    var r = "" + num;
+    while (r.length < 2) {
+        r = "0" + r;
+    }
+    return r;
+}
+function showMov() {
+	var imgAdr = ImgList[listLen];
+	var start = imgAdr.indexOf("=")+1;
+	var end = imgAdr.indexOf('"', start+1);
+	var list = imgAdr.substring(start+1, end);
+	window.open(list);
+}
+
+
+function init_AllList() {
+	if (localStorage.getItem("savedPicList") === null) {
+	  mypicList = [];
+	  localStorage.savedPicList = JSON.stringify(mypicList);
+	} else{
+	  mypicList = JSON.parse(localStorage.savedPicList);
+	}
+	if (localStorage.getItem("toRmvList") === null) {
+	  toBeRmvList = [];
+	  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+	} else{
+	  toBeRmvList = JSON.parse(localStorage.toRmvList);
+	}
+}
+
+function addTo_mypicList() {
+  mypicList = JSON.parse(localStorage.savedPicList);
+  // check if the image already incluede
+  if (!mypicList.includes(ImgList[listLen])) {
+    mypicList.push(ImgList[listLen]);
+    mypicList = Array.from(new Set(mypicList)) //Create an Array from a String
+    localStorage.savedPicList = JSON.stringify(mypicList);
+    //alert("this image has been added to mypicList")
+    //console.log(mypicList);
+  }
+}
+
+function addTo_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  // check if the image already incluede
+  if (!toBeRmvList.includes(ImgList[listLen])) {
+    toBeRmvList.push(ImgList[listLen]);
+    toBeRmvList = Array.from(new Set(toBeRmvList)) //Create an Array from a String
+    localStorage.toRmvList = JSON.stringify(toBeRmvList);
+    //alert("this image has been added to toBeRmvList")
+    //console.log(toBeRmvList);
+  }
+}
+function show_RmvList() {
+  toBeRmvList = JSON.parse(localStorage.toRmvList);
+  console.log(toBeRmvList);
+  thePointerImg.innerHTML = escapeHtml(JSON.stringify(toBeRmvList));
+  copyStringToClipboard(toBeRmvList);
+  alert("listed in console! and copied to clipboard!");
+}
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+
+function clr_RmvList() {
+  toBeRmvList = [];
+  localStorage.toRmvList = JSON.stringify(toBeRmvList);
+  alert("toBeRmvList has been cleared")
+}
+
+function copyStringToClipboard (str) {
+   var tempElement = document.createElement('textarea');
+   tempElement.value = str;
+   tempElement.setAttribute('readonly', '');
+   tempElement.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(tempElement);
+   tempElement.select();
+   document.execCommand('copy');
+   document.body.removeChild(tempElement);
+}
+
+init_AllList();
+changeImg();
+document.body.style.cursor = "none"
+
+</script>
+
+</body>
+</html>

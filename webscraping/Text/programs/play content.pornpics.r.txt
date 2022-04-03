@@ -1,0 +1,35 @@
+# http://cdn.pornpics.com/pics/2015-09-05/191777_01big.jpg ~ 16
+
+setwd("C:/Users/user/mpg/Text/programs")
+set.seed(sample(100,1))
+
+sitename = "content.pornpics"
+numberofimg = 16
+
+thelinkhead="http://cdn.pornpics.com/pics/"
+thelinkmid="_"
+thelinktail="big.jpg"
+startstr="start chrome.exe --start-fullscreen "
+
+thelist=readLines(paste0(sitename, ".txt"))
+thelistlength=length(thelist)
+trialnum = 25
+for(trial in 1:trialnum){
+cat("total pages:",thelistlength,"\n")
+theChoice=sample(1:thelistlength,1)
+Selection = readline(prompt="enter number: ")
+
+if(Selection != "")   {
+    theChoice = Selection
+  }
+cat(" ",theChoice," ")
+ theCmdhead=paste0(startstr,thelinkhead,thelist[theChoice],thelinkmid)
+
+  for(thenum in numberofimg:1){
+#    thenumchar = nchar(thenum)
+    thenum = sprintf(paste0("%0", 2, "d"), as.integer(thenum))
+    shell(paste0(theCmdhead,thenum,thelinktail))
+    thenum = as.integer(thenum) +1
+  }
+}
+  

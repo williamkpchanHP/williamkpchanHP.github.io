@@ -1,0 +1,38 @@
+# extract the img html
+# http://homenge.blogspot.hk/2011/10/football-body-painting-costum.html
+
+dirStr = "C:/Users/g3363_000/Desktop/"
+setwd(dirStr)
+sitename = "homenge"
+pageAddr = "http://homenge.blogspot.hk/2011/10/football-body-painting-costum.html"
+startstr="start chrome.exe --start-fullscreen "
+
+pageHead = "post-body entry-content"
+pageTail = 'post-footer-line post-footer'
+imgHeader = 'src=\"'
+
+  thepage=readLines(pageAddr, warn = F)
+  headlinenum=grep(pageHead, thepage)  # chop head
+  thepage=thepage[-(1:headlinenum)]
+  thepage=unlist(strsplit(thepage, split = ">"))
+
+  taillinenum=grep(pageTail, thepage)  # chop tail
+  thepage=thepage[-(taillinenum:length(thepage))]
+
+  imglinenum=grep(imgHeader, thepage)  # extract img
+  thepage=thepage[imglinenum]
+
+  thepage =gsub('.*src="|jpg.*', "", thepage)  #purify
+#  thepage =gsub("pthumbs", "full", thepage)  #purify
+  thepage =paste0(thepage, "jpg")
+
+theOutputName = paste0(sitename,"Img.html")
+  sink(theOutputName)
+  cat('<body bgcolor="#000000">\n')
+  for(thenum in 1:length(thepage)){
+    cat(paste0("\n<img src='" ,thepage[thenum], "'>"))
+  }
+  sink()
+  shell(paste0(startstr,dirStr, theOutputName))
+
+

@@ -1,0 +1,65 @@
+# some projects
+# http://www.nicepussypics.com/naked-pussy/
+# http://galleries.sunrisekings.com/pics/christine-vinson/01/?nats=bustypassion.6.1.1.0.1080.0.0.0
+
+
+# <a href="/pin/621707923529245149/" class="pinImageWrapper draggable"
+# http://www.milfs30.com/wp-content/uploads/2016/07/ang010039005923009.jpg
+# https://www.pinterest.com/
+
+set.seed(sample(1000,1))
+set.seed(sample(1000,1))
+
+dirStr = "C:/Users/user/mpg/Text/programs/"
+setwd(dirStr)
+sitename = "pinterest"
+
+siteFilename = paste0(sitename, ".txt")
+startstr="start chrome.exe --start-fullscreen "
+
+thelinkhead="https://www.pinterest.com/"
+pageHead = '<div class="content">'
+pageTail = '<div class="video-category'
+
+pagewebname = ""
+imgHeader = '<img'
+
+thelist=readLines(siteFilename)
+thelistlength=length(thelist)
+trialnum = 25
+
+for(trial in 1:trialnum){
+  cat("total pages:",thelistlength,"\n")
+  theChoice=sample(1:thelistlength,1)
+  Selection = readline(prompt="enter number: ")
+  if(Selection != "")   {
+    theChoice = as.numeric(Selection)
+  }
+  cat(" ",theChoice," ")
+  pageAddr =paste0("http://www.milfs30.com/", thelist[theChoice])
+  cat(pageAddr, '\n')
+  thepage=readLines(pageAddr, warn = F)
+  headlinenum=grep(pageHead, thepage)  # chop head
+  thepage=thepage[-(1:headlinenum)]
+
+  taillinenum=grep(pageTail, thepage)  # chop tail
+  thepage=thepage[-(taillinenum:length(thepage))]
+
+  thepage=unlist(strsplit(thepage, split = ">"))
+
+  imglinenum=grep('src="', thepage)  # extract img
+  thepage=thepage[imglinenum]
+
+  thepage =gsub('.*uploads|-.*', "", thepage)  #purify
+  thepage =paste0("http://www.milfs30.com/wp-content/uploads", thepage,".jpg")
+
+  sink("Temp.html")
+  cat('<body bgcolor="#000000">\n')
+  for(thenum in 1:length(thepage)){
+    cat(paste0("\n<img src='" ,thepage[thenum], "'>"))
+  }
+  sink()
+  shell(paste0(startstr,dirStr, "Temp.html"))
+}
+
+                        
