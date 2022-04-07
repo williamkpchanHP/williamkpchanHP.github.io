@@ -1,0 +1,118 @@
+<base target="_blank"><html><head><title>pppp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "<br>";
+  var bookid = "pppp"
+  var markerName = "h2"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+.stop-scrolling { height: 100%; overflow: hidden; }
+iframe {width:100%; height:100%;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>pppp</h1>
+<a href="#mustWatch" class="red goldbs" target="_self">Must Watch!</a>
+<br><br>
+<div id="toc"></div></center>
+<br><br>
+<div id="mustWatch"><center><span class="red">MustWatch</span></center><br>
+</div>
+<pre>
+<br>
+<br>
+<h2>CSS dynamic Loading</h2>
+&lt;style>
+body,
+html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+div {
+    position: relative; width: 200px; height: 200px;
+    border-radius: 50%; margin: auto;
+    transform: rotate(360deg);
+    animation: rotate 45s infinite linear; }
+
+div::before {
+    position: absolute;
+    content: ""; top: 0px; left: 0px; right: 0px; bottom: 0px;
+    box-sizing: border-box;
+    border-radius: 50%; border-top: 3px solid #000;
+    border-left: 3px solid #000;
+    border-bottom: 3px solid transparent;
+    border-right: 3px solid transparent;
+    transform: rotate(720deg);
+    animation: rotate 3s infinite ease-out;
+}
+
+div::after {
+    position: absolute;
+    content: "";
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #fff;
+    border-left: 7px solid #fff;
+    transform: rotate(720deg);
+    animation: rotate 3s infinite ease-in-out;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(0deg); }
+}
+
+.color::after {
+    position: absolute;
+    content: "";
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid rgba(255, 0, 0, .8);
+    border-left: 7px solid rgba(255, 0, 0, .8);
+    transform: rotate(720deg);
+    animation: rotate 3s infinite ease-in-out;
+}
+&lt;/style>
+
+&lt;div>&lt;/div>
+&lt;div class="color">&lt;/div>
+
+
+
+
+
+
+
+
+
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>
+</pre></body></html>
