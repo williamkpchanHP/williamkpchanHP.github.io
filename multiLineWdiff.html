@@ -190,8 +190,9 @@ commands:
          data1 = mydata[0]
          data2 = mydata[1]
          theDiff = data1.map((valueA, indexInA) => valueA - data2[indexInA])
-         dataDiffTrend = makeMovAve(theDiff, 5);
-         dataDiff = [theDiff, dataDiffTrend]
+         dataDiffTrend5 = makeMovAve(theDiff, 5);
+         dataDiffTrend10 = makeMovAve(theDiff, 10);
+         dataDiff = [theDiff, dataDiffTrend5, dataDiffTrend10]
 
          //console.log(chartId)
          redrawLines(chartId)
