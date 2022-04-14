@@ -1210,7 +1210,6 @@ pictList = [
 '<img src="https://i.pinimg.com/564x/ae/d7/a9/aed7a9a112bfc6e83e79d4cfe5cbc88c.jpg">',
 '<img src="https://i.pinimg.com/564x/80/92/cf/8092cf79a6782ca9f98ecc08997cab22.jpg">',
 '<img src="https://i.pinimg.com/564x/64/a9/ba/64a9ba06a51cfb6b911fd5def9b1e654.jpg">',
-'<img src="https://i.pinimg.com/564x/20/85/e0/2085e0d13756418f8fafd4b3511988fd.jpg">',
 '<img src="https://i.pinimg.com/564x/d6/19/12/d61912890f596c20c23e208de0ebc843.jpg">',
 '<img src="https://i.pinimg.com/564x/06/64/51/066451b63c9bc1e2f57a55996505af52.jpg">',
 '<img src="https://i.pinimg.com/564x/86/b6/39/86b639e4ad2647faa81045159709a88c.jpg">',

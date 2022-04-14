@@ -199,17 +199,17 @@ commands:
          data1 = mydata[0]
          data2 = mydata[1]
          theDiff = data1.map((valueA, indexInA) => valueA - data2[indexInA])
-         dataDiffTrend5 = makeMovAve(theDiff, 5);
-         dataDiffTrend5.fill(null,0,4);
-         dataDiffTrend10 = makeMovAve(theDiff, 10);
-         dataDiffTrend10.fill(null,0,9);
+         dataDiffTrend5 = makeMovAve(theDiff, 4);
+         dataDiffTrend5.fill(null,0,3);
+         dataDiffTrend10 = makeMovAve(theDiff, 8);
+         dataDiffTrend10.fill(null,0,7);
          dataDiff = [theDiff, dataDiffTrend5, dataDiffTrend10]
 
          diffAcc = []
          diffAcc.push(dataDiff[0].map(function(item, index) { return item - dataDiff[2][index]; }))
          diffAcc.push(dataDiff[1].map(function(item, index) { return item - dataDiff[2][index]; }))
-         diffAcc[0].fill(null,0,9); //array.fill(value, start, end)
-         diffAcc[1].fill(null,0,9); //array.fill(value, start, end)
+         diffAcc[0].fill(null,0,7); //array.fill(value, start, end)
+         diffAcc[1].fill(null,0,7); //array.fill(value, start, end)
 
 
          //console.log(chartId)
