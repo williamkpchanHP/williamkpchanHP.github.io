@@ -433,6 +433,327 @@ There’s no shortage in how data visualization can be applied in the real world
 Data is playing an increasingly important role in the marketplace today, and data literacy is the first step in understanding how analytics can be used in business. 
 
 
+<h2>K-Means Clustering in R Programming</h2>
+
+K Means Clustering in R Programming is an Unsupervised Non-linear algorithm that cluster data based on similarity or similar groups. It seeks to partition the observations into a pre-specified number of clusters. Segmentation of data takes place to assign each training example to a segment called a cluster. In the unsupervised algorithm, high reliance on raw data is given with large expenditure on manual review for review of relevance is given. It is used in a variety of fields like Banking, healthcare, retail, Media, etc.
+<h4>Theory</h4>
+K-Means clustering groups the data on similar groups. The algorithm is as follows:
+Choose the number <b>K</b> clusters.
+Select at random K points, the centroids(Not necessarily from the given data).
+Assign each data point to closest centroid that forms K clusters.
+Compute and place the new centroid of each centroid.
+Reassign each data point to new cluster.
+
+After final reassignment, name the cluster as Final cluster.
+<h4>The Dataset</h4>
+<b><code>Iris</code></b> dataset consists of 50 samples from each of 3 species of Iris(Iris setosa, Iris virginica, Iris versicolor) and a multivariate dataset introduced by British statistician and biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems. Four features were measured from each sample i.e length and width of the sepals and petals and based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.
+
+<code># Loading data
+data(iris)
+
+# Structure 
+str(iris)</code>
+
+<h4>Performing K-Means Clustering on Dataset</h4>
+Using K-Means Clustering algorithm on the dataset which includes 11 persons and 6 variables or attributes
+
+<code># Installing Packages
+install.packages("ClusterR")
+install.packages("cluster")
+
+# Loading package
+library(ClusterR)
+library(cluster)
+
+# Removing initial label of 
+# Species from original dataset
+iris_1 &lt;- iris[, -5]
+
+# Fitting K-Means clustering Model 
+# to training dataset
+set.seed(240) # Setting seed
+kmeans.re &lt;- kmeans(iris_1, centers = 3, nstart = 20)
+kmeans.re
+
+# Cluster identification for 
+# each observation
+kmeans.re$cluster
+
+# Confusion Matrix
+cm &lt;- table(iris$Species, kmeans.re$cluster)
+cm
+
+# Model Evaluation and visualization
+plot(iris_1[c("Sepal.Length", "Sepal.Width")])
+plot(iris_1[c("Sepal.Length", "Sepal.Width")], 
+     col = kmeans.re$cluster)
+plot(iris_1[c("Sepal.Length", "Sepal.Width")], 
+     col = kmeans.re$cluster, 
+     main = "K-means with 3 clusters")
+
+## Plotiing cluster centers
+kmeans.re$centers
+kmeans.re$centers[, c("Sepal.Length", "Sepal.Width")]
+
+# cex is font size, pch is symbol
+points(kmeans.re$centers[, c("Sepal.Length", "Sepal.Width")], 
+       col = 1:3, pch = 8, cex = 3) 
+
+## Visualizing clusters
+y_kmeans &lt;- kmeans.re$cluster
+clusplot(iris_1[, c("Sepal.Length", "Sepal.Width")],
+         y_kmeans,
+         lines = 0,
+         shade = TRUE,
+         color = TRUE,
+         labels = 2,
+         plotchar = FALSE,
+         span = TRUE,
+         main = paste("Cluster iris"),
+         xlab = 'Sepal.Length',
+         ylab = 'Sepal.Width')</code>
+
+<b>Output:</b>
+<b>Model kmeans_re:</b>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200617025946/Capture552.png">
+
+The 3 clusters are made which are of 50, 62, and 38 sizes respectively. Within the cluster, the sum of squares is 88.4%.
+
+<b>Cluster identification:</b>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200617030059/Capture-1105.png">
+
+The model achieved an accuracy of 100% with a p-value of less than 1. This indicates the model is good.
+
+<b>Confusion Matrix:</b>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200617030139/Capture_22.png">
+
+So, 50 Setosa are correctly classified as Setosa. Out of 62 Versicolor, 48 Versicolor are correctly classified as Versicolor and 14 are classified as virginica. Out of 36 virginica, 19 virginica are correctly classified as virginica and 2 are classified as Versicolor.
+
+<b>K-means with 3 clusters plot:</b><br><img src="https://media.geeksforgeeks.org/wp-content/uploads/20200617030334/capture_33.png">
+The model showed 3 cluster plots with three different colors and with Sepal.length and with Sepal.width.
+
+<b>Plotting cluster centers:</b>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200617030506/Capture_4.png">
+
+In the plot, centers of clusters are marked with cross signs with the same color of the cluster.
+
+<b>Plot of clusters:</b>
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20200617182045/Capture_6.png">
+
+So, 3 clusters are formed with varying sepal length and sepal width. Hence, the K-Means clustering algorithm is widely used in the industry.
+
+
+<h2>K-Means Clustering in R: Step-by-Step Example</h2>
+Clustering is a technique in machine learning that attempts to find <em>clusters</em> of observations within a dataset.
+The goal is to find clusters such that the observations within each cluster are quite similar to each other, while observations in different clusters are quite different from each other.
+
+Clustering is a form of unsupervised learning because we&#8217;re simply attempting to find structure within a dataset rather than predicting the value of some response variable.
+Clustering is often used in marketing when companies have access to information like:
+
+Household income
+Household size
+Head of household Occupation
+Distance from nearest urban area
+
+When this information is available, clustering can be used to identify households that are similar and may be more likely to purchase certain products or respond better to a certain type of advertising.
+
+One of the most common forms of clustering is known as<b>k-means clustering</b>.
+<h3>What is K-Means Clustering?</h3>
+K-means clustering is a technique in which we place each observation in a dataset into one of <em>K</em> clusters.
+
+The end goal is to have<em>K</em>clusters in which the observations within each cluster are quite similar to each other while the observations in different clusters are quite different from each other.
+In practice, we use the following steps to perform K-means clustering:
+<b>1. Choose a value for<em>K</em>.</b>
+First, we must decide how many clusters we&#8217;d like to identify in the data. 
+Often we have to simply test several different values for <em>K</em> and analyze the results to see which number of clusters seems to make the most sense for a given problem.
+
+<b>2. Randomly assign each observation to an initial cluster, from 1 to<em>K.</em></b>
+<b>3. Perform the following procedure until the cluster assignments stop changing.</b>
+
+For each of the<em>K</em>clusters, compute the cluster<em>centroid.</em> This is simply the vector of the <em>p</em> feature means for the observations in the <em>k</em>th cluster.
+Assign each observation to the cluster whose centroid is closest. 
+
+Here,<em>closest</em> is defined using <a href="https://en.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance" target="_blank" rel="noopener noreferrer">Euclidean distance</a>.
+
+<h3>K-Means Clustering in R</h3>
+The following tutorial provides a step-by-step example of how to perform k-means clustering in R.
+
+<h3>Step 1: Load the Necessary Packages</h3>
+First, we&#8217;ll load two packages that contain several useful functions for k-means clustering in R.
+
+<b>library(factoextra)
+library(cluster)</b>
+
+<h3>Step 2: Load and Prep the Data</h3>
+For this example we&#8217;lluse the <em>USArrests</em>dataset built into R, which contains the number of arrests per 100,000 residents in each U.S. 
+state in 1973 for <em>Murder</em>, <em>Assault</em>, and <em>Rape </em>along with the percentage of the population in each state living in urban areas, <em>UrbanPop</em>.
+
+The following code shows how to do the following:
+Load the <em>USArrests</em> dataset
+Remove any rows with missing values
+
+Scale each variable in the dataset to have a mean of 0 and a standard deviation of 1
+
+<b>#load data
+df &lt;- USArrests
+#remove rows with missing values</b>
+<b>df &lt;- na.omit(df)
+
+#scale each variable to have a mean of 0 and sd of 1</b>
+df &lt;- scale(df)
+#view first six rows of dataset
+head(df)
+Murder   Assault   UrbanPop         Rape
+Alabama    1.24256408 0.7828393 -0.5209066 -0.003416473
+Alaska     0.50786248 1.1068225 -1.2117642  2.484202941
+Arizona    0.07163341 1.4788032  0.9989801  1.042878388
+Arkansas   0.23234938 0.2308680 -1.0735927 -0.184916602
+California 0.27826823 1.2628144  1.7589234  2.067820292
+Colorado   0.02571456 0.3988593  0.8608085  1.864967207
+
+<h3>Step 3: Find the Optimal Number of Clusters</h3>
+
+To perform k-means clustering in R we can use the built-in <b>kmeans()</b> function, which uses the following syntax:
+<b>kmeans(data, centers, nstart)</b>
+where:
+<b>data:</b> Name of the dataset.
+<b>centers:</b> The number of clusters, denoted <em>k</em>.
+<b>nstart:</b> The number of initial configurations. 
+Because it&#8217;s possible that different initial starting clusters can lead to different results, it&#8217;s recommended to use several different initial configurations. 
+
+The k-means algorithm will find the initial configurations that lead to the smallest within-cluster variation.
+
+Since we don&#8217;t know beforehand how many clusters is optimal, we&#8217;ll create two different plots that can help us decide:
+
+<b>1. Number of Clusters vs. the Total Within Sum of Squares</b>
+
+First, we&#8217;ll use the<b>fviz_nbclust()</b> function to create a plot of the number of clusters vs. 
+the total within sum of squares:
+<b>fviz_nbclust(df, kmeans, method = "wss")</b>
+
+<img class="lazy" data-src="https://www.statology.org/wp-content/uploads/2020/12/kmean1.png">
+Typically when we create this type of plot we look for an &#8220;elbow&#8221; where the sum of squares begins to &#8220;bend&#8221; or level off. 
+This is typically the optimal number of clusters.
+
+For this plot it appear that there is a bit of an elbow or &#8220;bend&#8221; at k = 4 clusters.
+<b>2. Number of Clusters vs. Gap Statistic</b>
+Another way to determine the optimal number of clusters is to use a metric known as the <a href="http://web.stanford.edu/~hastie/Papers/gap.pdf" target="_blank" rel="noopener noreferrer">gap statistic</a>, which compares the total intra-cluster variation for different values of k with their expected values for a distribution with no clustering.
+We can calculate the gap statistic for each number of clusters using the<b>clusGap()</b> function from the<em>cluster</em> package along with a plot of clusters vs. 
+
+gap statistic using the <b>fviz_gap_stat()</b> function:
+<b>#calculate gap statistic based on number of clusters
+gap_stat &lt;- clusGap(df, FUN = kmeans, nstart = 25, K.max = 10, B = 50)
+#plot number of clusters vs. gap statistic
+fviz_gap_stat(gap_stat)</b>
+<img class="lazy" data-src="https://www.statology.org/wp-content/uploads/2020/12/kmean2.png">
+From the plot we can see that gap statistic is highest at k = 4 clusters, which matches the elbow method we used earlier.
+
+<h3>Step 4: Perform K-Means Clustering with Optimal <em>K</em></h3>
+
+Lastly, we can perform k-means clustering on the dataset using the optimal value for<em>k</em> of 4:
+
+#make this example reproducible
+set.seed(1)
+#perform k-means clustering with k = 4 clusters
+km &lt;- kmeans(df, centers = 4, nstart = 25)
+
+#view results
+km
+K-means clustering with 4 clusters of sizes 16, 13, 13, 8
+
+Cluster means:
+Murder    Assault   UrbanPop        Rape
+1 -0.4894375 -0.3826001  0.5758298 -0.26165379
+2 -0.9615407 -1.1066010 -0.9301069 -0.96676331
+3  0.6950701  1.0394414  0.7226370  1.27693964
+4  1.4118898  0.8743346 -0.8145211  0.01927104
+
+Clustering vector:
+Alabama         Alaska        Arizona       Arkansas     California       Colorado 
+4              3              3              4              3              3 
+
+Connecticut       Delaware        Florida        Georgia         Hawaii          Idaho 
+1              1              3              4              1              2 
+Illinois        Indiana           Iowa         Kansas       Kentucky      Louisiana 
+
+3              1              2              1              2              4 
+Maine       Maryland  Massachusetts       Michigan      Minnesota    Mississippi 
+2              3              1              3              2              4 
+
+Missouri        Montana       Nebraska         Nevada  New Hampshire     New Jersey 
+3              2              2              3              2              1 
+New Mexico       New York North Carolina   North Dakota           Ohio       Oklahoma 
+3              3              4              2              1              1 
+Oregon   Pennsylvania   Rhode Island South Carolina   South Dakota      Tennessee 
+1              1              1              4              2              4 
+Texas           Utah        Vermont       Virginia     Washington  West Virginia 
+3              1              2              1              1              2 
+Wisconsin        Wyoming 
+2              1 
+Within cluster sum of squares by cluster:
+[1] 16.212213 11.952463 19.922437  8.316061
+
+(between_SS / total_SS =  71.2 %)
+Available components:
+[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss" "betweenss"   
+
+[7] "size"         "iter"         "ifault"         
+
+From the results we can see that:
+<b>16 </b>states were assigned to the first cluster
+<b>13</b> states were assigned to the second cluster
+<b>13</b> states were assigned to the third cluster
+<b>8 </b>states were assigned to the fourth cluster
+We can visualize the clusters on a scatterplot that displays the first two principal components on the axes using the<b>fivz_cluster()</b> function:
+<b>#plot results of final k-means model
+fviz_cluster(km, data = df)
+</b>
+<img class="lazy" data-src="https://www.statology.org/wp-content/uploads/2020/12/kmean4.png">
+We can also use the<b>aggregate()</b> function to find the mean of the variables in each cluster:
+
+#find means of each cluster
+aggregate(USArrests, by=list(cluster=km$cluster), mean)
+cluster	  Murder   Assault	UrbanPop	    Rape
+1	3.60000	  78.53846	52.07692	12.17692
+2	10.81538 257.38462	76.00000	33.19231
+3	5.65625	 138.87500	73.87500	18.78125
+4	13.93750 243.62500	53.75000	21.41250
+
+We interpret this output is as follows:
+The mean number of murders per 100,000 citizens among the states in cluster 1 is <b>3.6</b>.
+The mean number of assaults per 100,000 citizens among the states in cluster 1 is <b>78.5</b>.
+
+The mean percentage of residents living in an urban area among the states in cluster 1 is <b>52.1%</b>.
+The mean number of rapes per 100,000 citizens among the states in cluster 1 is <b>12.2</b><b>.</b>
+And so on.
+We can also append the cluster assignments of each state back to the original dataset:
+<b>#add cluster assigment to original data
+
+final_data &lt;- cbind(USArrests, cluster = km$cluster)
+#view final data
+head(final_data)
+
+Murder	Assault	UrbanPop  Rape	 cluster
+Alabama	    13.2	236	58	  21.2	 4
+Alaska	    10.0	263	48	  44.5	 2
+Arizona	     8.1	294	80	  31.0	 2
+Arkansas     8.8	190	50	  19.5	 4
+California   9.0	276	91	  40.6	 2
+Colorado     7.9	204	78	  38.7	 2
+</b>
+<h3>Pros &amp; Cons of K-Means Clustering</h3>
+K-means clustering offers the following benefits:
+
+It is a fast algorithm.
+
+It can handle large datasets well.
+
+However, it comes with the following potential drawbacks:
+It requires us to specify the number of clusters before performing the algorithm.
+It&#8217;s sensitive to outliers.
+Two alternatives to k-means clustering are <a href="https://www.statology.org/k-medoids-in-r/" target="_blank" rel="noopener noreferrer">k-medoids clustering</a> and <a href="https://www.statology.org/hierarchical-clustering-in-r/" target="_blank" rel="noopener noreferrer">hierarchical clustering</a>.
+You can find the complete R code used in this example <a href="https://github.com/Statology/R-Guides/blob/main/k_means.R" target="_blank" rel="noopener noreferrer">here</a>.
+
 
 
 
