@@ -1,0 +1,136 @@
+<base target="_blank"><html><head><title>routerNotes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "<br>";
+  var bookid = "routerNotes"
+  var markerName = "h2"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+.stop-scrolling { height: 100%; overflow: hidden; }
+iframe {width:100%; height:100%;}
+</style></head><body onkeypress="chkKey()"><center>
+
+<div id="toc"></div></center>
+<pre>
+<br>
+<br>
+<h2>set up Virtual Servers using TP-Link Wi-Fi Router</h2>
+<strong>Virtual servers</strong>: When you build up a server in the local network and want to share it on the Internet, Virtual Server can realize the service and provide it to the Internet users. 
+At the same time virtual server can keep the local network safe as other services are still invisible from the Internet. 
+Virtual server can be used for setting up public services in your local network, such as HTTP, FTP, DNS, POP3/SMTP and Telnet. 
+Different service uses different service port. 
+Port 80 is used in HTTP service, port 21 in FTP service, port 25 in SMTP service and port 110 in POP3 service. 
+Please verify the service port number before the configuration.
+
+<strong>User's Application Scenario</strong>
+
+For example, the personal website has been built in my home PC (192.168.0.100). 
+I hope that my friends in the Internet can visit my website in some way.
+
+The PC is connected to the router with the <strong>WAN IP address 218.18.232.154</strong>.
+
+Router LAN WAN: 218.18.232.154
+
+Assign a static IP address to your PC, for example 192.168.0.100
+
+<img class="lazy" src="https://static.tp-link.com/res/upfile/faq/20160407060408.jpg" style="height:172px; width:553px" />
+
+<strong>Follow the steps below:</strong>
+
+<span style="color:#FF0000">Note: Archer C9 is used for demonstration in this article.</span>
+
+<strong>Step 1</strong>
+
+Access the web interface of Archer C9. 
+Please click<a href="https://www.tp-link.com/support/faq/87/">&nbsp;How do I log into the web-based Utility (Management Page) of TP-Link wireless router?</a>&nbsp;to access the web interface
+
+<strong>Step&nbsp;2</strong>
+
+Click&nbsp;<strong>Advanced&nbsp;</strong>on the top, then on the left side,&nbsp;click <strong>NAT Forwarding-&gt;Virtual Servers-&gt;Add.</strong>
+
+<img class="lazy" src="https://static.tp-link.com/res/upfile/faq/20160407060539.jpg" style="height:340px; width:554px" />
+
+<strong>Step 3</strong>
+
+Click <strong>View Existing Services</strong>, and select <strong>HTTP</strong>. 
+The external port, internal port and protocol will be automatically filled with contents. 
+Enter the PC's IP address 192.168.0.100 in the Internal IP field.
+
+<img class="lazy" src="https://static.tp-link.com/res/upfile/faq/20160407060549.jpg" style="height:388px; width:553px" />
+
+Click OK to save the settings.
+
+<strong>Tips</strong>:
+
+1. It is recommended to keep the default settings of Internal Port and Protocol, if you are not clear about which port and protocol to use.
+
+2. If the service you want to use is not in the Service Type, you can enter the corresponding parameters manually. 
+You should verify the port number that the service need.
+
+3. You can add multiple virtual server rules if you want to provide several services in a router. 
+Please note that the External Port should not be overlapped.
+
+<strong>Step 4</strong>:
+
+Users in the Internet can enter <strong>http:// WAN IP</strong> (in this example: http:// 218.18.232.154) to visit your personal website.
+
+<span style="color:#FF0000"><strong>Note</strong>: Your configurations will not take effect if NAT function is disabled. 
+Then you should go to <strong>Advanced</strong> &gt; <strong>System Tools</strong> &gt; <strong>System Parameters</strong> page to enable NAT.</span>
+
+<img class="lazy" src="https://static.tp-link.com/res/upfile/faq/20160407060556.jpg" style="height:383px; width:553px" />
+
+<strong>Tips:</strong>
+
+1. WAN IP should be a public IP address. 
+For the WAN IP is assigned dynamically by ISP, it is recommended to apply and register a domain name for the WAN refer to Set Up a Dynamic DNS Service Account. 
+Then you can use <strong>http:// domain name</strong> to visit the website.
+
+For your reference:
+
+<a href="faq-1102.html">How to set up DDNS (DynDNS) of Wi-Fi Routers (new designed blue UI)</a>
+
+<a href="faq-1103.html">How to set up DDNS (NO-IP) of Wi-Fi Routers (new designed blue UI)</a>
+
+If you are not sure how to configure static IP on the device, you may do an <a href="http://www.tp-link.com/en/faq-734.html">Address Reservation</a> refers to <a href="faq-1101.html">How to configure Address Reservation on the TP-Link Wi-Fi Routers (new designed blue UI)</a>, so that IP will always be assigned to the device.
+
+2. If you have changed the default External Port, you should use <strong>http:// WAN IP: External Port</strong> or <strong>http:// domain name: External Port</strong> to visit the website.
+
+3. Make sure the server is accessible from internal network. 
+You can check if you can access that server in the local network. 
+If you are unable to get access to the server in internal network please check settings of your server.
+
+<strong>Get to know more details of each function and configuration please go to </strong><a href="download-center.html"><strong>Download Center</strong></a><strong> to download the manual of your product.</strong>
+
+
+
+
+
+
+
+
+
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+randomScroll();
+</script>
+</pre></body></html>

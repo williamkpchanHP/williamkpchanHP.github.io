@@ -9,7 +9,6 @@
 <script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.key.js"></script>
 <script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.dynamic.js" ></script>
 <script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.line.js"></script>
-<script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.tooltips.js"></script>
 <script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.drawing.rect.js" ></script>
 <script src="./multilinechart.js" ></script>
 
@@ -212,6 +211,7 @@ commands:
          diffAcc[0].fill(null,0,7); //array.fill(value, start, end)
          diffAcc[1].fill(null,0,7); //array.fill(value, start, end)
 
+
          //console.log(chartId)
          redrawLines(chartId)
          drawDiffChart(chartId + "Diff")
@@ -244,8 +244,6 @@ commands:
             ticksize: 1,
             linewidth:1,
 			ymax: theMax, ymin: theMin,
-            tooltips: tooltipsarr,
-
             //key:['first','second','third'],
             //keyPosition: 'graph',
             //keyLabelsSize: 14,
@@ -277,7 +275,7 @@ commands:
 			title: chartId,
 			titleColor: 'pink',
 			titleSize: 20,
-               colors: ['red','orange','grey'],
+            // colors: ['darkgreen','blue','grey'],
             backgroundGrid: false,
             axisColor: '#764',  scaleDecimals: 2,
             textColor: '#ccc',
@@ -287,7 +285,6 @@ commands:
 			ymax: Math.max(...[].concat(...dataDiff)),
                ymin: Math.min(...[].concat(...dataDiff)),
 
-            tooltips: tooltipsarr,
             //key:['first','second','third'],
             keyPosition: 'graph',
             keyLabelsSize: 14,
@@ -320,7 +317,7 @@ commands:
 			title: chartId,
 			titleColor: 'red',
 			titleSize: 20,
-               colors: ['red','pink','grey'],
+            // colors: ['darkgreen','blue','grey'],
             backgroundGrid: false,
             axisColor: '#764',  scaleDecimals: 2,
             textColor: '#ccc',
@@ -330,7 +327,6 @@ commands:
 			ymax: Math.max(...[].concat(...diffAcc)),
                ymin: Math.min(...[].concat(...diffAcc)),
 
-            tooltips: tooltipsarr,
             //key:['first','second','third'],
             keyPosition: 'graph',
             keyLabelsSize: 14,
