@@ -1,4 +1,6 @@
 proverbList = [
+'An internally divided and decentralized power can never overcome an internally unified and centralized one. ',
+'Ukraine is a Russian affair, and Taiwan is a Chinese affair. Their histories are different, the cultures are different, the politics are different, the personalities are different, and the dynamics are different. Then they are on different continents. Don’t know if you have noticed, but the way Europeans think is different from how East Asians think. Peace has been exhausted as an option. ',
 '滞涨指的是失业和通胀同时持续高涨所导致的经济停滞,普通的衰退可以依赖政策进行调节，比如通过增加政府开支，高举财政赤字，刺激经济复苏。但滞涨却无法依靠货币或财政政策解决问题：如果搞紧缩，企业经营成本会进一步加大，经济可能会更加萧条；如果搞宽松，流动性对实体经济基本无用，刺激的仅仅是资本市场的泡沫。',
 '无论是反弹还是反转，板块里都必须带券商，如果券商带头杀跌，那么这里就有大问题了。',
 '舆论战的基本战法，就是要影响一波不明真相的网友，加入其中，然后形成更大的声势。舆论战能否实施成功的关键，正在于组织发动者能影响多少人在无意识的状态下参与到他们的行动中。舆论战之所以会有改天换地的作用，就在于它的渗透力和隐蔽性特别强。',

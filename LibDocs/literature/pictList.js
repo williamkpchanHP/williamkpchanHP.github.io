@@ -2194,5 +2194,9 @@ pictList = [
 '<img src="https://i.pinimg.com/564x/14/33/be/1433be09d8407ac6e84875c31eecea54.jpg">',
 '<img src="https://i.pinimg.com/564x/c3/5d/c8/c35dc8bf9117e0d470a92a3e018aa4a3.jpg">',
 '<img src="https://i.pinimg.com/564x/c4/7c/9c/c47c9c45f80c6e4a57cca4faa6e0c8c0.jpg">',
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/ngtmts/2022_04_22/1.jpg">',
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/ngtmts/2022_04_22/2avatar.jpg">',
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/ngtmts/2022_04_22/3.jpg">',
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/ngtmts/2022_03_14/4.jpg">',
 
 ]
