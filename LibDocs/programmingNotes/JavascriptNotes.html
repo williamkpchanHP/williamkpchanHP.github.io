@@ -98,6 +98,21 @@ function start(){
 
 body onload="start()"
 
+<h2>list all arrays in JavaScript</h2>
+var house = ["red","blue","yellow"];
+var car = ["fast","big","safe"];
+var sofa = ["cozy","modern","elegant"];
+var arrayCount = 0;
+var arrayString = "";
+for (var property in window) {
+    if (Array.isArray(window[property])){
+        arrayCount++;
+        arrayString += arrayCount > 1 ? ", " + property : property;
+    }
+}
+console.log(arrayCount + " arrays - " + arrayString);
+
+
 
 
 
