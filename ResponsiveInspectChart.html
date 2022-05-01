@@ -24,15 +24,20 @@ $(document).ready(function(){
 
 var arrayCount = 0;
 var arrayString = "";
-for (var property in window) {
-    if (Array.isArray(window[property])){
-        arrayCount++;
-        arrayString += arrayCount > 1 ? "<l>" + property : property + "</l>";
-        arrayString += "</l> ";
-    }
+
+for (var i = 0; i < allArrName.length; i++) {
+  $("#daylist").append("<l>" +allArrName[i] + "</l>, ")
 }
- $("#daylist").append(arrayString)
- 
+
+function changeArr(theArrName) {
+    console.log(theArrName)
+    theArrStr = theArrName.join(" ")
+    localStorage.setItem("inspectStkListArr",theArrStr); // this is the shareList
+    localStorage.setItem("titleBar",theArrStr);
+    location.reload();
+}
+
+$("l").click(function() { changeArr($(this).text()) });
 
 });
 </script>
@@ -45,6 +50,7 @@ body{width:96%;margin-left: 2%; font-size:24px; color:#808060;}
 img {margin-top: 2%;margin-bottom: 1%; border-radius:3px;}
 #toc a{color:gray; max-width:110%;}
 span{color: cyan;}
+l{color:red;}
 </style>
 </head>
 <body onkeypress="chkKey()">
@@ -138,7 +144,7 @@ function loadBookmark(objName) {
   $('body').animate({scrollTop: pos}, 0);
 }
 
-function changeCode(thecode) {
+function changeList(thecode) {
   localStorage.setItem("randomcode", thecode);
   window.open("Random Charts.html", "_blank");
 }
