@@ -225,7 +225,7 @@ commands:
         theMax = Math.max(...[].concat(...mydata));
         theMin = Math.min(...[].concat(...mydata));
 
-        console.log("redrawLines theMax, theMin ", theMax, theMin)
+        // console.log("redrawLines theMax, theMin\n", theMax, theMin)
        drawchart(chartId)
      }
 
@@ -271,6 +271,10 @@ commands:
 
     function drawDiffChart(chartId) {
       RGraph.reset(document.getElementById(chartId));
+      //theymax= Math.max(...[].concat(...removeNull(diffAcc)))
+      //theymin= Math.min(...[].concat(...removeNull(diffAcc)))
+      // console.log("redrawLines theynax, theymin\n", theymax, theymin)
+
       var line = new RGraph.Line({
         id: chartId,
         data: dataDiff,
@@ -287,7 +291,6 @@ commands:
             linewidth:1,
 			ymax: Math.max(...[].concat(...dataDiff)),
                ymin: Math.min(...[].concat(...dataDiff)),
-
             tooltips: tooltipsarr,
             //key:['first','second','third'],
             keyPosition: 'graph',
@@ -354,6 +357,9 @@ commands:
           }).trace();
     };
 
+    function removeNull(array) {
+      return array.filter(x => x !== null)
+    };
 
     function makeMovAve(bigArray, intv) {
         return bigArray.slice(0, intv-1).concat(calcMovAve(bigArray, intv));

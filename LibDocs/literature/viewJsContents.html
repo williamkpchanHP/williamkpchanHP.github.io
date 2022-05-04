@@ -37,7 +37,7 @@ img {max-width:100%; max-height:100vh; display: inline-block; margin-top: 2%;mar
 </center>
 
 <script>
-
+elapseTIme = 20000 // 20 sec
 function chkKey() {
   var testkey = getChar(event);
   if(testkey == 'r'){ showRandomMsg(); 
@@ -47,6 +47,7 @@ function chkKey() {
   else if(testkey == 'a'){autoShowImg(repeats)}
   else if(testkey == 'A'){autoShowImg(imgnotvisitedList.length)}
   else if(testkey == 'm'){alert(imgnotvisitedList[imgpointer])}
+  else if(testkey == 'v'){ viewOriginal();}
   else if(testkey == '5'){ zoomin();}
   else if(testkey == '2'){ zoomout();}
   else if(testkey == 'f'){
@@ -92,8 +93,17 @@ function autoShowImg(countNumber) {
   console.log("auto")
   if (countNumber > 0) {
     forwardImg()
-    setTimeout(() => autoShowImg(countNumber - 1), 15000)
+    setTimeout(() => autoShowImg(countNumber - 1), elapseTIme)
   }
+}
+
+
+function viewOriginal() {
+  imgUrl = imgnotvisitedList[imgpointer]
+  imgUrl = imgUrl.replace(/564x/, "originals");
+  imgUrl = imgUrl.replace(/<img.*?"/, "");
+  imgUrl = imgUrl.replace(/".*/, "");
+  window.open(imgUrl);
 }
 
 function shuffle(array) {
