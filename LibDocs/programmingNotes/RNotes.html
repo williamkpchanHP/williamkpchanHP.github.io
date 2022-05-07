@@ -766,6 +766,2159 @@ chradle by Miles McBain
 Installation
 remotes::install_github("rstudio/chromote")
 
+<h2>50 ggplot2 Visualizations</h2>
+<div id="ggplot2toc" class="toc"><a href="#ggplot2topic-0" target="_self">Part 1: Introduction to ggplot2</a><br><a href="#ggplot2topic-1" target="_self"><span class="orange">1. Understanding the Ggplot Syntax</span></a><br><a href="#ggplot2topic-2" target="_self"><span class="orange">2. How to Make a Simple Scatterplot</span></a><br><a href="#ggplot2topic-3" target="_self"><span class="orange">3. Adjusting the X and Y axis limits</span></a><br><a href="#ggplot2topic-4" target="_self"></a><strong>Method 1</strong>: By deleting the points outside the range<br><a href="#ggplot2topic-5" target="_self"></a><strong>Method 2</strong>: Zooming In<br><a href="#ggplot2topic-6" target="_self"><span class="orange">4. How to Change the Title and Axis Labels</span></a><br><a href="#ggplot2topic-7" target="_self"><span class="orange">5. How to Change the Color and Size of Points</span></a><br><a href="#ggplot2topic-8" target="_self"></a>How to Change the Color and Size To Static?<br><a href="#ggplot2topic-9" target="_self"></a>How to Change the Color To Reflect Categories in Another Column?<br><a href="#ggplot2topic-10" target="_self"><span class="orange">6. How to Change the X Axis Texts and Ticks Location</span></a><br><a href="#ggplot2topic-11" target="_self"></a>How to Change the X and Y Axis Text and its Location?<br><a href="#ggplot2topic-12" target="_self"></a>How to Write Customized Texts for Axis Labels, by Formatting the Original Values?<br><a href="#ggplot2topic-13" target="_self"></a>How to Customize the Entire Theme in One Shot using Pre-Built Themes?<br><a href="#ggplot2topic-14" target="_self">Part 2</a><br><a href="#ggplot2topic-15" target="_self"><span class="orange">1. Adding Plot and Axis Titles</span></a><br><a href="#ggplot2topic-16" target="_self"><span class="orange">2. Modifying Legend</span></a><br><a href="#ggplot2topic-17" target="_self"></a>How to Change the Legend Title<br><a href="#ggplot2topic-18" target="_self"></a>How to Change Legend Labels and Point Colors for Categories<br><a href="#ggplot2topic-19" target="_self"></a>Change the Order of Legend<br><a href="#ggplot2topic-20" target="_self"></a>How to Style the Legend Title, Text and Key<br><a href="#ggplot2topic-21" target="_self"></a>How to Remove the Legend and Change Legend Positions<br><a href="#ggplot2topic-22" target="_self"><span class="orange">3. Adding Text, Label and Annotation</span></a><br><a href="#ggplot2topic-23" target="_self"></a>How to Add Text and Label around the Points<br><a href="#ggplot2topic-24" target="_self"></a>How to Add Annotations Anywhere inside Plot<br><a href="#ggplot2topic-25" target="_self"><span class="orange">4. Flipping and Reversing X and Y Axis</span></a><br><a href="#ggplot2topic-26" target="_self">How to flip the X and Y axis?</a><br><a href="#ggplot2topic-27" target="_self">How to reverse the scale of an axis?</a><br><a href="#ggplot2topic-28" target="_self"><span class="orange">5. Faceting: Draw multiple plots within one figure</span></a><br><a href="#ggplot2topic-29" target="_self"></a>Facet Wrap<br><a href="#ggplot2topic-30" target="_self"></a>Facet Grid<br><a href="#ggplot2topic-31" target="_self"><span class="orange">6. Modifying Plot Background, Major and Minor Axis</span></a><br><a href="#ggplot2topic-32" target="_self"></a>How to Change Plot background<br><a href="#ggplot2topic-33" target="_self"></a>How to Remove Major and Minor Grid, Change Border, Axis Title, Text and Ticks<br><a href="#ggplot2topic-34" target="_self"></a>Add an Image in Background<br><a href="#ggplot2topic-35" target="_self"></a>Inheritance Structure of Theme Components<br><a href="#ggplot2topic-36" target="_self">Top 50 ggplot2 Visualizations - The Master List</a><br><a href="#ggplot2topic-37" target="_self"><span class="orange">1. Correlation</span></a><br><a href="#ggplot2topic-38" target="_self"></a>Scatterplot<br><a href="#ggplot2topic-39" target="_self"></a>Scatterplot With Encircling<br><a href="#ggplot2topic-40" target="_self"></a>Jitter Plot<br><a href="#ggplot2topic-41" target="_self"></a>Counts Chart<br><a href="#ggplot2topic-42" target="_self"></a>Bubble plot<br><a href="#ggplot2topic-43" target="_self"></a>Animated Bubble chart<br><a href="#ggplot2topic-44" target="_self"></a>Marginal Histogram / Boxplot<br><a href="#ggplot2topic-45" target="_self"></a>Correlogram<br><a href="#ggplot2topic-46" target="_self"><span class="orange">2. Deviation</span></a><br><a href="#ggplot2topic-47" target="_self"></a>Diverging bars<br><a href="#ggplot2topic-48" target="_self"></a>Diverging Lollipop Chart<br><a href="#ggplot2topic-49" target="_self"></a>Diverging Dot Plot<br><a href="#ggplot2topic-50" target="_self"></a>Area Chart<br><a href="#ggplot2topic-51" target="_self"><span class="orange">3. Ranking</span></a><br><a href="#ggplot2topic-52" target="_self"></a>Ordered Bar Chart<br><a href="#ggplot2topic-53" target="_self"></a>Lollipop Chart<br><a href="#ggplot2topic-54" target="_self"></a>Dot Plot<br><a href="#ggplot2topic-55" target="_self"></a>Slope Chart<br><a href="#ggplot2topic-56" target="_self"></a>Dumbbell Plot<br><a href="#ggplot2topic-57" target="_self"><span class="orange">4. Distribution</span></a><br><a href="#ggplot2topic-58" target="_self"></a>Histogram<br><a href="#ggplot2topic-59" target="_self"></a>Density plot<br><a href="#ggplot2topic-60" target="_self"></a>Box Plot<br><a href="#ggplot2topic-61" target="_self"></a>Dot + Box Plot<br><a href="#ggplot2topic-62" target="_self"></a>Tufte Boxplot<br><a href="#ggplot2topic-63" target="_self"></a>Violin Plot<br><a href="#ggplot2topic-64" target="_self"></a>Population Pyramid<br><a href="#ggplot2topic-65" target="_self"><span class="orange">5. Composition</span></a><br><a href="#ggplot2topic-66" target="_self"></a>Waffle Chart<br><a href="#ggplot2topic-67" target="_self"></a>Pie Chart<br><a href="#ggplot2topic-68" target="_self"></a>Treemap<br><a href="#ggplot2topic-69" target="_self"></a>Bar Chart<br><a href="#ggplot2topic-70" target="_self"><span class="orange">6. Change</span></a><br><a href="#ggplot2topic-71" target="_self"></a>Time Series Plot From a Time Series Object (<code>ts</code>)<br><a href="#ggplot2topic-72" target="_self"></a>Time Series Plot From a Data Frame<br><a href="#ggplot2topic-73" target="_self"></a>Time Series Plot For a <em>Monthly</em> Time Series<br><a href="#ggplot2topic-74" target="_self"></a>Time Series Plot For a <em>Yearly</em> Time Series<br><a href="#ggplot2topic-75" target="_self"></a>Time Series Plot From Long Data Format: Multiple Time Series in Same Dataframe Column<br><a href="#ggplot2topic-76" target="_self"></a>Time Series Plot From Wide Data Format: Data in Multiple Columns of Dataframe<br><a href="#ggplot2topic-77" target="_self"></a>Stacked Area Chart<br><a href="#ggplot2topic-78" target="_self"></a>Calendar Heatmap<br><a href="#ggplot2topic-79" target="_self"></a>Slope Chart<br><a href="#ggplot2topic-80" target="_self"></a>Seasonal Plot<br><a href="#ggplot2topic-81" target="_self"><span class="orange">7. Groups</span></a><br><a href="#ggplot2topic-82" target="_self"></a>Hierarchical Dendrogram<br><a href="#ggplot2topic-83" target="_self"></a>Clusters<br><a href="#ggplot2topic-84" target="_self"><span class="orange">8. Spatial</span></a><br><a href="#ggplot2topic-85" target="_self">Open Street Map </a><br><a href="#ggplot2topic-86" target="_self">Google Road Map </a><br><a href="#ggplot2topic-87" target="_self">Google Hybrid Map </a><br></div>
+</center>
+Previously we saw a brief <a href="ggplot2-Tutorial-With-R.html">tutorial</a> of making charts with ggplot2 package. 
+It quickly touched upon the various aspects of making ggplot. 
+Now, this is a complete and full fledged tutorial. 
+I start from scratch and discuss how to construct and customize almost any ggplot. 
+It goes into the principles, steps and nuances of making the plots effective and more visually appealing. 
+So, for practical purposes I hope this tutorial serves well as a bookmark reference that will be useful for your day-to-day plotmaking.
+This is part 1 of a three part tutorial on ggplot2, an aesthetically pleasing (and very popular) graphics framework in R. 
+This tutorial is primarily geared towards those having some basic knowledge of the R programming language and want to make complex and nice looking charts with R ggplot2.
+<a href="Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">Part 1: Introduction to ggplot2</a>, covers the basic knowledge about constructing simple ggplots and modifying the components and aesthetics.
+<a href="Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html">Part 2: Customizing the Look and Feel</a>, is about more advanced customization like manipulating legend, annotations, multiplots with faceting and custom layouts
+<a href="Top50-Ggplot2-Visualizations-MasterList-R-Code.html">Part 3: Top 50 Ggplot2 Visualizations - The Master List</a>, applies what was learnt in part 1 and 2 to construct other types of ggplots such as bar charts, boxplots etc.
+<h3 id="ggplot2topic-0">Part 1: Introduction to ggplot2</h3>
+<h3 id="ggplot2topic-1"><span class="orange">1. Understanding the Ggplot Syntax</span></h3>
+The syntax for constructing ggplots could be puzzling if you are a beginner or work primarily with base graphics. 
+The main difference is that, unlike base graphics, ggplot works with dataframes and not individual vectors. 
+All the data needed to make the plot is typically be contained within the dataframe supplied to the <code>ggplot()</code> itself or can be supplied to respective geoms. 
+More on that later.
+The second noticeable feature is that you can keep enhancing the plot by adding more layers (and themes) to an existing plot created using the <code>ggplot()</code> function.
+Let’s initialize a basic ggplot based on the midwest dataset.
+<code># Setup
+options(scipen=999)  # turn off scientific notation like 1e+06
+library(ggplot2)
+data("midwest", package = "ggplot2")  # load the data
+# midwest &lt;- read.csv("http://goo.gl/G1K41K") # alt source 
+# Init Ggplot
+ggplot(midwest, aes(x=area, y=poptotal))  # area and poptotal are columns in 'midwest'</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_1.png">
+A blank ggplot is drawn. 
+Even though the <code>x</code> and <code>y</code> are specified, there are no points or lines in it. 
+This is because, ggplot doesn’t assume that you meant a scatterplot or a line chart to be drawn. 
+I have only told ggplot what dataset to use and what columns should be used for X and Y axis. 
+I haven’t explicitly asked it to draw any points.
+Also note that <code>aes()</code> function is used to specify the X and Y axes. 
+That’s because, any information that is part of the source dataframe has to be specified inside the <code>aes()</code> function.
+<h3 id="ggplot2topic-2"><span class="orange">2. How to Make a Simple Scatterplot</span></h3>
+Let’s make a scatterplot on top of the blank ggplot by adding points using a geom layer called <code>geom_point</code>.
+<code>library(ggplot2)
+ggplot(midwest, aes(x=area, y=poptotal)) + geom_point()</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_2.png">
+We got a basic scatterplot, where each point represents a county. 
+However, it lacks some basic components such as the plot title, meaningful axis labels etc. 
+Moreover most of the points are concentrated on the bottom portion of the plot, which is not so nice. 
+You will see how to rectify these in upcoming steps.
+Like <code>geom_point()</code>, there are many such geom layers which we will see in a subsequent part in this tutorial series. 
+For now, let’s just add a smoothing layer using <code>geom_smooth(method='lm')</code>. 
+Since the <code>method</code> is set as <code>lm</code> (short for <a href="Linear-Regression.html"><em>linear model</em></a>), it draws the line of best fit.
+<code>library(ggplot2)
+g &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + geom_point() + geom_smooth(method="lm")  # set se=FALSE to turnoff confidence bands
+plot(g)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_3.png">
+The line of best fit is in blue. 
+Can you find out what other <code>method</code> options are available for <code>geom_smooth</code>? (note: see <code>?geom_smooth</code>). 
+You might have noticed that majority of points lie in the bottom of the chart which doesn’t really look nice. 
+So, let’s change the Y-axis limits to focus on the lower half.
+<h3 id="ggplot2topic-3"><span class="orange">3. Adjusting the X and Y axis limits</span></h3>
+The X and Y axis limits can be controlled in 2 ways.
+<h3 id="ggplot2topic-4"><strong>Method 1</strong>: By deleting the points outside the range</h3>
+This will change the lines of best fit or smoothing lines as compared to the original data.
+This can be done by <code>xlim()</code> and <code>ylim()</code>. 
+You can pass a numeric vector of length 2 (with max and min values) or just the max and min values itself.
+<code>library(ggplot2)
+g &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + geom_point() + geom_smooth(method="lm")  # set se=FALSE to turnoff confidence bands
+# Delete the points outside the limits
+g + xlim(c(0, 0.1)) + ylim(c(0, 1000000))   # deletes points
+# g + xlim(0, 0.1) + ylim(0, 1000000)   # deletes points</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_4.png">
+In this case, the chart was not built from scratch but rather was built on top of <code>g</code>. 
+This is because, the previous plot was stored as <code>g</code>, a ggplot object, which when called will reproduce the original plot. 
+Using ggplot, you can add more layers, themes and other settings on top of this plot.
+Did you notice that the line of best fit became more horizontal compared to the original plot? This is because, when using <code>xlim()</code> and <code>ylim()</code>, the points outside the specified range are deleted and will not be considered while drawing the line of best fit (using <code>geom_smooth(method='lm')</code>). 
+This feature might come in handy when you wish to know how the line of best fit would change when some extreme values (or outliers) are removed.
+<h3 id="ggplot2topic-5"><strong>Method 2</strong>: Zooming In</h3>
+The other method is to change the X and Y axis limits by zooming in to the region of interest <em>without</em> deleting the points. 
+This is done using <code>coord_cartesian()</code>.
+Let’s store this plot as <code>g1</code>.
+<code>library(ggplot2)
+g &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + geom_point() + geom_smooth(method="lm")  # set se=FALSE to turnoff confidence bands
+# Zoom in without deleting the points outside the limits. 
+# As a result, the line of best fit is the same as the original plot.
+g1 &lt;- g + coord_cartesian(xlim=c(0,0.1), ylim=c(0, 1000000))  # zooms in
+plot(g1)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_5.png">
+Since all points were considered, the line of best fit did not change.
+<h3 id="ggplot2topic-6"><span class="orange">4. How to Change the Title and Axis Labels</span></h3>
+I have stored this as <code>g1</code>. 
+Let’s add the plot title and labels for X and Y axis. 
+This can be done in one go using the <code>labs()</code> function with <code>title</code>, <code>x</code> and <code>y</code> arguments. 
+Another option is to use the <code>ggtitle()</code>, <code>xlab()</code> and <code>ylab()</code>.
+<code>library(ggplot2)
+g &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + geom_point() + geom_smooth(method="lm")  # set se=FALSE to turnoff confidence bands
+g1 &lt;- g + coord_cartesian(xlim=c(0,0.1), ylim=c(0, 1000000))  # zooms in
+# Add Title and Labels
+g1 + labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+# or
+g1 + ggtitle("Area Vs Population", subtitle="From midwest dataset") + xlab("Area") + ylab("Population")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_6.png">
+Excellent! So here is the full function call.
+<code># Full Plot call
+library(ggplot2)
+ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point() + 
+geom_smooth(method="lm") + 
+coord_cartesian(xlim=c(0,0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")</code>
+<h3 id="ggplot2topic-7"><span class="orange">5. How to Change the Color and Size of Points</span></h3>
+<h3 id="ggplot2topic-8">How to Change the Color and Size To Static?</h3>
+We can change the aesthetics of a geom layer by modifying the respective geoms. 
+Let’s change the color of the points and the line to a static value.
+<code>library(ggplot2)
+ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(col="steelblue", size=3) +   # Set static color and size for points
+geom_smooth(method="lm", col="firebrick") +  # change the color of line
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_7.png">
+<h3 id="ggplot2topic-9">How to Change the Color To Reflect Categories in Another Column?</h3>
+Suppose if we want the color to change based on another column in the source dataset (<code>midwest</code>), it must be specified inside the <code>aes()</code> function.
+<code>library(ggplot2)
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state), size=3) +  # Set color to vary based on state categories.
+geom_smooth(method="lm", col="firebrick", size=2) + 
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+plot(gg)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_9.png">
+Now each point is colored based on the <code>state</code> it belongs because of <code>aes(col=state)</code>. 
+Not just color, but <code>size</code>, <code>shape</code>, <code>stroke</code> (thickness of boundary) and <code>fill</code> (fill color) can be used to discriminate groupings.
+As an added benefit, the legend is added automatically. 
+If needed, it can be removed by setting the <code>legend.position</code> to <code>None</code> from within a <code>theme()</code> function.
+<code>gg + theme(legend.position="None")  # remove legend</code>
+Also, You can change the color palette entirely.
+<code>gg + scale_colour_brewer(palette = "Set1")  # change color palette</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_10.png">
+More of such palettes can be found in the RColorBrewer package
+<code>library(RColorBrewer)
+head(brewer.pal.info, 10)  # show 10 palettes
+#&gt;          maxcolors category colorblind
+#&gt; BrBG            11      div       TRUE
+#&gt; PiYG            11      div       TRUE
+#&gt; PRGn            11      div       TRUE
+#&gt; PuOr            11      div       TRUE
+#&gt; RdBu            11      div       TRUE
+#&gt; RdGy            11      div      FALSE
+#&gt; RdYlBu          11      div       TRUE
+#&gt; RdYlGn          11      div      FALSE
+#&gt; Spectral        11      div      FALSE
+#&gt; Accent           8     qual      FALSE</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/color_palettes.png">
+<h3 id="ggplot2topic-10"><span class="orange">6. How to Change the X Axis Texts and Ticks Location</span></h3>
+<h3 id="ggplot2topic-11">How to Change the X and Y Axis Text and its Location?</h3>
+Alright, now let’s see how to change the X and Y axis text and its location. 
+This involves two aspects: <code>breaks</code> and <code>labels</code>.
+<strong>Step 1: Set the <code>breaks</code></strong>
+The <code>breaks</code> should be of the same scale as the X axis variable. 
+Note that I am using <code>scale_x_continuous</code> because, the X axis variable is a continuous variable. 
+Had it been a date variable, <code>scale_x_date</code> could be used. 
+Like <code>scale_x_continuous()</code> an equivalent <code>scale_y_continuous()</code> is available for Y axis.
+<code>library(ggplot2)
+# Base plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state), size=3) +  # Set color to vary based on state categories.
+geom_smooth(method="lm", col="firebrick", size=2) + 
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+# Change breaks
+gg + scale_x_continuous(breaks=seq(0, 0.1, 0.01))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_11.png">
+<strong>Step 2: Change the <code>labels</code></strong> You can optionally change the <code>labels</code> at the axis ticks. 
+<code>labels</code> take a vector of the same length as <code>breaks</code>.
+Let me demonstrate by setting the <code>labels</code> to alphabets from a to k (though there is no meaning to it in this context).
+<code>library(ggplots)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state), size=3) +  # Set color to vary based on state categories.
+geom_smooth(method="lm", col="firebrick", size=2) + 
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+# Change breaks + label
+gg + scale_x_continuous(breaks=seq(0, 0.1, 0.01), labels = letters[1:11])</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_12.png">
+If you need to reverse the scale, use <code>scale_x_reverse()</code>.
+<code>library(ggplot2)
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state), size=3) +  # Set color to vary based on state categories.
+geom_smooth(method="lm", col="firebrick", size=2) + 
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+# Reverse X Axis Scale
+gg + scale_x_reverse()</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_13.png">
+<h3 id="ggplot2topic-12">How to Write Customized Texts for Axis Labels, by Formatting the Original Values?</h3>
+Let’s set the <code>breaks</code> for Y axis text as well and format the X and Y axis labels. 
+I have used 2 methods for formatting labels: * <strong>Method 1</strong>: Using <code>sprintf()</code>. 
+(Have formatted it as % in below example) * <strong>Method 2</strong>: Using a custom user defined function. 
+(Formatted 1000’s to 1K scale)
+Use whichever method feels convenient.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state), size=3) +  # Set color to vary based on state categories.
+geom_smooth(method="lm", col="firebrick", size=2) + 
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+# Change Axis Texts
+gg + scale_x_continuous(breaks=seq(0, 0.1, 0.01), labels = sprintf("%1.2f%%", seq(0, 0.1, 0.01))) + 
+scale_y_continuous(breaks=seq(0, 1000000, 200000), labels = function(x){paste0(x/1000, 'K')})</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_14.png">
+<h3 id="ggplot2topic-13">How to Customize the Entire Theme in One Shot using Pre-Built Themes?</h3>
+Finally, instead of changing the theme components individually (which I discuss in detail in <a href="Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html">part 2</a>), we can change the entire theme itself using pre-built themes. 
+The help page <code>?theme_bw</code> shows all the available built-in themes.
+This again is commonly done in couple of ways. 
+* Use the theme_set() to set the theme before drawing the ggplot. 
+Note that this setting will affect all future plots. 
+* Draw the ggplot and then add the overall theme setting (eg. 
+<code>theme_bw()</code>)
+<code>library(ggplot2)
+# Base plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state), size=3) +  # Set color to vary based on state categories.
+geom_smooth(method="lm", col="firebrick", size=2) + 
+coord_cartesian(xlim=c(0, 0.1), ylim=c(0, 1000000)) + 
+labs(title="Area Vs Population", subtitle="From midwest dataset", y="Population", x="Area", caption="Midwest Demographics")
+gg &lt;- gg + scale_x_continuous(breaks=seq(0, 0.1, 0.01))
+# method 1: Using theme_set()
+theme_set(theme_classic())  # not run
+gg
+# method 2: Adding theme Layer itself.
+gg + theme_bw() + labs(subtitle="BW Theme")
+gg + theme_classic() + labs(subtitle="Classic Theme")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_16.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tut_17.png">
+For more customized and fancy themes have a look at the <a href="https://github.com/jrnold/ggthemes">ggthemes</a> package and the <a href="https://github.com/cttobin/ggthemr">ggthemr</a> package.
+That’s it for the basics. 
+We are now ably positioned to tackle more advanced customization. 
+In <a href="Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html">ggplot tutorial part-2</a>, I discuss about advanced customization on modifying theme components, manipulating legend, annotations, faceting and custom layouts.
+<h3 id="ggplot2topic-14">Part 2</h3>
+This is part 2 of a 3-part tutorial on ggplot2, an aesthetically pleasing (and very popular) graphics framework in R. 
+This tutorial is primarily geared towards those having some basic knowledge of the R programming language and want to make complex and nice looking charts with R ggplot2.
+<a href="Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">Part 1: Introduction to ggplot2</a>, covers the basic knowledge about constructing simple ggplots and modifying the components and aesthetics.
+<a href="Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html">Part 2: Customizing the Look and Feel</a>, is about more advanced customization like manipulating legend, annotations, multiplots with faceting and custom layouts
+<a href="Top50-Ggplot2-Visualizations-MasterList-R-Code.html">Part 3: Top 50 ggplot2 Visualizations - The Master List</a>, applies what was learnt in part 1 and 2 to construct other types of ggplots such as bar charts, boxplots etc.
+Part 2: Customizing the look and feel
+In this tutorial, I discuss how to customize the looks of the 6 most important aesthetics of a plot. 
+Put together, it provides a fairly comprehensive list of how to accomplish your plot customization tasks in detail.
+Let’s begin with a scatterplot of Population against Area from <code>midwest</code> dataset. 
+The point’s color and size vary based on <code>state</code> (categorical) and <code>popdensity</code> (continuous) columns respectively. 
+We have done something similar in the <a href="Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">previous ggplot2 tutorial</a> already.
+The below plot has the essential components such as the title, axis labels and legend setup nicely. 
+But how to modify the looks?
+Most of the requirements related to look and feel can be achieved using the <code>theme()</code> function. 
+It accepts a large number of arguments. 
+Type <code>?theme</code> in the R console and see for yourself.
+<code># Setup
+options(scipen=999)
+library(ggplot2)
+data("midwest", package = "ggplot2")
+theme_set(theme_bw())
+# midwest &lt;- read.csv("http://goo.gl/G1K41K")  # bkup data source
+# Add plot components --------------------------------
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+# Call plot ------------------------------------------
+plot(gg)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_1.png">
+The arguments passed to <code>theme()</code> components require to be set using special <code>element_type()</code> functions. 
+They are of 4 major types.
+<code>element_text()</code>: Since the title, subtitle and captions are textual items, <code>element_text()</code> function is used to set it.
+<code>element_line()</code>: Likewise <code>element_line()</code> is use to modify line based components such as the axis lines, major and minor grid lines, etc.
+<code>element_rect()</code>: Modifies rectangle components such as plot and panel background.
+<code>element_blank()</code>: Turns off displaying the theme item.
+More on this follows in upcoming discussion.
+<style> .banner-1-multi-121{border:none !important;display:block !important;float:none;line-height:0px;margin-bottom:15px !important;margin-left:0px !important;margin-right:0px !important;margin-top:15px !important;max-width:100% !important;min-height:250px;min-width:250px;padding:0;text-align:center !important;}</style>Let’s discuss a number of tasks related to changing the plot output, starting with modifying the title and axis texts.
+<h3 id="ggplot2topic-15"><span class="orange">1. Adding Plot and Axis Titles</span></h3>
+Plot and axis titles and the axis text are part of the plot’s theme. 
+Therefore, it can be modified using the <code>theme()</code> function. 
+The <code>theme()</code> function accepts one of the four <code>element_type()</code> functions mentioned above as arguments. 
+Since the plot and axis titles are textual components, <code>element_text()</code> is used to modify them.
+Below, I have changed the size, color, face and line-height. 
+The axis text can be rotated by changing the <code>angle</code>.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+# Modify theme components -------------------------------------------
+gg + theme(plot.title=element_text(size=20, 
+face="bold", 
+family="American Typewriter",
+color="tomato",
+hjust=0.5,
+lineheight=1.2),  # title
+plot.subtitle=element_text(size=15, 
+family="American Typewriter",
+face="bold",
+hjust=0.5),  # subtitle
+plot.caption=element_text(size=15),  # caption
+axis.title.x=element_text(vjust=10,  
+size=15),  # X axis title
+axis.title.y=element_text(size=15),  # Y axis title
+axis.text.x=element_text(size=10, 
+angle = 30,
+vjust=.5),  # X axis text
+axis.text.y=element_text(size=10))  # Y axis text</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_2.png">
+<code>vjust</code>, controls the vertical spacing between title (or label) and plot.
+<code>hjust</code>, controls the horizontal spacing. 
+Setting it to 0.5 centers the title.
+<code>family</code>, is used to set a new font
+<code>face</code>, sets the font face (“plain”, “italic”, “bold”, “bold.italic”)
+Above example covers some of the frequently used theme modifications and the actual list is too long. 
+So <code>?theme</code> is the first place you want to look at if you want to change the look and feel of any component.
+<h3 id="ggplot2topic-16"><span class="orange">2. Modifying Legend</span></h3>
+Whenever your plot’s geom (like points, lines, bars, etc) is set to change the aesthetics (<code>fill</code>, <code>size</code>, <code>col</code>, <code>shape</code> or <code>stroke</code>) based on another column, as in <code>geom_point(aes(col=state, size=popdensity))</code>, a legend is automatically drawn.
+If you are creating a geom where the aesthetics are static, a legend is <em>not</em> drawn by default. 
+The below examples are for cases where you have the legend created automatically.
+<h3 id="ggplot2topic-17">How to Change the Legend Title</h3>
+Let’s now change the legend title. 
+We have two legends, one each for color and size. 
+The size is based on a continuous variable while the color is based on a categorical(discrete) variable.
+There are 3 ways to change the legend title.
+<h4>Method 1: Using <code>labs()</code></h4>
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+gg + labs(color="State", size="Density")  # modify legend title</code>
+<h4>Method 2: Using <code>guides()</code></h4>
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+gg &lt;- gg + guides(color=guide_legend("State"), size=guide_legend("Density"))  # modify legend title
+plot(gg)</code>
+<h4>Method 3: Using <code>scale_aesthetic_vartype()</code> format</h4>
+The format of <code>scale_aestheic_vartype()</code> allows you to turn off legend for one particular aesthetic, leaving the rest in place. 
+This can be done just by setting <code>guide=FALSE</code>. 
+For example, if the legend is for size of points based on a continuous variable, then <code>scale_size_continuous()</code> would be the right function to use.
+Can you guess what function to use if you have a legend for shape and is based on a categorical variable?
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+# Modify Legend
+gg + scale_color_discrete(name="State") + scale_size_continuous(name = "Density", guide = FALSE)  # turn off legend for size</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_3.png">
+<h3 id="ggplot2topic-18">How to Change Legend Labels and Point Colors for Categories</h3>
+This can be done using the respective <code>scale_aesthetic_manual()</code> function. 
+The new legend labels are supplied as a character vector to the <code>labels</code> argument. 
+If you want to change the color of the categories, it can be assigned to the <code>values</code> argument as shown in below example.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+gg + scale_color_manual(name="State", 
+labels = c("Illinois", 
+"Indiana", 
+"Michigan", 
+"Ohio", 
+"Wisconsin"), 
+values = c("IL"="blue", 
+"IN"="red", 
+"MI"="green", 
+"OH"="brown", 
+"WI"="orange"))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_4.png">
+<h3 id="ggplot2topic-19">Change the Order of Legend</h3>
+In case you want to show the legend for color (<code>State</code>) before size (<code>Density</code>), it can be done with the <code>guides()</code> function. 
+The <code>order</code> of the legend has to be set as desired.
+If you want to change the position of the labels inside the legend, set it in the required order as seen in previous example.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+gg + guides(colour = guide_legend(order = 1),
+size = guide_legend(order = 2))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_5.png">
+<h3 id="ggplot2topic-20">How to Style the Legend Title, Text and Key</h3>
+The styling of legend title, text, key and the guide can also be adjusted. 
+The legend’s key is a figure like element, so it has to be set using <code>element_rect()</code> function.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+gg + theme(legend.title = element_text(size=12, color = "firebrick"), 
+legend.text = element_text(size=10),
+legend.key=element_rect(fill='springgreen')) + 
+guides(colour = guide_legend(override.aes = list(size=2, stroke=1.5))) </code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_6.png">
+<h3 id="ggplot2topic-21">How to Remove the Legend and Change Legend Positions</h3>
+The legend’s position inside the plot is an aspect of the theme. 
+So it can be modified using the <code>theme()</code> function. 
+If you want to place the legend inside the plot, you can additionally control the hinge point of the legend using <code>legend.justification</code>.
+The <code>legend.position</code> is the x and y axis position in chart area, where <code>(0,0)</code> is bottom left of the chart and <code>(1,1)</code> is top right. 
+Likewise, <code>legend.justification</code> refers to the hinge point inside the legend.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+# No legend --------------------------------------------------
+gg + theme(legend.position="None") + labs(subtitle="No Legend")
+# Legend to the left -----------------------------------------
+gg + theme(legend.position="left") + labs(subtitle="Legend on the Left")
+# legend at the bottom and horizontal ------------------------
+gg + theme(legend.position="bottom", legend.box = "horizontal") + labs(subtitle="Legend at Bottom")
+# legend at bottom-right, inside the plot --------------------
+gg + theme(legend.title = element_text(size=12, color = "salmon", face="bold"),
+legend.justification=c(1,0), 
+legend.position=c(0.95, 0.05),  
+legend.background = element_blank(),
+legend.key = element_blank()) + 
+labs(subtitle="Legend: Bottom-Right Inside the Plot")
+# legend at top-left, inside the plot -------------------------
+gg + theme(legend.title = element_text(size=12, color = "salmon", face="bold"),
+legend.justification=c(0,1), 
+legend.position=c(0.05, 0.95),
+legend.background = element_blank(),
+legend.key = element_blank()) + 
+labs(subtitle="Legend: Top-Left Inside the Plot")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_7.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_8.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_9.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_10.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_11.png">
+<h3 id="ggplot2topic-22"><span class="orange">3. Adding Text, Label and Annotation</span></h3>
+<h3 id="ggplot2topic-23">How to Add Text and Label around the Points</h3>
+Let’s try adding some text. 
+We will add text to only those counties that have population greater than 400K. 
+In order to achieve this, I create another subsetted dataframe (<code>midwest_sub</code>) that contains only the counties that qualifies the said condition.
+Then, draw the <code>geom_text</code> and <code>geom_label</code> with this new dataframe as the <code>data</code> source. 
+This will ensure that labels (<code>geom_label</code>) are added only for the points contained in the new dataframe.
+<code>library(ggplot2)
+# Filter required rows.
+midwest_sub &lt;- midwest[midwest$poptotal &gt; 300000, ]
+midwest_sub$large_county &lt;- ifelse(midwest_sub$poptotal &gt; 300000, midwest_sub$county, ")
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+# Plot text and label ------------------------------------------------------
+gg + geom_text(aes(label=large_county), size=2, data=midwest_sub) + labs(subtitle="With ggplot2::geom_text") + theme(legend.position = "None")   # text
+gg + geom_label(aes(label=large_county), size=2, data=midwest_sub, alpha=0.25) + labs(subtitle="With ggplot2::geom_label") + theme(legend.position = "None")  # label
+# Plot text and label that REPELS eachother (using ggrepel pkg) ------------
+library(ggrepel)
+gg + geom_text_repel(aes(label=large_county), size=2, data=midwest_sub) + labs(subtitle="With ggrepel::geom_text_repel") + theme(legend.position = "None")   # text
+gg + geom_label_repel(aes(label=large_county), size=2, data=midwest_sub) + labs(subtitle="With ggrepel::geom_label_repel") + theme(legend.position = "None")   # label</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_14.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_15.png">
+Since the label is looked up from a different dataframe, we need to set the data argument.
+<h3 id="ggplot2topic-24">How to Add Annotations Anywhere inside Plot</h3>
+Let’s see how to add annotation to any specific point of the chart. 
+It can be done with the <code>annotation_custom()</code> function which takes in a <code>grob</code> as the argument. 
+So, let’s create a grob the holds the text you want to display using the <code>grid</code> package.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest")
+# Define and add annotation -------------------------------------
+library(grid)
+my_text &lt;- "This text is at x=0.7 and y=0.8!"
+my_grob = grid.text(my_text, x=0.7,  y=0.8, gp=gpar(col="firebrick", fontsize=14, fontface="bold"))
+gg + annotation_custom(my_grob)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_16.png">
+<h3 id="ggplot2topic-25"><span class="orange">4. Flipping and Reversing X and Y Axis</span></h3>
+<h3 id="ggplot2topic-26">How to flip the X and Y axis?</h3>
+Just add <code>coord_flip()</code>.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest", subtitle="X and Y axis Flipped") + theme(legend.position = "None")
+# Flip the X and Y axis -------------------------------------------------
+gg + coord_flip()</code>
+<h3 id="ggplot2topic-27">How to reverse the scale of an axis?</h3>
+This is quite simple. 
+Use <code>scale_x_reverse()</code> for X axis and <code>scale_y_reverse()</code> for Y axis.
+<code>library(ggplot2)
+# Base Plot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) + 
+labs(title="Area Vs Population", y="Population", x="Area", caption="Source: midwest", subtitle="Axis Scales Reversed") + theme(legend.position = "None")
+# Reverse the X and Y Axis ---------------------------
+gg + scale_x_reverse() + scale_y_reverse()</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_17.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_18.png">
+<h3 id="ggplot2topic-28"><span class="orange">5. Faceting: Draw multiple plots within one figure</span></h3>
+Let’s use a the <code>mpg</code> dataset for this one. 
+It is available in the ggplot2 package, or you can import it from this <a href="http://goo.gl/uEeRGu">link</a>.
+<code>library(ggplot2)
+data(mpg, package="ggplot2")  # load data
+# mpg &lt;- read.csv("http://goo.gl/uEeRGu")  # alt data source
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+labs(title="hwy vs displ", caption = "Source: mpg") +
+geom_smooth(method="lm", se=FALSE) + 
+theme_bw()  # apply bw theme
+plot(g)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_19.png">
+We have a simple chart of highway mileage <code>(hwy)</code> against the engine displacement <code>(displ)</code> for the whole dataset. 
+But what if you want to study how this relationship varies for different classes of vehicles?
+<h3 id="ggplot2topic-29">Facet Wrap</h3>
+The <code>facet_wrap()</code> is used to break down a large plot into multiple small plots for individual categories. 
+It takes a formula as the main argument. 
+The items to the left of <code>~</code> forms the rows while those to the right form the columns.
+By default, all the plots share the same scale in both X and Y axis. 
+You can set them free by setting <code>scales='free'</code> but this way it could be harder to compare between groups.
+<code>library(ggplot2)
+# Base Plot
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+geom_smooth(method="lm", se=FALSE) + 
+theme_bw()  # apply bw theme
+# Facet wrap with common scales
+g + facet_wrap( ~ class, nrow=3) + labs(title="hwy vs displ", caption = "Source: mpg", subtitle="Ggplot2 - Faceting - Multiple plots in one figure")  # Shared scales
+# Facet wrap with free scales
+g + facet_wrap( ~ class, scales = "free") + labs(title="hwy vs displ", caption = "Source: mpg", subtitle="Ggplot2 - Faceting - Multiple plots in one figure with free scales")  # Scales free</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_20.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_21.png">
+So, What do you infer from this? For one, most 2 seater cars have higher engine displacement while the minivan and compact vehicles are on the lower side. 
+This is evident from where the points are placed along the X-axis.
+Also, the highway mileage drops across all segments as the engine displacement increases. 
+This drop seems more pronounced in compact and subcompact vehicles.
+<h3 id="ggplot2topic-30">Facet Grid</h3>
+The headings of the middle and bottom rows take up significant space. 
+The <code>facet_grid()</code> would get rid of it and give more area to the charts. 
+The main difference with <code>facet_grid</code> is that it is not possible to choose the number of rows and columns in the grid.
+Alright, Let’s create a grid to see how it varies with manufacturer.
+<code>library(ggplot2)
+# Base Plot
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+labs(title="hwy vs displ", caption = "Source: mpg", subtitle="Ggplot2 - Faceting - Multiple plots in one figure") +
+geom_smooth(method="lm", se=FALSE) + 
+theme_bw()  # apply bw theme
+# Add Facet Grid
+g1 &lt;- g + facet_grid(manufacturer ~ class)  # manufacturer in rows and class in columns
+plot(g1)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_22.png">
+Let’s make one more to vary by cylinder.
+<code>library(ggplot2)
+# Base Plot
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+geom_smooth(method="lm", se=FALSE) + 
+labs(title="hwy vs displ", caption = "Source: mpg", subtitle="Ggplot2 - Facet Grid - Multiple plots in one figure") +
+theme_bw()  # apply bw theme
+# Add Facet Grid
+g2 &lt;- g + facet_grid(cyl ~ class)  # cyl in rows and class in columns.
+plot(g2)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_23.png">
+Great!. 
+It is possible to layout both these charts in the sample panel. 
+I prefer the <code>gridExtra()</code> package for this.
+<code># Draw Multiple plots in same figure.
+library(gridExtra)
+gridExtra::grid.arrange(g1, g2, ncol=2)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_24.png">
+<h3 id="ggplot2topic-31"><span class="orange">6. Modifying Plot Background, Major and Minor Axis</span></h3>
+<h3 id="ggplot2topic-32">How to Change Plot background</h3>
+<code>library(ggplot2)
+# Base Plot
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+geom_smooth(method="lm", se=FALSE) + 
+theme_bw()  # apply bw theme
+# Change Plot Background elements -----------------------------------
+g + theme(panel.background = element_rect(fill = 'khaki'),
+panel.grid.major = element_line(colour = "burlywood", size=1.5),
+panel.grid.minor = element_line(colour = "tomato", 
+size=.25, 
+linetype = "dashed"),
+panel.border = element_blank(),
+axis.line.x = element_line(colour = "darkorange", 
+size=1.5, 
+lineend = "butt"),
+axis.line.y = element_line(colour = "darkorange", 
+size=1.5)) +
+labs(title="Modified Background", 
+subtitle="How to Change Major and Minor grid, Axis Lines, No Border")
+# Change Plot Margins -----------------------------------------------
+g + theme(plot.background=element_rect(fill="salmon"), 
+plot.margin = unit(c(2, 2, 1, 1), "cm")) +  # top, right, bottom, left
+labs(title="Modified Background", subtitle="How to Change Plot Margin")  </code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_25.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_26.png">
+<h3 id="ggplot2topic-33">How to Remove Major and Minor Grid, Change Border, Axis Title, Text and Ticks</h3>
+<code>library(ggplot2)
+# Base Plot
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+geom_smooth(method="lm", se=FALSE) + 
+theme_bw()  # apply bw theme
+g + theme(panel.grid.major = element_blank(), 
+panel.grid.minor = element_blank(), 
+panel.border = element_blank(),
+axis.title = element_blank(), 
+axis.text = element_blank(),
+axis.ticks = element_blank()) +
+labs(title="Modified Background", subtitle="How to remove major and minor axis grid, border, axis title, text and ticks") </code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_27.png">
+<h3 id="ggplot2topic-34">Add an Image in Background</h3>
+<code>library(ggplot2)
+library(grid)
+library(png)
+img &lt;- png::readPNG("screenshots/Rlogo.png")  # source: https://www.r-project.org/
+g_pic &lt;- rasterGrob(img, interpolate=TRUE)
+# Base Plot
+g &lt;- ggplot(mpg, aes(x=displ, y=hwy)) + 
+geom_point() + 
+geom_smooth(method="lm", se=FALSE) + 
+theme_bw()  # apply bw theme
+g + theme(panel.grid.major = element_blank(), 
+panel.grid.minor = element_blank(), 
+plot.title = element_text(size = rel(1.5), face = "bold"),
+axis.ticks = element_blank()) + 
+annotation_custom(g_pic, xmin=5, xmax=7, ymin=30, ymax=45)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_28.png">
+<h3 id="ggplot2topic-35">Inheritance Structure of Theme Components</h3>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_tutorial_customize_theme_29.png"> source: <a href="http://docs.ggplot2.org/dev/vignettes/themes.html">http://docs.ggplot2.org/dev/vignettes/themes.html</a>
+
+What type of visualization to use for what sort of problem? This tutorial helps you choose the right type of chart for your specific objectives and how to implement it in R using ggplot2.
+This is part 3 of a three part tutorial on ggplot2, an aesthetically pleasing (and very popular) graphics framework in R. 
+This tutorial is primarily geared towards those having some basic knowledge of the R programming language and want to make complex and nice looking charts with R ggplot2.
+<a href="Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">Part 1: Introduction to ggplot2</a>, covers the basic knowledge about constructing simple ggplots and modifying the components and aesthetics.
+<a href="Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html">Part 2: Customizing the Look and Feel</a>, is about more advanced customization like manipulating legend, annotations, multiplots with faceting and custom layouts
+
+<a href="Top50-Ggplot2-Visualizations-MasterList-R-Code.html">Part 3: Top 50 ggplot2 Visualizations - The Master List</a>, applies what was learnt in part 1 and 2 to construct other types of ggplots such as bar charts, boxplots etc.
+<h3 id="ggplot2topic-36">Top 50 ggplot2 Visualizations - The Master List</h3>
+An effective chart is one that:
+Conveys the right information without distorting facts.
+Is simple but elegant. 
+It should not force you to think much in order to get it.
+
+Aesthetics supports information rather that overshadow it.
+Is not overloaded with information.
+The list below sorts the visualizations based on its primary purpose. 
+
+Primarily, there are 8 types of objectives you may construct plots. 
+So, before you actually make the plot, try and figure what findings and relationships you would like to convey or examine through the visualization. 
+Chances are it will fall under one (or sometimes more) of these 8 categories.
+
+<h3 id="ggplot2topic-37"><span class="orange">1. Correlation</span></h3>
+The following plots help to examine how well correlated two variables are.
+
+<h3 id="ggplot2topic-38">Scatterplot</h3>
+The most frequently used plot for data analysis is undoubtedly the scatterplot. 
+Whenever you want to understand the nature of relationship between two variables, invariably the first choice is the scatterplot.
+
+It can be drawn using <code>geom_point()</code>. 
+Additionally, <code>geom_smooth</code> which draws a smoothing line (based on loess) by default, can be tweaked to draw the line of best fit by setting <code>method='lm'</code>.
+<code># install.packages("ggplot2")
+# load package and data
+options(scipen=999)  # turn-off scientific notation like 1e+48
+library(ggplot2)
+
+theme_set(theme_bw())  # pre-set the bw theme.
+data("midwest", package = "ggplot2")
+# midwest &lt;- read.csv("http://goo.gl/G1K41K")  # bkup data source
+
+# Scatterplot
+gg &lt;- ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) + 
+
+geom_smooth(method="loess", se=F) + 
+xlim(c(0, 0.1)) + 
+ylim(c(0, 500000)) + 
+
+labs(subtitle="Area Vs Population", 
+y="Population", 
+x="Area", 
+
+title="Scatterplot", 
+caption = "Source: midwest")
+plot(gg)</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_1.png">
+<h3 id="ggplot2topic-39">Scatterplot With Encircling</h3>
+When presenting the results, sometimes I would encirlce certain special group of points or region in the chart so as to draw the attention to those peculiar cases. 
+
+This can be conveniently done using the <code>geom_encircle()</code> in <code>ggalt</code> package.
+Within <code>geom_encircle()</code>, set the <code>data</code> to a new dataframe that contains only the points (rows) or interest. 
+Moreover, You can <code>expand</code> the curve so as to pass just outside the points. 
+
+The <code>color</code> and <code>size</code> (thickness) of the curve can be modified as well. 
+See below example.
+<code># install 'ggalt' pkg
+
+# devtools::install_github("hrbrmstr/ggalt")
+options(scipen = 999)
+library(ggplot2)
+
+library(ggalt)
+midwest_select &lt;- midwest[midwest$poptotal &gt; 350000 &amp; 
+midwest$poptotal &lt;= 500000 &amp; 
+
+midwest$area &gt; 0.01 &amp; 
+midwest$area &lt; 0.1, ]
+# Plot
+
+ggplot(midwest, aes(x=area, y=poptotal)) + 
+geom_point(aes(col=state, size=popdensity)) +   # draw points
+geom_smooth(method="loess", se=F) + 
+
+xlim(c(0, 0.1)) + 
+ylim(c(0, 500000)) +   # draw smoothing line
+geom_encircle(aes(x=area, y=poptotal), 
+
+data=midwest_select, 
+color="red", 
+size=2, 
+
+expand=0.08) +   # encircle
+labs(subtitle="Area Vs Population", 
+y="Population", 
+
+x="Area", 
+title="Scatterplot + Encircle", 
+caption="Source: midwest")</code>
+
+<h3 id="ggplot2topic-40">Jitter Plot</h3>
+Let’s look at a new data to draw the scatterplot. 
+This time, I will use the <code>mpg</code> dataset to plot city mileage (<code>cty</code>) vs highway mileage (<code>hwy</code>).
+
+<code># load package and data
+library(ggplot2)
+data(mpg, package="ggplot2") # alternate source: "http://goo.gl/uEeRGu")
+
+theme_set(theme_bw())  # pre-set the bw theme.
+g &lt;- ggplot(mpg, aes(cty, hwy))
+# Scatterplot
+
+g + geom_point() + 
+geom_smooth(method="lm", se=F) +
+labs(subtitle="mpg: city vs highway mileage", 
+
+y="hwy", 
+x="cty", 
+title="Scatterplot with overlapping points", 
+
+caption="Source: midwest")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_3.png">
+What we have here is a scatterplot of city and highway mileage in <code>mpg</code> dataset. 
+
+We have seen a similar scatterplot and this looks neat and gives a clear idea of how the city mileage (<code>cty</code>) and highway mileage (<code>hwy</code>) are well correlated.
+But, this innocent looking plot is <em>hiding</em> something. 
+Can you find out?
+
+<code>dim(mpg)</code>
+The original data has 234 data points but the chart seems to display fewer points. 
+What has happened? This is because there are many overlapping points appearing as a single dot. 
+
+The fact that both <code>cty</code> and <code>hwy</code> are integers in the source dataset made it all the more convenient to hide this detail. 
+So just be extra careful the next time you make scatterplot with integers.
+So how to handle this? There are few options. 
+
+We can make a jitter plot with <code>jitter_geom()</code>. 
+As the name suggests, the overlapping points are randomly jittered around its original position based on a threshold controlled by the <code>width</code> argument.
+<code># load package and data
+
+library(ggplot2)
+data(mpg, package="ggplot2")
+# mpg &lt;- read.csv("http://goo.gl/uEeRGu")
+
+# Scatterplot
+theme_set(theme_bw())  # pre-set the bw theme.
+g &lt;- ggplot(mpg, aes(cty, hwy))
+
+g + geom_jitter(width = .5, size=1) +
+labs(subtitle="mpg: city vs highway mileage", 
+y="hwy", 
+
+x="cty", 
+title="Jittered Points")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_4.png"> More points are revealed now. 
+
+More the <code>width</code>, more the points are moved jittered from their original position.
+<h3 id="ggplot2topic-41">Counts Chart</h3>
+The second option to overcome the problem of data points overlap is to use what is called a <em>counts chart</em>. 
+
+Whereever there is more points overlap, the size of the circle gets bigger.
+<code># load package and data
+library(ggplot2)
+
+data(mpg, package="ggplot2")
+# mpg &lt;- read.csv("http://goo.gl/uEeRGu")
+# Scatterplot
+
+theme_set(theme_bw())  # pre-set the bw theme.
+g &lt;- ggplot(mpg, aes(cty, hwy))
+g + geom_count(col="tomato3", show.legend=F) +
+
+labs(subtitle="mpg: city vs highway mileage", 
+y="hwy", 
+x="cty", 
+
+title="Counts Plot")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_5.png">
+<h3 id="ggplot2topic-42">Bubble plot</h3>
+
+While scatterplot lets you compare the relationship between 2 continuous variables, bubble chart serves well if you want to understand relationship within the underlying groups based on:
+A Categorical variable (by changing the color) and
+Another continuous variable (by changing the size of points).
+
+In simpler words, bubble charts are more suitable if you have 4-Dimensional data where two of them are numeric (X and Y) and one other categorical (color) and another numeric variable (size).
+<style> .large-mobile-banner-1-multi-115{border:none !important;display:block !important;float:none;line-height:0px;margin-bottom:2px !important;margin-left:0px !important;margin-right:0px !important;margin-top:2px !important;max-width:100% !important;min-height:250px;min-width:250px;padding:0;text-align:center !important;}</style>The bubble chart clearly distinguishes the range of <code>displ</code> between the manufacturers and how the slope of lines-of-best-fit varies, providing a better visual comparison between the groups.
+<code># load package and data
+
+library(ggplot2)
+data(mpg, package="ggplot2")
+# mpg &lt;- read.csv("http://goo.gl/uEeRGu")
+
+mpg_select &lt;- mpg[mpg$manufacturer %in% c("audi", "ford", "honda", "hyundai"), ]
+# Scatterplot
+theme_set(theme_bw())  # pre-set the bw theme.
+
+g &lt;- ggplot(mpg_select, aes(displ, cty)) + 
+labs(subtitle="mpg: Displacement vs City Mileage",
+title="Bubble chart")
+
+g + geom_jitter(aes(col=manufacturer, size=hwy)) + 
+geom_smooth(aes(col=manufacturer), method="lm", se=F)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_6.png">
+
+<h3 id="ggplot2topic-43">Animated Bubble chart</h3>
+An animated bubble chart can be implemented using the <code>gganimate</code> package. 
+It is same as the bubble chart, but, you have to show how the values change over a fifth dimension (typically time).
+
+The key thing to do is to set the <code>aes(frame)</code> to the desired column on which you want to animate. 
+Rest of the procedure related to plot construction is the same. 
+Once the plot is constructed, you can animate it using <code>gganimate()</code> by setting a chosen <code>interval</code>.
+
+<code># Source: https://github.com/dgrtwo/gganimate
+# install.packages("cowplot")  # a gganimate dependency
+# devtools::install_github("dgrtwo/gganimate")
+
+library(ggplot2)
+library(gganimate)
+library(gapminder)
+
+theme_set(theme_bw())  # pre-set the bw theme.
+g &lt;- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, frame = year)) +
+geom_point() +
+
+geom_smooth(aes(group = year), 
+method = "lm", 
+show.legend = FALSE) +
+
+facet_wrap(~continent, scales = "free") +
+scale_x_log10()  # convert to log scale
+gganimate(g, interval=0.2)</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_7.gif">
+<h3 id="ggplot2topic-44">Marginal Histogram / Boxplot</h3>
+If you want to show the relationship as well as the distribution in the same chart, use the marginal histogram. 
+
+It has a histogram of the X and Y variables at the margins of the scatterplot.
+This can be implemented using the <code>ggMarginal()</code> function from the ‘<code>ggExtra</code>’ package. 
+Apart from a <code>histogram</code>, you could choose to draw a marginal <code>boxplot</code> or <code>density</code> plot by setting the respective <code>type</code> option.
+
+<code># load package and data
+library(ggplot2)
+library(ggExtra)
+
+data(mpg, package="ggplot2")
+# mpg &lt;- read.csv("http://goo.gl/uEeRGu")
+# Scatterplot
+
+theme_set(theme_bw())  # pre-set the bw theme.
+mpg_select &lt;- mpg[mpg$hwy &gt;= 35 &amp; mpg$cty &gt; 27, ]
+g &lt;- ggplot(mpg, aes(cty, hwy)) + 
+
+geom_count() + 
+geom_smooth(method="lm", se=F)
+ggMarginal(g, type = "histogram", fill="transparent")
+
+ggMarginal(g, type = "boxplot", fill="transparent")
+# ggMarginal(g, type = "density", fill="transparent")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_8_1.png">   <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_8_2.png">
+
+<h3 id="ggplot2topic-45">Correlogram</h3>
+Correlogram let’s you examine the corellation of multiple continuous variables present in the same dataframe. 
+This is conveniently implemented using the <code>ggcorrplot</code> package.
+
+<code># devtools::install_github("kassambara/ggcorrplot")
+library(ggplot2)
+library(ggcorrplot)
+
+# Correlation matrix
+data(mtcars)
+corr &lt;- round(cor(mtcars), 1)
+
+# Plot
+ggcorrplot(corr, hc.order = TRUE, 
+type = "lower", 
+
+lab = TRUE, 
+lab_size = 3, 
+method="circle", 
+
+colors = c("tomato2", "white", "springgreen3"), 
+title="Correlogram of mtcars", 
+ggtheme=theme_bw)</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_9.png">
+<h3 id="ggplot2topic-46"><span class="orange">2. Deviation</span></h3>
+
+Compare variation in <em>values</em> between small number of items (or categories) with respect to a fixed reference.
+<h3 id="ggplot2topic-47">Diverging bars</h3>
+Diverging Bars is a bar chart that can handle both negative and positive values. 
+
+This can be implemented by a smart tweak with <code>geom_bar()</code>. 
+But the usage of <code>geom_bar()</code> can be quite confusing. 
+Thats because, it can be used to make a bar chart as well as a histogram. 
+
+Let me explain.
+By default, <code>geom_bar()</code> has the <code>stat</code> set to <code>count</code>. 
+That means, when you provide just a continuous X variable (and no Y variable), it tries to make a histogram out of the data.
+
+In order to make a bar chart create bars instead of histogram, you need to do two things.
+Set <code>stat=identity</code>
+Provide both <code>x</code> and <code>y</code> inside <code>aes()</code> where, <code>x</code> is either <code>character</code> or <code>factor</code> and <code>y</code> is numeric.
+
+In order to make sure you get diverging bars instead of just bars, make sure, your categorical variable has 2 categories that changes values at a certain threshold of the continuous variable. 
+In below example, the <code>mpg</code> from mtcars dataset is normalised by computing the z score. 
+Those vehicles with mpg above zero are marked green and those below are marked red.
+
+<code>library(ggplot2)
+theme_set(theme_bw())  
+# Data Prep
+
+data("mtcars")  # load data
+mtcars$`car name` &lt;- rownames(mtcars)  # create new column for car names
+mtcars$mpg_z &lt;- round((mtcars$mpg - mean(mtcars$mpg))/sd(mtcars$mpg), 2)  # compute normalized mpg
+
+mtcars$mpg_type &lt;- ifelse(mtcars$mpg_z &lt; 0, "below", "above")  # above / below avg flag
+mtcars &lt;- mtcars[order(mtcars$mpg_z), ]  # sort
+mtcars$`car name` &lt;- factor(mtcars$`car name`, levels = mtcars$`car name`)  # convert to factor to retain sorted order in plot.
+
+# Diverging Barcharts
+ggplot(mtcars, aes(x=`car name`, y=mpg_z, label=mpg_z)) + 
+geom_bar(stat='identity', aes(fill=mpg_type), width=.5)  +
+
+scale_fill_manual(name="Mileage", 
+labels = c("Above Average", "Below Average"), 
+values = c("above"="#00ba38", "below"="#f8766d")) + 
+
+labs(subtitle="Normalised mileage from 'mtcars'", 
+title= "Diverging Bars") + 
+coord_flip()</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_10.png">
+<h3 id="ggplot2topic-48">Diverging Lollipop Chart</h3>
+Lollipop chart conveys the same information as bar chart and diverging bar. 
+
+Except that it looks more modern. 
+Instead of geom_bar, I use <code>geom_point</code> and <code>geom_segment</code> to get the lollipops right. 
+Let’s draw a lollipop using the same data I prepared in the previous example of diverging bars.
+
+<code>library(ggplot2)
+theme_set(theme_bw())
+ggplot(mtcars, aes(x=`car name`, y=mpg_z, label=mpg_z)) + 
+
+geom_point(stat='identity', fill="black", size=6)  +
+geom_segment(aes(y = 0, 
+x = `car name`, 
+
+yend = mpg_z, 
+xend = `car name`), 
+color = "black") +
+
+geom_text(color="white", size=2) +
+labs(title="Diverging Lollipop Chart", 
+subtitle="Normalized mileage from 'mtcars': Lollipop") + 
+
+ylim(-2.5, 2.5) +
+coord_flip()</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_11.png">
+
+<h3 id="ggplot2topic-49">Diverging Dot Plot</h3>
+Dot plot conveys similar information. 
+The principles are same as what we saw in Diverging bars, except that only point are used. 
+
+<code>library(ggplot2)
+theme_set(theme_bw())
+# Plot
+
+ggplot(mtcars, aes(x=`car name`, y=mpg_z, label=mpg_z)) + 
+geom_point(stat='identity', aes(col=mpg_type), size=6)  +
+scale_color_manual(name="Mileage", 
+
+labels = c("Above Average", "Below Average"), 
+values = c("above"="#00ba38", "below"="#f8766d")) + 
+geom_text(color="white", size=2) +
+
+labs(title="Diverging Dot Plot", 
+subtitle="Normalized mileage from 'mtcars': Dotplot") + 
+ylim(-2.5, 2.5) +
+
+coord_flip()</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_12.png">
+<h3 id="ggplot2topic-50">Area Chart</h3>
+
+Area charts are typically used to visualize how a particular metric (such as % returns from a stock) performed compared to a certain baseline. 
+Other types of %returns or %change data are also commonly used. 
+The <code>geom_area()</code> implements this.
+
+<code>library(ggplot2)
+library(quantmod)
+data("economics", package = "ggplot2")
+
+# Compute % Returns
+economics$returns_perc &lt;- c(0, diff(economics$psavert)/economics$psavert[-length(economics$psavert)])
+# Create break points and labels for axis ticks
+
+brks &lt;- economics$date[seq(1, length(economics$date), 12)]
+lbls &lt;- lubridate::year(economics$date[seq(1, length(economics$date), 12)])
+# Plot
+
+ggplot(economics[1:100, ], aes(date, returns_perc)) + 
+geom_area() + 
+scale_x_date(breaks=brks, labels=lbls) + 
+
+theme(axis.text.x = element_text(angle=90)) + 
+labs(title="Area Chart", 
+subtitle = "Perc Returns for Personal Savings", 
+
+y="% Returns for Personal savings", 
+caption="Source: economics")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_13.png">
+
+<h3 id="ggplot2topic-51"><span class="orange">3. Ranking</span></h3>
+Used to compare the position or performance of multiple items with respect to each other. 
+
+Actual values matters somewhat less than the ranking.
+<h3 id="ggplot2topic-52">Ordered Bar Chart</h3>
+Ordered Bar Chart is a Bar Chart that is ordered by the Y axis variable. 
+
+Just sorting the dataframe by the variable of interest isn’t enough to order the bar chart. 
+In order for the bar chart to retain the order of the rows, the X axis variable (i.e. 
+the categories) has to be converted into a factor.
+
+Let’s plot the mean city mileage for each manufacturer from <code>mpg</code> dataset. 
+First, aggregate the data and sort it before you draw the plot. 
+Finally, the X variable is converted to a factor.
+
+Let’s see how that is done.
+<code># Prepare data: group mean city mileage by manufacturer.
+cty_mpg &lt;- aggregate(mpg$cty, by=list(mpg$manufacturer), FUN=mean)  # aggregate
+
+colnames(cty_mpg) &lt;- c("make", "mileage")  # change column names
+cty_mpg &lt;- cty_mpg[order(cty_mpg$mileage), ]  # sort
+cty_mpg$make &lt;- factor(cty_mpg$make, levels = cty_mpg$make)  # to retain the order in plot.
+
+head(cty_mpg, 4)
+#&gt;          make  mileage
+#&gt; 9     lincoln 11.33333
+
+#&gt; 8  land rover 11.50000
+#&gt; 3       dodge 13.13514
+#&gt; 10    mercury 13.25000</code>
+
+The X variable is now a <code>factor</code>, let’s plot.
+<code>library(ggplot2)
+theme_set(theme_bw())
+
+# Draw plot
+ggplot(cty_mpg, aes(x=make, y=mileage)) + 
+geom_bar(stat="identity", width=.5, fill="tomato3") + 
+
+labs(title="Ordered Bar Chart", 
+subtitle="Make Vs Avg. 
+Mileage", 
+
+caption="source: mpg") + 
+theme(axis.text.x = element_text(angle=65, vjust=0.6))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_14.png">
+
+<h3 id="ggplot2topic-53">Lollipop Chart</h3>
+Lollipop charts conveys the same information as in bar charts. 
+By reducing the thick bars into thin lines, it reduces the clutter and lays more emphasis on the value. 
+
+It looks nice and modern.
+<code>library(ggplot2)
+theme_set(theme_bw())
+
+# Plot
+ggplot(cty_mpg, aes(x=make, y=mileage)) + 
+geom_point(size=3) + 
+
+geom_segment(aes(x=make, 
+xend=make, 
+y=0, 
+
+yend=mileage)) + 
+labs(title="Lollipop Chart", 
+subtitle="Make Vs Avg. 
+
+Mileage", 
+caption="source: mpg") + 
+theme(axis.text.x = element_text(angle=65, vjust=0.6))</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_15.png">
+<h3 id="ggplot2topic-54">Dot Plot</h3>
+Dot plots are very similar to lollipops, but without the line and is flipped to horizontal position. 
+
+It emphasizes more on the rank ordering of items with respect to actual values and how far apart are the entities with respect to each other.
+<code>library(ggplot2)
+library(scales)
+
+theme_set(theme_classic())
+# Plot
+ggplot(cty_mpg, aes(x=make, y=mileage)) + 
+
+geom_point(col="tomato2", size=3) +   # Draw points
+geom_segment(aes(x=make, 
+xend=make, 
+
+y=min(mileage), 
+yend=max(mileage)), 
+linetype="dashed", 
+
+size=0.1) +   # Draw dashed lines
+labs(title="Dot Plot", 
+subtitle="Make Vs Avg. 
+
+Mileage", 
+caption="source: mpg") +  
+coord_flip()</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_16.png">
+<h3 id="ggplot2topic-55">Slope Chart</h3>
+Slope charts are an excellent way of comparing the positional placements between 2 points on time. 
+
+At the moment, there is no builtin function to construct this. 
+Following code serves as a pointer about how you may approach this.
+<code>library(ggplot2)
+
+library(scales)
+theme_set(theme_classic())
+# prep data
+
+df &lt;- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/gdppercap.csv")
+colnames(df) &lt;- c("continent", "1952", "1957")
+left_label &lt;- paste(df$continent, round(df$`1952`),sep=", ")
+
+right_label &lt;- paste(df$continent, round(df$`1957`),sep=", ")
+df$class &lt;- ifelse((df$`1957` - df$`1952`) &lt; 0, "red", "green")
+# Plot
+
+p &lt;- ggplot(df) + geom_segment(aes(x=1, xend=2, y=`1952`, yend=`1957`, col=class), size=.75, show.legend=F) + 
+geom_vline(xintercept=1, linetype="dashed", size=.1) + 
+geom_vline(xintercept=2, linetype="dashed", size=.1) +
+
+scale_color_manual(labels = c("Up", "Down"), 
+values = c("green"="#00ba38", "red"="#f8766d")) +  # color of lines
+labs(x=", y="Mean GdpPerCap") +  # Axis labels
+
+xlim(.5, 2.5) + ylim(0,(1.1*(max(df$`1952`, df$`1957`))))  # X and Y axis limits
+# Add texts
+p &lt;- p + geom_text(label=left_label, y=df$`1952`, x=rep(1, NROW(df)), hjust=1.1, size=3.5)
+
+p &lt;- p + geom_text(label=right_label, y=df$`1957`, x=rep(2, NROW(df)), hjust=-0.1, size=3.5)
+p &lt;- p + geom_text(label="Time 1", x=1, y=1.1*(max(df$`1952`, df$`1957`)), hjust=1.2, size=5)  # title
+p &lt;- p + geom_text(label="Time 2", x=2, y=1.1*(max(df$`1952`, df$`1957`)), hjust=-0.1, size=5)  # title
+
+# Minify theme
+p + theme(panel.background = element_blank(), 
+panel.grid = element_blank(),
+
+axis.ticks = element_blank(),
+axis.text.x = element_blank(),
+panel.border = element_blank(),
+
+plot.margin = unit(c(1,2,1,2), "cm"))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_17.png">
+<h3 id="ggplot2topic-56">Dumbbell Plot</h3>
+
+Dumbbell charts are a great tool if you wish to: 1. 
+Visualize relative positions (like growth and decline) between two points in time. 
+2. 
+
+Compare distance between two categories.
+In order to get the correct ordering of the dumbbells, the Y variable should be a factor and the levels of the factor variable should be in the same order as it should appear in the plot.
+<code># devtools::install_github("hrbrmstr/ggalt")
+
+library(ggplot2)
+library(ggalt)
+theme_set(theme_classic())
+
+health &lt;- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/health.csv")
+health$Area &lt;- factor(health$Area, levels=as.character(health$Area))  # for right ordering of the dumbells
+# health$Area &lt;- factor(health$Area)
+
+gg &lt;- ggplot(health, aes(x=pct_2013, xend=pct_2014, y=Area, group=Area)) + 
+geom_dumbbell(color="#a3c4dc", 
+size=0.75, 
+
+point.colour.l="#0e668b") + 
+scale_x_continuous(label=percent) + 
+labs(x=NULL, 
+
+y=NULL, 
+title="Dumbbell Chart", 
+subtitle="Pct Change: 2013 vs 2014", 
+
+caption="Source: https://github.com/hrbrmstr/ggalt") +
+theme(plot.title = element_text(hjust=0.5, face="bold"),
+plot.background=element_rect(fill="#f7f7f7"),
+
+panel.background=element_rect(fill="#f7f7f7"),
+panel.grid.minor=element_blank(),
+panel.grid.major.y=element_blank(),
+
+panel.grid.major.x=element_line(),
+axis.ticks=element_blank(),
+legend.position="top",
+
+panel.border=element_blank())
+plot(gg)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_18.png">
+
+<h3 id="ggplot2topic-57"><span class="orange">4. Distribution</span></h3>
+When you have lots and lots of data points and want to study where and how the data points are distributed.
+
+<h3 id="ggplot2topic-58">Histogram</h3>
+By default, if only one variable is supplied, the <code>geom_bar()</code> tries to calculate the count. 
+In order for it to behave like a bar chart, the <code>stat=identity</code> option has to be set and <code>x</code> and <code>y</code> values must be provided.
+
+<h4>Histogram on a continuous variable</h4>
+Histogram on a continuous variable can be accomplished using either <code>geom_bar()</code> or <code>geom_histogram()</code>. 
+When using <code>geom_histogram()</code>, you can control the number of bars using the <code>bins</code> option. 
+
+Else, you can set the range covered by each bin using <code>binwidth</code>. 
+The value of <code>binwidth</code> is on the same scale as the continuous variable on which histogram is built. 
+Since, <code>geom_histogram</code> gives facility to control both number of <code>bins</code> as well as <code>binwidth</code>, it is the preferred option to create histogram on continuous variables.
+
+<code>library(ggplot2)
+theme_set(theme_classic())
+# Histogram on a Continuous (Numeric) Variable
+
+g &lt;- ggplot(mpg, aes(displ)) + scale_fill_brewer(palette = "Spectral")
+g + geom_histogram(aes(fill=class), 
+binwidth = .1, 
+
+col="black", 
+size=.1) +  # change binwidth
+labs(title="Histogram with Auto Binning", 
+
+subtitle="Engine Displacement across Vehicle Classes")  
+g + geom_histogram(aes(fill=class), 
+bins=5, 
+
+col="black", 
+size=.1) +   # change number of bins
+labs(title="Histogram with Fixed Bins", 
+
+subtitle="Engine Displacement across Vehicle Classes") </code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_19.png"> <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_20.png">
+<h4>Histogram on a categorical variable</h4>
+
+Histogram on a categorical variable would result in a frequency chart showing bars for each category. 
+By adjusting <code>width</code>, you can adjust the thickness of the bars.
+<code>library(ggplot2)
+
+theme_set(theme_classic())
+# Histogram on a Categorical variable
+g &lt;- ggplot(mpg, aes(manufacturer))
+
+g + geom_bar(aes(fill=class), width = 0.5) + 
+theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
+labs(title="Histogram on Categorical Variable", 
+
+subtitle="Manufacturer across Vehicle Classes") </code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_22.png">
+<h3 id="ggplot2topic-59">Density plot</h3>
+
+<code>library(ggplot2)
+theme_set(theme_classic())
+# Plot
+
+g &lt;- ggplot(mpg, aes(cty))
+g + geom_density(aes(fill=factor(cyl)), alpha=0.8) + 
+labs(title="Density plot", 
+
+subtitle="City Mileage Grouped by Number of cylinders",
+caption="Source: mpg",
+x="City Mileage",
+
+fill="# Cylinders")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_23.png">
+<h3 id="ggplot2topic-60">Box Plot</h3>
+
+Box plot is an excellent tool to study the distribution. 
+It can also show the distributions within multiple groups, along with the median, range and outliers if any.
+The dark line inside the box represents the median. 
+
+The top of box is 75%ile and bottom of box is 25%ile. 
+The end points of the lines (aka whiskers) is at a distance of 1.5*IQR, where IQR or Inter Quartile Range is the distance between 25th and 75th percentiles. 
+The points outside the whiskers are marked as dots and are normally considered as extreme points.
+
+Setting <code>varwidth=T</code> adjusts the width of the boxes to be proportional to the number of observation it contains.
+<code>library(ggplot2)
+theme_set(theme_classic())
+
+# Plot
+g &lt;- ggplot(mpg, aes(class, cty))
+g + geom_boxplot(varwidth=T, fill="plum") + 
+
+labs(title="Box plot", 
+subtitle="City Mileage grouped by Class of vehicle",
+caption="Source: mpg",
+
+x="Class of Vehicle",
+y="City Mileage")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_24.png">
+
+<code>library(ggthemes)
+g &lt;- ggplot(mpg, aes(class, cty))
+g + geom_boxplot(aes(fill=factor(cyl))) + 
+
+theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
+labs(title="Box plot", 
+subtitle="City Mileage grouped by Class of vehicle",
+
+caption="Source: mpg",
+x="Class of Vehicle",
+y="City Mileage")</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_25.png">
+<h3 id="ggplot2topic-61">Dot + Box Plot</h3>
+On top of the information provided by a box plot, the dot plot can provide more clear information in the form of summary statistics by each group. 
+
+The dots are staggered such that each dot represents one observation. 
+So, in below chart, the number of dots for a given manufacturer will match the number of rows of that manufacturer in source data.
+<code>library(ggplot2)
+
+theme_set(theme_bw())
+# plot
+g &lt;- ggplot(mpg, aes(manufacturer, cty))
+
+g + geom_boxplot() + 
+geom_dotplot(binaxis='y', 
+stackdir='center', 
+
+dotsize = .5, 
+fill="red") +
+theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
+
+labs(title="Box plot + Dot plot", 
+subtitle="City Mileage vs Class: Each dot represents 1 row in source data",
+caption="Source: mpg",
+
+x="Class of Vehicle",
+y="City Mileage")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_26.png">
+
+<h3 id="ggplot2topic-62">Tufte Boxplot</h3>
+Tufte box plot, provided by <code>ggthemes</code> package is inspired by the works of Edward Tufte. 
+Tufte’s Box plot is just a box plot made minimal and visually appealing.
+
+<code>library(ggthemes)
+library(ggplot2)
+theme_set(theme_tufte())  # from ggthemes
+
+# plot
+g &lt;- ggplot(mpg, aes(manufacturer, cty))
+g + geom_tufteboxplot() + 
+
+theme(axis.text.x = element_text(angle=65, vjust=0.6)) + 
+labs(title="Tufte Styled Boxplot", 
+subtitle="City Mileage grouped by Class of vehicle",
+
+caption="Source: mpg",
+x="Class of Vehicle",
+y="City Mileage")</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_27.png">
+<h3 id="ggplot2topic-63">Violin Plot</h3>
+A violin plot is similar to box plot but shows the density within groups. 
+
+Not much info provided as in boxplots. 
+It can be drawn using <code>geom_violin()</code>.
+<code>library(ggplot2)
+
+theme_set(theme_bw())
+# plot
+g &lt;- ggplot(mpg, aes(class, cty))
+
+g + geom_violin() + 
+labs(title="Violin plot", 
+subtitle="City Mileage vs Class of vehicle",
+
+caption="Source: mpg",
+x="Class of Vehicle",
+y="City Mileage")</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_28.png">
+<h3 id="ggplot2topic-64">Population Pyramid</h3>
+Population pyramids offer a unique way of visualizing how much population or what percentage of population fall under a certain category. 
+
+The below pyramid is an excellent example of how many users are retained at each stage of a email marketing campaign funnel.
+<code>library(ggplot2)
+library(ggthemes)
+
+options(scipen = 999)  # turns of scientific notations like 1e+40
+# Read data
+email_campaign_funnel &lt;- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/email_campaign_funnel.csv")
+
+# X Axis Breaks and Labels 
+brks &lt;- seq(-15000000, 15000000, 5000000)
+lbls = paste0(as.character(c(seq(15, 0, -5), seq(5, 15, 5))), "m")
+
+# Plot
+ggplot(email_campaign_funnel, aes(x = Stage, y = Users, fill = Gender)) +   # Fill column
+geom_bar(stat = "identity", width = .6) +   # draw the bars
+
+scale_y_continuous(breaks = brks,   # Breaks
+labels = lbls) + # Labels
+coord_flip() +  # Flip axes
+
+labs(title="Email Campaign Funnel") +
+theme_tufte() +  # Tufte theme from ggfortify
+theme(plot.title = element_text(hjust = .5), 
+
+axis.ticks = element_blank()) +   # Centre plot title
+scale_fill_brewer(palette = "Dark2")  # Color palette</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_29.png">
+
+<h3 id="ggplot2topic-65"><span class="orange">5. Composition</span></h3>
+<h3 id="ggplot2topic-66">Waffle Chart</h3>
+
+Waffle charts is a nice way of showing the categorical composition of the total population. 
+Though there is no direct function, it can be articulated by smartly maneuvering the ggplot2 using <code>geom_tile()</code> function. 
+The below template should help you create your own waffle.
+
+<code>var &lt;- mpg$class  # the categorical data 
+## Prep data (nothing to change here)
+nrows &lt;- 10
+
+df &lt;- expand.grid(y = 1:nrows, x = 1:nrows)
+categ_table &lt;- round(table(var) * ((nrows*nrows)/(length(var))))
+categ_table
+
+#&gt;   2seater    compact    midsize    minivan     pickup subcompact        suv 
+#&gt;         2         20         18          5         14         15         26 
+df$category &lt;- factor(rep(names(categ_table), categ_table))  
+
+# NOTE: if sum(categ_table) is not 100 (i.e. 
+nrows^2), it will need adjustment to make the sum to 100.
+## Plot
+
+ggplot(df, aes(x = x, y = y, fill = category)) + 
+geom_tile(color = "black", size = 0.5) +
+scale_x_continuous(expand = c(0, 0)) +
+
+scale_y_continuous(expand = c(0, 0), trans = 'reverse') +
+scale_fill_brewer(palette = "Set3") +
+labs(title="Waffle Chart", subtitle="'Class' of vehicles",
+
+caption="Source: mpg") + 
+theme(panel.border = element_rect(size = 2),
+plot.title = element_text(size = rel(1.2)),
+
+axis.text = element_blank(),
+axis.title = element_blank(),
+axis.ticks = element_blank(),
+
+legend.title = element_blank(),
+legend.position = "right")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_30.png">
+
+<h3 id="ggplot2topic-67">Pie Chart</h3>
+Pie chart, a classic way of showing the compositions is equivalent to the waffle chart in terms of the information conveyed. 
+But is a slightly tricky to implement in ggplot2 using the <code>coord_polar()</code>.
+
+<code>library(ggplot2)
+theme_set(theme_classic())
+# Source: Frequency table
+
+df &lt;- as.data.frame(table(mpg$class))
+colnames(df) &lt;- c("class", "freq")
+pie &lt;- ggplot(df, aes(x = ", y=freq, fill = factor(class))) + 
+
+geom_bar(width = 1, stat = "identity") +
+theme(axis.line = element_blank(), 
+plot.title = element_text(hjust=0.5)) + 
+
+labs(fill="class", 
+x=NULL, 
+y=NULL, 
+
+title="Pie Chart of class", 
+caption="Source: mpg")
+pie + coord_polar(theta = "y", start=0)
+
+# Source: Categorical variable.
+# mpg$class
+pie &lt;- ggplot(mpg, aes(x = ", fill = factor(class))) + 
+
+geom_bar(width = 1) +
+theme(axis.line = element_blank(), 
+plot.title = element_text(hjust=0.5)) + 
+
+labs(fill="class", 
+x=NULL, 
+y=NULL, 
+
+title="Pie Chart of class", 
+caption="Source: mpg")
+pie + coord_polar(theta = "y", start=0)</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_31.png">
+<code># http://www.r-graph-gallery.com/128-ring-or-donut-plot/</code>
+<h3 id="ggplot2topic-68">Treemap</h3>
+
+Treemap is a nice way of displaying hierarchical data by using nested rectangles. 
+The <code>treemapify</code> package provides the necessary functions to convert the data in desired format (<code>treemapify</code>) as well as draw the actual plot (<code>ggplotify</code>).
+In order to create a treemap, the data must be converted to desired format using <code>treemapify()</code>. 
+
+The important requirement is, your data must have one variable each that describes the <code>area</code> of the tiles, variable for <code>fill</code> color, variable that has the tile’s <code>label</code> and finally the parent <code>group</code>.
+Once the data formatting is done, just call <code>ggplotify()</code> on the treemapified data.
+<code>library(ggplot2) 
+
+library(treemapify)
+proglangs &lt;- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/proglanguages.csv")
+# plot
+
+treeMapCoordinates &lt;- treemapify(proglangs,
+area = "value",
+fill = "parent",
+
+label = "id",
+group = "parent")
+treeMapPlot &lt;- ggplotify(treeMapCoordinates) + 
+
+scale_x_continuous(expand = c(0, 0)) +
+scale_y_continuous(expand = c(0, 0)) +
+scale_fill_brewer(palette = "Dark2")
+
+print(treeMapPlot)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_32.png">
+<h3 id="ggplot2topic-69">Bar Chart</h3>
+
+By default, <code>geom_bar()</code> has the <code>stat</code> set to <code>count</code>. 
+That means, when you provide just a continuous X variable (and no Y variable), it tries to make a histogram out of the data.
+In order to make a bar chart create bars instead of histogram, you need to do two things.
+
+Set <code>stat=identity</code>
+Provide both <code>x</code> and <code>y</code> inside <code>aes()</code> where, <code>x</code> is either <code>character</code> or <code>factor</code> and <code>y</code> is numeric.
+A bar chart can be drawn from a categorical column variable or from a separate frequency table. 
+
+By adjusting <code>width</code>, you can adjust the thickness of the bars. 
+If your data source is a frequency table, that is, if you don’t want ggplot to compute the counts, you need to set the <code>stat=identity</code> inside the <code>geom_bar()</code>.
+<code># prep frequency table
+
+freqtable &lt;- table(mpg$manufacturer)
+df &lt;- as.data.frame.table(freqtable)
+head(df)
+
+#&gt;          Var1 Freq
+#&gt; 1        audi   18
+#&gt; 2   chevrolet   19
+
+#&gt; 3       dodge   37
+#&gt; 4        ford   25
+#&gt; 5       honda    9
+
+#&gt; 6     hyundai   14</code>
+<code># plot
+library(ggplot2)
+
+theme_set(theme_classic())
+# Plot
+g &lt;- ggplot(df, aes(Var1, Freq))
+
+g + geom_bar(stat="identity", width = 0.5, fill="tomato2") + 
+labs(title="Bar Chart", 
+subtitle="Manufacturer of vehicles", 
+
+caption="Source: Frequency of Manufacturers from 'mpg' dataset") +
+theme(axis.text.x = element_text(angle=65, vjust=0.6))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_33.png">
+
+It can be computed directly from a column variable as well. 
+In this case, only X is provided and <code>stat=identity</code> is <em>not</em> set.
+<code># From on a categorical column variable
+
+g &lt;- ggplot(mpg, aes(manufacturer))
+g + geom_bar(aes(fill=class), width = 0.5) + 
+theme(axis.text.x = element_text(angle=65, vjust=0.6)) +
+
+labs(title="Categorywise Bar Chart", 
+subtitle="Manufacturer of vehicles", 
+caption="Source: Manufacturers from 'mpg' dataset")</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_34.png">
+<h3 id="ggplot2topic-70"><span class="orange">6. Change</span></h3>
+
+<h3 id="ggplot2topic-71">Time Series Plot From a Time Series Object (<code>ts</code>)</h3>
+The <code>ggfortify</code> package allows autoplot to automatically plot directly from a time series object (<code>ts</code>).
+<code>## From Timeseries object (ts)
+
+library(ggplot2)
+library(ggfortify)
+theme_set(theme_classic())
+
+# Plot 
+autoplot(AirPassengers) + 
+labs(title="AirPassengers") + 
+
+theme(plot.title = element_text(hjust=0.5))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_35.png">
+<h3 id="ggplot2topic-72">Time Series Plot From a Data Frame</h3>
+
+Using <code>geom_line()</code>, a time series (or line chart) can be drawn from a <code>data.frame</code> as well. 
+The X axis breaks are generated by default. 
+In below example, the breaks are formed once every 10 years.
+
+<h4>Default X Axis Labels</h4>
+<code>library(ggplot2)
+theme_set(theme_classic())
+
+# Allow Default X Axis Labels
+ggplot(economics, aes(x=date)) + 
+geom_line(aes(y=returns_perc)) + 
+
+labs(title="Time Series Chart", 
+subtitle="Returns Percentage from 'Economics' Dataset", 
+caption="Source: Economics", 
+
+y="Returns %")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_36.png">
+<h3 id="ggplot2topic-73">Time Series Plot For a <em>Monthly</em> Time Series</h3>
+
+If you want to set your own time intervals (breaks) in X axis, you need to set the breaks and labels using <code>scale_x_date()</code>.
+<code>library(ggplot2)
+library(lubridate)
+
+theme_set(theme_bw())
+economics_m &lt;- economics[1:24, ]
+# labels and breaks for X axis text
+
+lbls &lt;- paste0(month.abb[month(economics_m$date)], " ", lubridate::year(economics_m$date))
+brks &lt;- economics_m$date
+# plot
+
+ggplot(economics_m, aes(x=date)) + 
+geom_line(aes(y=returns_perc)) + 
+labs(title="Monthly Time Series", 
+
+subtitle="Returns Percentage from Economics Dataset", 
+caption="Source: Economics", 
+y="Returns %") +  # title and caption
+
+scale_x_date(labels = lbls, 
+breaks = brks) +  # change to monthly ticks and labels
+theme(axis.text.x = element_text(angle = 90, vjust=0.5),  # rotate x axis text
+
+panel.grid.minor = element_blank())  # turn off minor grid</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_37.png">
+<h3 id="ggplot2topic-74">Time Series Plot For a <em>Yearly</em> Time Series</h3>
+
+<code>library(ggplot2)
+library(lubridate)
+theme_set(theme_bw())
+
+economics_y &lt;- economics[1:90, ]
+# labels and breaks for X axis text
+brks &lt;- economics_y$date[seq(1, length(economics_y$date), 12)]
+
+lbls &lt;- lubridate::year(brks)
+# plot
+ggplot(economics_y, aes(x=date)) + 
+
+geom_line(aes(y=returns_perc)) + 
+labs(title="Yearly Time Series", 
+subtitle="Returns Percentage from Economics Dataset", 
+
+caption="Source: Economics", 
+y="Returns %") +  # title and caption
+scale_x_date(labels = lbls, 
+
+breaks = brks) +  # change to monthly ticks and labels
+theme(axis.text.x = element_text(angle = 90, vjust=0.5),  # rotate x axis text
+panel.grid.minor = element_blank())  # turn off minor grid</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_38.png">
+<h3 id="ggplot2topic-75">Time Series Plot From Long Data Format: Multiple Time Series in Same Dataframe Column</h3>
+In this example, I construct the ggplot from a long data format. 
+
+That means, the column names and respective values of all the columns are stacked in just 2 variables (<code>variable</code> and <code>value</code> respectively). 
+If you were to convert this data to wide format, it would look like the <code>economics</code> dataset.
+In below example, the <code>geom_line</code> is drawn for <code>value</code> column and the <code>aes(col)</code> is set to <code>variable</code>. 
+
+This way, with just one call to <code>geom_line</code>, multiple colored lines are drawn, one each for each unique value in <code>variable</code> column. 
+The <code>scale_x_date()</code> changes the X axis breaks and labels, and <code>scale_color_manual</code> changes the color of the lines.
+<code>data(economics_long, package = "ggplot2")
+
+head(economics_long)
+#&gt;         date variable value      value01
+#&gt;       &lt;date&gt;   &lt;fctr&gt; &lt;dbl&gt;        &lt;dbl&gt;
+
+#&gt; 1 1967-07-01      pce 507.4 0.0000000000
+#&gt; 2 1967-08-01      pce 510.5 0.0002660008
+#&gt; 3 1967-09-01      pce 516.3 0.0007636797
+
+#&gt; 4 1967-10-01      pce 512.9 0.0004719369
+#&gt; 5 1967-11-01      pce 518.1 0.0009181318
+#&gt; 6 1967-12-01      pce 525.8 0.0015788435</code>
+
+<code>library(ggplot2)
+library(lubridate)
+theme_set(theme_bw())
+
+df &lt;- economics_long[economics_long$variable %in% c("psavert", "uempmed"), ]
+df &lt;- df[lubridate::year(df$date) %in% c(1967:1981), ]
+# labels and breaks for X axis text
+
+brks &lt;- df$date[seq(1, length(df$date), 12)]
+lbls &lt;- lubridate::year(brks)
+# plot
+
+ggplot(df, aes(x=date)) + 
+geom_line(aes(y=value, col=variable)) + 
+labs(title="Time Series of Returns Percentage", 
+
+subtitle="Drawn from Long Data format", 
+caption="Source: Economics", 
+y="Returns %", 
+
+color=NULL) +  # title and caption
+scale_x_date(labels = lbls, breaks = brks) +  # change to monthly ticks and labels
+scale_color_manual(labels = c("psavert", "uempmed"), 
+
+values = c("psavert"="#00ba38", "uempmed"="#f8766d")) +  # line color
+theme(axis.text.x = element_text(angle = 90, vjust=0.5, size = 8),  # rotate x axis text
+panel.grid.minor = element_blank())  # turn off minor grid</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_39.png">
+<h3 id="ggplot2topic-76">Time Series Plot From Wide Data Format: Data in Multiple Columns of Dataframe</h3>
+But if you are creating a time series (or even other types of plots) from a wide data format, you have to draw each line manually by calling <code>geom_line()</code> once for every line. 
+
+So, a legend will not be drawn by default.
+However, having a legend would still be nice. 
+This can be done using the <code>scale_aesthetic_manual()</code> format of functions (like, <code>scale_color_manual()</code> if only the color of your lines change). 
+
+Using this function, you can give a legend title with the <code>name</code> argument, tell what color the legend should take with the <code>values</code> argument and also set the legend labels.
+Even though the below plot looks exactly like the previous one, the approach to construct this is different.
+You might wonder why I used this function in previous example for long data format as well. 
+
+Note that, in previous example, it was used to change the color of the line only. 
+Without <code>scale_color_manual()</code>, you would still have got a legend, but the lines would be of a different (default) color. 
+But in current example, without <code>scale_color_manual()</code>, you wouldn’t even have a legend. 
+
+Try it out!
+<code>library(ggplot2)
+library(lubridate)
+
+theme_set(theme_bw())
+df &lt;- economics[, c("date", "psavert", "uempmed")]
+df &lt;- df[lubridate::year(df$date) %in% c(1967:1981), ]
+
+# labels and breaks for X axis text
+brks &lt;- df$date[seq(1, length(df$date), 12)]
+lbls &lt;- lubridate::year(brks)
+
+# plot
+ggplot(df, aes(x=date)) + 
+geom_line(aes(y=psavert, col="psavert")) + 
+
+geom_line(aes(y=uempmed, col="uempmed")) + 
+labs(title="Time Series of Returns Percentage", 
+subtitle="Drawn From Wide Data format", 
+
+caption="Source: Economics", y="Returns %") +  # title and caption
+scale_x_date(labels = lbls, breaks = brks) +  # change to monthly ticks and labels
+scale_color_manual(name=", 
+
+values = c("psavert"="#00ba38", "uempmed"="#f8766d")) +  # line color
+theme(panel.grid.minor = element_blank())  # turn off minor grid</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_40.png">
+
+<h3 id="ggplot2topic-77">Stacked Area Chart</h3>
+Stacked area chart is just like a line chart, except that the region below the plot is all colored. 
+This is typically used when:
+
+You want to describe how a quantity or volume (rather than something like price) changed over time
+You have many data points. 
+For very few data points, consider plotting a bar chart.
+
+You want to show the contribution from individual components.
+This can be plotted using <code>geom_area</code> which works very much like <code>geom_line</code>. 
+But there is an important point to note. 
+
+By default, each <code>geom_area()</code> starts from the bottom of Y axis (which is typically 0), but, if you want to show the contribution from individual components, you want the <code>geom_area</code> to be stacked over the top of previous component, rather than the floor of the plot itself. 
+So, you have to add all the bottom layers while setting the <code>y</code> of <code>geom_area</code>.
+In below example, I have set it as <code>y=psavert+uempmed</code> for the topmost <code>geom_area()</code>.
+
+However nice the plot looks, the caveat is that, it can easily become complicated and uninterprettable if there are too many components.
+<code>library(ggplot2)
+library(lubridate)
+
+theme_set(theme_bw())
+df &lt;- economics[, c("date", "psavert", "uempmed")]
+df &lt;- df[lubridate::year(df$date) %in% c(1967:1981), ]
+
+# labels and breaks for X axis text
+brks &lt;- df$date[seq(1, length(df$date), 12)]
+lbls &lt;- lubridate::year(brks)
+
+# plot
+ggplot(df, aes(x=date)) + 
+geom_area(aes(y=psavert+uempmed, fill="psavert")) + 
+
+geom_area(aes(y=uempmed, fill="uempmed")) + 
+labs(title="Area Chart of Returns Percentage", 
+subtitle="From Wide Data format", 
+
+caption="Source: Economics", 
+y="Returns %") +  # title and caption
+scale_x_date(labels = lbls, breaks = brks) +  # change to monthly ticks and labels
+
+scale_fill_manual(name=", 
+values = c("psavert"="#00ba38", "uempmed"="#f8766d")) +  # line color
+theme(panel.grid.minor = element_blank())  # turn off minor grid</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_41.png">
+<h3 id="ggplot2topic-78">Calendar Heatmap</h3>
+When you want to see the variation, especially the highs and lows, of a metric like stock price, on an actual calendar itself, the calendar heat map is a great tool. 
+
+It emphasizes the variation visually over time rather than the actual value itself.
+This can be implemented using the <code>geom_tile</code>. 
+But getting it in the right format has more to do with the data preparation rather than the plotting itself.
+
+<code># http://margintale.blogspot.in/2012/04/ggplot2-time-series-heatmaps.html
+library(ggplot2)
+library(plyr)
+
+library(scales)
+library(zoo)
+df &lt;- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/yahoo.csv")
+
+df$date &lt;- as.Date(df$date)  # format date
+df &lt;- df[df$year &gt;= 2012, ]  # filter reqd years
+# Create Month Week
+
+df$yearmonth &lt;- as.yearmon(df$date)
+df$yearmonthf &lt;- factor(df$yearmonth)
+df &lt;- ddply(df,.(yearmonthf), transform, monthweek=1+week-min(week))  # compute week number of month
+
+df &lt;- df[, c("year", "yearmonthf", "monthf", "week", "monthweek", "weekdayf", "VIX.Close")]
+head(df)
+#&gt;   year yearmonthf monthf week monthweek weekdayf VIX.Close
+
+#&gt; 1 2012   Jan 2012    Jan    1         1      Tue     22.97
+#&gt; 2 2012   Jan 2012    Jan    1         1      Wed     22.22
+#&gt; 3 2012   Jan 2012    Jan    1         1      Thu     21.48
+
+#&gt; 4 2012   Jan 2012    Jan    1         1      Fri     20.63
+#&gt; 5 2012   Jan 2012    Jan    2         2      Mon     21.07
+#&gt; 6 2012   Jan 2012    Jan    2         2      Tue     20.69
+
+# Plot
+ggplot(df, aes(monthweek, weekdayf, fill = VIX.Close)) + 
+geom_tile(colour = "white") + 
+
+facet_grid(year~monthf) + 
+scale_fill_gradient(low="red", high="green") +
+labs(x="Week of Month",
+
+y=",
+title = "Time-Series Calendar Heatmap", 
+subtitle="Yahoo Closing Price", 
+
+fill="Close")</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_42.png">
+<h3 id="ggplot2topic-79">Slope Chart</h3>
+
+Slope chart is a great tool of you want to visualize change in value and ranking between categories. 
+This is more suitable over a time series when there are very few time points.
+<code>library(dplyr)
+
+theme_set(theme_classic())
+source_df &lt;- read.csv("https://raw.githubusercontent.com/jkeirstead/r-slopegraph/master/cancer_survival_rates.csv")
+# Define functions. 
+
+Source: https://github.com/jkeirstead/r-slopegraph
+tufte_sort &lt;- function(df, x="year", y="value", group="group", method="tufte", min.space=0.05) {
+## First rename the columns for consistency
+
+ids &lt;- match(c(x, y, group), names(df))
+df &lt;- df[,ids]
+names(df) &lt;- c("x", "y", "group")
+
+## Expand grid to ensure every combination has a defined value
+tmp &lt;- expand.grid(x=unique(df$x), group=unique(df$group))
+tmp &lt;- merge(df, tmp, all.y=TRUE)
+
+df &lt;- mutate(tmp, y=ifelse(is.na(y), 0, y))
+## Cast into a matrix shape and arrange by first column
+require(reshape2)
+
+tmp &lt;- dcast(df, group ~ x, value.var="y")
+ord &lt;- order(tmp[,2])
+tmp &lt;- tmp[ord,]
+
+min.space &lt;- min.space*diff(range(tmp[,-1]))
+yshift &lt;- numeric(nrow(tmp))
+## Start at "bottom" row
+
+## Repeat for rest of the rows until you hit the top
+for (i in 2:nrow(tmp)) {
+## Shift subsequent row up by equal space so gap between
+
+## two entries is &gt;= minimum
+mat &lt;- as.matrix(tmp[(i-1):i, -1])
+d.min &lt;- min(diff(mat))
+
+yshift[i] &lt;- ifelse(d.min &lt; min.space, min.space - d.min, 0)
+}
+tmp &lt;- cbind(tmp, yshift=cumsum(yshift))
+
+scale &lt;- 1
+tmp &lt;- melt(tmp, id=c("group", "yshift"), variable.name="x", value.name="y")
+## Store these gaps in a separate variable so that they can be scaled ypos = a*yshift + y
+
+tmp &lt;- transform(tmp, ypos=y + scale*yshift)
+return(tmp)
+}
+
+plot_slopegraph &lt;- function(df) {
+ylabs &lt;- subset(df, x==head(x,1))$group
+yvals &lt;- subset(df, x==head(x,1))$ypos
+
+fontSize &lt;- 3
+gg &lt;- ggplot(df,aes(x=x,y=ypos)) +
+geom_line(aes(group=group),colour="grey80") +
+
+geom_point(colour="white",size=8) +
+geom_text(aes(label=y), size=fontSize, family="American Typewriter") +
+scale_y_continuous(name=", breaks=yvals, labels=ylabs)
+
+return(gg)
+}    
+## Prepare data    
+
+df &lt;- tufte_sort(source_df, 
+x="year", 
+y="value", 
+
+group="group", 
+method="tufte", 
+min.space=0.05)
+
+df &lt;- transform(df, 
+x=factor(x, levels=c(5,10,15,20), 
+labels=c("5 years","10 years","15 years","20 years")), 
+
+y=round(y))
+## Plot
+plot_slopegraph(df) + labs(title="Estimates of % survival rates") + 
+
+theme(axis.title=element_blank(),
+axis.ticks = element_blank(),
+plot.title = element_text(hjust=0.5,
+
+family = "American Typewriter",
+face="bold"),
+axis.text = element_text(family = "American Typewriter",
+
+face="bold"))</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_43.png">
+<h3 id="ggplot2topic-80">Seasonal Plot</h3>
+
+If you are working with a time series object of class <code>ts</code> or <code>xts</code>, you can view the seasonal fluctuations through a seasonal plot drawn using <code>forecast::ggseasonplot</code>. 
+Below is an example using the native <code>AirPassengers</code> and <code>nottem</code> time series.
+You can see the traffic increase in air passengers over the years along with the repetitive seasonal patterns in traffic. 
+
+Whereas Nottingham does not show an increase in overal temperatures over the years, but they definitely follow a seasonal pattern.
+<code>library(ggplot2)
+library(forecast)
+
+theme_set(theme_classic())
+# Subset data
+nottem_small &lt;- window(nottem, start=c(1920, 1), end=c(1925, 12))  # subset a smaller timewindow
+
+# Plot
+ggseasonplot(AirPassengers) + labs(title="Seasonal plot: International Airline Passengers")
+ggseasonplot(nottem_small) + labs(title="Seasonal plot: Air temperatures at Nottingham Castle")</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_45.png">  <img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_46.png">
+<h3 id="ggplot2topic-81"><span class="orange">7. Groups</span></h3>
+
+<h3 id="ggplot2topic-82">Hierarchical Dendrogram</h3>
+<code># install.packages("ggdendro")
+library(ggplot2)
+
+library(ggdendro)
+theme_set(theme_bw())
+hc &lt;- hclust(dist(USArrests), "ave")  # hierarchical clustering
+
+# plot
+ggdendrogram(hc, rotate = TRUE, size = 2)</code>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_48.png">
+
+<h3 id="ggplot2topic-83">Clusters</h3>
+It is possible to show the distinct clusters or groups using <code>geom_encircle()</code>. 
+If the dataset has multiple weak features, you can compute the principal components and draw a scatterplot using PC1 and PC2 as X and Y axis.
+
+The <code>geom_encircle()</code> can be used to encircle the desired groups. 
+The only thing to note is the <code>data</code> argument to <code>geom_circle()</code>. 
+You need to provide a subsetted dataframe that contains only the observations (rows) that belong to the group as the <code>data</code> argument.
+
+<code># devtools::install_github("hrbrmstr/ggalt")
+library(ggplot2)
+library(ggalt)
+
+library(ggfortify)
+theme_set(theme_classic())
+# Compute data with principal components ------------------
+
+df &lt;- iris[c(1, 2, 3, 4)]
+pca_mod &lt;- prcomp(df)  # compute principal components
+# Data frame of principal components ----------------------
+
+df_pc &lt;- data.frame(pca_mod$x, Species=iris$Species)  # dataframe of principal components
+df_pc_vir &lt;- df_pc[df_pc$Species == "virginica", ]  # df for 'virginica'
+df_pc_set &lt;- df_pc[df_pc$Species == "setosa", ]  # df for 'setosa'
+
+df_pc_ver &lt;- df_pc[df_pc$Species == "versicolor", ]  # df for 'versicolor'
+# Plot ----------------------------------------------------
+ggplot(df_pc, aes(PC1, PC2, col=Species)) + 
+
+geom_point(aes(shape=Species), size=2) +   # draw points
+labs(title="Iris Clustering", 
+subtitle="With principal components PC1 and PC2 as X and Y axis",
+
+caption="Source: Iris") + 
+coord_cartesian(xlim = 1.2 * c(min(df_pc$PC1), max(df_pc$PC1)), 
+ylim = 1.2 * c(min(df_pc$PC2), max(df_pc$PC2))) +   # change axis limits
+
+geom_encircle(data = df_pc_vir, aes(x=PC1, y=PC2)) +   # draw circles
+geom_encircle(data = df_pc_set, aes(x=PC1, y=PC2)) + 
+geom_encircle(data = df_pc_ver, aes(x=PC1, y=PC2))</code>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_49.png">
+<h3 id="ggplot2topic-84"><span class="orange">8. Spatial</span></h3>
+
+The <code>ggmap</code> package provides facilities to interact with the google maps api and get the coordinates (latitude and longitude) of places you want to plot. 
+The below example shows satellite, road and hybrid maps of the city of Chennai, encircling some of the places. 
+I used the <code>geocode()</code> function to get the coordinates of these places and <code>qmap()</code> to get the maps. 
+
+The type of map to fetch is determined by the value you set to the <code>maptype</code>.
+You can also zoom into the map by setting the <code>zoom</code> argument. 
+The default is 10 (suitable for large cities). 
+
+Reduce this number (up to 3) if you want to zoom out. 
+It can be zoomed in till 21, suitable for buildings.
+<code># Better install the dev versions ----------
+
+# devtools::install_github("dkahle/ggmap")
+# devtools::install_github("hrbrmstr/ggalt")
+# load packages
+
+library(ggplot2)
+library(ggmap)
+library(ggalt)
+
+# Get Chennai's Coordinates --------------------------------
+chennai &lt;-  geocode("Chennai")  # get longitude and latitude
+# Get the Map ----------------------------------------------
+
+# Google Satellite Map
+chennai_ggl_sat_map &lt;- qmap("chennai", zoom=12, source = "google", maptype="satellite")  
+# Google Road Map
+
+chennai_ggl_road_map &lt;- qmap("chennai", zoom=12, source = "google", maptype="roadmap")  
+# Google Hybrid Map
+chennai_ggl_hybrid_map &lt;- qmap("chennai", zoom=12, source = "google", maptype="hybrid")  
+
+# Open Street Map
+chennai_osm_map &lt;- qmap("chennai", zoom=12, source = "osm")   
+# Get Coordinates for Chennai's Places ---------------------
+
+chennai_places &lt;- c("Kolathur",
+"Washermanpet",
+"Royapettah",
+
+"Adyar",
+"Guindy")
+places_loc &lt;- geocode(chennai_places)  # get longitudes and latitudes
+
+# Plot Open Street Map -------------------------------------
+chennai_osm_map + geom_point(aes(x=lon, y=lat),
+data = places_loc, 
+
+alpha = 0.7, 
+size = 7, 
+color = "tomato") + 
+
+geom_encircle(aes(x=lon, y=lat),
+data = places_loc, size = 2, color = "blue")
+# Plot Google Road Map -------------------------------------
+
+chennai_ggl_road_map + geom_point(aes(x=lon, y=lat),
+data = places_loc, 
+alpha = 0.7, 
+
+size = 7, 
+color = "tomato") + 
+geom_encircle(aes(x=lon, y=lat),
+
+data = places_loc, size = 2, color = "blue")
+# Google Hybrid Map ----------------------------------------
+chennai_ggl_hybrid_map + geom_point(aes(x=lon, y=lat),
+
+data = places_loc, 
+alpha = 0.7, 
+size = 7, 
+
+color = "tomato") + 
+geom_encircle(aes(x=lon, y=lat),
+data = places_loc, size = 2, color = "blue")</code>
+
+<h3 id="ggplot2topic-85">Open Street Map </h3>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_50.png">
+<h3 id="ggplot2topic-86">Google Road Map </h3>
+
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_51.png">
+<h3 id="ggplot2topic-87">Google Hybrid Map </h3>
+<img src="http://cdn-0.r-statistics.co/screenshots/ggplot_masterlist_52.png">
+
+http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html
+
+
+
+
+
 
 
 
