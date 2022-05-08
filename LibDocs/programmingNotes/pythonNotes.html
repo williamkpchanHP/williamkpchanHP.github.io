@@ -385,9 +385,32 @@ All the clustering operations done on these grids are fast and independent of th
 <strong>Insurance:</strong> It is used to acknowledge the customers, their policies and identifying the frauds.><strong>City Planning: </strong>It is used to make groups of houses and to study their values based on their geographical locations and other factors present.
 <strong>Earthquake studies: </strong>By learning the earthquake-affected areas we can determine the dangerous zones.
 
+<h2>run python in browser</h2>
+&lt;link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+&lt;script defer src="https://pyscript.net/alpha/pyscript.js">&lt;/script>
+&lt;py-script>
+print('Hello, World!')
+&lt;/py-script>
 
 
+    ^lt;py-env>
+        - numpy
+        - matplotlib
+    ^lt;/py-env>
+This way, we’ve added numpy and matplotlib to our project.
 
+&lt;div id="plot">&lt;/div>
+&lt;py-script output="plot">
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.randn(1000)
+y = np.random.randn(1000)
+
+fig, ax = plt.subplots()
+ax.scatter(x, y)
+fig
+&lt;/py-script>
 
 
 
