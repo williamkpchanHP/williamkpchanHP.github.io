@@ -2915,9 +2915,19 @@ data = places_loc, size = 2, color = "blue")</code>
 
 http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html
 
+<h2>read_html creates encoding error</h2>
+use readLines to download file,
+and then concate into one long string
+and then pass to read_html
 
+ url = paste0(pageHeader,addr[i],pageTail)
+ pagesource <- readLines(url)
+ pagesource <- paste(pagesource, collapse = '') # concate into one long string
 
+ pagesource <- read_html(pagesource)
 
+ keywordList <- html_nodes(pagesource, className)
+ keywordList = as.character(keywordList)
 
 
 
