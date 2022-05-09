@@ -112,6 +112,23 @@ for (var property in window) {
 }
 console.log(arrayCount + " arrays - " + arrayString);
 
+<h2>canvas draw circle</h2>
+&lt;canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+ctx.stroke();
+
+Centerarc(100,75,50,0*Math.PI,1.5*Math.PI)  // Center 100,75
+Start anglearc(100,75,50,0,1.5*Math.PI)     // Start angle 0
+End anglearc(100,75,50,0*Math.PI,1.5*Math.PI) // End angle 1.5*Math.PI
+context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+
+create a circle with arc(): Set start angle to 0 and end angle to 2*Math.PI.
+Use the stroke() or the fill() method to actually draw the arc on the canvas.
+
 
 
 
