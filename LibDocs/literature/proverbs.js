@@ -1,5 +1,5 @@
 proverbList = [
-'strength of Chinese civilization is not established by military expansion, but by China's innovative development of national governance model and value system in its long history, which can form a very strong radiation effect, gradually form a Chinese cultural circle, closely unite the small and medium-sized countries: kingcraft',
+'strength of Chinese civilization is not established by military expansion, but by China\'s innovative development of national governance model and value system in its long history, which can form a very strong radiation effect, gradually form a Chinese cultural circle, closely unite the small and medium-sized countries: kingcraft',
 'HK exists because Mao needed somewhere to do banking. One of the problems with Hong Kong was that it tried to deal with the future by freezing time.',
 '经历过痛苦 才能感受到快乐 是谓痛快',
 '白日依山盡，黃河入海流。欲窮千里目，更上一層樓。',
