@@ -1,0 +1,512 @@
+<base target="_blank"><html><head><title>Principal Components Analysis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<link rel="stylesheet" href="https://defkey.com/content/defkeycss">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "<br>";
+  var bookid = "Principal Components Analysis"
+  var markerName = "h2"
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px; color:gray;}
+h1, h2 {color: gold;}
+pre{width:100%;}
+#toc{color:green; font-size:20px;}
+img {max-width:90%; max-height: 600px; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>Principal Components Analysis</h1>
+
+<div id="toc"></div></center>
+
+<pre>
+
+<h2><span class="orange">Principal Components Analysis in R: Step-by-Step Example</span></h2>
+Principal components analysis, often abbreviated PCA, is an <a href="https://www.statology.org/supervised-vs-unsupervised-learning/" target="_blank" rel="noopener noreferrer">unsupervised</a> machine learning technique that seeks to find principal components &#8211; linear combinations of the original predictors &#8211; that explain a large portion of the variation in a dataset.
+The goal of PCA is to explain most of the variability in a dataset with fewer variables than the original dataset.
+
+For a given dataset with <em>p</em> variables, we could examine the scatterplots of each pairwise combination of variables, but the sheer number of scatterplots can become large very quickly.
+For <em>p</em> predictors, there are p(p-1)/2 scatterplots.
+So, for a dataset with p = 15 predictors, there would be 105 different scatterplots!
+
+Fortunately, PCA offers a way to find a low-dimensional representation of a dataset that captures as much of the variation in the data as possible.
+If we're able to capture most of the variation in just two dimensions, we could project all of the observations in the original dataset onto a simple scatterplot.
+The way we find the principal components is as follows:
+
+Given a dataset with <em>p</em> predictors: X<sub>1</sub>, X<sub>2</sub>, &#8230; , X<sub>p,</sub>, calculate Z<sub>1</sub>, &#8230; , Z<sub>M</sub> to be the <em>M</em> linear combinations of the original <em>p</em> predictors where:
+
+Z<sub>m</sub> = ΣΦ<sub>jm</sub>X<sub>j</sub> for some constants Φ<sub>1m</sub>, Φ<sub>2m</sub>, Φ<sub>pm</sub>, m = 1, &#8230;, M.
+
+Z<sub>1</sub> is the linear combination of the predictors that captures the most variance possible.
+
+Z<sub>2</sub> is the next linear combination of the predictors that captures the most variance while being <em>orthogonal</em> (i.e. 
+uncorrelated) to Z<sub>1</sub>.
+
+Z<sub>3 </sub>is then the next linear combination of the predictors that captures the most variance while being orthogonal to Z<sub>2</sub>.
+
+And so on.
+
+In practice, we use the following steps to calculate the linear combinations of the original predictors:
+<b>1. </b>Scale each of the variables to have a mean of 0 and a standard deviation of 1.
+
+<b>2. </b>Calculate the covariance matrix for the scaled variables.
+<b>3. </b>Calculate the eigenvalues of the covariance matrix.
+Using linear algebra, it can be shown that the eigenvector that corresponds to the largest eigenvalue is the first principal component. 
+In other words, this particular combination of the predictors explains the most variance in the data.
+
+The eigenvector corresponding to the second largest eigenvalue is the second principal component, and so on.
+This tutorial provides a step-by-step example of how to perform this process in R.
+<h2>Step 1: Load the Data</h2>
+
+First we'll load the <b>tidyverse</b> package, which contains several useful functions for visualizing and manipulating data:
+<b>library(tidyverse)</b>
+
+For this example we'll use the <em>USArrests</em> dataset built into R, which contains the number of arrests per 100,000 residents in each U.S. 
+state in 1973 for <em>Murder</em>, <em>Assault</em>, and <em>Rape</em>.
+It also includes the percentage of the population in each state living in urban areas, <em>UrbanPop</em>.
+
+The following code show how to load and view the first few rows of the dataset:
+<b>#load data
+data("USArrests")
+
+#view first six rows of data
+head(USArrests)
+Murder Assault UrbanPop Rape
+
+Alabama      13.2     236       58 21.2
+Alaska       10.0     263       48 44.5
+Arizona       8.1     294       80 31.0
+
+Arkansas      8.8     190       50 19.5
+California    9.0     276       91 40.6
+Colorado      7.9     204       78 38.7
+</b>
+<h2>Step 2: Calculate the Principal Components</h2>
+After loading the data, we can use the R built-in function <b>prcomp()</b> to calculate the principal components of the dataset.
+
+Be sure to specify <b>scale = TRUE</b> so that each of the variables in the dataset are scaled to have a mean of 0 and a standard deviation of 1 before calculating the principal components.
+Also note that eigenvectors in R point in the negative direction by default, so we'll multiply by -1 to reverse the signs.
+<b>#calculate principal components
+
+results &lt;- prcomp(USArrests, scale = TRUE)
+#reverse the signs
+results$rotation &lt;- -1*results$rotation
+
+#display principal components
+results$rotation
+PC1        PC2        PC3         PC4
+
+Murder   0.5358995 -0.4181809  0.3412327 -0.64922780
+Assault  0.5831836 -0.1879856  0.2681484  0.74340748
+UrbanPop 0.2781909  0.8728062  0.3780158 -0.13387773
+
+Rape     0.5434321  0.1673186 -0.8177779 -0.08902432</b>
+We can see that the first principal component (PC1) has high values for Murder, Assault, and Rape which indicates that this principal component describes the most variation in these variables.
+We can also see that the second principal component (PC2) has a high value for UrbanPop, which indicates that this principle component places most of its emphasis on urban population.
+
+Note that the principal components scores for each state are stored in <b>results$x</b>. 
+We will also multiply these scores by -1 to reverse the signs:
+<b>#reverse the signs of the scores
+
+results$x &lt;- -1*results$x
+#display the first six scores
+head(results$x)
+
+PC1        PC2         PC3          PC4
+Alabama     0.9756604 -1.1220012  0.43980366 -0.154696581
+Alaska      1.9305379 -1.0624269 -2.01950027  0.434175454
+
+Arizona     1.7454429  0.7384595 -0.05423025  0.826264240
+Arkansas   -0.1399989 -1.1085423 -0.11342217  0.180973554
+California  2.4986128  1.5274267 -0.59254100  0.338559240
+
+Colorado    1.4993407  0.9776297 -1.08400162 -0.001450164</b>
+<h2>Step 3: Visualize the Results with a Biplot</h2>
+
+Next, we can create a <b>biplot</b> &#8211; a plot that projects each of the observations in the dataset onto a scatterplot that uses the first and second principal components as the axes:
+Note that <b>scale = 0 </b>ensures that the arrows in the plot are scaled to represent the loadings.
+<b>biplot(results, scale = 0)
+</b>
+<img src="https://www.statology.org/wp-content/uploads/2020/12/pca1.png"    srcset="https://www.statology.org/wp-content/uploads/2020/12/pca1.png 1002w, https://www.statology.org/wp-content/uploads/2020/12/pca1-300x300.png 300w, https://www.statology.org/wp-content/uploads/2020/12/pca1-150x150.png 150w, https://www.statology.org/wp-content/uploads/2020/12/pca1-768x767.png 768w" sizes="(max-width: 465px) 100vw, 465px" />
+From the plot we can see each of the 50 states represented in a simple two-dimensional space.
+
+The states that are close to each other on the plot have similar data patterns in regards to the variables in the original dataset.
+We can also see that the certain states are more highly associated with certain crimes than others. 
+For example, Georgia is the state closest to the variable <em>Murder</em> in the plot.
+
+If we take a look at the states with the highest murder rates in the original dataset, we can see that Georgia is actually at the top of the list:
+<b>#display states with highest murder rates in original dataset
+head(USArrests[order(-USArrests$Murder),])
+
+Murder Assault UrbanPop Rape
+Georgia          17.4     211       60 25.8
+Mississippi      16.1     259       44 17.1
+Florida          15.4     335       80 31.9
+Louisiana        15.4     249       66 22.2
+South Carolina   14.4     279       48 22.5
+Alabama          13.2     236       58 21.2</b>
+<h2>Step 4: Find Variance Explained by Each Principal Component</h2>
+We can use the following code to calculate the total variance in the original dataset explained by each principal component:
+
+<b>#calculate total variance explained by each principal component
+results$sdev^2 / sum(results$sdev^2)
+[1] 0.62006039 0.24744129 0.08914080 0.04335752
+</b>
+From the results we can observe the following:
+The first principal component explains <b>62%</b> of the total variance in the dataset.
+The second principal component explains <b>24.7%</b> of the total variance in the dataset.
+The third principal component explains <b>8.9%</b> of the total variance in the dataset.
+The fourth principal component explains <b>4.3%</b> of the total variance in the dataset.
+
+Thus, the first two principal components explain a majority of the total variance in the data.
+This is a good sign because the previous biplot projected each of the observations from the original data onto a scatterplot that only took into account the first two principal components.
+Thus, it's valid to look at patterns in the biplot to identify states that are similar to each other.
+We can also create a <b>scree plot</b> &#8211; a plot that displays the total variance explained by each principal component &#8211; to visualize the results of PCA:
+
+<b>#calculate total variance explained by each principal component
+var_explained = results$sdev^2 / sum(results$sdev^2)
+#create scree plot
+
+qplot(c(1:4), var_explained) + 
+geom_line() + 
+xlab("Principal Component") + 
+
+ylab("Variance Explained") +
+ggtitle("Scree Plot") +
+ylim(0, 1)</b>
+
+<img  src="https://www.statology.org/wp-content/uploads/2020/12/pca2.png"    srcset="https://www.statology.org/wp-content/uploads/2020/12/pca2.png 1076w, https://www.statology.org/wp-content/uploads/2020/12/pca2-300x300.png 300w, https://www.statology.org/wp-content/uploads/2020/12/pca2-1024x1024.png 1024w, https://www.statology.org/wp-content/uploads/2020/12/pca2-150x150.png 150w, https://www.statology.org/wp-content/uploads/2020/12/pca2-768x769.png 768w" sizes="(max-width: 427px) 100vw, 427px" />
+<h2>Principal Components Analysis in Practice</h2>
+In practice, PCA is used most often for two reasons:
+
+<b>1. Exploratory Data Analysis</b> &#8211; We use PCA when we're first exploring a dataset and we want to understand which observations in the data are most similar to each other.
+<b>2. Principal Components Regression </b>&#8211; We can also use PCA to calculate principal components that can then be used in <a href="https://www.statology.org/principal-components-regression-in-r/" target="_blank" rel="noopener noreferrer">principal components regression</a>. 
+This type of regression is often used when <a href="https://www.statology.org/multicollinearity-regression/" target="_blank" rel="noopener noreferrer">multicollinearity</a> exists between predictors in a dataset.
+The complete R code used in this tutorial can be found <a href="https://github.com/Statology/R-Guides/blob/main/pca.R" target="_blank" rel="noopener noreferrer">here</a>.
+
+<h2><span class="orange">Principal component analysis (PCA) in R</span></h2>
+PCA is used in exploratory data analysis and for making decisions in predictive models.
+PCA commonly used for dimensionality reduction by using each data point onto only the first few principal components (most cases first and second dimensions) to obtain lower-dimensional data while keeping as much of the data’s variation as possible.
+
+The first principal component can equivalently be defined as a direction that maximizes the variance of the projected data.
+The principal components are often analyzed by eigendecomposition of the data covariance matrix or singular value decomposition (SVD) of the data matrix.
+<a href="https://finnstats.com/index.php/2021/04/19/decision-trees-in-r/" rel="nofollow" target="_blank">Decision Trees in R</a>
+
+Reducing the number of variables from a data set naturally leads to inaccuracy, but the trick in the dimensionality reduction is to allow us to make correct decisions based on high accuracy.
+Always smaller data sets are easier to explore, visualize, analyze, and faster for machine learning algorithms.
+In this tutorial we will make use of iris dataset in R for analysis &#038; interprettion.
+
+<a href="https://finnstats.com/index.php/2021/04/27/self-organizing-maps/" rel="nofollow" target="_blank">Self Organizing Maps</a>
+<h2>Getting Data</h2>
+data("iris")
+
+str(iris)
+data.frame’:     150 obs. 
+of  5 variables:
+
+$ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+$ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+$ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+
+$ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+$ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+In this datasets contains 150 observations with 5 variables.
+
+summary(iris)
+Sepal.Length  Sepal.Width   Petal.Length  Petal.Width        Species 
+Min. :4.3   Min. :2.0   Min. :1.0   Min. :0.1   setosa    :50 
+1st Qu.:5.1   1st Qu.:2.8   1st Qu.:1.6   1st Qu.:0.3   versicolor:50 
+Median :5.8   Median :3.0   Median :4.3   Median :1.3   virginica :50 
+
+Mean   :5.8   Mean   :3.1   Mean   :3.8   Mean   :1.2                 
+3rd Qu.:6.4   3rd Qu.:3.3   3rd Qu.:5.1   3rd Qu.:1.8                 
+Max. :7.9   Max. :4.4   Max. :6.9   Max. :2.5 
+<h3>Partition Data</h3>
+Lets divides the data sets into training dataset and test datasets.
+
+<a href="https://finnstats.com/index.php/2021/05/04/exploratory-data-analysis/" rel="nofollow" target="_blank">Exploratory Data Analysis in R</a>
+set.seed(111)
+ind &lt;- sample(2, nrow(iris),
+replace = TRUE,
+prob = c(0.8, 0.2))
+training &lt;- iris[ind==1,]
+testing &lt;- iris[ind==2,]
+<h3>Scatter Plot & Correlations</h3>
+library(psych)
+
+First will check the correlation between independent variables. 
+Let’s remove the factor variable from the dataset for correlation data analysis.
+<a href="https://finnstats.com/index.php/2021/04/30/knn-algorithm-machine-learning/" rel="nofollow" target="_blank">KNN Machine Algorithm in R</a>
+
+pairs.panels(training[,-5], gap = 0,
+bg = c("red", "yellow", "blue")[training$Species], pch=21)
+<img  src="https://i0.wp.com/finnstats.com/wp-content/uploads/2021/05/Correlation.png?w=450&#038;ssl=1" alt srcset_temp="https://i0.wp.com/finnstats.com/wp-content/uploads/2021/05/Correlation.png?w=450&#038;ssl=1 833w, https://finnstats.com/wp-content/uploads/2021/05/Correlation-300x247.png 300w, https://finnstats.com/wp-content/uploads/2021/05/Correlation-768x632.png 768w" data-recalc-dims="1" data-lazy-sizes="(max-width: 625px) 100vw, 625px" data-lazy-src="https://i0.wp.com/finnstats.com/wp-content/uploads/2021/05/Correlation.png?w=450&amp;is-pending-load=1#038;ssl=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+Lower triangles provide scatter plots and upper triangles provide correlation values.
+
+Petal length and petal width are highly correlated. 
+Same way sepal length and petal length , Sepeal length, and petal width are also highly correlated. 
+This leads to multicollinearity issues. 
+
+So if we predict the model based on this dataset may be erroneous. 
+One way handling these kinds of issues is based on PCA.
+<a href="https://finnstats.com/index.php/2021/04/20/cluster-analysis-in-r/" rel="nofollow" target="_blank">Cluster optimization in R</a>
+
+<h3>Principal Component Analysis</h3>
+Principal Component Analysis is based on only independent variables. 
+So we removed the fifth variable from the dataset.
+
+pc &lt;- prcomp(training[,-5],
+center = TRUE,
+scale. = TRUE)
+attributes(pc)
+$names
+[1] "sdev"     "rotation" "center" 
+[4] "scale"    "x"      
+$class
+[1] "prcomp"
+pc$center
+Sepal.Length  Sepal.Width Petal.  Length Petal.Width
+5.8          3.1          3.6     1.1
+
+Scale function is used for normalization
+pc$scale
+Sepal.Length  Sepal.Width Petal.Length  Petal.Width
+0.82         0.46         1.79          0.76
+
+Print the results stored in pc.
+print(pc)
+while printing pc you will get standard deviations and loadings.
+
+Standard deviations (1, .., p=4):
+[1] 1.72 0.94 0.38 0.14
+Rotation (n x k) = (4 x 4):
+
+PC1    PC2   PC3   PC4
+Sepal.Length  0.51 -0.398  0.72  0.23
+Sepal.Width  -0.29 -0.913 -0.26 -0.12
+Petal.Length  0.58 -0.029 -0.18 -0.80
+Petal.Width   0.56 -0.081 -0.62  0.55
+For example, PC1 increases when Sepal Length, Petal Length, and Petal Width are increased and it is positively correlated whereas PC1 increases Sepal Width decrease because these values are negatively correlated.
+
+<a href="https://finnstats.com/index.php/2021/04/08/naive-bayes-classification-in-r/" rel="nofollow" target="_blank">Naïve Bayes Classification in R</a>
+summary(pc)
+Importance of components:
+
+PC1   PC2    PC3   PC4
+Standard deviation     1.717 0.940 0.3843
+Proportion of Variance 0.737 0.221 0.0369
+Cumulative Proportion  0.737 0.958 0.9953
+Standard deviation     0.1371
+Proportion of Variance 0.0047
+Cumulative Proportion  1.0000
+
+The first principal components explain the variability around 73% and its captures the majority of the variability.
+
+In this case, the first two components capture the majority of the variability.
+<h3>Orthogonality of PCs</h3>
+Let’s create the scatterplot based on PC and see the multicollinearity issue is addressed or not?.
+
+pairs.panels(pc$x, gap=0,
+bg = c("red", "yellow", "blue")[training$Species], pch=21)
+<img  src="https://i0.wp.com/finnstats.com/wp-content/uploads/2021/05/Correlation2.png?w=450&#038;ssl=1" alt srcset_temp="https://i0.wp.com/finnstats.com/wp-content/uploads/2021/05/Correlation2.png?w=450&#038;ssl=1 833w, https://finnstats.com/wp-content/uploads/2021/05/Correlation2-300x247.png 300w, https://finnstats.com/wp-content/uploads/2021/05/Correlation2-768x632.png 768w" data-recalc-dims="1" data-lazy-sizes="(max-width: 625px) 100vw, 625px" data-lazy-src="https://i0.wp.com/finnstats.com/wp-content/uploads/2021/05/Correlation2.png?w=450&amp;is-pending-load=1#038;ssl=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+Now the correlation coefficients are zero, so we can get rid of multicollinearity issues.
+
+<h3>Bi-Plot</h3>
+For making biplot need devtools package.
+<a href="https://finnstats.com/index.php/2021/04/01/sharepoint-r-integration/" rel="nofollow" target="_blank">Share point and R Integration</a>
+
+library(devtools)
+#install_github("vqv/ggbiplot")
+library(ggbiplot)
+g &lt;- ggbiplot(pc,
+obs.scale = 1,
+var.scale = 1,
+groups = training$Species,
+ellipse = TRUE,
+circle = TRUE,
+
+ellipse.prob = 0.68)
+g &lt;- g + scale_color_discrete(name = '')
+g &lt;- g + theme(legend.direction = 'horizontal',
+legend.position = 'top')
+print(g)
+<img  src="https://i1.wp.com/finnstats.com/wp-content/uploads/2021/05/PCA.png?w=450&#038;ssl=1" alt srcset_temp="https://i1.wp.com/finnstats.com/wp-content/uploads/2021/05/PCA.png?w=450&#038;ssl=1 833w, https://finnstats.com/wp-content/uploads/2021/05/PCA-300x247.png 300w, https://finnstats.com/wp-content/uploads/2021/05/PCA-768x632.png 768w" data-recalc-dims="1" data-lazy-sizes="(max-width: 833px) 100vw, 833px" data-lazy-src="https://i1.wp.com/finnstats.com/wp-content/uploads/2021/05/PCA.png?w=450&amp;is-pending-load=1#038;ssl=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+
+PC1 explains about 73.7% and PC2 explained about 22.1% of variability.
+Arrows are closer to each other indicates the high correlation. 
+For example correlation between Sepal Width vs other variables is weakly correlated.
+
+Another way interpreting the plot is PC1 is positively correlated with the variables Petal Length, Petal Width, and Sepal Length, and PC1 is negatively correlated with Sepal Width.
+PC2 is highly negatively correlated with Sepal Width. 
+Bi plot is an important tool in PCA to understand what is going on in the dataset.
+
+<a href="https://finnstats.com/index.php/2020/11/04/differences-between-association-and-correlation/" rel="nofollow" target="_blank">Difference between association and correlation</a>
+<h3>Prediction with Principal Components</h3>
+trg &lt;- predict(pc, training)
+
+Add the species column information into trg.
+trg &lt;- data.frame(trg, training[5])
+tst &lt;- predict(pc, testing)
+
+tst &lt;- data.frame(tst, testing[5])
+Multinomial Logistic regression with First Two PCs
+Because our dependent variable has 3 level, so we will make use of multinomial logistic regression.
+
+library(nnet)
+trg$Species &lt;- relevel(trg$Species, ref = "setosa")
+mymodel &lt;- multinom(Species~PC1+PC2, data = trg)
+
+summary(mymodel)
+Model out is given below and we used only first two principal components, because majority of the information’s available in first components.
+<a href="https://finnstats.com/index.php/2020/10/21/statistics-quality-control-chart/" rel="nofollow" target="_blank">How to measure quality control of the product?</a>
+
+multinom(formula = Species ~ PC1 + PC2, data = trg)
+Coefficients:
+(Intercept) PC1 PC2
+
+versicolor        7.23  14 3.2
+virginica        -0.58  20 3.6
+Std. Errors:
+(Intercept) PC1 PC2
+versicolor         188 106 128
+virginica          188 106 128
+Residual Deviance: 36
+AIC: 48
+
+<h3>Confusion Matrix & Misclassification Error – training</h3>
+p &lt;- predict(mymodel, trg)
+tab &lt;- table(p, trg$Species)
+
+tab
+Lets see the correct classification and miss classifications in training dataset.
+<a href="https://finnstats.com/index.php/2021/05/05/stock-prediction/" rel="nofollow" target="_blank">Stock Prediction in R</a>
+
+p          setosa versicolor virginica
+setosa         45          0         0
+versicolor      0         35         3
+virginica       0          5        32
+1 - sum(diag(tab))/sum(tab)
+Misclassification error is 0.067
+
+<h3>Confusion Matrix & Misclassification Error – testing</h3>
+p1 &lt;- predict(mymodel, tst)
+tab1 &lt;- table(p1, tst$Species)
+
+tab1
+Based on the test data set error classification is calculated.
+p1           setosa versicolor virginica
+setosa          5          0         0
+versicolor      0          9         3
+virginica       0          1        12
+
+1 - sum(diag(tab1))/sum(tab1)
+0.13
+Misclassification for the testing data set is 13.33%.
+
+<a href="https://finnstats.com/index.php/2021/05/06/class-imbalance/" rel="nofollow" target="_blank">Class Imbalance Handling in R</a>
+<a href="https://www.addtoany.com/add_to/whatsapp?linkurl=https%3A%2F%2Ffinnstats.com%2Findex.php%2F2021%2F05%2F07%2Fpca%2F&#038;linkname=Principal%20component%20analysis%20%28PCA%29%20in%20R"  rel="nofollow" target="_blank"></a><a href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Ffinnstats.com%2Findex.php%2F2021%2F05%2F07%2Fpca%2F&#038;linkname=Principal%20component%20analysis%20%28PCA%29%20in%20R"  rel="nofollow" target="_blank"></a><a href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Ffinnstats.com%2Findex.php%2F2021%2F05%2F07%2Fpca%2F&#038;linkname=Principal%20component%20analysis%20%28PCA%29%20in%20R"  rel="nofollow" target="_blank"></a><a href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Ffinnstats.com%2Findex.php%2F2021%2F05%2F07%2Fpca%2F&#038;linkname=Principal%20component%20analysis%20%28PCA%29%20in%20R"  rel="nofollow" target="_blank"></a><a href="https://www.addtoany.com/add_to/telegram?linkurl=https%3A%2F%2Ffinnstats.com%2Findex.php%2F2021%2F05%2F07%2Fpca%2F&#038;linkname=Principal%20component%20analysis%20%28PCA%29%20in%20R"  rel="nofollow" target="_blank"></a><a href="https://www.addtoany.com/share#url=https%3A%2F%2Ffinnstats.com%2Findex.php%2F2021%2F05%2F07%2Fpca%2F&#038;%23038;title=Principal%20component%20analysis%20%28PCA%29%20in%20R" data-a2a-url="https://finnstats.com/index.php/2021/05/07/pca/" data-a2a- rel="nofollow" target="_blank"></a>
+The post <a rel="nofollow" href="https://finnstats.com/index.php/2021/05/07/pca/" target="_blank">Principal component analysis (PCA) in R</a> appeared first on <a rel="nofollow" href="https://finnstats.com/" target="_blank">finnstats</a>.
+
+<h2><span class="orange">Principal Component Analysis (PCA) 101, using R</span></h2>
+Improving predictability and classification one dimension at a time! “Visualize” 30 dimensions using a 2D-plot!
+<img  src="https://miro.medium.com/max/1400/1*oSOHZMoS-ZfmuAWiF8jY8Q.png"   role="presentation">
+
+Basic 2D PCA-plot showing clustering of “Benign” and “Malignant” tumors across 30 features.
+Make sure to <a href="https://medium.com/@peter.nistrup" rel="noopener"><b>follow my profile</b></a><b> </b>if you enjoy this article and want to see more!
+<h2>Setup</h2>For this article we’ll be using the Breast Cancer Wisconsin data set from the <a href="http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29" rel="noopener ugc nofollow" target="_blank"><em>UCI Machine learning repo</em></a> as our data. 
+
+Go ahead and load it for yourself if you want to follow along:
+<b>wdbc </b>&lt;- read.csv("wdbc.csv", header = F)<b>features </b>&lt;- c("radius", "texture", "perimeter", "area", "smoothness", "compactness", "concavity", "concave_points", "symmetry", "fractal_dimension")names(<b>wdbc</b>) &lt;- c("<b>id</b>", "<b>diagnosis</b>", paste0(<b>features</b>,"<b>_mean</b>"), paste0(<b>features</b>,"<b>_se</b>"), paste0(<b>features</b>,"<b>_worst</b>"))The code above will simply load the data and name all 32 variables. 
+The <b>ID</b>, <b>diagnosis </b>and ten distinct (30) features. 
+
+From UCI:
+<em>“The </em><b><em>mean</em></b><em>,</em><b><em> standard error</em></b><em>, and “</em><b><em>worst</em></b><em>” or largest (mean of the three largest values) of these features were computed for each image, resulting in </em><b><em>30 features</em></b><em>. 
+For instance, field 3 is Mean Radius, field 13 is Radius SE, field 23 is Worst Radius.”</em>
+
+<h2>Why PCA?</h2>Right, so now we’ve loaded our data and find ourselves with 30 variables (thus excluding our response “diagnosis” and the irrelevant ID-variable).
+Now some of you might be saying “30 variable is a lot” and some might say “Pfft.. 
+Only 30? I’ve worked with THOUSANDS!!” but rest assured that this is equally applicable in either scenario..!
+
+<img  src="https://miro.medium.com/max/1162/0*f5Raws3k935kqQCc.gif"   role="presentation">
+There’s a few pretty good reasons to use PCA. 
+The plot at the very beginning af the article is a great example of how one would plot multi-dimensional data by using PCA, we actually capture<b> 63.3%</b> (Dim1 44.3% + Dim2 19%) of variance in the entire dataset by just using those <b>two principal components</b>, pretty good when taking into consideration that the original data consisted of <b>30 features</b> which would be impossible to plot in any meaningful way.
+
+A very powerful consideration is to acknowledge that <b>we never specified a response variable</b> or anything else in our PCA-plot indicating whether a tumor was “<em>benign</em>” or “<em>malignant</em>”. 
+It simply turns out that when we try to describe variance in the data using the linear combinations of the PCA we find some pretty obvious clustering and separation between the “<em>benign</em>” and “<em>malignant</em>” tumors! This makes a great case for developing a classification model based on our features!
+Another major “feature” (no pun intended) of PCA is that it can actually directly improve performance of your models, please take a look at this great article to read more:
+
+<a rel="noopener follow" target="_blank" href="/dimensionality-reduction-does-pca-really-improve-classification-outcome-6e9ba21f0a32"><h2>Dimensionality Reduction — Does PCA really improve classification outcome?</h2><h3>Introduction</h3>
+towardsdatascience.com</a>
+
+<h2>What is PCA and how does it work?</h2>Lets get something out the way immediately, PCAs primary purpose is <b>NOT</b> as a ways of feature removal! PCA can reduce dimensionality but <b>it wont reduce the number of features / variables in your data.</b> What this means is that you might discover that you can explain 99% of variance in your 1000 feature dataset by just using 3 principal components but you still need those 1000 features to construct those 3 principal components, this also means that in the case of predicting on future data you still need those same 1000 features on your new observations to construct the corresponding principal components.
+<h2>Right, right enough of that, how does it work?</h2>Since this is purely introductory I’ll skip the math and give you a quick rundown of the workings of PCA:
+<b>Standardize the data</b> (Center and scale).
+<b>Calculate the Eigenvectors and Eigenvalues</b> <b>from the covariance matrix or correlation matrix</b> (One could also use Singular Vector Decomposition).
+<b>Sort the Eigenvalues in descending order and choose the <em>K </em>largest Eigenvectors </b>(Where <em>K </em>is the desired number of dimensions of the new feature subspace k ≤ d).
+<b>Construct the projection matrix W</b> <b>from the selected <em>K </em>Eigenvectors.</b>
+<b>Transform the original dataset X via W</b> <b>to obtain a <em>K</em>-dimensional feature subspace Y.</b>
+This might sound a bit complicated if you haven’t had a few courses in algebra, but the gist of it is to transform our data from it’s initial state <b>X </b>to a subspace <b>Y </b>with<b><em> K</em></b> dimensions where <b><em>K </em></b>is — <em>more often than not</em> — less than the original dimensions of <b>X</b>. 
+
+Thankfully this is easily done using R!
+<h2>PCA on our tumor data</h2>So now we understand a bit about how PCA works and that should be enough for now. 
+Lets actually try it out:
+
+<mark>wdbc.pr &lt;- prcomp(wdbc[c(3:32)], center = TRUE, scale = TRUE)summary(wdbc.pr)</mark>This is pretty self-explanatory, the ‘<em>prcomp</em>’ function runs PCA on the data we supply it, in our case that’s ‘<em>wdbc[c(3:32)]</em>’ which is our data excluding the ID and diagnosis variables, then we tell R to center and scale our data (thus <b>standardizing </b>the data). 
+Finally we call for a summary:
+<img  src="https://miro.medium.com/max/1400/1*8Ljjg9rQSLrribGmySVmFg.png"   role="presentation">
+
+The values of the first 10 principal components
+Recall that a property of PCA is that our components are sorted from largest to smallest with regard to their standard deviation (<b>Eigenvalues</b>). 
+So let’s make sense of these:
+
+<b><em>Standard deviation:</em></b> This is simply the <b>eigenvalues </b>in our case since the data has been centered and scaled (<b>standardized</b>)
+<b><em>Proportion of Variance</em></b>: This is the amount of variance the component accounts for in the data, ie. 
+<b>PC1 </b>accounts for <b>&gt;44% of total variance</b> in the data alone!
+<b><em>Cumulative Proportion</em></b>: This is simply the accumulated amount of explained variance, ie. 
+if we used <b>the first 10 components</b> we would be able to account for <b>&gt;95% of total variance</b> in the data.
+Right, so how many components do we want? We obviously want to be able to explain as much variance as possible but to do that we would need all 30 components, at the same time we want to reduce the number of dimensions so we definitely want less than 30!
+
+Since we <b>standardized </b>our data and we now have the corresponding eigenvalues of each PC we can actually use these to draw a boundary for us. 
+Since an <b>eigenvalues &lt;1</b> would mean that the component actually explains less than a single explanatory variable we would like to discard those. 
+If our data is well suited for <b>PCA</b> we should be able to discard these components while retaining at least <b>70–80% of cumulative variance</b>. 
+
+Lets plot and see:
+screeplot(wdbc.pr, type = "l", npcs = 15, main = "Screeplot of the first 10 PCs")abline(h = 1, col="red", lty=5)legend("topright", legend=c("Eigenvalue = 1"),       col=c("red"), lty=5, cex=0.6)cumpro &lt;- cumsum(wdbc.pr$sdev^2 / sum(wdbc.pr$sdev^2))plot(cumpro[0:15], xlab = "PC #", ylab = "Amount of explained variance", main = "Cumulative variance plot")abline(v = 6, col="blue", lty=5)abline(h = 0.88759, col="blue", lty=5)legend("topleft", legend=c("Cut-off @ PC6"),       col=c("blue"), lty=5, cex=0.6)<img  src="https://miro.medium.com/max/1400/1*vEZjZOscRQV0uuksWK_ryw.png"   role="presentation">
+<b>Screeplot</b> of the Eigenvalues of the first 15 PCs (<em>left</em>) &amp; <b>Cumulative variance plot</b> (right)
+
+We notice is that <b>the first 6 components</b> has an <b>Eigenvalue &gt;1</b> and explains almost <b>90% of variance</b>, this is great! We can effectively <b>reduce dimensionality from 30 to 6</b> while only “loosing” about 10% of variance!
+We also notice that we can actually explain more than 60% of variance with just the first two components. 
+Let’s try plotting these:
+
+plot(wdbc.pr$x[,1],wdbc.pr$x[,2], xlab="PC1 (44.3%)", ylab = "PC2 (19%)", main = "PC1 / PC2 - plot")<img  src="https://miro.medium.com/max/1400/1*Sv08OjZ8QR1MeT06NhB_pg.png"   role="presentation">
+Alright, this isn’t really too telling but consider for a moment that this is representing<b> 60%+ of variance in a 30 dimensional dataset. </b>But what do we see from this? There’s some <b>clustering </b>going on in the <b>upper/middle-right.</b> Lets also consider for a moment what the goal of this analysis actually is. 
+
+We want to explain difference between <b>malignant </b>and <b>benign </b>tumors. 
+Let’s actually add the <b>response variable </b>(<em>diagnosis</em>) to the plot and see if we can make better sense of it:
+library("factoextra")fviz_pca_ind(wdbc.pr, geom.ind = "point", pointshape = 21,              pointsize = 2,              fill.ind = wdbc$diagnosis,              col.ind = "black",              palette = "jco",              addEllipses = TRUE,             label = "var",             col.var = "black",             repel = TRUE,             legend.title = "Diagnosis") +  ggtitle("2D PCA-plot from 30 feature dataset") +  theme(plot.title = element_text(hjust = 0.5))<img  src="https://miro.medium.com/max/1400/1*oSOHZMoS-ZfmuAWiF8jY8Q.png"   role="presentation">
+
+This is essentially the exact same plot with some fancy ellipses and colors corresponding to the diagnosis of the subject and now we see <b>the beauty of PCA</b>. 
+With just the first two components we can clearly see some separation between the <b>benign</b> and <b>malignant </b>tumors. 
+This is a clear indication that the data is well-suited for some kind of <b>classification model</b> (like <b>discriminant analysis</b>).
+
+<h2>What’s next?</h2>Our next immediate goal is to construct some kind of model using the first 6 principal components to predict whether a tumor is benign or malignant and then compare it to a model using the original 30 variables.
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+<script>
+
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>
