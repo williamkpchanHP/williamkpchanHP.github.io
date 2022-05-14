@@ -10551,6 +10551,215 @@ println!(&quot;Scheme: {}&quot;, scheme);
 println!(&quot;Host: {:?}&quot;, host);
 Ok()
 }
+
+<h2>web scraping with Rust</h2>
+Often I read that for simple tasks Rust is not a good choice. Go is more adopted when we need to create a small script to automatize our jobs. But is it true?
+So far, I have been in Spain for two years, and now I can consider myself fully on-boarded. I learned Spanish, I have my residency here, and I have my Spanish telephone number. 
+
+The company that I chose is <a href="https://www.lycamobile.es/">Lycamobile</a>, it’s cheap, and it has the minimum requirements to live without any<sup><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> problem. 
+
+The website tho has a problem with the login: I can’t copy-paste my credentials. Besides that, in general, the UI it’s a mess, and it’s pretty slow, especially when you log in and want to see your data, but as I said, it’s cheap. 
+
+Every time I want to see how much money/internet data I still have, I have to spend some time to get my creds and access my profile. It’s very annoying, so I thought to automatize this process by getting that info directly in my shell with one execution. Of course, I decided to use Rust for this job.
+<img src="https://media1.tenor.com/images/441d814d49f761085f8deefe63d0e2e9/tenor.gif" alt="vamos" />
+<h3>Login</h3>
+As the first task, I needed to log in and keep the session alive. How to do it in Rust?
+I used the <a href="https://crates.io/crates/reqwest">reqwest</a> crave; I just need to add
+<code>reqwest = { version = "0.11", features = ["blocking", "cookies"] }
+</code>
+to my <code class="language-plaintext highlighter-rouge">Cargo.toml</code> file to use it and have the <code class="language-plaintext highlighter-rouge">blocking</code> and <code class="language-plaintext highlighter-rouge">cookies</code> support since I don’t need any async operation and need to save the session from one request to another.
+Then let’s start with the login:
+<code>let client = reqwest::blocking::Client::builder().cookie_store(true).build()?;
+client.post("https://www.lycamobile.es/wp-admin/admin-ajax.php")
+    .form(&amp;[
+            ("action", "lyca_login_ajax"),
+            ("method", "login"),
+            ("mobile_no", "&lt;MOBILE_PHONE_NUMBER&gt;"),
+            ("pass", "&lt;SUPER_SECRET_PASSWORD&gt;")
+    ])
+    .send()?;
+</code>
+Yes, that’s it. If everything is as it should be, I should have logged in. No, in this article, I won’t do any further checks for simplicity.
+Once I have done the login, I should get into my profile to get my stats; I can do it with these two lines of code:
+<code>let response = client.get("https://www.lycamobile.es/es/my-account/").send()?;
+let body_response = response.text()?;
+</code>
+If everything went well, I should have gotten the page’s body right into the <code class="language-plaintext highlighter-rouge">body_response</code> variable. Easy no?
+<img src="https://media.giphy.com/media/3o7btNa0RUYa5E7iiQ/giphy.gif" alt="easy" />
+<h3>Scraping the body</h3>
+Now the tricky part, scraping the page’s body; how to do it?
+I used the <a href="https://crates.io/crates/scraper">Scraper</a> crate; I need to add
+<code>scraper = "0.12.0"
+</code>
+to my <code class="language-plaintext highlighter-rouge">Cargo.toml</code> file to be able to use it.
+First of all, we need to parse our document that, in this case, is in the <code class="language-plaintext highlighter-rouge">body_response</code> variable.
+<code>let parsed_html = Html::parse_document(&amp;body_response)
+</code>
+and then we can start scraping it:
+<code>let selector = &amp;Selector::parse("p.bdl-balance &gt; span")
+    .expect("Error during the parsing using the given selector");
+let span_text = parsed_html
+    .select(selector)
+    .flat_map(|el| el.text())
+    .collect()
+</code>
+Here, I’m navigating the DOM of the page as I’m using JQuery. I say to the scraper that I want to get the text inside the span element, children of the paragraph with class <code class="language-plaintext highlighter-rouge">bdl-balance</code>. Incredible uh?
+Then a bit of text manipulation:
+<code>span_text.split("hasta").nth(1)
+    .expect("Can't get the expiration date correctly")
+    .trim_start().to_string()
+</code>
+And the result: <code class="language-plaintext highlighter-rouge">07-05-2021</code>
+Same thing for all the information I need, just a bit of walking through the DOM using the correct selector, manipulate the result to obtain what I need and print it.
+For example, the internet data left:
+<code>let selector = &amp;Selector::parse("div.bdl-mins")
+    .expect("Error during the parsing using the given selector");
+let div_text = parsed_html
+    .select(selector)
+    .flat_map(|el| el.text())
+    .collect()
+</code>
+and
+<code>div_text.get(2..)
+.unwrap_or_else(||"Can't get the internet balance correctly")
+.to_string()
+</code>
+To obtain: <code class="language-plaintext highlighter-rouge">5.66GB</code>
+I spent like 20minutes in total to get it done, the crate’s documentation and the examples I found on its pages were super helpful, and I’ve got my script done without any headache.
+Later on, I decided that maybe this could have been helpful for someone else, so I decided to add more things like reading the credentials from a YAML file, having a pretty output, and checking more errors during the process.
+I made it public on my Github: <a href="https://github.com/dlion/rustyca">https://github.com/dlion/rustyca</a>, of course, any constructive feedback is welcome.
+Here an example of the final output:
+<code>__________                __
+\______   \__ __  _______/  |_ ___.__. ____ _____
+ |       _/  |  \/  ___/\   __&lt;   |  |/ ___\\__  \
+ |    |   \  |  /\___ \  |  |  \___  \  \___ / __ \_
+ |____|_  /____//____  &gt; |__|  / ____|\___  &gt;____  /
+        \/           \/        \/         \/     \/
+
+Money Balance: €0.03
+Internet Balance: 5.66GB
+Expiration Date: 07-05-2021
+</code>
+Nice uh?
+
+In Rust, functions return either a success or an error, and, you have to deal with each case before compiling. 
+This makes the code way more robust against errors at runtimes. 
+In practice, the code might look like this:
+
+let name = match node.find(Name("h3")).next() {
+    Some(h3) => h3.text(),
+    None => "".to_string(),
+};
+Rust also has other ways to handle Success / Errors Result, such as “?” à la Typescript:
+let response = reqwest::get(&url).await?.text().await?;
+
+Rust, on the contrary to Python, has been built with asynchronous computation in mind. It is thread-safe and extremely efficient. The fact that the language, in its nature. is super fast makes it great for coroutines. The code might look like that:
+
+use csv::Writer;
+use select::document::Document;
+use select::predicate::{Attr, Class, Name};
+use std::fs::OpenOptions;
+
+async fn test(i: &i32) -> Result&lt;(), Box&lt;dyn std::error::Error + Send + Sync>> {
+    let url = format!("http://books.toscrape.com/catalogue/page-{}.html", i);
+    let response = reqwest::get(&url).await?.text().await?;
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open("test2.csv")
+        .unwrap();
+    let mut wtr = Writer::from_writer(file);
+
+    let document = Document::from(response.as_str());
+
+    for node in document.find(Name("article")) {
+        let name = match node.find(Name("h3")).next() {
+            Some(h3) => h3.find(Name("a")).next().unwrap().text(),
+            None => "".to_string(),
+        };
+        let price = node
+            .find(Attr("class", "price_color"))
+            .next()
+            .unwrap()
+            .text();
+
+        println!("{:#?} ", url);
+        wtr.write_record(&[&url, &price, &name]).unwrap();
+    }
+
+    Ok(())
+}
+
+#[tokio::main]
+async fn main() -> Result&lt;(), Box&lt;dyn std::error::Error>> {
+
+    let mut handles: std::vec::Vec&lt;_> = Vec::new();
+    for i in 1..50 {
+        let job = tokio::spawn(async move { test(&i).await });
+        handles.push(job);
+    }
+
+    let mut results = Vec::new();
+    for job in handles {
+        results.push(job.await);
+    }
+
+    Ok(())
+}
+
+Synchronous Rust code:
+use csv::Writer;
+use select::document::Document;
+use select::predicate::{Attr, Class, Name};
+use std::fs::OpenOptions;
+
+async fn test(i: &i32) -> Result&lt;(), Box&lt;dyn std::error::Error + Send + Sync>> {
+    let url = format!("http://books.toscrape.com/catalogue/page-{}.html", i);
+    let response = reqwest::get(&url).await?.text().await?;
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open("test2.csv")
+        .unwrap();
+    let mut wtr = Writer::from_writer(file);
+
+    let document = Document::from(response.as_str());
+
+    for node in document.find(Name("article")) {
+        let name = match node.find(Name("h3")).next() {
+            Some(h3) => h3.find(Name("a")).next().unwrap().text(),
+            None => "".to_string(),
+        };
+        let price = node
+            .find(Attr("class", "price_color"))
+            .next()
+            .unwrap()
+            .text();
+
+        // println!("{:#?} ", url);
+        wtr.write_record(&[&url, &price, &name]).unwrap();
+    }
+
+    Ok(())
+}
+
+#[tokio::main]
+async fn main() -> Result&lt;(), Box&lt;dyn std::error::Error>> {
+    for i in 1..50 {
+        test(&i).await.unwrap();
+    }
+    Ok(())
+}
+
+<a href="https://github.com/kadekillary/scraping-with-rust" class="whitebut ">scraping-with-rust</a>
+
+
+
+
+
+
 </pre>
 
 
