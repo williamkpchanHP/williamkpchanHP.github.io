@@ -124,8 +124,7 @@ a few different varieties:
      */
 
     /*
-    Note: The previous column of `*` was entirely for style. <br>There's
-    no actual need for it.
+    Note: The previous column of `*` was entirely for style. There's no actual need for it.
     */
 
     // You can manipulate expressions more easily with block comments
@@ -10561,7 +10560,7 @@ The company that I chose is <a href="https://www.lycamobile.es/">Lycamobile</a>,
 The website tho has a problem with the login: I can’t copy-paste my credentials. Besides that, in general, the UI it’s a mess, and it’s pretty slow, especially when you log in and want to see your data, but as I said, it’s cheap. 
 
 Every time I want to see how much money/internet data I still have, I have to spend some time to get my creds and access my profile. It’s very annoying, so I thought to automatize this process by getting that info directly in my shell with one execution. Of course, I decided to use Rust for this job.
-<img src="https://media1.tenor.com/images/441d814d49f761085f8deefe63d0e2e9/tenor.gif" alt="vamos" />
+
 <h3>Login</h3>
 As the first task, I needed to log in and keep the session alive. How to do it in Rust?
 I used the <a href="https://crates.io/crates/reqwest">reqwest</a> crave; I just need to add
@@ -10585,7 +10584,7 @@ Once I have done the login, I should get into my profile to get my stats; I can 
 let body_response = response.text()?;
 </code>
 If everything went well, I should have gotten the page’s body right into the <code class="language-plaintext highlighter-rouge">body_response</code> variable. Easy no?
-<img src="https://media.giphy.com/media/3o7btNa0RUYa5E7iiQ/giphy.gif" alt="easy" />
+
 <h3>Scraping the body</h3>
 Now the tricky part, scraping the page’s body; how to do it?
 I used the <a href="https://crates.io/crates/scraper">Scraper</a> crate; I need to add
@@ -10752,6 +10751,629 @@ async fn main() -> Result&lt;(), Box&lt;dyn std::error::Error>> {
     }
     Ok(())
 }
+
+<h2>Rust and WebScraping</h2>
+Create a simple price farmer using rust
+
+Below is the link to the github repo on a naive stock prediction which I had done to generate stock tickers and which I use even today. 
+Creating this github repo helped me a lot to go overcome some of my programming hurdles.
+<h3>This is a simple stock analysis software for Indian stocks</h3>
+<a href="https://github.com/infinite-Joy/stock-analysis" target="_blank">stock-analysis</a>
+
+So we know that it is quite easy to do this in Python, but what about Rust. 
+I had recently done some work in Rust where I have been working on a crate for unifying the file reading of files in various cloud service providers ahem&lt;a work in progress>ahem. 
+There I had made usage of the reqwest library, which is basically the counterpart of the python request library. 
+Hence I know that it is fairly easy to get the response of any url.
+<a href="https://github.com/infinite-Joy/smart-open" target="_blank">smart-open</a>
+
+Below is the code to get the response from any url. 
+As a problem statement, I want to get the stock price of a company from the moneycontrol.com website. 
+The company that I have chosen is <a href="https://en.wikipedia.org/wiki/NTPC_Limited" rel="noopener ugc nofollow" target="_blank">NTPC</a>.
+use reqwest; let mut resp = reqwest::get("<a href="https://www.moneycontrol.com/india/stockpricequote/power-generation-distribution/ntpc/NTP" rel="noopener ugc nofollow" target="_blank">https://www.moneycontrol.com/india/stockpricequote/power-generation-distribution/ntpc/NTP</a>")?;
+assert!(resp.status().is_success()); 
+In the above code we are saying that we will use the <code>reqwest</code> library and then pass the specific url to <code>reqwest::get</code>. 
+We are capturing the response in a mutable variable <code>resp</code>.
+Now that we have the response in the response variable we will need to parse it and get the specific ticket price. 
+So to proceed we can use the scraper crate. 
+I can pass a css selector to the scraper selector. 
+Using chrome we see that the selector for the BSE price. 
+Consider the below screenshot on how I am getting at the selector.
+<img alt="" src="https://miro.medium.com/max/1400/1*lrKRNh7CFp_xmeaFUwnGHg.png" width="700" height="394" role="presentation"/>
+
+The selector comes out to be <code>#Bse_Prc_tick > strong</code>. 
+Now that I have the selector I can pass it to the Selector. 
+Below is the code for getting the ticket price.
+use scraper::{Selector, Html}; let body = resp.text().unwrap();
+let fragment = Html::parse_document(&body);
+let selector = Selector::parse("#Bse_Prc_tick > strong:nth-child(1)").unwrap(); for price in fragment.select(&selector) {
+    let price_txt = price.text().collect::&lt;Vec&lt;_>>();
+    println!("{:?}", price_txt);
+} 
+In the above code we pull in the Selector and Html modules. 
+Then we convert the resp to text so that this can be passed to the parse_document from Html module. 
+We also create a selector parsing the selector that we got from chrome using the Selector module. 
+Finally it all comes together where we select from the fragment items based on the selector. 
+This is defined as the price and we print the price. 
+The price in this case comes out as the vector.
+We ofcourse will need to put the code shown in this blog in proper constructs. 
+You can follow this <a href="https://github.com/infinite-Joy/programming-languages/tree/master/rust-lang/rust-simple-scraper" rel="noopener ugc nofollow" target="_blank">github link</a> to go to the code.
+In case this post makes you interested in learning more about Rust, you can read the below book.
+<h3>Explore machine learning in Rust</h3>
+<a href="https://www.apress.com/gp/book/9781484251201" target="_blank">Practical Machine Learning with Rust</a>
+
+<h2>Crate scraper</h2>
+HTML parsing and querying with CSS selectors.
+<code>scraper</code> is on <a href="https://crates.io/crates/scraper">Crates.io</a> and <a href="https://github.com/programble/scraper">GitHub</a>.
+Scraper provides an interface to Servo’s <code>html5ever</code> and <code>selectors</code> crates, for browser-grade
+parsing and querying.
+<h3>Examples</h3>
+<h3>Parsing a document</h3>
+<code>use scraper::Html;
+let html = r#"
+    &lt;!DOCTYPE html>
+    &lt;meta charset="utf-8">
+    &lt;title>Hello, world!&lt;/title>
+    &lt;h1 class="foo">Hello, &lt;i>world!&lt;/i>&lt;/h1>
+"#;
+let document = Html::parse_document(html);</code>
+<h3>Parsing a fragment</a></h3>
+<code>use scraper::Html;
+let fragment = Html::parse_fragment("&lt;h1>Hello, &lt;i>world!&lt;/i>&lt;/h1>");</code>
+<h3>Parsing a selector</a></h3>
+<code>use scraper::Selector;
+let selector = Selector::parse("h1.foo").unwrap();</code>
+<h3>Selecting elements</a></h3>
+<code>use scraper::{Html, Selector};
+let html = r#"
+    &lt;ul>
+        &lt;li>Foo&lt;/li>
+        &lt;li>Bar&lt;/li>
+        &lt;li>Baz&lt;/li>
+    &lt;/ul>
+"#;
+let fragment = Html::parse_fragment(html);
+let selector = Selector::parse("li").unwrap();
+for element in fragment.select(&amp;selector) {
+    assert_eq!("li", element.value().name());
+}</code>
+<h3>Selecting descendent elements</a></h3>
+<code>use scraper::{Html, Selector};
+let html = r#"
+    &lt;ul>
+        &lt;li>Foo&lt;/li>
+        &lt;li>Bar&lt;/li>
+        &lt;li>Baz&lt;/li>
+    &lt;/ul>
+"#;
+let fragment = Html::parse_fragment(html);
+let ul_selector = Selector::parse("ul").unwrap();
+let li_selector = Selector::parse("li").unwrap();
+let ul = fragment.select(&amp;ul_selector).next().unwrap();
+for element in ul.select(&amp;li_selector) {
+    assert_eq!("li", element.value().name());
+}</code>
+<h3>Accessing element attributes</a></h3>
+<code>use scraper::{Html, Selector};
+let fragment = Html::parse_fragment(r#"&lt;input name="foo" value="bar">"#);
+let selector = Selector::parse(r#"input[name="foo"]"#).unwrap();
+let input = fragment.select(&amp;selector).next().unwrap();
+assert_eq!(Some("bar"), input.value().attr("value"));</code>
+<h3>Serializing HTML and inner HTML</a></h3>
+<code>use scraper::{Html, Selector};
+let fragment = Html::parse_fragment("&lt;h1>Hello, &lt;i>world!&lt;/i>&lt;/h1>");
+let selector = Selector::parse("h1").unwrap();
+let h1 = fragment.select(&amp;selector).next().unwrap();
+assert_eq!("&lt;h1>Hello, &lt;i>world!&lt;/i>&lt;/h1>", h1.html());
+assert_eq!("Hello, &lt;i>world!&lt;/i>", h1.inner_html());</code>
+<h3>Accessing descendent text</a></h3>
+<code>use scraper::{Html, Selector};
+let fragment = Html::parse_fragment("&lt;h1>Hello, &lt;i>world!&lt;/i>&lt;/h1>");
+let selector = Selector::parse("h1").unwrap();
+let h1 = fragment.select(&amp;selector).next().unwrap();
+let text = h1.text().collect::&lt;Vec&lt;_>>();
+assert_eq!(vec!["Hello, ", "world!"], text);</code>
+<h3>Re-exports</h3>
+<code>pub use crate::element_ref::<a href="element_ref/struct.ElementRef.html" title="struct scraper::element_ref::ElementRef">ElementRef</a>;</code>
+<code>pub use crate::html::<a href="html/struct.Html.html" title="struct scraper::html::Html">Html</a>;</code>
+<code>pub use crate::node::<a href="node/enum.Node.html" title="enum scraper::node::Node">Node</a>;</code>
+<code>pub use crate::selector::<a href="selector/struct.Selector.html" title="struct scraper::selector::Selector">Selector</a>;</code>
+<h3>Modules</h3>
+<a href="element_ref/index.html" title="scraper::element_ref mod">element_ref</a>
+Element references.
+<a href="html/index.html" title="scraper::html mod">html</a>
+HTML documents and fragments.
+<a href="node/index.html" title="scraper::node mod">node</a>
+HTML nodes.
+<a href="selector/index.html" title="scraper::selector mod">selector</a>
+CSS selectors.
+
+<h2>How to scrape websites with Rust: basic example</h2>
+
+<div id="scrapetoc" class="toc"><a href="#scrapetopic-0" target="_self"><span class="orange">Set up the web scrape with Rust project</span></a><br><a href="#scrapetopic-1" target="_self"><span class="orange">Downloading HTML</span></a><br><a href="#scrapetopic-2" target="_self">Configure the HTTP client object</a><br><a href="#scrapetopic-3" target="_self">Use the client to download a page</a><br><a href="#scrapetopic-4" target="_self"><span class="orange">Scrape useful information from websites with Rust </span></a><br><a href="#scrapetopic-5" target="_self">How to find the elements containing information on a page</a><br><a href="#scrapetopic-6" target="_self">Using scrape and selectors</a><br><a href="#scrapetopic-7" target="_self"><span class="orange">Writing information we scrape from websites to a file with Rust</span></a><br><a href="#scrapetopic-8" target="_self">Saving the raw HTML from the scrape to disk</a><br><a href="#scrapetopic-9" target="_self">Saving scraped information as JSON to disk</a><br><a href="#scrapetopic-10" target="_self">Implementing a data model</a><br><a href="#scrapetopic-11" target="_self">Turning scraped data into a list of object</a><br><a href="#scrapetopic-12" target="_self">Serializing data and saving as JSON</a><br><a href="#scrapetopic-13" target="_self"><span class="orange">Conclusion</span></a><br></div></center>
+
+In this tutorial, we are going to learn how to scrape websites with Rust. This tutorial will give you a basic idea of how to get information from a website using Rust. We are just going to scrape a single web page. Following links on the page and dealing with javascript is beyond the scope of this tutorial.
+My GitHub repository containing the completed project can be found here: <a href="https://github.com/tmsdev82/rust-webscrape-tutorial" target="_blank" rel="noreferrer noopener">https://github.com/tmsdev82/rust-webscrape-tutorial</a>.
+<h3 id="scrapetopic-0"><span class="orange">Set up the web scrape with Rust project</span></h3>
+Let's first create the project using cargo: <code>cargo new rust-web-scrape-tutorial</code>.
+For this tutorial, we will be looking at the <code>scraper</code> crate to extract information from HTML. The complete list of crates we will use:
+<li><a href="https://crates.io/crates/tokio" target="_blank" rel="noreferrer noopener">tokio</a>: An event-driven, non-blocking I/O platform for writing asynchronous I/O backed applications.</li><li><a href="https://crates.io/crates/reqwest" target="_blank" rel="noreferrer noopener">reqwest</a>: higher level HTTP client library.</li><li><a href="https://crates.io/crates/regex" target="_blank" rel="noreferrer noopener">regex</a>: An implementation of regular expressions for Rust. This implementation uses finite automata and guarantees linear time matching on all inputs.</li><li><a href="https://crates.io/crates/scraper" target="_blank" rel="noreferrer noopener">scraper</a>: HTML parsing and querying with CSS selectors.</li><li><a href="https://crates.io/crates/serde" target="_blank" rel="noreferrer noopener">serde</a>: A generic serialization/deserialization framework.</li><li><a href="https://crates.io/crates/serde_json" target="_blank" rel="noreferrer noopener">serde_json</a>: A JSON serialization file format.</li><li><a href="https://crates.io/crates/chrono" target="_blank" rel="noreferrer noopener">chrono</a>: Date and time library for Rust.</li>
+The <code>reqwest</code> and <code>scraper</code> crates are the only crates we need to scrape websites with Rust, the rest are used for data cleaning and saving and things like that.
+Let's open the <code>Cargo.toml</code> file and add all these dependencies:
+[package]
+name = "rust-web-scrape-tutorial"
+version = "0.1.0"
+edition = "2021"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+tokio = { version= "1", features = ["full"] }
+reqwest = "0.11.7"
+regex = "1"
+scraper = "0.12.0"
+serde = { version = "1.0", features = ["derive"]}
+serde_json = "1.0"
+chrono = "0.4"
+<h3 id="scrapetopic-1"><span class="orange">Downloading HTML</span></h3>
+Our first step in the process to scrape websites with Rust is to download an HTML page. Then our program can pick apart that HTML page to get specific pieces of information.
+To download an HTML page our program needs a client for going to the web address. This is where we will use the <code>reqwest</code> library.
+<h3 id="scrapetopic-2">Configure the HTTP client object</h3>
+Let's put constructing the HTTP client in a separate file called <code>utils.rs</code>, let's create it in the same directory as <code>main.rs</code> is located in:
+use reqwest::Client;
+static APP_USER_AGENT: &amp;str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"));
+pub fn get_client() -&gt; Client {
+    let client = Client::builder()
+        .user_agent(APP_USER_AGENT)
+        .build()
+        .unwrap();
+    client
+}
+Here we use the <code>Client::builder()</code> for the <code>reqwest</code> library to build a client object. We use a static <code>&amp;str</code> built from the package name and package version as the user agent name. This is a way for websites to identify our HTTP client. Even though it is not strictly necessary for many websites to have it, it is good practice to set an agent name.
+<h3 id="scrapetopic-3">Use the client to download a page</h3>
+With the <code>reqwest</code> client object it becomes very easy to retrieve an HTML page located at a given URL. Let's update <code>main.rs</code> with code to get a page from <code>finance.yahoo.com</code>:
+use reqwest::StatusCode;
+mod utils;
+#[tokio::main]
+async fn main() {
+    let client = utils::get_client();
+    let url = "https://finance.yahoo.com";
+    let result = client.get(url).send().await.unwrap();
+    let raw_html = match result.status() {
+        StatusCode::OK =&gt; result.text().await.unwrap(),
+        _ =&gt; panic!("Something went wrong"),
+    };
+    println!("HTML: {}", raw_html);
+}
+Let's go through the important lines. First, we pull <code>StatusCode</code> into scope for determining the response status from our HTTP request later. Then, we also need out <code>utils</code> module, of course.
+On line 5 we initiate the tokio async runtime: <code>[tokio::main]</code>. Doing this will allow us to use async functions which we will use for making HTTP requests.
+Next, on line 7 we create an instance of the <code>Client</code> object using the function we wrote earlier. Then on line 9, we use the <code>client</code> to send a <code>GET</code> request to the yahoo finance URL: <code>let result = client.get(url).send().await.unwrap();</code>. We have to use <code>await</code> here because it is an asynchronous operation. This function returns a <code>Response</code> object as a result. This is the response the yahoo finance website server sends back to us.
+With lines 11 through 14, we check to see if the status code was OK or if we got an error. In the case of an OK status code, we retrieve the text as <code>String</code> in the response by calling the <code>text()</code> function. This text contains the raw HTML for the web page we requested.
+Finally, we print the raw HTML on line 16.
+Running the program should result in a lot of text being printed to the terminal. We are getting somewhere. However, raw HTML is pretty useless. So, let's look at how we can get useful information from this HMTL using the <code>scrape</code> crate.
+<h3 id="scrapetopic-4"><span class="orange">Scrape useful information from websites with Rust </span></h3>
+In this section, we are going to get some useful information from the raw HTML that our program downloads every time we run it. In this case, let's get the article headlines from the yahoo finance front page. 
+We do this by telling the program to search for specific HTML elements that contain the information we want. Before we can do that, we have to figure out where these elements with useful information are located in the first place.
+<h3 id="scrapetopic-5">How to find the elements containing information on a page</h3>
+One way we can do this is to open the page in our web browser, and then open the developer tools. On mac systems the hotkey for this is <code>ALT+COMMAND+i</code> on windows it is <code>CTRL+SHIFT+i</code>.
+It will look something like this:
+<img class="lazy loaded" width="1024" height="532" data-src="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-1024x532.png" alt="scrape websites with rust: dev tools image" data-srcset="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-1024x532.png 1024w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-300x156.png 300w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-768x399.png 768w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-1536x799.png 1536w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-2048x1065.png 2048w" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-1024x532.png 1024w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-300x156.png 300w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-768x399.png 768w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-1536x799.png 1536w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-2048x1065.png 2048w" src="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-5-1024x532.png" data-was-processed="true"><figcaption>yahoo finance page with dev tools open</figcaption>
+Let's scroll down to where the main articles are and use the “select elements” tool (top left corner of the dev tools pane, circled in red), and click on an article or article headline to move to see its source HTML in the right pane.
+<img class="lazy loaded" width="990" height="880" data-src="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6.png" alt="" data-srcset="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6.png 990w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6-300x267.png 300w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6-768x683.png 768w" sizes="(max-width: 990px) 100vw, 990px" srcset="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6.png 990w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6-300x267.png 300w, https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6-768x683.png 768w" src="https://tms-dev-blog.com/wp-content/uploads/2021/12/image-6.png" data-was-processed="true"><figcaption>Example selected element with the article title.</figcaption>
+When clicking on an article, likely we will select the <code>&lt;u class="StretchedBox" ...</code> element. Now, this article block is a clickable element so that suggests the whole thing is a link or <code>&lt;a&gt;</code> tag. If we look at the <code>&lt;u&gt;</code> element's parent, we can see the start of the <code>&lt;a&gt;</code> tag, which also contains a relevant-looking link in the <code>href</code> attribute.
+Let's use this <code>&lt;a&gt;</code> tag as the element to select for. However, we have to be careful. Because we don't want to select just any <code>&lt;a&gt;</code> tag on the page, there are likely many we don't need, we should narrow it down a bit more. Let's also use one of the CSS-style classes. In this case, we can try the <code>js-content-viewer</code> and see if that is specific enough.
+<h3 id="scrapetopic-6">Using scrape and selectors</h3>
+Now that we have discovered more or less where the article titles are located we can use the <code>scrape</code> crate to extract this information. Let's get some items from the <code>scrape</code> crate into scope:
+use reqwest::StatusCode;
+use scraper::{Html, Selector};
+Then we can use <code>Html</code> to load the raw HTML and create an instance of that object. We will replace the <code>println!()</code> part at the end of our program with loading the raw HTML: <code>let document = Html::parse_document(&amp;raw_html);</code>.
+<h4>Scrape using &lt;a&gt; tag and class selector</h4>
+Next, let's create a selector instance for the <code>a</code> tag and the specific class we found earlier: <code>let selector = Selector::parse("a.js-content-viewer").unwrap();</code>. The first part of the string, the <code>a</code>, indicates the tag that should be selected for and then the dot <code>.</code> means that what comes after it is a <code>class</code>. 
+We will now use this selector to select all appropriate elements, we can then loop through this list of elements and print some information to the terminal. For convenience here is the full code listing so far:
+use reqwest::StatusCode;
+use scraper::{Html, Selector};
+mod utils;
+#[tokio::main]
+async fn main() {
+    let client = utils::get_client();
+    let url = "https://finance.yahoo.com";
+    let result = client.get(url).send().await.unwrap();
+    let raw_html = match result.status() {
+        StatusCode::OK =&gt; result.text().await.unwrap(),
+        _ =&gt; panic!("Something went wrong"),
+    };
+    let document = Html::parse_document(&amp;raw_html);
+    let article_selector = Selector::parse("a.js-content-viewer").unwrap();
+    for element in document.select(&amp;article_selector) {
+        let inner = element.inner_html().to_string();
+        let href = match element.value().attr("href") {
+            Some(target_url) =&gt; target_url,
+            _ =&gt; "no url found",
+        };
+        println!("Title: {}", &amp;inner);
+        println!("Link: {}", &amp;href);
+    }
+}
+Our loop through the selected elements starts on line 20 where we pass a reference to our <code>Selector</code> instance to the <code>select()</code> function on the parsed document. This will produce a list of <code>ElementRef</code> instances if any elements are found that match the criteria of the selector object.
+In the loop, we get the element's inner HTML with <code>inner_html()</code> on line 21. This function call results in a <code>String</code> containing the HTML that is between the element's opening and closing tags.
+Next, on line 22 we grab the <code>href</code> attribute with <code>.value().attr("href")</code>. Our code uses match here to make sure it can deal with errors in case we are processing an element that doesn't have the <code>href</code> attribute for some reason.
+On the last lines of the loop, we output the inner HTML value and the href to the terminal.
+When we run the program again we see that we still get too much text output in the for of HTML. While some don't look as bad. However, we need to clean this data before it becomes useful:
+Title: &lt;div tabindex="-1" data-reactid="134" class="Pos(r) C($primaryColor) C($finDarkLinkHover):h Ovy(h) O(n):f"&gt;&lt;img width="95" data-src="https://s.yimg.com/uu/api/res/1.2/hdb7wPshq6ZA4weOB7FG.A--~B/Zmk9c3RyaW07aD0xMzA7dz0xMzA7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/os/creatr-uploaded-images/2021-12/e73e02c0-5e9d-11ec-9bbb-a6cb21b13035.cf.jpg" alt="Ray Dalio: Any war with China is 'likely to be around Taiwan'" data-reactid="135" class="D(ib) Mend(16px) Mend(12px)--md1100 Fl(start) Trs($ntkLeadImgFilterTrans) nedImage:h_Op(0.9) nedImage:h_Fill(ntkImgFilterHover) Fill(ntkLeadImgFilter) Bdrs(2px)" height="95"&gt;&lt;div data-reactid="136" class="W(90%) M(0) Pt(10px)"&gt;&lt;h3 data-reactid="137" class="Fz(14px)--md1100 Lh(16px)--md1100 Fw(b) Fz(16px) Lh(19px) LineClamp(3,60px) Va(m) Tov(e)"&gt;Ray Dalio: Any war with China is 'likely to be around Taiwan'&lt;/h3&gt;&lt;p class="Fz(xs) C($tertiaryColor) Lh(14px) Mt(5px)" data-reactid="138"&gt;Yahoo Finance&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+Link: https://finance.yahoo.com/news/ray-dalio-any-war-with-china-is-likely-to-be-around-taiwan-193447918.html
+Title: &lt;u class="StretchedBox" data-reactid="15"&gt;&lt;/u&gt;&lt;!-- react-text: 16 --&gt;3 Stocks That Are Flirting With a Bottom; Analysts Say ‘Buy’&lt;!-- /react-text --&gt;
+Link: /news/3-stocks-flirting-bottom-analysts-163921693.html
+Title: &lt;u class="StretchedBox" data-reactid="32"&gt;&lt;/u&gt;&lt;!-- react-text: 33 --&gt;Dollar Will Hit Zero With Bitcoin Below $40K In 2022, Crypto CEO Says&lt;!-- /react-text --&gt;
+Link: /m/1d6fc20a-d902-3e9e-86dc-fd1f8bd9a097/dollar-will-hit-zero-with.html
+Title: &lt;u class="StretchedBox" data-reactid="52"&gt;&lt;/u&gt;&lt;!-- react-text: 53 --&gt;Despite the big plunge, Cathie Wood sees her plan returning 40% annually in the next 5 years — here are Ark Invest’s latest buys&lt;!-- /react-text --&gt;
+Link: /news/despite-big-plunge-cathie-wood-173500607.html
+Title: &lt;u class="StretchedBox" data-reactid="72"&gt;&lt;/u&gt;&lt;!-- react-text: 73 --&gt;These are the types of companies Warren Buffett says you should invest in during times of inflation&lt;!-- /react-text --&gt;
+Link: /m/f46d6122-0327-3b15-9407-ba52aaa7867f/these-are-the-types-of.html
+<h4>Clean up data using header tag selectors</h4>
+If we look carefully, the ones with all the clutter have the title text surrounded by header tags like <code>h2</code> and <code>h3</code>, so let's create selectors for those and use them to clean up this data a bit more.
+So, let's add the creation of these new selector instances below the selector we already had:
+let document = Html::parse_document(&amp;raw_html);
+let article_selector = Selector::parse("a.js-content-viewer").unwrap();
+let h2select = Selector::parse("h2").unwrap();
+let h3select = Selector::parse("h3").unwrap();
+Next, we can use them in the loop:
+for element in document.select(&amp;article_selector) {
+    let inner = element.inner_html().to_string();
+    let mut h2el = element.select(&amp;h2select);
+    let mut h3el = element.select(&amp;h3select);
+    let href = match element.value().attr("href") {
+        Some(target_url) =&gt; target_url,
+        _ =&gt; "no url found",
+    };
+    match h2el.next() {
+        Some(elref) =&gt; {
+            println!("H2: {}", &amp;elref.inner_html().to_string());
+            println!("Link: {}", &amp;href);
+            continue;
+        }
+        _ =&gt; {}
+    }
+    match h3el.next() {
+        Some(elref) =&gt; {
+            println!("H3: {}", &amp;elref.inner_html().to_string());
+            println!("Link: {}", &amp;href);
+            continue;
+        }
+        _ =&gt; {}
+    }
+    println!("Title: {}", &amp;inner);
+    println!("Link: {}", &amp;href);
+}
+Here we call the <code>select()</code> function on the <code>element</code> object and pass our header selector objects on lines 24 and 25. Then we call <code>.next()</code> on each of these <code>Select</code> object instances, on lines 32 and 41, to get the first element that matches the criteria. We are assuming that there is only one. 
+We use <code>match</code> to take care of situations when there is no header element found. If we find something we print the result and then make the loop continue to the next element.
+Let's run the program again and look at the results:
+Link: https://finance.yahoo.com/news/stock-market-news-live-updates-december-17-2021-231504646.html
+H2: Stock futures steady after sell-off in tech shares
+Link: https://finance.yahoo.com/news/stock-market-news-live-updates-december-17-2021-231504646.html
+H3: Nasdaq closes down 2.5% amid tech sell-off
+Link: https://finance.yahoo.com/news/stock-market-news-live-updates-december-14-2021-232903478.html
+H3: Rivian to build $5 billion plant in Georgia, posts quarterly loss
+Link: https://finance.yahoo.com/news/ev-startup-rivian-build-plant-212157791.html
+H3: Kellogg reaches another tentative deal with union: Omaha union pres
+Link: https://finance.yahoo.com/news/kellogg-reaches-another-tentative-deal-212114531.html
+H3: Market recap: Thursday, Dec. 16
+Link: https://finance.yahoo.com/video/market-recap-thursday-dec-16-225727051.html
+H3: Earnings: Rivian misses estimates
+Link: https://finance.yahoo.com/video/earnings-rivian-misses-estimates-225351189.html
+H3: What Biden left undone in 2021
+Link: https://finance.yahoo.com/news/what-biden-left-undone-in-2021-195601863.html
+H3: Bitcoin, crypto boosted by Fed relief rally
+Link: https://finance.yahoo.com/news/bitcoin-crypto-boosted-by-relief-rally-as-investors-shrug-off-hawkish-fed-pivot-154950029.html
+H3: Ray Dalio: Any war with China is 'likely to be around Taiwan'
+Link: https://finance.yahoo.com/news/ray-dalio-any-war-with-china-is-likely-to-be-around-taiwan-193447918.html
+Title: &lt;u data-reactid="15" class="StretchedBox"&gt;&lt;/u&gt;&lt;!-- react-text: 16 --&gt;3 Stocks That Are Flirting With a Bottom; Analysts Say ‘Buy’&lt;!-- /react-text --&gt;
+Link: /news/3-stocks-flirting-bottom-analysts-163921693.html
+Title: &lt;u data-reactid="35" class="StretchedBox"&gt;&lt;/u&gt;&lt;!-- react-text: 36 --&gt;AT&amp;T Stock Has Fallen to a Multi-Decade Low. Why It Could Be an Opportune Time to Buy.&lt;!-- /react-text --&gt;
+Link: /m/59ad6d72-787e-3b24-be1f-4b7d2ac7b337/at-t-stock-has-fallen-to-a.html
+Title: &lt;u data-reactid="55" class="StretchedBox"&gt;&lt;/u&gt;&lt;!-- react-text: 56 --&gt;These are the types of companies Warren Buffett says you should invest in during times of inflation&lt;!-- /react-text --&gt;
+Link: /m/f46d6122-0327-3b15-9407-ba52aaa7867f/these-are-the-types-of.html
+Title: &lt;u class="StretchedBox" data-reactid="75"&gt;&lt;/u&gt;&lt;!-- react-text: 76 --&gt;My daughter, 29, will inherit a ‘substantial sum’ from her late grandfather. But my husband maintains a tight grip on her trust.&lt;!-- /react-text --&gt;
+Link: /m/83e1e43e-5e5c-3889-9d60-ddaa92e0fc5f/my-daughter-29-will-inherit.html
+The entries for the header elements are clean, with no other HTML elements. However, we are still left with entries that have <code>&lt;!-react-text: 76 --&gt;</code> and the like. We can clean these up using regular expressions. 
+<h4>Using regex to select a sub string</h4>
+In this section, we are going to do the final data cleaning using regular expressions with the <code>regex</code> crate. So, let's first get the relevant item into scope:
+use regex::Regex;
+use reqwest::StatusCode;
+use scraper::{Html, Selector};
+mod utils;
+Next, let's implement a regex for selecting the text we want, and one for cleaning up the selection. We will put them under the element selectors:
+let article_selector = Selector::parse("a.js-content-viewer").unwrap();
+let h2select = Selector::parse("h2").unwrap();
+let h3select = Selector::parse("h3").unwrap();
+let get_text_re = Regex::new(r"-&gt;.*&lt;").unwrap();
+let find_replace_re = Regex::new(r"[-&gt;&lt;]").unwrap();
+So, here on line 22, we have a regex that gets anything matching <code>-&gt;</code> then any number of characters with <code>.*</code> ending on <code>&lt;</code>. Then need a regex to remove the <code>-&gt;</code> and <code>&lt;</code> parts from the text we extract, so we create a regex for that on line 23.
+Let's use these regular expressions after the parts with the headers. Replace the <code>println!()</code> bits at the bottom of the loop:
+match get_text_re.captures_iter(&amp;inner).next() {
+    Some(cap) =&gt; {
+        let replaced = find_replace_re.replace_all(&amp;cap[0], "");
+        println!("Regex: {}", &amp;replaced);
+        println!("Link: {}", &amp;href);
+    }
+    _ =&gt; {
+        println!("Nothing found");
+    }
+}
+Here we get the first match for the regex <code>get_text_re</code> using <code>.next()</code>, we use <code>match</code> to deal with any errors or empty matches. Then we use the other regex, <code>find_replace_re</code>, to find and replace the parts of the extracted text we do not need. Finally, we print the text we found together with the <code>href</code> we found earlier, just like what we did with the header tags.
+Let's run the program now to see how the results look:
+Nothing found
+H2: Stock futures steady after sell-off in tech shares
+Link: https://finance.yahoo.com/news/stock-market-news-live-updates-december-17-2021-231504646.html
+H3: Clampdown on products from China's Xinjiang passes Congress
+Link: https://finance.yahoo.com/news/bill-clamp-down-products-chinas-181758173.html
+H3: Rivian to build $5 billion plant in Georgia, posts quarterly loss
+Link: https://finance.yahoo.com/news/ev-startup-rivian-build-plant-212157791.html
+H3: The worst company of the year
+Link: https://finance.yahoo.com/news/meta-facebook-worst-company-of-the-year-yahoo-finance-165345819.html
+H3: FedEx stock rises after beating earnings estimates
+Link: https://finance.yahoo.com/video/fedex-stock-rises-beating-earnings-231353637.html
+H3: Market recap: Thursday, Dec. 16
+Link: https://finance.yahoo.com/video/market-recap-thursday-dec-16-225727051.html
+H3: What Biden left undone in 2021
+Link: https://finance.yahoo.com/news/what-biden-left-undone-in-2021-195601863.html
+H3: Bitcoin, crypto boosted by Fed relief rally
+Link: https://finance.yahoo.com/news/bitcoin-crypto-boosted-by-relief-rally-as-investors-shrug-off-hawkish-fed-pivot-154950029.html
+H3: Ray Dalio: Any war with China is 'likely to be around Taiwan'
+Link: https://finance.yahoo.com/news/ray-dalio-any-war-with-china-is-likely-to-be-around-taiwan-193447918.html
+Regex: 3 Stocks That Are Flirting With a Bottom; Analysts Say ‘Buy’
+Link: /news/3-stocks-flirting-bottom-analysts-163921693.html
+Regex: Despite the big plunge, Cathie Wood sees her plan returning 40% annually in the next 5 years — here are Ark Invest’s latest buys
+Link: /news/despite-big-plunge-cathie-wood-173500607.html
+Regex: These are the types of companies Warren Buffett says you should invest in during times of inflation
+Link: /m/f46d6122-0327-3b15-9407-ba52aaa7867f/these-are-the-types-of.html
+Regex: As U.S. inflation hits a 39year high, pros share 7 things to do with your money to help protect yourself from high inflation
+Link: /m/78ad5535-8494-32f5-9397-f5785b6e029f/as-u-s-inflation-hits-a.html
+This looks good, there is no more unnecessary raw HTML.
+<h3 id="scrapetopic-7"><span class="orange">Writing information we scrape from websites to a file with Rust</span></h3>
+Now that we can scrape websites with Rust for information, let's save this information to a file in JSON format for later use as an extra exercise.
+<h3 id="scrapetopic-8">Saving the raw HTML from the scrape to disk</h3>
+First, let's save the raw HTML to a file. So that, in the case where we might change or improve our information extraction, we can rerun the code on previously gathered data.
+We have to add some things into scope:
+use chrono;
+use regex::Regex;
+use reqwest::StatusCode;
+use scraper::{Html, Selector};
+use std::fs::File;
+use std::io::Write;
+For the file name of the raw HTML, let's use a date and time string, and the source domain name for the page. 
+Let's write a simple function for writing the raw HTML string to a file:
+fn save_raw_html(raw_html: &amp;str, domain_name: &amp;str) {
+    let dt = chrono::Local::now();
+    let filename = format!("{}_{}.html", domain_name, dt.format("%Y-%m-%d_%H.%M.%S"));
+    let mut writer = File::create(&amp;filename).unwrap();
+    write!(&amp;mut writer, "{}", &amp;raw_html).unwrap();
+}
+In this function, we use <code>chrono</code> to get the current local date and time on line 73, and then convert it to a formatted <code>String</code>. Then we create a <code>writer</code> object instance, and on the last line of the function we write the <code>raw_html</code> string to the file.
+We also have to make some slight adjustments to the existing code:
+async fn main() {
+    let client = utils::get_client();
+    let domain_name = "finance.yahoo.com";
+    let url = format!("https://{}", domain_name);
+    let result = client.get(url).send().await.unwrap();
+    let raw_html = match result.status() {
+        StatusCode::OK =&gt; result.text().await.unwrap(),
+        _ =&gt; panic!("Something went wrong"),
+    };
+    save_raw_html(&amp;raw_html, domain_name);
+Here we have split the domain name from the URL into separate variables so that we can use the domain name in the filename. Then we call our function to save the raw HTML to disk on line 22.
+By the way, let's add a rule to the <code>.gitignore</code> file to exclude HTML files. Or else we might clutter up our code repository with HTML files:
+/target
+*.html
+Our program now has the ability to save the downloaded HTML to disk. Let's also implement functionality for saving the scraped data from the website to disk.
+<h3 id="scrapetopic-9">Saving scraped information as JSON to disk</h3>
+In this last section, we are going to briefly go over how to save the scraped data as a JSON file. We are going to implement a data model that represents the data we want to gather, fill it with information from the website we scrape with Rust, and then serialize that data to disk using <code>serde_json</code>.
+<h3 id="scrapetopic-10">Implementing a data model</h3>
+Let's add a file called <code>models.rs</code> to the <code>src</code> directory of our project. Then, let's define the structure for our data. The data structure is very simple for this tutorial:
+use serde::Serialize;
+#[derive(Debug, Serialize, Clone)]
+pub struct ArticleData {
+    pub article_title: String,
+    pub url_link: String,
+    pub domain_name: String,
+}
+We use <code>derive</code> on the struct to add the ability to print the struct as debug information, to serialize the struct, and to clone the struct. 
+<h3 id="scrapetopic-11">Turning scraped data into a list of object</h3>
+Next, we will update <code>main.rs</code> so that the website data we scrape with our Rust program is stored in a list of <code>ArticleData</code> objects: <code>let mut article_list: Vec&lt;models::ArticleData&gt; = Vec::new();</code>
+We can then push new <code>ArticleData</code> instances onto the list in the <code>match</code> blocks for the elements, for example: 
+match h2el.next() {
+    Some(elref) =&gt; {
+        let title = elref.inner_html().to_string();
+        println!("H2: {}", &amp;title);
+        println!("Link: {}", &amp;href);
+        article_list.push(models::ArticleData {
+            article_title: title,
+            url_link: href.to_string(),
+            domain_name: domain_name.to_string(),
+        });
+        continue;
+    }
+    _ =&gt; {}
+}
+As stated earlier, we simply create an instance of the <code>ArticleData</code> struct and push it onto the <code>Vec</code>. The full updated loop code is listed below:
+    let mut article_list: Vec&lt;models::ArticleData&gt; = Vec::new();
+    for element in document.select(&amp;article_selector) {
+        let inner = element.inner_html().to_string();
+        let mut h2el = element.select(&amp;h2select);
+        let mut h3el = element.select(&amp;h3select);
+        let href = match element.value().attr("href") {
+            Some(target_url) =&gt; target_url,
+            _ =&gt; "no url found",
+        };
+        match h2el.next() {
+            Some(elref) =&gt; {
+                let title = elref.inner_html().to_string();
+                println!("H2: {}", &amp;title);
+                println!("Link: {}", &amp;href);
+                article_list.push(models::ArticleData {
+                    article_title: title,
+                    url_link: href.to_string(),
+                    domain_name: domain_name.to_string(),
+                });
+                continue;
+            }
+            _ =&gt; {}
+        }
+        match h3el.next() {
+            Some(elref) =&gt; {
+                let title = elref.inner_html().to_string();
+                println!("H3: {}", &amp;title);
+                println!("Link: {}", &amp;href);
+                article_list.push(models::ArticleData {
+                    article_title: title,
+                    url_link: href.to_string(),
+                    domain_name: domain_name.to_string(),
+                });
+                continue;
+            }
+            _ =&gt; {}
+        }
+        match get_text_re.captures_iter(&amp;inner).next() {
+            Some(cap) =&gt; {
+                let replaced = find_replace_re.replace_all(&amp;cap[0], "");
+                println!("Regex: {}", &amp;replaced);
+                println!("Link: {}", &amp;href);
+                article_list.push(models::ArticleData {
+                    article_title: replaced.to_string(),
+                    url_link: href.to_string(),
+                    domain_name: domain_name.to_string(),
+                });
+            }
+            _ =&gt; {
+                println!("Nothing found");
+            }
+        }
+    }
+    println!("Number of articles titles scraped: {}", article_list.len());
+<h3 id="scrapetopic-12">Serializing data and saving as JSON</h3>
+Now that we have a list of objects, we have data to save to disk. This last step, in this tutorial for how to scrape websites with Rust, is easy thanks to the <code>serde</code> crate for serializing data. Let's write a function that encapsulates that functionality:
+fn save_article_list(article_list: &amp;Vec&lt;models::ArticleData&gt;, domain_name: &amp;str) {
+    let dt = chrono::Local::now();
+    let filename = format!("{}_{}.json", domain_name, dt.format("%Y-%m-%d_%H.%M.%S"));
+    let mut writer = File::create(&amp;filename).unwrap();
+    write!(
+        &amp;mut writer,
+        "{}",
+        &amp;serde_json::to_string(&amp;article_list).unwrap()
+    )
+    .unwrap();
+}
+We use the same file naming style as with the raw HTML; a date/time part and the domain name. Then we create a <code>write</code> instance with <code>File::create()</code>, and finally, use <code>serde_json::to_string</code> to turn the <code>Vec&lt;models::ArticleData</code>, <code>article_list</code>, into a string so it can be saved to disk.
+After running the program now, we will end up with a new JSON file containing the data we scraped. Let's not forget to put a new rule in our <code>.gitignore</code>:
+/target
+*.html
+*.json
+<h3 id="scrapetopic-13"><span class="orange">Conclusion</span></h3>
+After going through this tutorial we have learned the basics of how to scrape websites with Rust. During this process, we learned how to find HTML elements to target with our scraping, and also how to clean up the data, and turn it into actual useful information.
+We can use this knowledge as a basis for interesting applications that use news data to infer trends in the news, or quickly find interesting news about companies or other subjects we are interested in using an automated program. However, such things are beyond the scope of this basic tutorial.
+My GitHub repository containing the completed project can be found here: <a href="https://github.com/tmsdev82/rust-webscrape-tutorial" target="_blank" rel="noreferrer noopener">https://github.com/tmsdev82/rust-webscrape-tutorial</a>.
+
+<h2>Read a file to a String</h2>
+use std::fs;
+fn main() {
+    let data = fs::<b>read_to_string</b>("/etc/hosts").expect("Unable to read file");
+    println!("{}", data);
+}
+
+<h2>Read a file as a Vec&lt;u8></u8>
+use std::fs;
+fn main() {
+    let data = fs::<b>read</b>("/etc/hosts").expect("Unable to read file");
+    println!("{}", data.len());
+}
+
+<h2>Write a file</h2>
+use std::fs;
+fn main() {
+    let data = "Some data!";
+    fs::<b>write</b>("/tmp/foo", data).expect("Unable to write file");
+}
+
+<h2>BufReader</h2>
+A <b>BufReader</b> is more useful when you want to read line-by-line:
+
+use std::fs::File;
+use std::io::{BufRead, BufReader};
+fn main() {
+    let f = File::open("/etc/hosts").expect("Unable to open file");
+    let f = BufReader::new(f);
+    for line in f.lines() {
+        let line = line.expect("Unable to read line");
+        println!("Line: {}", line);
+    }
+}
+
+<h2>append to the file</h2>
+use the OpenOptions struct instead:
+use std::io::Write;
+use std::fs::OpenOptions;
+
+fn main() {
+    let data = "Some data!\n";
+    let mut f = OpenOptions::new()
+        .append(true)
+        .create(true) // Optionally create the file if it doesn't already exist
+        .open("/tmp/foo")
+        .expect("Unable to open file");
+    f.write_all(data.as_bytes()).expect("Unable to write data");
+}
+
+Buffered writing still works the same way:
+
+use std::io::{BufWriter, Write};
+use std::fs::OpenOptions;
+
+fn main() {
+    let data = "Some data!\n";
+    let f = OpenOptions::new()
+        .append(true)
+        .open("/tmp/foo")
+        .expect("Unable to open file");
+    let mut f = BufWriter::new(f);
+    f.write_all(data.as_bytes()).expect("Unable to write data");
+}
+
+<h2>Creates a new file and write bytes to it</h2> (you can also use write()):
+
+use std::fs::File;
+use std::io::prelude::*;
+
+fn main() -> std::io::Result&lt;()> {
+    let mut file = File::create("foo.txt")?;
+    file.write_all(b"Hello, world!")?;
+    Ok(())
+}
+
+<h2>Read the contents of a file into a String</h2> (you can also use read):
+use std::fs::File;
+use std::io::prelude::*;
+
+fn main() -> std::io::Result&lt;()> {
+    let mut file = File::open("foo.txt")?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    assert_eq!(contents, "Hello, world!");
+    Ok(())
+}
+
+<h2>read write a file</h2>
+use std::io::Write;
+use std::fs::File;
+use std::io::prelude::*;
+
+fn main(){
+   let mut file = std::fs::File::create("data.txt").expect("create failed");
+   file.write_all("Hello World".as_bytes()).expect("write failed");
+   file.write_all("\n\nhow is it going?".as_bytes()).expect("write failed");
+
+   let mut readfile = File::open("data.txt").expect("File not found");
+   let mut data = String::new();
+   readfile.read_to_string(&mut data).expect("Error while reading file");
+   println!("{}", data);
+}
+
+<a href="https://rust-lang-nursery.github.io/rust-cookbook/intro.html" class="whitebut ">Rust Cookbook</a>
 
 <a href="https://github.com/kadekillary/scraping-with-rust" class="whitebut ">scraping-with-rust</a>
 
