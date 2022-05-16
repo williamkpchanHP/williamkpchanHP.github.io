@@ -1,4 +1,9 @@
 proverbList = [
+'近现代欧洲历史有一个传统，那就是在每一次席卷全欧洲主要大国的战争结束后，欧洲都要寻求建立一种有助于维护“持久和平”的新机制。然后几十年後继续战争，战争阴魂不散，阴魂就是残存在思想里的教育。一代代人的教育残存着战争。黑格尔曾经说过，人类从历史中学到的唯一的教训，就是没有从历史中吸取到任何教训。',
+'西部有個城市，按照當地的規範，設置了3.6萬個流動商販的攤位，結果一夜之間，有10萬人就業！美國解困局靠錢、中國解困局又靠錢、又靠政策。',
+'通脹，是人富便物價貴的現象，如價貴人窮，便有價無市。貴價，始終會掉下，此所謂賤物鬥窮人，怎知美國人窮不窮？看他們的碌卡記錄。隨着加息，美消費者利息支出會增，不少美國人會只還最低額。此即利息支出會利疊利，這會抑壓了之後的美消費，消費減，美經濟增長亦會受壓，經濟上不去，通脹一時下不來，便是滯漲。對付「滯」要減息，對付「漲」要加息，從政治考慮，應是最好出口術，加息大棒高高舉起，以安民心，我做嘢㗎。由於經濟前景不明朗，又加息、又通脹，不少美國公司開始停止擴張及要裁員，此即，美經濟會縮。',
+'昔之善战者，先为不可胜，以待敌之可胜。孙子的观点是，打仗的时候，首先要做的事情是保证自己不被敌人打死，然后是耐心地等待敌人死。敌人死不死，往往不取决于我们，而是取决于他们自己。',
+'答辩式思维，就是敌人给我们出题，我们来答题。结果是敌人不断的给我们出题，我们不断的在答题，那么我们始终被敌人牵着鼻子走。出题是容易的，答题是困难的。为什么成年人会在小孩子面前落败呢？就是因为小孩子是出题的，成年人是答题的。更为重要的是，当大人给小孩子讲燃烧，燃烧所释放的热量这些问题的时候，小孩子听不懂。同样的道理，给敌人讲道理的时候，敌人是听不懂的。要用反问 开辟第二战场',
 'strength of Chinese civilization is not established by military expansion, but by China\'s innovative development of national governance model and value system in its long history, which can form a very strong radiation effect, gradually form a Chinese cultural circle, closely unite the small and medium-sized countries: kingcraft',
 'HK exists because Mao needed somewhere to do banking. One of the problems with Hong Kong was that it tried to deal with the future by freezing time.',
 '经历过痛苦 才能感受到快乐 是谓痛快',
