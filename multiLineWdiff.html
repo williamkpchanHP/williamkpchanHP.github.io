@@ -290,7 +290,7 @@ commands:
             ticksize: 1,
             linewidth:1,
 			ymax: Math.max(...[].concat(...dataDiff)),
-               ymin: Math.min(...[].concat(...dataDiff)),
+               ymin: Math.min(...[].concat(...dataDiff).filter(function(val) { return val !== null })),
             tooltips: tooltipsarr,
             //key:['first','second','third'],
             keyPosition: 'graph',
@@ -332,8 +332,7 @@ commands:
             ticksize: 1,
             linewidth:1,
 			ymax: Math.max(...[].concat(...diffAcc)),
-               ymin: Math.min(...[].concat(...diffAcc)),
-
+               ymin: Math.min(...[].concat(...diffAcc).filter(function(val) { return val !== null })),
             tooltips: tooltipsarr,
             //key:['first','second','third'],
             keyPosition: 'graph',
