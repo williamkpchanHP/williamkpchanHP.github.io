@@ -175,8 +175,8 @@ commands:
 
 	function normalise() {
        for (i = 0; i < mydata.length; i++) {
-        theMax = Math.max(...[].concat(...mydata[i]));  // the array must be spreaded to br effective
-        theMin = Math.min(...[].concat(...mydata[i]));
+        theMax = Math.max(...[].concat(...mydata[i]).filter(function(val) { return val !== null }));  // the array must be spreaded to br effective
+        theMin = Math.min(...[].concat(...mydata[i]).filter(function(val) { return val !== null }));
         extent = theMax - theMin
         ratio = 100/extent // 100%
         mydata[i] = mydata[i].map(function(item) { return (item - theMin) * ratio })
@@ -222,8 +222,8 @@ commands:
 
      function redrawLines(chartId) {
         RGraph.reset(document.getElementById(chartId));
-        theMax = Math.max(...[].concat(...mydata));
-        theMin = Math.min(...[].concat(...mydata));
+        theMax = Math.max(...[].concat(...mydata).filter(function(val) { return val !== null }));
+        theMin = Math.min(...[].concat(...mydata).filter(function(val) { return val !== null }));
 
         // console.log("redrawLines theMax, theMin\n", theMax, theMin)
        drawchart(chartId)
@@ -289,7 +289,7 @@ commands:
             tickmarks: 'plus',
             ticksize: 1,
             linewidth:1,
-			ymax: Math.max(...[].concat(...dataDiff)),
+			ymax: Math.max(...[].concat(...dataDiff).filter(function(val) { return val !== null })),
                ymin: Math.min(...[].concat(...dataDiff).filter(function(val) { return val !== null })),
             tooltips: tooltipsarr,
             //key:['first','second','third'],
@@ -331,7 +331,7 @@ commands:
             tickmarks: 'plus',
             ticksize: 1,
             linewidth:1,
-			ymax: Math.max(...[].concat(...diffAcc)),
+			ymax: Math.max(...[].concat(...diffAcc).filter(function(val) { return val !== null })),
                ymin: Math.min(...[].concat(...diffAcc).filter(function(val) { return val !== null })),
             tooltips: tooltipsarr,
             //key:['first','second','third'],
