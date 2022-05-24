@@ -203,15 +203,19 @@ commands:
          theDiff = data1.map((valueA, indexInA) => valueA - data2[indexInA])
          dataDiffTrend5 = makeMovAve(theDiff, 4);
          dataDiffTrend5.fill(null,0,3);
-         dataDiffTrend10 = makeMovAve(theDiff, 8);
-         dataDiffTrend10.fill(null,0,7);
-         dataDiff = [theDiff, dataDiffTrend5, dataDiffTrend10]
+         dataDiffTrend10 = makeMovAve(theDiff, 9);
+         dataDiffTrend10.fill(null,0,8);
+         dataDiffTrend15 = makeMovAve(theDiff, 14);
+         dataDiffTrend15.fill(null,0,13);
+         dataDiff = [theDiff, dataDiffTrend5, dataDiffTrend10, dataDiffTrend15]
 
          diffAcc = []
-         diffAcc.push(dataDiff[0].map(function(item, index) { return item - dataDiff[2][index]; }))
-         diffAcc.push(dataDiff[1].map(function(item, index) { return item - dataDiff[2][index]; }))
-         diffAcc[0].fill(null,0,7); //array.fill(value, start, end)
-         diffAcc[1].fill(null,0,7); //array.fill(value, start, end)
+         diffAcc.push(dataDiff[0].map(function(item, index) { return item - dataDiff[3][index]; }))
+         diffAcc.push(dataDiff[1].map(function(item, index) { return item - dataDiff[3][index]; }))
+         diffAcc.push(dataDiff[2].map(function(item, index) { return item - dataDiff[3][index]; }))
+         diffAcc[0].fill(null,0,13); //array.fill(value, start, end)
+         diffAcc[1].fill(null,0,13); //array.fill(value, start, end)
+         diffAcc[2].fill(null,0,13); //array.fill(value, start, end)
 
          //console.log(chartId)
          redrawLines(chartId)
@@ -282,7 +286,7 @@ commands:
 			title: chartId,
 			titleColor: 'pink',
 			titleSize: 20,
-               colors: ['red','orange','grey'],
+               colors: ['red','orange','cyan','grey'],
             backgroundGrid: false,
             axisColor: '#764',  scaleDecimals: 2,
             textColor: '#ccc',
@@ -324,7 +328,7 @@ commands:
 			title: chartId,
 			titleColor: 'red',
 			titleSize: 20,
-               colors: ['red','pink','grey'],
+               colors: ['red','pink','cyan','grey'],
             backgroundGrid: false,
             axisColor: '#764',  scaleDecimals: 2,
             textColor: '#ccc',
