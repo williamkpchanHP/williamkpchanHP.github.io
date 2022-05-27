@@ -1,0 +1,2180 @@
+<base target="_blank"><html><head><title>Julia By Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "<br>";
+  var bookid = "Julia By Example"
+  var markerName = "h3, h3"
+$(document).ready(function(){
+   $('h1, h2, h3, h4, h4, h6, .exp, b').click(function(){
+   parent.history.back();
+   return false;
+   });
+});
+
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:22px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+.stop-scrolling { height: 100%; overflow: hidden; }
+iframe {width:100%; height:100%;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>Julia By Example</h1>
+<a href="#mustWatch" class="red goldbs" target="_self">Must Watch!</a>
+<br><br>
+<div id="toc"></div></center>
+<br><br>
+<div id="mustWatch"><center><span class="red">MustWatch</span></center><br>
+</div>
+<pre>
+<br>
+<br>
+<h2><span class="orange">Julia For Beginners</span></h2>
+Julia is a high-level, dynamic programming language, designed to give users the speed of C/C++ while remaining as easy to use as Python. This means that developers can solve problems faster and more effectively.
+
+Julia is great for computational complex problems. Many early adopters of Julia were concentrated in scientific domains like Chemistry, Biology, and Machine Learning. 
+
+This said, Julia is general-purpose language and can be used for tasks like Web Development, Game Development, and more. Many view Julia as the next-generation language for Machine Learning and Data Science, including the CEO of Shopify (among many others):
+
+
+<h2><span class="orange">How to Download the Julia Programming Language ⤵️</span></h2>
+There are two main ways to run Julia: via a <code>.jl</code> file in an <a href="https://code.visualstudio.com/docs/languages/julia" rel="noopener">IDE like VS Code</a> or command by command in the Julia REPL (Read Evaluate Print Loop). In this guide, we will mainly use the Julia REPL. Before you can use either, you will need to download Julia:
+<iframe width="356" height="200" src="https://www.youtube.com/embed/t67TGcf4SmM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" title="Embedded content" loading="lazy"></iframe>
+or just head to: <a href="https://julialang.org/downloads/" rel="nofollow noopener">https://julialang.org/downloads/</a>
+
+After you have Julia installed, you should be able to launch it and see:
+<img src="https://www.freecodecamp.org/news/content/images/2021/12/Screen-Shot-2021-12-24-at-5.56.14-AM.png">
+Julia 1.7 REPL after install
+<h2><span class="orange">Julia Programming Language Basics for Beginners</span></h2>
+Before we can use Julia for all of the exciting things it was built for like Machine Learning or Data Science, we first need to get familiar with the basics of the language. 
+
+We will start by going over variables, types, and conditionals. Then, we will talk about loops, functions, and packages. Last, we’ll touch on more advanced concepts like structs and talk about additional learning resources. 
+
+This is going to be a whirlwind tour so strap in and get ready! It is also worth noting that this tutorial assumes you have some basic familiarity with programming. If you don't, check out this course on an <a href="https://juliaacademy.com/p/julia-programming-for-nervous-beginners">Intro to Julia for Nervous Beginners</a>.
+
+<h2><span class="orange">An Introduction to Julia Variables and Types ⌨️</span></h2>
+In Julia, variables are dynamically typed, meaning that you do not need to specify the variable's type when you create it.
+
+<code>julia> a = 10 # Create the variable "a" and assign it the number 10
+10
+
+julia> a + 10 # Do a basic math operation using "a"
+20</code>
+
+<em>(Note that in code snippets, when you see <code>julia></code> it means the code is being run in the REPL)</em>
+
+Just like we defined a variable above and assigned it an integer (whole number), we can also do something similar for strings and other variable types:
+
+<code>julia> my_string = "Hello freeCodeCamp" # Define a string variable
+"Hello freeCodeCamp"
+
+julia> balance = 238.19 # Define a float variable 
+238.19</code>
+
+When creating variables in Julia, the variable name will always go on the left-hand side, and the value will always go on the right-hand side after the equals sign. We can also create new variables based on the values of other variables:
+
+<code>julia> new_balance = balance + a
+248.19</code>
+
+Here we can see that the <code>new_balance</code> is now the sum (total) of 238.19 and 10. Note further that the type of <code>new_balance</code> is a float (number with decimal place precision) because when we add a float and int together, we automatically get the type with higher precision, which in this case is a float. We can confirm this by doing:
+
+<code>julia> typeof(new_balance)
+Float64</code>
+
+Due to the nature of dynamic typing, variables in Julia can also change type. This means that at one point, <code>holder_balance</code> could be a float, and then later on it could be a string:
+
+<code>julia> holder_balance = 100.34
+100.34
+
+julia> holder_balance = "The Type has changed"
+"The Type has changed"
+
+julia> typeof(holder_balance)
+String</code>
+
+You may also be excited to know that variable names in Julia are very flexible, in fact, you can do something like:
+
+<code>julia> 😀 = 10
+10
+
+julia> 🥲 = -10
+-10
+
+julia> 😀 + 🥲
+0</code>
+
+On top of emoji variable names, you can also use any other Unicode variable name which is very helpful when you are trying to represent mathematical ideas. You can access these Unicode variables by doing a <code>\</code> and then typing the name, followed by pressing tab:
+
+<code>julia> \sigma # press tab and it will render the symbol
+
+julia> σ = 10 # set sigma equal to 10</code>
+
+Overall, the variable system in Julia is flexible and provides a huge set of features that make writing Julia code easy while still being expressive. If you want to learn more about variables in Julia, check out the Julia documentation: <a href="https://docs.julialang.org/en/v1/manual/variables/">https://docs.julialang.org/en/v1/manual/variables/</a>
+
+<h2><span class="orange">How to Write Conditional Statements in Julia &nbsp;🔀</span></h2>
+In programming, you often need to check certain conditions in order to make sure that specific lines of code run. For example, if you write a banking program, you might only want to let someone withdraw money if the amount they are trying to withdraw is less than the amount they have present in their account. 
+
+Let us look at a basic example of a conditional statement in Julia:
+
+<code>julia> bank_balance = 4583.11
+4583.11
+
+julia> withdraw_amount = 250
+250
+
+julia> if withdraw_amount &lt;= bank_balance
+           bank_balance -= withdraw_amount
+           print("Withdrew ", withdraw_amount, " from your account")
+       end
+Withdrew 250 from your account</code>
+
+Let us take a closer look here at some parts of the if statement that might differ from other code you have seen: First, we use no <code>:</code> to denote the end of the line and we also are not required to use <code>()</code> around the statement (though it is encouraged). Next, we don't use <code>{}</code> or the like to denote the end of the conditional, instead, we use the <code>end</code> keyword. 
+
+Just like we used the if statement, we can chain it with an <code>else</code> or an <code>elseif</code>:
+
+<code>julia> withdraw_amount = 4600
+4600
+
+julia> if withdraw_amount &lt;= bank_balance
+           bank_balance -= withdraw_amount
+           print("Withdrew ", withdraw_amount, " from your account")
+       else
+           print("Insufficent balance")
+       end
+Insufficent balance</code>
+
+You can read more about control flow and conditional expressions in the Julia documentation: <a href="https://docs.julialang.org/en/v1/manual/control-flow/#man-conditional-evaluation">https://docs.julialang.org/en/v1/manual/control-flow/#man-conditional-evaluation</a>
+
+<h2><span class="orange">How to use Loops in Julia 🔂</span></h2>
+There are two main types of loops in Julia: a for loop and a while loop. As is the same with other languages, the biggest difference is that in a for loop, you are going through a pre-defined number of items whereas, in a while loop, you are iterating until some condition is changed. 
+
+Syntactically, the loops in Julia look very similar in structure to the if conditionals we just looked at:
+
+<code>julia> greeting = ["Hello", "world", "and", "welcome", "to", "freeCodeCamp"] # define greeting, an array of strings
+6-element Vector{String}:
+ "Hello"
+ "world"
+ "and"
+ "welcome"
+ "to"
+ "freeCodeCamp"
+
+julia> for word in greeting
+           print(word, " ")
+       end
+Hello world and welcome to freeCodeCamp </code>
+
+In this example, we first defined a new type: a vector (also called an array). This array is holding a bunch of strings we defined. The behavior is very similar to that of arrays in other languages but it is worth noting that arrays are mutable (meaning you can change the number of items in the array after you create it).
+
+Again, when we look at the structure of the for loop, you can see that we are iterating through the <code>greeting</code> variable. Each time through, we get a new word (in this case) from the array and assign it to a temporary variable <code>word</code> which we then print out. You will notice that the structure of this loop looks similar to the if statement and again uses the <code>end</code> keyword. 
+
+Now that we explored for loops, let us switch gears and take a look at a while loop in Julia:
+
+<code>julia> while user_input != "End"
+           print("Enter some input, or End to quit: ")
+           user_input = readline() # Prompt the user for input
+       end
+Enter some input, or End to quit: hi
+Enter some input, or End to quit: test
+Enter some input, or End to quit: no
+Enter some input, or End to quit: End</code>
+
+For this while loop, we set it up so that it will run indefinitely until the user typed the word "End". As you have now seen it a few times, the structure of the loop should start to look familiar. 
+
+If you want to see some more examples of loops in Julia, you can check out the Julia Documentation's section on loops: <a href="https://docs.julialang.org/en/v1/manual/control-flow/#man-loops">https://docs.julialang.org/en/v1/manual/control-flow/#man-loops</a>
+
+<h2><span class="orange">How to use Functions in Julia </span></h2>
+Functions are used to create multiple lines of code, chained together, and accessible when you reference a function name. First, let us look at an example of a basic function:
+
+<code>julia> function greet()
+           print("Hello new Julia user!")
+       end
+greet (generic function with 1 method)
+
+julia> greet()
+Hello new Julia user!</code>
+
+Functions can also take arguments, just like in other languages:
+
+<code>julia> function greetuser(user_name)
+           print("Hello ", user_name, ", welcome to the Julia Community")
+       end
+greetuser (generic function with 1 method)
+
+julia> greetuser("Logan")
+Hello Logan, welcome to the Julia Community</code>
+
+In this example, we take in one argument, and then add its value to the print out. But what if we don't get a string?
+
+<code>julia> greetuser(true)
+Hello true, welcome to the Julia Community</code>
+
+In this case, since we are just printing, the function continues to work despite not taking in a string anymore and instead of taking a boolean value (true or false). To prevent this from occurring, we can explicitly type the input arguments as follows:
+
+<code>julia> function greetuser(user_name::String)
+           print("Hello ", user_name, ", welcome to the Julia Community")
+       end
+greetuser (generic function with 2 methods)
+
+julia> greetuser("Logan")
+Hello Logan, welcome to the Julia Community</code>
+
+So now the function is defined to take in only a string. Let us test this out to make sure we can only call the function with a string value:
+
+<code>julia> greetuser(true)
+Hello true, welcome to the Julia Community</code>
+
+Wait a second, why is this happening? We re-defined the <code>greetuser</code> function, it should not take <code>true</code> anymore. 
+
+What we are experiencing here is one of the most powerful underlying features of Julia: Multiple Dispatch. Julia allows us to define functions with the same name and number of arguments but that accept different types. This means we can build either generic or type specific versions of functions which helps immensely with code readability since you don't need to handle every scenario in one function. 
+
+We should quickly confirm that we actually defined both functions:
+
+<code>julia> methods(greetuser)
+# 2 methods for generic function "greetuser":
+[1] greetuser(user_name::String) in Main at REPL[34]:1
+[2] greetuser(user_name) in Main at REPL[30]:1</code>
+
+The built-in <code>methods</code> function is perfect for this and it tells us we have two functions defined, with the only difference being one takes in any type, and the other takes in just a string. 
+
+It is worth noting that since we defined a specialized version that accepts just a string, anytime we call the function with a string it will call the specialized version. The more generic function will not be called when a string is passed in.
+
+Next, let us talk about returning values from a function. In Julia, you have two options, you can use the explicit <code>return</code> keyword, or you can opt to do it implicitly by having the last expression in the function serve as the return value like so:
+
+<code>julia> function sayhi()
+           "This is a test"
+           "hi"
+       end
+sayhi (generic function with 1 method)
+
+julia> sayhi()
+"hi"</code>
+
+In the above example, the string value "hi" is returned from the function since it is the last expression and there is no explicit return statement. You could also define the function like:
+
+<code>julia> function sayhi()
+           "This is a test"
+          return "hi"
+       end
+sayhi (generic function with 1 method)
+
+julia> sayhi()
+"hi"</code>
+
+In general, from a readability standpoint, it makes sense to use the explicit return statement in case someone reading your code does not know about the implicit return behavior in Julia functions.
+
+Another useful functions feature is the ability to provide optional arguments: 
+
+<code>
+julia> function sayhello(response="hello")
+          return response
+       end
+sayhello (generic function with 2 methods)
+
+julia> sayhello()
+"hello"
+
+julia> sayhello("hi")
+"hi"</code>
+
+In this example, we define <code>response</code> as an optional argument so that we can either allow it to use the default behavior we defined or we can manually override it when necessary. These examples just scratch the surface on what is possible with functions in Julia. If you want to read more about all the cool things you can do, check out: <a href="https://docs.julialang.org/en/v1/manual/functions/">https://docs.julialang.org/en/v1/manual/functions/</a>
+
+<h2><span class="orange">How to use Packages in Julia 📦</span></h2>
+The Julia package manager and package ecosystem are some of the most important features of the language. I actually wrote an entire article on <a href="https://logankilpatrick.medium.com/the-most-underrated-feature-of-the-julia-programming-language-the-package-manager-652065f45a3a">why it is one of the most underrate features of the language</a>. 
+
+With that said, there are two ways to interact with packages in Julia: via the REPL or using the Pkg package. We will mostly focus on the REPL in this post since it is much easier to use in my experience.
+
+After you have Julia installed, you can enter the package manager from the REPL by typing <code>]</code>. 
+<img src="https://www.freecodecamp.org/news/content/images/2021/12/Screen-Shot-2021-12-26-at-9.50.05-AM.png">
+Pkg mode in the Julia REPL
+Now that we are in the package manager, there are a few things we commonly want to do:
+<ul><li>Add a package</li><li>Remove a package</li><li>Check what is already installed</li></ul>
+If you want to see all the possible commands in the REPL, simply enter Pkg mode by typing <code>]</code> and then type <code>?</code> &nbsp;followed by the enter / return key.
+<h3>How to Add Julia Packages ➕</h3>
+Let’s add our first package, <code>Example.jl</code> . To do so, we can run:
+
+<code>(@v1.7) pkg> add Example</code>
+
+which should provide output that looks something like:
+
+<code>(@v1.7) pkg> add Example
+Updating registry at `~/.julia/registries/General`
+Updating git-repo `https://github.com/JuliaRegistries/General.git`
+Updating registry at `~/.julia/registries/JuliaPOMDP`
+Updating git-repo `https://github.com/JuliaPOMDP/Registry`
+Resolving package versions...
+Installed Example ─ v0.5.3
+Updating `~/.julia/environments/v1.7/Project.toml`
+[7876af07] + Example v0.5.3
+Updating `~/.julia/environments/v1.7/Manifest.toml`
+[7876af07] + Example v0.5.3
+Precompiling project...
+1 dependency successfully precompiled in 1 seconds (69 already precompiled)
+(@v1.7) pkg></code>
+
+<em><em>For space reasons, I will skip further outputs under the assumption that you are following along with me.</em></em>
+<h3>How to Check the Package Status in Julia 🔍</h3>
+Now that we think we have a package installed, let’s doublecheck if it is really there by typing <code>status</code> (or <code>st</code> for shorthand) into the package manager:
+
+<code>(@v1.7) pkg> st
+Status `~/.julia/environments/v1.7/Project.toml`
+[7876af07] Example v0.5.3
+[587475ba] Flux v0.12.8</code>
+
+Here we can see I have two packages installed, Flux and Example. It also gives me the path to the file which manages my current environment (in this case, global Julia v1.7) along with the package versions I have installed.
+<h3>How to Remove a Julia package 📛</h3>
+If I wanted to remove a package from my active environment, like Flux, I can simply type <code>remove Flux</code> (or <code>rm</code> as the shorthand):
+
+<code>(@v1.7) pkg> rm Flux
+Updating `~/.julia/environments/v1.7/Project.toml`
+[587475ba] - Flux v0.12.8</code>
+
+A quick <code>status</code> afterward shows this was successful:
+
+<code>(@v1.7) pkg> st
+Status `~/.julia/environments/v1.7/Project.toml`
+[7876af07] Example v0.5.3</code>
+
+We now know the very basics of working with packages. But we have committed a major programming crime, using our global package environment. 
+<h3>How to Use Julia Packages 📦</h3>
+Now that we have gone over how to manage packages, let’s explore how to use them. Quite simply, you just need to type <code>using packageName</code> to use a specific package you want. One of my favorite new features in Julia 1.7 (highlighted in <a href="https://julialang.org/blog/2021/11/julia-1.7-highlights/" rel="noopener ugc nofollow">this blog post</a>) is shown below:
+<img src="https://www.freecodecamp.org/news/content/images/2021/12/1-jI58_UDd87Q4fQ326r6E6Q.png">
+
+If you recall, we removed the Flux package, and of course, I forgot this so I went to use it and load it in by typing <code>using Flux</code>. The REPL automatically prompts me to install it via a simple "y/n" prompt. This is a small feature but saves a tremendous amount of time and potential confusion.
+
+It is worth noting that there are two ways to access a package's exported functions: via the <code>using</code> keyword and the <code>import</code> keyword. The big difference is that <code>using</code> automatically brings all of the functions into the current namespace (for which you can think about as a big list of functions which Julia knows the definitions) whereas <code>import</code> gives you access to all of the functions but you have to prefix the function with the package name like: <code>Flux.gradient()</code> where <code>Flux</code> is the name of the package and <code>gradient()</code> is the name of a function.
+<hr>
+<h2><span class="orange">How to use Structs in Julia?</span></h2>
+Julia does not have Object Orientated Programming (OOP) paradigms built into the language like classes. However, structs in Julia can be used similar to classes to create custom objects and types. Below, we will show a basic example:
+
+<code>julia> mutable struct dog
+           breed::String
+           paws::Int
+           name::String
+           weight::Float64
+       end
+
+julia> my_dog = dog("Australian Shepard", 4, "Indy", 34.0)
+dog("Australian Shepard", 4, "Indy", 34.0)
+
+julia> my_dog.name
+"Indy"</code>
+
+In this example, we define a struct to represent a dog. In the struct, we define four attributes which make up the dog object. In the lines after that, we show the code to actually create a dog object and then access some of its attributes. Note that you need not specify the types of the attributes, you could leave it more open. For this example, we defined explicit types to highlight that feature.
+
+You will notice that similar to classes in Python (and other languages), we did not define an explicit constructor to create the dog object. We can, however, define one if that would be useful to use:
+
+<code>julia> mutable struct dog
+           breed::String
+           paws::Int
+           name::String
+           weight::Float64
+           
+           function dog(breed, name, weight, paws=4)
+               new(breed, paws, name, weight)
+           end
+       end
+
+julia> new_dog = dog("German Shepard", "Champ", 46)
+dog("German Shepard", 4, "Champ", 46.0)</code>
+
+Here we defined a constructor and used the special keyword <code>new</code> in order to create the object at the end of the function. You can also create getters and setters specifically for the dog object by doing the following:
+
+<code>julia> function get_name(dog_obj::dog)
+           print("The dogs's name is: ", dog_obj.name)
+       end
+get_name (generic function with 1 method)
+
+julia> get_name(new_dog)
+The dogs's name is: Champ</code>
+
+In this example, the <code>get_name</code> function only takes an object of type <code>dog</code>. If you try to pass in something else, it will error out:
+
+<code>julia> get_name("test")
+ERROR: MethodError: no method matching get_name(::String)
+Closest candidates are:
+  get_name(::dog) at REPL[61]:1
+Stacktrace:
+ [1] top-level scope
+   @ REPL[63]:1</code>
+
+It is worth noting that we also defined the struct to be mutable initially so that we could change the field values after we created the object. You omit the keyword <code>mutable</code> if you want the objects initial state to persist.
+
+Structs in Julia not only allow us to create object's, we also are defining a custom type in the process:
+
+<code>julia> typeof(new_dog)
+dog</code>
+
+In general, structs are used heavily across the Julia ecosystem and you can learn more about them in the docs: <a href="https://docs.julialang.org/en/v1/base/base/#struct">https://docs.julialang.org/en/v1/base/base/#struct</a>
+
+<h2><span class="orange">Additional Julia Programming Learning Resources 📚</span></h2>
+I hope that this tutorial helped get you up to speed on many of the core ideas of the Julia language. With that said, I know that there are still gaps as this is an extended but non-comprehensive guide. To learn more about Julia, you can check out the learning tab on the Julia website: <a href="https://julialang.org/learning/">https://julialang.org/learning/</a> which has guided courses, YouTube videos, and mentored practice problems.
+
+
+https://juliabyexample.helpmanual.io/
+Set of unofficial examples of Julia the high-level, high-performance dynamic programming language for technical computing.
+
+Below are a series of examples of common operations in Julia. They assume you already have Julia installed and working
+(the examples are currently tested with <strong>Julia v1.0.5</strong>).
+
+<h3>Hello World</h3>
+The simplest possible script.
+
+println("hello world")
+
+With Julia <a href="https://julialang.org/downloads/">installed and added to your path</a>
+this script can be run by <code>julia hello_world.jl</code>, it can also be run from REPL by typing
+<code>include("hello_world.jl")</code>, that will evaluate all valid expressions in that file and return the last output.
+
+<h3>Simple Functions</h3>
+The example below shows two simple functions, how to call them and print the results.
+Further examples of number formatting are shown below.
+
+# <a href="https://docs.julialang.org/en/v1/manual/functions/#man-functions-1" target="_blank">function</a> to calculate the volume of a sphere
+function sphere_vol(r) # julia allows <a href="https://docs.julialang.org/en/v1/manual/unicode-input/#Unicode-Input-1" target="_blank">Unicode names</a> (in UTF-8 encoding) # so either "pi" or the symbol π can be used return 4/3*pi*r^3
+end
+
+# functions can also be defined more succinctly
+quadratic(a, sqr_term, b) = (-b + sqr_term) / 2a
+
+# calculates x for 0 = a*x^2+b*x+c, <a href="https://docs.julialang.org/en/v1/manual/functions/#Further-Reading-1" target="_blank">arguments types</a> can be defined in function definitions
+function quadratic2(a::Float64, b::Float64, c::Float64) # unlike other languages 2a is equivalent to 2*a # a^2 is used instead of a**2 or pow(a,2) sqr_term = sqrt(b^2-4a*c) r1 = quadratic(a, sqr_term, b) r2 = quadratic(a, -sqr_term, b) # multiple values can be returned from a function using tuples # if the <a href="https://docs.julialang.org/en/v1/manual/functions/#The-return-Keyword-1" target="_blank">return</a> keyword is omitted, the last term is returned r1, r2
+end
+
+vol = sphere_vol(3)
+# @printf allows number formatting but does not automatically append the \n to statements, see below
+using Printf
+@printf "volume = %0.3f\n" vol 
+#> volume = 113.097
+
+quad1, quad2 = quadratic2(2.0, -2.0, -12.0)
+println("result 1: ", quad1)
+#> result 1: 3.0
+println("result 2: ", quad2)
+#> result 2: -2.0
+<h3>Strings Basics</h3>
+Collection of different string examples (string indexing is the same as array indexing: see below).
+
+# strings are defined with double quotes
+# like variables, strings can contain any unicode character
+s1 = "The quick brown fox jumps over the lazy dog α,β,γ"
+println(s1)
+#> The quick brown fox jumps over the lazy dog α,β,γ
+
+# <a href="https://docs.julialang.org/en/v1/base/io-network/#Base.println" target="_blank">println</a> adds a new line to the end of output
+# <a href="https://docs.julialang.org/en/v1/base/io-network/#Base.print" target="_blank">print</a> can be used if you dont want that:
+print("this")
+#> this
+print(" and")
+#> and
+print(" that.\n")
+#> that.
+
+# chars are defined with single quotes
+c1 = &#39;a&#39;
+println(c1)
+#> a
+# the ascii value of a char can be found with Int():
+println(c1, " ascii value = ", Int(c1))
+#> a ascii value = 97
+println("Int(&#39;α&#39;) == ", Int(&#39;α&#39;))
+#> Int(&#39;α&#39;) == 945
+
+# so be aware that
+println(Int(&#39;1&#39;) == 1)
+#> false
+
+# strings can be converted to upper case or lower case:
+s1_caps = uppercase(s1)
+s1_lower = lowercase(s1)
+println(s1_caps, "\n", s1_lower)
+#> THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG Α,Β,Γ
+#> the quick brown fox jumps over the lazy dog α,β,γ
+
+# sub strings can be indexed like arrays:
+# (<a href="https://docs.julialang.org/en/v1/base/io-network/#Base.show-Tuple{Any}" target="_blank">show</a> prints the raw value)
+show(s1[11]); println()
+#> &#39;b&#39;
+
+# or sub strings can be created:
+show(s1[1:10]); println()
+#> "The quick "
+
+# end is used for the end of the array or string
+show(s1[end-10:end]); println()
+#> "dog α,β,γ"
+
+# julia allows string <a href="https://docs.julialang.org/en/v1/manual/strings/#string-interpolation-1" target="_blank">Interpolation</a>:
+a = "welcome"
+b = "julia"
+println("$a to $b.")
+#> welcome to julia.
+
+# this can extend to evaluate statements:
+println("1 + 2 = $(1 + 2)")
+#> 1 + 2 = 3
+
+# strings can also be concatenated using the * operator
+# using * instead of + isn&#39;t intuitive when you start with Julia,
+# however <a href="https://groups.google.com/forum/#!msg/julia-users/nQg_d_n0t1Q/9PSt5aya5TsJ" target="_blank">people think it makes more sense</a>
+s2 = "this" * " and" * " that"
+println(s2)
+#> this and that
+
+# as well as the string function
+s3 = string("this", " and", " that")
+println(s3)
+#> this and that
+<h3>String: Converting and formatting</h3>
+# strings can be converted using <a href="https://docs.julialang.org/en/v1/base/numbers/#Core.Float16" target="_blank">float</a> and <a href="https://docs.julialang.org/en/v1/base/numbers/#Core.Int8" target="_blank">int</a>:
+e_str1 = "2.718"
+e = parse(Float64, e_str1)
+println(5e)
+#> 13.59
+num_15 = parse(Int, "15")
+println(3num_15)
+#> 45
+
+# numbers can be converted to strings and formatted using <a href="https://docs.julialang.org/en/v1/stdlib/Printf/#Printf.@printf" target="_blank">printf</a>
+using Printf
+@printf "e = %0.2f\n" e
+#> e = 2.72
+# or to create another string <a href="https://docs.julialang.org/en/v1/stdlib/Printf/#Printf.@sprintf" target="_blank">sprintf</a>
+e_str2 = @sprintf("%0.3f", e)
+
+# to show that the 2 strings are the same
+println("e_str1 == e_str2: $(e_str1 == e_str2)")
+#> e_str1 == e_str2: true
+
+# available number format characters are <a href="https://github.com/JuliaLang/julia/blob/master/stdlib/Printf/src/Printf.jl#L84-L91" target="_blank">f, e, a, g, c, s, p, d</a>:
+# (pi is a predefined constant; however, since its type is 
+# "MathConst" it has to be converted to a float to be formatted)
+@printf "fix trailing precision: %0.3f\n" float(pi)
+#> fix trailing precision: 3.142
+@printf "scientific form: %0.6e\n" 1000pi
+#> scientific form: 3.141593e+03
+@printf "float in hexadecimal format: %a\n" 0xff
+#> float in hexadecimal format: 0xf.fp+4
+@printf "fix trailing precision: %g\n" pi*1e8
+#> fix trailing precision: 3.14159e+08
+@printf "a character: %c\n" &#39;α&#39;
+#> a character: α
+@printf "a string: %s\n" "look I&#39;m a string!"
+#> a string: look I&#39;m a string!
+@printf "right justify a string: %50s\n" "width 50, text right justified!"
+#> right justify a string:width 50, text right justified!
+@printf "a pointer: %p\n" 100000000
+#> a pointer: 0x0000000005f5e100
+@printf "print an integer: %d\n" 1e10
+#> print an integer: 10000000000
+<h3>String Manipulations</h3>
+s1 = "The quick brown fox jumps over the lazy dog α,β,γ"
+
+# <a href="https://docs.julialang.org/en/v1/base/strings/#Base.findfirst-Tuple{AbstractString,AbstractString}" target="_blank">search</a> returns the first index of a char
+i = findfirst(isequal(&#39;b&#39;), s1)
+println(i)
+#> 11
+# the second argument is equivalent to the second argument of split, see below
+
+# or a range if called with another string
+r = findfirst("brown", s1)
+println(r)
+#> 11:15
+
+# string <a href="https://docs.julialang.org/en/v1/base/strings/#Base.replace-Tuple{AbstractString,Pair}" target="_blank">replace</a> is done thus:
+r = replace(s1, "brown" => "red")
+show(r); println()
+#> "The quick red fox jumps over the lazy dog α,β,γ"
+
+# search and replace can also take a regular expressions by preceding the string with &#39;r&#39;
+r = findfirst(r"b[\w]*n", s1)
+println(r)
+#> 11:15
+
+# again with a regular expression
+r = replace(s1, r"b[\w]*n" => "red")
+show(r); println()
+#> "The quick red fox jumps over the lazy dog α,β,γ"
+
+# there are also functions for regular expressions that return RegexMatch types
+# <a href="https://docs.julialang.org/en/v1/base/strings/#Base.match" target="_blank">match</a> scans left to right for the first match (specified starting index optional)
+r = match(r"b[\w]*n", s1)
+println(r)
+#> RegexMatch("brown")
+
+# RegexMatch types have a property match that holds the matched string
+show(r.match); println()
+#> "brown"
+
+# <a href="https://docs.julialang.org/en/v1/base/strings/#Base.eachmatch" target="_blank">eachmatch</a> returns an iterator over all the matches
+r = eachmatch(r"[\w]{4,}", s1)
+for i in r print("\"$(i.match)\" ") end
+#> "quick" "brown" "jumps" "over" "lazy"
+println()
+
+r = collect(m.match for m = eachmatch(r"[\w]{4,}", s1))
+println(r)
+#> SubString{String}["quick", "brown", "jumps", "over", "lazy"]
+
+# a string can be repeated using the <a href="https://julia.readthedocs.org/en/latest/manual/strings/#common-operations" target="_blank">repeat</a> function, 
+# or more succinctly with the <a href="https://docs.julialang.org/en/v1/base/strings/#Base.:^-Tuple{AbstractString,Integer}" target="_blank">^ syntax</a>:
+r = "hello "^3
+show(r); println() #> "hello hello hello "
+
+# the <a href="https://docs.julialang.org/en/v1/base/strings/#Base.strip" target="_blank">strip</a> function works the same as python:
+# e.g., with one argument it strips the outer whitespace
+r = strip("hello ")
+show(r); println() #> "hello"
+# or with a second argument of an array of chars it strips any of them;
+r = strip("hello ", [&#39;h&#39;, &#39; &#39;])
+show(r); println() #> "ello"
+# (note the array is of chars and not strings)
+
+# similarly <a href="https://docs.julialang.org/en/v1/base/strings/#Base.split" target="_blank">split</a> works in basically the same way as python:
+r = split("hello, there,bob", &#39;,&#39;)
+show(r); println() #> SubString{String}["hello", " there", "bob"]
+r = split("hello, there,bob", ", ")
+show(r); println() #> SubString{String}["hello", "there,bob"]
+r = split("hello, there,bob", [&#39;,&#39;, &#39; &#39;], limit=0, keepempty=false)
+show(r); println() #> SubString{String}["hello", "there", "bob"]
+# (the last two arguements are limit and include_empty, see docs)
+
+# the opposite of split: <a href="https://docs.julialang.org/en/v1/base/strings/#Base.join" target="_blank">join</a> is simply
+r = join(collect(1:10), ", ")
+println(r) #> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+<h3>Arrays</h3>
+function printsum(a) # <a href="https://docs.julialang.org/en/v1/base/io-network/#Base.summary" target="_blank">summary</a> generates a summary of an object println(summary(a), ": ", repr(a))
+end
+
+# arrays can be initialised directly:
+a1 = [1,2,3]
+printsum(a1)
+#> 3-element Array{Int64,1}: [1, 2, 3]
+
+# or initialised empty:
+a2 = []
+printsum(a2)
+#> 0-element Array{Any,1}: Any[]
+
+# since this array has no type, functions like push! (see below) don&#39;t work
+# instead arrays can be initialised with a type:
+a3 = Int64[]
+printsum(a3)
+#> 0-element Array{Int64,1}: Int64[]
+
+# ranges are different from arrays:
+a4 = 1:20
+printsum(a4)
+#> 20-element UnitRange{Int64}: 1:20
+
+# however they can be used to create arrays thus:
+a4 = collect(1:20)
+printsum(a4)
+#> 20-element Array{Int64,1}: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 
+#>  15, 16, 17, 18, 19, 20]
+
+# arrays can also be generated from <a href="https://docs.julialang.org/en/v1/manual/arrays/#Comprehensions-1" target="_blank">comprehensions</a>:
+a5 = [2^i for i = 1:10]
+printsum(a5)
+#> 10-element Array{Int64,1}: [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+
+# arrays can be any type, so arrays of arrays can be created:
+a6 = (Array{Int64, 1})[]
+printsum(a6)
+#> 0-element Array{Array{Int64,1},1}: Array{Int64,1}[]
+# (note this is a "jagged array" (i.e., an array of arrays), not a <a href="https://docs.julialang.org/en/v1/manual/arrays/" target="_blank">multidimensional array</a>,
+# these are not covered here)
+
+# Julia provided a number of <a href="https://docs.julialang.org/en/v1/base/collections/#Dequeues-1" target="_blank">"Dequeue"</a> functions, the most common
+# for appending to the end of arrays is 
+# ! at the end of a function name indicates that the first argument is updated.
+
+push!(a1, 4)
+printsum(a1)
+#> 4-element Array{Int64,1}: [1, 2, 3, 4]
+
+# push!(a2, 1) would cause error:
+
+push!(a3, 1)
+printsum(a3) #> 1-element Array{Int64,1}: [1]
+#> 1-element Array{Int64,1}: [1]
+
+push!(a6, [1,2,3])
+printsum(a6)
+#> 1-element Array{Array{Int64,1},1}: Array{Int64,1}[[1, 2, 3]]
+
+# using repeat() to create arrays
+# you must use the keywords "inner" and "outer"
+# all arguments must be arrays (not ranges)
+a7 = repeat(a1,inner=[2],outer=[1])
+printsum(a7)
+#> 8-element Array{Int64,1}: [1, 1, 2, 2, 3, 3, 4, 4]
+a8 = repeat(collect(4:-1:1),inner=[1],outer=[2])
+printsum(a8)
+#> 8-element Array{Int64,1}: [4, 3, 2, 1, 4, 3, 2, 1]
+<h3>Error Handling</h3>
+# <a href="https://docs.julialang.org/en/v1/manual/control-flow/#The-try/catch-statement-1" target="_blank">try, catch</a> can be used to deal with errors as with many other languages
+try push!(a,1)
+catch err showerror(stdout, err, backtrace());println()
+end
+#> UndefVarError: a not defined
+#> Stacktrace:
+#>  [1] top-level scope at C:\JuliaByExample\src\error_handling.jl:5
+#>  [2] include at .\boot.jl:317 [inlined]
+#>  [3] include_relative(::Module, ::String) at .\loading.jl:1038
+#>  [4] include(::Module, ::String) at .\sysimg.jl:29
+#>  [5] exec_options(::Base.JLOptions) at .\client.jl:229
+#>  [6] _start() at .\client.jl:421
+println("Continuing after error")
+#> Continuing after error
+<h3>Multidimensional Arrays</h3>
+Julia has very good multidimensional array capabilities.
+Check out <a href="https://docs.julialang.org/en/v1/manual/arrays/">the manual</a>.
+
+# repeat can be useful to expand a grid
+# as in R&#39;s expand.grid() function:
+
+m1 = hcat(repeat([1,2],inner=[1],outer=[3*2]),
+repeat([1,2,3],inner=[2],outer=[2]),
+repeat([1,2,3,4],inner=[3],outer=[1]))
+printsum(m1)
+#> 12×3 Array{Int64,2}: [1 1 1; 2 1 1; 1 2 1; 2 2 2; 1 3 2; 2 3 2; 1 1 3; 2 1 3;
+#>   1 2 3; 2 2 4; 1 3 4; 2 3 4]
+
+# for simple repetitions of arrays,
+# use repeat
+m2 = repeat(m1,1,2)     # replicate a9 once into dim1 and twice into dim2
+println("size: ", size(m2))
+#> size: (12, 6)
+
+m3 = repeat(m1,2,1)     # replicate a9 twice into dim1 and once into dim2
+println("size: ", size(m3))
+#> size: (24, 3)
+
+# Julia comprehensions are another way to easily create
+# multidimensional arrays
+
+m4 = [i+j+k for i=1:2, j=1:3, k=1:2] # creates a 2x3x2 array of Int64
+m5 = ["Hi Im # $(i+2*(j-1 + 3*(k-1)))" for i=1:2, j=1:3, k=1:2]
+# expressions are very flexible
+# you can specify the type of the array by just
+# placing it in front of the expression
+
+import LegacyStrings
+m5 = LegacyStrings.ASCIIString["Hi Im element # $(i+2*(j-1 + 3*(k-1)))" for i=1:2, j=1:3, k=1:2]
+printsum(m5)
+#> 2×3×2 Array{LegacyStrings.ASCIIString,3}: LegacyStrings.ASCIIString[
+#>   "Hi Im element # 1" "Hi Im element # 3" "Hi Im element # 5";
+#>   "Hi Im element # 2" "Hi Im element # 4" "Hi Im element # 6"]
+#>
+#> LegacyStrings.ASCIIString["Hi Im element # 7" "Hi Im element # 9"
+#>   "Hi Im element # 11"; "Hi Im element # 8" "Hi Im element # 10" "Hi Im element # 12"]
+
+# Array reductions
+# many functions in Julia have an array method
+# to be applied to specific dimensions of an array:
+
+sum(m4, dims=3)        # takes the sum over the third dimension
+sum(m4, dims=(1,3))  # sum over first and third dim
+
+maximum(m4, dims=2)    # find the max elt along dim 2
+findmax(m4, dims=3)    # find the max elt and its index along dim 3
+# (available only in very recent Julia versions)
+
+# Broadcasting
+# when you combine arrays of different sizes in an operation,
+# an attempt is made to "spread" or "broadcast" the smaller array
+# so that the sizes match up. broadcast operators are preceded by a dot:
+
+m4 .+ 3       # add 3 to all elements
+m4 .+ [1,2]      # adds vector [1,2] to all elements along first dim
+
+# slices and views
+m4=m4[:,:,1] # holds dim 3 fixed
+m4[:,2,:]  # that&#39;s a 2x1x2 array. not very intuititive to look at
+
+# get rid of dimensions with size 1:
+dropdims(m4[:,2,:], dims=2) # that&#39;s better
+
+# assign new values to a certain view
+m4[:,:,1] = rand(1:6,2,3)
+printsum(m4)
+#> 2×3 Array{Int64,2}: [3 5 3; 1 3 5]
+
+# (for more examples of try, catch see Error Handling above)
+try # this will cause an error, you have to assign the correct type m4[:,:,1] = rand(2,3)
+catch err println(err)
+end
+#> InexactError(:Int64, Int64, 0.7603891754678744)
+
+try # this will cause an error, you have to assign the right shape m4[:,:,1] = rand(1:6,3,2)
+catch err println(err)
+end
+#> DimensionMismatch("tried to assign 3×2 array to 2×3×1 destination")
+<h3>Dictionaries</h3>
+Julia uses <a href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries-1">Dicts</a> as
+associative collections. Usage is very like python except for the rather odd <code>=></code> definition syntax.
+
+# dicts can be initialised directly:
+a1 = Dict(1=>"one", 2=>"two")
+printsum(a1) 
+#> Dict{Int64,String} with 2 entries: Dict(2=>"two",1=>"one")
+
+# then added to:
+a1[3]="three"
+printsum(a1) 
+#> Dict{Int64,String} with 3 entries: Dict(2=>"two",3=>"three",1=>"one")
+# (note dicts cannot be assumed to keep their original order)
+
+# dicts may also be created with the type explicitly set
+a2 = Dict{Int64, AbstractString}()
+a2[0]="zero"
+printsum(a2)
+#> Dict{Int64,AbstractString} with 1 entry: Dict{Int64,AbstractString}(0=>"zero")
+
+# dicts, like arrays, may also be created from <a href="https://docs.julialang.org/en/v1/manual/arrays/#Comprehensions-1" target="_blank">comprehensions</a>
+using Printf
+a3 = Dict([i => @sprintf("%d", i) for i = 1:10])
+printsum(a3)
+#> Dict{Int64,String} with 10 entries: Dict(7=>"7",4=>"4",9=>"9",10=>"10",
+#>  2=>"2",3=>"3",5=>"5",8=>"8",6=>"6",1=>"1")
+
+# as you would expect, Julia comes with all the normal helper functions
+# for dicts, e.g., <a href="https://docs.julialang.org/en/v1/base/collections/#Base.haskey" target="_blank">haskey</a>
+println(haskey(a1,1)) #> true
+
+# which is equivalent to
+println(1 in keys(a1)) #> true
+# where <a href="https://docs.julialang.org/en/v1/base/collections/#Base.keys" target="_blank">keys</a> creates an iterator over the keys of the dictionary
+
+# similar to keys, <a href="https://docs.julialang.org/en/v1/base/collections/#Base.values" target="_blank">values</a> get iterators over the dict&#39;s values:
+printsum(values(a1)) 
+#> Base.ValueIterator for a Dict{Int64,String} with 3 entries: ["two", "three", "one"]
+
+# use <a href="https://docs.julialang.org/en/v1/base/collections/#Base.collect-Tuple{Any}" target="_blank">collect</a> to get an array:
+printsum(collect(values(a1)))
+#> 3-element Array{String,1}: ["two", "three", "one"]
+<h3>Loops and Map</h3>
+<a href="https://docs.julialang.org/en/v1/manual/control-flow/#man-loops-1">For loops</a>
+can be defined in a number of ways.
+
+for i in 1:5 print(i, ", ")
+end
+#> 1, 2, 3, 4, 5,
+# In loop definitions "in" is equivilent to "=" 
+# (AFAIK, the two are interchangable in this context)
+for i = 1:5 print(i, ", ")
+end
+println() #> 1, 2, 3, 4, 5,
+
+# arrays can also be looped over directly:
+a1 = [1,2,3,4]
+for i in a1 print(i, ", ")
+end
+println() #> 1, 2, 3, 4,
+
+# <strong>continue</strong> and <strong>break</strong> work in the same way as python
+a2 = collect(1:20)
+for i in a2 if i % 2 != 0     continue end print(i, ", ") if i >= 8     break end
+end
+println() #> 2, 4, 6, 8,
+
+# if the array is being manipulated during evaluation a while loop shoud be used
+# <a href="https://docs.julialang.org/en/v1/base/collections/#Base.pop!-Tuple{Any,Any,Any}" target="_blank">pop</a> removes the last element from an array
+while !isempty(a1) print(pop!(a1), ", ")
+end
+println() #> 4, 3, 2, 1,
+
+d1 = Dict(1=>"one", 2=>"two", 3=>"three")
+# dicts may be looped through using the keys function:
+for k in sort(collect(keys(d1))) print(k, ": ", d1[k], ", ")
+end
+println() #> 1: one, 2: two, 3: three,
+
+# like python <a href="https://docs.julialang.org/en/v1/base/iterators/#Base.Iterators.enumerate" target="_blank">enumerate</a> can be used to get both the index and value in a loop
+a3 = ["one", "two", "three"]
+for (i, v) in enumerate(a3) print(i, ": ", v, ", ")
+end
+println() #> 1: one, 2: two, 3: three,
+
+# (note enumerate starts from 1 since Julia arrays are 1 indexed unlike python)
+
+# <a href="https://docs.julialang.org/en/v1/base/collections/#Base.map" target="_blank">map</a> works as you might expect performing the given function on each member of 
+# an array or iter much like comprehensions
+a4 = map((x) -> x^2, [1, 2, 3, 7])
+print(a4) 
+println() #> [1, 4, 9, 49]
+<h3>Conditional Evaluation</h3>
+if/else statements work much like other languages -
+the boolean opperators are <code>true</code> and <code>false</code>.
+
+if true println("It&#39;s true!")
+else println("It&#39;s false!")
+end
+#> It&#39;s true!
+
+if false
+   println("It&#39;s true!")
+else
+   println("It&#39;s false!")
+end
+#> It&#39;s false!
+
+# Numbers can be compared with opperators like &lt;, >, ==, !=
+
+1 == 1.
+#> true
+
+1 > 2
+#> false
+
+"foo" != "bar"
+#> true
+
+# and many functions return boolean values
+
+occursin("that", "this and that")
+#> true
+
+# More complex logical statments can be achieved with `elseif`
+
+function checktype(x)
+   if x isa Int   println("Look! An Int!")
+   elseif x isa AbstractFloat   println("Look! A Float!")
+   elseif x isa Complex   println("Whoa, that&#39;s complex!")
+   else   println("I have no idea what that is")
+   end
+end
+
+checktype(2)
+#> Look! An Int!
+
+checktype(√2)
+#> Look! A Float!
+
+checktype(√Complex(-2))
+#> Whoa, that&#39;s complex!
+
+checktype("who am I?")
+#> I have no idea what that is
+
+# For simple logical statements, one can be more terse using the "ternary operator",
+# which takes the form `predicate ? do_if_true : do_if_false`
+
+1 > 2 ? println("that&#39;s true!") : println("that&#39;s false!")
+#> that&#39;s false!
+
+noisy_sqrt(x) = x ≥ 0 ? sqrt(x) : "That&#39;s negative!"
+noisy_sqrt(4)
+#> 2.0
+noisy_sqrt(-4)
+#> That&#39;s negative!
+
+# "Short-circuit evaluation" offers another option for conditional statements.
+# The opperators `&amp;&amp;` for AND and `||` for OR only evaluate the right-hand
+# statement if necessary based on the predicate.
+# Logically, if I want to know if `42 == 0 AND x &lt; y`,
+# it doesn&#39;t matter what `x` and `y` are, since the first statement is false.
+# This can be exploited to only evaluate a statement if something is true -
+# the second statement doesn&#39;t even have to be boolean!
+
+everything = 42
+everything &lt; 100 &amp;&amp; println("that&#39;s true!")
+#> "that&#39;s true!"
+everything == 0 &amp;&amp; println("that&#39;s true!")
+#> false
+
+√everything > 0 || println("that&#39;s false!")
+#> true
+√everything == everything || println("that&#39;s false!")
+#> that&#39;s false!
+<h3>Types</h3>
+Types are a key way of structuring data within Julia.
+
+# Type Definitions are probably most similar to tyepdefs in c?
+# a simple type with no special constructor functions might look like this
+mutable struct Person name::AbstractString male::Bool age::Float64 children::Int
+end
+
+p = Person("Julia", false, 4, 0)
+printsum(p)
+#> Person: Person("Julia", false, 4.0, 0)
+
+people = Person[]
+push!(people, Person("Steve", true, 42, 0))
+push!(people, Person("Jade", false, 17, 3))
+printsum(people)
+#> 2-element Array{Person,1}: Person[Person("Steve", true, 42.0, 0), Person("Jade", false, 17.0, 3)]
+
+# types may also contains arrays and dicts
+# constructor functions can be defined to easily create objects
+mutable struct Family name::AbstractString members::Array{AbstractString, 1} extended::Bool # constructor that takes one argument and generates a default # for the other two values Family(name::AbstractString) = new(name, AbstractString[], false) # constructor that takes two arguements and infers the third Family(name::AbstractString, members) = new(name, members, length(members) > 3)
+end
+
+fam1 = Family("blogs")
+println(fam1)
+#> Family("blogs", AbstractString[], false)
+fam2 = Family("jones", ["anna", "bob", "charlie", "dick"])
+println(fam2)
+#> Family("jones", AbstractString["anna", "bob", "charlie", "dick"], true)
+<h3>Input &amp; Output</h3>
+The basic syntax for reading and writing files in Julia is quite similar to python.
+
+The <code>simple.dat</code> file used in this example is available
+<a href="https://github.com/samuelcolvin/JuliaByExample/blob/master/src/simple.dat">from github</a>.
+
+fname = "simple.dat"
+# using <a href="https://docs.julialang.org/en/v1/manual/functions/#Do-Block-Syntax-for-Function-Arguments-1" target="_blank">do</a> means the file is closed automatically
+# in the same way "with" does in python
+open(fname,"r") do f for line in eachline(f)     println(line) end
+end
+#> this is a simple file containing
+#> text and numbers:
+#> 43.3
+#> 17
+
+f = open(fname,"r")
+show(readlines(f)); println()
+#> ["this is a simple file containing", "text and numbers:", "43.3", "17"]
+close(f)
+
+f = open(fname,"r")
+fstring = read(f, String)
+close(f)
+println(summary(fstring))
+#> String
+print(fstring)
+#> this is a simple file containing
+#> text and numbers:
+#> 43.3
+#> 17
+
+outfile = "outfile.dat"
+# writing to files is very similar:
+f = open(outfile, "w")
+# both print and println can be used as usual but with f as their first arugment
+println(f, "some content")
+print(f, "more content")
+print(f, " more on the same line")
+close(f)
+
+# we can then check the content of the file written
+# "do" above just creates an anonymous function and passes it to open
+# we can use the same logic to pass readall and thereby succinctly
+# open, read and close a file in one line
+outfile_content = open(f->read(f, String), outfile, "r")
+println(repr(outfile_content))
+#> "some content\nmore content more on the same line"
+<h3>Packages and Including of Files</h3>
+<a href="https://pkg.julialang.org/docs/">Packages</a>
+extend the functionality of Julia's standard library.
+
+# You might not want to run this file completely, as the Pkg-commands can take a
+# long time to complete.
+using Pkg
+
+# list all available packages:
+#Pkg.available()
+
+# install one package (e.g. <a href="https://github.com/johnmyleswhite/Calculus.jl" target="_blank">Calculus</a>) and all its dependencies:
+Pkg.add("Calculus")
+
+# to list all installed packages
+Pkg.installed()
+
+# to update all packages to their newest version
+Pkg.update()
+
+# to use a package:
+using Calculus
+# will import all functions of that package into the current namespace, so that
+# it is possible to call
+derivative(x -> sin(x), 1.0)
+# without specifing the package it is included in.
+
+import Calculus
+# will enable you to specify which package the function is called from
+Calculus.derivative(x -> cos(x), 1.0)
+
+# Using `import` is especially useful if there are conflicts in function/type-names
+# between packages.
+<h3>Plotting</h3>
+Plotting in Julia is only possible with additional Packages.
+Examples of some of the main packages are given below.
+
+<!--
+TODO:
+add comment about py plot
+
+PyPlot needs Python and matplotlib installed [matplotlib.pyplot docs](https://matplotlib.org/api/pyplot_api.html).
+-->
+
+<h4>Plots</h4>
+
+<a href="http://docs.juliaplots.org/latest/">Plots.jl Package Page</a>
+
+Installed via <code>Pkg.add("Plots"); Pkg.add("GR");</code>
+
+using Plots
+
+# plot some data
+plot([cumsum(rand(500) .- 0.5), cumsum(rand(500) .- 0.5)])
+
+# save the current figure
+savefig("plots.svg")
+# .eps, .pdf, &amp; .png are also supported
+# we used svg here because it respects the width and height specified above
+
+<img class="source-image" src="https://juliabyexample.helpmanual.io/src/plots.svg" alt="plots.svg"/>
+
+<h3>DataFrames</h3>
+The <a href="https://github.com/JuliaStats/DataFrames.jl">DataFrames.jl package</a> provides tool for working with tabular data.
+
+The <code>iris.csv</code> file used in this example is available
+<a href="https://github.com/samuelcolvin/JuliaByExample/blob/master/src/iris.csv">from github</a>.
+
+You may also need <a href="https://github.com/JuliaData/CSV.jl">CSV.jl package</a> to read data from CSV file.
+
+using DataFrames
+showln(x) = (show(x); println())
+# TODO: needs more links to docs.
+
+# A DataFrame is an in-memory database
+df = DataFrame(A = [1, 2], B = [ℯ, π], C = ["xx", "xy"])
+showln(df)
+#> 2×3 DataFrames.DataFrame
+#> │ Row │ A     │ B       │ C      │
+#> │     │ Int64 │ Float64 │ String │
+#> ├─────┼───────┼─────────┼────────┤
+#> │ 1   │ 1     │ 2.71828 │ xx     │
+#> │ 2   │ 2     │ 3.14159 │ xy     │
+
+# The columns of a DataFrame can be indexed using numbers or names
+showln(df[!, 1])
+#> [1, 2]
+showln(df[!, :A])
+#> [1, 2]
+
+showln(df[!, 2])
+#> [2.71828, 3.14159]
+showln(df[!, :B])
+#> [2.71828, 3.14159]
+
+showln(df[!, 3])
+#> ["xx", "xy"]
+showln(df[!, :C])
+#> ["xx", "xy"]
+
+# The rows of a DataFrame can be indexed only by using numbers
+showln(df[1, :])
+#> DataFrameRow
+#> │ Row │ A     │ B       │ C      │
+#> │     │ Int64 │ Float64 │ String │
+#> ├─────┼───────┼─────────┼────────┤
+#> │ 1   │ 1     │ 2.71828 │ xx     │
+showln(df[1:2, :])
+#> 2×3 DataFrames.DataFrame
+#> │ Row │ A     │ B       │ C      │
+#> │     │ Int64 │ Float64 │ String │
+#> ├─────┼───────┼─────────┼────────┤
+#> │ 1   │ 1     │ 2.71828 │ xx     │
+#> │ 2   │ 2     │ 3.14159 │ xy     │
+
+# importing data into DataFrames
+# ------------------------------
+
+using CSV
+
+# DataFrames can be loaded from CSV files using CSV.read()
+iris = CSV.read("iris.csv")
+
+# the iris dataset (and plenty of others) is also available from
+using RData, RDatasets
+iris = dataset("datasets","iris")
+
+# you can directly import your own R .rda dataframe with
+# mydf = load("path/to/your/df.rda")["name_of_df"], e.g.
+diamonds = load(joinpath(dirname(pathof(RDatasets)),"..","data","ggplot2","diamonds.rda"))["diamonds"]
+
+# showing DataFrames
+# ------------------
+
+# Check the names and element types of the columns of our new DataFrame
+showln(names(iris))
+#> Symbol[:SepalLength, :SepalWidth, :PetalLength, :PetalWidth, :Species]
+showln(eltypes(iris))
+#> DataType[Float64, Float64, Float64, Float64, CategoricalString{UInt8}]
+
+# Subset the DataFrame to only include rows for one species
+showln(iris[iris[!, :Species] .== "setosa", :])
+#> 50×5 DataFrames.DataFrame
+#> │ Row │ SepalLength │ SepalWidth │ PetalLength │ PetalWidth │ Species      │
+#> │     │ Float64     │ Float64    │ Float64     │ Float64    │ Categorical… │
+#> ├─────┼─────────────┼────────────┼─────────────┼────────────┼──────────────┤
+#> │ 1   │ 5.1         │ 3.5        │ 1.4         │ 0.2        │ setosa       │
+#> │ 2   │ 4.9         │ 3.0        │ 1.4         │ 0.2        │ setosa       │
+#> │ 3   │ 4.7         │ 3.2        │ 1.3         │ 0.2        │ setosa       │
+#> │ 4   │ 4.6         │ 3.1        │ 1.5         │ 0.2        │ setosa       │
+#> │ 5   │ 5.0         │ 3.6        │ 1.4         │ 0.2        │ setosa       │
+#> │ 6   │ 5.4         │ 3.9        │ 1.7         │ 0.4        │ setosa       │
+#> │ 7   │ 4.6         │ 3.4        │ 1.4         │ 0.3        │ setosa       │
+#> ⋮
+#> │ 43  │ 4.4         │ 3.2        │ 1.3         │ 0.2        │ setosa       │
+#> │ 44  │ 5.0         │ 3.5        │ 1.6         │ 0.6        │ setosa       │
+#> │ 45  │ 5.1         │ 3.8        │ 1.9         │ 0.4        │ setosa       │
+#> │ 46  │ 4.8         │ 3.0        │ 1.4         │ 0.3        │ setosa       │
+#> │ 47  │ 5.1         │ 3.8        │ 1.6         │ 0.2        │ setosa       │
+#> │ 48  │ 4.6         │ 3.2        │ 1.4         │ 0.2        │ setosa       │
+#> │ 49  │ 5.3         │ 3.7        │ 1.5         │ 0.2        │ setosa       │
+#> │ 50  │ 5.0         │ 3.3        │ 1.4         │ 0.2        │ setosa       │
+
+# Count the number of rows for each species
+showln(by(iris, :Species, df -> size(df, 1)))
+#> 3×2 DataFrames.DataFrame
+#> │ Row │ Species      │ x1    │
+#> │     │ Categorical… │ Int64 │
+#> ├─────┼──────────────┼───────┤
+#> │ 1   │ setosa       │ 50    │
+#> │ 2   │ versicolor   │ 50    │
+#> │ 3   │ virginica    │ 50    │
+
+# Discretize entire columns at a time
+iris[!, :SepalLength] = round.(Integer, iris[!, :SepalLength])
+iris[!, :SepalWidth] = round.(Integer, iris[!, :SepalWidth])
+
+# Tabulate data according to discretized columns to see "clusters"
+tabulated = by( iris, [:Species, :SepalLength, :SepalWidth], df -> size(df, 1)
+)
+showln(tabulated)
+#> 18×4 DataFrames.DataFrame
+#> │ Row │ Species      │ SepalLength │ SepalWidth │ x1    │
+#> │     │ Categorical… │ Int64       │ Int64      │ Int64 │
+#> ├─────┼──────────────┼─────────────┼────────────┼───────┤
+#> │ 1   │ setosa       │ 5 │ 4│ 17    │
+#> │ 2   │ setosa       │ 5 │ 3│ 23    │
+#> │ 3   │ setosa       │ 4 │ 3│ 4     │
+#> │ 4   │ setosa       │ 6 │ 4│ 5     │
+#> │ 5   │ setosa       │ 4 │ 2│ 1     │
+#> │ 6   │ versicolor   │ 7 │ 3│ 8     │
+#> │ 7   │ versicolor   │ 6 │ 3│ 27    │
+#> ⋮
+#> │ 11  │ virginica    │ 6 │ 3│ 24    │
+#> │ 12  │ virginica    │ 7 │ 3│ 14    │
+#> │ 13  │ virginica    │ 8 │ 3│ 4     │
+#> │ 14  │ virginica    │ 5 │ 2│ 1     │
+#> │ 15  │ virginica    │ 7 │ 2│ 1     │
+#> │ 16  │ virginica    │ 7 │ 4│ 1     │
+#> │ 17  │ virginica    │ 6 │ 2│ 3     │
+#> │ 18  │ virginica    │ 8 │ 4│ 2     │
+
+# you can setup a grouped dataframe like this
+gdf = groupby(iris,[:Species, :SepalLength, :SepalWidth])
+
+# and then iterate over it
+for idf in gdf println(size(idf,1))
+end
+
+# Adding/Removing columns
+# -----------------------
+
+# insert!(df::DataFrame,index::Int64,item::AbstractArray{T,1},name::Symbol)
+# insert random numbers at col 5:
+insertcols!(iris, 5, :randCol => rand(nrow(iris)))
+
+# remove it
+select!(iris, Not(:randCol))
+
+<h2><span class="orange">Introductory Examples</span></h2>
+<h3>Overview</h3>
+We’re now ready to start learning the Julia language itself
+<h4>Level</h4>
+Our approach is aimed at those who already have at least some knowledge of programming — perhaps experience with Python, MATLAB, Fortran, C or similar
+In particular, we assume you have some familiarity with fundamental programming concepts such as
+variables
+arrays or vectors
+loops
+conditionals (if/else)
+<h4>Approach</h4>
+In this lecture we will write and then pick apart small Julia programs
+At this stage the objective is to introduce you to basic syntax and data structures
+Deeper concepts—how things work—will be covered in later lectures
+Since we are looking for simplicity the examples are a little contrived
+In this lecture, we will often start with a direct MATLAB/FORTRAN approach which often is <b>poor coding style</b> in Julia, but then move towards more <b>elegant code</b> which is tightly connected to the mathematics
+<h4>Set Up</h4>
+We assume that you’ve worked your way through <a href="https://lectures.quantecon.org/getting_started.html">our getting started lecture</a> already
+In particular, the easiest way to install and precompile all the Julia packages used in QuantEcon notes is to type <code>] add InstantiateFromURL</code> and then work in a Jupyter notebook, as described <a href="https://lectures.quantecon.org/getting_started.html">here</a>
+<h4>Other References</h4>
+The definitive reference is <a href="https://docs.julialang.org/en/v1/">Julia’s own documentation</a>
+The manual is thoughtfully written but is also quite dense (and somewhat evangelical)
+The presentation in this and our remaining lectures is more of a tutorial style based around examples
+<h3>Example: Plotting a White Noise Process</h3>
+To begin, let’s suppose that we want to simulate and plot the white noise process $ \epsilon_0, \epsilon_1, \ldots, \epsilon_T $, where each draw $ \epsilon_t $ is independent standard normal
+<h4>Introduction to Packages</h4>
+The first step is to activate a project environment, which is encapsulated by <code>Project.toml</code> and <code>Manifest.toml</code> files
+There are three ways to install packages and versions (where the first two methods are discouraged, since they may lead to package versions out-of-sync with the notes)
+<ol><li>
+<code>add</code> the packages directly into your global installation (e.g. <code>Pkg.add("MyPackage")</code> or <code>] add MyPackage</code>)
+download an <code>Project.toml</code> and <code>Manifest.toml</code> file in the same directory as the notebook (i.e. from the <code>@__DIR__</code> argument), and then call <code>using Pkg; Pkg.activate(@__DIR__);</code>
+use the <code>InstantiateFromURL</code> package
+</li></ol>
+#using InstantiateFromURL
+#github_project("QuantEcon/quantecon-notebooks-julia", version = "0.2.0")
+0.2s
+JuliaJulia 1.2 QuantEcon</a>
+
+If you have never run this code on a particular computer, it is likely to take a long time as it downloads, installs, and compiles all dependent packages
+This code will download and install project files from GitHub, <a href="https://github.com/QuantEcon/QuantEconLecturePackages/">QuantEcon/QuantEconLecturePackages</a>
+We will discuss it more in <a href="https://lectures.quantecon.org/more_julia/tools_editors.html#tools-editors">Tools and Editors</a>, but these files provide a listing of packages and versions used by the code
+This ensures that an environment for running code is <b>reproducible</b>, so that anyone can replicate the precise set of package and versions used in construction
+The careful selection of package versions is crucial for reproducibility, as otherwise your code can be broken by changes to packages out of your control
+After the installation and activation, <code>using</code> provides a way to say that a particular code or notebook will use the package
+using LinearAlgebra,<!-- --> Statistics
+0.4s
+JuliaJulia 1.2 QuantEcon</a>
+
+&lt;a id='import'>&lt;/a>
+<h4>Using Functions from a Package</h4>
+Some functions are built into the base Julia, such as <code>randn</code>, which returns a single draw from a normal distibution with mean 0 and variance 1 if given no parameters
+randn(<!-- -->)
+1.1s
+JuliaJulia 1.2 QuantEcon</a>
+
+-1.13557
+Other functions require importing all of the names from an external library
+using Plots
+gr(fmt=:png)<!-- -->;<!-- --> # setting for easier display in jupyter notebooks
+<!-- -->
+n = 100
+ϵ = randn(n)<!-- -->
+plot(1:n,<!-- --> ϵ)
+34.8s
+JuliaJulia 1.2 QuantEcon</a>
+
+Let’s break this down and see how it works
+The effect of the statement <code>using Plots</code> is to make all the names exported by the <code>Plots</code> module available
+Because we used <code>Pkg.activate</code> previously, it will use whatever version of <code>Plots.jl</code> that was specified in the <code>Project.toml</code> and <code>Manifest.toml</code> files
+The other packages <code>LinearAlgebra</code> and <code>Statistics</code> are base Julia libraries, but require an explicit using
+The arguments to <code>plot</code> are the numbers <code>1,2, ..., n</code> for the x-axis, a vector <code>ϵ</code> for the y-axis, and (optional) settings
+The function <code>randn(n)</code> returns a column vector <code>n</code> random draws from a normal distribution with mean 0 and variance 1
+<h4>Arrays</h4>
+As a language intended for mathematical and scientific computing, Julia has strong support for using unicode characters
+In the above case, the <code>ϵ</code> and many other symbols can be typed in most Julia editor by providing the LaTeX and <code>&lt;TAB></code>, i.e. <code>\epsilon&lt;TAB></code>
+The return type is one of the most fundamental Julia data types: an array
+typeof(ϵ)
+0.7s
+JuliaJulia 1.2 QuantEcon</a>
+
+Array{Float64,1}
+ϵ[1:5]
+1.1s
+JuliaJulia 1.2 QuantEcon</a>
+
+5-element Array{Float64,1}:
+  0.718197
+ -0.671958
+  0.867648
+ -1.44841 
+  0.961882
+The information from <code>typeof()</code> tells us that <code>ϵ</code> is an array of 64 bit floating point values, of dimension 1
+In Julia, one-dimensional arrays are interpreted as column vectors for purposes of linear algebra
+The <code>ϵ[1:5]</code> returns an array of the first 5 elements of <code>ϵ</code>
+Notice from the above that
+array indices start at 1 (like MATLAB and Fortran, but unlike Python and C)
+array elements are referenced using square brackets (unlike MATLAB and Fortran)
+To get <b>help and examples</b> in Jupyter or other julia editor, use the <code>?</code> before a function name or syntax
+<code>?typeof
+search: typeof typejoin TypeError
+Get the concrete type of x.
+Examples
+julia> a = 1//2;
+julia> typeof(a)
+Rational{Int64}
+julia> M = [1 2; 3.5 4];
+julia> typeof(M)
+Array{Float64,2}
+</code>
+<h4>For Loops</h4>
+Although there’s no need in terms of what we wanted to achieve with our program, for the sake of learning syntax let’s rewrite our program to use a <code>for</code> loop for generating the data
+<b>Note</b>
+Starting with the most direct version, and pretending we are in a world where <code>randn</code> can only return a single value
+# poor style
+n = 100
+ϵ = zeros(n)<!-- -->
+for i in 1:n
+<!-- -->    ϵ[i]<!-- --> = randn(<!-- -->)<!-- -->
+end
+0.3s
+JuliaJulia 1.2 QuantEcon</a>
+
+Here we first declared <code>ϵ</code> to be a vector of <code>n</code> numbers, initialized by the floating point <code>0.0</code>
+The <code>for</code> loop then populates this array by successive calls to <code>randn()</code>
+Like all code blocks in Julia, the end of the <code>for</code> loop code block (which is just one line here) is indicated by the keyword <code>end</code>
+The word <code>in</code> from the <code>for</code> loop can be replaced by either <code>∈</code> or <code>=</code>
+The index variable is looped over for all integers from <code>1:n</code> – but this does not actually create a vector of those indices
+Instead, it creates an <b>iterator</b> that is looped over – in this case the <b>range</b> of integers from <code>1</code> to <code>n</code>
+While this example successfully fills in <code>ϵ</code> with the correct values, it is very indirect as the connection between the index <code>i</code> and the <code>ϵ</code> vector is unclear
+To fix this, use <code>eachindex</code>
+# better style
+n = 100
+ϵ = zeros(n)<!-- -->
+for i in eachindex(ϵ)<!-- -->
+<!-- -->    ϵ[i]<!-- --> = randn(<!-- -->)<!-- -->
+end
+0.3s
+JuliaJulia 1.2 QuantEcon</a>
+
+Here, <code>eachindex(ϵ)</code> returns an iterator of indices which can be used to access <code>ϵ</code>
+While iterators are memory efficient because the elements are generated on the fly rather than stored in memory, the main benefit is (1) it can lead to code which is clearer and less prone to typos; and (2) it allows the compiler flexibility to creatively generate fast code
+In Julia you can also loop directly over arrays themselves, like so
+ϵ_sum = 0.0 # careful to use 0.0 here, instead of 0
+m = 5
+for ϵ_val in ϵ[1:m]<!-- -->
+<!-- -->    ϵ_sum = ϵ_sum + ϵ_val
+end
+ϵ_mean = ϵ_sum / m
+0.8s
+JuliaJulia 1.2 QuantEcon</a>
+
+where <code>ϵ[1:m]</code> returns the elements of the vector at indices <code>1</code> to <code>m</code>
+Of course, in Julia there are built in functions to perform this calculation which we can compare against
+ϵ_mean ≈ mean(ϵ[1:m]<!-- -->)<!-- -->
+ϵ_mean ≈ sum(ϵ[1:m]<!-- -->)<!-- --> / m
+0.8s
+JuliaJulia 1.2 QuantEcon</a>
+
+true
+In these examples, note the use of <code>≈</code> to test equality, rather than <code>==</code>, which is appropriate for integers and other types
+Approximately equal, typed with <code>\approx&lt;TAB></code>, is the appropriate way to compare any floating point numbers due to the standard issues of <a href="https://floating-point-gui.de/">floating point math</a>
+&lt;a id='user-defined-functions'>&lt;/a>
+<h4>User-Defined Functions</h4>
+For the sake of the exercise, let’s go back to the <code>for</code> loop but restructure our program so that generation of random variables takes place within a user-defined function
+To make things more interesting, instead of directly plotting the draws from the distribution, let’s plot the squares of these draws
+# poor style
+function generatedata(n)<!-- -->
+<!-- -->    ϵ = zeros(n)<!-- -->
+<!-- -->    for i in eachindex(ϵ)<!-- -->
+<!-- -->        ϵ[i]<!-- --> = <!-- -->(randn(<!-- -->)<!-- -->)^2 # squaring the result
+<!-- -->    end
+<!-- -->    return ϵ
+end
+<!-- -->
+data = generatedata(10)<!-- -->
+plot(data)
+1.3s
+JuliaJulia 1.2 QuantEcon</a>
+
+Here
+<code>function</code> is a Julia keyword that indicates the start of a function definition
+<code>generatedata</code> is an arbitrary name for the function
+<code>return</code> is a keyword indicating the return value, as is often unnecessary
+Let us make this example slightly better by “remembering” that <code>randn</code> can return a vectors
+# still poor style
+function generatedata(n)<!-- -->
+<!-- -->    ϵ = randn(n)<!-- --> # use built in function
+<!-- -->
+<!-- -->    for i in eachindex(ϵ)<!-- -->
+<!-- -->        ϵ[i]<!-- --> = ϵ[i]^2 # squaring the result
+<!-- -->    end
+<!-- -->
+<!-- -->    return ϵ
+end
+data = generatedata(5)
+0.0s
+JuliaJulia 1.2 QuantEcon</a>
+
+5-element Array{Float64,1}:
+ 0.3186968339672584   
+ 1.096885365034298    
+ 0.5150540764077658   
+ 3.4943263421532738   
+ 0.0033495849554665857
+While better, the looping over the <code>i</code> index to square the results is difficult to read
+Instead of looping, we can <b>broadcast</b> the <code>^2</code> square function over a vector using a <code>.</code>
+To be clear, unlike Python, R, and MATLAB (to a lesser extent), the reason to drop the <code>for</code> is <b>not</b> for performance reasons, but rather because of code clarity
+Loops of this sort are at least as efficient as vectorized approach in compiled languages like Julia, so use a for loop if you think it makes the code more clear
+# better style
+function generatedata(n)<!-- -->
+<!-- -->    ϵ = randn(n)<!-- --> # use built in function
+<!-- -->    return ϵ.^2
+<!-- --> end
+data = generatedata(5)
+0.2s
+JuliaJulia 1.2 QuantEcon</a>
+
+5-element Array{Float64,1}:
+ 0.008040679683391627
+ 2.7193272818756418  
+ 2.503006792875296   
+ 0.25899422951021456 
+ 0.6412482847152445  
+We can even drop the <code>function</code> if we define it on a single line
+# good style
+generatedata(n)<!-- --> = randn(n).^2
+data = generatedata(5)
+0.1s
+JuliaJulia 1.2 QuantEcon</a>
+
+5-element Array{Float64,1}:
+ 2.134636363911204  
+ 1.6701457046959898 
+ 0.24706230272781574
+ 0.8315376998419491 
+ 0.6070171828121048 
+Finally, we can broadcast any function, where squaring is only a special case
+# good style
+f(x)<!-- --> = x^2 # simple square function
+generatedata(n)<!-- --> = f.(randn(n)<!-- -->)<!-- --> # uses broadcast for some function `f`
+data = generatedata(5)
+0.3s
+JuliaJulia 1.2 QuantEcon</a>
+
+5-element Array{Float64,1}:
+ 0.07219218176682414 
+ 2.7843096367519196  
+ 0.015823943380171502
+ 0.7512527900793983  
+ 0.33614099458158286 
+As a final – abstract – approach, we can make the <code>generatedata</code> function able to generically apply to a function
+generatedata(n,<!-- --> gen)<!-- --> = gen.(randn(n)<!-- -->)<!-- --> # uses broadcast for some function `gen`
+<!-- -->
+f(x)<!-- --> = x^2 # simple square function
+data = generatedata(5,<!-- --> f)<!-- --> # applies f
+0.4s
+JuliaJulia 1.2 QuantEcon</a>
+
+5-element Array{Float64,1}:
+ 0.1556888086720689 
+ 0.6179770346098962 
+ 0.1908246493615354 
+ 0.03120230831361247
+ 1.292340133589027  
+Whether this example is better or worse than the previous version depends on how it is used
+High degrees of abstraction and generality, e.g. passing in a function <code>f</code> in this case, can make code either clearer or more confusing, but Julia enables you to use these techniques <b>with no performance overhead</b>
+For this particular case, the clearest and most general solution is probably the simplest
+# direct solution with broadcasting, and small user-defined function
+n = 100
+f(x)<!-- --> = x^2
+<!-- -->
+x = randn(n)<!-- -->
+plot(f.(x)<!-- -->,<!-- --> label="x^2")<!-- -->
+plot!(x,<!-- --> label="x")<!-- --> # layer on the same plot
+2.2s
+JuliaJulia 1.2 QuantEcon</a>
+
+While broadcasting above superficially looks like vectorizing functions in MATLAB, or Python ufuncs, it is much richer and built on core foundations of the language
+The other additional function <code>plot!</code> adds a graph to the existing plot
+This follows a general convention in Julia, where a function that modifies the arguments or a global state has a <code>!</code> at the end of its name
+<h5>A Slightly More Useful Function
+</h5>
+Let’s make a slightly more useful function
+This function will be passed in a choice of probability distribution and respond by plotting a histogram of observations
+In doing so we’ll make use of the <code>Distributions</code> package, which we assume was instantiated above with the project
+Here’s the code
+using Distributions
+<!-- -->
+function plothistogram(distribution,<!-- --> n)<!-- -->
+<!-- -->    ϵ = rand(distribution,<!-- --> n)<!-- -->  # n draws from distribution
+<!-- -->    histogram(ϵ)<!-- -->
+end
+<!-- -->
+lp = Laplace(<!-- -->)<!-- -->
+plothistogram(lp,<!-- --> 500)
+1.0s
+JuliaJulia 1.2 QuantEcon</a>
+
+Let’s have a casual discussion of how all this works while leaving technical details for later in the lectures
+First, <code>lp = Laplace()</code> creates an instance of a data type defined in the <code>Distributions</code> module that represents the Laplace distribution
+The name <code>lp</code> is bound to this value
+When we make the function call <code>plothistogram(lp, 500)</code> the code in the body of the function <code>plothistogram</code> is run with
+the name <code>distribution</code> bound to the same value as <code>lp</code>
+the name <code>n</code> bound to the integer <code>500</code>
+<h5>A Mystery
+</h5>
+Now consider the function call <code>rand(distribution, n)</code>
+This looks like something of a mystery
+The function <code>rand()</code> is defined in the base library such that <code>rand(n)</code> returns <code>n</code> uniform random variables on $ [0, 1) $
+rand(3)
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+On the other hand, <code>distribution</code> points to a data type representing the Laplace distribution that has been defined in a third party package
+So how can it be that <code>rand()</code> is able to take this kind of value as an argument and return the output that we want?
+The answer in a nutshell is <b>multiple dispatch</b>, which Julia uses to implement <b>generic programming</b>
+This refers to the idea that functions in Julia can have different behavior depending on the particular arguments that they’re passed
+Hence in Julia we can take an existing function and give it a new behavior by defining how it acts on a new type of value
+The compiler knows which function definition to apply to in a given setting by looking at the types of the values the function is called on
+In Julia these alternative versions of a function are called <b>methods</b>
+<h3>Example: Variations on Fixed Points</h3>
+Take a mapping $ f : X \to X $ for some set $ X $
+If there exists an $ x^* \in X $ such that $ f(x^<em>) = x^</em> $, then $ x^* $: is called a “fixed point” of $ f $
+For our second example, we will start with a simple example of determining fixed points of a function
+The goal is to start with code in a MATLAB style, and move towards a more <b>Julian</b> style with high mathematical clarity
+<h4>Fixed Point Maps</h4>
+Consider the simple equation, where the scalars $ p,\beta $ are given, and  $ v $ is the scalar we wish to solve for
+<figure id="formula-5fc6ffd7-f6aa-43ab-b18c-4666c639cddb" style="max-width:100%;overflow-x:auto"><math><semantics><mrow><mi>v</mi><mo>=</mo><mi>p</mi><mo>+</mo><mi>β</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">v = p + \beta v
+</annotation></semantics></math>v=p+βv</figure>
+Of course, in this simple example, with parameter restrictions this can be solved as $ v = p/(1 - \beta) $
+Rearrange the equation in terms of a map $ f(x) : \mathbb R \to \mathbb R $
+&lt;a id='equation-fixed-point-map'>&lt;/a>
+<figure id="formula-6b43619a-f149-4d9d-913c-140c0ec9438a" style="max-width:100%;overflow-x:auto"><math><semantics><mtable side="right"><mlabeledtr><mtd><mtext>(1)</mtext></mtd><mtd><mrow><mi>v</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>v</mi><mo>)</mo></mrow></mtd></mlabeledtr></mtable><annotation encoding="application/x-tex">v = f(v) \tag{1}
+</annotation></semantics></math>v=f(v)(1)</figure>
+where
+<figure id="formula-f7422629-a630-49df-b0aa-931c81b7bf1a" style="max-width:100%;overflow-x:auto"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>v</mi><mo>)</mo><mo>:</mo><mo>=</mo><mi>p</mi><mo>+</mo><mi>β</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">f(v) := p + \beta v
+</annotation></semantics></math>f(v):=p+βv</figure>
+Therefore, a fixed point $ v^* $ of $ f(\cdot) $ is a solution to the above problem
+<h4>While Loops</h4>
+One approach to finding a fixed point of <a href="#equation-fixed-point-map">(1)</a> is to start with an initial value, and iterate the map
+&lt;a id='equation-fixed-point-naive'>&lt;/a>
+<figure id="formula-c0169025-524e-431a-a139-0a3dcaf25e9f" style="max-width:100%;overflow-x:auto"><math><semantics><mtable side="right"><mlabeledtr><mtd><mtext>(2)</mtext></mtd><mtd><mrow><msup><mi>v</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>f</mi><mo>(</mo><msup><mi>v</mi><mi>n</mi></msup><mo>)</mo></mrow></mtd></mlabeledtr></mtable><annotation encoding="application/x-tex">v^{n+1} = f(v^n) \tag{2}
+</annotation></semantics></math>vn+1=f(vn)(2)</figure>
+For this exact <code>f</code> function,  we can see the convergence to $ v = p/(1-\beta) $ when $ |\beta| &lt; 1 $ by iterating backwards and taking $ n\to\infty $
+<figure id="formula-40d44057-8992-45aa-a22a-c75b73880bfc" style="max-width:100%;overflow-x:auto"><math><semantics><mrow><msup><mi>v</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>p</mi><mo>+</mo><mi>β</mi><msup><mi>v</mi><mi>n</mi></msup><mo>=</mo><mi>p</mi><mo>+</mo><mi>β</mi><mi>p</mi><mo>+</mo><msup><mi>β</mi><mn>2</mn></msup><msup><mi>v</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>p</mi><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover><msup><mi>β</mi><mi>i</mi></msup><mo>+</mo><msup><mi>β</mi><mi>n</mi></msup><msub><mi>v</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">v^{n+1} = p + \beta v^n = p + \beta p + \beta^2 v^{n-1} = p \sum_{i=0}^{n-1} \beta^i + \beta^n v_0
+</annotation></semantics></math>vn+1=p+βvn=p+βp+β2vn−1=pi=0∑n−1​βi+βnv0​</figure>
+To implement the iteration in <a href="#equation-fixed-point-naive">(2)</a>, we start by solving this problem with a <code>while</code> loop
+The syntax for the while loop contains no surprises, and looks nearly identical to a MATLAB implementation
+# poor style
+p = 1.0 # note 1.0 rather than 1
+β = 0.9
+maxiter = 1000
+tolerance = 1.0E-7
+v_iv = 0.8 # initial condition
+<!-- -->
+# setup the algorithm
+v_old = v_iv
+normdiff = Inf
+iter = 1
+while normdiff > tolerance &amp;&amp; iter &lt;= maxiter
+<!-- -->    v_new = p + β * v_old # the f(v) map
+<!-- -->    normdiff = norm(v_new - v_old)<!-- -->
+<!-- -->
+<!-- -->    # replace and continue
+<!-- -->    v_old = v_new
+<!-- -->    iter = iter + 1
+end
+println("Fixed point = $v_old, and |f(x) - x| = $normdiff in $iter iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+The <code>while</code> loop, like the <code>for</code> loop should only be used directly in Jupyter or the inside of a function
+Here, we have used the <code>norm</code> function (from the <code>LinearAlgebra</code> base library) to compare the values
+The other new function is the <code>println</code> with the string interpolation, which splices the value of an expression or variable prefixed by <code>\$</code> into a string
+An alternative approach is to use a <code>for</code> loop, and check for convergence in each iteration
+# setup the algorithm
+v_old = v_iv
+normdiff = Inf
+iter = 1
+for i in 1:maxiter
+<!-- -->    v_new = p + β * v_old # the f(v) map
+<!-- -->    normdiff = norm(v_new - v_old)<!-- -->
+<!-- -->    if normdiff &lt; tolerance # check convergence
+<!-- -->        iter = i
+<!-- -->        break # converged, exit loop
+<!-- -->    end
+<!-- -->    # replace and continue
+<!-- -->    v_old = v_new
+end
+println("Fixed point = $v_old, and |f(x) - x| = $normdiff in $iter iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+The new feature there is <code>break</code> , which leaves a <code>for</code> or <code>while</code> loop
+<h4>Using a Function</h4>
+The first problem with this setup is that it depends on being sequentially run – which can be easily remedied with a function
+# better, but still poor style
+function v_fp(β,<!-- --> ρ,<!-- --> v_iv,<!-- --> tolerance,<!-- --> maxiter)<!-- -->
+<!-- -->    # setup the algorithm
+<!-- -->    v_old = v_iv
+<!-- -->    normdiff = Inf
+<!-- -->    iter = 1
+<!-- -->    while normdiff > tolerance &amp;&amp; iter &lt;= maxiter
+<!-- -->        v_new = p + β * v_old # the f(v) map
+<!-- -->        normdiff = norm(v_new - v_old)<!-- -->
+<!-- -->
+<!-- -->        # replace and continue
+<!-- -->        v_old = v_new
+<!-- -->        iter = iter + 1
+<!-- -->    end
+<!-- -->    return <!-- -->(v_old,<!-- --> normdiff,<!-- --> iter)<!-- --> # returns a tuple
+end
+<!-- -->
+# some values
+p = 1.0 # note 1.0 rather than 1
+β = 0.9
+maxiter = 1000
+tolerance = 1.0E-7
+v_initial = 0.8 # initial condition
+<!-- -->
+v_star,<!-- --> normdiff,<!-- --> iter = v_fp(β,<!-- --> p,<!-- --> v_initial,<!-- --> tolerance,<!-- --> maxiter)<!-- -->
+println("Fixed point = $v_star, and |f(x) - x| = $normdiff in $iter iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+While better, there could still be improvements
+<h4>Passing a Function</h4>
+The chief issue is that the algorithm (finding a fixed point) is reusable and generic, while the function we calculate <code>p + β * v</code> is specific to our problem
+A key feature of languages like Julia, is the ability to efficiently handle functions passed to other functions
+# better style
+function fixedpointmap(f,<!-- --> iv,<!-- --> tolerance,<!-- --> maxiter)<!-- -->
+<!-- -->    # setup the algorithm
+<!-- -->    x_old = iv
+<!-- -->    normdiff = Inf
+<!-- -->    iter = 1
+<!-- -->    while normdiff > tolerance &amp;&amp; iter &lt;= maxiter
+<!-- -->        x_new = f(x_old)<!-- --> # use the passed in map
+<!-- -->        normdiff = norm(x_new - x_old)<!-- -->
+<!-- -->        x_old = x_new
+<!-- -->        iter = iter + 1
+<!-- -->    end
+<!-- -->    return <!-- -->(x_old,<!-- --> normdiff,<!-- --> iter)<!-- -->
+end
+<!-- -->
+# define a map and parameters
+p = 1.0
+β = 0.9
+f(v)<!-- --> = p + β * v # note that p and β are used in the function!
+<!-- -->
+maxiter = 1000
+tolerance = 1.0E-7
+v_initial = 0.8 # initial condition
+<!-- -->
+v_star,<!-- --> normdiff,<!-- --> iter = fixedpointmap(f,<!-- --> v_initial,<!-- --> tolerance,<!-- --> maxiter)<!-- -->
+println("Fixed point = $v_star, and |f(x) - x| = $normdiff in $iter iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+Much closer, but there are still hidden bugs if the user orders the settings or returns types wrong
+<h4>Named Arguments and Return Values</h4>
+To enable this, Julia has two features:  named function parameters, and named tuples
+# good style
+function fixedpointmap(f;<!-- --> iv,<!-- --> tolerance=1E-7,<!-- --> maxiter=1000)<!-- -->
+<!-- -->    # setup the algorithm
+<!-- -->    x_old = iv
+<!-- -->    normdiff = Inf
+<!-- -->    iter = 1
+<!-- -->    while normdiff > tolerance &amp;&amp; iter &lt;= maxiter
+<!-- -->        x_new = f(x_old)<!-- --> # use the passed in map
+<!-- -->        normdiff = norm(x_new - x_old)<!-- -->
+<!-- -->        x_old = x_new
+<!-- -->        iter = iter + 1
+<!-- -->    end
+<!-- -->    return <!-- -->(value = x_old,<!-- --> normdiff=normdiff,<!-- --> iter=iter)<!-- --> # A named tuple
+end
+<!-- -->
+# define a map and parameters
+p = 1.0
+β = 0.9
+f(v)<!-- --> = p + β * v # note that p and β are used in the function!
+<!-- -->
+sol = fixedpointmap(f,<!-- --> iv=0.8,<!-- --> tolerance=1.0E-8)<!-- --> # don&#x27;t need to pass
+println("Fixed point = $(sol.value), and |f(x) - x| = $(sol.normdiff) in $(sol.iter)"*
+<!-- -->        " iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+In this example, all function parameters after the <code>;</code> in the list, must be called by name
+Furthermore, a default value may be enabled – so the named parameter <code>iv</code> is required while <code>tolerance</code> and <code>maxiter</code> have default values
+The return type of the function also has named fields, <code>value, normdiff,</code> and <code>iter</code> – all accessed intuitively using <code>.</code>
+To show the flexibilty of this code, we can use it to find a fixed point of the non-linear logistic equation, $ x = f(x) $ where $ f(x) := r x (1-x) $
+r = 2.0
+f(x)<!-- --> = r * x * <!-- -->(1 - x)<!-- -->
+<!-- -->
+sol = fixedpointmap(f,<!-- --> iv=0.8)<!-- -->
+println("Fixed point = $(sol.value), and |f(x) - x| = $(sol.normdiff) in $(sol.iter) iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Using a Package</h4>
+But best of all is to avoid writing code altogether
+# best style
+using NLsolve
+<!-- -->
+p = 1.0
+β = 0.9
+f(v)<!-- --> = p .+ β * v # broadcast the +
+sol = fixedpoint(f,<!-- --> <!-- -->[0.8]<!-- -->)<!-- -->
+println("Fixed point = $(sol.zero), and |f(x) - x| = $(norm(f(sol.zero) - sol.zero)) in " *
+<!-- -->        "$(sol.iterations) iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+The <code>fixedpoint</code> function from the <code>NLsolve.jl</code> library implements the simple fixed point iteration scheme above
+Since the <code>NLsolve</code> library only accepts vector based inputs, we needed to make the <code>f(v)</code> function broadcast on the <code>+</code> sign, and pass in the initial condition as a vector of length 1 with <code>[0.8]</code>
+While a key benefit of using a package is that the code is clearer, and the implementation is tested, by using an orthogonal library we also enable performance improvements
+# best style
+p = 1.0
+β = 0.9
+iv = <!-- -->[0.8]<!-- -->
+sol = fixedpoint(v -> p .+ β * v,<!-- --> iv)<!-- -->
+println("Fixed point = $(sol.zero), and |f(x) - x| = $(norm(f(sol.zero) - sol.zero)) in " *
+<!-- -->        "$(sol.iterations) iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+Note that this completes in <code>3</code> iterations vs <code>177</code> for the naive fixed point iteration algorithm
+Since Anderson iteration is doing more calculations in an iteration,  whether it is faster or not would depend on the complexity of the <code>f</code> function
+But this demonstrates the value of keeping the math separate from the algorithm, since by decoupling the mathematical definition of the fixed point from the implementation in <a href="#equation-fixed-point-naive">(2)</a>, we were able to exploit new algorithms for finding a fixed point
+The only other change in this function is the move from directly defining <code>f(v)</code> and using an <b>anonymous</b> function
+Similar to anonymous functions in MATLAB, and lambda functions in Python, Julia enables the creation of small functions without any names
+The code <code>v -> p .+ β * v</code> defines a function of a dummy argument, <code>v</code> with the same body as our <code>f(x)</code>
+<h4>Composing Packages</h4>
+A key benefit of using Julia is that you can compose various packages, types, and techniques, without making changes to your underlying source
+As an example, consider if we want to solve the model with a higher-precision, as floating points cannot be distinguished beyond the machine epsilon for that type (recall that computers approximate real numbers to the nearest binary  of a given precision; the <em>machine epsilon</em> is the smallest nonzero magnitude)
+In Julia, this number can be calculated as
+eps(<!-- -->)
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+For many cases, this is sufficient precision – but consider that in iterative algorithms applied millions of times, those small differences can add up
+The only change we will need to our model in order to use a different floating point type is to call the function with an arbitrary precision floating point, <code>BigFloat</code>, for the initial value
+# use arbitrary precision floating points
+p = 1.0
+β = 0.9
+iv = <!-- -->[BigFloat(0.8)<!-- -->]<!-- --> # higher precision
+<!-- -->
+# otherwise identical
+sol = fixedpoint(v -> p .+ β * v,<!-- --> iv)<!-- -->
+println("Fixed point = $(sol.zero), and |f(x) - x| = $(norm(f(sol.zero) - sol.zero)) in " *
+<!-- -->        "$(sol.iterations) iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+Here, the literal <code>BigFloat(0.8)</code> takes the number <code>0.8</code> and changes it to an arbitrary precision number
+The result is that the residual is now <b>exactly</b> <code>0.0</code> since it is able to use arbitrary precision in the calculations, and the solution has a finite-precision solution with those parameters
+<h4>Multivariate Fixed Point Maps</h4>
+The above example can be extended to multivariate maps without any modifications to the fixed point iteration code
+Using our own, homegrown iteration and simply passing in a bivariate map:
+p = <!-- -->[1.0,<!-- --> 2.0]<!-- -->
+β = 0.9
+iv = <!-- -->[0.8,<!-- --> 2.0]<!-- -->
+f(v)<!-- --> = p .+ β * v # note that p and β are used in the function!
+<!-- -->
+sol = fixedpointmap(f,<!-- --> iv = iv,<!-- --> tolerance = 1.0E-8)<!-- -->
+println("Fixed point = $(sol.value), and |f(x) - x| = $(sol.normdiff) in $(sol.iter)"*
+"iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+This also works without any modifications with the <code>fixedpoint</code> library function
+using NLsolve
+<!-- -->
+p = <!-- -->[1.0,<!-- --> 2.0,<!-- --> 0.1]<!-- -->
+β = 0.9
+iv =[0.8,<!-- --> 2.0,<!-- --> 51.0]<!-- -->
+f(v)<!-- --> = p .+ β * v
+<!-- -->
+sol = fixedpoint(v -> p .+ β * v,<!-- --> iv)<!-- -->
+println("Fixed point = $(sol.zero), and |f(x) - x| = $(norm(f(sol.zero) - sol.zero)) in " *
+<!-- -->        "$(sol.iterations) iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+Finally, to demonstrate the importance of composing different libraries, use a <code>StaticArrays.jl</code> type, which provides an efficient implementation for small arrays and matrices
+using NLsolve,<!-- --> StaticArrays
+p = @SVector <!-- -->[1.0,<!-- --> 2.0,<!-- --> 0.1]<!-- -->
+β = 0.9
+iv = @SVector  <!-- -->[0.8,<!-- --> 2.0,<!-- --> 51.0]<!-- -->
+f(v)<!-- --> = p .+ β * v
+<!-- -->
+sol = fixedpoint(v -> p .+ β * v,<!-- --> iv)<!-- -->
+println("Fixed point = $(sol.zero), and |f(x) - x| = $(norm(f(sol.zero) - sol.zero)) in " *
+<!-- -->        "$(sol.iterations) iterations")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+The <code>@SVector</code> in front of the <code>[1.0, 2.0, 0.1]</code> is a macro for turning a vector literal into a static vector
+All macros in Julia are prefixed by <code>@</code> in the name, and manipulate the code prior to compilation
+We will see a variety of macros, and discuss the “metaprogramming” behind them in a later lecture
+<h3>Exercises</h3>
+&lt;a id='jbe-ex1'>&lt;/a>
+<h4>Exercise 1</h4>
+Recall that $ n! $ is read as “$ n $ factorial” and defined as
+<figure id="formula-61a53023-fd77-48e8-b90a-4dad7f767dc5" style="max-width:100%;overflow-x:auto"><span title="ParseError: KaTeX parse error: Can&#x27;t use function &#x27;$&#x27; in math mode at position 56: …mes 2 \times 1 $̲
+In Julia you …" style="color:#FF5722"> n! = n \times (n - 1) \times \cdots \times 2 \times 1 $
+In Julia you can compute this value with `factorial(n)`
+Write your own version of this function, called `factorial2`, using a `for` loop
+&lt;a id=&#x27;jbe-ex2&#x27;>&lt;/a></figure>
+<h4>Exercise 2</h4>
+The <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial random variable</a> $ Y \sim Bin(n, p) $ represents
+number of successes in $ n $ binary trials
+each trial succeeds with probability $ p $
+Using only <code>rand()</code> from the set of Julia’s built-in random number generators (not the <code>Distributions</code> package), write a function <code>binomial_rv</code> such that <code>binomial_rv(n, p)</code> generates one draw of $ Y $
+Hint: If $ U $ is uniform on $ (0, 1) $ and $ p \in (0,1) $, then the expression <code>U &lt; p</code> evaluates to <code>true</code> with probability $ p $
+&lt;a id='jbe-ex3'>&lt;/a>
+<h4>Exercise 3</h4>
+Compute an approximation to $ \pi $ using Monte Carlo
+For random number generation use only <code>rand()</code>
+Your hints are as follows:
+If $ U $ is a bivariate uniform random variable on the unit square $ (0, 1)^2 $, then the probability that $ U $ lies in a subset $ B $ of $ (0,1)^2 $ is equal to the area of $ B $
+If $ U_1,\ldots,U_n $ are iid copies of $ U $, then, as $ n $ gets larger, the fraction that falls in $ B $ converges to the probability of landing in $ B $
+For a circle, area = π * $ radius^2 $
+&lt;a id='jbe-ex4'>&lt;/a>
+<h4>Exercise 4</h4>
+Write a program that prints one realization of the following random device:
+Flip an unbiased coin 10 times
+If 3 consecutive heads occur one or more times within this sequence, pay one dollar
+If not, pay nothing
+Once again use only <code>rand()</code> as your random number generator
+&lt;a id='jbe-ex5'>&lt;/a>
+<h4>Exercise 5</h4>
+Simulate and plot the correlated time series
+<figure id="formula-d59ab7ae-d5d2-47f0-8f6e-b1f1570c50db" style="max-width:100%;overflow-x:auto"><math><semantics><mrow><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>α</mi><mtext> </mtext><msub><mi>x</mi><mi>t</mi></msub><mo>+</mo><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mspace width="1em"/><mtext>where</mtext><mspace width="1em"/><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mspace width="1em"/><mtext>and</mtext><mspace width="1em"/><mi>t</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">x_{t+1} = \alpha \, x_t + \epsilon_{t+1}
+\quad \text{where} \quad
+x_0 = 0
+\quad \text{and} \quad t = 0,\ldots,n
+</annotation></semantics></math>xt+1​=αxt​+ϵt+1​wherex0​=0andt=0,…,n</figure>
+The sequence of shocks $ {\epsilon_t} $ is assumed to be iid and standard normal
+Set $ n = 200 $ and $ \alpha = 0.9 $
+&lt;a id='jbe-ex6'>&lt;/a>
+<h4>Exercise 6</h4>
+Plot three simulated time series, one for each of the cases $ \alpha = 0 $, $ \alpha = 0.8 $ and $ \alpha = 0.98 $
+(The figure will illustrate how time series with the same one-step-ahead conditional volatilities, as these three processes have, can have very different unconditional volatilities)
+&lt;a id='jbe-ex7'>&lt;/a>
+<h4>Exercise 7</h4>
+This exercise is more challenging
+Take a random walk, starting from $ x_0 = 1 $
+<figure id="formula-8d18f54e-14cd-4a63-82e7-6d3ae8c6964e" style="max-width:100%;overflow-x:auto"><math><semantics><mrow><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mtext> </mtext><mi>α</mi><mtext> </mtext><msub><mi>x</mi><mi>t</mi></msub><mo>+</mo><mi>σ</mi><mtext> </mtext><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mspace width="1em"/><mtext>where</mtext><mspace width="1em"/><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mspace width="1em"/><mtext>and</mtext><mspace width="1em"/><mi>t</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>t</mi><mi>max</mi><mo>⁡</mo></msub></mrow><annotation encoding="application/x-tex">x_{t+1} = \, \alpha \, x_t + \sigma\, \epsilon_{t+1}
+\quad \text{where} \quad
+x_0 = 1
+\quad \text{and} \quad t = 0,\ldots,t_{\max}
+</annotation></semantics></math>xt+1​=αxt​+σϵt+1​wherex0​=1andt=0,…,tmax​</figure>
+Furthermore, assume that the $ x_{t_{\max}} = 0 $  (i.e. at $ t_{\max} $, the value drops to zero, regardless of its current state)
+The sequence of shocks $ {\epsilon_t} $ is assumed to be iid and standard normal
+For a given path $ {x_t} $ define a <b>first-passage time</b> as $ T_a = \min{t, |, x_t \leq a} $, where by the assumption of the process $ T_a \leq t_{\max} $
+Start with $ \sigma = 0.2, \alpha = 1.0 $
+<ol><li>
+calculate the first-passage time, $ T_0 $, for 100 simulated random walks – to a $ t_{\max} = 200 $ and plot a histogram
+plot the sample mean of $ T_0 $ from the simulation for $ \alpha \in {0.8, 1.0, 1.2} $
+</li></ol>
+&lt;a id='jbe-ex8a'>&lt;/a>
+<h4>Exercise 8(a)</h4>
+This exercise is more challenging
+The root of a univariate function $ f(\cdot) $ is an $ x $ such that $ f(x) = 0 $
+One solution method to find local roots of smooth functions is called Newton’s method
+Starting with an $ x_0 $ guess, a function $ f(\cdot) $ and the first-derivative $ f'(\cdot) $, the algorithm is to repeat
+<figure id="formula-30587777-1eae-4f70-a9f9-56cbdbf400cc" style="max-width:100%;overflow-x:auto"><math><semantics><mrow><msup><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><msup><mi>x</mi><mi>n</mi></msup><mo>−</mo><mfrac><mrow><mi>f</mi><mo>(</mo><msup><mi>x</mi><mi>n</mi></msup><mo>)</mo></mrow><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msup><mi>x</mi><mi>n</mi></msup><mo>)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">x^{n+1} = x^n - \frac{f(x^n)}{f&#x27;(x^n)}
+</annotation></semantics></math>xn+1=xn−f′(xn)f(xn)​</figure>
+until $ | x^{n+1} - x^n| $ is below a tolerance
+<ol><li>
+Use a variation of the <code>fixedpointmap</code> code to implement Newton’s method, where the function would accept arguments <code>f, f_prime, x_0, tolerance, maxiter</code>
+Test it with $ f(x) = (x-1)^3 $ and another function of your choice where you can analytically find the derivative
+</li></ol>
+<h4>Exercise 8(b)</h4>
+For those impatient to use more advanced features of Julia, implement a version of Exercise 8(a) where <code>f_prime</code> is calculated with auto-differentiation
+using ForwardDiff
+<!-- -->
+# operator to get the derivative of this function using AD
+D(f)<!-- --> = x -> ForwardDiff.derivative(f,<!-- --> x)<!-- -->
+<!-- -->
+# example usage: create a function and get the derivative
+f(x)<!-- --> = x^2
+f_prime = D(f)<!-- -->
+<!-- -->
+f(0.1)<!-- -->,<!-- --> f_prime(0.1)
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<ol><li>
+Using the <code>D(f)</code> operator definition above, implement a version of Newton’s method that does not require the user to provide an analytical derivative
+Test the sorts of <code>f</code> functions which can be automatically integrated by <code>ForwardDff.jl</code>
+</li></ol>
+<h3>Solutions</h3>
+<h4>Exercise 1</h4>
+function factorial2(n)<!-- -->
+<!-- -->    k = 1
+<!-- -->    for i in 1:n
+<!-- -->        k *= i  # or k = k * i
+<!-- -->    end
+<!-- -->    return k
+end
+<!-- -->
+factorial2(4)
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+factorial2(4)<!-- --> == factorial(4)<!-- --> # built-in function
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Exercise 2</h4>
+function binomial_rv(n,<!-- --> p)<!-- -->
+<!-- -->    count = 0
+<!-- -->    U = rand(n)<!-- -->
+<!-- -->    for i in 1:n
+<!-- -->        if U[i]<!-- --> &lt; p
+<!-- -->            count += 1 # or count = count + 1
+<!-- -->        end
+<!-- -->    end
+<!-- -->    return count
+end
+<!-- -->
+for j in 1:25
+<!-- -->    b = binomial_rv(10,<!-- --> 0.5)<!-- -->
+<!-- -->    print("$b, ")<!-- -->
+end
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Exercise 3</h4>
+Consider a circle with diameter 1 embedded in a unit square
+Let $ A $ be its area and let $ r = 1/2 $ be its radius
+If we know $ \pi $ then we can compute $ A $ via
+$ A = \pi r^2 $
+But the point here is to compute $ \pi $, which we can do by
+<figure id="formula-86d9d7cc-2000-4a30-a288-96413e9cc213" style="max-width:100%;overflow-x:auto"><span title="ParseError: KaTeX parse error: Can&#x27;t use function &#x27;$&#x27; in math mode at position 16:  \pi = A / r^2 $̲
+Summary: If w…" style="color:#FF5722"> \pi = A / r^2 $
+Summary: If we can estimate the area of the unit circle, then dividing
+by $ r^2 = (1/2)^2 = 1/4 $ gives an estimate of $ \pi $
+We estimate the area by sampling bivariate uniforms and looking at the
+fraction that fall into the unit circle</figure>
+n = 1000000
+count = 0
+for i in 1:n
+<!-- -->    u,<!-- --> v = rand(2)<!-- -->
+<!-- -->    d = sqrt(<!-- -->(u - 0.5)^2 + <!-- -->(v - 0.5)^2)<!-- -->  # distance from middle of square
+<!-- -->    if d &lt; 0.5
+<!-- -->        count += 1
+<!-- -->    end
+end
+<!-- -->
+area_estimate = count / n
+<!-- -->
+print(area_estimate * 4)<!-- -->  # dividing by radius**2
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Exercise 4</h4>
+payoff = 0
+count = 0
+<!-- -->
+print("Count = ")<!-- -->
+<!-- -->
+for i in 1:10
+<!-- -->    U = rand(<!-- -->)<!-- -->
+<!-- -->    if U &lt; 0.5
+<!-- -->        count += 1
+<!-- -->    else
+<!-- -->        count = 0
+<!-- -->    end
+<!-- -->    print(count)<!-- -->
+<!-- -->    if count == 3
+<!-- -->        payoff = 1
+<!-- -->    end
+end
+println("\npayoff = $payoff")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+We can simplify this somewhat using the <b>ternary operator</b>. Here are some examples
+a = 1  &lt; 2 ? "foo" : "bar"
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+a = 1 > 2 ? "foo" : "bar"
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+Using this construction:
+payoff = 0.0
+count = 0.0
+<!-- -->
+print("Count = ")<!-- -->
+<!-- -->
+for i in 1:10
+<!-- -->    U = rand(<!-- -->)<!-- -->
+<!-- -->    count = U &lt; 0.5 ? count + 1 : 0
+<!-- -->    print(count)<!-- -->
+<!-- -->    if count == 3
+<!-- -->        payoff = 1
+<!-- -->    end
+end
+println("\npayoff = $payoff")
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Exercise 5</h4>
+Here’s one solution
+using Plots
+gr(fmt=:png)<!-- -->;<!-- --> # setting for easier display in jupyter notebooks
+α = 0.9
+n = 200
+x = zeros(n + 1)<!-- -->
+<!-- -->
+for t in 1:n
+<!-- -->    x[t+1]<!-- --> = α * x[t]<!-- --> + randn(<!-- -->)<!-- -->
+end
+plot(x)
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Exercise 6</h4>
+αs = <!-- -->[0.0,<!-- --> 0.8,<!-- --> 0.98]<!-- -->
+n = 200
+p = plot(<!-- -->)<!-- --> # naming a plot to add to
+<!-- -->
+for α in αs
+<!-- -->    x = zeros(n + 1)<!-- -->
+<!-- -->    x[1]<!-- --> = 0.0
+<!-- -->    for t in 1:n
+<!-- -->        x[t+1]<!-- --> = α * x[t]<!-- --> + randn(<!-- -->)<!-- -->
+<!-- -->    end
+<!-- -->    plot!(p,<!-- --> x,<!-- --> label = "alpha = $α")<!-- --> # add to plot p
+end
+p # display plot
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+<h4>Exercise 7: Hint</h4>
+As a hint, notice the following pattern for finding the number of draws of a uniform random number until it is below a given threshold
+function drawsuntilthreshold(threshold;<!-- --> maxdraws=100)<!-- -->
+<!-- -->    for i in 1:maxdraws
+<!-- -->        val = rand(<!-- -->)<!-- -->
+<!-- -->        if val &lt; threshold # checks threshold
+<!-- -->            return i # leaves function, returning draw number
+<!-- -->        end
+<!-- -->    end
+<!-- -->    return Inf # if here, reached maxdraws
+end
+<!-- -->
+draws = drawsuntilthreshold(0.2,<!-- --> maxdraws=100)
+Shift+Enter to run
+JuliaJulia 1.2 QuantEcon</a>
+
+Additionally, it is sometimes convenient to add to just push numbers onto an array without indexing it directly
+vals = zeros(0)<!-- --> # empty vector
+<!-- -->
+for i in 1:100
+<!-- -->    val = rand(<!-- -->)<!-- -->
+<!-- -->    if val &lt; 0.5
+<!-- -->        push!(vals,<!-- --> val)<!-- -->
+<!-- -->    end
+end
+println("There were $(length(vals)) below 0.5")
+
+
+
+
+
+
+
+
+
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+</script>
+</pre></body></html>
