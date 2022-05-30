@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://williamkpchan.github.io/mainscript.js'></script>
 
 <script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.core.js" ></script>
 <script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.key.js"></script>
@@ -23,6 +24,7 @@
 </head>
 <body onkeypress="chkKey()">
 <center>
+<div id="dateAndTime" style="margin-left:5%;" class="lime"> </div>
 
 <canvas id="updnXAmt" width="1300" height="650">[No canvas support]</canvas><br>
 <canvas id="updnXAmtDiff" width="1300" height="400">[No canvas support]</canvas><br>
@@ -47,6 +49,8 @@ commands:
  t chart top
  e diff chart
 </pre>
+
+
 <script>
 
       let thestkdata = [];
@@ -388,12 +392,13 @@ commands:
         return (sum / ((1 + aveArray.length)*aveArray.length/2))
     }
     
-    
+    showDateAndTime();
     seperateDataSets(updnXAmt, "updnXAmt");
     seperateDataSets(tUPDNCnt, "tUPDNCnt");
     seperateDataSets(layerUpDn, "layerUpDn");
     seperateDataSets(cXWAvUpDn, "cXWAvUpDn");
     seperateDataSets(WAve3x6_3v6, "WAve3x6_3v6");
+
 </script>
 </body>
 </html>
