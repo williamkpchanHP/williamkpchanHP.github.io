@@ -1,4 +1,7 @@
 pictList = [
+'<img src="http://img10.banyuetan.org/group1/M00/02/59/CpAAP2KdwXWASRA5AAI6s4hGfxI51.jpeg">',
+'<img src="http://img7.banyuetan.org/group1/M00/02/59/CpAAP2KdwXWAU3rJAAI5cPegRJE82.jpeg">',
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/vocgmvub/2022_06_08/1.jpg">',
 '<iframe src="https://assets.pinterest.com/ext/embed.html?id=33565959714572549" height="665" width="450" frameborder="0" scrolling="no" ></iframe>',
 '<iframe src="https://assets.pinterest.com/ext/embed.html?id=136304326214309924" height="700" width="600" frameborder="0" scrolling="no" ></iframe>',
 '<iframe src="https://assets.pinterest.com/ext/embed.html?id=57913545199661307" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
