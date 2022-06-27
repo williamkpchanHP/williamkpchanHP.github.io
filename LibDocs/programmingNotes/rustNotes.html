@@ -1,0 +1,77 @@
+<base target="_blank"><html><head><title>rust Notes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "<br>";
+  var bookid = "rust Notes"
+  var markerName = "h2"
+$(document).ready(function(){
+   $('h1, h2, h3, h4, h4, h6, .exp, b').click(function(){
+   parent.history.back();
+   return false;
+   });
+});
+
+</script>
+<style>
+body{width:80%;margin-left: 10%; font-size:20px; font-family:Arial, Helvetica;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:20px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+.stop-scrolling { height: 100%; overflow: hidden; }
+iframe {width:100%; height:100%;}
+</style></head><body onkeypress="chkKey()"><center>
+<h1>rust Notes</h1>
+
+<br><br>
+<div id="toc"></div></center>
+<br><br>
+<div id="mustWatch"><center><span class="red">MustWatch</span></center><br>
+<pre>
+<a href="https://docs.rs/">Docs.rs crates</a>
+<a href="https://docs.rs/scraper/latest/scraper/">rust scraper</a>
+<a href="https://docs.rs/releases/search?query=regex" class="whitebut ">searc for crates</a>
+cargo is the package manager and crate host for rust.
+
+A package is one or more crates that provide a set of functionality. 
+A package contains a Cargo.toml file that describes how to build those crates.
+
+A crate can be a binary crate or a library crate. 
+Binary crates are programs you can compile to an executable that you can run, such as a command-line program or a server. 
+They must have a function called main that defines what happens when the executable runs. 
+
+All the crates we’ve created so far have been binary crates.
+Library crates don’t have a main function, and they don’t compile to an executable. 
+They define functionality intended to be shared with multiple projects. 
+
+For example, the rand crate provides functionality that generates random numbers.
+</pre>
+</div>
+<pre>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+</body></html>
