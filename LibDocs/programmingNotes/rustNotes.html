@@ -58,6 +58,79 @@ For example, the rand crate provides functionality that generates random numbers
 </pre>
 </div>
 <pre>
+<h2>Read a File</h2>
+The ability to read files is critically important to any developer. It allows us to load information from external sources and manipulate it as we see fit.
+In this article, we will discuss various tricks and methods to read files in the Rust programming language.
+<h3>Project Setup</h3>
+The initial set is to create a project structure. We can do this using the cargo command as:
+$ cargo new read_file
+
+The previous command will initialize a new project with the specified name. In the root directory, add a text file that will contain the sample data we will read with Rust.
+This tutorial will use a simple text file containing ARP information from a Windows machine.
+
+Sample information is as shown:
+Interface: 192.168.0.104 --- 0xc
+ Internet Address      Physical Address      Type
+ 192.168.0.1           d4-b1-06-99-3b-63     dynamic
+ 192.168.0.255         ff-ff-ff-ff-ff-ff     static
+ 224.0.0.22            01-00-5e-00-00-16     static
+ 224.0.0.251           01-00-5e-00-00-fb     static
+ 224.0.0.252           01-00-5e-00-00-fc     static
+ 239.255.255.250       01-00-5e-7f-ff-fa     static
+ 255.255.255.255       ff-ff-ff-ff-ff-ff     static
+Interface: 192.168.192.1 --- 0x16
+ Internet Address      Physical Address      Type
+ 192.168.194.72        00-15-5d-a5-46-20     dynamic
+ 192.168.195.230       00-15-5d-a5-40-17     dynamic
+ 192.168.202.115       00-15-5d-a5-4a-c1     dynamic
+ 192.168.205.217       00-15-5d-a5-47-cd     dynamic
+ 192.168.207.255       ff-ff-ff-ff-ff-ff     static
+ 224.0.0.22            01-00-5e-00-00-16     static
+ 224.0.0.251           01-00-5e-00-00-fb     static
+ 239.192.152.143       01-00-5e-40-98-8f     static
+ 239.255.255.250       01-00-5e-7f-ff-fa     static
+With the project setup and the sample file ready, we can read the file’s content.
+<h3>Read File as a String</h3>
+The first and simplest method to read a file in Rust is to load it as an entire string. We can accomplish this using the std::fs::read_to_string method.
+The following code shows how you can read a file as a string in Rust:
+use std::fs::File;
+use std::io::prelude::*;
+fn main() {}
+ let mut file = File::open("arp.txt")
+  .expect("File not found");
+  let mut data = String::new();
+ file.read_to_string(&mut data)
+  .expect("Error while reading file");
+ println!("{}", data);
+}
+The previous code imports the File struct and the prelude module. In the main function, we create a mutable variable called file and load open the arp.txt file for reading.
+Next, we read the file’s content using the read_to_string and pass a mutable reference to the data variable. Then, we can print the content of the file using the println! macro.
+We can run the code as:
+$ cargo run
+<h3>Read File Line by Line</h3>
+We can also read a file line by line using the lines iterator. The iterator will operate on the BufReader from the File object. An example code is provided below:
+use std::fs::File;
+use std::io::BufReader;
+use std::io::prelude::*;
+fn main()-> std::io::Result&lt;()> {}
+ let file = File::open("arp.txt")
+  .expect("file not found!");
+ let  buf_reader = BufReader::new(file);
+ for line in buf_reader.lines() {}
+  println!("{}", line?);
+ }
+ Ok(()
+}
+<h3>Read File as Vector</h3>
+We can also read a file as a vector as shown in the example code provided below:
+fn read_file() -> std::io::Result&lt;Vec&lt;u8>> {}
+ let mut file = File::open("arp.txt")?;
+ let mut buf = Vec::new();
+ file.read_to_end(&mut data);
+ return Ok(data);
+}
+The previous code uses the Vec::new method to create a new empty vector. Then, we use the read_to_end to read the bytes until the End Of File and place them into the buffer.
+
 <br>
 <br>
 
