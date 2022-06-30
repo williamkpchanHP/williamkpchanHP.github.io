@@ -1,0 +1,715 @@
+<base target="_blank">
+<html>
+<head>
+<title>Active Activity Log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@13.0.1/dist/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/showChartSeries.js"></script>
+<script src="https://williamkpchan.github.io/sorttable.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('h1, h2, h3, h4, h5, .goldword, strong,  .pages').click(function(){
+    parent.history.back();
+    return false;
+    });
+});
+</script>
+<style>
+thead{  position: sticky; top: 0; }
+
+k{color:#908050;}
+a{color:#808060;}
+a:hover{transition-property: none; background-color:black;border-radius: none;border: none;box-shadow: none; color:#008080;}
+a:visited{color:#454;}
+body{width:94%;margin-left: 3%; font-size:16px; color:#808060;}
+.pages, strong, h1, h2 {color: gold; margin-top: 10px;}
+img {margin-top: 2%;margin-bottom: 1%; border-radius:3px;}
+#toc a{color:gray; max-width:110%;}
+span{color: cyan;}
+pre{color:#f80;}
+table{font-size:16px;}
+</style>
+</head>
+<body onkeypress="chkKey()">
+<center>
+<div id="toc"></div></center>
+<pre id="startpt">
+16:13:27s  2022-06-30  Total:  104 
+
+<span class='blue' onclick=changeCode('02331')>02331 <k class="gold">  --- 李宁 --- </k></span> Close: 72.7<k class='pink'> Amt: 173262.61 </k> 成交-成交趋势%: 25<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     5.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.9  </k> <k class='yellow'>	H - 高趋势%  0.7  </k>  <k class='green'>	今日低-上日低% 0.5  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.4  </k>
+
+<span class='blue' onclick=changeCode('01398')>01398 <k class="gold">  --- 工商银行 --- </k></span> Close: 4.66<k class='pink'> Amt: 154067.89 </k> 成交-成交趋势%: 51<k class='gold'>
+  低趋势变化% 1 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     1.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0  </k> <k class='yellow'>	H - 高趋势%  -0.1  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H kUP4 kUP6 kUP8 NA  </k> <k class='white'>
+  现价-低趋势% 0.7  </k>
+
+<span class='blue' onclick=changeCode('00836')>00836 <k class="gold">  --- 华润电力 --- </k></span> Close: 16.2<k class='pink'> Amt: 68405.64 </k> 成交-成交趋势%: 59<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     8.2 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 4  </k> <k class='yellow'>	H - 高趋势%  1.9  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 6.8  </k>
+
+<span class='blue' onclick=changeCode('01801')>01801 <k class="gold">  --- 信达生物 --- </k></span> Close: 34.9<k class='pink'> Amt: 77365.79 </k> 成交-成交趋势%: 13<k class='gold'>
+  低趋势变化% 0.3 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     6.4 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -1.9  </k> <k class='yellow'>	H - 高趋势%  -0.5  </k>  <k class='green'>	今日低-上日低% 1.9  </k> <k class='white'>	H kDN2 tDN4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3  </k>
+
+<span class='blue' onclick=changeCode('00688')>00688 <k class="gold">  --- 中国海外发展 --- </k></span> Close: 24.8<k class='pink'> Amt: 65630.78 </k> 成交-成交趋势%: 12<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     4.2 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.3  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 0.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3  </k>
+
+<span class='blue' onclick=changeCode('02020')>02020 <k class="gold">  --- 安踏体育 --- </k></span> Close: 96.4<k class='pink'> Amt: 153255.63 </k> 成交-成交趋势%: 18<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.5  </k> <k class='magenta'>	H - 低趋势%     4.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -0.7  </k> <k class='yellow'>	H - 高趋势%  -0.3  </k>  <k class='green'>	今日低-上日低% 1.6  </k> <k class='white'>	H kDN2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.6  </k>
+
+<span class='blue' onclick=changeCode('00291')>00291 <k class="gold">  --- 华润啤酒 --- </k></span> Close: 58.5<k class='pink'> Amt: 116775.71 </k> 成交-成交趋势%: 81<k class='gold'>
+  低趋势变化% 1.9 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     6.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.6  </k> <k class='yellow'>	H - 高趋势%  1.3  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.2  </k>
+
+<span class='blue' onclick=changeCode('01658')>01658 <k class="gold">  --- 邮储银行 --- </k></span> Close: 6.23<k class='pink'> Amt: 39659.52 </k> 成交-成交趋势%: 42<k class='gold'>
+  低趋势变化% 1.2 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.7  </k> <k class='yellow'>	H - 高趋势%  0.6  </k>  <k class='green'>	今日低-上日低% 1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.5  </k>
+
+<span class='blue' onclick=changeCode('01177')>01177 <k class="gold">  --- 中国生物制药 --- </k></span> Close: 4.97<k class='pink'> Amt: 42866.66 </k> 成交-成交趋势%: 57<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     6.4 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.3  </k> <k class='yellow'>	H - 高趋势%  1.2  </k>  <k class='green'>	今日低-上日低% 1.9  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.7  </k>
+
+<span class='blue' onclick=changeCode('00011')>00011 <k class="gold">  --- 恒生银行 --- </k></span> Close: 138.5<k class='pink'> Amt: 24689.27 </k> 成交-成交趋势%: 14<k class='gold'>
+  低趋势变化% 0.7 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     1.5 </k><k class='white'>	L kUP2 tUP4 tUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 0.7  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 1  </k> <k class='white'>	H tUP2 tUP4 tUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 0.6  </k>
+
+<span class='blue' onclick=changeCode('02628')>02628 <k class="cyan">  -- 中国人寿 -- </k></span> Close: 13.66<k class='pink'> Amt: 43566.67 </k> 成交-成交趋势%: -7<k class='gold'>
+  低趋势变化% 0.3 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     2 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.3  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 0.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.3  </k>
+
+<span class='blue' onclick=changeCode('00570')>00570 <k class="gold">  --- 中国中药 --- </k></span> Close: 4.85<k class='pink'> Amt: 25159 </k> 成交-成交趋势%: 28<k class='gold'>
+  低趋势变化% 1.6 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     6.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.2  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 0.2  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.3  </k>
+
+<span class='blue' onclick=changeCode('03323')>03323 <k class="gold">  --- 中国建材 --- </k></span> Close: 8.38<k class='pink'> Amt: 26783.82 </k> 成交-成交趋势%: 23<k class='gold'>
+  低趋势变化% 1.4 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     2.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.9  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.6  </k>
+
+<span class='blue' onclick=changeCode('00914')>00914 <k class="gold">  --- 海螺水泥 --- </k></span> Close: 34<k class='pink'> Amt: 23893.23 </k> 成交-成交趋势%: 46<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     3.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.2  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 0.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.7  </k>
+
+<span class='blue' onclick=changeCode('00168')>00168 <k class="deeppink">  --- 青岛啤酒股份 --- </k></span> Close: 81.6<k class='pink'> Amt: 80525.92 </k> 成交-成交趋势%: 70<k class='gold'>
+  低趋势变化% 3.4 </k> <k class='yellow'>	L - 低趋势%  1  </k> <k class='magenta'>	H - 低趋势%     7.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 3.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.5  </k>
+
+<span class='blue' onclick=changeCode('06862')>06862 <k class="gold">  --- 海底捞 --- </k></span> Close: 18.3<k class='pink'> Amt: 62665.55 </k> 成交-成交趋势%: 27<k class='gold'>
+  低趋势变化% 3 </k> <k class='yellow'>	L - 低趋势%  0.9  </k> <k class='magenta'>	H - 低趋势%     7.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.6  </k>  <k class='green'>	今日低-上日低% 2.7  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.3  </k>
+
+<span class='blue' onclick=changeCode('00763')>00763 <k class="gold">  --- 中兴通讯 --- </k></span> Close: 18.28<k class='pink'> Amt: 13248.98 </k> 成交-成交趋势%: 74<k class='gold'>
+  低趋势变化% 1.4 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.9  </k> <k class='yellow'>	H - 高趋势%  0.5  </k>  <k class='green'>	今日低-上日低% 1.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.2  </k>
+
+<span class='blue' onclick=changeCode('00902')>00902 <k class="gold">  --- 华能国际电力股份 --- </k></span> Close: 3.91<k class='pink'> Amt: 34550.29 </k> 成交-成交趋势%: 26<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     5.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.4  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 0.3  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.2  </k>
+
+<span class='blue' onclick=changeCode('02202')>02202 <k class="deeppink">  --- 万科企业 --- </k></span> Close: 19.72<k class='pink'> Amt: 27270.8 </k> 成交-成交趋势%: 49<k class='gold'>
+  低趋势变化% 3.7 </k> <k class='yellow'>	L - 低趋势%  1.5  </k> <k class='magenta'>	H - 低趋势%     5.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3.1  </k> <k class='yellow'>	H - 高趋势%  0.6  </k>  <k class='green'>	今日低-上日低% 4.6  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.7  </k>
+
+<span class='blue' onclick=changeCode('01548')>01548 <k class="cyan">  -- 金斯瑞生物科技 -- </k></span> Close: 28.45<k class='pink'> Amt: 9292.91 </k> 成交-成交趋势%: -48<k class='gold'>
+  低趋势变化% 1.3 </k> <k class='yellow'>	L - 低趋势%  0.7  </k> <k class='magenta'>	H - 低趋势%     3.4 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.6  </k>  <k class='green'>	今日低-上日低% 2.2  </k> <k class='white'>	H tUP2 kDN4 tUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2  </k>
+
+<span class='blue' onclick=changeCode('00909')>00909 <k class="cyan">  -- 明源云 -- </k></span> Close: 12.56<k class='pink'> Amt: 8888.83 </k> 成交-成交趋势%: -17<k class='gold'>
+  低趋势变化% 0.4 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     5.9 </k><k class='white'>	L tUP2 kDN4 tUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 0.7  </k> <k class='white'>	H tUP2 kDN4 kDN6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.2  </k>
+
+<span class='blue' onclick=changeCode('03900')>03900 <k class="gold">  --- 绿城中国 --- </k></span> Close: 16.26<k class='pink'> Amt: 25993.41 </k> 成交-成交趋势%: 64<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     6.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.3  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.2  </k>
+
+<span class='blue' onclick=changeCode('03998')>03998 <k class="cyan">  -- 波司登 -- </k></span> Close: 4.87<k class='pink'> Amt: 20568.11 </k> 成交-成交趋势%: -3<k class='gold'>
+  低趋势变化% 1.6 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     4.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.3  </k> <k class='yellow'>	H - 高趋势%  0.5  </k>  <k class='green'>	今日低-上日低% 1.9  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.3  </k>
+
+<span class='blue' onclick=changeCode('00884')>00884 <k class="gold">  --- 旭辉控股集团 --- </k></span> Close: 3.94<k class='pink'> Amt: 28715.84 </k> 成交-成交趋势%: 60<k class='gold'>
+  低趋势变化% 3.7 </k> <k class='yellow'>	L - 低趋势%  1.4  </k> <k class='magenta'>	H - 低趋势%     8.4 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3.2  </k> <k class='yellow'>	H - 高趋势%  0.6  </k>  <k class='green'>	今日低-上日低% 4.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3  </k>
+
+<span class='blue' onclick=changeCode('01378')>01378 <k class="cyan">  -- 中国宏桥 -- </k></span> Close: 8.87<k class='pink'> Amt: 19053.68 </k> 成交-成交趋势%: -5<k class='gold'>
+  低趋势变化% 1.4 </k> <k class='yellow'>	L - 低趋势%  1.1  </k> <k class='magenta'>	H - 低趋势%     5.1 </k><k class='white'>	L tUP2 tUP4 tUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 0.1  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 3.5  </k> <k class='white'>	H kUP2 kUP4 kUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 3.5  </k>
+
+<span class='blue' onclick=changeCode('01928')>01928 <k class="gold">  --- 金沙中国有限公司 --- </k></span> Close: 18.72<k class='pink'> Amt: 93446.73 </k> 成交-成交趋势%: 50<k class='gold'>
+  低趋势变化% 5 </k> <k class='yellow'>	L - 低趋势%  1  </k> <k class='magenta'>	H - 低趋势%     8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.7  </k> <k class='yellow'>	H - 高趋势%  1.5  </k>  <k class='green'>	今日低-上日低% 3.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.4  </k>
+
+<span class='blue' onclick=changeCode('01797')>01797 <k class="cyan">  -- 新东方在线 -- </k></span> Close: 18.84<k class='pink'> Amt: 193537.48 </k> 成交-成交趋势%: -3<k class='gold'>
+  低趋势变化% 4.2 </k> <k class='yellow'>	L - 低趋势%  1.4  </k> <k class='magenta'>	H - 低趋势%     16.1 </k><k class='white'>	L kUP2 tUP4 kUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 9  </k> <k class='yellow'>	H - 高趋势%  3.9  </k>  <k class='green'>	今日低-上日低% 4.4  </k> <k class='white'>	H tUP2 tUP4 tUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 8.6  </k>
+
+<span class='blue' onclick=changeCode('01951')>01951 <k class="gold">  --- 锦欣生殖 --- </k></span> Close: 7.23<k class='pink'> Amt: 22774.62 </k> 成交-成交趋势%: 32<k class='gold'>
+  低趋势变化% 1.2 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     9 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.4  </k> <k class='yellow'>	H - 高趋势%  0.9  </k>  <k class='green'>	今日低-上日低% 1.7  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 6.4  </k>
+
+<span class='blue' onclick=changeCode('03311')>03311 <k class="gold">  --- 中国建筑国际 --- </k></span> Close: 8.68<k class='pink'> Amt: 23580.55 </k> 成交-成交趋势%: 169<k class='gold'>
+  低趋势变化% 2.5 </k> <k class='yellow'>	L - 低趋势%  0.9  </k> <k class='magenta'>	H - 低趋势%     4.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.5  </k> <k class='yellow'>	H - 高趋势%  0.9  </k>  <k class='green'>	今日低-上日低% 2.7  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.1  </k>
+
+<span class='blue' onclick=changeCode('01030')>01030 <k class="deeppink">  --- 新城发展 --- </k></span> Close: 3.88<k class='pink'> Amt: 6730.5 </k> 成交-成交趋势%: 37<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.8  </k> <k class='magenta'>	H - 低趋势%     8.1 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.2  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 2.5  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.9  </k>
+
+<span class='blue' onclick=changeCode('00817')>00817 <k class="cyan">  -- 中国金茂 -- </k></span> Close: 2.11<k class='pink'> Amt: 6390.44 </k> 成交-成交趋势%: -16<k class='gold'>
+  低趋势变化% 3.4 </k> <k class='yellow'>	L - 低趋势%  1.6  </k> <k class='magenta'>	H - 低趋势%     5.5 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.9  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 5.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.1  </k>
+
+<span class='blue' onclick=changeCode('02883')>02883 <k class="cyan">  -- 中海油田服务 -- </k></span> Close: 7.69<k class='pink'> Amt: 4611.76 </k> 成交-成交趋势%: -50<k class='gold'>
+  低趋势变化% 0.4 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     4.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.5  </k> <k class='yellow'>	H - 高趋势%  0.7  </k>  <k class='green'>	今日低-上日低% 0.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 1  </k>
+
+<span class='blue' onclick=changeCode('00753')>00753 <k class="deeppink">  --- 中国国航 --- </k></span> Close: 6.82<k class='pink'> Amt: 31998.44 </k> 成交-成交趋势%: 50<k class='gold'>
+  低趋势变化% 4.4 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     7.4 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.1  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 1.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.4  </k>
+
+<span class='blue' onclick=changeCode('01929')>01929 <k class="gold">  --- 周大福 --- </k></span> Close: 14.76<k class='pink'> Amt: 9467.45 </k> 成交-成交趋势%: 37<k class='gold'>
+  低趋势变化% 2 </k> <k class='yellow'>	L - 低趋势%  0.5  </k> <k class='magenta'>	H - 低趋势%     3.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.1  </k> <k class='yellow'>	H - 高趋势%  0.6  </k>  <k class='green'>	今日低-上日低% 1.7  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.4  </k>
+
+<span class='blue' onclick=changeCode('02208')>02208 <k class="deeppink">  --- 金风科技 --- </k></span> Close: 14.68<k class='pink'> Amt: 9652.78 </k> 成交-成交趋势%: 13<k class='gold'>
+  低趋势变化% 2.2 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     4.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 1.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.2  </k>
+
+<span class='blue' onclick=changeCode('03328')>03328 <k class="deeppink">  --- 交通银行 --- </k></span> Close: 5.42<k class='pink'> Amt: 25994.22 </k> 成交-成交趋势%: 78<k class='gold'>
+  低趋势变化% 0.9 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     2 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.6  </k> <k class='yellow'>	H - 高趋势%  -0.1  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.6  </k>
+
+<span class='blue' onclick=changeCode('02888')>02888 <k class="cyan">  -- 渣打集团 -- </k></span> Close: 59.05<k class='pink'> Amt: 3878.75 </k> 成交-成交趋势%: -32<k class='gold'>
+  低趋势变化% 1.1 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     2.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.9  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 0.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.5  </k>
+
+<span class='blue' onclick=changeCode('01813')>01813 <k class="deeppink">  --- 合景泰富集团 --- </k></span> Close: 2.5<k class='pink'> Amt: 4095.85 </k> 成交-成交趋势%: 16<k class='gold'>
+  低趋势变化% 1.3 </k> <k class='yellow'>	L - 低趋势%  1.1  </k> <k class='magenta'>	H - 低趋势%     6.9 </k><k class='white'>	L tUP2 tUP4 tUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0  </k> <k class='yellow'>	H - 高趋势%  -0.7  </k>  <k class='green'>	今日低-上日低% 3.4  </k> <k class='white'>	H kUP4 kUP6 kUP8 NA  </k> <k class='white'>
+  现价-低趋势% 4  </k>
+
+<span class='blue' onclick=changeCode('00788')>00788 <k class="gold">  --- 中国铁塔 --- </k></span> Close: 1.01<k class='pink'> Amt: 47796.96 </k> 成交-成交趋势%: 112<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.7  </k> <k class='magenta'>	H - 低趋势%     4.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2  </k> <k class='yellow'>	H - 高趋势%  1  </k>  <k class='green'>	今日低-上日低% 2.1  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.8  </k>
+
+<span class='blue' onclick=changeCode('00135')>00135 <k class="gold">  --- 昆仑能源 --- </k></span> Close: 6.43<k class='pink'> Amt: 9254.39 </k> 成交-成交趋势%: 31<k class='gold'>
+  低趋势变化% 1.5 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     2.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.1  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 1.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1  </k>
+
+<span class='blue' onclick=changeCode('03908')>03908 <k class="cyan">  -- 中金公司 -- </k></span> Close: 16.72<k class='pink'> Amt: 20095.22 </k> 成交-成交趋势%: -4<k class='gold'>
+  低趋势变化% 0.9 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     4.2 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 1.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.5  </k>
+
+<span class='blue' onclick=changeCode('00384')>00384 <k class="cyan">  -- 中国燃气 -- </k></span> Close: 12.12<k class='pink'> Amt: 21473.78 </k> 成交-成交趋势%: -11<k class='gold'>
+  低趋势变化% 4.9 </k> <k class='yellow'>	L - 低趋势%  0.7  </k> <k class='magenta'>	H - 低趋势%     3.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.5  </k> <k class='yellow'>	H - 高趋势%  0.7  </k>  <k class='green'>	今日低-上日低% 2.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.7  </k>
+
+<span class='blue' onclick=changeCode('06030')>06030 <k class="cyan">  -- 中信证券 -- </k></span> Close: 17.54<k class='pink'> Amt: 14179.47 </k> 成交-成交趋势%: -17<k class='gold'>
+  低趋势变化% 0.7 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     2.4 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 0.4  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.3  </k>
+
+<span class='blue' onclick=changeCode('00081')>00081 <k class="gold">  --- 中国海外宏洋集团 --- </k></span> Close: 4.17<k class='pink'> Amt: 2221.88 </k> 成交-成交趋势%: 16<k class='gold'>
+  低趋势变化% 2.3 </k> <k class='yellow'>	L - 低趋势%  0.9  </k> <k class='magenta'>	H - 低趋势%     3.9 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.4  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 2.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.6  </k>
+
+<span class='blue' onclick=changeCode('02669')>02669 <k class="gold">  --- 中海物业 --- </k></span> Close: 8.45<k class='pink'> Amt: 9400.78 </k> 成交-成交趋势%: 47<k class='gold'>
+  低趋势变化% 1.6 </k> <k class='yellow'>	L - 低趋势%  0.7  </k> <k class='magenta'>	H - 低趋势%     5.8 </k><k class='white'>	L kUP2 kUP4 tUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.4  </k> <k class='yellow'>	H - 高趋势%  -0.1  </k>  <k class='green'>	今日低-上日低% 2.1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.9  </k>
+
+<span class='blue' onclick=changeCode('02005')>02005 <k class="gold">  --- 石四药集团 --- </k></span> Close: 4.19<k class='pink'> Amt: 2834.95 </k> 成交-成交趋势%: 21<k class='gold'>
+  低趋势变化% 2.6 </k> <k class='yellow'>	L - 低趋势%  0.7  </k> <k class='magenta'>	H - 低趋势%     6.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.6  </k> <k class='yellow'>	H - 高趋势%  0.5  </k>  <k class='green'>	今日低-上日低% 2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.9  </k>
+
+<span class='blue' onclick=changeCode('00293')>00293 <k class="cyan">  -- 国泰航空 -- </k></span> Close: 8.59<k class='pink'> Amt: 14713.02 </k> 成交-成交趋势%: -14<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     3.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 0.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.5  </k>
+
+<span class='blue' onclick=changeCode('09961')>09961 <k class="deeppink">  --- 携程集团-S --- </k></span> Close: 221.6<k class='pink'> Amt: 44797.67 </k> 成交-成交趋势%: 21<k class='gold'>
+  低趋势变化% 4.7 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     4.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -2.8  </k> <k class='yellow'>	H - 高趋势%  -0.1  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H tDN2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.6  </k>
+
+<span class='blue' onclick=changeCode('00006')>00006 <k class="gold">  --- 电能实业 --- </k></span> Close: 49.35<k class='pink'> Amt: 33160.41 </k> 成交-成交趋势%: 125<k class='gold'>
+  低趋势变化% 0.4 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     2.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1  </k> <k class='yellow'>	H - 高趋势%  0.5  </k>  <k class='green'>	今日低-上日低% 0.5  </k> <k class='white'>	H tUP2 kUP4 kUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 0.4  </k>
+
+<span class='blue' onclick=changeCode('00780')>00780 <k class="deeppink">  --- 同程旅行 --- </k></span> Close: 16.88<k class='pink'> Amt: 18309.94 </k> 成交-成交趋势%: 16<k class='gold'>
+  低趋势变化% 2.2 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     2.9 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -1.4  </k> <k class='yellow'>	H - 高趋势%  -0.3  </k>  <k class='green'>	今日低-上日低% 1.1  </k> <k class='white'>	H kDN2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1  </k>
+
+<span class='blue' onclick=changeCode('03692')>03692 <k class="gold">  --- 翰森制药 --- </k></span> Close: 15.84<k class='pink'> Amt: 9151.2 </k> 成交-成交趋势%: 23<k class='gold'>
+  低趋势变化% 0.9 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     4.4 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.2  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.1  </k>
+
+<span class='blue' onclick=changeCode('01600')>01600 <k class="gold">  --- 天伦燃气 --- </k></span> Close: 4.93<k class='pink'> Amt: 1266.27 </k> 成交-成交趋势%: 51<k class='gold'>
+  低趋势变化% 1.2 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     4.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.6  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 0.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.1  </k>
+
+<span class='blue' onclick=changeCode('06869')>06869 <k class="gold">  --- 长飞光纤光缆 --- </k></span> Close: 13.46<k class='pink'> Amt: 4251.34 </k> 成交-成交趋势%: 108<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     6.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.6  </k> <k class='yellow'>	H - 高趋势%  1.1  </k>  <k class='green'>	今日低-上日低% 0.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 6.4  </k>
+
+<span class='blue' onclick=changeCode('00123')>00123 <k class="deeppink">  --- 越秀地产 --- </k></span> Close: 10.06<k class='pink'> Amt: 11751.95 </k> 成交-成交趋势%: 12<k class='gold'>
+  低趋势变化% 2.3 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     3.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.7  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.2  </k>
+
+<span class='blue' onclick=changeCode('02057')>02057 <k class="cyan">  -- 中通快递-SW -- </k></span> Close: 203.2<k class='pink'> Amt: 1677.19 </k> 成交-成交趋势%: -25<k class='gold'>
+  低趋势变化% 0.1 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     4.9 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.1  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 0.7  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1  </k>
+
+<span class='blue' onclick=changeCode('00371')>00371 <k class="gold">  --- 北控水务集团 --- </k></span> Close: 2.37<k class='pink'> Amt: 3538.39 </k> 成交-成交趋势%: 16<k class='gold'>
+  低趋势变化% 0.7 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     1.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.4  </k> <k class='yellow'>	H - 高趋势%  0  </k>  <k class='green'>	今日低-上日低% 0.4  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.4  </k>
+
+<span class='blue' onclick=changeCode('06066')>06066 <k class="cyan">  -- 中信建投证券 -- </k></span> Close: 8.32<k class='pink'> Amt: 3256.19 </k> 成交-成交趋势%: -56<k class='gold'>
+  低趋势变化% 1.2 </k> <k class='yellow'>	L - 低趋势%  0.5  </k> <k class='magenta'>	H - 低趋势%     3.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.7  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 1.5  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.1  </k>
+
+<span class='blue' onclick=changeCode('00631')>00631 <k class="gold">  --- 三一国际 --- </k></span> Close: 8.34<k class='pink'> Amt: 3757.03 </k> 成交-成交趋势%: 71<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     2.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.1  </k> <k class='yellow'>	H - 高趋势%  0  </k>  <k class='green'>	今日低-上日低% 0.6  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.7  </k>
+
+<span class='blue' onclick=changeCode('00694')>00694 <k class="gold">  --- 北京首都机场股份 --- </k></span> Close: 5.35<k class='pink'> Amt: 5384.7 </k> 成交-成交趋势%: 18<k class='gold'>
+  低趋势变化% 3.5 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     6.3 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.7  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 1.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.1  </k>
+
+<span class='blue' onclick=changeCode('00670')>00670 <k class="gold">  --- 中国东方航空股份 --- </k></span> Close: 3.01<k class='pink'> Amt: 8328.19 </k> 成交-成交趋势%: 39<k class='gold'>
+  低趋势变化% 2.4 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     4.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.8  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 1  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1  </k>
+
+<span class='blue' onclick=changeCode('00014')>00014 <k class="gold">  --- 希慎兴业 --- </k></span> Close: 23.65<k class='pink'> Amt: 2820.33 </k> 成交-成交趋势%: 31<k class='gold'>
+  低趋势变化% 0.4 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     1.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.1  </k> <k class='yellow'>	H - 高趋势%  0  </k>  <k class='green'>	今日低-上日低% 0.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.3  </k>
+
+<span class='blue' onclick=changeCode('00683')>00683 <k class="gold">  --- 嘉里建设 --- </k></span> Close: 21.8<k class='pink'> Amt: 3189.6 </k> 成交-成交趋势%: 26<k class='gold'>
+  低趋势变化% 0.9 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     2.2 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.7  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.2  </k>
+
+<span class='blue' onclick=changeCode('02877')>02877 <k class="gold">  --- 神威药业 --- </k></span> Close: 6.71<k class='pink'> Amt: 1506.21 </k> 成交-成交趋势%: 31<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     4.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.8  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 0.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.4  </k>
+
+<span class='blue' onclick=changeCode('01119')>01119 <k class="gold">  --- 创梦天地 --- </k></span> Close: 5.8<k class='pink'> Amt: 7902.23 </k> 成交-成交趋势%: 81<k class='gold'>
+  低趋势变化% 2.1 </k> <k class='yellow'>	L - 低趋势%  0.5  </k> <k class='magenta'>	H - 低趋势%     5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.5  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 1.4  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.1  </k>
+
+<span class='blue' onclick=changeCode('00667')>00667 <k class="deeppink">  --- 中国东方教育 --- </k></span> Close: 4.16<k class='pink'> Amt: 3371.19 </k> 成交-成交趋势%: 22<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     11.3 </k><k class='white'>	L kUP2 kUP4 kUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 2.3  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 0.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 6.9  </k>
+
+<span class='blue' onclick=changeCode('09901')>09901 <k class="cyan">  -- 新东方-S -- </k></span> Close: 15.82<k class='pink'> Amt: 8119.26 </k> 成交-成交趋势%: -2<k class='gold'>
+  低趋势变化% 3.6 </k> <k class='yellow'>	L - 低趋势%  1.9  </k> <k class='magenta'>	H - 低趋势%     7.2 </k><k class='white'>	L tUP2 tUP4 tUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 2.7  </k> <k class='yellow'>	H - 高趋势%  1.4  </k>  <k class='green'>	今日低-上日低% 5.9  </k> <k class='white'>	H tUP2 tUP4 kDN6 kDN8  </k> <k class='white'>
+  现价-低趋势% 4.8  </k>
+
+<span class='blue' onclick=changeCode('00004')>00004 <k class="gold">  --- 九龙仓集团 --- </k></span> Close: 28.6<k class='pink'> Amt: 4855.96 </k> 成交-成交趋势%: 28<k class='gold'>
+  低趋势变化% 1.3 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     2.8 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.3  </k> <k class='yellow'>	H - 高趋势%  0.3  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.9  </k>
+
+<span class='blue' onclick=changeCode('00182')>00182 <k class="gold">  --- 协合新能源 --- </k></span> Close: 0.78<k class='pink'> Amt: 3342.74 </k> 成交-成交趋势%: 114<k class='gold'>
+  低趋势变化% 1.4 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     7.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3  </k> <k class='yellow'>	H - 高趋势%  1.3  </k>  <k class='green'>	今日低-上日低% 1.4  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.4  </k>
+
+<span class='blue' onclick=changeCode('01908')>01908 <k class="cyan">  -- 建发国际集团 -- </k></span> Close: 21.2<k class='pink'> Amt: 3309.89 </k> 成交-成交趋势%: -26<k class='gold'>
+  低趋势变化% 0.9 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     4.8 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.2  </k> <k class='yellow'>	H - 高趋势%  0.5  </k>  <k class='green'>	今日低-上日低% 1  </k> <k class='white'>	H tUP2 tUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.5  </k>
+
+<span class='blue' onclick=changeCode('03709')>03709 <k class="gold">  --- 赢家时尚 --- </k></span> Close: 12.74<k class='pink'> Amt: 1564.88 </k> 成交-成交趋势%: 14<k class='gold'>
+  低趋势变化% 3.2 </k> <k class='yellow'>	L - 低趋势%  1  </k> <k class='magenta'>	H - 低趋势%     3.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.2  </k>
+
+<span class='blue' onclick=changeCode('00754')>00754 <k class="gold">  --- 合生创展集团 --- </k></span> Close: 11.98<k class='pink'> Amt: 3882.77 </k> 成交-成交趋势%: 92<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.8  </k> <k class='magenta'>	H - 低趋势%     5.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.4  </k> <k class='yellow'>	H - 高趋势%  0.9  </k>  <k class='green'>	今日低-上日低% 2.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.2  </k>
+
+<span class='blue' onclick=changeCode('00934')>00934 <k class="gold">  --- 中石化冠德 --- </k></span> Close: 2.69<k class='pink'> Amt: 515.19 </k> 成交-成交趋势%: 35<k class='gold'>
+  低趋势变化% 0.3 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     2 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.4  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 0.4  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2  </k>
+
+<span class='blue' onclick=changeCode('00590')>00590 <k class="cyan">  -- 六福集团 -- </k></span> Close: 20.15<k class='pink'> Amt: 3016.4 </k> 成交-成交趋势%: 9<k class='gold'>
+  低趋势变化% 5.4 </k> <k class='yellow'>	L - 低趋势%  2  </k> <k class='magenta'>	H - 低趋势%     5.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3.4  </k> <k class='yellow'>	H - 高趋势%  1.2  </k>  <k class='green'>	今日低-上日低% 6.3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.9  </k>
+
+<span class='blue' onclick=changeCode('06669')>06669 <k class="deeppink">  --- 先瑞达医疗-B --- </k></span> Close: 8.47<k class='pink'> Amt: 1175.36 </k> 成交-成交趋势%: 32<k class='gold'>
+  低趋势变化% 8.5 </k> <k class='yellow'>	L - 低趋势%  2.9  </k> <k class='magenta'>	H - 低趋势%     14.2 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 7.8  </k> <k class='yellow'>	H - 高趋势%  1.6  </k>  <k class='green'>	今日低-上日低% 9.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 11.2  </k>
+
+<span class='blue' onclick=changeCode('00548')>00548 <k class="cyan">  -- 深圳高速公路股份 -- </k></span> Close: 8.15<k class='pink'> Amt: 1122.2 </k> 成交-成交趋势%: 8<k class='gold'>
+  低趋势变化% 0.4 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     1.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.4  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 0.5  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.8  </k>
+
+<span class='blue' onclick=changeCode('02518')>02518 <k class="deeppink">  --- 汽车之家-S --- </k></span> Close: 77.9<k class='pink'> Amt: 801.79 </k> 成交-成交趋势%: 18<k class='gold'>
+  低趋势变化% 4.4 </k> <k class='yellow'>	L - 低趋势%  1  </k> <k class='magenta'>	H - 低趋势%     2.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3.2  </k> <k class='yellow'>	H - 高趋势%  0  </k>  <k class='green'>	今日低-上日低% 3  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.3  </k>
+
+<span class='blue' onclick=changeCode('06998')>06998 <k class="cyan">  -- 嘉和生物-B -- </k></span> Close: 4.28<k class='pink'> Amt: 1103.99 </k> 成交-成交趋势%: -53<k class='gold'>
+  低趋势变化% 3.1 </k> <k class='yellow'>	L - 低趋势%  1.5  </k> <k class='magenta'>	H - 低趋势%     9 </k><k class='white'>	L tUP2 tUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.6  </k> <k class='yellow'>	H - 高趋势%  1.4  </k>  <k class='green'>	今日低-上日低% 4.5  </k> <k class='white'>	H tUP2 kDN4 kDN6 tUP8  </k> <k class='white'>
+  现价-低趋势% 3.9  </k>
+
+<span class='blue' onclick=changeCode('09993')>09993 <k class="deeppink">  --- 金辉控股 --- </k></span> Close: 4.6<k class='pink'> Amt: 898.51 </k> 成交-成交趋势%: 16<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     4.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.9  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 0.7  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.4  </k>
+
+<span class='blue' onclick=changeCode('01481')>01481 <k class="gold">  --- 竣球控股 --- </k></span> Close: 1.32<k class='pink'> Amt: 672.04 </k> 成交-成交趋势%: 121<k class='gold'>
+  低趋势变化% 1.5 </k> <k class='yellow'>	L - 低趋势%  0.9  </k> <k class='magenta'>	H - 低趋势%     22.8 </k><k class='white'>	L tUP2 tUP4 tUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 11.1  </k> <k class='yellow'>	H - 高趋势%  5  </k>  <k class='green'>	今日低-上日低% 2.7  </k> <k class='white'>	H tUP2 tUP4 tUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 15.8  </k>
+
+<span class='blue' onclick=changeCode('00525')>00525 <k class="gold">  --- 广深铁路股份 --- </k></span> Close: 1.47<k class='pink'> Amt: 1509.01 </k> 成交-成交趋势%: 132<k class='gold'>
+  低趋势变化% 1.2 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     4.4 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.1  </k> <k class='yellow'>	H - 高趋势%  1.2  </k>  <k class='green'>	今日低-上日低% 0.7  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.7  </k>
+
+<span class='blue' onclick=changeCode('02386')>02386 <k class="cyan">  -- 中石化炼化工程 -- </k></span> Close: 3.6<k class='pink'> Amt: 662.65 </k> 成交-成交趋势%: -4<k class='gold'>
+  低趋势变化% 0.7 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     2.4 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 0.6  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 0.5  </k>
+
+<span class='blue' onclick=changeCode('01456')>01456 <k class="gold">  --- 国联证券 --- </k></span> Close: 4.52<k class='pink'> Amt: 1364.32 </k> 成交-成交趋势%: 144<k class='gold'>
+  低趋势变化% 0.2 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     5.7 </k><k class='white'>	L tUP2 tUP4 tUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 1.8  </k> <k class='yellow'>	H - 高趋势%  0.9  </k>  <k class='green'>	今日低-上日低% 1.2  </k> <k class='white'>	H tUP2 kUP4 tUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 3.8  </k>
+
+<span class='blue' onclick=changeCode('00553')>00553 <k class="deeppink">  --- 南京熊猫电子股份 --- </k></span> Close: 3.96<k class='pink'> Amt: 2512.49 </k> 成交-成交趋势%: 85<k class='gold'>
+  低趋势变化% 9.9 </k> <k class='yellow'>	L - 低趋势%  3.9  </k> <k class='magenta'>	H - 低趋势%     27 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 6.3  </k> <k class='yellow'>	H - 高趋势%  -3.2  </k>  <k class='green'>	今日低-上日低% 12.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 6.1  </k>
+
+<span class='blue' onclick=changeCode('00341')>00341 <k class="deeppink">  --- 大家乐集团 --- </k></span> Close: 12.62<k class='pink'> Amt: 1797.99 </k> 成交-成交趋势%: 29<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.7  </k> <k class='magenta'>	H - 低趋势%     5.5 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 2.9  </k> <k class='yellow'>	H - 高趋势%  1.1  </k>  <k class='green'>	今日低-上日低% 2.2  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.5  </k>
+
+<span class='blue' onclick=changeCode('01992')>01992 <k class="gold">  --- 复星旅游文化 --- </k></span> Close: 13.3<k class='pink'> Amt: 7098.55 </k> 成交-成交趋势%: 89<k class='gold'>
+  低趋势变化% 9.2 </k> <k class='yellow'>	L - 低趋势%  2.5  </k> <k class='magenta'>	H - 低趋势%     8.6 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 3.8  </k> <k class='yellow'>	H - 高趋势%  1.8  </k>  <k class='green'>	今日低-上日低% 7.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4.7  </k>
+
+<span class='blue' onclick=changeCode('02768')>02768 <k class="cyan">  -- 佳源国际控股 -- </k></span> Close: 0.435<k class='pink'> Amt: 7945.51 </k> 成交-成交趋势%: -55<k class='gold'>
+  低趋势变化% 3.7 </k> <k class='yellow'>	L - 低趋势%  1.9  </k> <k class='magenta'>	H - 低趋势%     13.7 </k><k class='white'>	L tUP2 kDN4 kDN6 kDN8 </k>
+<k class='gold'>  高趋势变化% 3.3  </k> <k class='yellow'>	H - 高趋势%  1.7  </k>  <k class='green'>	今日低-上日低% 6.2  </k> <k class='white'>	H tUP2 kDN6 kDN8 NA  </k> <k class='white'>
+  现价-低趋势% 3.1  </k>
+
+<span class='blue' onclick=changeCode('09989')>09989 <k class="deeppink">  --- 海普瑞 --- </k></span> Close: 7.22<k class='pink'> Amt: 794.2 </k> 成交-成交趋势%: 21<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     4.9 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -0.1  </k> <k class='yellow'>	H - 高趋势%  -0.1  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H tDN2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 4  </k>
+
+<span class='blue' onclick=changeCode('00120')>00120 <k class="gold">  --- 四海国际 --- </k></span> Close: 1.66<k class='pink'> Amt: 827.52 </k> 成交-成交趋势%: 84<k class='gold'>
+  低趋势变化% 1.7 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     7.6 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.4  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 1.9  </k> <k class='white'>	H tUP2 kUP4 kUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 5.1  </k>
+
+<span class='blue' onclick=changeCode('07500')>07500 <k class="cyan">  -- FI二南方恒指 -- </k></span> Close: 5.2<k class='pink'> Amt: 31775.27 </k> 成交-成交趋势%: -28<k class='gold'>
+  低趋势变化% 1.2 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     4.4 </k><k class='white'>	L kUP2 tUP4 kDN6 kDN8 </k>
+<k class='gold'>  高趋势变化% 1  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H kUP2 kDN4 kDN6 kDN8  </k> <k class='white'>
+  现价-低趋势% 3  </k>
+
+<span class='blue' onclick=changeCode('07552')>07552 <k class="cyan">  -- XI二南方恒科 -- </k></span> Close: 7.36<k class='pink'> Amt: 42643.94 </k> 成交-成交趋势%: -37<k class='gold'>
+  低趋势变化% 3.6 </k> <k class='yellow'>	L - 低趋势%  1.3  </k> <k class='magenta'>	H - 低趋势%     7.8 </k><k class='white'>	L kUP2 tUP4 kDN6 kDN8 </k>
+<k class='gold'>  高趋势变化% 2.6  </k> <k class='yellow'>	H - 高趋势%  1  </k>  <k class='green'>	今日低-上日低% 4  </k> <k class='white'>	H kUP2 tUP4 kDN6 kDN8  </k> <k class='white'>
+  现价-低趋势% 4.9  </k>
+
+<span class='blue' onclick=changeCode('02823')>02823 <k class="gold">  --- 安硕A50 --- </k></span> Close: 16.88<k class='pink'> Amt: 16681.03 </k> 成交-成交趋势%: 28<k class='gold'>
+  低趋势变化% 0.1 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     2.8 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 0.4  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.1  </k>
+
+<span class='blue' onclick=changeCode('02822')>02822 <k class="gold">  --- 南方A50 --- </k></span> Close: 16.3<k class='pink'> Amt: 48543.36 </k> 成交-成交趋势%: 71<k class='gold'>
+  低趋势变化% 0.1 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     2.7 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.6  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 0.4  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.9  </k>
+
+<span class='blue' onclick=changeCode('03188')>03188 <k class="gold">  --- 华夏沪深三百 --- </k></span> Close: 54<k class='pink'> Amt: 53177.99 </k> 成交-成交趋势%: 124<k class='gold'>
+  低趋势变化% 0.4 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     2 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -0.2  </k> <k class='yellow'>	H - 高趋势%  -0.1  </k>  <k class='green'>	今日低-上日低% 0.6  </k> <k class='white'>	H tDN2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.6  </k>
+
+<span class='blue' onclick=changeCode('07568')>07568 <k class="cyan">  -- FI二南方纳指 -- </k></span> Close: 18.63<k class='pink'> Amt: 6496.25 </k> 成交-成交趋势%: -31<k class='gold'>
+  低趋势变化% 2.9 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     3.4 </k><k class='white'>	L kUP2 kUP4 kUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 3.4  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 0.8  </k> <k class='white'>	H kUP2 kUP4 tUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 2.5  </k>
+
+<span class='blue' onclick=changeCode('03191')>03191 <k class="gold">  --- GX中国半导 --- </k></span> Close: 51.16<k class='pink'> Amt: 723.74 </k> 成交-成交趋势%: 32<k class='gold'>
+  低趋势变化% 1 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     3.1 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% -0.2  </k> <k class='yellow'>	H - 高趋势%  -0.2  </k>  <k class='green'>	今日低-上日低% 0.3  </k> <k class='white'>	H tDN2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.7  </k>
+
+<span class='blue' onclick=changeCode('07233')>07233 <k class="gold">  --- XL二南方沪深三 --- </k></span> Close: 7.485<k class='pink'> Amt: 1587.33 </k> 成交-成交趋势%: 31<k class='gold'>
+  低趋势变化% 0.6 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     3.7 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.1  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 1  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 2.1  </k>
+
+<span class='blue' onclick=changeCode('07300')>07300 <k class="cyan">  -- FI南方恒指 -- </k></span> Close: 5.135<k class='pink'> Amt: 843.98 </k> 成交-成交趋势%: -43<k class='gold'>
+  低趋势变化% 0.7 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     2 </k><k class='white'>	L kUP2 tUP4 kDN6 kDN8 </k>
+<k class='gold'>  高趋势变化% 0.5  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 0.8  </k> <k class='white'>	H kUP2 tUP4 kDN6 kDN8  </k> <k class='white'>
+  现价-低趋势% 1.3  </k>
+
+<span class='blue' onclick=changeCode('02809')>02809 <k class="cyan">  -- GX中国洁能 -- </k></span> Close: 145.9<k class='pink'> Amt: 1227.04 </k> 成交-成交趋势%: -28<k class='gold'>
+  低趋势变化% 0.3 </k> <k class='yellow'>	L - 低趋势%  0.2  </k> <k class='magenta'>	H - 低趋势%     4 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.4  </k> <k class='yellow'>	H - 高趋势%  0.2  </k>  <k class='green'>	今日低-上日低% 0.6  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.8  </k>
+
+<span class='blue' onclick=changeCode('07522')>07522 <k class="cyan">  -- FI二华夏纳一百 -- </k></span> Close: 2.718<k class='pink'> Amt: 981.04 </k> 成交-成交趋势%: -37<k class='gold'>
+  低趋势变化% 2.9 </k> <k class='yellow'>	L - 低趋势%  0.3  </k> <k class='magenta'>	H - 低趋势%     3.4 </k><k class='white'>	L kUP2 kUP4 kUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 3.5  </k> <k class='yellow'>	H - 高趋势%  0.8  </k>  <k class='green'>	今日低-上日低% 0.9  </k> <k class='white'>	H kUP2 kUP4 tUP6 tUP8  </k> <k class='white'>
+  现价-低趋势% 2.4  </k>
+
+<span class='blue' onclick=changeCode('82822')>82822 <k class="gold">  --- 南方A50-R --- </k></span> Close: 13.91<k class='pink'> Amt: 2105.86 </k> 成交-成交趋势%: 87<k class='gold'>
+  低趋势变化% 0.2 </k> <k class='yellow'>	L - 低趋势%  0.1  </k> <k class='magenta'>	H - 低趋势%     2.5 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.7  </k> <k class='yellow'>	H - 高趋势%  0.4  </k>  <k class='green'>	今日低-上日低% 0.4  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.7  </k>
+
+<span class='blue' onclick=changeCode('00874')>00874 <k class="cyan">  -- 白云山 -- </k></span> Close: 23<k class='pink'> Amt: 2052.16 </k> 成交-成交趋势%: -2<k class='gold'>
+  低趋势变化% 0.5 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     3.5 </k><k class='white'>	L tUP2 tUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.9  </k> <k class='yellow'>	H - 高趋势%  0.5  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H tUP2 tUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.5  </k>
+
+<span class='blue' onclick=changeCode('01055')>01055 <k class="cyan">  -- 中国南方航空股份 -- </k></span> Close: 4.54<k class='pink'> Amt: 10120.89 </k> 成交-成交趋势%: -17<k class='gold'>
+  低趋势变化% 2.7 </k> <k class='yellow'>	L - 低趋势%  0.6  </k> <k class='magenta'>	H - 低趋势%     3.7 </k><k class='white'>	L kUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 0.3  </k> <k class='yellow'>	H - 高趋势%  0.1  </k>  <k class='green'>	今日低-上日低% 1.8  </k> <k class='white'>	H kUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 1.3  </k>
+
+<span class='blue' onclick=changeCode('01666')>01666 <k class="gold">  --- 同仁堂科技 --- </k></span> Close: 6.59<k class='pink'> Amt: 1401.26 </k> 成交-成交趋势%: 45<k class='gold'>
+  低趋势变化% 1.8 </k> <k class='yellow'>	L - 低趋势%  1  </k> <k class='magenta'>	H - 低趋势%     7.7 </k><k class='white'>	L tUP2 tUP4 tUP6 tUP8 </k>
+<k class='gold'>  高趋势变化% 3.6  </k> <k class='yellow'>	H - 高趋势%  1.4  </k>  <k class='green'>	今日低-上日低% 3  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 5.9  </k>
+
+<span class='blue' onclick=changeCode('07248')>07248 <k class="gold">  --- XL二南方A50 --- </k></span> Close: 5<k class='pink'> Amt: 615.97 </k> 成交-成交趋势%: 129<k class='gold'>
+  低趋势变化% 0.8 </k> <k class='yellow'>	L - 低趋势%  0.4  </k> <k class='magenta'>	H - 低趋势%     4.8 </k><k class='white'>	L tUP2 kUP4 kUP6 kUP8 </k>
+<k class='gold'>  高趋势变化% 1.7  </k> <k class='yellow'>	H - 高趋势%  0.9  </k>  <k class='green'>	今日低-上日低% 1.3  </k> <k class='white'>	H tUP2 kUP4 kUP6 kUP8  </k> <k class='white'>
+  现价-低趋势% 3.2  </k>
+<span class='pink'>allthecodes: </span> 104 
+ <k>02331</k> <k>01398</k> <k>00836</k> <k>01801</k> <k>00688</k> <k>02020</k> <k>00291</k> <k>01658</k> <k>01177</k> <k>00011</k> <k>02628</k> <k>00570</k> <k>03323</k> <k>00914</k> <k>00168</k> <k>06862</k> <k>00763</k> <k>00902</k> <k>02202</k> <k>01548</k> <k>00909</k> <k>03900</k> <k>03998</k> <k>00884</k> <k>01378</k> <k>01928</k> <k>01797</k> <k>01951</k> <k>03311</k> <k>01030</k> <k>00817</k> <k>02883</k> <k>00753</k> <k>01929</k> <k>02208</k> <k>03328</k> <k>02888</k> <k>01813</k> <k>00788</k> <k>00135</k> <k>03908</k> <k>00384</k> <k>06030</k> <k>00081</k> <k>02669</k> <k>02005</k> <k>00293</k> <k>09961</k> <k>00006</k> <k>00780</k> <k>03692</k> <k>01600</k> <k>06869</k> <k>00123</k> <k>02057</k> <k>00371</k> <k>06066</k> <k>00631</k> <k>00694</k> <k>00670</k> <k>00014</k> <k>00683</k> <k>02877</k> <k>01119</k> <k>00667</k> <k>09901</k> <k>00004</k> <k>00182</k> <k>01908</k> <k>03709</k> <k>00754</k> <k>00934</k> <k>00590</k> <k>06669</k> <k>00548</k> <k>02518</k> <k>06998</k> <k>09993</k> <k>01481</k> <k>00525</k> <k>02386</k> <k>01456</k> <k>00553</k> <k>00341</k> <k>01992</k> <k>02768</k> <k>09989</k> <k>00120</k> <k>07500</k> <k>07552</k> <k>02823</k> <k>02822</k> <k>03188</k> <k>07568</k> <k>03191</k> <k>07233</k> <k>07300</k> <k>02809</k> <k>07522</k> <k>82822</k> <k>00874</k> <k>01055</k> <k>01666</k> <k>07248</k>
+<span class='pink'>lastdayAmtUp: </span> 57 
+ <k>02331</k> <k>01398</k> <k>00836</k> <k>01801</k> <k>00688</k> <k>02020</k> <k>00291</k> <k>01658</k> <k>01177</k> <k>00011</k> <k>00570</k> <k>03323</k> <k>00914</k> <k>06862</k> <k>00763</k> <k>00902</k> <k>03900</k> <k>00884</k> <k>01928</k> <k>01951</k> <k>03311</k> <k>01929</k> <k>00788</k> <k>00135</k> <k>00081</k> <k>02669</k> <k>02005</k> <k>00006</k> <k>03692</k> <k>01600</k> <k>06869</k> <k>00371</k> <k>00631</k> <k>00694</k> <k>00670</k> <k>00014</k> <k>00683</k> <k>02877</k> <k>01119</k> <k>00004</k> <k>00182</k> <k>03709</k> <k>00754</k> <k>00934</k> <k>01481</k> <k>00525</k> <k>01456</k> <k>01992</k> <k>00120</k> <k>02823</k> <k>02822</k> <k>03188</k> <k>03191</k> <k>07233</k> <k>82822</k> <k>01666</k> <k>07248</k>
+<span class='pink'>Sorted Range Table: </span>
+ <k>01481</k> <k>01951</k> <k>00836</k> <k>00884</k> <k>01928</k> <k>00120</k> <k>00570</k> <k>00182</k> <k>01666</k> <k>06862</k> <k>03900</k> <k>06869</k> <k>01992</k> <k>01801</k> <k>01177</k> <k>00694</k> <k>00291</k> <k>02005</k> <k>00902</k> <k>02331</k> <k>01456</k> <k>02669</k> <k>00763</k> <k>02877</k> <k>01119</k> <k>00670</k> <k>00754</k> <k>07248</k> <k>01600</k> <k>00525</k> <k>00688</k> <k>00788</k> <k>03692</k> <k>02020</k> <k>00914</k> <k>03311</k> <k>07233</k> <k>01929</k> <k>03191</k> <k>00081</k> <k>03709</k> <k>02823</k> <k>01658</k> <k>02822</k> <k>00004</k> <k>82822</k> <k>00631</k> <k>00006</k> <k>00683</k> <k>00934</k> <k>03323</k> <k>03188</k> <k>00135</k> <k>00371</k> <k>00014</k> <k>00011</k> <k>01398</k> 
+ 21.7 8.3 7.7 7 6.9 6.9 6.7 6.7 6.7 6.6 6.5 6.5 6 5.7 5.7 5.7 5.6 5.6 5.5 5.4 5.3 5 4.6 4.6 4.5 4.3 4.3 4.3 4.2 4.2 4.1 4.1 4 3.8 3.7 3.6 3.3 3.1 3 2.9 2.7 2.7 2.6 2.6 2.5 2.3 2 1.9 1.9 1.9 1.8 1.8 1.7 1.7 1.5 1.2 0.9
+<span class='pink'>Range > 5: </span>
+ <k>01481</k> <k>01951</k> <k>00836</k> <k>00884</k> <k>01928</k> <k>00120</k> <k>00570</k> <k>00182</k> <k>01666</k> <k>06862</k> <k>03900</k> <k>06869</k> <k>01992</k> <k>01801</k> <k>01177</k> <k>00694</k> <k>00291</k> <k>02005</k> <k>00902</k> <k>02331</k> <k>01456</k>
+<span class='white'>Stk > 5000w </span>
+ 00700 09988 03690 00005 00939 01024 00388 02318 01211 00941 02269 01299 00669 06098 03988 02331 09618 01398 01810 03968 00836 02319 02382 00175 06618 01801 00241 00688 02388 01109 09999 01209 02020 00291 01093 01658 01177 02313 00011 09626 00020 02628 00960 00916 00570 02380 09868 01833 01772 01919 02333 02688 09888 01088 09633 00881 03323 00914 02007 00883 00873 01368 00136 01288 00968 00386 00001 06078 03800 01171 00354 06690 02899 00168 01610 06862 00763 06185 00902 02202 00981 00857 02600 01548 02013 02359 01516 02601 01999 00909 00728 00285 03759 00151 02196 01995 06186 01347 02128 00868 00027 09926 09922 09992 00992 00016 03900 03998 03888 00884 06049 01811 03898 01378 02328 03606 03993 00322 01113 01928 00853 00288 02018 00762 00189 01797 01876 00316 06865 06160 09995 06060 01951 01898 01877 02238 03311 00002 00390 01579 03347 00425 01030 03320 00817 02618 01336 00003 01313 00772 00558 00586 00066 00753 01044 02400 06699 01929 02208 03328 01997 00788 06110 01157 02015 00135 09939 03908 00384 01099 06030 01385 01776 00358 01910 00017 01193 02137 00267 01691 00880 02500 02669 01458 02343 01766 01339 00270 00293 00489 02588 01530 09961 00012 00006 00839 01071 01913 09987 00780 03692 00522 00493 00101 00710 00123 06823 01179 01972 01038 00694 00083 02362 00696 01238 00546 01138 00670 09698 00357 01119 02255 00576 09901 00059 01992 02768 02800 02828 03033 07200 07500 00823 07226 03067 07552 02823 02822 02845 03188 07568 08083 06837 01055 01128 02096
+
+
+<script src="https://williamkpchanhp.github.io/headerApp.js"></script>
+<script>
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+  var showTopicNumber = false;
+  var bookid = "sortPopup" 
+  var topicEnd = ", ";
+  var markerName = "h2, span"
+  var divtoc = document.getElementById("toc");
+
+$(document).ready(function(){
+  $('h1, h2, h3, h4, h5, .goldword, strong,  div.title').click(function(){
+  parent.history.back();
+  $('#mustWatch').prepend("<br><br>=======================================================================<br>");
+  return false;
+  });
+});
+
+function getChar(event){
+  if (event.which!=0 && event.charCode!=0) {
+    return String.fromCharCode(event.which);}
+  else {return null;}}
+
+var topicLength;
+var topicpointer = topicLength;
+
+function changeTopic() {
+ if (topicpointer >= topicLength) { topicpointer = 1;}
+ else if (topicpointer < 0) { topicpointer = topicLength;}
+ else { topicpointer = topicpointer + 1;}
+ showTopic()
+}
+function backward() { topicpointer = topicpointer - 2; changeTopic();}
+function foreward() { changeTopic();}
+function showTopic() {
+  window.location = "#topic-" + topicpointer;
+  notvisitedList = notvisitedList.filter(item => item !== topicpointer) // remove topicpointer
+  if(notvisitedList.length == 0){
+   notvisitedList = [...Array(totalLength).keys()];
+  }
+}
+function jumpto(index) { topicpointer = index; showTopic();}
+function randomFlip() {
+  topicpointer = notvisitedList[Math.floor(Math.random() * notvisitedList.length)]; // random from not visited list
+
+  var index = notvisitedList.indexOf(topicpointer);
+  notvisitedList.splice(index, 1);
+
+  showTopic();
+}
+
+var totalLength = topicLength
+var notvisitedList = [...Array(totalLength).keys()];
+
+function storeBookmark(objName, pagepos) {
+  if(typeof objName != 'undefined') {
+    localStorage.setItem(objName, pagepos.toString())
+//    alert("Bookmark changed! " + objName +" " + pagepos)
+  }else{alert("No BookId!")}
+}
+function loadBookmark(objName) {
+  pos = Number(localStorage.getItem(objName))
+  console.log("Bookmark loaded! " + objName + " " + pos)
+  $('body').animate({scrollTop: pos}, 0);
+}
+
+function changeCode(thecode) {
+  localStorage.setItem("randomcode", thecode);
+  window.open("Random Charts.html#imgp4", "_blank");
+}
+
+function xunbao(xunbaocode) {
+  localStorage.setItem("randomcode", xunbaocode)
+  localStorage.setItem("otherCode", xunbaocode)
+  localStorage.setItem("stkCode", xunbaocode)
+  window.open("Random Charts.html");
+}
+
+
+$("#mustWatch").append('<pre><br><span class="silver">keys: <br>r random article<br>5 random article<br>b backward<br>4 backward<br>f foreward<br>6 foreward<br><br>t top of table<br>8 top of table<br>l last of table<br>2 last of table<br>7 go to table middle<br><br>T Top of page<br>e end of page<br><br>m mustWatch<br>p pause<br>c continU<br>s showPage<br><br>K set bookmark<br>k open bookmark</span></pre>');
+
+
+var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy"
+    // ... more custom settings?
+});
+
+</script>
+<script src='https://williamkpchan.github.io/LibDocs/readbook.js'></script>
+
+
+<script>
+  // this goes after readbook to allow toc establish
+  // got to top to show the menu
+  window.location = '#toc';
+
+  // start a new chkKey to avoid readbook chkKey
+function chkKey() {
+  var testkey = getChar(event);
+  if(testkey == 'e'){window.scrollTo(0,document.body.scrollHeight);}
+  if(testkey == "l"){window.location = '#startpt';
+    window.scrollTo(window.scrollX, window.scrollY - 300);}
+
+  else if(testkey == "2"){
+    $('body,html').animate({scrollTop:(divtoc.clientHeight + divtoc.offsetTop-600)}, 1); }
+  else if(testkey == "7"){
+    $('body,html').animate({scrollTop:(divtoc.clientHeight/2 + divtoc.offsetTop-600)}, 1); } //go to middle
+  else if(testkey == 'f'){changeTopic();}
+  else if(testkey == "r"){ randomFlip();}
+  else if(testkey == 's'){xunbao(markerList[topicpointer].split(' ')[0]);}
+  else if(testkey == 't'){window.location = '#toc';
+    window.scrollTo(window.scrollX, window.scrollY - 50);}
+  else if(testkey == '8'){window.location = '#toc';}
+  else if(testkey == "5"){
+    $('body,html').animate({scrollTop:(Math.floor(Math.random() * document.body.scrollHeight))}, 1); }
+
+  else if(testkey == "K"){ 
+    pos = document.getElementsByTagName("body")[0].scrollTop;
+    if(typeof bookid == 'undefined') { bookid = $('title').text() }
+    storeBookmark(bookid, pos.toString());
+  }
+  else if(testkey == "k"){
+    if(typeof bookid != 'undefined') {loadBookmark(bookid);}
+    else{alert("No BookId!")}
+  }
+  else if(testkey == 'd'){window.open("https://www.youdao.com/");}
+  else if(testkey == 'i'){window.open("https://williamkpchan.github.io/LibDocs/InspectChart.html");}
+  else if(testkey == 'X'){window.open("https://williamkpchan.github.io/LibDocs/Random Charts.html");}
+  else if(testkey == 'u'){window.open("https://www.worldometers.info/coronavirus/");}
+  else if(testkey == 'T'){window.open("https://translate.google.com/#en/zh-CN");}
+  else if(testkey == 'F'){window.open("https://fanyi.baidu.com/#en/zh/");}
+  else if(testkey == "b"){ backward();}
+  else{chkOtherKeys(testkey)} 
+}
+
+</script>
+</pre></body></html>
