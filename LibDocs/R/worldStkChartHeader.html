@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html>
+<head>
+<title>dayLayers</title>
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/LibDocs/stkComments.js"></script>
+
+<script src="https://williamkpchan.github.io/LibDocs/longHistList.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.core.js" ></script>
+<script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.line.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.drawing.yaxis.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.dynamic.js"></script>
+<script src="https://williamkpchan.github.io/LibDocs/rchart/RGraph.common.tooltips.js"></script>
+
+<style>
+#dateTime {  text-align: left;}
+#cmtNote, #instruction, #message, #usstock{display:none;}
+select {border-radius:10px; font-size:20px;background-color:black; color:brown;}
+</style>
+
+</head>
+<body onkeypress="chkKey()">
+<center>
+<br>
+<canvas id="cvs" width="1150" height="600">[No canvas support]</canvas>
+<br>
+<p id="image"></p>
+<canvas id="acc0" width="1150" height="240">[No canvas support]</canvas>
+<canvas id="acc5" width="1150" height="240">[No canvas support]</canvas>
+<canvas id="tp" width="1150" height="240">[No canvas support]</canvas>
+<canvas id="strength50" width="1150" height="240">[No canvas support]</canvas>
+
+<span id="lastValues"></span>
+<br><span id="turnover"></span>
+</center>
+
+<div id="dateTime" style="margin-left:5%;" class="lime"> </div>
+<br>
+<pre id="instruction">
+</pre>
+<pre id="commands">
+commands:
+d fillLineData, paste one set data to redraw with std dev
+c askforCode
+
+z large chart
+
+R Random Charts.html
+m mlineMinutechart.html
+
+f jpforward	b jpback
+r jprandom	t jpTo 0
+
+h chgHighList	l chgLowList	m chgMidList	C chgCloseLst
+
+a useAttentionList
+
+i chgIntv
+L askList
+5 lines: data, WAve5, WAve10, sd+, sd-
+A stk code sample: 000001.sh, 399001.sz
+</pre>
+<pre id="message">
+
+</pre>
+
+
+<script>
+      let thestkdata = [];
+      let startIntv = 3;
+
+      period = 65;
+
+      intv1 = startIntv
+      intv2 = 2*intv1
+      intv3 = 3*intv1
+      intv4 = 4*intv1
+      intv5 = 5*intv1
+      intv6 = 6*intv1
+      intv7 = 7*intv1
+      intv8 = 8*intv1
+      intv9 = 9*intv1
+      stkpriceDataArr = [];
+      stkPointer = 0;
+      titleText = "";
+      starti = 0;
+      chartColor = ['red','green','blue','#0ad','#900','#990','#fff','#0f0','#0aa','#0ff','purple','yellow','#885']
+
+      attentionList = ""
+
+      var options = '';  // build the List select option
+      for (var i = 0; i < allListNames.length; i++) {
+         options += '<option value="' + allListNames[i]+ '">' + allListNames[i] + '</option>';
+      }
+
+
+	function fillLineData() {
+      var dataArr = prompt("Enter data array sep by space:", "");
+      if (dataArr != null && dataArr != "") {
+        dataArrArr = dataArr.split(' ');
+
+        stkpriceDataArr = dataArrArr.map(Number);
+        redraw()
+      }
+     }
+
+
+
+     function redraw() {
+        titleText = showDate() +" "+ showTime()+", p1: "+intv1+ " p9: "+intv9+" w: "+ "100\n"+theStartCode + " " + stkName + " StockQ日線 C";
+
+        RGraph.reset(document.getElementById('cvs'));
+        stdDevH = makeStd(stkpriceDataArr, intv3)
+        stdDevL = stdDevH
+        newDevadd = makeMovAve(stkpriceDataArr, intv3).map((a, i) => a + stdDevH[i]);
+        newDevminus = makeMovAve(stkpriceDataArr, intv3).map((a, i) => a - stdDevL[i]);
+
+        layerdata1 = makeMovAve(stkpriceDataArr, intv1)
+        layerdata2 = makeMovAve(layerdata1, intv1)
+        layerdata3 = makeMovAve(layerdata2, intv1)
+        layerdata4 = makeMovAve(layerdata3, intv1)
+        layerdata5 = makeMovAve(layerdata4, intv1)
+        layerdata6 = makeMovAve(stkpriceDataArr, intv4)
+        layerdata7 = makeMovAve(layerdata6, intv2)
+        layerdata8 = makeMovAve(layerdata6, intv4)
+        layerdata9 = makeMovAve(layerdata6, intv6)
+        mydata= [
+          stkpriceDataArr, 
+          layerdata1,
+          layerdata2,
+          layerdata3,
+          layerdata4,
+          layerdata5,
+          layerdata6,
+          layerdata7,
+          layerdata8,
+          layerdata9,
+          newDevadd, newDevminus,
+        ];
+        theMax = Math.max(...[].concat(...mydata));
+        theMin = Math.min(...[].concat(...mydata));
+
+        thedrawdata = mydata
+        thedrawdata.push(makeMovAve(thedrawdata[1], intv1));  // add one line to check results
+
+        thedrawdata[1] = thedrawdata[1].fill(null,0,intv1)
+        thedrawdata[2] = thedrawdata[2].fill(null,0,intv2)
+        thedrawdata[3] = thedrawdata[3].fill(null,0,intv3)
+        thedrawdata[4] = thedrawdata[4].fill(null,0,intv4)
+        thedrawdata[5] = thedrawdata[5].fill(null,0,intv5)
+        thedrawdata[6] = thedrawdata[6].fill(null,0,intv6)
+        thedrawdata[7] = thedrawdata[7].fill(null,0,intv7)
+        thedrawdata[8] = thedrawdata[8].fill(null,0,intv8)
+        thedrawdata[9] = thedrawdata[9].fill(null,0,intv9)
+        thedrawdata[10] = thedrawdata[10].fill(null,0,intv3)
+        thedrawdata[11] = thedrawdata[11].fill(null,0,intv3)
+        thedrawdata[12] = thedrawdata[12].fill(null,0,intv1)  // add one line 
+
+statusMsg = '<br><span class="red">price '+ mydata[0].slice(-1)[0].toFixed(3) +
+'</span>, <span class="darkgreen">intvS '+ mydata[1].slice(-1)[0].toFixed(3) +
+'</span>, <span class="blue">intvL '+ mydata[2].slice(-1)[0].toFixed(3) +
+'</span>, <span class="purple">Top '+ mydata[3].slice(-1)[0].toFixed(3) +
+'</span>, <span class="yellow">Bottom '+ mydata[4].slice(-1)[0].toFixed(3) +
+'</span>, <span class="darkgreen">IntvS '+ intv1 +
+'</span>, <span class="blue">IntvL '+ intv2 +
+'</span>'
+
+$("#lastValues").text("");
+$("#lastValues").append(statusMsg);
+
+       drawchart()
+
+		// create datalog table
+		 transp = transpose(mydata);
+            wAveTrendRange = [];  // this is the gap diff
+		  for (var row=0; row < transp.length; row++) {
+		    rowRange = transp[row].slice(1, mydata.length);
+      	    rowMax = Math.max(...rowRange);
+      	    rowMin = Math.min(...rowRange);
+      	    var rowDiff = rowMax - rowMin;
+      	    wAveTrendRange.push(rowDiff);
+      	  }
+
+		wAveTrendRange.fill(null,0,intv9);
+		wAvemax = Math.max(...wAveTrendRange);
+		wAvemin = Math.min(...wAveTrendRange);
+		drawTrend(wAveTrendRange, wAvemax, wAvemin, 'tp');
+
+		// find derivative
+		derivative = diff(makeMovAve(mydata[0], 3));
+		derivative.unshift(0);
+		derivative.fill(null,0,intv1+3); //array.fill(value, start, end)
+
+          //derivative = derivative.map(item => Math.round(item*10000)/10000)
+		derivmax = Math.max(...derivative);
+		derivmin = Math.min(...derivative);
+		drawTrend(derivative, derivmax, derivmin, 'acc0');
+
+		// find derivative9
+		derivative9 = diff(makeMovAve(mydata[5], 3));
+		derivative9.unshift(0);
+		derivative9.fill(null,0,intv5+3);
+		derivmax9 = Math.max(...derivative9);
+		derivmin9 = Math.min(...derivative9);
+		drawTrend(derivative9, derivmax9, derivmin9, 'acc5');
+
+		// find stoch
+		stoch1 = makeStoch(mydata[0], 50)
+		stochmax1 = Math.max(...stoch1);
+		stochmin1 = Math.min(...stoch1);
+		drawTrend(stoch1, stochmax1, stochmin1, 'strength50');
+
+     }
+
+	function makeMovAve(bigArray, intv) {
+	     // the intv-1 is correct
+		return bigArray.slice(0, intv-1).concat(calcMovAve(bigArray, intv));
+	}
+	function calcAve(aveArray) {
+		add = (a, b) =>  a + b;
+		return aveArray.reduce(add) / aveArray.length;
+	}
+	
+	function calcMovAve(bigArray, intv) {
+		var ma = [];
+		for (var i =0 ; i < (bigArray.length-intv+1); i++) {ma[i] = calcWAve(bigArray.slice(i, i+intv));} // points to indicator
+		return ma;
+	}
+	function calcWAve(aveArray) {
+		var sum = 0
+		for( var i = 1; i <= aveArray.length; i++ ) {
+			sum += aveArray[i-1] * i;
+		}
+		return (sum / ((1 + aveArray.length)*aveArray.length/2))
+	}
+
+	function makeStoch(bigArray, intv) {
+	     tempArr = bigArray.slice(0, intv-1).concat(calcStoch(bigArray, intv));
+		return tempArr.fill(50,0,intv-1)
+	}
+
+	function calcStoch(bigArray, intv) {
+		var stc = [];
+		for (var i =0 ; i < (bigArray.length-intv+1); i++) {
+			stc[i] = calc1Stoch(bigArray.slice(i, i+intv));
+		}
+		return stc;
+	}
+
+	function calc1Stoch(stcArray) {
+			stcMax = Math.max(...stcArray)
+			stcMin = Math.min(...stcArray)
+			lastVal = stcArray[stcArray.length - 1]
+			stcRange = stcMax - stcMin
+			if(stcRange == 0){
+				stcVal = 50
+			}else{
+				stcVal = 100*(lastVal - stcMin) / stcRange
+			}
+			return stcVal
+	}
+
+	function makeStd(bigArray, intv) {
+	     // the intv-1 is correct
+          newArray = new Array(intv-1).fill(0)
+		newArray = newArray.concat(calcStd(bigArray, intv));
+		return newArray
+	}
+
+	function calcStd(bigArray, intv) {
+		var stdArrar = [];
+		for (var i =0 ; i < (bigArray.length-intv+1); i++) {stdArrar[i] = Std(bigArray.slice(i, i+intv));} // points to indicator
+		return stdArrar;
+	}
+
+	function Std(array) {
+	  const n = array.length
+	  const mean = array.reduce((a, b) => a + b) / n
+	  return Math.sqrt(array.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
+	}
+
+	function transpose(thisArr) { // Swap rows with columns of a matrix
+	    return Object.keys(thisArr[0]).map(function(column) {
+	        return thisArr.map(function(row) { return row[column]; });
+	    });
+	}
+
+    function useAttentionList() {
+        stkList = attentionList;
+        alert("AttentionList Total: " + attentionList.length + "\ndetails see end of this page.\nremember to modify mustadd list!")
+        $("#message").text("Total: " + attentionList.length + "\n"+stkList);
+    }
+
+    function myfavor() {
+        myfavorLst = mychips.split(" ");
+        stkList = myfavorLst;
+        alert("mychips Total: " + myfavorLst.length + "\ndetails see end of this page.\nremember to modify mustadd list!")
+        $("#message").text("mychips Total: " + myfavorLst.length + "\n"+stkList);
+    }
+
+    function askList() {
+        var theList = prompt("CodeList, Number (5 digits) sep by space： ", "");
+        if (theList != null && theList != "HSI" && theList != "") {
+            stkList = theList.split(" ");
+            alert("Supplied List Total: " + stkList.length + "\ndetails see end of this page.\nremember to modify mustadd list!")
+            $("#message").text("Supplied List Total: " + stkList.length + "\n"+stkList);
+        }
+    }
+
+    function FormatNumberLength5(num) {
+        var r = "" + num;
+        while (r.length < 5) { r = "0" + r; }
+        return r;
+    }
+
+    function drawchart() {
+      var line = new RGraph.Line({
+        id:'cvs',
+        data: thedrawdata,
+        options: {
+			title: titleText,
+			titleColor: 'grey',
+			titleSize: 20,
+               colors: chartColor,
+            backgroundGrid: true, backgroundGridVlines: true,
+            backgroundGridColor: '#001000', backgroundGridBorder: false,
+            // backgroundGridDotted: true,
+            backgroundGridDashed: true, 
+            axisColor: '#864',  scaleDecimals: 2,
+            xaxis: true,
+            //xaxisLabels: ["a","b","c","d"],
+            textColor: '#ccc',
+            tickmarks: 'plus',
+            ticksize: 1,
+            linewidth:1,
+			ymax: theMax,
+			ymin: theMin,
+      // labels control the number of grids
+            // labels: ['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'],
+            spline: false,
+            shadow: false,
+            gutterLeft: 0, gutterRight: 50,
+            gutterTop: 25, gutterBottom: 25
+            }
+          }).trace();
+
+		yminpct = 100 - (theMax-theMin)*100/theMax,
+		ymaxpct = 100,
+
+          yaxis1 = new RGraph.Drawing.YAxis('cvs', 1200)
+                .Set('colors', ['gold'])
+                .Set('text.color', 'gray')
+                .Set('text.size', 8)
+                .Set('max', ymaxpct)
+                .Set('min', yminpct)
+                .Set('linewidth', 2)
+                .Set('tickmarkslength', 5)
+                .Set('title', '% pct')
+                .Draw();
+
+    };
+
+    function drawTrend(therange,maxValue, minValue, chartID) {
+       RGraph.reset(document.getElementById(chartID));
+       line = new RGraph.Line({
+       	id:chartID, data:therange,
+       	options: {
+       		title: chartID + ", "+theStartCode + " " + stkName,
+    			titleColor: 'grey', 
+    			titleSize: 10,
+       		backgroundGrid: true, axisColor: '#864', textColor: '#ccc',
+    		numxticks: 0, colors: chartColor, scaleDecimals: 2,
+
+       		tickmarksDotLinewidth: 0,ticksize: 1, linewidth: 1, 
+       		ymax: maxValue, ymin: minValue,
+       		spline: false, shadow: false,
+              // tooltips: dataTooltips,
+			backgroundGridVlines: true,
+			backgroundGridDashed: true, 
+       		backgroundGridColor: '#001000',
+       		gutterLeft: 0, gutterRight: 50, gutterTop: 25, gutterBottom: 25
+       	}
+       }).trace();
+    };
+    
+    function diff(arr) {
+      return arr.slice(1).map(function(n, i) { return n - arr[i]; });
+    }
+
