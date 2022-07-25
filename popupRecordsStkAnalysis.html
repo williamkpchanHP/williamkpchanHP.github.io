@@ -1,0 +1,58 @@
+﻿<base target="_blank"><html><head><title>popupReportStkAnalysis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://williamkpchan.github.io/maincss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
+<script src="https://williamkpchan.github.io/lazyload.min.js"></script>
+<script type='text/javascript' src='https://williamkpchan.github.io/mainscript.js'></script>
+<script src="https://williamkpchan.github.io/commonfunctions.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<script src="./multilinechart.js" ></script>
+
+<script>
+  var showTopicNumber = false;
+  var topicEnd = "&emsp;";
+  var bookid = "popupReport"
+  var markerName = ".white"
+
+function docLoaded() {
+    let script1 = document.createElement('script');
+    script1.src = 'https://williamkpchan.github.io/LibDocs/readbook.js';
+    document.body.appendChild(script1);
+    let script = document.createElement('script');
+    script.src = 'C:/R programs/!!! STKMon !!!/headerApp.js';
+    document.body.appendChild(script);
+    window.scrollTo(0,(document.body.scrollHeight));
+
+}
+
+function chkKey() {
+	var testkey = getChar(event);
+     if(testkey == 'e'){window.scrollTo(0,document.body.scrollHeight);}
+     if(testkey == 'i'){window.open("https://williamkpchan.github.io/LibDocs/InspectChart.html");}
+     if(testkey == ','){window.open("https://williamkpchan.github.io/LibDocs/mlinechart.html");}
+     if(testkey == '"'){window.open("https://williamkpchan.github.io/LibDocs/mline11Minutechart.html");}
+     if(testkey == "X"){window.open("https://williamkpchan.github.io/LibDocs/Random Charts.html");}
+     else{chkOtherKeys(testkey)} 
+}
+</script>
+<style>
+body{width:96%;margin-left: 2%; font-size:16px;}
+h1, h2 {color: gold;}
+strong {color: orange;}
+pre{width:100%;}
+#toc{color:cyan; font-size:18px;}
+img {max-width:90%; display: inline-block; margin-top: 2%;margin-bottom: 1%; border-radius:3px; background-color:#044;}
+</style></head>
+<body onkeypress="chkKey()" onload="docLoaded()">
+<div id="toc"></div>
+<h3>rawmultiSigLines</h3>
+<pre id="rawmultiSigLines"></pre>
+<h3>multiSig</h3>
+<pre id="multiSig"></pre>
+
+<script>
+  $("#rawmultiSigLines").html(rawmultiSigLines);
+  $("#multiSig").html(multiSig);
+</script>
