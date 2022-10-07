@@ -37,13 +37,13 @@ img {max-width:100%; max-height:100vh; display: inline-block; margin-top: 2%;mar
 <pre>
 r showRandomMsg
 a autoShowImg
-A autoShowImg
+A,1 autoShowImg
 m alert
 v viewOriginal
 5 zoomin
 2 zoomout
-f forwardImg
-b backwordImg
+f,6 forwardImg
+b,4 backwordImg
 F forwardMsg
 B backwordMsg
 
@@ -60,27 +60,29 @@ function chkKey() {
     document.body.style.cursor = "auto";
   }
   else if(testkey == 'a'){autoShowImg(repeats)}
-  else if(testkey == 'A'){autoShowImg(imgnotvisitedList.length)}
+  else if((testkey == 'A')|(testkey == '1')){
+    autoShowImg(imgnotvisitedList.length)
+  }
   else if(testkey == 'm'){alert(imgnotvisitedList[imgpointer])}
   else if(testkey == 'v'){ viewOriginal();}
   else if(testkey == '5'){ zoomin();}
   else if(testkey == '2'){ zoomout();}
-  else if(testkey == 'f'){
+  else if((testkey == 'f')|(testkey == '6')){
     forwardImg();
     window.location="#pictList";
     document.body.style.cursor = "none"
   }
-  else if(testkey == 'b'){
+  else if((testkey == 'b')|(testkey == '4')){
     backwordImg();
     window.location="#pictList";
     document.body.style.cursor = "none"
   }
 
-  else if(testkey == 'F'){
+  else if((testkey == 'F')|(testkey == '9')){
     forwardMsg();
     window.location="#proverb";
   }
-  else if(testkey == 'B'){
+  else if((testkey == 'B')|(testkey == '7')){
     backwordMsg();
     window.location="#proverb";
   }
