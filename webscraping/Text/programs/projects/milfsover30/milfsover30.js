@@ -8,6 +8,8 @@ function chkKey() {
   if(testkey == 's'){ showMov();}
   if(testkey == 'd'){ nextImg();}
   if(testkey == 'v'){ prevImg();}
+  if(testkey == '6'){ nextImg();}
+  if(testkey == '4'){ prevImg();}
   if(testkey == '+'){ addTo_mypicList();}
 }
 
