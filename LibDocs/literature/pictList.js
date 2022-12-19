@@ -1,4 +1,6 @@
 pictList = [
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/fsmuu/2022_08_22/1.jpg">',
+'<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/fsmuu/2022_08_22/2avatar.jpg">',
 '<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/fsmuu/2022_06_29/1.jpg">',
 '<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/fsmuu/2022_06_29/5.jpg">',
 '<img src="https://cdnimgzh.vietnamplus.vn/t870/uploaded/fsmuu/2022_05_06/1avatar.jpg">',
