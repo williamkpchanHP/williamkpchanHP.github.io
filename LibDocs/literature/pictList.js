@@ -3039,10 +3039,8 @@ pictList = [
 '<img src="https://i.pinimg.com/564x/82/ba/7f/82ba7f8ba43927d9f9eb5fe23338456f.jpg">',
 '<img src="https://i.pinimg.com/564x/a6/80/3a/a6803a0a76ce5e61bc1576e37a58685d.jpg">',
 '<img src="https://i.pinimg.com/564x/21/cb/9c/21cb9ca1241f08e8327ff565a1d59a24.jpg">',
-'<img src="https://i.pinimg.com/564x/7b/f9/cf/7bf9cfb10281d9a81be67bb055545ecf.jpg">',
 '<img src="https://i.pinimg.com/564x/53/5c/03/535c0383f2617ed4254216110291ec89.jpg">',
 '<img src="https://i.pinimg.com/564x/28/61/da/2861da01a8b8397a1fc22edc5345308e.jpg">',
-'<img src="https://i.pinimg.com/564x/b9/51/d3/b951d30ce103d25bc976d1c4e817c883.jpg">',
 '<img src="https://i.pinimg.com/564x/44/59/1b/44591b419416eeadbc02d08ea635ee82.jpg">',
 '<img src="https://i.pinimg.com/564x/57/5b/af/575baf7c6ad2d9c92fa623f4d634d7a9.jpg">',
 '<img src="https://i.pinimg.com/564x/00/b2/47/00b24766c3cc1e8bd6f89245a042b040.jpg">',
@@ -3162,6 +3160,21 @@ pictList = [
 '<img src="https://i.pinimg.com/236x/d0/24/59/d02459f9353f7e4314881b7ea0611457.jpg">',
 '<img src="https://i.pinimg.com/564x/7b/6a/07/7b6a07eb100b9adbd55e4c46d0d9ed21.jpg">',
 '<img src="https://i.pinimg.com/564x/d2/6e/31/d26e3173b6de8344629d586676e73f71.jpg">',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=3940718417380236" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<img src="https://i.pinimg.com/564x/92/c4/a3/92c4a3fa1d69d18e15a3451ca548b49f.jpg">',
+'<img src="https://i.pinimg.com/564x/66/40/c0/6640c02146dc658bad0a2d34a9144e41.jpg">',
+'<img src="https://i.pinimg.com/564x/49/34/9b/49349b8cbe811276e22407eb3268c138.jpg">',
+'<img src="https://i.pinimg.com/564x/18/41/35/1841352ad0bcc1d9cfa3fd217fc361e7.jpg">',
+'<img src="https://i.pinimg.com/564x/57/c6/74/57c6748888971bbaeec306b26f2d300a.jpg">',
+'<img src="https://i.pinimg.com/564x/12/7b/a3/127ba3e2de7e42d0455ed905bb758179.jpg">',
+'<img src="https://i.pinimg.com/564x/b0/b2/06/b0b206056a98adca59fcbf8eef3deaaa.jpg">',
+'<img src="https://i.pinimg.com/564x/75/cc/9d/75cc9d3bed450c2ec0161f6fdedcf644.jpg">',
+'<img src="https://i.pinimg.com/564x/40/32/53/4032536f997b00e83377b6e3d6d33339.jpg">',
+'<img src="https://i.pinimg.com/564x/0a/d2/c6/0ad2c616efb77b4de866225aa14282d7.jpg">',
+'<img src="https://i.pinimg.com/564x/f8/36/12/f8361235801484f9120c917f5962e9a2.jpg">',
+'<img src="https://i.pinimg.com/564x/d6/df/16/d6df16993ced6c401de1acdb28fc2743.jpg">',
+
+
 
 
 ]
