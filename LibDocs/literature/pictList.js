@@ -707,13 +707,13 @@ pictList = [
 '<img src="https://storage.googleapis.com/pai-images/dbcda58af22b45de98dd256b744479c3.jpeg">',
 '<img src="https://storage.googleapis.com/pai-images/9ddc642c96ac4901badc8e3efc627760.jpeg">',
 '<iframe src="https://assets.pinterest.com/ext/embed.html?id=68745406840" height="550" width="450" frameborder="0" scrolling="no" ></iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=70437486754301" height="550" width="450" frameborder="0" scrolling="no" ><'/iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=27092035254391712" height="900" width="450" frameborder="0" scrolling="no" ><'/iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=422281209333796" height="900" width="450" frameborder="0" scrolling="no" ><'/iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=811773901606915433" height="900" width="450" frameborder="0" scrolling="no" ><'/iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=811773901606800230" height="900" width="450" frameborder="0" scrolling="no" ><'/iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=2885187254719741" height="900" width="450" frameborder="0" scrolling="no" ><'/iframe>',
-'<iframe src="https://assets.pinterest.com/ext/embed.html?id=60587557479803096" height="900" width="450" frameborder="0" scrolling="no" ><'/iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=70437486754301" height="550" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=27092035254391712" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=422281209333796" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=811773901606915433" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=811773901606800230" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=2885187254719741" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
+'<iframe src="https://assets.pinterest.com/ext/embed.html?id=60587557479803096" height="900" width="450" frameborder="0" scrolling="no" ></iframe>',
 
 
 
