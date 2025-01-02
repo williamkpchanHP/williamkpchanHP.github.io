@@ -101,7 +101,6 @@ pictList = [
 '<img src="https://storage.googleapis.com/pai-images/718aa26dadcd43afb5b2fb94e3691998.jpeg">',
 '<img src="https://storage.googleapis.com/pai-images/3d7502bbfc2843269e27cc5f087ff682.jpeg">',
 '<img src="https://storage.googleapis.com/pai-images/adcd0930e4b14517bec8c20181208f3a.jpeg">',
-'<img src="https://storage.googleapis.com/pai-images/b57d9a3735b04a099af25bfa0fcd2e2e.jpeg">',
 '<img src="https://storage.googleapis.com/pai-images/7ec3883efaac4af1921d917641b4b305.jpeg">',
 '<img src="https://storage.googleapis.com/pai-images/fcaace4d0a074031a01bd79cbd20a93f.jpeg">',
 '<img src="https://storage.googleapis.com/pai-images/5c434d0ad0f846c0a6f330922ccdce81.jpeg">',
