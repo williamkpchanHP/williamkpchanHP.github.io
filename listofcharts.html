@@ -17,6 +17,17 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script>
+// Get data from sessionStorage
+const receivedData = sessionStorage.getItem('blockOfList');
+
+if (receivedData) {
+  console.log('Received data:', receivedData);
+    localStorage.setItem("stkListArr",receivedData); // this is the shareList
+    localStorage.setItem("titleBar","Input list");
+    $('#titlebar').text("Input list");
+    location.reload();
+}
+
 let theList = ['110000','000001.sh'];
 </script>
 
